@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
 
+import { stripesShape } from '@folio/stripes/core';
+
 import Settings from './settings';
 
 /*
@@ -15,6 +17,7 @@ class Invoice extends React.Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
     showSettings: PropTypes.bool,
+    stripes: stripesShape.isRequired,
   };
 
   constructor(props) {
