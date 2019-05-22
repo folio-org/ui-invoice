@@ -1,6 +1,7 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+
 import { Settings } from '@folio/stripes/smart-components';
+
 import GeneralSettings from './GeneralSettings';
 import SomeFeatureSettings from './FeatureSettings';
 
@@ -14,12 +15,12 @@ export default class InvoiceSettings extends React.Component {
   pages = [
     {
       route: 'general',
-      label: <FormattedMessage id="ui-invoice.settings.general" />,
+      label: 'General',
       component: GeneralSettings,
     },
     {
       route: 'somefeature',
-      label: <FormattedMessage id="ui-invoice.settings.some-feature" />,
+      label: 'Some Feature',
       component: SomeFeatureSettings,
     },
   ];

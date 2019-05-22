@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import { Pane } from '@folio/stripes/components';
-import { FormattedMessage } from 'react-intl';
 
 export default class FeatureSettings extends React.Component {
   static propTypes = {
@@ -12,7 +12,7 @@ export default class FeatureSettings extends React.Component {
     return (
       <Pane defaultWidth="fill" fluidContentWidth paneTitle={this.props.label}>
         <div data-test-application-settings-feature-message>
-          <FormattedMessage id="ui-invoice.settings.some-feature.message" />
+          These are your settings for some app feature.
         </div>
       </Pane>
     );
