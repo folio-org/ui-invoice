@@ -7,6 +7,8 @@ const modules = req.keys().reduce((acc, modulePath) => {
   const moduleType = moduleParts[1];
   const moduleName = moduleParts[2];
 
+  if (moduleType === 'configs') return acc;
+
   if (moduleName) {
     const moduleKey = camelize(moduleName.replace('.js', ''));
 

@@ -1,5 +1,5 @@
-// typical mirage config export
-// http://www.ember-cli-mirage.com/docs/v0.4.x/configuration/
-export default function config() {
+import configInvoices from './configs/invoices';
 
+export default function config() {
+  configInvoices(this);
 }

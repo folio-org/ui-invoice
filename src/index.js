@@ -6,12 +6,8 @@ import Route from 'react-router-dom/Route';
 
 import { stripesShape } from '@folio/stripes/core';
 
+import Invoices from './invoices';
 import Settings from './settings';
-
-/*
-  STRIPES-NEW-APP
-  This is the main entry point into your new app.
-*/
 
 class Invoice extends React.Component {
   static propTypes = {
@@ -23,7 +19,7 @@ class Invoice extends React.Component {
   constructor(props) {
     super(props);
 
-    this.connectedApp = props.stripes.connect(() => null);
+    this.connectedInvoices = props.stripes.connect(Invoices);
   }
 
   render() {
@@ -43,7 +39,7 @@ class Invoice extends React.Component {
         <Route
           path={path}
           exact
-          component={this.connectedApp}
+          component={this.connectedInvoices}
         />
       </Switch>
     );
