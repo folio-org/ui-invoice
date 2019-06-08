@@ -1,2 +1,2 @@
 // eslint-disable-next-line import/prefer-default-export
-export const INVOICES_LIST_API = 'invoice/invoices';
+export const INVOICE_API = 'invoice/invoices';
