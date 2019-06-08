@@ -11,12 +11,15 @@ describe('Invoices list', () => {
 
   const invoicesList = new InvoicesListInteractor();
 
-  beforeEach(function () {
-    this.server.createList('invoice', INVOICES_COUNT);
+  beforeEach(async function () {
+    const invocies = this.server.createList('invoice', INVOICES_COUNT);
 
-    return this.visit('/invoice', () => {
-      expect(invoicesList.$root).to.exist;
-    });
+    invocies.forEach(invoice => this.server.create('vendor', {
+      id: invoice.vendorId,
+    }));
+
+    this.visit('/invoice');
+    await invoicesList.whenLoaded();
   });
 
   it('shows the list of organization items', () => {

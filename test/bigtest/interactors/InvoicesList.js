@@ -10,4 +10,9 @@ export default interactor(class InvoicesListInteractor {
   hasCreateButton = isPresent('#clickable-newinvoice');
 
   invocies = collection('[role=row] a');
+
+  isLoaded = isPresent('#pane-results');
+  whenLoaded() {
+    return this.timeout(5000).when(() => this.isLoaded);
+  }
 });
