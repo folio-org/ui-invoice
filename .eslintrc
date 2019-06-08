@@ -2,7 +2,8 @@
   "parser": "babel-eslint",
   "extends": "@folio/eslint-config-stripes",
   "plugins": [
-    "filenames"
+    "filenames",
+    "no-only-tests"
   ],
   "rules": {
     "filenames/match-exported": "error",
@@ -115,6 +116,7 @@
       "error",
       3
     ],
+    "no-only-tests/no-only-tests": "error",
     "no-constant-condition": "error"
   }
 }
