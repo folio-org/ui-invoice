@@ -38,7 +38,6 @@ class Invoice extends React.Component {
       <Switch>
         <Route
           path={path}
-          exact
           component={this.connectedInvoices}
         />
       </Switch>

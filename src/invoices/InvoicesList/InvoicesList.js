@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { noop } from 'lodash';
 
 import { SearchAndSort } from '@folio/stripes/smart-components';
 
 import packageInfo from '../../../package';
 import {
-  INVOICES_LIST_API,
+  INVOICE_API,
 } from '../../common/constants';
+
+import Invoice from './Invoice';
 
 const filterConfig = [];
 const visibleColumns = ['vendorInvoiceNo'];
@@ -47,7 +48,7 @@ class InvoicesList extends Component {
       clear: true,
       records: 'invoices',
       recordsRequired: '%{resultCount}',
-      path: INVOICES_LIST_API,
+      path: INVOICE_API,
       perRequest: RESULT_COUNT_INCREMENT,
     },
   });
@@ -73,7 +74,7 @@ class InvoicesList extends Component {
           initialResultCount={INITIAL_RESULT_COUNT}
           resultCountIncrement={RESULT_COUNT_INCREMENT}
           visibleColumns={visibleColumns}
-          viewRecordComponent={noop}
+          viewRecordComponent={Invoice}
           onSelectRow={onSelectRow}
           viewRecordPerms="invoice.invoices.item.get"
           newRecordPerms="invoice.invoices.item.post"

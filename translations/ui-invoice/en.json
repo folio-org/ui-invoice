@@ -1,3 +1,5 @@
 {
-  "meta.title": "Invoice"
+  "meta.title": "Invoice",
+
+  "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}"
 }

@@ -1,8 +1,12 @@
-import { INVOICES_LIST_API } from '../../../../src/common/constants';
+import { INVOICE_API } from '../../../../src/common/constants';
 
 const configInvoices = server => {
-  server.get(INVOICES_LIST_API, (schema) => {
+  server.get(INVOICE_API, (schema) => {
     return schema.invoices.all();
+  });
+
+  server.get(`${INVOICE_API}/:id`, (schema, request) => {
+    return schema.invoices.find(request.params.id).attrs;
   });
 };
 
