@@ -1,3 +1,14 @@
 {
-    "meta.title": "Invoice"
+    "meta.title": "Factura",
+    "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
+    "invoice.status.approved": "Approved",
+    "invoice.status.open": "Open",
+    "invoice.status.reviewed": "Reviewed",
+    "invoice.status.paid": "Paid",
+    "invoice.status.cancelled": "Cancelled",
+    "invoice.list.vendorInvoiceNo": "Vendor invoice number",
+    "invoice.list.vendor": "Vendor",
+    "invoice.list.invoiceDate": "Invoice date",
+    "invoice.list.status": "Status",
+    "invoice.list.total": "Total amount (system)"
 }
