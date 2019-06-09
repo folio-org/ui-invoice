@@ -1,3 +1,14 @@
 {
-    "meta.title": "الفاتورة"
+    "meta.title": "الفاتورة",
+    "invoice.details.paneTitle": "رقم فاتورة الموّرد -{vendorInvoiceNo} ",
+    "invoice.status.approved": "مقبول",
+    "invoice.status.open": "مفتوح",
+    "invoice.status.reviewed": "تم مراجعته",
+    "invoice.status.paid": "مسدد",
+    "invoice.status.cancelled": "ملغي",
+    "invoice.list.vendorInvoiceNo": "رقم فاتورة الموّرد",
+    "invoice.list.vendor": "الموّرد",
+    "invoice.list.invoiceDate": "تاريخ الفاتورة",
+    "invoice.list.status": "الحالة",
+    "invoice.list.total": "المبلغ الإجمالي (النظام)"
 }
