@@ -4,8 +4,8 @@
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/folio-org/ui-invoice.git"
+    "type": "git",
+    "url": "https://github.com/folio-org/ui-invoice.git"
   },
   "license": "Apache-2.0",
   "engines": {
@@ -39,9 +39,11 @@
     "sinon": "^6.3.4"
   },
   "dependencies": {
+    "final-form": "^4.13.1",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "prop-types": "^15.6.0",
+    "react-final-form": "^6.0.1",
     "react-intl": "^2.4.0",
     "react-router-dom": "^4.1.1",
     "react-router-prop-types": "^1.0.4"
@@ -55,6 +57,7 @@
     "displayName": "ui-invoice.meta.title",
     "route": "/invoice",
     "hasSettings": true,
+    "queryResource": "query",
     "okapiInterfaces": {
       "organizations-storage.organizations": "1.0",
       "invoice": "1.0"
