@@ -59,6 +59,13 @@
       "organizations-storage.organizations": "1.0",
       "invoice": "1.0"
     },
+    "icons": [
+      {
+        "name": "app",
+        "alt": "Manage invoices",
+        "title": "Invoice"
+      }
+    ],    
     "permissionSets": [
       {
         "permissionName": "module.invoice.enabled",
