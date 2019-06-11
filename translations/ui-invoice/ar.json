@@ -10,5 +10,10 @@
     "invoice.list.vendor": "الموّرد",
     "invoice.list.invoiceDate": "تاريخ الفاتورة",
     "invoice.list.status": "الحالة",
-    "invoice.list.total": "المبلغ الإجمالي (النظام)"
+    "invoice.list.total": "المبلغ الإجمالي (النظام)",
+    "invoiceInformation": "معلومات الفاتورة",
+    "save": "حفظ",
+    "invoice.paymentTerms": "الأحكام",
+    "invoice.paneTitle.edit": "تحرير رقم فاتورة الموّرد - {vendorInvoiceNo}",
+    "invoice.paneTitle.create": "إنشاء فاتورة موّرد"
 }
