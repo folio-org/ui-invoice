@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import moment from 'moment';
 import { get, uniqueId } from 'lodash';
 import { FORM_ERROR } from 'final-form';
 
@@ -9,13 +8,13 @@ import { SearchAndSort } from '@folio/stripes/smart-components';
 
 import packageInfo from '../../../package';
 import {
-  DATE_FORMAT,
   // api
   INVOICE_API,
 } from '../../common/constants';
 import {
   getInvoiceStatusLabel,
   formatAmount,
+  formatDate,
 } from '../../common/utils';
 import {
   VENDORS,
@@ -41,11 +40,7 @@ const columnWidths = {
   total: '11%',
 };
 const baseResultsFormatter = {
-  invoiceDate: invoice => {
-    const invoiceDate = moment.utc(invoice.invoiceDate || '');
-
-    return invoiceDate.isValid() ? invoiceDate.format(DATE_FORMAT) : '';
-  },
+  invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
   total: invoice => formatAmount(invoice.total),
 };
