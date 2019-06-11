@@ -10,5 +10,10 @@
     "invoice.list.vendor": "Vendor",
     "invoice.list.invoiceDate": "Invoice date",
     "invoice.list.status": "Status",
-    "invoice.list.total": "Total amount (system)"
+    "invoice.list.total": "Total amount (system)",
+    "invoiceInformation": "Invoice information",
+    "save": "Save",
+    "invoice.paymentTerms": "Terms",
+    "invoice.paneTitle.edit": "Edit vendor invoice number - {vendorInvoiceNo}",
+    "invoice.paneTitle.create": "Create vendor invoice"
 }
