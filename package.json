@@ -23,7 +23,7 @@
     "@bigtest/mocha": "^0.5.1",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^4.1.0",
-    "@folio/stripes": "^2.6.0",
+    "@folio/stripes": "^2.7.0",
     "@folio/stripes-cli": "^1.12.0",
     "babel-eslint": "^9.0.0",
     "babel-polyfill": "^6.26.0",
@@ -39,18 +39,21 @@
     "sinon": "^6.3.4"
   },
   "dependencies": {
-    "final-form": "^4.13.1",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "prop-types": "^15.6.0",
-    "react-final-form": "^6.0.1",
+    "query-string": "^6.7.0",
     "react-intl": "^2.4.0",
     "react-router-dom": "^4.1.1",
-    "react-router-prop-types": "^1.0.4"
+    "react-router-prop-types": "^1.0.4",
+    "redux-form": "^7.4.2"
   },
   "peerDependencies": {
     "@folio/stripes": "^2.7.0",
-    "react": "*"
+    "react": "*",
+    "react-dom": "*",
+    "redux": "*",
+    "redux-form": "*"
   },
   "stripes": {
     "type": "app",

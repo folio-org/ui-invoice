@@ -6,5 +6,5 @@ export default Factory.extend({
   vendorId: faker.random.uuid,
   invoiceDate: faker.date.past,
   status: 'Approved',
-  total: faker.finance.amount,
+  total: () => faker.finance.amount(90, 1000, 2),
 });

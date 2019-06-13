@@ -99,7 +99,7 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.adjusment" />}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}>
             {formatAmount(adjustmentsTotal)}
           </KeyValue>
         </Col>

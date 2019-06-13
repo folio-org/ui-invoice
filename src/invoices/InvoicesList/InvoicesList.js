@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get, uniqueId } from 'lodash';
-import { FORM_ERROR } from 'final-form';
 
 import { SearchAndSort } from '@folio/stripes/smart-components';
 
@@ -100,7 +99,7 @@ class InvoicesList extends Component {
         layer: null,
       });
     } catch (response) {
-      return { [FORM_ERROR]: 'Unable to create invoice' };
+      return { id: 'Unable to create invoice' };
     }
   }
 
@@ -154,7 +153,7 @@ class InvoicesList extends Component {
             currency: 'USD',
             source: '024b6f41-c5c6-4280-858e-33fba452a334',
             invoiceDate: '2019-05-22',
-            vendorId: get(vendors, '0.id', ''),
+            vendorId: '11fb627a-cdf1-11e8-a8d5-f2801f1b9fd1',
           }}
           massageNewRecord={() => null}
           onCreate={this.onCreate}

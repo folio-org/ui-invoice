@@ -20,6 +20,8 @@ const configInvoices = server => {
     return schema.invoices.create(attrs);
   });
 
+  server.put(`${INVOICE_API}/:id`, 'invoices');
+
   server.get(`${INVOICE_API}/:id`, (schema, request) => {
     return schema.invoices.find(request.params.id).attrs;
   });
