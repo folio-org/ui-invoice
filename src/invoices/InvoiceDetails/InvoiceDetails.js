@@ -8,11 +8,11 @@ import {
   AccordionSet,
   Col,
   ExpandAllButton,
-  Icon,
   Pane,
   Row,
 } from '@folio/stripes/components';
 
+import ActionMenu from './ActionMenu';
 import Information from './Information';
 import {
   ACCORDION,
@@ -20,8 +20,9 @@ import {
 
 class InvoiceDetails extends Component {
   static propTypes = {
+    onEdit: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
-    invoice: PropTypes.object,
+    invoice: PropTypes.object.isRequired,
   };
 
   state = {
@@ -47,25 +48,21 @@ class InvoiceDetails extends Component {
     this.setState({ accordionSections });
   };
 
-  renderLoadingPane = () => {
-    const { onClose } = this.props;
+  renderActionMenu = ({ onToggle }) => {
+    const { onEdit } = this.props;
 
     return (
-      <Pane
-        id="pane-invoiceDetailsLoading"
-        defaultWidth="fill"
-        dismissible
-        onClose={onClose}
-      >
-        <div>
-          <Icon
-            icon="spinner-ellipsis"
-            width="100px"
-          />
-        </div>
-      </Pane>
+      <ActionMenu
+        onEdit={() => {
+          onToggle();
+          onEdit();
+        }}
+        onDelete={() => {
+          onToggle();
+        }}
+      />
     );
-  };
+  }
 
   render() {
     const {
@@ -73,8 +70,6 @@ class InvoiceDetails extends Component {
       invoice,
     } = this.props;
     const { accordionSections } = this.state;
-
-    if (!invoice) return this.renderLoadingPane();
 
     const paneTitle = (
       <FormattedMessage
@@ -90,6 +85,7 @@ class InvoiceDetails extends Component {
         dismissible
         onClose={onClose}
         paneTitle={paneTitle}
+        actionMenu={this.renderActionMenu}
       >
         <Row end="xs">
           <Col xs={12}>

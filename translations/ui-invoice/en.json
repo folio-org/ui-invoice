@@ -1,6 +1,13 @@
 {
   "meta.title": "Invoice",
 
+  "button.delete": "Delete",
+  "button.edit": "Edit",
+  "invoice.editLayer": "Edit invoice",
+  "invoice.approvedBy": "Approved by",
+  "invoice.currency": "Currency",
+  "invoice.folioInvoiceNo": "FOLIO invoice number",
+
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",
   "invoice.status.reviewed": "Reviewed",
@@ -24,10 +31,11 @@
   "invoice.details.information.owner": "Owner",
   "invoice.details.information.totalUnits": "Total units",
   "invoice.details.information.totalAmount": "Total amount",
-  "invoice.details.information.adjusment": "Adjusment",
+  "invoice.details.information.adjustment": "Adjustment",
   "invoice.details.information.subTotal": "Sub-total",
 
   "invoiceInformation": "Invoice information",
+  "extendedInformation": "Extended information",
   "save": "Save",
   "invoice.paymentTerms": "Terms",
   "invoice.paneTitle.edit": "Edit vendor invoice number - {vendorInvoiceNo}",
