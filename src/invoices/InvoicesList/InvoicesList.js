@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import moment from 'moment';
-import { get } from 'lodash';
+import { get, uniqueId } from 'lodash';
 
 import { SearchAndSort } from '@folio/stripes/smart-components';
 
 import packageInfo from '../../../package';
 import {
-  DATE_FORMAT,
   // api
   INVOICE_API,
 } from '../../common/constants';
 import {
   getInvoiceStatusLabel,
   formatAmount,
+  formatDate,
 } from '../../common/utils';
 import {
   VENDORS,
 } from '../../common/resources';
 
 import Invoice from './Invoice';
+import InvoiceForm from '../InvoiceForm';
 
 const filterConfig = [];
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'total'];
@@ -39,11 +39,7 @@ const columnWidths = {
   total: '11%',
 };
 const baseResultsFormatter = {
-  invoiceDate: invoice => {
-    const invoiceDate = moment.utc(invoice.invoiceDate || '');
-
-    return invoiceDate.isValid() ? invoiceDate.format(DATE_FORMAT) : '';
-  },
+  invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
   total: invoice => formatAmount(invoice.total),
 };
@@ -85,9 +81,27 @@ class InvoicesList extends Component {
       recordsRequired: '%{resultCount}',
       path: INVOICE_API,
       perRequest: RESULT_COUNT_INCREMENT,
+      throwErrors: false,
     },
     vendors: VENDORS,
   });
+
+  // eslint-disable-next-line consistent-return
+  onCreate = async (invoice) => {
+    const { mutator } = this.props;
+    const mutatorMethod = invoice.id ? 'PUT' : 'POST';
+
+    try {
+      const { id } = await mutator.records[mutatorMethod](invoice);
+
+      mutator.query.update({
+        _path: `/invoice/view/${id}`,
+        layer: null,
+      });
+    } catch (response) {
+      return { id: 'Unable to create invoice' };
+    }
+  }
 
   render() {
     const {
@@ -131,6 +145,18 @@ class InvoicesList extends Component {
           disableRecordCreation={disableRecordCreation}
           browseOnly={browseOnly}
           showSingleResult={showSingleResult}
+          editRecordComponent={InvoiceForm}
+          newRecordInitialValues={{
+            status: 'Open',
+            vendorInvoiceNo: uniqueId('vendorNumber-'),
+            paymentMethod: 'test?',
+            currency: 'USD',
+            source: '024b6f41-c5c6-4280-858e-33fba452a334',
+            invoiceDate: '2019-05-22',
+            vendorId: '11fb627a-cdf1-11e8-a8d5-f2801f1b9fd1',
+          }}
+          massageNewRecord={() => null}
+          onCreate={this.onCreate}
         />
       </div>
     );
