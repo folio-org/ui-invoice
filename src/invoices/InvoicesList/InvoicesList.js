@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get, uniqueId } from 'lodash';
+import { get } from 'lodash';
 
+import { Callout } from '@folio/stripes/components';
 import { SearchAndSort } from '@folio/stripes/smart-components';
 
 import packageInfo from '../../../package';
@@ -14,8 +15,10 @@ import {
   getInvoiceStatusLabel,
   formatAmount,
   formatDate,
+  showToast,
 } from '../../common/utils';
 import {
+  configAddress,
   VENDORS,
 } from '../../common/resources';
 
@@ -84,7 +87,14 @@ class InvoicesList extends Component {
       throwErrors: false,
     },
     vendors: VENDORS,
+    configAddress,
   });
+
+  constructor(props, context) {
+    super(props, context);
+    this.callout = React.createRef();
+    this.showToast = showToast.bind(this);
+  }
 
   // eslint-disable-next-line consistent-return
   onCreate = async (invoice) => {
@@ -94,11 +104,14 @@ class InvoicesList extends Component {
     try {
       const { id } = await mutator.records[mutatorMethod](invoice);
 
+      this.showToast('ui-invoice.invoice.invoiceHasBeenCreated');
       mutator.query.update({
         _path: `/invoice/view/${id}`,
         layer: null,
       });
     } catch (response) {
+      this.showToast('ui-invoice.errors.invoiceHasNotBeenCreated', 'error');
+
       return { id: 'Unable to create invoice' };
     }
   }
@@ -140,24 +153,21 @@ class InvoicesList extends Component {
           newRecordPerms="invoice.invoices.item.post"
           parentResources={resources}
           parentMutator={mutator}
-          detailProps={stripes}
+          detailProps={{ showToast: this.showToast }}
           stripes={stripes}
           disableRecordCreation={disableRecordCreation}
           browseOnly={browseOnly}
           showSingleResult={showSingleResult}
           editRecordComponent={InvoiceForm}
           newRecordInitialValues={{
-            status: 'Open',
-            vendorInvoiceNo: uniqueId('vendorNumber-'),
-            paymentMethod: 'test?',
+            chkSubscriptionOverlap: true,
             currency: 'USD',
             source: '024b6f41-c5c6-4280-858e-33fba452a334',
-            invoiceDate: '2019-05-22',
-            vendorId: '11fb627a-cdf1-11e8-a8d5-f2801f1b9fd1',
           }}
           massageNewRecord={() => null}
           onCreate={this.onCreate}
         />
+        <Callout ref={this.callout} />
       </div>
     );
   }

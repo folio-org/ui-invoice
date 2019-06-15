@@ -13,7 +13,11 @@ describe('Invoice edit', () => {
   const invoiceForm = new InvoiceFormInteractor();
 
   beforeEach(async function () {
-    const invoice = this.server.create('invoice', { paymentTerms: TEST_VALUE_PAYMENT_TERMS });
+    const vendor = this.server.create('vendor');
+    const invoice = this.server.create('invoice', {
+      paymentTerms: TEST_VALUE_PAYMENT_TERMS,
+      vendorId: vendor.id,
+    });
 
     this.visit(`/invoice/view/${invoice.id}?layer=edit`);
     await invoiceForm.whenLoaded();

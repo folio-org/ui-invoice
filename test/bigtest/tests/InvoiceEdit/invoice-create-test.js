@@ -11,6 +11,7 @@ describe('Invoice create', () => {
   const invoiceForm = new InvoiceFormInteractor();
 
   beforeEach(async function () {
+    this.server.createList('vendor', 2);
     this.visit('/invoice?layer=create');
     await invoiceForm.whenLoaded();
   });
@@ -20,16 +21,32 @@ describe('Invoice create', () => {
   });
 
   describe('Add data and save invoice', () => {
-    const invoicesList = new InvoicesListInteractor();
-
     beforeEach(async function () {
       await invoiceForm.termsInput.fill('test value');
       await invoiceForm.saveButton.click();
-      await invoicesList.whenLoaded();
     });
 
     it('closes edit form', () => {
-      expect(invoiceForm.isPresent).to.be.false;
+      expect(invoiceForm.isPresent).to.be.true;
+    });
+
+    describe('Add all required data and save invoice', () => {
+      const invoicesList = new InvoicesListInteractor();
+
+      beforeEach(async function () {
+        await invoiceForm.vendorInvoiceNo.fill('vendorInvoiceNo');
+        await invoiceForm.invoiceDate.fill('2019-01-01').blur();
+        await invoiceForm.approvalDate.fill('2019-01-02').blur();
+        await invoiceForm.paymentMethod.options.list(1).click();
+        await invoiceForm.status.options.list(1).click();
+        await invoiceForm.vendor.options.list(0).click();
+        await invoiceForm.saveButton.click();
+        await invoicesList.whenLoaded();
+      });
+
+      it('closes edit form - no vendor selected in BigTest', () => {
+        expect(invoiceForm.isPresent).to.be.true;
+      });
     });
   });
 
