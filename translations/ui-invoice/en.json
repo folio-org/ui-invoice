@@ -1,12 +1,30 @@
 {
   "meta.title": "Invoice",
 
+  "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
+  "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
+
   "button.delete": "Delete",
   "button.edit": "Edit",
   "invoice.editLayer": "Edit invoice",
   "invoice.approvedBy": "Approved by",
   "invoice.currency": "Currency",
   "invoice.folioInvoiceNo": "FOLIO invoice number",
+  "invoice.note": "Note",
+  "invoice.acquisitionsUnit": "Acquisitions unit",
+  "invoice.paymentMethod": "Payment method",
+  "invoice.approvalDate": "Approval date",
+  "invoice.lockTotal": "Lock total",
+  "invoice.vendorInvoiceNo": "Vendor invoice number",
+  "invoice.voucherNumber": "Voucher number",
+  "invoice.vendorName": "Vendor name",
+  "invoice.accountingCode": "Accounting code",
+  "invoice.exportToAccounting": "Export to accounting",
+  "invoice.billToName": "Bill to name",
+  "invoice.billToAddress": "Bill to address",
+  "invoice.chkSubscriptionOverlap": "Check subscription overlap",
+  "invoice.invoiceHasBeenCreated": "Invoice has been created",
+  "invoice.invoiceHasBeenSaved": "Invoice has been saved",
 
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",
@@ -31,14 +49,18 @@
   "invoice.details.information.owner": "Owner",
   "invoice.details.information.totalUnits": "Total units",
   "invoice.details.information.totalAmount": "Total amount",
-  "invoice.details.information.adjustment": "Adjustment",
+  "invoice.details.information.adjustment": "Total adjustments",
   "invoice.details.information.subTotal": "Sub-total",
 
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
+  "vendorInformation": "Vendor information",
+  "voucherInformation": "Voucher information",
   "save": "Save",
   "invoice.paymentTerms": "Terms",
   "invoice.paneTitle.edit": "Edit vendor invoice number - {vendorInvoiceNo}",
   "invoice.paneTitle.create": "Create vendor invoice",
-  "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}"
+  "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
+
+  "validation.required": "Required!"
 }

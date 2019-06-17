@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 
-import LoadingPane from '../../../common/LoadingPane/LoadingPane';
+import { LoadingPane } from '../../../common/components';
 import {
   INVOICE_API,
 } from '../../../common/constants';

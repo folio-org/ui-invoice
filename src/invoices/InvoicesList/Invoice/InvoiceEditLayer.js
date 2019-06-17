@@ -12,7 +12,7 @@ import {
 import {
   INVOICE_API,
 } from '../../../common/constants';
-import LoadingPane from '../../../common/LoadingPane/LoadingPane';
+import { LoadingPane } from '../../../common/components';
 import InvoiceForm from '../../InvoiceForm';
 
 class InvoiceEditLayer extends Component {
@@ -32,14 +32,22 @@ class InvoiceEditLayer extends Component {
     resources: PropTypes.object.isRequired,
     stripes: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
+    showToast: PropTypes.func.isRequired,
   }
 
   saveInvoice = (invoice) => {
-    const { onCloseEdit, parentMutator } = this.props;
+    const { onCloseEdit, parentMutator, showToast } = this.props;
 
     parentMutator.records.PUT(invoice)
-      .then(() => onCloseEdit())
-      .catch(() => ({ id: 'Unable to save invoice' }));
+      .then(() => {
+        showToast('ui-invoice.invoice.invoiceHasBeenSaved');
+        onCloseEdit();
+      })
+      .catch(() => {
+        showToast('ui-invoice.errors.invoiceHasNotBeenSaved', 'error');
+
+        return { id: 'Unable to save invoice' };
+      });
   }
 
   render() {
