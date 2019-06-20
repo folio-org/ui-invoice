@@ -31,6 +31,7 @@ import {
   FieldDatepicker,
   FieldSelection,
 } from '../../common/components';
+import { ORGANIZATION_STATUS_ACTIVE } from '../../common/constants';
 import {
   getAddressOptions,
   getOrganizationOptions,
@@ -140,7 +141,7 @@ class InvoiceForm extends Component {
       ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
       : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
     const acquisitionsUnits = [];
-    const orgs = get(parentResources, 'vendors.records');
+    const orgs = get(parentResources, 'vendors.records', []).filter(o => o.isVendor && o.status === ORGANIZATION_STATUS_ACTIVE);
     const addresses = get(parentResources, 'configAddress.records');
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
