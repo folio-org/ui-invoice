@@ -113,6 +113,7 @@ class InvoiceDetails extends Component {
               subTotal={get(invoice, 'subTotal')}
               total={get(invoice, 'total')}
               source={get(invoice, 'source')}
+              metadata={get(invoice, 'metadata')}
             />
           </Accordion>
         </AccordionSet>

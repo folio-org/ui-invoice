@@ -62,8 +62,10 @@
     "hasSettings": true,
     "queryResource": "query",
     "okapiInterfaces": {
+      "configuration": "2.0",
       "organizations-storage.organizations": "1.0",
-      "invoice": "1.0"
+      "invoice": "1.0",
+      "users": "15.0"
     },
     "icons": [
       {
@@ -71,7 +73,7 @@
         "alt": "Manage invoices",
         "title": "Invoice"
       }
-    ],    
+    ],
     "permissionSets": [
       {
         "permissionName": "module.invoice.enabled",
@@ -91,7 +93,9 @@
         "displayName": "Invoice: Permissions required to call services apart from mod-invoice",
         "description": "",
         "subPermissions": [
-          "organizations-storage.organizations.collection.get"
+          "configuration.entries.collection.get",
+          "organizations-storage.organizations.collection.get",
+          "users.collection.get"
         ]
       },
       {

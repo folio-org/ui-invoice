@@ -112,7 +112,6 @@ class InvoiceForm extends Component {
         [SECTIONS.voucherInformation]: false,
       },
     };
-    this.cViewMetaData = props.stripes.connect(ViewMetaData);
   }
 
   onToggleSection = ({ id }) => {
@@ -146,6 +145,7 @@ class InvoiceForm extends Component {
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues);
+    const metadata = initialValues.metadata;
 
     return (
       <form>
@@ -170,7 +170,7 @@ class InvoiceForm extends Component {
                     id={SECTIONS.invoiceInformation}
                     label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
                   >
-                    {initialValues.metadata && <this.cViewMetaData metadata={initialValues.metadata} />}
+                    {metadata && <ViewMetaData metadata={metadata} />}
                     <Row>
                       <Col data-test-col-invoice-date xs={3}>
                         <FieldDatepicker
