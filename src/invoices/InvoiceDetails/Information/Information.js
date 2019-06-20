@@ -5,9 +5,9 @@ import { FormattedMessage } from 'react-intl';
 import {
   Col,
   KeyValue,
-  MetaSection,
   Row,
 } from '@folio/stripes/components';
+import { ViewMetaData } from '@folio/stripes/smart-components';
 
 import {
   getInvoiceStatusLabel,
@@ -17,26 +17,17 @@ import {
 
 const Information = ({
   adjustmentsTotal,
-  createdDate,
   invoiceDate,
+  metadata,
   paymentTerms,
   source,
   status,
   subTotal,
   total,
-  updatedDate,
 }) => {
   return (
     <Fragment>
-      <Row>
-        <Col xs={12}>
-          <MetaSection
-            id="invoiceItemMeta"
-            createdDate={createdDate}
-            lastUpdatedDate={updatedDate}
-          />
-        </Col>
-      </Row>
+      {metadata && <ViewMetaData metadata={metadata} />}
       <Row>
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.invoiceDate" />}>
@@ -116,20 +107,17 @@ const Information = ({
 
 Information.propTypes = {
   adjustmentsTotal: PropTypes.number,
-  createdDate: PropTypes.string,
-  updatedDate: PropTypes.string,
   invoiceDate: PropTypes.string,
   paymentTerms: PropTypes.string,
   status: PropTypes.string.isRequired,
   subTotal: PropTypes.number,
   total: PropTypes.number,
   source: PropTypes.string,
+  metadata: PropTypes.object,
 };
 
 Information.defaultProps = {
   adjustmentsTotal: 0,
-  createdDate: '',
-  updatedDate: '',
   invoiceDate: '',
   paymentTerms: '',
   subTotal: 0,
