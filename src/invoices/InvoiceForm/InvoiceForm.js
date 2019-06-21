@@ -35,6 +35,7 @@ import { ORGANIZATION_STATUS_ACTIVE } from '../../common/constants';
 import {
   getAddressOptions,
   getOrganizationOptions,
+  parseAddressConfigs,
   validateRequired,
 } from '../../common/utils';
 
@@ -142,7 +143,7 @@ class InvoiceForm extends Component {
       : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
     const acquisitionsUnits = [];
     const orgs = get(parentResources, 'vendors.records', []).filter(o => o.isVendor && o.status === ORGANIZATION_STATUS_ACTIVE);
-    const addresses = get(parentResources, 'configAddress.records');
+    const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues);
