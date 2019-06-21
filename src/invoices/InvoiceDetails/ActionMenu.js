@@ -11,7 +11,7 @@ import { IfPermission } from '@folio/stripes/core';
 
 const ActionMenu = ({ onDelete, onEdit }) => (
   <MenuSection id="invoice-details-actions">
-    <IfPermission perm="invoice.item.delete">
+    <IfPermission perm="invoice.invoices.item.delete">
       <Button
         buttonStyle="dropdownItem"
         data-test-button-delete-invoice
@@ -22,7 +22,7 @@ const ActionMenu = ({ onDelete, onEdit }) => (
         </Icon>
       </Button>
     </IfPermission>
-    <IfPermission perm="invoice.item.put">
+    <IfPermission perm="invoice.invoices.item.put">
       <Button
         buttonStyle="dropdownItem"
         data-test-button-edit-invoice
