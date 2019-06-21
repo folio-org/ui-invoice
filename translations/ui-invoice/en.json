@@ -3,9 +3,18 @@
 
   "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
   "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
+  "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
 
+  "button.createLine": "New",
   "button.delete": "Delete",
   "button.edit": "Edit",
+
+  "invoiceLine.editLayer": "Edit invoice line",
+  "invoiceLine.paneTitle.edit": "Edit invoice line - {invoiceLineNumber}",
+  "invoiceLine.paneTitle.create": "Create vendor invoice line",
+  "invoiceLine.hasBeenSaved": "Invoice line has been saved",
+  "invoiceLine.description": "Description",
+
   "invoice.editLayer": "Edit invoice",
   "invoice.approvedBy": "Approved by",
   "invoice.currency": "Currency",
@@ -37,6 +46,8 @@
   "invoice.list.invoiceDate": "Invoice date",
   "invoice.list.status": "Status",
   "invoice.list.total": "Total amount (system)",
+
+  "invoice.details.lines.title": "Invoice lines",
 
   "invoice.details.information.title": "Invoice information",
   "invoice.details.information.invoiceDate": "Invoice date",

@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { LoadingPane } from '../../../common/components';
 import {
-  INVOICE_API,
-} from '../../../common/constants';
+  invoiceResource,
+} from '../../../common/resources';
 import InvoiceDetails from '../../InvoiceDetails';
 
 class InvoiceDetailsLayer extends Component {
   static manifest = Object.freeze({
-    invoice: {
-      type: 'okapi',
-      path: `${INVOICE_API}/:{id}`,
-      throwErrors: false,
-    },
+    invoice: invoiceResource,
+    query: {},
   });
 
   static propTypes = {
+    match: ReactRouterPropTypes.match,
+    mutator: PropTypes.object.isRequired,
     onClose: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
     resources: PropTypes.object.isRequired,
   }
+
+  createLine = () => {
+    const { match: { url }, mutator } = this.props;
+
+    mutator.query.update({ _path: `${url}/line/create` });
+  };
 
   render() {
     const {
@@ -35,6 +41,7 @@ class InvoiceDetailsLayer extends Component {
     return hasLoaded
       ? (
         <InvoiceDetails
+          createLine={this.createLine}
           onClose={onClose}
           onEdit={onEdit}
           invoice={invoice}
