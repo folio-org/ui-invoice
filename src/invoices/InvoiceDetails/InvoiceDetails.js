@@ -17,9 +17,11 @@ import Information from './Information';
 import {
   ACCORDION,
 } from '../constants';
+import LineButtons from './LineButtons';
 
 class InvoiceDetails extends Component {
   static propTypes = {
+    createLine: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     invoice: PropTypes.object.isRequired,
@@ -63,6 +65,12 @@ class InvoiceDetails extends Component {
       />
     );
   }
+
+  renderLineButtons = () => (
+    <LineButtons
+      createLine={this.props.createLine}
+    />
+  );
 
   render() {
     const {
@@ -115,6 +123,13 @@ class InvoiceDetails extends Component {
               source={get(invoice, 'source')}
               metadata={get(invoice, 'metadata')}
             />
+          </Accordion>
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
+            id={ACCORDION.INFORMATION}
+            displayWhenOpen={this.renderLineButtons()}
+          >
+            lines list
           </Accordion>
         </AccordionSet>
       </Pane>

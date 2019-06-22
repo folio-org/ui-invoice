@@ -9,6 +9,7 @@ import { stripesShape } from '@folio/stripes/core';
 
 import InvoiceDetailsLayer from './InvoiceDetailsLayer';
 import InvoiceEditLayer from './InvoiceEditLayer';
+import InvoiceLine from '../InvoiceLine/InvoiceLine';
 
 class Invoice extends Component {
   static propTypes = {
@@ -32,6 +33,17 @@ class Invoice extends Component {
 
     return (
       <Switch>
+        <Route
+          path={`${path}/line/`}
+          render={
+            props => (
+              <InvoiceLine
+                {...this.props}
+                {...props}
+              />
+            )
+          }
+        />
         <Route
           exact
           path={path}
