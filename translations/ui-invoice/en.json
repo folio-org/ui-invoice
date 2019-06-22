@@ -5,6 +5,7 @@
   "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
   "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
 
+  "button.addAdjustment": "Add adjustment",
   "button.createLine": "New",
   "button.delete": "Delete",
   "button.edit": "Edit",
@@ -14,6 +15,23 @@
   "invoiceLine.paneTitle.create": "Create vendor invoice line",
   "invoiceLine.hasBeenSaved": "Invoice line has been saved",
   "invoiceLine.description": "Description",
+  "invoiceLine.invoiceLineNumber": "Invoice line number",
+  "invoiceLine.invoiceLineStatus": "Invoice line status",
+  "invoiceLine.poLineId": "PO line ID",
+  "invoiceLine.subscriptionInfo": "Subscription info",
+  "invoiceLine.subscriptionStart": "Subscription start date",
+  "invoiceLine.subscriptionEnd": "Subscription end date",
+  "invoiceLine.quantity": "Quantity",
+  "invoiceLine.vendorRefNo": "Vendor ref no",
+  "invoiceLine.accountNumber": "Account number",
+  "invoiceLine.accountingCode": "Accounting code",
+  "invoiceLine.comment": "Comment",
+  "invoiceLine.releaseEncumbrance": "Release encumbrance",
+  "invoiceLine.subTotal": "Sub-total",
+
+  "adjustment.type": "Select adjustment",
+  "adjustment.description": "Description",
+  "adjustment.amount": "Amount",
 
   "invoice.editLayer": "Edit invoice",
   "invoice.approvedBy": "Approved by",
@@ -67,11 +85,16 @@
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
   "voucherInformation": "Voucher information",
+  "invoiceLineInformation": "Invoice line information",
+  "fundDistribution": "Fund distribution",
+  "adjustments": "Adjustments",
   "save": "Save",
   "invoice.paymentTerms": "Terms",
   "invoice.paneTitle.edit": "Edit vendor invoice number - {vendorInvoiceNo}",
   "invoice.paneTitle.create": "Create vendor invoice",
   "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
+
+  "status.Open": "Open",
 
   "validation.required": "Required!"
 }
