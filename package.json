@@ -55,6 +55,9 @@
     "redux": "*",
     "redux-form": "*"
   },
+  "optionalDependencies": {
+    "@folio/plugin-find-po-line": "^1.0.0"
+  },
   "stripes": {
     "type": "app",
     "displayName": "ui-invoice.meta.title",

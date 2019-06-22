@@ -1,0 +1,75 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import { get } from 'lodash';
+
+import { MultiColumnList } from '@folio/stripes/components';
+import { stripesConnect } from '@folio/stripes/core';
+
+import {
+  invoiceLinesResource,
+} from '../../../common/resources';
+
+const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'subTotal'];
+const columnMapping = {
+  description: <FormattedMessage id="ui-invoice.invoice.details.lines.list.description" />,
+  invoiceLineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.number" />,
+  quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
+  subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
+};
+const columnWidths = {
+  description: '40%',
+  invoiceLineNumber: '20%',
+  quantity: '20%',
+  subTotal: '20%',
+};
+
+class InvoiceLines extends Component {
+  static manifest = Object.freeze({
+    invoiceLines: {
+      ...invoiceLinesResource,
+      GET: {
+        params: {
+          query: (queryParams, pathComponents, resourceValues) => {
+            if (resourceValues.invoiceId && resourceValues.invoiceId.length) {
+              return `(invoiceId==${resourceValues.invoiceId})`;
+            }
+
+            return null;
+          },
+        },
+      },
+    },
+    invoiceId: {},
+  });
+
+  static propTypes = {
+    invoiceId: PropTypes.string.isRequired,
+    resources: PropTypes.object.isRequired,
+    mutator: PropTypes.string.isRequired,
+  };
+
+  componentDidUpdate() {
+    const { invoiceId, resources, mutator } = this.props;
+
+    if (invoiceId !== resources.invoiceId) {
+      mutator.invoiceId.replace(invoiceId);
+    }
+  }
+
+  render() {
+    const { resources } = this.props;
+    const invoiceLinesItems = get(resources, 'invoiceLines.records.0.invoiceLines', []);
+
+    return (
+      <MultiColumnList
+        contentData={invoiceLinesItems}
+        visibleColumns={visibleColumns}
+        columnMapping={columnMapping}
+        columnWidths={columnWidths}
+      />
+    );
+  }
+}
+
+export default stripesConnect(InvoiceLines);

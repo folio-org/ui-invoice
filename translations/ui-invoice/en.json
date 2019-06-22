@@ -81,6 +81,12 @@
   "invoice.details.information.adjustment": "Total adjustments",
   "invoice.details.information.subTotal": "Sub-total",
 
+  "invoice.details.lines.add": "Add",
+  "invoice.details.lines.list.description": "Title",
+  "invoice.details.lines.list.number": "Line number",
+  "invoice.details.lines.list.quantity": "Quantity",
+  "invoice.details.lines.list.total": "Total",
+
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
@@ -96,5 +102,7 @@
 
   "status.Open": "Open",
 
-  "validation.required": "Required!"
+  "validation.required": "Required!",
+
+  "find-po-line-plugin-unavailable": "Find PO line plugin is not available"
 }
