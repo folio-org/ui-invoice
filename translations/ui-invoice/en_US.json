@@ -55,5 +55,13 @@
     "invoice.invoiceHasBeenSaved": "Invoice has been saved",
     "vendorInformation": "Vendor information",
     "voucherInformation": "Voucher information",
-    "validation.required": "Required!"
+    "validation.required": "Required!",
+    "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
+    "button.createLine": "New",
+    "invoiceLine.editLayer": "Edit invoice line",
+    "invoiceLine.paneTitle.edit": "Edit invoice line - {invoiceLineNumber}",
+    "invoiceLine.paneTitle.create": "Create vendor invoice line",
+    "invoiceLine.hasBeenSaved": "Invoice line has been saved",
+    "invoiceLine.description": "Description",
+    "invoice.details.lines.title": "Invoice lines"
 }

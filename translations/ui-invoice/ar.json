@@ -55,5 +55,13 @@
     "invoice.invoiceHasBeenSaved": "تم حفظ الفاتورة",
     "vendorInformation": "بيانات الموّرد",
     "voucherInformation": "معلومات القسيمة",
-    "validation.required": "مطلوب!"
+    "validation.required": "مطلوب!",
+    "errors.invoiceLineHasNotBeenSaved": "لم يتم حفظ خط الفواتير",
+    "button.createLine": "جديد",
+    "invoiceLine.editLayer": "تحرير خط الفاتورة",
+    "invoiceLine.paneTitle.edit": "تحرير خط الفواتير - {invoiceLineNumber}",
+    "invoiceLine.paneTitle.create": "إنشاء خط فواتير للموّرد",
+    "invoiceLine.hasBeenSaved": "تم حفظ خط الفواتير",
+    "invoiceLine.description": "الوصف",
+    "invoice.details.lines.title": "خطوط الفواتير"
 }

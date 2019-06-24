@@ -55,5 +55,13 @@
     "invoice.invoiceHasBeenSaved": "A fatura foi salva",
     "vendorInformation": "Informações do fornecedor",
     "voucherInformation": "Informações sobre o voucher",
-    "validation.required": "Obrigatório!"
+    "validation.required": "Obrigatório!",
+    "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
+    "button.createLine": "Novo",
+    "invoiceLine.editLayer": "Edit invoice line",
+    "invoiceLine.paneTitle.edit": "Edit invoice line - {invoiceLineNumber}",
+    "invoiceLine.paneTitle.create": "Create vendor invoice line",
+    "invoiceLine.hasBeenSaved": "Invoice line has been saved",
+    "invoiceLine.description": "Descrição",
+    "invoice.details.lines.title": "Invoice lines"
 }
