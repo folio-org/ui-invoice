@@ -16,6 +16,7 @@ import {
   invoiceResource,
 } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
+import { STATUS_OPEN } from '../../../common/constants';
 import InvoiceLineForm from '../../InvoiceLineForm';
 
 class InvoiceLineEditLayer extends Component {
@@ -39,8 +40,9 @@ class InvoiceLineEditLayer extends Component {
 
   saveInvoiceLine = (invoiceLine) => {
     const { onCloseEdit, mutator, showToast } = this.props;
+    const mutatorMethod = invoiceLine.id ? 'PUT' : 'POST';
 
-    mutator.invoiceLine.PUT(invoiceLine)
+    mutator.invoiceLine[mutatorMethod](invoiceLine)
       .then(() => {
         showToast('ui-invoice.invoiceLine.hasBeenSaved');
         onCloseEdit();
@@ -56,14 +58,23 @@ class InvoiceLineEditLayer extends Component {
     const {
       connectedSource,
       intl,
-      match: { params: { lineId } },
+      match: { params: { id, lineId } },
       onCloseEdit,
       parentMutator,
       parentResources,
       resources,
       stripes,
     } = this.props;
-    const invoiceLine = get(resources, ['invoiceLine', 'records', 0], {});
+    const invoiceLine = get(resources, ['invoiceLine', 'records', 0], {
+      invoiceId: id,
+      invoiceLineStatus: STATUS_OPEN,
+      fundDistributions: [{
+        code: 'USHIST',
+        encumbrance: '1c8fc9f4-d2cc-4bd1-aa9a-cb02291cbe65',
+        fundId: '1d1574f1-9196-4a57-8d1f-3b2e4309eb81',
+        percentage: 50,
+      }],
+    });
     const hasLoaded = (!lineId || get(resources, 'invoiceLine.hasLoaded')) && get(resources, 'invoice.hasLoaded');
 
     return (

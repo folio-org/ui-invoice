@@ -36,8 +36,10 @@ import {
   getAddressOptions,
   getOrganizationOptions,
   parseAddressConfigs,
+  toggleSection,
   validateRequired,
 } from '../../common/utils';
+import AdjustmentsForm from '../AdjustmentsForm';
 
 import css from './InvoiceForm.css';
 
@@ -45,6 +47,7 @@ const INVOICE_FORM = 'invoiceForm';
 const SECTIONS = {
   invoiceInformation: 'invoiceInformation',
   extendedInformation: 'extendedInformation',
+  adjustments: 'adjustments',
   vendorInformation: 'vendorInformation',
   voucherInformation: 'voucherInformation',
 };
@@ -114,24 +117,10 @@ class InvoiceForm extends Component {
         [SECTIONS.voucherInformation]: false,
       },
     };
+    this.toggleSection = toggleSection.bind(this);
   }
 
-  onToggleSection = ({ id }) => {
-    this.setState(({ sections }) => {
-      const isSectionOpened = sections[id];
-
-      return {
-        sections: {
-          ...sections,
-          [id]: !isSectionOpened,
-        },
-      };
-    });
-  }
-
-  handleExpandAll = (sections) => {
-    this.setState({ sections });
-  }
+  handleExpandAll = (sections) => this.setState({ sections });
 
   render() {
     const { initialValues, onCancel, handleSubmit, pristine, submitting, parentResources, stripes } = this.props;
@@ -167,7 +156,7 @@ class InvoiceForm extends Component {
                     <ExpandAllButton accordionStatus={sections} onToggle={this.handleExpandAll} />
                   </Col>
                 </Row>
-                <AccordionSet accordionStatus={sections} onToggle={this.onToggleSection}>
+                <AccordionSet accordionStatus={sections} onToggle={this.toggleSection}>
                   <Accordion
                     id={SECTIONS.invoiceInformation}
                     label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
@@ -308,6 +297,12 @@ class InvoiceForm extends Component {
                         />
                       </Col>
                     </Row>
+                  </Accordion>
+                  <Accordion
+                    id={SECTIONS.adjustments}
+                    label={<FormattedMessage id="ui-invoice.adjustments" />}
+                  >
+                    <AdjustmentsForm />
                   </Accordion>
                   <Accordion
                     id={SECTIONS.vendorInformation}

@@ -34,9 +34,9 @@ class InvoiceLine extends Component {
   );
 
   onCloseEdit = () => {
-    const { location: { pathname }, parentMutator } = this.props;
+    const { match: { params: { id } }, parentMutator } = this.props;
 
-    parentMutator.query.update({ _path: pathname.replace('/line/', '') });
+    parentMutator.query.update({ _path: `/invoice/view/${id}` });
   }
 
   render() {
