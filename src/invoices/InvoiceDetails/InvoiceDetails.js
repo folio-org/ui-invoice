@@ -12,15 +12,16 @@ import {
   Row,
 } from '@folio/stripes/components';
 
-import ActionMenu from './ActionMenu';
-import Information from './Information';
 import {
   ACCORDION,
 } from '../constants';
-import LineButtons from './LineButtons';
+import ActionMenu from './ActionMenu';
+import Information from './Information';
+import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
 
 class InvoiceDetails extends Component {
   static propTypes = {
+    addLines: PropTypes.func.isRequired,
     createLine: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
@@ -66,9 +67,10 @@ class InvoiceDetails extends Component {
     );
   }
 
-  renderLineButtons = () => (
-    <LineButtons
+  renderLinesActions = () => (
+    <InvoiceLinesActions
       createLine={this.props.createLine}
+      addLines={this.props.addLines}
     />
   );
 
@@ -127,9 +129,9 @@ class InvoiceDetails extends Component {
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
             id={ACCORDION.INFORMATION}
-            displayWhenOpen={this.renderLineButtons()}
+            displayWhenOpen={this.renderLinesActions()}
           >
-            lines list
+            <InvoiceLines invoiceId={invoice.id} />
           </Accordion>
         </AccordionSet>
       </Pane>

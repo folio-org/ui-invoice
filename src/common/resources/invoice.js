@@ -16,3 +16,8 @@ export const invoiceLineResource = {
     path: `${INVOICE_LINE_API}/:{lineId}`,
   },
 };
+
+export const invoiceLinesResource = {
+  ...BASE_RESOURCE,
+  path: `${INVOICE_LINE_API}`,
+};
