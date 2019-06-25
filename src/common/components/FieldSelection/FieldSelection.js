@@ -11,6 +11,10 @@ const TETHER_CONFIG = {
 
 const EMPTY_OPTION = { label: '', value: null };
 
+const filterValues = (value, dataOptions) => dataOptions.filter(({ label }) => {
+  return !value || label.includes(value);
+});
+
 const FieldSelection = ({ dataOptions, labelId, ...rest }) => (
   <Field
     dataOptions={rest.required ? dataOptions : [EMPTY_OPTION, ...dataOptions]}
@@ -19,6 +23,7 @@ const FieldSelection = ({ dataOptions, labelId, ...rest }) => (
     label={<FormattedMessage id={labelId} />}
     tether={TETHER_CONFIG}
     component={Selection}
+    onFilter={filterValues}
     {...rest}
   />
 );
