@@ -1,4 +1,10 @@
-// eslint-disable-next-line import/prefer-default-export
-export const ACCORDION = {
+export const SECTIONS_INVOICE = {
   INFORMATION: 'information',
+  LINES: 'invoiceLines',
+};
+
+export const SECTIONS_INVOICE_LINE = {
+  invoiceLineInformation: 'invoiceLineInformation',
+  fundDistribution: 'fundDistribution',
+  adjustments: 'adjustments',
 };

@@ -26,6 +26,7 @@ class InvoiceDetailsLayer extends Component {
     onClose: PropTypes.func.isRequired,
     onEdit: PropTypes.func.isRequired,
     resources: PropTypes.object.isRequired,
+    showToast: PropTypes.func.isRequired,
   }
 
   createLine = () => {
@@ -57,6 +58,19 @@ class InvoiceDetailsLayer extends Component {
     }));
   }
 
+  deleteInvoice = () => {
+    const { match: { params: { id } }, mutator, onClose, showToast } = this.props;
+
+    mutator.invoice.DELETE({ id })
+      .then(() => {
+        showToast('ui-invoice.invoice.invoiceHasBeenDeleted');
+        onClose();
+      })
+      .catch(() => {
+        showToast('ui-invoice.errors.invoiceHasNotBeenDeleted', 'error');
+      });
+  }
+
   render() {
     const {
       onClose,
@@ -74,6 +88,7 @@ class InvoiceDetailsLayer extends Component {
           onClose={onClose}
           onEdit={onEdit}
           invoice={invoice}
+          deleteInvoice={this.deleteInvoice}
         />
       )
       : <LoadingPane onClose={onClose} />;

@@ -4,6 +4,8 @@
   "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
   "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
   "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
+  "errors.invoiceHasNotBeenDeleted": "Invoice has not been deleted",
+  "errors.invoiceLineHasNotBeenDeleted": "Invoice has not been deleted",
 
   "button.addAdjustment": "Add adjustment",
   "button.createLine": "New",
@@ -13,6 +15,7 @@
   "invoiceLine.editLayer": "Edit invoice line",
   "invoiceLine.paneTitle.edit": "Edit invoice line - {invoiceLineNumber}",
   "invoiceLine.paneTitle.create": "Create vendor invoice line",
+  "invoiceLine.paneTitle.view": "View invoice line - {invoiceLineNumber}",
   "invoiceLine.hasBeenSaved": "Invoice line has been saved",
   "invoiceLine.description": "Description",
   "invoiceLine.invoiceLineNumber": "Invoice line number",
@@ -28,6 +31,10 @@
   "invoiceLine.comment": "Comment",
   "invoiceLine.releaseEncumbrance": "Release encumbrance",
   "invoiceLine.subTotal": "Sub-total",
+  "invoiceLine.hasBeenDeleted": "Invoice line has been deleted",
+  "invoiceLine.delete.confirmLabel": "Delete",
+  "invoiceLine.delete.heading": "Delete {invoiceLineNumber}?",
+  "invoiceLine.delete.message": "Delete invoice line?",
 
   "adjustment.type": "Select adjustment",
   "adjustment.description": "Description",
@@ -52,6 +59,10 @@
   "invoice.chkSubscriptionOverlap": "Check subscription overlap",
   "invoice.invoiceHasBeenCreated": "Invoice has been created",
   "invoice.invoiceHasBeenSaved": "Invoice has been saved",
+  "invoice.invoiceHasBeenDeleted": "Invoice has been deleted",
+  "invoice.delete.confirmLabel": "Delete",
+  "invoice.delete.heading": "Delete {vendorInvoiceNo}?",
+  "invoice.delete.message": "Delete invoice?",
 
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",
