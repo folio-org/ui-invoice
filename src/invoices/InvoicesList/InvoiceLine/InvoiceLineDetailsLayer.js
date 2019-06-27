@@ -1,35 +1,71 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { LoadingPane } from '../../../common/components';
-import {
-  invoiceResource,
-} from '../../../common/resources';
+import { invoiceLineResource } from '../../../common/resources';
+import InvoiceLineDetails from '../../InvoiceLineDetails';
 
 class InvoiceLineDetailsLayer extends Component {
   static manifest = Object.freeze({
-    invoice: invoiceResource,
+    invoiceLine: invoiceLineResource,
     query: {},
   });
 
   static propTypes = {
-    onClose: PropTypes.func.isRequired,
+    match: ReactRouterPropTypes.match,
+    mutator: PropTypes.object.isRequired,
     resources: PropTypes.object.isRequired,
+    showToast: PropTypes.func.isRequired,
+  }
+
+  getInvoiceLine = () => get(this.props.resources, ['invoiceLine', 'records', 0]);
+
+  closeInvoiceLine = () => {
+    const { match: { params }, mutator } = this.props;
+    const _path = `/invoice/view/${params.id}`;
+
+    mutator.query.update({ _path });
+  }
+
+  goToEditInvoiceLine = () => {
+    const { match: { params }, mutator } = this.props;
+    const _path = `/invoice/view/${params.id}/line/${params.lineId}/edit`;
+
+    mutator.query.update({ _path });
+  }
+
+  deleteInvoiceLine = () => {
+    const { match: { params: { lineId } }, mutator, showToast } = this.props;
+
+    mutator.invoiceLine.DELETE({ id: lineId })
+      .then(() => {
+        showToast('ui-invoice.invoiceLine.hasBeenDeleted');
+        this.closeInvoiceLine();
+      })
+      .catch(() => {
+        showToast('ui-invoice.errors.invoiceLineHasNotBeenDeleted', 'error');
+      });
   }
 
   render() {
     const {
-      onClose,
       resources,
     } = this.props;
-    const hasLoaded = get(resources, 'invoice.hasLoaded');
+    const invoiceLine = this.getInvoiceLine();
+    const hasLoaded = get(resources, 'invoiceLine.hasLoaded');
 
     return hasLoaded
       ? (
-        null
+        <InvoiceLineDetails
+          closeInvoiceLine={this.closeInvoiceLine}
+          deleteInvoiceLine={this.deleteInvoiceLine}
+          goToEditInvoiceLine={this.goToEditInvoiceLine}
+          invoiceLine={invoiceLine}
+        />
       )
-      : <LoadingPane onClose={onClose} />;
+      : <LoadingPane onClose={this.closeInvoiceLine} />;
   }
 }
 

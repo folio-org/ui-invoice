@@ -33,6 +33,7 @@ import {
 } from '../../common/components';
 import { ORGANIZATION_STATUS_ACTIVE } from '../../common/constants';
 import {
+  expandAll,
   getAddressOptions,
   getOrganizationOptions,
   parseAddressConfigs,
@@ -117,10 +118,9 @@ class InvoiceForm extends Component {
         [SECTIONS.voucherInformation]: false,
       },
     };
+    this.expandAll = expandAll.bind(this);
     this.toggleSection = toggleSection.bind(this);
   }
-
-  handleExpandAll = (sections) => this.setState({ sections });
 
   render() {
     const { initialValues, onCancel, handleSubmit, pristine, submitting, parentResources, stripes } = this.props;
@@ -153,7 +153,7 @@ class InvoiceForm extends Component {
               <Col xs={12} md={8} mdOffset={2}>
                 <Row end="xs">
                   <Col xs={12}>
-                    <ExpandAllButton accordionStatus={sections} onToggle={this.handleExpandAll} />
+                    <ExpandAllButton accordionStatus={sections} onToggle={this.expandAll} />
                   </Col>
                 </Row>
                 <AccordionSet accordionStatus={sections} onToggle={this.toggleSection}>

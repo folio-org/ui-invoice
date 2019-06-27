@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 import InvoiceLineFormInteractor from '../../interactors/InvoiceLineFormInteractor';
+import ConfirmationInteractor from '../../interactors/ConfirmationInteractor';
 
 describe('Invoice details', () => {
   setupApplication();
@@ -30,6 +31,24 @@ describe('Invoice details', () => {
 
     it('shows invoice line form', () => {
       expect(invoiceLineForm.isPresent).to.be.true;
+    });
+  });
+
+  describe('click delete invoice and confirm', () => {
+    const deleteConfirmation = new ConfirmationInteractor('#delete-invoice-confirmation');
+
+    beforeEach(async function () {
+      await invoiceDetails.header.click();
+      await invoiceDetails.actions.deleteLine.click();
+      await deleteConfirmation.confirm();
+    });
+
+    it('closes delete invoice confirmation', () => {
+      expect(deleteConfirmation.isPresent).to.be.false;
+    });
+
+    it('closes Invoice line details pane', () => {
+      expect(invoiceDetails.isPresent).to.be.false;
     });
   });
 });

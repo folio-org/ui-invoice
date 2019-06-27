@@ -16,6 +16,8 @@ const configLines = server => {
   server.get(`${INVOICE_LINE_API}/:id`, (schema, request) => {
     return schema.lines.find(request.params.id).attrs;
   });
+
+  server.delete(`${INVOICE_LINE_API}/:id`, 'line');
 };
 
 export default configLines;

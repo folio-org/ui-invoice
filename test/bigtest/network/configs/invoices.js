@@ -25,6 +25,8 @@ const configInvoices = server => {
   server.get(`${INVOICE_API}/:id`, (schema, request) => {
     return schema.invoices.find(request.params.id).attrs;
   });
+
+  server.delete(`${INVOICE_API}/:id`, 'invoice');
 };
 
 export default configInvoices;

@@ -41,12 +41,13 @@ class InvoiceLines extends Component {
       },
     },
     invoiceId: {},
+    query: {},
   });
 
   static propTypes = {
     invoiceId: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,
-    mutator: PropTypes.string.isRequired,
+    mutator: PropTypes.object.isRequired,
   };
 
   componentDidUpdate() {
@@ -55,6 +56,12 @@ class InvoiceLines extends Component {
     if (invoiceId !== resources.invoiceId) {
       mutator.invoiceId.replace(invoiceId);
     }
+  }
+
+  openLineDetails = (e, invoiceLine) => {
+    const _path = `/invoice/view/${invoiceLine.invoiceId}/line/${invoiceLine.id}/view`;
+
+    this.props.mutator.query.update({ _path });
   }
 
   render() {
@@ -67,6 +74,7 @@ class InvoiceLines extends Component {
         visibleColumns={visibleColumns}
         columnMapping={columnMapping}
         columnWidths={columnWidths}
+        onRowClick={this.openLineDetails}
       />
     );
   }

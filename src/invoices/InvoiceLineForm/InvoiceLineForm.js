@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import {
   Field,
-  FieldArray,
 } from 'redux-form';
 
 import {
@@ -17,7 +16,6 @@ import {
   Pane,
   PaneMenu,
   Paneset,
-  RepeatableField,
   Row,
   TextField,
 } from '@folio/stripes/components';
@@ -28,17 +26,14 @@ import {
   FieldSelection,
 } from '../../common/components';
 import {
+  expandAll,
   toggleSection,
   validateRequired,
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
+import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
 
-const INVOICE_LINE_FORM = 'invoiceLneForm';
-const SECTIONS = {
-  invoiceLineInformation: 'invoiceLineInformation',
-  fundDistribution: 'fundDistribution',
-  adjustments: 'adjustments',
-};
+const INVOICE_LINE_FORM = 'invoiceLineForm';
 
 const getLastMenu = (handleSubmit, pristine, submitting) => {
   return (
@@ -68,14 +63,13 @@ class InvoiceLineForm extends Component {
 
   constructor(props) {
     super(props);
+    this.expandAll = expandAll.bind(this);
     this.toggleSection = toggleSection.bind(this);
   }
 
   state = {
     sections: {},
   }
-
-  expandAll = (sections) => this.setState({ sections });
 
   render() {
     const { initialValues, onCancel, handleSubmit, pristine, submitting } = this.props;

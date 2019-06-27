@@ -7,13 +7,18 @@ import {
   Accordion,
   AccordionSet,
   Col,
+  ConfirmationModal,
   ExpandAllButton,
   Pane,
   Row,
 } from '@folio/stripes/components';
 
 import {
-  ACCORDION,
+  expandAll,
+  toggleSection,
+} from '../../common/utils';
+import {
+  SECTIONS_INVOICE,
 } from '../constants';
 import ActionMenu from './ActionMenu';
 import Information from './Information';
@@ -26,29 +31,18 @@ class InvoiceDetails extends Component {
     onEdit: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     invoice: PropTypes.object.isRequired,
+    deleteInvoice: PropTypes.func.isRequired,
   };
 
-  state = {
-    accordionSections: {
-      [ACCORDION.INFORMATION]: true,
-    },
-  };
-
-  onToggleSection = ({ id }) => {
-    this.setState(({ accordionSections }) => {
-      const isSectionOpened = accordionSections[id];
-
-      return {
-        accordionSections: {
-          ...accordionSections,
-          [id]: !isSectionOpened,
-        },
-      };
-    });
+  constructor(props, context) {
+    super(props, context);
+    this.expandAll = expandAll.bind(this);
+    this.toggleSection = toggleSection.bind(this);
   }
 
-  onExpandAll = (accordionSections) => {
-    this.setState({ accordionSections });
+  state = {
+    sections: {},
+    showConfirmDelete: false,
   };
 
   renderActionMenu = ({ onToggle }) => {
@@ -62,6 +56,7 @@ class InvoiceDetails extends Component {
         }}
         onDelete={() => {
           onToggle();
+          this.mountDeleteLineConfirm();
         }}
       />
     );
@@ -74,17 +69,23 @@ class InvoiceDetails extends Component {
     />
   );
 
+  mountDeleteLineConfirm = () => this.setState({ showConfirmDelete: true });
+
+  unmountDeleteConfirm = () => this.setState({ showConfirmDelete: false });
+
   render() {
     const {
+      deleteInvoice,
       onClose,
       invoice,
     } = this.props;
-    const { accordionSections } = this.state;
+    const { sections, showConfirmDelete } = this.state;
+    const vendorInvoiceNo = invoice.vendorInvoiceNo;
 
     const paneTitle = (
       <FormattedMessage
         id="ui-invoice.invoice.details.paneTitle"
-        values={{ vendorInvoiceNo: invoice.vendorInvoiceNo }}
+        values={{ vendorInvoiceNo }}
       />
     );
 
@@ -100,18 +101,18 @@ class InvoiceDetails extends Component {
         <Row end="xs">
           <Col xs={12}>
             <ExpandAllButton
-              accordionStatus={this.state.accordionSections}
-              onToggle={this.onExpandAll}
+              accordionStatus={sections}
+              onToggle={this.expandAll}
             />
           </Col>
         </Row>
         <AccordionSet
-          accordionStatus={accordionSections}
-          onToggle={this.onToggleSection}
+          accordionStatus={sections}
+          onToggle={this.toggleSection}
         >
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
-            id={ACCORDION.INFORMATION}
+            id={SECTIONS_INVOICE.INFORMATION}
           >
             <Information
               adjustmentsTotal={get(invoice, 'adjustmentsTotal')}
@@ -128,12 +129,23 @@ class InvoiceDetails extends Component {
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
-            id={ACCORDION.INFORMATION}
+            id={SECTIONS_INVOICE.LINES}
             displayWhenOpen={this.renderLinesActions()}
           >
             <InvoiceLines invoiceId={invoice.id} />
           </Accordion>
         </AccordionSet>
+        {showConfirmDelete && (
+          <ConfirmationModal
+            id="delete-invoice-confirmation"
+            confirmLabel={<FormattedMessage id="ui-invoice.invoice.delete.confirmLabel" />}
+            heading={<FormattedMessage id="ui-invoice.invoice.delete.heading" values={{ vendorInvoiceNo }} />}
+            message={<FormattedMessage id="ui-invoice.invoice.delete.message" />}
+            onCancel={this.unmountDeleteConfirm}
+            onConfirm={deleteInvoice}
+            open
+          />
+        )}
       </Pane>
     );
   }
