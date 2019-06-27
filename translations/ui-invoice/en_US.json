@@ -90,5 +90,16 @@
     "invoice.details.lines.list.number": "Line number",
     "invoice.details.lines.list.quantity": "Quantity",
     "invoice.details.lines.list.total": "Total",
-    "find-po-line-plugin-unavailable": "Find PO line plugin is not available"
+    "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
+    "errors.invoiceHasNotBeenDeleted": "Invoice has not been deleted.",
+    "errors.invoiceLineHasNotBeenDeleted": "Invoice has not been deleted.",
+    "invoiceLine.paneTitle.view": "View invoice line - {invoiceLineNumber}",
+    "invoiceLine.hasBeenDeleted": "Invoice line has been deleted.",
+    "invoiceLine.delete.confirmLabel": "Delete",
+    "invoiceLine.delete.heading": "Delete {invoiceLineNumber}?",
+    "invoiceLine.delete.message": "Delete invoice line?",
+    "invoice.invoiceHasBeenDeleted": "Invoice has been deleted.",
+    "invoice.delete.confirmLabel": "Delete",
+    "invoice.delete.heading": "Delete {vendorInvoiceNo}?",
+    "invoice.delete.message": "Delete invoice?"
 }
