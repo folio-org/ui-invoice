@@ -9,6 +9,7 @@ import {
   invoiceLinesResource,
 } from '../../../common/resources';
 import InvoiceDetails from '../../InvoiceDetails';
+import { createInvoiceLineFromPOL } from './utils';
 
 class InvoiceDetailsLayer extends Component {
   static manifest = Object.freeze({
@@ -39,23 +40,9 @@ class InvoiceDetailsLayer extends Component {
     const { resources, mutator } = this.props;
     const { id: invoiceId } = get(resources, ['invoice', 'records', 0]);
 
-    poLines.map(({
-      title: description,
-      id: poLineId,
-    }) => mutator.invoiceLines.POST({
-      invoiceLineStatus: 'Open',
-      quantity: 1,
-      subTotal: 1000,
-      fundDistributions: [{
-        code: 'USHIST',
-        encumbrance: '1c8fc9f4-d2cc-4bd1-aa9a-cb02291cbe65',
-        fundId: '1d1574f1-9196-4a57-8d1f-3b2e4309eb81',
-        percentage: 50,
-      }],
-      description,
-      poLineId,
-      invoiceId,
-    }));
+    poLines.map(
+      poLine => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, invoiceId)),
+    );
   }
 
   deleteInvoice = () => {
