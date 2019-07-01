@@ -1,6 +1,6 @@
 import { get } from 'lodash';
 
-import { STATUS_OPEN } from '../../../common/constants';
+import { INVOICE_STATUS } from '../../../common/constants';
 
 // eslint-disable-next-line import/prefer-default-export
 export const createInvoiceLineFromPOL = (poLine, invoiceId) => {
@@ -9,7 +9,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId) => {
 
   return {
     invoiceId,
-    invoiceLineStatus: STATUS_OPEN,
+    invoiceLineStatus: INVOICE_STATUS.open,
     description: poLine.title,
     poLineId: poLine.id,
     comment: poLine.poLineDescription,

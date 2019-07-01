@@ -1,6 +1,6 @@
 import { Factory, faker } from '@bigtest/mirage';
 
-import { STATUS_OPEN } from '../../../../src/common/constants';
+import { INVOICE_STATUS } from '../../../../src/common/constants';
 
 export default Factory.extend({
   id: faker.random.uuid,
@@ -8,7 +8,7 @@ export default Factory.extend({
   poLineId: faker.random.uuid,
   invoiceId: faker.random.uuid,
   description: faker.lorem.sentence(),
-  invoiceLineStatus: STATUS_OPEN,
+  invoiceLineStatus: INVOICE_STATUS.open,
   subTotal: faker.commerce.price,
   quantity: (i) => i + 1,
   fundDistributions: [{

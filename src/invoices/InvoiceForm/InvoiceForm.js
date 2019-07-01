@@ -26,16 +26,20 @@ import {
 import { stripesShape } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
+import { FieldSelection } from '@folio/stripes-acq-components';
 
 import {
   FieldDatepicker,
-  FieldSelection,
 } from '../../common/components';
-import { ORGANIZATION_STATUS_ACTIVE } from '../../common/constants';
+import {
+  INVOICE_STATUSES_OPTIONS,
+  ORGANIZATION_STATUS_ACTIVE,
+} from '../../common/constants';
 import {
   expandAll,
   getAddressOptions,
   getOrganizationOptions,
+  IS_EDIT_POST_APPROVAL,
   parseAddressConfigs,
   toggleSection,
   validateRequired,
@@ -64,24 +68,6 @@ const PAYMENT_METHODS = [
   { label: 'Internal Transfer', value: 'Internal Transfer' },
   { label: 'Other', value: 'other' },
 ];
-
-const STATUS_APPROVED = 'Approved';
-const STATUS_PAID = 'Paid';
-const STATUS_CANCELLED = 'Cancelled';
-
-const STATUSES = [
-  { label: 'Open', value: 'Open' },
-  { label: 'Reviewed', value: 'Reviewed' },
-  { label: 'Approved', value: STATUS_APPROVED },
-  { label: 'Paid', value: STATUS_PAID },
-  { label: 'Cancelled', value: STATUS_CANCELLED },
-];
-
-const POST_APPROVAL_STATUSES = [STATUS_APPROVED, STATUS_PAID, STATUS_CANCELLED];
-
-const IS_EDIT_POST_APPROVAL = (invoice = {}) => {
-  return invoice.id && POST_APPROVAL_STATUSES.includes(invoice.status);
-};
 
 const getLastMenu = (handleSubmit, pristine, submitting) => {
   return (
@@ -135,7 +121,7 @@ class InvoiceForm extends Component {
     const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
-    const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues);
+    const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
     const metadata = initialValues.metadata;
 
     return (
@@ -167,7 +153,7 @@ class InvoiceForm extends Component {
                         <FieldDatepicker
                           labelId="ui-invoice.invoice.details.information.invoiceDate"
                           name="invoiceDate"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           required
                           validate={validateRequired}
                         />
@@ -183,7 +169,7 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
                           name="paymentTerms"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           type="text"
                         />
                       </Col>
@@ -192,16 +178,16 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.source" />}
                           name="source"
-                          readOnly
+                          disabled
                           required
                           type="text"
                         />
                       </Col>
                       <Col data-test-col-status xs={3}>
                         <FieldSelection
-                          dataOptions={STATUSES}
+                          dataOptions={INVOICE_STATUSES_OPTIONS}
                           id="invoice-status"
-                          labelId="ui-invoice.invoice.details.information.status"
+                          label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}
                           name="status"
                           required
                           validate={validateRequired}
@@ -211,7 +197,7 @@ class InvoiceForm extends Component {
                         <FieldDatepicker
                           labelId="ui-invoice.invoice.approvalDate"
                           name="approvalDate"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           required
                           validate={validateRequired}
                         />
@@ -221,7 +207,7 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.approvedBy" />}
                           name="approvedBy"
-                          readOnly
+                          disabled
                           required
                           type="text"
                         />
@@ -229,7 +215,8 @@ class InvoiceForm extends Component {
                       <Col data-test-col-acquisitions-unit xs={3}>
                         <FieldSelection
                           dataOptions={acquisitionsUnits}
-                          labelId="ui-invoice.invoice.acquisitionsUnit"
+                          disabled
+                          label={<FormattedMessage id="ui-invoice.invoice.acquisitionsUnit" />}
                           name="acquisitionsUnit"
                           required
                         />
@@ -239,7 +226,7 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}
                           name="subTotal"
-                          readOnly
+                          disabled
                           required
                           type="text"
                         />
@@ -249,7 +236,7 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}
                           name="adjustmentsTotal"
-                          readOnly
+                          disabled
                           required
                           type="text"
                         />
@@ -259,7 +246,7 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}
                           name="total"
-                          readOnly
+                          disabled
                           required
                           type="text"
                         />
@@ -267,7 +254,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-bill-to-name xs={3}>
                         <FieldSelection
                           dataOptions={getAddressOptions(addresses)}
-                          labelId="ui-invoice.invoice.billToName"
+                          label={<FormattedMessage id="ui-invoice.invoice.billToName" />}
                           name="billTo"
                         />
                       </Col>
@@ -323,9 +310,9 @@ class InvoiceForm extends Component {
                         <FieldSelection
                           dataOptions={getOrganizationOptions(orgs)}
                           id="invoice-vendor"
-                          labelId="ui-invoice.invoice.vendorName"
+                          label={<FormattedMessage id="ui-invoice.invoice.vendorName" />}
                           name="vendorId"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           required
                           validate={validateRequired}
                         />
@@ -333,7 +320,8 @@ class InvoiceForm extends Component {
                       <Col data-test-col-accounting-code xs={3}>
                         <FieldSelection
                           dataOptions={[]}
-                          labelId="ui-invoice.invoice.accountingCode"
+                          disabled
+                          label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
                           name="accountingCode"
                           required
                         // validate={validateRequired}
@@ -351,7 +339,7 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.folioInvoiceNo" />}
                           name="folioInvoiceNo"
-                          readOnly
+                          disabled
                           required
                           type="text"
                         />
@@ -361,16 +349,16 @@ class InvoiceForm extends Component {
                           component={Checkbox}
                           label={<FormattedMessage id="ui-invoice.invoice.chkSubscriptionOverlap" />}
                           name="chkSubscriptionOverlap"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           type="checkbox"
                         />
                       </Col>
                       <Col data-test-col-currency xs={3}>
                         <FieldSelection
                           dataOptions={currenciesOptions}
-                          labelId="ui-invoice.invoice.currency"
+                          label={<FormattedMessage id="ui-invoice.invoice.currency" />}
                           name="currency"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           required
                           validate={validateRequired}
                         />
@@ -379,7 +367,7 @@ class InvoiceForm extends Component {
                         <FieldSelection
                           dataOptions={PAYMENT_METHODS}
                           id="invoice-payment-method"
-                          labelId="ui-invoice.invoice.paymentMethod"
+                          label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
                           name="paymentMethod"
                           required
                           validate={validateRequired}
@@ -390,7 +378,7 @@ class InvoiceForm extends Component {
                           component={Checkbox}
                           label={<FormattedMessage id="ui-invoice.invoice.exportToAccounting" />}
                           name="exportToAccounting"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           type="checkbox"
                         />
                       </Col>
@@ -406,7 +394,7 @@ class InvoiceForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.voucherNumber" />}
                           name="voucherNumber"
-                          readOnly={isEditPostApproval}
+                          disabled={isEditPostApproval}
                           required
                           type="text"
                         // validate={validateRequired}

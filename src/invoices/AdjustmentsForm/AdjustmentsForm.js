@@ -13,17 +13,13 @@ import {
 } from '@folio/stripes/components';
 
 import {
-  FieldSelection,
-} from '../../common/components';
-
-import {
   validateRequired,
 } from '../../common/utils';
 
-const Adjustment = (elem, index, fields) => {
+const Adjustment = (elem) => {
   return (
-    <React.Fragment>
-      <Col xs={4}>
+    <Row>
+      {/* <Col xs>
         <FieldSelection
           dataOptions={[]}
           labelId="ui-invoice.adjustment.type"
@@ -31,8 +27,16 @@ const Adjustment = (elem, index, fields) => {
           required
           validate={validateRequired}
         />
+      </Col> */}
+      <Col xs>
+        <Field
+          component={TextField}
+          disabled
+          label={<FormattedMessage id="ui-invoice.adjustment.type" />}
+          name={`${elem}.type`}
+        />
       </Col>
-      <Col xs={4}>
+      <Col xs>
         <Field
           component={TextField}
           fullWidth
@@ -42,18 +46,18 @@ const Adjustment = (elem, index, fields) => {
           validate={validateRequired}
         />
       </Col>
-      <Col xs={4}>
+      <Col xs>
         <Field
           component={TextField}
           fullWidth
           label={<FormattedMessage id="ui-invoice.adjustment.amount" />}
-          name={`${elem}.amount`}
+          name={`${elem}.value`}
           required
           type="number"
           validate={validateRequired}
         />
       </Col>
-    </React.Fragment>
+    </Row>
   );
 };
 
