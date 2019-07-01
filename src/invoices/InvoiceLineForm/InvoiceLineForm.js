@@ -21,12 +21,14 @@ import {
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
+import { FieldSelection } from '@folio/stripes-acq-components';
 
 import {
-  FieldSelection,
+  FieldDatepicker,
 } from '../../common/components';
 import {
   expandAll,
+  IS_EDIT_POST_APPROVAL,
   toggleSection,
   validateRequired,
 } from '../../common/utils';
@@ -76,6 +78,7 @@ class InvoiceLineForm extends Component {
     const { sections } = this.state;
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const metadata = initialValues.metadata;
+    const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
 
     const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
     const paneTitle = initialValues.id
@@ -122,7 +125,7 @@ class InvoiceLineForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineNumber" />}
                           name="invoiceLineNumber"
-                          readOnly
+                          disabled
                           required
                           type="text"
                         />
@@ -132,7 +135,7 @@ class InvoiceLineForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineStatus" />}
                           name="invoiceLineStatus"
-                          readOnly
+                          disabled
                           required
                         />
                       </Col>
@@ -141,7 +144,7 @@ class InvoiceLineForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.poLineId" />}
                           name="poLineId"
-                          readOnly
+                          disabled
                           type="text"
                         />
                       </Col>
@@ -150,23 +153,20 @@ class InvoiceLineForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionInfo" />}
                           name="subscriptionInfo"
-                          readOnly
                         />
                       </Col>
                       <Col data-test-col-invoice-line-subscription-start xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionStart" />}
+                        <FieldDatepicker
+                          disabled={isEditPostApproval}
+                          labelId="ui-invoice.invoiceLine.subscriptionStart"
                           name="subscriptionStart"
-                          readOnly
                         />
                       </Col>
                       <Col data-test-col-invoice-line-subscription-end xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionEnd" />}
+                        <FieldDatepicker
+                          disabled={isEditPostApproval}
+                          labelId="ui-invoice.invoiceLine.subscriptionEnd"
                           name="subscriptionEnd"
-                          readOnly
                         />
                       </Col>
                       <Col data-test-col-invoice-line-quantity xs={3}>
@@ -194,15 +194,13 @@ class InvoiceLineForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
                           name="vendorRefNo"
-                          readOnly
                         />
                       </Col>
                       <Col data-test-col-invoice-line-account-number xs={3}>
                         <FieldSelection
                           dataOptions={[]}
-                          labelId="ui-invoice.invoiceLine.accountNumber"
+                          label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
                           name="accountNumber"
-                          readOnly
                         />
                       </Col>
                       <Col data-test-col-invoice-line-accounting-code xs={3}>
@@ -210,7 +208,7 @@ class InvoiceLineForm extends Component {
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.accountingCode" />}
                           name="accountingCode"
-                          readOnly
+                          disabled
                         />
                       </Col>
                       <Col data-test-col-invoice-line-comment xs={3}>

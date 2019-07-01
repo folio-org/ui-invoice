@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
+  Checkbox,
   Col,
   KeyValue,
   Row,
@@ -100,10 +101,13 @@ const InvoiceLineInformation = ({ invoiceLine }) => {
           />
         </Col>
         <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.releaseEncumbrance" />}
-            value={invoiceLine.releaseEncumbrance}
-          />
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.releaseEncumbrance" />}>
+            <Checkbox
+              checked={Boolean(invoiceLine.releaseEncumbrance)}
+              disabled
+              type="checkbox"
+            />
+          </KeyValue>
         </Col>
       </Row>
     </Fragment>

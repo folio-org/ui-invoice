@@ -16,7 +16,7 @@ import {
   invoiceResource,
 } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
-import { STATUS_OPEN } from '../../../common/constants';
+import { INVOICE_STATUS } from '../../../common/constants';
 import InvoiceLineForm from '../../InvoiceLineForm';
 
 class InvoiceLineEditLayer extends Component {
@@ -67,7 +67,7 @@ class InvoiceLineEditLayer extends Component {
     } = this.props;
     const invoiceLine = get(resources, ['invoiceLine', 'records', 0], {
       invoiceId: id,
-      invoiceLineStatus: STATUS_OPEN,
+      invoiceLineStatus: INVOICE_STATUS.open,
       fundDistributions: [{
         code: 'USHIST',
         encumbrance: '1c8fc9f4-d2cc-4bd1-aa9a-cb02291cbe65',
