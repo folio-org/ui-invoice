@@ -384,7 +384,7 @@ class InvoiceForm extends Component {
                       </Col>
                     </Row>
                   </Accordion>
-                  <Accordion
+                  {/* <Accordion
                     id={SECTIONS.voucherInformation}
                     label={<FormattedMessage id="ui-invoice.voucherInformation" />}
                   >
@@ -401,7 +401,7 @@ class InvoiceForm extends Component {
                         />
                       </Col>
                     </Row>
-                  </Accordion>
+                  </Accordion> */}
                 </AccordionSet>
               </Col>
             </Row>
