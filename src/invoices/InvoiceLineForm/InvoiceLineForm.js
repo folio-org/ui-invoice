@@ -151,6 +151,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-subscription-info xs={3}>
                         <Field
                           component={TextField}
+                          disabled={isEditPostApproval}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionInfo" />}
                           name="subscriptionInfo"
                         />
@@ -172,6 +173,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-quantity xs={3}>
                         <Field
                           component={TextField}
+                          disabled={isEditPostApproval}
                           label={<FormattedMessage id="ui-invoice.invoiceLine.quantity" />}
                           name="quantity"
                           required
@@ -228,10 +230,10 @@ class InvoiceLineForm extends Component {
                       </Col>
                     </Row>
                   </Accordion>
-                  <Accordion
+                  {/* <Accordion
                     id={SECTIONS.fundDistribution}
                     label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-                  />
+                  /> */}
                   <Accordion
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
