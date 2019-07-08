@@ -21,11 +21,11 @@ import {
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
-import { FieldSelection } from '@folio/stripes-acq-components';
-
 import {
   FieldDatepicker,
-} from '../../common/components';
+  FieldSelection,
+} from '@folio/stripes-acq-components';
+
 import {
   expandAll,
   IS_EDIT_POST_APPROVAL,

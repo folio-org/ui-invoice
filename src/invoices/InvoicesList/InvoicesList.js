@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  injectIntl,
+  intlShape,
+} from 'react-intl';
 import { get } from 'lodash';
 
 import { Callout } from '@folio/stripes/components';
-import { SearchAndSort } from '@folio/stripes/smart-components';
+import {
+  SearchAndSort,
+  makeQueryFunction,
+} from '@folio/stripes/smart-components';
+import {
+  changeSearchIndex,
+  getActiveFilters,
+  handleFilterChange,
+  showToast,
+} from '@folio/stripes-acq-components';
 
 import packageInfo from '../../../package';
 import {
@@ -15,17 +28,21 @@ import {
   getInvoiceStatusLabel,
   formatAmount,
   formatDate,
-  showToast,
 } from '../../common/utils';
 import {
+  ACQUISITIONS_UNITS,
   configAddress,
   VENDORS,
 } from '../../common/resources';
-
+import {
+  invoicesSearchTemplate,
+  searchableIndexes,
+} from './invoicesListSearchConfig';
+import { filterConfig } from './invoicesListFilterConfig';
 import Invoice from './Invoice';
+import InvoicesListFilters from './InvoicesListFilters';
 import InvoiceForm from '../InvoiceForm';
 
-const filterConfig = [];
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'total'];
 const columnMapping = {
   vendorInvoiceNo: <FormattedMessage id="ui-invoice.invoice.list.vendorInvoiceNo" />,
@@ -54,6 +71,7 @@ class InvoicesList extends Component {
   static propTypes = {
     mutator: PropTypes.object.isRequired,
     resources: PropTypes.object.isRequired,
+    intl: intlShape.isRequired,
     stripes: PropTypes.object,
     onSelectRow: PropTypes.func,
     disableRecordCreation: PropTypes.bool,
@@ -85,8 +103,20 @@ class InvoicesList extends Component {
       path: INVOICE_API,
       perRequest: RESULT_COUNT_INCREMENT,
       throwErrors: false,
+      GET: {
+        params: {
+          query: makeQueryFunction(
+            'cql.allRecords=1',
+            invoicesSearchTemplate,
+            {},
+            filterConfig,
+          ),
+        },
+        staticFallback: { params: {} },
+      },
     },
     vendors: VENDORS,
+    acqUnits: ACQUISITIONS_UNITS,
     configAddress,
   });
 
@@ -94,6 +124,9 @@ class InvoicesList extends Component {
     super(props, context);
     this.callout = React.createRef();
     this.showToast = showToast.bind(this);
+    this.getActiveFilters = getActiveFilters.bind(this);
+    this.handleFilterChange = handleFilterChange.bind(this);
+    this.changeSearchIndex = changeSearchIndex.bind(this);
   }
 
   // eslint-disable-next-line consistent-return
@@ -114,6 +147,34 @@ class InvoicesList extends Component {
 
       return { id: 'Unable to create invoice' };
     }
+  }
+
+  renderFilters = (onChange) => {
+    const { resources } = this.props;
+    const acqUnits = get(resources, 'acqUnits.records', []);
+    const vendors = get(resources, 'vendors.records', []);
+
+    return resources.query
+      ? (
+        <InvoicesListFilters
+          activeFilters={this.getActiveFilters()}
+          acqUnits={acqUnits}
+          onChange={onChange}
+          queryMutator={this.props.mutator.query}
+          vendors={vendors}
+        />
+      )
+      : null;
+  };
+
+  getTranslateSearchableIndexes() {
+    const { intl: { formatMessage } } = this.props;
+
+    return searchableIndexes.map(index => {
+      const label = formatMessage({ id: `ui-invoice.search.${index.label}` });
+
+      return { ...index, label };
+    });
   }
 
   render() {
@@ -140,7 +201,6 @@ class InvoicesList extends Component {
           packageInfo={this.props.packageInfo || packageInfo}
           objectName="invoice"
           baseRoute={packageInfo.stripes.route}
-          filterConfig={filterConfig}
           initialResultCount={INITIAL_RESULT_COUNT}
           resultCountIncrement={RESULT_COUNT_INCREMENT}
           visibleColumns={visibleColumns}
@@ -166,6 +226,10 @@ class InvoicesList extends Component {
           }}
           massageNewRecord={() => null}
           onCreate={this.onCreate}
+          searchableIndexes={this.getTranslateSearchableIndexes()}
+          renderFilters={this.renderFilters}
+          onFilterChange={this.handleFilterChange}
+          onChangeIndex={this.changeSearchIndex}
         />
         <Callout ref={this.callout} />
       </div>
@@ -173,4 +237,4 @@ class InvoicesList extends Component {
   }
 }
 
-export default InvoicesList;
+export default injectIntl(InvoicesList);

@@ -26,14 +26,15 @@ import {
 import { stripesShape } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
-import { FieldSelection } from '@folio/stripes-acq-components';
-
 import {
   FieldDatepicker,
-} from '../../common/components';
+  FieldSelection,
+} from '@folio/stripes-acq-components';
+
 import {
   INVOICE_STATUSES_OPTIONS,
   ORGANIZATION_STATUS_ACTIVE,
+  PAYMENT_METHODS_OPTIONS,
 } from '../../common/constants';
 import {
   expandAll,
@@ -55,19 +56,8 @@ const SECTIONS = {
   adjustments: 'adjustments',
   vendorInformation: 'vendorInformation',
   voucherInformation: 'voucherInformation',
+  links: 'links',
 };
-
-export const PAYMENT_METHOD_CASH = 'Cash';
-const PAYMENT_METHODS = [
-  { label: 'Cash', value: PAYMENT_METHOD_CASH },
-  { label: 'Credit Card/P-Card', value: 'Credit Card P Card' },
-  { label: 'EFT', value: 'EFT' },
-  { label: 'Deposit Account', value: 'Deposit Account' },
-  { label: 'Physical Check', value: 'Physical Check' },
-  { label: 'Bank Draft', value: 'Bank Draft' },
-  { label: 'Internal Transfer', value: 'Internal Transfer' },
-  { label: 'Other', value: 'other' },
-];
 
 const getLastMenu = (handleSubmit, pristine, submitting) => {
   return (
@@ -365,7 +355,7 @@ class InvoiceForm extends Component {
                       </Col>
                       <Col data-test-col-payment-method xs={3}>
                         <FieldSelection
-                          dataOptions={PAYMENT_METHODS}
+                          dataOptions={PAYMENT_METHODS_OPTIONS}
                           id="invoice-payment-method"
                           label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
                           name="paymentMethod"
