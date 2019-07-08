@@ -66,6 +66,7 @@
     "hasSettings": true,
     "queryResource": "query",
     "okapiInterfaces": {
+      "acquisitions-units": "1.0",
       "configuration": "2.0",
       "organizations-storage.organizations": "1.0",
       "invoice": "1.0",
@@ -97,6 +98,7 @@
         "displayName": "Invoice: Permissions required to call services apart from mod-invoice",
         "description": "",
         "subPermissions": [
+          "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
           "organizations-storage.organizations.collection.get",
           "users.collection.get"

@@ -40,6 +40,7 @@
   "adjustment.description": "Description",
   "adjustment.amount": "Amount",
 
+  "invoice.dateCreated": "Date created",
   "invoice.editLayer": "Edit invoice",
   "invoice.approvedBy": "Approved by",
   "invoice.currency": "Currency",
@@ -64,6 +65,14 @@
   "invoice.delete.heading": "Delete {vendorInvoiceNo}?",
   "invoice.delete.message": "Delete invoice?",
 
+  "paymentMethod.cash": "Cash",
+  "paymentMethod.creditCard": "Credit Card/P-Card",
+  "paymentMethod.other": "Other",
+  "paymentMethod.internalTransfer": "Internal Transfer",
+  "paymentMethod.bankDraft": "Bank Draft",
+  "paymentMethod.physicalCheck": "Physical Check",
+  "paymentMethod.depositAccount": "Deposit Account",
+  "paymentMethod.eft": "EFT",
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",
   "invoice.status.reviewed": "Reviewed",
@@ -102,6 +111,7 @@
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
   "voucherInformation": "Voucher information",
+  "links": "Links",
   "invoiceLineInformation": "Invoice line information",
   "fundDistribution": "Fund distribution",
   "adjustments": "Adjustments",
@@ -110,6 +120,11 @@
   "invoice.paneTitle.edit": "Edit vendor invoice number - {vendorInvoiceNo}",
   "invoice.paneTitle.create": "Create vendor invoice",
   "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
+
+  "search.voucherNumber": "Voucher number",
+  "search.vendorInvoiceNo": "Vendor invoice number",
+  "search.poNumbers": "PO numbers",
+  "search.keyword": "Keyword",
 
   "status.Open": "Open",
 
