@@ -101,5 +101,19 @@
     "invoice.invoiceHasBeenDeleted": "تم حذف الفاتورة",
     "invoice.delete.confirmLabel": "حذف",
     "invoice.delete.heading": "حف {vendorInvoiceNo}؟",
-    "invoice.delete.message": "حذف الفاتورة؟"
+    "invoice.delete.message": "حذف الفاتورة؟",
+    "invoice.dateCreated": "تاريخ الإنشاء",
+    "paymentMethod.cash": "نقدي",
+    "paymentMethod.creditCard": "بطاقة الائتمان",
+    "paymentMethod.other": "أخرى",
+    "paymentMethod.internalTransfer": "نقل داخلي",
+    "paymentMethod.bankDraft": "مسودة بنكية",
+    "paymentMethod.physicalCheck": "فحص مادي",
+    "paymentMethod.depositAccount": "حساب الإيداع",
+    "paymentMethod.eft": "EFT",
+    "links": "الروابط",
+    "search.voucherNumber": "رقم القسيمة",
+    "search.vendorInvoiceNo": "رقم فاتورة الموّرد",
+    "search.poNumbers": "أرقام أوامر الشراء",
+    "search.keyword": "كلمة مفتاحية"
 }

@@ -101,5 +101,19 @@
     "invoice.invoiceHasBeenDeleted": "Invoice has been deleted",
     "invoice.delete.confirmLabel": "Delete",
     "invoice.delete.heading": "Delete {vendorInvoiceNo}?",
-    "invoice.delete.message": "Delete invoice?"
+    "invoice.delete.message": "Delete invoice?",
+    "invoice.dateCreated": "Date created",
+    "paymentMethod.cash": "Cash",
+    "paymentMethod.creditCard": "Credit Card/P-Card",
+    "paymentMethod.other": "Other",
+    "paymentMethod.internalTransfer": "Internal Transfer",
+    "paymentMethod.bankDraft": "Bank Draft",
+    "paymentMethod.physicalCheck": "Physical Check",
+    "paymentMethod.depositAccount": "Deposit Account",
+    "paymentMethod.eft": "EFT",
+    "links": "Links",
+    "search.voucherNumber": "Voucher number",
+    "search.vendorInvoiceNo": "Vendor invoice number",
+    "search.poNumbers": "PO numbers",
+    "search.keyword": "Keyword"
 }
