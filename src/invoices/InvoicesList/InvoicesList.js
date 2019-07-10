@@ -230,6 +230,7 @@ class InvoicesList extends Component {
           renderFilters={this.renderFilters}
           onFilterChange={this.handleFilterChange}
           onChangeIndex={this.changeSearchIndex}
+          selectedIndex={get(resources.query, 'qindex')}
         />
         <Callout ref={this.callout} />
       </div>
