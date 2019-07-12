@@ -45,6 +45,7 @@ import {
   toggleSection,
   validateRequired,
 } from '../../common/utils';
+import ApprovedBy from '../../common/components/ApprovedBy';
 import AdjustmentsForm from '../AdjustmentsForm';
 
 import css from './InvoiceForm.css';
@@ -85,7 +86,7 @@ class InvoiceForm extends Component {
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
     stripes: stripesShape,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -113,6 +114,7 @@ class InvoiceForm extends Component {
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
     const metadata = initialValues.metadata;
+    const approvedBy = get(initialValues, 'approvedBy');
 
     return (
       <form>
@@ -187,20 +189,11 @@ class InvoiceForm extends Component {
                         <FieldDatepicker
                           labelId="ui-invoice.invoice.approvalDate"
                           name="approvalDate"
-                          disabled={isEditPostApproval}
-                          required
-                          validate={validateRequired}
+                          disabled
                         />
                       </Col>
                       <Col data-test-col-approved-by xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.approvedBy" />}
-                          name="approvedBy"
-                          disabled
-                          required
-                          type="text"
-                        />
+                        <ApprovedBy approvedByUserId={approvedBy} />
                       </Col>
                       <Col data-test-col-acquisitions-unit xs={3}>
                         <FieldSelection

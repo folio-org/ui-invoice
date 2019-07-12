@@ -9,19 +9,13 @@ import {
   Layer,
 } from '@folio/stripes/components';
 
-import {
-  INVOICE_API,
-} from '../../../common/constants';
+import { invoiceResource } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
 import InvoiceForm from '../../InvoiceForm';
 
 class InvoiceEditLayer extends Component {
   static manifest = Object.freeze({
-    invoice: {
-      type: 'okapi',
-      path: `${INVOICE_API}/:{id}`,
-      throwErrors: false,
-    },
+    invoice: invoiceResource,
   });
 
   static propTypes = {
