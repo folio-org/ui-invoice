@@ -40,6 +40,7 @@ export default interactor(class InvoiceForm {
   paymentMethod = new PaymentMethodInteractor();
   status = new StatusInteractor();
   vendor = new VendorInteractor();
+  vendorButton = new Interactor('#invoice-vendor');
   invoiceInformation = new Interactor('#accordion-toggle-button-invoiceInformation');
 
   whenLoaded() {

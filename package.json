@@ -60,10 +60,9 @@
     "@folio/plugin-find-po-line": "^1.0.0"
   },
   "stripes": {
-    "type": "app",
+    "actsAs": ["app", "settings"],
     "displayName": "ui-invoice.meta.title",
     "route": "/invoice",
-    "hasSettings": true,
     "queryResource": "query",
     "okapiInterfaces": {
       "acquisitions-units": "1.0",

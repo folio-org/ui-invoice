@@ -39,13 +39,14 @@ describe('Invoice create', () => {
         await invoiceForm.approvalDate.fill('2019-01-02').blur();
         await invoiceForm.paymentMethod.options.list(1).click();
         await invoiceForm.status.options.list(1).click();
-        await invoiceForm.vendor.options.list(0).click();
+        await invoiceForm.vendorButton.click();
+        await invoiceForm.vendor.options.list(1).click();
         await invoiceForm.saveButton.click();
         await invoicesList.whenLoaded();
       });
 
-      it('closes edit form - no vendor selected in BigTest', () => {
-        expect(invoiceForm.isPresent).to.be.true;
+      it('closes edit form, goes to the list', () => {
+        expect(invoicesList.isPresent).to.be.true;
       });
     });
   });
