@@ -14,9 +14,11 @@ import {
   formatAmount,
   formatDate,
 } from '../../../common/utils';
+import ApprovedBy from '../../../common/components/ApprovedBy/ApprovedBy';
 
 const Information = ({
   adjustmentsTotal,
+  approvedBy,
   invoiceDate,
   metadata,
   paymentTerms,
@@ -66,9 +68,7 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedBy" />}
-          />
+          <ApprovedBy approvedByUserId={approvedBy} />
         </Col>
 
         <Col xs={3}>
@@ -107,6 +107,7 @@ const Information = ({
 
 Information.propTypes = {
   adjustmentsTotal: PropTypes.number,
+  approvedBy: PropTypes.string,
   invoiceDate: PropTypes.string,
   paymentTerms: PropTypes.string,
   status: PropTypes.string.isRequired,

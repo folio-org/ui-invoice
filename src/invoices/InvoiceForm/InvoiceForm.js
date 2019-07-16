@@ -46,6 +46,7 @@ import {
   validateRequired,
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
+import ApprovedBy from '../../common/components/ApprovedBy/ApprovedBy';
 
 import css from './InvoiceForm.css';
 
@@ -193,14 +194,7 @@ class InvoiceForm extends Component {
                         />
                       </Col>
                       <Col data-test-col-approved-by xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.approvedBy" />}
-                          name="approvedBy"
-                          disabled
-                          required
-                          type="text"
-                        />
+                        <ApprovedBy approvedByUserId={initialValues.approvedBy} />
                       </Col>
                       <Col data-test-col-acquisitions-unit xs={3}>
                         <FieldSelection
