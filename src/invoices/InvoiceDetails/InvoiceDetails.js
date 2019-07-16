@@ -116,6 +116,8 @@ class InvoiceDetails extends Component {
           >
             <Information
               adjustmentsTotal={get(invoice, 'adjustmentsTotal')}
+              approvalDate={get(invoice, 'approvalDate')}
+              approvedBy={get(invoice, 'approvedBy')}
               createdDate={get(invoice, 'metadata.createdDate')}
               updatedDate={get(invoice, 'metadata.updatedDate')}
               invoiceDate={get(invoice, 'invoiceDate')}

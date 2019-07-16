@@ -16,7 +16,6 @@ import {
   invoiceResource,
 } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
-import { INVOICE_STATUS } from '../../../common/constants';
 import InvoiceLineForm from '../../InvoiceLineForm';
 
 class InvoiceLineEditLayer extends Component {
