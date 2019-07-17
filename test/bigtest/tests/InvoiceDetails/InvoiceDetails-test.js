@@ -13,7 +13,15 @@ describe('Invoice details', () => {
   const invoiceLineForm = new InvoiceLineFormInteractor();
 
   beforeEach(async function () {
-    const invoice = this.server.create('invoice');
+    const user = this.server.create('user', {
+      personal: {
+        firstName: 'Diku',
+        lastName: 'Admin',
+      },
+    });
+    const invoice = this.server.create('invoice', {
+      approvedBy: user.id,
+    });
 
     this.visit(`/invoice/view/${invoice.id}`);
     await invoiceDetails.whenLoaded();
@@ -21,6 +29,7 @@ describe('Invoice details', () => {
 
   it('should be displayed', () => {
     expect(invoiceDetails.isPresent).to.be.true;
+    expect(invoiceDetails.approvedBy.value).to.include('Admin, Diku');
   });
 
   describe('Click on create line button', () => {

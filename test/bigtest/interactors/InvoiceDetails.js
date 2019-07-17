@@ -2,6 +2,7 @@ import {
   Interactor,
   interactor,
   isPresent,
+  text,
 } from '@bigtest/interactor';
 
 @interactor class Header {
@@ -14,11 +15,17 @@ import {
   editLine = new Interactor('[data-test-button-edit-invoice]');
 }
 
+@interactor class ApprovedBy {
+  static defaultScope = '[data-test-approvedBy]';
+  value = text('[class*=kvRoot---]');
+}
+
 export default interactor(class InvoiceDetails {
   static defaultScope = '#pane-invoiceDetails';
   buttonCreateLine = new Interactor('[data-test-button-create-line]');
   actions = new Actions();
   header = new Header();
+  approvedBy = new ApprovedBy();
 
   isLoaded = isPresent('[class*=paneTitleLabel---]');
 
