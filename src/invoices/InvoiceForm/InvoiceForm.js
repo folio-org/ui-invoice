@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { find, get } from 'lodash';
 import {
   Field,
   getFormValues,
 } from 'redux-form';
+
+import {
+  find,
+  get,
+} from 'lodash';
 
 import {
   Accordion,
@@ -38,7 +42,9 @@ import {
 } from '../../common/constants';
 import {
   expandAll,
+  getAccountCodes,
   getAddressOptions,
+  getCodeOptions,
   getOrganizationOptions,
   IS_EDIT_POST_APPROVAL,
   parseAddressConfigs,
@@ -115,6 +121,8 @@ class InvoiceForm extends Component {
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
     const metadata = initialValues.metadata;
     const approvedBy = get(initialValues, 'approvedBy');
+    const selectedVendor = find(orgs, { id: get(formValues, 'vendorId') });
+    const accountCodes = getAccountCodes(selectedVendor);
 
     return (
       <form>
@@ -302,12 +310,9 @@ class InvoiceForm extends Component {
                       </Col>
                       <Col data-test-col-accounting-code xs={3}>
                         <FieldSelection
-                          dataOptions={[]}
-                          disabled
+                          dataOptions={getCodeOptions(accountCodes)}
                           label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
                           name="accountingCode"
-                          required
-                        // validate={validateRequired}
                         />
                       </Col>
                     </Row>
