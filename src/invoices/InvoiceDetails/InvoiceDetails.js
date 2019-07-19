@@ -23,6 +23,7 @@ import {
 import ActionMenu from './ActionMenu';
 import Information from './Information';
 import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
+import styles from './InvoiceDetails.css';
 
 class InvoiceDetails extends Component {
   static propTypes = {
@@ -43,6 +44,7 @@ class InvoiceDetails extends Component {
   state = {
     sections: {},
     showConfirmDelete: false,
+    invoiceLineTotal: 0,
   };
 
   renderActionMenu = ({ onToggle }) => {
@@ -62,6 +64,8 @@ class InvoiceDetails extends Component {
     );
   }
 
+  onInvoiceLinesLoaded = (invoiceLineTotal = 0) => this.setState({ invoiceLineTotal });
+
   renderLinesActions = () => (
     <InvoiceLinesActions
       createLine={this.props.createLine}
@@ -79,7 +83,7 @@ class InvoiceDetails extends Component {
       onClose,
       invoice,
     } = this.props;
-    const { sections, showConfirmDelete } = this.state;
+    const { sections, showConfirmDelete, invoiceLineTotal } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
 
     const paneTitle = (
@@ -130,11 +134,14 @@ class InvoiceDetails extends Component {
             />
           </Accordion>
           <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
+            label={<div className={styles.InvoiceLinesLabel}>
+              <FormattedMessage id="ui-invoice.invoice.details.lines.title" />
+              {!sections[SECTIONS_INVOICE.LINES] && <div className={styles.InvoiceLinesCount}>{invoiceLineTotal}</div>}
+            </div>}
             id={SECTIONS_INVOICE.LINES}
             displayWhenOpen={this.renderLinesActions()}
           >
-            <InvoiceLines invoiceId={invoice.id} />
+            <InvoiceLines invoiceId={invoice.id} onInvoiceLinesLoaded={this.onInvoiceLinesLoaded} />
           </Accordion>
         </AccordionSet>
         {showConfirmDelete && (

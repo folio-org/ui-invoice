@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
@@ -9,6 +9,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   invoiceLinesResource,
 } from '../../../common/resources';
+import styles from './InvoiceLines.css';
 
 const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'subTotal'];
 const columnMapping = {
@@ -48,13 +49,20 @@ class InvoiceLines extends Component {
     invoiceId: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,
     mutator: PropTypes.object.isRequired,
+    onInvoiceLinesLoaded: PropTypes.func,
   };
 
   componentDidUpdate() {
-    const { invoiceId, resources, mutator } = this.props;
+    const { invoiceId, resources, mutator, stripes, onInvoiceLinesLoaded } = this.props;
+    const store = stripes.store.getState();
+    const total = get(store, 'folio_invoice_invoice_lines.other.totalRecords')
 
     if (invoiceId !== resources.invoiceId) {
       mutator.invoiceId.replace(invoiceId);
+    }
+
+    if (total) {
+      onInvoiceLinesLoaded(total);
     }
   }
 
@@ -69,13 +77,19 @@ class InvoiceLines extends Component {
     const invoiceLinesItems = get(resources, 'invoiceLines.records.0.invoiceLines', []);
 
     return (
-      <MultiColumnList
-        contentData={invoiceLinesItems}
-        visibleColumns={visibleColumns}
-        columnMapping={columnMapping}
-        columnWidths={columnWidths}
-        onRowClick={this.openLineDetails}
-      />
+      <div>
+        <div className={styles.InvoiceLinesTotal}>
+          <FormattedMessage id="ui-invoice.invoiceLine.total" values={{ total: invoiceLinesItems.length }} />
+        </div>
+
+        <MultiColumnList
+          contentData={invoiceLinesItems}
+          visibleColumns={visibleColumns}
+          columnMapping={columnMapping}
+          columnWidths={columnWidths}
+          onRowClick={this.openLineDetails}
+        />
+      </div>
     );
   }
 }

@@ -1,0 +1,15 @@
+.InvoiceLinesLabel {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.InvoiceLinesCount {
+  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0 10px;
+  font-size: 14px;
+  padding: 3px;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+}

@@ -35,6 +35,7 @@
   "invoiceLine.delete.confirmLabel": "Delete",
   "invoiceLine.delete.heading": "Delete {invoiceLineNumber}?",
   "invoiceLine.delete.message": "Delete invoice line?",
+  "invoiceLine.total": "Total number of invoice lines: {total}",
 
   "adjustment.type": "Select adjustment",
   "adjustment.description": "Description",
