@@ -134,10 +134,16 @@ class InvoiceDetails extends Component {
             />
           </Accordion>
           <Accordion
-            label={<div className={styles.InvoiceLinesLabel}>
-              <FormattedMessage id="ui-invoice.invoice.details.lines.title" />
-              {!sections[SECTIONS_INVOICE.LINES] && <div className={styles.InvoiceLinesCount}>{invoiceLineTotal}</div>}
-            </div>}
+            label={
+              <div className={styles.InvoiceLinesLabel}>
+                <FormattedMessage id="ui-invoice.invoice.details.lines.title" />
+                {!sections[SECTIONS_INVOICE.LINES] && (
+                  <div className={styles.InvoiceLinesCount}>
+                    {invoiceLineTotal}
+                  </div>
+                )}
+              </div>
+            }
             id={SECTIONS_INVOICE.LINES}
             displayWhenOpen={this.renderLinesActions()}
           >

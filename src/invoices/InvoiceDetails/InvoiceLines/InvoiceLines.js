@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
@@ -50,12 +50,13 @@ class InvoiceLines extends Component {
     resources: PropTypes.object.isRequired,
     mutator: PropTypes.object.isRequired,
     onInvoiceLinesLoaded: PropTypes.func,
+    stripes: PropTypes.object,
   };
 
   componentDidUpdate() {
     const { invoiceId, resources, mutator, stripes, onInvoiceLinesLoaded } = this.props;
     const store = stripes.store.getState();
-    const total = get(store, 'folio_invoice_invoice_lines.other.totalRecords')
+    const total = get(store, 'folio_invoice_invoice_lines.other.totalRecords');
 
     if (invoiceId !== resources.invoiceId) {
       mutator.invoiceId.replace(invoiceId);
