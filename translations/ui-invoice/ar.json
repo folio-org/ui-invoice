@@ -90,7 +90,7 @@
     "invoice.details.lines.list.number": "رقم الخط",
     "invoice.details.lines.list.quantity": "الكمية",
     "invoice.details.lines.list.total": "الإجمالي:",
-    "find-po-line-plugin-unavailable": "برنامج العثور على خط أمر الشراء المساعد غير متاح",
+    "find-po-line-plugin-unavailable": "برنامج باحث خط أمر الشراء المساعد غير متاح",
     "errors.invoiceHasNotBeenDeleted": "لم يتم حذف الفاتورة",
     "errors.invoiceLineHasNotBeenDeleted": "لم يتم حذف الفاتورة",
     "invoiceLine.paneTitle.view": "عرض خط الفواتير - {invoiceLineNumber}",
