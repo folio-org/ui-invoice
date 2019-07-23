@@ -70,7 +70,10 @@ const Information = ({
           </KeyValue>
         </Col>
 
-        <Col xs={3}>
+        <Col
+          data-test-approvedBy
+          xs={3}
+        >
           <ApprovedBy approvedByUserId={approvedBy} />
         </Col>
 
