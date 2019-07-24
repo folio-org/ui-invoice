@@ -7,9 +7,8 @@ import { LoadingPane } from '../../../common/components';
 import {
   invoiceResource,
   invoiceLinesResource,
+  VENDOR,
 } from '../../../common/resources';
-import { BASE_RESOURCE } from '../../../common/resources/base';
-import { VENDORS_API } from '../../../common/constants';
 import InvoiceDetails from '../../InvoiceDetails';
 import { createInvoiceLineFromPOL } from './utils';
 
@@ -20,14 +19,7 @@ class InvoiceDetailsLayer extends Component {
       ...invoiceLinesResource,
       fetch: false,
     },
-    vendor: {
-      ...BASE_RESOURCE,
-      path: (queryParams, pathComponents, resourceData, logger, props) => {
-        const vendorId = get(props, ['resources', 'invoice', 'records', 0, 'vendorId']);
-
-        return vendorId ? `${VENDORS_API}/${vendorId}` : null;
-      },
-    },
+    vendor: VENDOR,
     query: {},
   });
 

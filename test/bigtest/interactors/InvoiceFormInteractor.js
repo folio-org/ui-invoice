@@ -8,14 +8,7 @@ import {
   collection,
 } from '@bigtest/interactor';
 
-@interactor class OptionSegmentInteractor {
-  text = text();
-  click = clickable();
-}
-
-@interactor class OptionListInteractor {
-  list = collection('li', OptionSegmentInteractor);
-}
+import OptionListInteractor from './OptionListInteractor';
 
 @interactor class PaymentMethodInteractor {
   options = new OptionListInteractor('#sl-invoice-payment-method');

@@ -88,7 +88,7 @@ class InvoiceLineForm extends Component {
     sections: {},
   }
 
-  onChangeAccountNumber = (accountNo) => {
+  changeAccountNumber = (e, accountNo) => {
     const { dispatch, change, vendorCode, accounts } = this.props;
     const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
 
@@ -103,8 +103,9 @@ class InvoiceLineForm extends Component {
     const { initialValues, onCancel, handleSubmit, pristine, submitting, accounts } = this.props;
     const { sections } = this.state;
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
-    const metadata = initialValues.metadata;
+    const { accountNumber, poLineId, metadata } = initialValues;
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
+    const isDisabledToEditAccountNumber = isEditPostApproval || (poLineId && accountNumber);
 
     const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
     const paneTitle = initialValues.id
@@ -234,23 +235,14 @@ class InvoiceLineForm extends Component {
                         />
                       </Col>
                       <Col data-test-col-invoice-line-accounting-code xs={3}>
-                        {initialValues.accountNumber
-                          ? (
-                            <Field
-                              component={TextField}
-                              label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
-                              name="accountNumber"
-                              disabled
-                            />
-                          )
-                          : <FieldSelection
-                            dataOptions={getAccountNumberOptions(accountNumbers)}
-                            label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
-                            name="accountNumber"
-                            value={get(initialValues, 'vendorRefNo')}
-                            onChange={(e, value) => this.onChangeAccountNumber(value)}
-                            />
-                        }
+                        <FieldSelection
+                          dataOptions={getAccountNumberOptions(accountNumbers)}
+                          disabled={isDisabledToEditAccountNumber}
+                          id="invoice-line-account-number"
+                          label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
+                          name="accountNumber"
+                          onChange={this.changeAccountNumber}
+                        />
                       </Col>
                       <Col data-test-col-invoice-line-comment xs={3}>
                         <Field

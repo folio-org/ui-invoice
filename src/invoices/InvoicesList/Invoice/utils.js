@@ -6,9 +6,19 @@ import { INVOICE_STATUS } from '../../../common/constants';
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   const quantityPhysical = get(poLine, 'cost.quantityPhysical', 0);
   const quantityElectronic = get(poLine, 'cost.quantityElectronic', 0);
-  const accounts = get(vendor, 'accounts', []);
   const accountNumber = get(poLine, 'vendorDetail.vendorAccount');
-  const accountingCode = get(find(accounts, { accountNo: accountNumber }), 'appSystemNo', '') || get(vendor, 'erpCode');
+  const optionalProps = {};
+
+  if (accountNumber) {
+    const accounts = get(vendor, 'accounts', []);
+    const account = find(accounts, { accountNo: accountNumber });
+    const accountingCode = get(account, 'appSystemNo') || get(vendor, 'erpCode');
+
+    optionalProps.accountNumber = accountNumber;
+    if (accountingCode) {
+      optionalProps.accountingCode = accountingCode;
+    }
+  }
 
   return {
     invoiceId,
@@ -25,7 +35,6 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
       quantityPhysical * get(poLine, 'cost.listUnitPrice', 0)
       + quantityElectronic * get(poLine, 'cost.quantityElectronic', 0)
     ),
-    accountNumber,
-    accountingCode,
+    ...optionalProps,
   };
 };

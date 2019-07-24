@@ -14,24 +14,16 @@ import {
 import {
   invoiceLineResource,
   invoiceResource,
+  VENDOR,
 } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
-import { BASE_RESOURCE } from '../../../common/resources/base';
-import { VENDORS_API } from '../../../common/constants';
 import InvoiceLineForm from '../../InvoiceLineForm';
 
 class InvoiceLineEditLayer extends Component {
   static manifest = Object.freeze({
     invoice: invoiceResource,
     invoiceLine: invoiceLineResource,
-    vendor: {
-      ...BASE_RESOURCE,
-      path: (queryParams, pathComponents, resourceData, logger, props) => {
-        const vendorId = get(props, ['resources', 'invoice', 'records', 0, 'vendorId']);
-
-        return vendorId ? `${VENDORS_API}/${vendorId}` : null;
-      },
-    },
+    vendor: VENDOR,
   });
 
   static propTypes = {
@@ -63,6 +55,12 @@ class InvoiceLineEditLayer extends Component {
       });
   }
 
+  hasLoaded() {
+    const { match: { params: { lineId } }, resources: { invoiceLine, invoice, vendor } } = this.props;
+
+    return (!lineId || get(invoiceLine, 'hasLoaded')) && get(invoice, 'hasLoaded') && get(vendor, 'hasLoaded');
+  }
+
   render() {
     const {
       connectedSource,
@@ -87,8 +85,7 @@ class InvoiceLineEditLayer extends Component {
           percentage: 50,
         }],
       };
-    const hasLoaded = (!lineId || get(resources, 'invoiceLine.hasLoaded')) && get(resources, 'invoice.hasLoaded') && get(resources, 'vendor.hasLoaded');
-    const vendor = get(resources, ['vendor', 'records', 0], {});
+    const vendor = get(resources, ['vendor', 'records', 0]);
     const vendorCode = get(vendor, 'erpCode', '');
     const accounts = get(vendor, 'accounts', []);
 
@@ -97,7 +94,7 @@ class InvoiceLineEditLayer extends Component {
         isOpen
         contentLabel={intl.formatMessage({ id: 'ui-invoice.invoiceLine.editLayer' })}
       >
-        {hasLoaded
+        {this.hasLoaded()
           ? (
             <InvoiceLineForm
               stripes={stripes}

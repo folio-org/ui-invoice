@@ -8,7 +8,7 @@ export const getAddressOptions = (addresses = []) => addresses.map(address => ({
   label: address.name,
 }));
 
-export const getAccountNumberOptions = (accountNumbers = []) => accountNumbers.map(number => ({
+export const getAccountNumberOptions = (accountNumbers) => accountNumbers.map(number => ({
   value: number,
   label: number,
 }));
