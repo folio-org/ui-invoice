@@ -7,8 +7,3 @@ export const getAddressOptions = (addresses = []) => addresses.map(address => ({
   value: address.id,
   label: address.name,
 }));
-
-export const getCodeOptions = (codes = []) => codes.map(code => ({
-  value: code,
-  label: code,
-}));

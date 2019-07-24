@@ -1,4 +1,4 @@
-export * from './getAccountCodes';
+export * from './getAccountingCodeOptions';
 export * from './getOptions';
 export * from './getUserName';
 export * from './invoiceUtils';
