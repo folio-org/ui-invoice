@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 
 import {
   Accordion,
@@ -23,6 +22,7 @@ import {
 import ActionMenu from './ActionMenu';
 import Information from './Information';
 import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
+import VendorDetails from './VendorDetails';
 
 class InvoiceDetails extends Component {
   static propTypes = {
@@ -115,18 +115,18 @@ class InvoiceDetails extends Component {
             id={SECTIONS_INVOICE.INFORMATION}
           >
             <Information
-              adjustmentsTotal={get(invoice, 'adjustmentsTotal')}
-              approvalDate={get(invoice, 'approvalDate')}
-              approvedBy={get(invoice, 'approvedBy')}
-              createdDate={get(invoice, 'metadata.createdDate')}
-              updatedDate={get(invoice, 'metadata.updatedDate')}
-              invoiceDate={get(invoice, 'invoiceDate')}
-              paymentTerms={get(invoice, 'paymentTerms')}
-              status={get(invoice, 'status')}
-              subTotal={get(invoice, 'subTotal')}
-              total={get(invoice, 'total')}
-              source={get(invoice, 'source')}
-              metadata={get(invoice, 'metadata')}
+              adjustmentsTotal={invoice.adjustmentsTotal}
+              approvalDate={invoice.approvalDate}
+              approvedBy={invoice.approvedBy}
+              invoiceDate={invoice.invoiceDate}
+              paymentDue={invoice.paymentDue}
+              paymentTerms={invoice.paymentTerms}
+              status={invoice.status}
+              subTotal={invoice.subTotal}
+              total={invoice.total}
+              source={invoice.source}
+              metadata={invoice.metadata}
+              billTo={invoice.billTo}
             />
           </Accordion>
           <Accordion
@@ -135,6 +135,16 @@ class InvoiceDetails extends Component {
             displayWhenOpen={this.renderLinesActions()}
           >
             <InvoiceLines invoiceId={invoice.id} />
+          </Accordion>
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
+            id={SECTIONS_INVOICE.VENDOR_DETAILS}
+          >
+            <VendorDetails
+              vendorInvoiceNo={vendorInvoiceNo}
+              vendorId={invoice.vendorId}
+              accountingCode={invoice.accountingCode}
+            />
           </Accordion>
         </AccordionSet>
         {showConfirmDelete && (
