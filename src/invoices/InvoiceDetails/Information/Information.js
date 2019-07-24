@@ -8,6 +8,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
+import { sourceLabels } from '@folio/stripes-acq-components';
 
 import {
   getInvoiceStatusLabel,
@@ -51,9 +52,11 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.source" />}>
-            {source}
-          </KeyValue>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.source" />}
+            value={sourceLabels[source]}
+          />
+
         </Col>
 
         <Col xs={3}>

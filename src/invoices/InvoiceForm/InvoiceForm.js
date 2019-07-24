@@ -196,16 +196,6 @@ class InvoiceForm extends Component {
                           type="text"
                         />
                       </Col>
-                      <Col data-test-col-source xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.details.information.source" />}
-                          name="source"
-                          disabled
-                          required
-                          type="text"
-                        />
-                      </Col>
                       <Col data-test-col-status xs={3}>
                         <FieldSelection
                           dataOptions={INVOICE_STATUSES_OPTIONS}

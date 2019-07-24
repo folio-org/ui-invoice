@@ -17,6 +17,7 @@ import {
   getActiveFilters,
   handleFilterChange,
   showToast,
+  sourceValues,
 } from '@folio/stripes-acq-components';
 
 import packageInfo from '../../../package';
@@ -222,7 +223,7 @@ class InvoicesList extends Component {
           newRecordInitialValues={{
             chkSubscriptionOverlap: true,
             currency: 'USD',
-            source: '024b6f41-c5c6-4280-858e-33fba452a334',
+            source: sourceValues.user,
           }}
           massageNewRecord={() => null}
           onCreate={this.onCreate}
