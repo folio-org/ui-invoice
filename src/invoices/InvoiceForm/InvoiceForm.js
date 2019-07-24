@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { find, get } from 'lodash';
 import {
   Field,
   getFormValues,
 } from 'redux-form';
+
+import {
+  find,
+  get,
+} from 'lodash';
 
 import {
   Accordion,
@@ -38,6 +42,7 @@ import {
 } from '../../common/constants';
 import {
   expandAll,
+  getAccountingCodeOptions,
   getAddressOptions,
   getOrganizationOptions,
   IS_EDIT_POST_APPROVAL,
@@ -79,6 +84,8 @@ const getLastMenu = (handleSubmit, pristine, submitting) => {
 
 class InvoiceForm extends Component {
   static propTypes = {
+    change: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
@@ -99,6 +106,27 @@ class InvoiceForm extends Component {
     this.toggleSection = toggleSection.bind(this);
   }
 
+  getOrgRecords() {
+    return get(this.props.parentResources, 'vendors.records', []);
+  }
+
+  getActiveVendors() {
+    return this.getOrgRecords().filter(o => o.isVendor && o.status === ORGANIZATION_STATUS_ACTIVE);
+  }
+
+  selectVendor = (e, selectedVendorId) => {
+    const {
+      dispatch,
+      change,
+    } = this.props;
+    const selectedVendor = this.getOrgRecords().find(({ id }) => id === selectedVendorId);
+    const erpCode = selectedVendor.erpCode;
+    const hasAnyAccountingCode = selectedVendor.accounts.some(({ appSystemNo }) => Boolean(appSystemNo));
+    const accountingCode = hasAnyAccountingCode ? null : erpCode;
+
+    dispatch(change('accountingCode', accountingCode || ''));
+  }
+
   render() {
     const { initialValues, onCancel, handleSubmit, pristine, submitting, parentResources, stripes } = this.props;
     const { sections } = this.state;
@@ -108,13 +136,16 @@ class InvoiceForm extends Component {
       ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
       : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
     const acquisitionsUnits = [];
-    const orgs = get(parentResources, 'vendors.records', []).filter(o => o.isVendor && o.status === ORGANIZATION_STATUS_ACTIVE);
     const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
     const metadata = initialValues.metadata;
     const approvedBy = get(initialValues, 'approvedBy');
+
+    const activeVendors = this.getActiveVendors();
+    const selectedVendor = find(activeVendors, { id: get(formValues, 'vendorId') });
+    const accountingCodeOptions = getAccountingCodeOptions(selectedVendor);
 
     return (
       <form>
@@ -281,23 +312,22 @@ class InvoiceForm extends Component {
                       </Col>
                       <Col xs={6}>
                         <FieldSelection
-                          dataOptions={getOrganizationOptions(orgs)}
+                          dataOptions={getOrganizationOptions(activeVendors)}
+                          disabled={isEditPostApproval}
                           id="invoice-vendor"
                           label={<FormattedMessage id="ui-invoice.invoice.vendorName" />}
                           name="vendorId"
-                          disabled={isEditPostApproval}
+                          onChange={this.selectVendor}
                           required
                           validate={validateRequired}
                         />
                       </Col>
                       <Col data-test-col-accounting-code xs={3}>
                         <FieldSelection
-                          dataOptions={[]}
-                          disabled
+                          dataOptions={accountingCodeOptions}
+                          disabled={isEditPostApproval || !selectedVendor}
                           label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
                           name="accountingCode"
-                          required
-                        // validate={validateRequired}
                         />
                       </Col>
                     </Row>
