@@ -16,12 +16,22 @@ import {
   invoiceResource,
 } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
+import { BASE_RESOURCE } from '../../../common/resources/base';
+import { VENDORS_API } from '../../../common/constants';
 import InvoiceLineForm from '../../InvoiceLineForm';
 
 class InvoiceLineEditLayer extends Component {
   static manifest = Object.freeze({
     invoice: invoiceResource,
     invoiceLine: invoiceLineResource,
+    vendor: {
+      ...BASE_RESOURCE,
+      path: (queryParams, pathComponents, resourceData, logger, props) => {
+        const vendorId = get(props, ['resources', 'invoice', 'records', 0, 'vendorId']);
+
+        return vendorId ? `${VENDORS_API}/${vendorId}` : null;
+      },
+    },
   });
 
   static propTypes = {
@@ -77,7 +87,10 @@ class InvoiceLineEditLayer extends Component {
           percentage: 50,
         }],
       };
-    const hasLoaded = (!lineId || get(resources, 'invoiceLine.hasLoaded')) && get(resources, 'invoice.hasLoaded');
+    const hasLoaded = (!lineId || get(resources, 'invoiceLine.hasLoaded')) && get(resources, 'invoice.hasLoaded') && get(resources, 'vendor.hasLoaded');
+    const vendor = get(resources, ['vendor', 'records', 0], {});
+    const vendorCode = get(vendor, 'erpCode', '');
+    const accounts = get(vendor, 'accounts', []);
 
     return (
       <Layer
@@ -94,6 +107,8 @@ class InvoiceLineEditLayer extends Component {
               parentMutator={parentMutator}
               onSubmit={this.saveInvoiceLine}
               onCancel={onCloseEdit}
+              vendorCode={vendorCode}
+              accounts={accounts}
             />
           )
           : <LoadingPane onClose={onCloseEdit} />
