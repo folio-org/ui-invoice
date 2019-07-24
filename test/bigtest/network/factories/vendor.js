@@ -7,4 +7,5 @@ export default Factory.extend({
   code: faker.random.word,
   isVendor: true,
   status: ORGANIZATION_STATUS_ACTIVE,
+  accounts: [],
 });
