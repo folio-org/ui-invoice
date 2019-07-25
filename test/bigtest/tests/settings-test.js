@@ -9,23 +9,13 @@ describe('Settings', () => {
 
   setupApplication();
 
-  describe('general', () => {
+  describe('adjustments', () => {
     beforeEach(function () {
-      this.visit('/settings/invoice/general');
+      this.visit('/settings/invoice/adjustments');
     });
 
-    it('has a general settings message', () => {
-      expect(settings.generalMessage).to.equal('These are your general app settings.');
-    });
-  });
-
-  describe('feature', () => {
-    beforeEach(function () {
-      this.visit('/settings/invoice/somefeature');
-    });
-
-    it('has a feature settings message', () => {
-      expect(settings.featureMessage).to.equal('These are your settings for some app feature.');
+    it('has a adjustments settings message', () => {
+      expect(settings.adjustments).to.contain('Adjustments');
     });
   });
 });
