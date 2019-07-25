@@ -31,6 +31,7 @@ const Information = ({
   subTotal,
   total,
   billTo,
+  invoiceTotalUnits,
 }) => {
   return (
     <Fragment>
@@ -94,6 +95,7 @@ const Information = ({
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.totalUnits" />}
+            value={invoiceTotalUnits}
           />
         </Col>
 
@@ -136,6 +138,7 @@ Information.propTypes = {
   source: PropTypes.string,
   metadata: PropTypes.object,
   billTo: PropTypes.string,
+  invoiceTotalUnits: PropTypes.number,
 };
 
 Information.defaultProps = {
@@ -148,6 +151,7 @@ Information.defaultProps = {
   subTotal: 0,
   total: 0,
   source: '',
+  invoiceTotalUnits: 0,
 };
 
 export default Information;
