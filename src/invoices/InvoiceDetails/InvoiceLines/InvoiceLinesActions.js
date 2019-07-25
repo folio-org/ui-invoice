@@ -12,7 +12,7 @@ import styles from './InvoiceLines.css';
 
 const InvoiceLinesActions = ({ addLines, createLine }) => (
   <IfPermission perm="invoice.invoice-lines.item.post">
-    <div className={styles.InvoiceLinesActions}>
+    <div className={styles.invoiceLinesActions}>
       <AddInvoiceLinesAction addLines={addLines} />
 
       <Button

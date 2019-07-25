@@ -71,7 +71,7 @@ class InvoiceLines extends Component {
 
     return (
       <Fragment>
-        <div className={styles.InvoiceLinesTotal}>
+        <div className={styles.invoiceLinesTotal}>
           <FormattedMessage
             id="ui-invoice.invoiceLine.total"
             values={{ total: invoiceLinesItems.length }}
