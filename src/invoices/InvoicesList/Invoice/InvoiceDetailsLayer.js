@@ -69,7 +69,7 @@ class InvoiceDetailsLayer extends Component {
     } = this.props;
     const invoice = get(resources, ['invoice', 'records', 0]);
     const hasLoaded = get(resources, 'invoice.hasLoaded');
-    const totalInvoiceLines = get(resources, ['invoice_lines', 'other', 'totalRecords'], 0);
+    const totalInvoiceLines = get(resources, ['invoiceLines', 'other', 'totalRecords'], 0);
 
     return hasLoaded
       ? (
