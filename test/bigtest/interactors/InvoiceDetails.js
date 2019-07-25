@@ -16,7 +16,7 @@ import {
 }
 
 @interactor class ApprovedBy {
-  static defaultScope = '[data-test-approvedBy]';
+  static defaultScope = '[data-test-approved-by]';
   value = text('[class*=kvRoot---]');
 }
 

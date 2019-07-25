@@ -15,3 +15,8 @@ export const configAddress = {
     },
   },
 };
+
+export const configAddressItem = {
+  ...BASE_RESOURCE,
+  path: `${CONFIG_API}/!{billToId}`,
+};
