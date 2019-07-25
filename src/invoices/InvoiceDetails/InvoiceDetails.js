@@ -33,6 +33,7 @@ class InvoiceDetails extends Component {
     onClose: PropTypes.func.isRequired,
     invoice: PropTypes.object.isRequired,
     deleteInvoice: PropTypes.func.isRequired,
+    totalInvoiceLines: PropTypes.number.isRequired,
   };
 
   constructor(props, context) {
@@ -44,7 +45,6 @@ class InvoiceDetails extends Component {
   state = {
     sections: {},
     showConfirmDelete: false,
-    invoiceLineTotal: 0,
   };
 
   renderActionMenu = ({ onToggle }) => {
@@ -64,8 +64,6 @@ class InvoiceDetails extends Component {
     );
   }
 
-  onInvoiceLinesLoaded = (invoiceLineTotal = 0) => this.setState({ invoiceLineTotal });
-
   renderLinesActions = () => (
     <InvoiceLinesActions
       createLine={this.props.createLine}
@@ -82,8 +80,9 @@ class InvoiceDetails extends Component {
       deleteInvoice,
       onClose,
       invoice,
+      totalInvoiceLines,
     } = this.props;
-    const { sections, showConfirmDelete, invoiceLineTotal } = this.state;
+    const { sections, showConfirmDelete } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
 
     const paneTitle = (
@@ -134,23 +133,16 @@ class InvoiceDetails extends Component {
             />
           </Accordion>
           <Accordion
-            label={
-              <div className={styles.invoiceLinesLabel}>
-                <FormattedMessage id="ui-invoice.invoice.details.lines.title" />
-                {!sections[SECTIONS_INVOICE.LINES] && (
-                  <div className={styles.invoiceLinesCount}>
-                    {invoiceLineTotal}
-                  </div>
-                )}
-              </div>
-            }
+            label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
             id={SECTIONS_INVOICE.LINES}
             displayWhenOpen={this.renderLinesActions()}
+            displayWhenClosed={
+              <div className={styles.invoiceLinesCount}>
+                {totalInvoiceLines}
+              </div>
+            }
           >
-            <InvoiceLines
-              invoiceId={invoice.id}
-              onInvoiceLinesLoaded={this.onInvoiceLinesLoaded}
-            />
+            <InvoiceLines invoiceId={invoice.id} />
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}

@@ -49,21 +49,13 @@ class InvoiceLines extends Component {
     invoiceId: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,
     mutator: PropTypes.object.isRequired,
-    onInvoiceLinesLoaded: PropTypes.func.isRequired,
-    stripes: PropTypes.object.isRequired,
   };
 
   componentDidUpdate() {
-    const { invoiceId, resources, mutator, stripes, onInvoiceLinesLoaded } = this.props;
-    const store = stripes.store.getState();
-    const total = get(store, 'folio_invoice_invoice_lines.other.totalRecords');
+    const { invoiceId, resources, mutator } = this.props;
 
     if (invoiceId !== resources.invoiceId) {
       mutator.invoiceId.replace(invoiceId);
-    }
-
-    if (total) {
-      onInvoiceLinesLoaded(total);
     }
   }
 
