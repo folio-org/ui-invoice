@@ -14,6 +14,7 @@ import {
 import {
   invoiceLineResource,
   invoiceResource,
+  VENDOR,
 } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
 import InvoiceLineForm from '../../InvoiceLineForm';
@@ -22,6 +23,7 @@ class InvoiceLineEditLayer extends Component {
   static manifest = Object.freeze({
     invoice: invoiceResource,
     invoiceLine: invoiceLineResource,
+    vendor: VENDOR,
   });
 
   static propTypes = {
@@ -53,6 +55,12 @@ class InvoiceLineEditLayer extends Component {
       });
   }
 
+  hasLoaded() {
+    const { match: { params: { lineId } }, resources: { invoiceLine, invoice, vendor } } = this.props;
+
+    return (!lineId || get(invoiceLine, 'hasLoaded')) && get(invoice, 'hasLoaded') && get(vendor, 'hasLoaded');
+  }
+
   render() {
     const {
       connectedSource,
@@ -77,14 +85,16 @@ class InvoiceLineEditLayer extends Component {
           percentage: 50,
         }],
       };
-    const hasLoaded = (!lineId || get(resources, 'invoiceLine.hasLoaded')) && get(resources, 'invoice.hasLoaded');
+    const vendor = get(resources, ['vendor', 'records', 0]);
+    const vendorCode = get(vendor, 'erpCode', '');
+    const accounts = get(vendor, 'accounts', []);
 
     return (
       <Layer
         isOpen
         contentLabel={intl.formatMessage({ id: 'ui-invoice.invoiceLine.editLayer' })}
       >
-        {hasLoaded
+        {this.hasLoaded()
           ? (
             <InvoiceLineForm
               stripes={stripes}
@@ -94,6 +104,8 @@ class InvoiceLineEditLayer extends Component {
               parentMutator={parentMutator}
               onSubmit={this.saveInvoiceLine}
               onCancel={onCloseEdit}
+              vendorCode={vendorCode}
+              accounts={accounts}
             />
           )
           : <LoadingPane onClose={onCloseEdit} />
