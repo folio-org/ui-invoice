@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
@@ -9,6 +9,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   invoiceLinesResource,
 } from '../../../common/resources';
+import styles from './InvoiceLines.css';
 
 const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'subTotal'];
 const columnMapping = {
@@ -69,13 +70,22 @@ class InvoiceLines extends Component {
     const invoiceLinesItems = get(resources, 'invoiceLines.records.0.invoiceLines', []);
 
     return (
-      <MultiColumnList
-        contentData={invoiceLinesItems}
-        visibleColumns={visibleColumns}
-        columnMapping={columnMapping}
-        columnWidths={columnWidths}
-        onRowClick={this.openLineDetails}
-      />
+      <Fragment>
+        <div className={styles.invoiceLinesTotal}>
+          <FormattedMessage
+            id="ui-invoice.invoiceLine.total"
+            values={{ total: invoiceLinesItems.length }}
+          />
+        </div>
+
+        <MultiColumnList
+          contentData={invoiceLinesItems}
+          visibleColumns={visibleColumns}
+          columnMapping={columnMapping}
+          columnWidths={columnWidths}
+          onRowClick={this.openLineDetails}
+        />
+      </Fragment>
     );
   }
 }

@@ -1,7 +1,12 @@
-.InvoiceLinesActions {
+.invoiceLinesActions {
   display: flex;
 
   & button {
     margin-left: 5px;
   }
+}
+
+.invoiceLinesTotal {
+  font-weight: 600;
+  padding: 0 15px;
 }

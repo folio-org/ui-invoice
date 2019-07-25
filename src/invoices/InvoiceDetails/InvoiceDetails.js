@@ -23,6 +23,7 @@ import ActionMenu from './ActionMenu';
 import Information from './Information';
 import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
+import styles from './InvoiceDetails.css';
 
 class InvoiceDetails extends Component {
   static propTypes = {
@@ -32,6 +33,7 @@ class InvoiceDetails extends Component {
     onClose: PropTypes.func.isRequired,
     invoice: PropTypes.object.isRequired,
     deleteInvoice: PropTypes.func.isRequired,
+    totalInvoiceLines: PropTypes.number.isRequired,
   };
 
   constructor(props, context) {
@@ -78,6 +80,7 @@ class InvoiceDetails extends Component {
       deleteInvoice,
       onClose,
       invoice,
+      totalInvoiceLines,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
@@ -133,6 +136,11 @@ class InvoiceDetails extends Component {
             label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
             id={SECTIONS_INVOICE.LINES}
             displayWhenOpen={this.renderLinesActions()}
+            displayWhenClosed={
+              <div className={styles.invoiceLinesCount}>
+                {totalInvoiceLines}
+              </div>
+            }
           >
             <InvoiceLines invoiceId={invoice.id} />
           </Accordion>
