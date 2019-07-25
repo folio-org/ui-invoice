@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
@@ -49,8 +49,8 @@ class InvoiceLines extends Component {
     invoiceId: PropTypes.string.isRequired,
     resources: PropTypes.object.isRequired,
     mutator: PropTypes.object.isRequired,
-    onInvoiceLinesLoaded: PropTypes.func,
-    stripes: PropTypes.object,
+    onInvoiceLinesLoaded: PropTypes.func.isRequired,
+    stripes: PropTypes.object.isRequired,
   };
 
   componentDidUpdate() {
@@ -78,9 +78,12 @@ class InvoiceLines extends Component {
     const invoiceLinesItems = get(resources, 'invoiceLines.records.0.invoiceLines', []);
 
     return (
-      <div>
+      <Fragment>
         <div className={styles.InvoiceLinesTotal}>
-          <FormattedMessage id="ui-invoice.invoiceLine.total" values={{ total: invoiceLinesItems.length }} />
+          <FormattedMessage
+            id="ui-invoice.invoiceLine.total"
+            values={{ total: invoiceLinesItems.length }}
+          />
         </div>
 
         <MultiColumnList
@@ -90,7 +93,7 @@ class InvoiceLines extends Component {
           columnWidths={columnWidths}
           onRowClick={this.openLineDetails}
         />
-      </div>
+      </Fragment>
     );
   }
 }
