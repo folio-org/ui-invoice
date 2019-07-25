@@ -86,8 +86,6 @@
   "invoice.list.status": "Status",
   "invoice.list.total": "Total amount (system)",
 
-  "invoice.details.lines.title": "Invoice lines",
-
   "invoice.details.information.title": "Invoice information",
   "invoice.details.information.invoiceDate": "Invoice date",
   "invoice.details.information.paymentDue": "Payment due",
@@ -96,17 +94,25 @@
   "invoice.details.information.status": "Status",
   "invoice.details.information.approvedDate": "Approved date",
   "invoice.details.information.approvedBy": "Approved by",
-  "invoice.details.information.owner": "Owner",
+  "invoice.details.information.acqUnits": "Acquisitions units",
   "invoice.details.information.totalUnits": "Total units",
   "invoice.details.information.totalAmount": "Total amount",
   "invoice.details.information.adjustment": "Total adjustments",
   "invoice.details.information.subTotal": "Sub-total",
+  "invoice.details.information.billToName": "Bill to name",
+  "invoice.details.information.billToAddress": "Bill to address",
 
+  "invoice.details.lines.title": "Invoice lines",
   "invoice.details.lines.add": "Add",
   "invoice.details.lines.list.description": "Title",
   "invoice.details.lines.list.number": "Line number",
   "invoice.details.lines.list.quantity": "Quantity",
   "invoice.details.lines.list.total": "Total",
+
+  "invoice.details.vendor.title": "Vendor details",
+  "invoice.details.vendor.vendorInvoiceNo": "Vendor invoice number",
+  "invoice.details.vendor.name": "Vendor name",
+  "invoice.details.vendor.accountingCode": "Accounting code",
 
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",

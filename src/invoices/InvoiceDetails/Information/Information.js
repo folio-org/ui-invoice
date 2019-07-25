@@ -16,18 +16,21 @@ import {
   formatDate,
 } from '../../../common/utils';
 import ApprovedBy from '../../../common/components/ApprovedBy';
+import BillTo from './BillTo';
 
 const Information = ({
   adjustmentsTotal,
   approvalDate,
   approvedBy,
   invoiceDate,
+  paymentDue,
   metadata,
   paymentTerms,
   source,
   status,
   subTotal,
   total,
+  billTo,
 }) => {
   return (
     <Fragment>
@@ -42,7 +45,9 @@ const Information = ({
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.paymentDue" />}
-          />
+          >
+            {formatDate(paymentDue)}
+          </KeyValue>
         </Col>
 
         <Col xs={3}>
@@ -74,7 +79,7 @@ const Information = ({
         </Col>
 
         <Col
-          data-test-approvedBy
+          data-test-approved-by
           xs={3}
         >
           <ApprovedBy approvedByUserId={approvedBy} />
@@ -82,7 +87,7 @@ const Information = ({
 
         <Col xs={3}>
           <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.information.owner" />}
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.acqUnits" />}
           />
         </Col>
 
@@ -109,6 +114,10 @@ const Information = ({
             {formatAmount(subTotal)}
           </KeyValue>
         </Col>
+
+        <Col xs={6}>
+          <BillTo billToId={billTo} />
+        </Col>
       </Row>
     </Fragment>
   );
@@ -119,12 +128,14 @@ Information.propTypes = {
   approvalDate: PropTypes.string,
   approvedBy: PropTypes.string,
   invoiceDate: PropTypes.string,
+  paymentDue: PropTypes.string,
   paymentTerms: PropTypes.string,
   status: PropTypes.string.isRequired,
   subTotal: PropTypes.number,
   total: PropTypes.number,
   source: PropTypes.string,
   metadata: PropTypes.object,
+  billTo: PropTypes.string,
 };
 
 Information.defaultProps = {
@@ -132,6 +143,7 @@ Information.defaultProps = {
   approvalDate: '',
   approvedBy: '',
   invoiceDate: '',
+  paymentDue: '',
   paymentTerms: '',
   subTotal: 0,
   total: 0,
