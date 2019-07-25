@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
 import {
   Field,
 } from 'redux-form';
+
+import {
+  find,
+  get,
+  uniq,
+} from 'lodash';
 
 import {
   Accordion,
@@ -31,6 +36,7 @@ import {
   IS_EDIT_POST_APPROVAL,
   toggleSection,
   validateRequired,
+  getAccountNumberOptions,
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
@@ -61,6 +67,15 @@ class InvoiceLineForm extends Component {
     onCancel: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    change: PropTypes.func.isRequired,
+    vendorCode: PropTypes.string,
+    accounts: PropTypes.arrayOf(PropTypes.object),
+  }
+
+  static defaultProps = {
+    vendorCode: '',
+    accounts: [],
   }
 
   constructor(props) {
@@ -73,17 +88,30 @@ class InvoiceLineForm extends Component {
     sections: {},
   }
 
+  changeAccountNumber = (e, accountNo) => {
+    const { dispatch, change, vendorCode, accounts } = this.props;
+    const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
+
+    if (accountNo) {
+      dispatch(change('accountingCode', accountingCode));
+    } else {
+      dispatch(change('accountingCode', ''));
+    }
+  };
+
   render() {
-    const { initialValues, onCancel, handleSubmit, pristine, submitting } = this.props;
+    const { initialValues, onCancel, handleSubmit, pristine, submitting, accounts } = this.props;
     const { sections } = this.state;
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
-    const metadata = initialValues.metadata;
+    const { accountNumber, poLineId, metadata } = initialValues;
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
+    const isDisabledToEditAccountNumber = isEditPostApproval || (poLineId && accountNumber);
 
     const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
     const paneTitle = initialValues.id
       ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
       : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
+    const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
 
     return (
       <form id="invoice-line-form">
@@ -199,18 +227,21 @@ class InvoiceLineForm extends Component {
                         />
                       </Col>
                       <Col data-test-col-invoice-line-account-number xs={3}>
-                        <FieldSelection
-                          dataOptions={[]}
-                          label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
-                          name="accountNumber"
+                        <Field
+                          component={TextField}
+                          label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
+                          name="accountingCode"
+                          disabled
                         />
                       </Col>
                       <Col data-test-col-invoice-line-accounting-code xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoiceLine.accountingCode" />}
-                          name="accountingCode"
-                          disabled
+                        <FieldSelection
+                          dataOptions={getAccountNumberOptions(accountNumbers)}
+                          disabled={isDisabledToEditAccountNumber}
+                          id="invoice-line-account-number"
+                          label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
+                          name="accountNumber"
+                          onChange={this.changeAccountNumber}
                         />
                       </Col>
                       <Col data-test-col-invoice-line-comment xs={3}>

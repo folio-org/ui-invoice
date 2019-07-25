@@ -5,6 +5,9 @@ import setupApplication from '../../helpers/setup-application';
 import InvoiceLineFormInteractor from '../../interactors/InvoiceLineFormInteractor';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 
+const ACCOUNT_NUMBER = 'some-number';
+const ACCOUNTING_CODE = 'some-code';
+
 describe('Invoice line create', () => {
   setupApplication();
 
@@ -12,7 +15,12 @@ describe('Invoice line create', () => {
   const invoiceDetails = new InvoiceDetails();
 
   beforeEach(async function () {
-    const vendor = this.server.create('vendor');
+    const vendor = this.server.create('vendor', {
+      accounts: [{
+        accountNo: ACCOUNT_NUMBER,
+        appSystemNo: ACCOUNTING_CODE,
+      }],
+    });
     const invoice = this.server.create('invoice', {
       vendorId: vendor.id,
     });
@@ -28,6 +36,8 @@ describe('Invoice line create', () => {
   describe('Add data and save invoice line', () => {
     beforeEach(async function () {
       await invoiceLineForm.description.fill('test value');
+      await invoiceLineForm.accountNumberButton.click();
+      await invoiceLineForm.accountNumberOptions.list(1).click();
       await invoiceLineForm.buttonSave.click();
     });
 

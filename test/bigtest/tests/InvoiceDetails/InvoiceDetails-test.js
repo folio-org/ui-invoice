@@ -23,6 +23,10 @@ describe('Invoice details', () => {
       approvedBy: user.id,
     });
 
+    this.server.create('vendor', {
+      id: invoice.vendorId,
+    });
+
     this.visit(`/invoice/view/${invoice.id}`);
     await invoiceDetails.whenLoaded();
   });

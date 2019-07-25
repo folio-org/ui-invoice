@@ -7,6 +7,7 @@ import { LoadingPane } from '../../../common/components';
 import {
   invoiceResource,
   invoiceLinesResource,
+  VENDOR,
 } from '../../../common/resources';
 import InvoiceDetails from '../../InvoiceDetails';
 import { createInvoiceLineFromPOL } from './utils';
@@ -18,6 +19,7 @@ class InvoiceDetailsLayer extends Component {
       ...invoiceLinesResource,
       fetch: false,
     },
+    vendor: VENDOR,
     query: {},
   });
 
@@ -39,9 +41,10 @@ class InvoiceDetailsLayer extends Component {
   addLines = poLines => {
     const { resources, mutator } = this.props;
     const { id: invoiceId } = get(resources, ['invoice', 'records', 0]);
+    const vendor = get(resources, ['vendor', 'records', 0]);
 
     poLines.map(
-      poLine => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, invoiceId)),
+      poLine => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, invoiceId, vendor)),
     );
   }
 
