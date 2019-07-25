@@ -70,6 +70,9 @@ class InvoiceDetailsLayer extends Component {
     const invoice = get(resources, ['invoice', 'records', 0]);
     const hasLoaded = get(resources, 'invoice.hasLoaded');
     const totalInvoiceLines = get(resources, ['invoiceLines', 'other', 'totalRecords'], 0);
+    const invoiceTotalUnits = get(resources, 'invoiceLines.records.0.invoiceLines', []).reduce((total, line) => (
+      total + line.quantity
+    ), 0);
 
     return hasLoaded
       ? (
@@ -80,6 +83,7 @@ class InvoiceDetailsLayer extends Component {
           onEdit={onEdit}
           invoice={invoice}
           totalInvoiceLines={totalInvoiceLines}
+          invoiceTotalUnits={invoiceTotalUnits}
           deleteInvoice={this.deleteInvoice}
         />
       )

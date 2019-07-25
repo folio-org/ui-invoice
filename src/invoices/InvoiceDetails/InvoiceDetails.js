@@ -34,6 +34,11 @@ class InvoiceDetails extends Component {
     invoice: PropTypes.object.isRequired,
     deleteInvoice: PropTypes.func.isRequired,
     totalInvoiceLines: PropTypes.number.isRequired,
+    invoiceTotalUnits: PropTypes.number,
+  };
+
+  static defaultProps = {
+    invoiceTotalUnits: 0,
   };
 
   constructor(props, context) {
@@ -81,6 +86,7 @@ class InvoiceDetails extends Component {
       onClose,
       invoice,
       totalInvoiceLines,
+      invoiceTotalUnits,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
@@ -130,6 +136,7 @@ class InvoiceDetails extends Component {
               source={invoice.source}
               metadata={invoice.metadata}
               billTo={invoice.billTo}
+              invoiceTotalUnits={invoiceTotalUnits}
             />
           </Accordion>
           <Accordion
