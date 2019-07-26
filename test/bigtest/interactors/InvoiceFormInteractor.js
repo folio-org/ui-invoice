@@ -3,9 +3,6 @@ import {
   Interactor,
   isPresent,
   value,
-  text,
-  clickable,
-  collection,
 } from '@bigtest/interactor';
 
 import OptionListInteractor from './OptionListInteractor';
