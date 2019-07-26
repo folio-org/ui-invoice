@@ -12,3 +12,11 @@ export const getAccountNumberOptions = (accountNumbers) => accountNumbers.map(nu
   value: number,
   label: number,
 }));
+
+export const getAdjustmentPresetOptions = (configAdjustments) => [
+  { value: '', label: '' },
+  ...configAdjustments.map(d => ({
+    value: d.id,
+    label: d.adjustment.description,
+  })),
+];

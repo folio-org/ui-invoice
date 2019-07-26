@@ -71,6 +71,7 @@ class InvoiceLineForm extends Component {
     change: PropTypes.func.isRequired,
     vendorCode: PropTypes.string,
     accounts: PropTypes.arrayOf(PropTypes.object),
+    adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
   }
 
   static defaultProps = {
@@ -100,7 +101,7 @@ class InvoiceLineForm extends Component {
   };
 
   render() {
-    const { initialValues, onCancel, handleSubmit, pristine, submitting, accounts } = this.props;
+    const { initialValues, onCancel, handleSubmit, pristine, submitting, accounts, adjustmentsPresets } = this.props;
     const { sections } = this.state;
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const { accountNumber, poLineId, metadata } = initialValues;
@@ -269,7 +270,7 @@ class InvoiceLineForm extends Component {
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
                   >
-                    <AdjustmentsForm />
+                    <AdjustmentsForm adjustmentsPresets={adjustmentsPresets} />
                   </Accordion>
                 </AccordionSet>
               </Col>

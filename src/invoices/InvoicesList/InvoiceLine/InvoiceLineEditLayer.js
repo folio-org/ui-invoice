@@ -17,6 +17,7 @@ import {
   VENDOR,
 } from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
+import { getSettingsAdjustmentsList } from '../../../settings/adjustments/util';
 import InvoiceLineForm from '../../InvoiceLineForm';
 
 class InvoiceLineEditLayer extends Component {
@@ -88,6 +89,7 @@ class InvoiceLineEditLayer extends Component {
     const vendor = get(resources, ['vendor', 'records', 0]);
     const vendorCode = get(vendor, 'erpCode', '');
     const accounts = get(vendor, 'accounts', []);
+    const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
     return (
       <Layer
@@ -106,6 +108,7 @@ class InvoiceLineEditLayer extends Component {
               onCancel={onCloseEdit}
               vendorCode={vendorCode}
               accounts={accounts}
+              adjustmentsPresets={adjustmentsPresets}
             />
           )
           : <LoadingPane onClose={onCloseEdit} />

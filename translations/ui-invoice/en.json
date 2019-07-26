@@ -41,6 +41,7 @@
   "adjustment.type": "Select adjustment",
   "adjustment.description": "Description",
   "adjustment.amount": "Amount",
+  "adjustment.presetAdjustment": "Preset adjustment",
   "adjustments.type.percent": "Percent",
   "adjustments.type.amount": "Amount",
   "adjustments.prorate.byLine": "By line",

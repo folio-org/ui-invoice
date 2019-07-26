@@ -32,6 +32,7 @@ import {
 } from '../../common/utils';
 import {
   ACQUISITIONS_UNITS,
+  CONFIG_ADJUSTMENTS,
   configAddress,
   VENDORS,
 } from '../../common/resources';
@@ -119,6 +120,7 @@ class InvoicesList extends Component {
     vendors: VENDORS,
     acqUnits: ACQUISITIONS_UNITS,
     configAddress,
+    configAdjustments: CONFIG_ADJUSTMENTS,
   });
 
   constructor(props, context) {
