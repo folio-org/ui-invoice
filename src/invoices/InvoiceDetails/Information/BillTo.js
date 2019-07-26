@@ -12,8 +12,9 @@ import {
 
 import { parseAddressConfig } from '../../../common/utils';
 import { configAddressItem } from '../../../common/resources';
+import invocieCss from '../../Invoice.css';
 
-const BillTo = ({ resources }) => {
+const BillTo = ({ resources, billToId }) => {
   const billToAddress = get(resources, 'billToAddress.records.0');
   let billToValue = {};
 
@@ -26,7 +27,7 @@ const BillTo = ({ resources }) => {
       <Col xs={6}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.information.billToName" />}
-          value={billToValue.name}
+          value={billToId && billToValue.name}
         />
       </Col>
 
@@ -34,7 +35,7 @@ const BillTo = ({ resources }) => {
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.information.billToAddress" />}
         >
-          <div>{billToValue.address}</div>
+          <div className={invocieCss.addressWrapper}>{billToId && billToValue.address}</div>
         </KeyValue>
       </Col>
     </Row>

@@ -53,7 +53,7 @@ import {
 import ApprovedBy from '../../common/components/ApprovedBy';
 import AdjustmentsForm from '../AdjustmentsForm';
 
-import css from './InvoiceForm.css';
+import invocieCss from '../Invoice.css';
 
 const INVOICE_FORM = 'invoiceForm';
 const SECTIONS = {
@@ -263,7 +263,7 @@ class InvoiceForm extends Component {
                         />
                       </Col>
                       <Col
-                        className={css.addressWrapper}
+                        className={invocieCss.addressWrapper}
                         xs={3}
                       >
                         <KeyValue
