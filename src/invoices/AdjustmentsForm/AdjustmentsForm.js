@@ -47,6 +47,92 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled }) => {
     fields.push(newAdjustment);
   };
 
+  // eslint-disable-next-line react/prop-types
+  const renderTypeToggle = ({ input: { value, onChange } }) => {
+    return (
+      <KeyValue label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}>
+        <ButtonGroup
+          fullWidth
+          data-test-adjustments-type
+        >
+          <Button
+            onClick={() => onChange(ADJUSTMENT_TYPE_VALUES.percent)}
+            buttonStyle={value === ADJUSTMENT_TYPE_VALUES.percent ? 'primary' : 'default'}
+            data-test-adjustments-type-percent
+            disabled={disabled}
+          >
+            <FormattedMessage id="ui-invoice.adjustment.type.sign.percent" />
+          </Button>
+          <Button
+            onClick={() => onChange(ADJUSTMENT_TYPE_VALUES.amount)}
+            buttonStyle={value === ADJUSTMENT_TYPE_VALUES.amount ? 'primary' : 'default'}
+            data-test-adjustments-type-amount
+            disabled={disabled}
+          >
+            <FormattedMessage id="ui-invoice.adjustment.type.sign.amount" />
+          </Button>
+        </ButtonGroup>
+      </KeyValue>
+    );
+  };
+
+  const renderAdjustment = (elem) => {
+    return (
+      <Row>
+        <Col xs>
+          <Field
+            component={TextField}
+            fullWidth
+            label={<FormattedMessage id="ui-invoice.adjustment.description" />}
+            name={`${elem}.description`}
+            required
+            validate={validateRequired}
+            disabled={disabled}
+          />
+        </Col>
+        <Col xs>
+          <Field
+            component={TextField}
+            fullWidth
+            label={<FormattedMessage id="ui-invoice.adjustment.amount" />}
+            name={`${elem}.value`}
+            required
+            type="number"
+            validate={validateRequired}
+            disabled={disabled}
+          />
+        </Col>
+        <Col xs>
+          <Field
+            label="label"
+            name={`${elem}.type`}
+            component={renderTypeToggle}
+          />
+        </Col>
+        <Col xs>
+          <FieldSelect
+            label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
+            name={`${elem}.prorate`}
+            dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
+            required
+            validate={validateRequired}
+            disabled={disabled}
+          />
+        </Col>
+        <Col xs>
+          <FieldSelect
+            label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
+            name={`${elem}.relationToTotal`}
+            dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
+            required
+            validate={validateRequired}
+            disabled={disabled}
+          />
+        </Col>
+      </Row>
+    );
+  };
+
   return (
     <Row>
       <Col xs={12}>
@@ -65,88 +151,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled }) => {
           component={RepeatableField}
           name="adjustments"
           onAdd={onAdd}
-          renderField={(elem) => {
-            return (
-              <Row>
-                <Col xs>
-                  <Field
-                    component={TextField}
-                    fullWidth
-                    label={<FormattedMessage id="ui-invoice.adjustment.description" />}
-                    name={`${elem}.description`}
-                    required
-                    validate={validateRequired}
-                    disabled={disabled}
-                  />
-                </Col>
-                <Col xs>
-                  <Field
-                    component={TextField}
-                    fullWidth
-                    label={<FormattedMessage id="ui-invoice.adjustment.amount" />}
-                    name={`${elem}.value`}
-                    required
-                    type="number"
-                    validate={validateRequired}
-                    disabled={disabled}
-                  />
-                </Col>
-                <Col xs>
-                  <Field
-                    label="label"
-                    name={`${elem}.type`}
-                    component={({ input: { value, onChange } }) => {
-                      return (
-                        <KeyValue label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}>
-                          <ButtonGroup
-                            fullWidth
-                            data-test-adjustments-type
-                          >
-                            <Button
-                              onClick={() => onChange(ADJUSTMENT_TYPE_VALUES.percent)}
-                              buttonStyle={value === ADJUSTMENT_TYPE_VALUES.percent ? 'primary' : 'default'}
-                              data-test-adjustments-type-percent
-                              disabled={disabled}
-                            >
-                              <FormattedMessage id="ui-invoice.adjustment.type.sign.percent" />
-                            </Button>
-                            <Button
-                              onClick={() => onChange(ADJUSTMENT_TYPE_VALUES.amount)}
-                              buttonStyle={value === ADJUSTMENT_TYPE_VALUES.amount ? 'primary' : 'default'}
-                              data-test-adjustments-type-amount
-                              disabled={disabled}
-                            >
-                              <FormattedMessage id="ui-invoice.adjustment.type.sign.amount" />
-                            </Button>
-                          </ButtonGroup>
-                        </KeyValue>
-                      );
-                    }}
-                  />
-                </Col>
-                <Col xs>
-                  <FieldSelect
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
-                    name={`${elem}.prorate`}
-                    dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
-                    required
-                    validate={validateRequired}
-                    disabled={disabled}
-                  />
-                </Col>
-                <Col xs>
-                  <FieldSelect
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
-                    name={`${elem}.relationToTotal`}
-                    dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
-                    required
-                    validate={validateRequired}
-                    disabled={disabled}
-                  />
-                </Col>
-              </Row>
-            );
-          }}
+          renderField={renderAdjustment}
         />
       </Col>
     </Row>
