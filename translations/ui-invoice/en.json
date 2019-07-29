@@ -39,6 +39,8 @@
   "invoiceLine.total": "Total number of invoice lines: {total}",
 
   "adjustment.type": "Select adjustment",
+  "adjustment.type.sign.percent": "%",
+  "adjustment.type.sign.amount": "$",
   "adjustment.description": "Description",
   "adjustment.amount": "Amount",
   "adjustment.presetAdjustment": "Preset adjustment",

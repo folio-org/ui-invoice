@@ -101,7 +101,17 @@ class InvoiceLineForm extends Component {
   };
 
   render() {
-    const { initialValues, onCancel, handleSubmit, pristine, submitting, accounts, adjustmentsPresets } = this.props;
+    const {
+      accounts,
+      adjustmentsPresets,
+      change,
+      dispatch,
+      handleSubmit,
+      initialValues,
+      onCancel,
+      pristine,
+      submitting,
+    } = this.props;
     const { sections } = this.state;
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const { accountNumber, poLineId, metadata } = initialValues;
@@ -270,7 +280,12 @@ class InvoiceLineForm extends Component {
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
                   >
-                    <AdjustmentsForm adjustmentsPresets={adjustmentsPresets} />
+                    <AdjustmentsForm
+                      adjustmentsPresets={adjustmentsPresets}
+                      change={change}
+                      disabled={isEditPostApproval}
+                      dispatch={dispatch}
+                    />
                   </Accordion>
                 </AccordionSet>
               </Col>

@@ -295,7 +295,10 @@ class InvoiceForm extends Component {
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
                   >
-                    <AdjustmentsForm adjustmentsPresets={adjustmentsPresets} />
+                    <AdjustmentsForm
+                      adjustmentsPresets={adjustmentsPresets}
+                      disabled={isEditPostApproval}
+                    />
                   </Accordion>
                   <Accordion
                     id={SECTIONS.vendorInformation}
