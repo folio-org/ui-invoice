@@ -108,6 +108,7 @@ class SettingsAdjustmentsEditor extends Component {
                       name="type"
                       dataOptions={ADJUSTMENT_TYPE_OPTIONS}
                       required
+                      validate={validateRequired}
                     />
                   </Col>
                   <Col
@@ -142,6 +143,7 @@ class SettingsAdjustmentsEditor extends Component {
                       name="prorate"
                       dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
                       required
+                      validate={validateRequired}
                     />
                   </Col>
                   <Col
@@ -153,6 +155,7 @@ class SettingsAdjustmentsEditor extends Component {
                       name="relationToTotal"
                       dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
                       required
+                      validate={validateRequired}
                     />
                   </Col>
                 </Row>

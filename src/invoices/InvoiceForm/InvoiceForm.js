@@ -35,6 +35,7 @@ import {
   FieldSelection,
 } from '@folio/stripes-acq-components';
 
+import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
 import {
   INVOICE_STATUSES_OPTIONS,
   ORGANIZATION_STATUS_ACTIVE,
@@ -146,6 +147,7 @@ class InvoiceForm extends Component {
     const activeVendors = this.getActiveVendors();
     const selectedVendor = find(activeVendors, { id: get(formValues, 'vendorId') });
     const accountingCodeOptions = getAccountingCodeOptions(selectedVendor);
+    const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
     return (
       <form>
@@ -293,7 +295,10 @@ class InvoiceForm extends Component {
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
                   >
-                    <AdjustmentsForm />
+                    <AdjustmentsForm
+                      adjustmentsPresets={adjustmentsPresets}
+                      disabled={isEditPostApproval}
+                    />
                   </Accordion>
                   <Accordion
                     id={SECTIONS.vendorInformation}
