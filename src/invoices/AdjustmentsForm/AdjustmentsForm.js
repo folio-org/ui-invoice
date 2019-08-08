@@ -37,12 +37,14 @@ const getAdjustmentFromPreset = ({ description, prorate, relationToTotal, type, 
   value: defaultAmount,
 });
 
-const AdjustmentsForm = ({ adjustmentsPresets, disabled }) => {
+const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) => {
   const [adjPreset, setAdjPreset] = useState();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
       ? getAdjustmentFromPreset(adjPreset.adjustment)
       : { type: ADJUSTMENT_TYPE_VALUES.amount };
+
+    if (isLineAdjustments) delete newAdjustment.prorate;
 
     fields.push(newAdjustment);
   };
@@ -109,16 +111,20 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled }) => {
             component={renderTypeToggle}
           />
         </Col>
-        <Col xs>
-          <FieldSelect
-            label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
-            name={`${elem}.prorate`}
-            dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
-            required
-            validate={validateRequired}
-            disabled={disabled}
-          />
-        </Col>
+        {
+          !isLineAdjustments && (
+            <Col xs>
+              <FieldSelect
+                label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
+                name={`${elem}.prorate`}
+                dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
+                required
+                validate={validateRequired}
+                disabled={disabled}
+              />
+            </Col>
+          )
+        }
         <Col xs>
           <FieldSelect
             label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
@@ -161,11 +167,13 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled }) => {
 AdjustmentsForm.propTypes = {
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
   disabled: PropTypes.bool,
+  isLineAdjustments: PropTypes.bool,
 };
 
 AdjustmentsForm.defaultProps = {
   adjustmentsPresets: [],
   disabled: false,
+  isLineAdjustments: false,
 };
 
 export default AdjustmentsForm;
