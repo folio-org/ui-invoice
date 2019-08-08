@@ -33,7 +33,7 @@ class InvoiceLines extends Component {
         params: {
           query: (queryParams, pathComponents, resourceValues) => {
             if (resourceValues.invoiceId && resourceValues.invoiceId.length) {
-              return `(invoiceId==${resourceValues.invoiceId})`;
+              return `(invoiceId==${resourceValues.invoiceId}) sortBy metadata.createdDate invoiceLineNumber`;
             }
 
             return null;
