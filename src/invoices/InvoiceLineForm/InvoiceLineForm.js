@@ -104,8 +104,6 @@ class InvoiceLineForm extends Component {
     const {
       accounts,
       adjustmentsPresets,
-      change,
-      dispatch,
       handleSubmit,
       initialValues,
       onCancel,
@@ -282,9 +280,8 @@ class InvoiceLineForm extends Component {
                   >
                     <AdjustmentsForm
                       adjustmentsPresets={adjustmentsPresets}
-                      change={change}
+                      isLineAdjustments
                       disabled={isEditPostApproval}
-                      dispatch={dispatch}
                     />
                   </Accordion>
                 </AccordionSet>
