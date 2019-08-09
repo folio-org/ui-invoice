@@ -21,6 +21,7 @@ import {
   expandAll,
   toggleSection,
 } from '../../common/utils';
+import AdjustmentsDetails from '../AdjustmentsDetails';
 
 class InvoiceLineDetails extends Component {
   static propTypes = {
@@ -69,7 +70,7 @@ class InvoiceLineDetails extends Component {
       invoiceLine,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
-    const invoiceLineNumber = invoiceLine.invoiceLineNumber;
+    const { invoiceLineNumber, adjustments } = invoiceLine;
 
     const paneTitle = (
       <FormattedMessage
@@ -112,7 +113,9 @@ class InvoiceLineDetails extends Component {
           <Accordion
             id={SECTIONS_INVOICE_LINE.adjustments}
             label={<FormattedMessage id="ui-invoice.adjustments" />}
-          />
+          >
+            <AdjustmentsDetails adjustments={adjustments} />
+          </Accordion>
         </AccordionSet>
         {showConfirmDelete && (
           <ConfirmationModal
