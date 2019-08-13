@@ -98,6 +98,7 @@
         "description": "",
         "subPermissions": [
           "acquisitions-units.units.collection.get",
+          "acquisitions-units.memberships.collection.get",
           "configuration.entries.collection.get",
           "organizations-storage.organizations.collection.get",
           "users.collection.get"
@@ -111,6 +112,24 @@
         "subPermissions": [
           "ui-invoice.third-party-services",
           "invoice.all"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.acq.unit.assignment.assign",
+        "displayName": "Invoice: Assign acquisition units to new invoice",
+        "description": "",
+        "visible": true,
+        "subPermissions": [
+          "invoice.acquisitions-units-assignments.assign"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.acq.unit.assignment.manage",
+        "displayName": "Invoice: Manage acquisition units",
+        "description": "",
+        "visible": true,
+        "subPermissions": [
+          "invoice.acquisitions-units-assignments.manage"
         ]
       }
     ]

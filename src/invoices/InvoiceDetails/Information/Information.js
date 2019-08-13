@@ -8,7 +8,10 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
-import { sourceLabels } from '@folio/stripes-acq-components';
+import {
+  AcqUnitsView,
+  sourceLabels,
+} from '@folio/stripes-acq-components';
 
 import {
   getInvoiceStatusLabel,
@@ -32,6 +35,7 @@ const Information = ({
   total,
   billTo,
   invoiceTotalUnits,
+  acqUnits,
 }) => {
   return (
     <Fragment>
@@ -87,9 +91,7 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.information.acqUnits" />}
-          />
+          <AcqUnitsView units={acqUnits} />
         </Col>
 
         <Col xs={3}>
@@ -139,6 +141,7 @@ Information.propTypes = {
   metadata: PropTypes.object,
   billTo: PropTypes.string,
   invoiceTotalUnits: PropTypes.number,
+  acqUnits: PropTypes.arrayOf(PropTypes.string),
 };
 
 Information.defaultProps = {
@@ -152,6 +155,7 @@ Information.defaultProps = {
   total: 0,
   source: '',
   invoiceTotalUnits: 0,
+  acqUnits: [],
 };
 
 export default Information;

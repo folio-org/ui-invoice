@@ -31,6 +31,7 @@ import { stripesShape } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
+  AcqUnitsField,
   FieldDatepicker,
   FieldSelection,
 } from '@folio/stripes-acq-components';
@@ -55,6 +56,9 @@ import ApprovedBy from '../../common/components/ApprovedBy';
 import AdjustmentsForm from '../AdjustmentsForm';
 
 import invocieCss from '../Invoice.css';
+
+const CREATE_UNITS_PERM = 'invoice.acquisitions-units-assignments.assign';
+const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
 
 const INVOICE_FORM = 'invoiceForm';
 const SECTIONS = {
@@ -136,13 +140,13 @@ class InvoiceForm extends Component {
     const paneTitle = initialValues.id
       ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
       : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
-    const acquisitionsUnits = [];
     const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
     const metadata = initialValues.metadata;
     const approvedBy = get(initialValues, 'approvedBy');
+    const isEditMode = Boolean(initialValues.id);
 
     const activeVendors = this.getActiveVendors();
     const selectedVendor = find(activeVendors, { id: get(formValues, 'vendorId') });
@@ -219,12 +223,11 @@ class InvoiceForm extends Component {
                         <ApprovedBy approvedByUserId={approvedBy} />
                       </Col>
                       <Col data-test-col-acquisitions-unit xs={3}>
-                        <FieldSelection
-                          dataOptions={acquisitionsUnits}
-                          disabled
-                          label={<FormattedMessage id="ui-invoice.invoice.acquisitionsUnit" />}
-                          name="acquisitionsUnit"
-                          required
+                        <AcqUnitsField
+                          name="acqUnitIds"
+                          perm={isEditMode ? MANAGE_UNITS_PERM : CREATE_UNITS_PERM}
+                          isEdit={isEditMode}
+                          preselectedUnits={initialValues.acqUnitIds}
                         />
                       </Col>
                       <Col data-test-col-sub-total xs={3}>
