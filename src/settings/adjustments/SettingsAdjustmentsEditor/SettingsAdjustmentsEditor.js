@@ -39,19 +39,14 @@ class SettingsAdjustmentsEditor extends Component {
 
     return (
       <PaneMenu>
-        <FormattedMessage id="ui-invoice.save">
-          {ariaLabel => (
-            <Button
-              id="save-adjustment-button"
-              type="submit"
-              disabled={pristine || submitting}
-              style={{ marginBottom: '0', marginRight: '10px' }}
-            >
-              {ariaLabel}
-            </Button>
-          )}
-        </FormattedMessage>
-
+        <Button
+          id="save-adjustment-button"
+          type="submit"
+          marginBottom0
+          disabled={pristine || submitting}
+        >
+          <FormattedMessage id="ui-invoice.save" />
+        </Button>
       </PaneMenu>
     );
   }
