@@ -137,6 +137,7 @@ class InvoiceDetails extends Component {
               metadata={invoice.metadata}
               billTo={invoice.billTo}
               invoiceTotalUnits={invoiceTotalUnits}
+              acqUnits={invoice.acqUnitIds}
             />
           </Accordion>
           <Accordion
