@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import {
   Accordion,
   AccordionSet,
+  Button,
   Col,
   ConfirmationModal,
   ExpandAllButton,
@@ -16,6 +17,7 @@ import {
   expandAll,
   toggleSection,
 } from '../../common/utils';
+import { INVOICE_STATUS } from '../../common/constants';
 import {
   SECTIONS_INVOICE,
 } from '../constants';
@@ -23,6 +25,7 @@ import ActionMenu from './ActionMenu';
 import Information from './Information';
 import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
+import VoucherInformationContainer from './VoucherInformation';
 import styles from './InvoiceDetails.css';
 
 class InvoiceDetails extends Component {
@@ -90,12 +93,19 @@ class InvoiceDetails extends Component {
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
+    const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
 
     const paneTitle = (
       <FormattedMessage
         id="ui-invoice.invoice.details.paneTitle"
         values={{ vendorInvoiceNo }}
       />
+    );
+
+    const viewVoucherButton = (
+      <Button>
+        <FormattedMessage id="ui-invoice.invoice.details.voucher.button" />
+      </Button>
     );
 
     return (
@@ -165,6 +175,15 @@ class InvoiceDetails extends Component {
               accountingCode={invoice.accountingCode}
             />
           </Accordion>
+          {showVoucherInformation &&
+            <Accordion
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.title" />}
+              id={SECTIONS_INVOICE.VOUCHER}
+              displayWhenOpen={viewVoucherButton}
+            >
+              <VoucherInformationContainer invoiceId={invoice.id} />
+            </Accordion>
+          }
         </AccordionSet>
         {showConfirmDelete && (
           <ConfirmationModal
