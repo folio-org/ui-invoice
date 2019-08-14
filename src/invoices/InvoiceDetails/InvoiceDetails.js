@@ -149,7 +149,10 @@ class InvoiceDetails extends Component {
               </div>
             }
           >
-            <InvoiceLines invoiceId={invoice.id} />
+            <InvoiceLines
+              currency={invoice.currency}
+              invoiceId={invoice.id}
+            />
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
