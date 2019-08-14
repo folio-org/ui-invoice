@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { get } from 'lodash';
 
 import {
   Accordion,
@@ -11,6 +12,8 @@ import {
   ExpandAllButton,
   Pane,
   Row,
+  PaneMenu,
+  IconButton,
 } from '@folio/stripes/components';
 
 import {
@@ -38,10 +41,13 @@ class InvoiceDetails extends Component {
     deleteInvoice: PropTypes.func.isRequired,
     totalInvoiceLines: PropTypes.number.isRequired,
     invoiceTotalUnits: PropTypes.number,
+    tagsToggle: PropTypes.func.isRequired,
+    tagsEnabled: PropTypes.bool,
   };
 
   static defaultProps = {
     invoiceTotalUnits: 0,
+    tagsEnabled: false,
   };
 
   constructor(props, context) {
@@ -90,16 +96,38 @@ class InvoiceDetails extends Component {
       invoice,
       totalInvoiceLines,
       invoiceTotalUnits,
+      tagsEnabled,
+      tagsToggle,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
     const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
+    const tags = get(invoice, 'tags.tagList', []);
 
     const paneTitle = (
       <FormattedMessage
         id="ui-invoice.invoice.details.paneTitle"
         values={{ vendorInvoiceNo }}
       />
+    );
+
+    const lastMenu = (
+      <PaneMenu>
+        {tagsEnabled && (
+          <FormattedMessage id="ui-invoice.showTags">
+            {(title) => (
+              <IconButton
+                ariaLabel={title}
+                badgeCount={tags.length}
+                icon="tag"
+                id="clickable-show-tags"
+                onClick={tagsToggle}
+                title={title}
+              />
+            )}
+          </FormattedMessage>
+        )}
+      </PaneMenu>
     );
 
     const viewVoucherButton = (
@@ -116,6 +144,7 @@ class InvoiceDetails extends Component {
         onClose={onClose}
         paneTitle={paneTitle}
         actionMenu={this.renderActionMenu}
+        lastMenu={lastMenu}
       >
         <Row end="xs">
           <Col xs={12}>

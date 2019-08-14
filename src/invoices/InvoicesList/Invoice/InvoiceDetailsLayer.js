@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { withTags } from '@folio/stripes/smart-components';
+
 import { LoadingPane } from '../../../common/components';
 import {
   invoiceResource,
@@ -30,6 +32,12 @@ class InvoiceDetailsLayer extends Component {
     onEdit: PropTypes.func.isRequired,
     resources: PropTypes.object.isRequired,
     showToast: PropTypes.func.isRequired,
+    tagsToggle: PropTypes.func.isRequired,
+    tagsEnabled: PropTypes.bool,
+  }
+
+  static defaultProps = {
+    tagsEnabled: false,
   }
 
   createLine = () => {
@@ -66,6 +74,8 @@ class InvoiceDetailsLayer extends Component {
       onClose,
       onEdit,
       resources,
+      tagsEnabled,
+      tagsToggle,
     } = this.props;
     const invoice = get(resources, ['invoice', 'records', 0]);
     const hasLoaded = get(resources, 'invoice.hasLoaded');
@@ -85,10 +95,12 @@ class InvoiceDetailsLayer extends Component {
           totalInvoiceLines={totalInvoiceLines}
           invoiceTotalUnits={invoiceTotalUnits}
           deleteInvoice={this.deleteInvoice}
+          tagsEnabled={tagsEnabled}
+          tagsToggle={tagsToggle}
         />
       )
       : <LoadingPane onClose={onClose} />;
   }
 }
 
-export default InvoiceDetailsLayer;
+export default withTags(InvoiceDetailsLayer);
