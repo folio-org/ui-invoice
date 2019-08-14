@@ -131,6 +131,7 @@
   "invoice.details.lines.list.description": "Title",
   "invoice.details.lines.list.number": "Line number",
   "invoice.details.lines.list.quantity": "Quantity",
+  "invoice.details.lines.list.adjustments": "Adjustments",
   "invoice.details.lines.list.total": "Total",
 
   "invoice.details.vendor.title": "Vendor details",
