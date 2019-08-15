@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
+
 import { ConfigManager } from '@folio/stripes/smart-components';
-import { get } from "lodash";
+import { getConfigSetting } from '@folio/stripes-acq-components';
 
 import { stripesShape } from '@folio/stripes/core';
 
@@ -10,7 +11,6 @@ import {
   CONFIG_MODULE_INVOICE,
   CONFIG_NAME_VOUCHER_NUMBER,
 } from '../../common/constants';
-import { getVoucherNumberSetting } from './util';
 import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
 import { BASE_RESOURCE } from '../../common/resources/base';
 
@@ -69,7 +69,7 @@ class SettingsVoucherNumber extends Component {
     return (
       <this.configManager
         configName={CONFIG_NAME_VOUCHER_NUMBER}
-        getInitialValues={(config) => getVoucherNumberSetting(config, { sequenceNumber })}
+        getInitialValues={(config) => getConfigSetting(config, { sequenceNumber })}
         label={label}
         moduleName={CONFIG_MODULE_INVOICE}
         onBeforeSave={this.beforeSave}
