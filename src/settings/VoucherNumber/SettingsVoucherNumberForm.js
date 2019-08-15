@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Field } from 'redux-form';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -13,7 +14,7 @@ import {
 
 import css from './VoucherNumber.css';
 
-const SettingsVoucherNumberForm = () => (
+const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
   <Fragment>
     <Row>
       <Col xs={12}>
@@ -39,7 +40,7 @@ const SettingsVoucherNumberForm = () => (
       <Col xs={12}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.firstInSequence" />}
-          value={1}
+          value={firstSequenceNumber}
         />
       </Col>
     </Row>
@@ -47,13 +48,13 @@ const SettingsVoucherNumberForm = () => (
       <Col xs={12}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.nextInSequence" />}
-          value={1}
+          value={+firstSequenceNumber + 1}
         />
       </Col>
     </Row>
     <Row>
       <Col xs={12}>
-        <Button marginBottom0>
+        <Button onClick={onReset}>
           <FormattedMessage id="ui-invoice.settings.voucherNumber.reset" />
         </Button>
       </Col>
@@ -69,7 +70,11 @@ const SettingsVoucherNumberForm = () => (
       </Col>
     </Row>
   </Fragment>
-
 );
+
+SettingsVoucherNumberForm.propTypes = {
+  onReset: PropTypes.func.isRequired,
+  firstSequenceNumber: PropTypes.string.isRequired,
+};
 
 export default SettingsVoucherNumberForm;
