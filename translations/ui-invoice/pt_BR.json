@@ -149,5 +149,7 @@
     "settings.paneTitle": "Faturas",
     "adjustment.type.sign.percent": "%",
     "adjustment.type.sign.amount": "$",
-    "adjustment.presetAdjustment": "Ajuste predefinido"
+    "adjustment.presetAdjustment": "Ajuste predefinido",
+    "search.accountingCode": "Código contábil",
+    "invoice.details.lines.list.adjustments": "Ajustes"
 }
