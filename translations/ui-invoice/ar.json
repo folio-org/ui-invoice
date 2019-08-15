@@ -149,5 +149,7 @@
     "settings.paneTitle": "الفواتير",
     "adjustment.type.sign.percent": "%",
     "adjustment.type.sign.amount": "$",
-    "adjustment.presetAdjustment": "تقديم التعديل"
+    "adjustment.presetAdjustment": "تقديم التعديل",
+    "search.accountingCode": "رمز المحاسبة",
+    "invoice.details.lines.list.adjustments": "التعديلات"
 }

@@ -149,5 +149,7 @@
     "settings.paneTitle": "Invoices",
     "adjustment.type.sign.percent": "%",
     "adjustment.type.sign.amount": "$",
-    "adjustment.presetAdjustment": "Preset adjustment"
+    "adjustment.presetAdjustment": "Preset adjustment",
+    "search.accountingCode": "Accounting code",
+    "invoice.details.lines.list.adjustments": "Adjustments"
 }
