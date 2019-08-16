@@ -24,16 +24,12 @@ export const VOUCHER_LINES = {
 
 export const VOUCHER_NUMBER_START = {
   ...BASE_RESOURCE,
-  path: 'voucher-storage/voucher-number/start',
+  path: 'voucher/voucher-number/start',
   POST: {
-    headers: {
-      'Accept': 'text/plain',
-      'Content-Type': 'text/plain',
-    },
     path: (queryParams, pathComponents, resourceData) => {
       const sequenceNumber = get(resourceData, ['voucher_number', 'records', 0, 'sequenceNumber']);
 
-      if (sequenceNumber) return `voucher-storage/voucher-number/start/${sequenceNumber}`;
+      if (sequenceNumber) return `voucher/voucher-number/start/${sequenceNumber}`;
 
       return undefined;
     },
