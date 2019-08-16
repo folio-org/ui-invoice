@@ -1,6 +1,4 @@
-@import "@folio/stripes-components/lib/variables.css";
-
 .allowNumberEdit {
-  border-top: 1px solid var(--color-border);
-  padding-top: var(--gutter);
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 1em;
 }
