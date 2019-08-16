@@ -36,6 +36,8 @@ import {
   configAddress,
   VENDORS,
 } from '../../common/resources';
+
+import InvoiceForm from '../InvoiceForm';
 import {
   invoicesSearchTemplate,
   searchableIndexes,
@@ -43,7 +45,7 @@ import {
 import { filterConfig } from './invoicesListFilterConfig';
 import Invoice from './Invoice';
 import InvoicesListFilters from './InvoicesListFilters';
-import InvoiceForm from '../InvoiceForm';
+import { saveInvoice } from './utils';
 
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'total'];
 const columnMapping = {
@@ -74,6 +76,7 @@ class InvoicesList extends Component {
   static propTypes = {
     mutator: PropTypes.object.isRequired,
     resources: PropTypes.object.isRequired,
+    okapi: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
     stripes: PropTypes.object,
     onSelectRow: PropTypes.func,
@@ -135,11 +138,15 @@ class InvoicesList extends Component {
 
   // eslint-disable-next-line consistent-return
   onCreate = async (invoice) => {
-    const { mutator } = this.props;
-    const mutatorMethod = invoice.id ? 'PUT' : 'POST';
+    const { mutator, okapi } = this.props;
 
     try {
-      const { id } = await mutator.records[mutatorMethod](invoice);
+      const { id } = await saveInvoice(
+        invoice,
+        [],
+        mutator.records,
+        okapi,
+      );
 
       this.showToast('ui-invoice.invoice.invoiceHasBeenCreated');
       mutator.query.update({
