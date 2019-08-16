@@ -1,9 +1,9 @@
+import { get } from 'lodash';
 import {
   VOUCHERS_API,
   VOUCHER_LINES_API,
 } from '../constants';
 import { BASE_RESOURCE } from './base';
-import { get } from "lodash";
 
 export const VOUCHER = {
   ...BASE_RESOURCE,
