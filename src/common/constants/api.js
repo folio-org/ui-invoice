@@ -4,3 +4,5 @@ export const INVOICE_LINE_API = 'invoice/invoice-lines';
 export const VENDORS_API = 'organizations-storage/organizations';
 export const CONFIG_API = 'configurations/entries';
 export const USERS_API = 'users';
+export const VOUCHERS_API = 'voucher/vouchers';
+export const VOUCHER_LINES_API = 'voucher/voucher-lines';
