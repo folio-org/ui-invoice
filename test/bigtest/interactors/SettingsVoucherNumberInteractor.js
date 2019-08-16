@@ -1,12 +1,22 @@
 import {
   interactor,
   text,
+  is,
+  property,
+  attribute,
 } from '@bigtest/interactor';
-import Button from '../../../../ui-orders/test/bigtest/interactors/button';
+
+@interactor class ResetButton {
+  static defaultScope = '[data-test-invoice-settings-voucher-number-reset]';
+
+  isButton = is('button');
+  isDisabled = property('disabled');
+  disabled = attribute('disabled');
+}
 
 export default @interactor class SettingsVoucherNumberInteractor {
   static defaultScope = '[data-test-invoice-settings-voucher-number]';
 
-  resetButton = new Button('[data-test-invoice-settings-voucher-number-reset]');
+  resetButton = new ResetButton();
   startValue = text('[data-test-invoice-settings-voucher-number-start] [data-test-kv-value]');
 }
