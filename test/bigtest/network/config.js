@@ -3,6 +3,8 @@ import configLines from './configs/lines';
 import configVendors from './configs/vendors';
 import configUnits from './configs/units';
 import configUsers from './configs/users';
+import configVouchers from './configs/vouchers';
+import configVoucherLines from './configs/voucherLines';
 
 export default function config() {
   configInvoices(this);
@@ -10,4 +12,6 @@ export default function config() {
   configVendors(this);
   configUnits(this);
   configUsers(this);
+  configVouchers(this);
+  configVoucherLines(this);
 }

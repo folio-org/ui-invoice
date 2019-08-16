@@ -36,6 +36,10 @@ describe('Invoice details', () => {
     expect(invoiceDetails.approvedBy.value).to.include('Admin, Diku');
   });
 
+  it('voucher information accordion is not presented', () => {
+    expect(invoiceDetails.voucherAccordion).to.be.false;
+  });
+
   describe('Click on create line button', () => {
     beforeEach(async function () {
       await invoiceDetails.buttonCreateLine.click();

@@ -26,6 +26,7 @@ export default interactor(class InvoiceDetails {
   actions = new Actions();
   header = new Header();
   approvedBy = new ApprovedBy();
+  voucherAccordion = isPresent('#voucher');
 
   isLoaded = isPresent('[class*=paneTitleLabel---]');
 
