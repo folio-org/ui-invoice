@@ -3,6 +3,7 @@ import {
   VOUCHER_LINES_API,
 } from '../constants';
 import { BASE_RESOURCE } from './base';
+import { get } from "lodash";
 
 export const VOUCHER = {
   ...BASE_RESOURCE,
@@ -24,16 +25,17 @@ export const VOUCHER_LINES = {
 export const VOUCHER_NUMBER_START = {
   ...BASE_RESOURCE,
   path: 'voucher-storage/voucher-number/start',
-};
-
-export const VOUCHER_NUMBER_RESET = {
-  ...BASE_RESOURCE,
-  fetch: false,
-  path: 'voucher-storage/voucher-number/start/1',
   POST: {
     headers: {
       'Accept': 'text/plain',
       'Content-Type': 'text/plain',
+    },
+    path: (queryParams, pathComponents, resourceData) => {
+      const sequenceNumber = get(resourceData, ['voucher_number', 'records', 0, 'sequenceNumber']);
+
+      if (sequenceNumber) return `voucher-storage/voucher-number/start/${sequenceNumber}`;
+
+      return undefined;
     },
   },
 };

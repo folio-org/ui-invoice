@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import setupApplication from '../../helpers/setup-application';
 import SettingsVoucherNumberInteractor from '../../interactors/SettingsVoucherNumberInteractor';
 
-describe('Setting of Order Approvals', function () {
+describe('Setting of Voucher Number', function () {
   setupApplication();
 
   const setting = new SettingsVoucherNumberInteractor();

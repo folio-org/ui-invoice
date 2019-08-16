@@ -13,7 +13,6 @@ import {
 } from '../../common/constants';
 import {
   VOUCHER_NUMBER_START,
-  VOUCHER_NUMBER_RESET,
 } from '../../common/resources';
 
 import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
@@ -21,14 +20,13 @@ import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
 class SettingsVoucherNumber extends Component {
   static manifest = Object.freeze({
     voucherNumber: VOUCHER_NUMBER_START,
-    resetVoucherNumber: VOUCHER_NUMBER_RESET,
   });
 
   static propTypes = {
     label: PropTypes.node.isRequired,
     stripes: stripesShape.isRequired,
     mutator: PropTypes.shape({
-      resetVoucherNumber: PropTypes.shape({
+      voucherNumber: PropTypes.shape({
         POST: PropTypes.func.isRequired,
       }),
     }).isRequired,
@@ -46,12 +44,18 @@ class SettingsVoucherNumber extends Component {
   onReset = async () => {
     const { mutator } = this.props;
 
-    await mutator.resetVoucherNumber.POST({});
+    await mutator.voucherNumber.POST({});
+  };
+
+  getStartSequenceNumber = () => {
+    const { resources } = this.props;
+
+    return get(resources, ['voucherNumber', 'records', 0, 'sequenceNumber'], '');
   };
 
   render() {
-    const { label, resources } = this.props;
-    const sequenceNumber = get(resources, ['voucherNumber', 'records', 0, 'sequenceNumber'], '');
+    const { label } = this.props;
+    const sequenceNumber = this.getStartSequenceNumber();
 
     return (
       <this.configManager
