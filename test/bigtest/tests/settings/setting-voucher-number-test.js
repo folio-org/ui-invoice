@@ -16,4 +16,12 @@ describe('Setting of Voucher Number', function () {
   it('renders', () => {
     expect(setting.isPresent).to.be.true;
   });
+
+  it('reset button should be visible', () => {
+    expect(setting.resetButton.isPresent).to.be.true;
+  });
+
+  it('first number should be 10', () => {
+    expect(setting.startValue).to.be.equal('10');
+  });
 });

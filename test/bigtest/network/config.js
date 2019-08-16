@@ -5,6 +5,7 @@ import configUnits from './configs/units';
 import configUsers from './configs/users';
 import configVouchers from './configs/vouchers';
 import configVoucherLines from './configs/voucherLines';
+import configSettingVoucherNumber from './configs/settingVoucherNumber';
 
 export default function config() {
   configInvoices(this);
@@ -14,4 +15,5 @@ export default function config() {
   configUsers(this);
   configVouchers(this);
   configVoucherLines(this);
+  configSettingVoucherNumber(this);
 }

@@ -37,7 +37,10 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
       </Col>
     </Row>
     <Row>
-      <Col xs={12}>
+      <Col
+        xs={12}
+        data-test-invoice-settings-voucher-number-start
+      >
         <KeyValue
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.firstInSequence" />}
           value={firstSequenceNumber}
@@ -54,7 +57,10 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
     </Row>
     <Row>
       <Col xs={12}>
-        <Button onClick={onReset}>
+        <Button
+          onClick={onReset}
+          data-test-invoice-settings-voucher-number-reset
+        >
           <FormattedMessage id="ui-invoice.settings.voucherNumber.reset" />
         </Button>
       </Col>
