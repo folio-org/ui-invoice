@@ -13,6 +13,8 @@
   "button.edit": "Edit",
   "button.new": "New",
 
+  "showTags": "Show tags",
+
   "invoiceLine.editLayer": "Edit invoice line",
   "invoiceLine.paneTitle.edit": "Edit invoice line - {invoiceLineNumber}",
   "invoiceLine.paneTitle.create": "Create vendor invoice line",

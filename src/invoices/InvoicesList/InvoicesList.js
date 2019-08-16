@@ -65,6 +65,7 @@ const baseResultsFormatter = {
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
   total: invoice => formatAmount(invoice.total),
 };
+const getHelperResourcePath = (helper, id) => `${INVOICE_API}/${id}`;
 
 const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
@@ -234,6 +235,7 @@ class InvoicesList extends Component {
           onFilterChange={this.handleFilterChange}
           onChangeIndex={this.changeSearchIndex}
           selectedIndex={get(resources.query, 'qindex')}
+          getHelperResourcePath={getHelperResourcePath}
         />
         <Callout ref={this.callout} />
       </div>
