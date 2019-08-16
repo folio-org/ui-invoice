@@ -11,25 +11,12 @@ import {
   CONFIG_MODULE_INVOICE,
   CONFIG_NAME_VOUCHER_NUMBER,
 } from '../../common/constants';
+import {
+  VOUCHER_NUMBER_START,
+  VOUCHER_NUMBER_RESET,
+} from '../../common/resources';
+
 import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
-import { BASE_RESOURCE } from '../../common/resources/base';
-
-export const VOUCHER_NUMBER_START = {
-  ...BASE_RESOURCE,
-  path: 'voucher-storage/voucher-number/start',
-};
-
-export const VOUCHER_NUMBER_RESET = {
-  ...BASE_RESOURCE,
-  fetch: false,
-  path: 'voucher-storage/voucher-number/start/1',
-  POST: {
-    headers: {
-      'Accept': 'text/plain',
-      'Content-Type': 'text/plain',
-    },
-  },
-};
 
 class SettingsVoucherNumber extends Component {
   static manifest = Object.freeze({

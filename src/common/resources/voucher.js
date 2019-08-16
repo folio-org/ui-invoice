@@ -20,3 +20,20 @@ export const VOUCHER_LINES = {
   path: VOUCHER_LINES_API,
   records: 'voucherLines',
 };
+
+export const VOUCHER_NUMBER_START = {
+  ...BASE_RESOURCE,
+  path: 'voucher-storage/voucher-number/start',
+};
+
+export const VOUCHER_NUMBER_RESET = {
+  ...BASE_RESOURCE,
+  fetch: false,
+  path: 'voucher-storage/voucher-number/start/1',
+  POST: {
+    headers: {
+      'Accept': 'text/plain',
+      'Content-Type': 'text/plain',
+    },
+  },
+};
