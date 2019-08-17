@@ -24,4 +24,15 @@ describe('Setting of Voucher Number', function () {
   it('first number should be 10', () => {
     expect(setting.startValue).to.be.equal('10');
   });
+
+  describe('Setting of Voucher Number', function () {  
+    beforeEach(async function () {
+      await setting.resetButton.click();
+    });
+  
+    it('first number should be 10', () => {
+      expect(setting.startValue).to.be.equal('10');
+    });
+  });
+  
 });
