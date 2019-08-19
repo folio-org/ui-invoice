@@ -151,5 +151,20 @@
     "adjustment.type.sign.amount": "$",
     "adjustment.presetAdjustment": "تقديم التعديل",
     "search.accountingCode": "رمز المحاسبة",
-    "invoice.details.lines.list.adjustments": "التعديلات"
+    "invoice.details.lines.list.adjustments": "التعديلات",
+    "invoice.details.voucher.accountingCode": "رمز المحاسبة",
+    "invoice.details.voucher.amount": "المبلغ",
+    "invoice.details.voucher.button": "عرض القسيمة",
+    "invoice.details.voucher.disbursementAmount": "المبلغ المنفق",
+    "invoice.details.voucher.disbursementDate": "تاريخ الإنفاق",
+    "invoice.details.voucher.disbursementNumber": "رقم الإنفاق",
+    "invoice.details.voucher.exchangeRate": "سعر الصرف",
+    "invoice.details.voucher.externalAccountNumber": "رقم الحساب الخارجي",
+    "invoice.details.voucher.status": "الحالة",
+    "invoice.details.voucher.title": "معلومات القسيمة",
+    "invoice.details.voucher.total": "الإجمالي",
+    "invoice.details.voucher.voucherDate": "تاريخ القسيمة",
+    "invoice.details.voucher.voucherLines": "خطوط القسيمة",
+    "invoice.details.voucher.voucherNumber": "رقم القسيمة",
+    "showTags": "عرض الوسوم"
 }

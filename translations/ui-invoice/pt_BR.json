@@ -151,5 +151,20 @@
     "adjustment.type.sign.amount": "$",
     "adjustment.presetAdjustment": "Ajuste predefinido",
     "search.accountingCode": "Código contábil",
-    "invoice.details.lines.list.adjustments": "Ajustes"
+    "invoice.details.lines.list.adjustments": "Ajustes",
+    "invoice.details.voucher.accountingCode": "Código contábil",
+    "invoice.details.voucher.amount": "Quantia",
+    "invoice.details.voucher.button": "Ver voucher",
+    "invoice.details.voucher.disbursementAmount": "Valor do desembolso",
+    "invoice.details.voucher.disbursementDate": "Data do desembolso",
+    "invoice.details.voucher.disbursementNumber": "Número do desembolso",
+    "invoice.details.voucher.exchangeRate": "Taxa de câmbio",
+    "invoice.details.voucher.externalAccountNumber": "Número da conta externa",
+    "invoice.details.voucher.status": "Status",
+    "invoice.details.voucher.title": "Informações sobre o voucher",
+    "invoice.details.voucher.total": "Total",
+    "invoice.details.voucher.voucherDate": "Data do voucher",
+    "invoice.details.voucher.voucherLines": "Linhas do voucher",
+    "invoice.details.voucher.voucherNumber": "Número do voucher",
+    "showTags": "Mostrar tags"
 }

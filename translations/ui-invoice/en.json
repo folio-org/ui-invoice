@@ -12,6 +12,7 @@
   "button.delete": "Delete",
   "button.edit": "Edit",
   "button.new": "New",
+  "button.remove": "Remove",
 
   "showTags": "Show tags",
 
@@ -164,10 +165,17 @@
   "invoice.details.voucher.voucherLines": "Voucher lines",
   "invoice.details.voucher.voucherNumber": "Voucher number",
 
+  "invoice.link.name": "Link name",
+  "invoice.link.url": "External URL",
+  "invoice.link.add": "Add link",
+
+  "invoice.documents.title": "Documents",
+
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
   "voucherInformation": "Voucher information",
+  "linksAndDocuments": "Links & documents",
   "links": "Links",
   "invoiceLineInformation": "Invoice line information",
   "fundDistribution": "Fund distribution",

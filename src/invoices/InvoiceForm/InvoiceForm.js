@@ -54,6 +54,8 @@ import {
 } from '../../common/utils';
 import ApprovedBy from '../../common/components/ApprovedBy';
 import AdjustmentsForm from '../AdjustmentsForm';
+import InvoiceLinksForm from './InvoiceLinksForm';
+import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 
 import invocieCss from '../Invoice.css';
 
@@ -133,7 +135,16 @@ class InvoiceForm extends Component {
   }
 
   render() {
-    const { initialValues, onCancel, handleSubmit, pristine, submitting, parentResources, stripes } = this.props;
+    const {
+      initialValues,
+      onCancel,
+      handleSubmit,
+      pristine,
+      submitting,
+      parentResources,
+      stripes,
+      dispatch,
+    } = this.props;
     const { sections } = this.state;
     const vendorInvoiceNo = get(initialValues, 'vendorInvoiceNo', '');
     const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
@@ -413,6 +424,24 @@ class InvoiceForm extends Component {
                       </Col>
                     </Row>
                   </Accordion> */}
+                  <Accordion
+                    id={SECTIONS.documents}
+                    label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
+                  >
+                    <Row>
+                      <Col xs={12}>
+                        <InvoiceLinksForm />
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <Col xs={12}>
+                        <InvoiceDocumentsForm
+                          dispatch={dispatch}
+                        />
+                      </Col>
+                    </Row>
+                  </Accordion>
                 </AccordionSet>
               </Col>
             </Row>
