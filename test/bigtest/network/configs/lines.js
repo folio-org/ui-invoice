@@ -11,7 +11,14 @@ const configLines = server => {
     return schema.lines.create(attrs);
   });
 
-  server.put(`${INVOICE_LINE_API}/:id`, () => null);
+  server.put(`${INVOICE_LINE_API}/:id`, (schema, request) => {
+    const id = request.params.id;
+    const attrs = JSON.parse(request.requestBody);
+
+    schema.lines.find(id).update(attrs);
+
+    return null;
+  });
 
   server.get(`${INVOICE_LINE_API}/:id`, (schema, request) => {
     return schema.lines.find(request.params.id).attrs;

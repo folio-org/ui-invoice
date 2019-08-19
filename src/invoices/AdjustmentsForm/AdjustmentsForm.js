@@ -81,7 +81,10 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
   const renderAdjustment = (elem) => {
     return (
       <Row>
-        <Col xs>
+        <Col
+          data-test-adjustment-description
+          xs
+        >
           <Field
             component={TextField}
             fullWidth
@@ -92,7 +95,10 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
             disabled={disabled}
           />
         </Col>
-        <Col xs>
+        <Col
+          data-test-adjustment-amount
+          xs
+        >
           <Field
             component={TextField}
             fullWidth
@@ -125,7 +131,10 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
             </Col>
           )
         }
-        <Col xs>
+        <Col
+          data-test-adjustment-relation-to-total
+          xs
+        >
           <FieldSelect
             label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
             name={`${elem}.relationToTotal`}
@@ -155,6 +164,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
           canAdd={!disabled}
           canRemove={!disabled}
           component={RepeatableField}
+          id="adjustments"
           name="adjustments"
           onAdd={onAdd}
           renderField={renderAdjustment}

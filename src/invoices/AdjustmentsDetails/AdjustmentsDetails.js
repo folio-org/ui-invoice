@@ -27,7 +27,7 @@ const columnWidths = {
   relationToTotal: '20%',
 };
 const resultsFormatter = {
-  prorate: d => <FormattedMessage id={ADJUSTMENT_PRORATE_LABELS[d.prorate]} />,
+  prorate: d => d.prorate && <FormattedMessage id={ADJUSTMENT_PRORATE_LABELS[d.prorate]} />,
   relationToTotal: d => <FormattedMessage id={ADJUSTMENT_RELATION_TO_TOTAL_LABELS[d.relationToTotal]} />,
 };
 
@@ -40,6 +40,7 @@ const AdjustmentsDetails = ({ adjustments }) => {
           columnWidths={columnWidths}
           contentData={adjustments}
           formatter={resultsFormatter}
+          id="invoice-lines-adjustments-list"
           visibleColumns={visibleColumns}
         />
       </Col>

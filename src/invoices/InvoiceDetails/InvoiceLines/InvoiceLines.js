@@ -97,6 +97,7 @@ class InvoiceLines extends Component {
         </div>
 
         <MultiColumnList
+          id="invoice-lines-list"
           contentData={invoiceLinesItems}
           visibleColumns={visibleColumns}
           columnMapping={columnMapping}
