@@ -1,4 +1,6 @@
 import {
+  clickable,
+  collection,
   Interactor,
   interactor,
   isPresent,
@@ -22,6 +24,13 @@ import TagsAction from './common/TagsAction';
   value = text('[class*=kvRoot---]');
 }
 
+@interactor class LinesSection {
+  static defaultScope = '#invoiceLines';
+  list = collection('#invoice-lines-list [class*=mclRow---]', {
+    click: clickable(),
+  });
+}
+
 export default interactor(class InvoiceDetails {
   static defaultScope = '#pane-invoiceDetails';
 
@@ -33,6 +42,7 @@ export default interactor(class InvoiceDetails {
   header = new Header();
   approvedBy = new ApprovedBy();
   voucherAccordion = isPresent('#voucher');
+  linesSection = new LinesSection();
 
   isLoaded = isPresent('[class*=paneTitleLabel---]');
 
