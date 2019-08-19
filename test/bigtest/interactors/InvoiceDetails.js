@@ -5,11 +5,13 @@ import {
   text,
 } from '@bigtest/interactor';
 
+import TagsAction from './common/TagsAction';
+
 @interactor class Header {
   static defaultScope = '#pane-invoiceDetails [class*=paneTitleLabel---]';
 }
 
-@interactor class Actions {
+@interactor class MenuActions {
   static defaultScope = '#invoice-details-actions';
   deleteLine = new Interactor('[data-test-button-delete-invoice]');
   editLine = new Interactor('[data-test-button-edit-invoice]');
@@ -22,8 +24,12 @@ import {
 
 export default interactor(class InvoiceDetails {
   static defaultScope = '#pane-invoiceDetails';
+
+  // Actions
+  actions = new MenuActions();
+  tagsAction = new TagsAction('[data-test-invoice-tags-action]');
+
   buttonCreateLine = new Interactor('[data-test-button-create-line]');
-  actions = new Actions();
   header = new Header();
   approvedBy = new ApprovedBy();
   voucherAccordion = isPresent('#voucher');
