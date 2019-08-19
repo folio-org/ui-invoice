@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
+import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
+import { Callout } from '@folio/stripes/components';
 import { ConfigManager } from '@folio/stripes/smart-components';
 import { getConfigSetting } from '@folio/stripes-acq-components';
 
@@ -33,14 +36,27 @@ class SettingsVoucherNumber extends Component {
     super(props);
 
     this.configManager = props.stripes.connect(ConfigManager);
+    this.callout = React.createRef();
   }
 
-  beforeSave = (data) => JSON.stringify(data);
+  beforeSave = (data) => {
+    const { allowVoucherNumberEdit } = data;
 
-  onReset = async () => {
+    if (allowVoucherNumberEdit) this.onReset();
+    delete data.sequenceNumber;
+
+    return JSON.stringify(data);
+  };
+
+  onReset = () => {
     const { mutator } = this.props;
 
-    await mutator.voucherNumber.POST({});
+    mutator.voucherNumber.POST({}).catch(() => {
+      this.callout.current.sendCallout({
+        type: 'error',
+        message: <FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber.error" />,
+      });
+    });
   };
 
   getStartSequenceNumber = () => {
@@ -49,14 +65,27 @@ class SettingsVoucherNumber extends Component {
     return get(resources, ['voucherNumber', 'records', 0, 'sequenceNumber'], '');
   };
 
-  render() {
-    const { label } = this.props;
+  getInitialValues = (config) => {
     const sequenceNumber = this.getStartSequenceNumber();
+    const configSetting = getConfigSetting(config);
+
+    return {
+      ...configSetting,
+      sequenceNumber,
+    };
+  };
+
+  render() {
+    const { label, stripes } = this.props;
+
+    const sequenceNumber = this.getStartSequenceNumber();
+    const form = getFormValues('configForm')(stripes.store.getState());
+    const allowVoucherNumberEdit = get(form, 'allowVoucherNumberEdit', false);
 
     return (
       <this.configManager
         configName={CONFIG_NAME_VOUCHER_NUMBER}
-        getInitialValues={(config) => getConfigSetting(config, { sequenceNumber })}
+        getInitialValues={this.getInitialValues}
         label={label}
         moduleName={CONFIG_MODULE_INVOICE}
         onBeforeSave={this.beforeSave}
@@ -65,8 +94,10 @@ class SettingsVoucherNumber extends Component {
           <SettingsVoucherNumberForm
             onReset={this.onReset}
             firstSequenceNumber={sequenceNumber}
+            allowVoucherNumberEdit={allowVoucherNumberEdit}
           />
         </div>
+        <Callout ref={this.callout} />
       </this.configManager>
     );
   }
