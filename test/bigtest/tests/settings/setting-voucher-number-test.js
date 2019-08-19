@@ -53,7 +53,7 @@ describe('Setting of Voucher Number', function () {
         await setting.startVoucherNumberField.fill(15);
         await setting.resetButton.click();
       });
-  
+
       it('first number should be 15', () => {
         expect(setting.startValue).to.be.equal('15');
       });
