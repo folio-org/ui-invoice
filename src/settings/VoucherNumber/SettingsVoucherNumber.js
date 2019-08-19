@@ -40,9 +40,6 @@ class SettingsVoucherNumber extends Component {
   }
 
   beforeSave = (data) => {
-    const { allowVoucherNumberEdit } = data;
-
-    if (allowVoucherNumberEdit) this.onReset();
     delete data.sequenceNumber;
 
     return JSON.stringify(data);
