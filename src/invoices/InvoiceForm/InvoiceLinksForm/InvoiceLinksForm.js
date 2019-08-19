@@ -22,8 +22,11 @@ const InvoiceLinksForm = () => {
       const isDisabled = Boolean(fields.get(index).id);
 
       return (
-        <Row>
-          <Col xs={4}>
+        <Row data-test-invoice-form-link>
+          <Col
+            data-test-invoice-form-link-name
+            xs={4}
+          >
             <Field
               component={TextField}
               label={linkNameLabel}
@@ -31,7 +34,10 @@ const InvoiceLinksForm = () => {
               disabled={isDisabled}
             />
           </Col>
-          <Col xs={8}>
+          <Col
+            xs={8}
+            data-test-invoice-form-link-url
+          >
             <Field
               component={TextField}
               label={linkURLLabel}
@@ -49,6 +55,7 @@ const InvoiceLinksForm = () => {
     <Row>
       <Col xs={12}>
         <FieldArray
+          id="invoice-form-links"
           addLabel={addLinkLabel}
           component={RepeatableField}
           name="links"

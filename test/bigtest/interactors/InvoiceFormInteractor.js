@@ -3,6 +3,8 @@ import {
   Interactor,
   isPresent,
   value,
+  collection,
+  fillable,
 } from '@bigtest/interactor';
 
 import OptionListInteractor from './OptionListInteractor';
@@ -18,6 +20,22 @@ import OptionListInteractor from './OptionListInteractor';
 @interactor class VendorInteractor {
   options = new OptionListInteractor('#sl-invoice-vendor');
 }
+
+@interactor class DocumentsInteractor {
+  options = new OptionListInteractor('#documents');
+
+  documents = collection('[data-test-invoice-form-document]', {
+    removeButton: new Interactor('[data-test-remove-document-button]'),
+  });
+
+  addLinkButton = new Interactor('#invoice-form-links [data-test-repeatable-field-add-item-button]');
+  links = collection('#invoice-form-links [data-test-invoice-form-link]', {
+    fillName: fillable('[data-test-invoice-form-link] [name$="name"]'),
+    fillUrl: fillable('[data-test-invoice-form-link] [name$="url"]'),
+    removeButton: new Interactor('#invoice-form-links [data-test-repeatable-field-remove-item-button]'),
+  });
+}
+
 export default interactor(class InvoiceForm {
   static defaultScope = '#pane-invoice-form';
   isLoaded = isPresent('[class*=paneTitleLabel---]');
@@ -32,6 +50,7 @@ export default interactor(class InvoiceForm {
   vendor = new VendorInteractor();
   vendorButton = new Interactor('#invoice-vendor');
   invoiceInformation = new Interactor('#accordion-toggle-button-invoiceInformation');
+  documentsAndLinks = new DocumentsInteractor();
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);

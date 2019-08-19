@@ -69,7 +69,7 @@ const SECTIONS = {
   adjustments: 'adjustments',
   vendorInformation: 'vendorInformation',
   voucherInformation: 'voucherInformation',
-  links: 'links',
+  documents: 'documents',
 };
 
 const getLastMenu = (handleSubmit, pristine, submitting) => {

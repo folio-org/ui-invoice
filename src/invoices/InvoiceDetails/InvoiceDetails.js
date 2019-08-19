@@ -117,6 +117,7 @@ class InvoiceDetails extends Component {
           <FormattedMessage id="ui-invoice.showTags">
             {(title) => (
               <IconButton
+                data-test-invoice-tags-action
                 ariaLabel={title}
                 badgeCount={tags.length}
                 icon="tag"

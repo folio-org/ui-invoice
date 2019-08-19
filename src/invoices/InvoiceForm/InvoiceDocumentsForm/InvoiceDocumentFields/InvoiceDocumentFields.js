@@ -24,7 +24,10 @@ const InvoiceDocumentFields = ({ fields }) => (
         }`;
 
         return (
-          <Row key={invoiceDocument.id || index}>
+          <Row
+            data-test-invoice-form-document
+            key={invoiceDocument.id || index}
+          >
             <Col xs={12}>
               <div className={css.invoiceDocumentField}>
                 <div
@@ -37,7 +40,7 @@ const InvoiceDocumentFields = ({ fields }) => (
                 </div>
 
                 <IconButton
-                  data-test-remove-note-button
+                  data-test-remove-document-button
                   icon="trash"
                   onClick={() => fields.remove(index)}
                 >

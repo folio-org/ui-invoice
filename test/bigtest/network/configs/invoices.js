@@ -17,7 +17,7 @@ const configInvoices = server => {
       }, {});
     }
 
-    return schema.invoices.create(attrs);
+    return schema.invoices.create(attrs).attrs;
   });
 
   server.put(`${INVOICE_API}/:id`, () => null);
