@@ -1,0 +1,17 @@
+.invoiceDocumentField {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoiceDocumentFieldContent {
+  width: 100%;
+  padding: 5px;
+}
+
+.invoiceDocumentFieldContentEven {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.invoiceDocumentFieldContentOdd {
+  background-color: rgba(0, 0, 0, 0.03);
+}

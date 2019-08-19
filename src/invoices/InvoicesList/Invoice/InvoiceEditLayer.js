@@ -5,17 +5,28 @@ import {
 } from 'react-intl';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
+
 import {
   Layer,
 } from '@folio/stripes/components';
 
-import { invoiceResource } from '../../../common/resources';
+import {
+  invoiceResource,
+  invoiceDocumentsResource,
+} from '../../../common/resources';
 import { LoadingPane } from '../../../common/components';
+import {
+  saveInvoice,
+} from '../utils';
 import InvoiceForm from '../../InvoiceForm';
 
 class InvoiceEditLayer extends Component {
   static manifest = Object.freeze({
     invoice: invoiceResource,
+    invoiceDocuments: {
+      ...invoiceDocumentsResource,
+      accumulate: true,
+    },
   });
 
   static propTypes = {
@@ -24,15 +35,22 @@ class InvoiceEditLayer extends Component {
     parentResources: PropTypes.object.isRequired,
     parentMutator: PropTypes.object.isRequired,
     resources: PropTypes.object.isRequired,
+    mutator: PropTypes.object.isRequired,
     stripes: PropTypes.object.isRequired,
+    okapi: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
     showToast: PropTypes.func.isRequired,
   }
 
-  saveInvoice = (invoice) => {
-    const { onCloseEdit, parentMutator, showToast } = this.props;
+  componentDidMount() {
+    this.props.mutator.invoiceDocuments.reset();
+    this.props.mutator.invoiceDocuments.GET();
+  }
 
-    parentMutator.records.PUT(invoice)
+  saveInvoice = (invoice) => {
+    const { onCloseEdit, parentMutator, showToast, okapi, resources } = this.props;
+
+    saveInvoice(invoice, resources.invoiceDocuments.records, parentMutator.records, okapi)
       .then(() => {
         showToast('ui-invoice.invoice.invoiceHasBeenSaved');
         onCloseEdit();
@@ -54,7 +72,15 @@ class InvoiceEditLayer extends Component {
       resources,
       stripes,
     } = this.props;
-    const invoice = get(resources, ['invoice', 'records', 0]);
+
+    if (!get(resources, 'invoiceDocuments.hasLoaded', false)) return false;
+
+    const invoiceDocuments = get(resources, 'invoiceDocuments.records', []);
+    const invoice = {
+      ...get(resources, ['invoice', 'records', 0]),
+      documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
+      links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
+    };
     const hasLoaded = get(resources, 'invoice.hasLoaded');
 
     return (
