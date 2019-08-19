@@ -25,11 +25,7 @@ class SettingsVoucherNumber extends Component {
   static propTypes = {
     label: PropTypes.node.isRequired,
     stripes: stripesShape.isRequired,
-    mutator: PropTypes.shape({
-      voucherNumber: PropTypes.shape({
-        POST: PropTypes.func.isRequired,
-      }),
-    }).isRequired,
+    mutator: PropTypes.object.isRequired,
     resources: PropTypes.object,
   };
 
