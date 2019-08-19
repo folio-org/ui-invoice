@@ -7,3 +7,4 @@ export const CONFIG_API = 'configurations/entries';
 export const USERS_API = 'users';
 export const VOUCHERS_API = 'voucher/vouchers';
 export const VOUCHER_LINES_API = 'voucher/voucher-lines';
+export const VOUCHER_NUMBER_START_API = 'voucher/voucher-number/start';

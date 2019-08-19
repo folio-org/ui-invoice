@@ -5,6 +5,7 @@ export const DATE_FORMAT = 'MM/DD/YYYY';
 export const CONFIG_MODULE_TENANT = 'TENANT';
 export const CONFIG_MODULE_INVOICE = 'INVOICE';
 export const CONFIG_NAME_ADJUSTMENTS = 'adjustments';
+export const CONFIG_NAME_VOUCHER_NUMBER = 'voucherNumber';
 export const LIMIT_MAX = 2147483647;
 export const ORGANIZATION_STATUS_ACTIVE = 'Active';
 
