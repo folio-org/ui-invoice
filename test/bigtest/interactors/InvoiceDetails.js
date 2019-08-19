@@ -43,6 +43,7 @@ export default interactor(class InvoiceDetails {
   approvedBy = new ApprovedBy();
   voucherAccordion = isPresent('#voucher');
   linesSection = new LinesSection();
+  buttonVoucherView = new Interactor('[data-test-view-voucher-button]');
 
   isLoaded = isPresent('[class*=paneTitleLabel---]');
 
