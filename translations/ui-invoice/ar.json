@@ -166,5 +166,18 @@
     "invoice.details.voucher.voucherDate": "تاريخ القسيمة",
     "invoice.details.voucher.voucherLines": "خطوط القسيمة",
     "invoice.details.voucher.voucherNumber": "رقم القسيمة",
-    "showTags": "عرض الوسوم"
+    "showTags": "عرض الوسوم",
+    "button.remove": "إزالة",
+    "invoice.link.name": "اسم الرابط",
+    "invoice.link.url": "عنوان URL خارجي",
+    "invoice.link.add": "إضافة رابط",
+    "invoice.documents.title": "وثائق",
+    "linksAndDocuments": "الروابط والوثائق",
+    "settings.voucherNumber.label": "رقم القسيمة",
+    "settings.voucherNumber.prefix": "بادئة",
+    "settings.voucherNumber.startNumber": "رقم البدء",
+    "settings.voucherNumber.firstInSequence": "الرقم الأول في التسلسل",
+    "settings.voucherNumber.nextInSequence": "الرقم التالي في التسلسل",
+    "settings.voucherNumber.reset": "إعادة تعيين التسلسل",
+    "settings.voucherNumber.allowVoucherNumberEdit": "السماح بتحرير رقم القسيمة"
 }

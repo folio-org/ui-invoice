@@ -166,5 +166,18 @@
     "invoice.details.voucher.voucherDate": "Data do voucher",
     "invoice.details.voucher.voucherLines": "Linhas do voucher",
     "invoice.details.voucher.voucherNumber": "Número do voucher",
-    "showTags": "Mostrar tags"
+    "showTags": "Mostrar tags",
+    "button.remove": "Remover",
+    "invoice.link.name": "Nome do link",
+    "invoice.link.url": "URL externa",
+    "invoice.link.add": "Adicionar link",
+    "invoice.documents.title": "Documentos",
+    "linksAndDocuments": "Links & documentos",
+    "settings.voucherNumber.label": "Número do voucher",
+    "settings.voucherNumber.prefix": "Prefixo",
+    "settings.voucherNumber.startNumber": "Número inicial",
+    "settings.voucherNumber.firstInSequence": "Primeiro número em seqüência",
+    "settings.voucherNumber.nextInSequence": "Próximo número em sequência",
+    "settings.voucherNumber.reset": "Redefinir sequência",
+    "settings.voucherNumber.allowVoucherNumberEdit": "Permitir que o número do voucher seja editado"
 }
