@@ -15,6 +15,7 @@
   "button.remove": "Remove",
 
   "showTags": "Show tags",
+  "addTagFor": "Add tag for: {filterValue}",
 
   "invoiceLine.editLayer": "Edit invoice line",
   "invoiceLine.paneTitle.edit": "Edit invoice line - {invoiceLineNumber}",

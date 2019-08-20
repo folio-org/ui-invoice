@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { get } from 'lodash';
 
 import {
   Accordion,
@@ -12,6 +13,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 
+import TagsBadge from '../Tags/TagsBadge';
 import ActionMenu from './ActionMenu';
 import InvoiceLineInformation from './InvoiceLineInformation';
 import {
@@ -29,6 +31,7 @@ class InvoiceLineDetails extends Component {
     deleteInvoiceLine: PropTypes.func.isRequired,
     goToEditInvoiceLine: PropTypes.func.isRequired,
     invoiceLine: PropTypes.object.isRequired,
+    tagsToggle: PropTypes.func.isRequired,
   };
 
   constructor(props, context) {
@@ -68,14 +71,23 @@ class InvoiceLineDetails extends Component {
       closeInvoiceLine,
       deleteInvoiceLine,
       invoiceLine,
+      tagsToggle,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
     const { invoiceLineNumber, adjustments } = invoiceLine;
+    const tags = get(invoiceLine, ['tags', 'tagList'], []);
 
     const paneTitle = (
       <FormattedMessage
         id="ui-invoice.invoiceLine.paneTitle.view"
         values={{ invoiceLineNumber }}
+      />
+    );
+
+    const lastMenu = (
+      <TagsBadge
+        tagsToggle={tagsToggle}
+        tagsQuantity={tags.length}
       />
     );
 
@@ -87,6 +99,7 @@ class InvoiceLineDetails extends Component {
         onClose={closeInvoiceLine}
         paneTitle={paneTitle}
         actionMenu={this.renderActionMenu}
+        lastMenu={lastMenu}
       >
         <Row end="xs">
           <Col xs={12}>
