@@ -38,9 +38,7 @@ class SettingsVoucherNumber extends Component {
     this.callout = React.createRef();
   }
 
-  beforeSave = (data) => {
-    const { voucherNumberPrefix, allowVoucherNumberEdit } = data;
-
+  beforeSave = ({ voucherNumberPrefix, allowVoucherNumberEdit }) => {
     return JSON.stringify({ voucherNumberPrefix, allowVoucherNumberEdit });
   };
 
@@ -50,7 +48,12 @@ class SettingsVoucherNumber extends Component {
     mutator.voucherNumber.POST({}).catch(() => {
       this.callout.current.sendCallout({
         type: 'error',
-        message: <FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber.error" />,
+        message: (
+          <FormattedMessage
+            data-test-invoice-settings-voucher-number-error
+            id="ui-invoice.settings.voucherNumber.startNumber.error"
+          />
+        ),
       });
     });
   };
