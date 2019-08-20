@@ -32,9 +32,7 @@ export const VOUCHER_NUMBER_START = {
     path: (queryParams, pathComponents, resourceData, categories, stripesParams) => {
       const { stripes } = stripesParams;
 
-      const form = getFormValues('configForm')(stripes.store.getState()) || {};
-
-      let { sequenceNumber } = form;
+      let { sequenceNumber } = getFormValues('configForm')(stripes.store.getState()) || {};
 
       if (!sequenceNumber) {
         sequenceNumber = get(resourceData, ['voucher_number', 'records', 0, 'sequenceNumber']);

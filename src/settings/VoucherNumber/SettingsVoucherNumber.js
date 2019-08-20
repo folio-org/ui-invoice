@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
-import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
