@@ -14,7 +14,7 @@ import {
 
 import css from './VoucherNumber.css';
 
-const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, allowVoucherNumberEdit }) => (
+const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
   <Fragment>
     <Row>
       <Col xs={12}>
@@ -32,7 +32,6 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, allowVoucherN
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
           name="sequenceNumber"
           type="number"
-          disabled={!allowVoucherNumberEdit}
         />
       </Col>
     </Row>
@@ -81,7 +80,6 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, allowVoucherN
 SettingsVoucherNumberForm.propTypes = {
   onReset: PropTypes.func.isRequired,
   firstSequenceNumber: PropTypes.string.isRequired,
-  allowVoucherNumberEdit: PropTypes.bool,
 };
 
 export default SettingsVoucherNumberForm;

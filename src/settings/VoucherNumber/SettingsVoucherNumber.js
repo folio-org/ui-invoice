@@ -40,9 +40,9 @@ class SettingsVoucherNumber extends Component {
   }
 
   beforeSave = (data) => {
-    delete data.sequenceNumber;
+    const { voucherNumberPrefix, allowVoucherNumberEdit } = data;
 
-    return JSON.stringify(data);
+    return JSON.stringify({ voucherNumberPrefix, allowVoucherNumberEdit });
   };
 
   onReset = () => {
@@ -73,11 +73,9 @@ class SettingsVoucherNumber extends Component {
   };
 
   render() {
-    const { label, stripes } = this.props;
+    const { label } = this.props;
 
     const sequenceNumber = this.getStartSequenceNumber();
-    const form = getFormValues('configForm')(stripes.store.getState());
-    const allowVoucherNumberEdit = get(form, 'allowVoucherNumberEdit', false);
 
     return (
       <this.configManager
@@ -91,7 +89,6 @@ class SettingsVoucherNumber extends Component {
           <SettingsVoucherNumberForm
             onReset={this.onReset}
             firstSequenceNumber={sequenceNumber}
-            allowVoucherNumberEdit={allowVoucherNumberEdit}
           />
         </div>
         <Callout ref={this.callout} />

@@ -21,10 +21,6 @@ describe('Setting of Voucher Number', function () {
     expect(setting.resetButton.isPresent).to.be.true;
   });
 
-  it('start number field is disabled', () => {
-    expect(setting.startVoucherNumberField.isDisabled).to.be.true;
-  });
-
   it('first number should be 10', () => {
     expect(setting.startValue).to.be.equal('10');
   });
@@ -39,24 +35,14 @@ describe('Setting of Voucher Number', function () {
     });
   });
 
-  describe('allow edit start number', function () {
+  describe('edit start number and reset', function () {
     beforeEach(async function () {
-      await setting.allowEditVoucherNumber.clickInput();
+      await setting.startVoucherNumberField.fill(15);
+      await setting.resetButton.click();
     });
 
-    it('start number field is not disabled', () => {
-      expect(setting.startVoucherNumberField.isDisabled).to.be.false;
-    });
-
-    describe('edit start number and reset', function () {
-      beforeEach(async function () {
-        await setting.startVoucherNumberField.fill(15);
-        await setting.resetButton.click();
-      });
-
-      it('first number should be 15', () => {
-        expect(setting.startValue).to.be.equal('15');
-      });
+    it('first number should be 15', () => {
+      expect(setting.startValue).to.be.equal('15');
     });
   });
 });

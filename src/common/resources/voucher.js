@@ -34,10 +34,9 @@ export const VOUCHER_NUMBER_START = {
 
       const form = getFormValues('configForm')(stripes.store.getState()) || {};
 
-      const { allowVoucherNumberEdit } = form;
       let { sequenceNumber } = form;
 
-      if (!allowVoucherNumberEdit) {
+      if (!sequenceNumber) {
         sequenceNumber = get(resourceData, ['voucher_number', 'records', 0, 'sequenceNumber']);
       }
 
