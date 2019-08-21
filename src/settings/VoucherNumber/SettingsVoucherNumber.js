@@ -32,7 +32,7 @@ class SettingsVoucherNumber extends Component {
     resources: PropTypes.object,
   };
 
-  static state = {
+  state = {
     sequenceNumber: 1,
   };
 
