@@ -29,7 +29,7 @@ class SettingsVoucherNumber extends Component {
     label: PropTypes.node.isRequired,
     stripes: stripesShape.isRequired,
     mutator: PropTypes.object.isRequired,
-    resources: PropTypes.object,
+    resources: PropTypes.object.isRequired,
   };
 
   state = {
