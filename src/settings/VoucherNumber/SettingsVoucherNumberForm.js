@@ -14,7 +14,7 @@ import {
 
 import css from './VoucherNumber.css';
 
-const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, onChangeStartNumber }) => (
+const SettingsVoucherNumberForm = ({ onReset, sequenceNumber, onChangeStartNumber }) => (
   <Fragment>
     <Row>
       <Col xs={12}>
@@ -43,7 +43,7 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, onChangeStart
       >
         <KeyValue
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.firstInSequence" />}
-          value={firstSequenceNumber}
+          value={sequenceNumber}
         />
       </Col>
     </Row>
@@ -51,7 +51,7 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, onChangeStart
       <Col xs={12}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.nextInSequence" />}
-          value={+firstSequenceNumber + 1}
+          value={+sequenceNumber + 1}
         />
       </Col>
     </Row>
@@ -81,7 +81,7 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, onChangeStart
 SettingsVoucherNumberForm.propTypes = {
   onReset: PropTypes.func.isRequired,
   onChangeStartNumber: PropTypes.func.isRequired,
-  firstSequenceNumber: PropTypes.string.isRequired,
+  sequenceNumber: PropTypes.string.isRequired,
 };
 
 export default SettingsVoucherNumberForm;

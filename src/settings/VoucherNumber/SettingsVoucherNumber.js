@@ -71,16 +71,6 @@ class SettingsVoucherNumber extends Component {
     return get(resources, ['voucherNumber', 'records', 0, 'sequenceNumber'], '');
   };
 
-  getInitialValues = (config) => {
-    const sequenceNumber = this.getStartSequenceNumber();
-    const configSetting = getConfigSetting(config);
-
-    return {
-      ...configSetting,
-      sequenceNumber,
-    };
-  };
-
   onChangeStartNumber = (e) => {
     const { value } = e.target;
 
@@ -95,7 +85,7 @@ class SettingsVoucherNumber extends Component {
     return (
       <this.configManager
         configName={CONFIG_NAME_VOUCHER_NUMBER}
-        getInitialValues={this.getInitialValues}
+        getInitialValues={getConfigSetting}
         label={label}
         moduleName={CONFIG_MODULE_INVOICE}
         onBeforeSave={this.beforeSave}
@@ -103,7 +93,7 @@ class SettingsVoucherNumber extends Component {
         <div data-test-invoice-settings-voucher-number>
           <SettingsVoucherNumberForm
             onReset={this.onReset}
-            firstSequenceNumber={sequenceNumber}
+            sequenceNumber={sequenceNumber}
             onChangeStartNumber={this.onChangeStartNumber}
           />
         </div>
