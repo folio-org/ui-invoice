@@ -32,6 +32,10 @@ class SettingsVoucherNumber extends Component {
     resources: PropTypes.object,
   };
 
+  static state = {
+    sequenceNumber: 1,
+  };
+
   constructor(props) {
     super(props);
 
@@ -39,24 +43,16 @@ class SettingsVoucherNumber extends Component {
     this.callout = React.createRef();
   }
 
-  componentDidUpdate(prevProps) {
-    const sequenceNumber = this.getStartSequenceNumber();
-    const { resources } = prevProps;
-    const sequenceValue = get(resources, 'sequenceNumber', '');
-
-    if (sequenceValue !== sequenceNumber) {
-      const { mutator } = this.props;
-
-      mutator.sequenceNumber.replace(sequenceNumber);
-    }
-  }
-
   beforeSave = (data) => JSON.stringify(data);
 
-  onReset = () => {
+  onReset = async () => {
     const { mutator } = this.props;
+    const { sequenceNumber } = this.state;
 
-    mutator.voucherNumber.POST({}).catch(() => {
+    try {
+      await mutator.sequenceNumber.replace(sequenceNumber);
+      await mutator.voucherNumber.POST({});
+    } catch (e) {
       this.callout.current.sendCallout({
         type: 'error',
         message: (
@@ -66,7 +62,7 @@ class SettingsVoucherNumber extends Component {
           />
         ),
       });
-    });
+    }
   };
 
   getStartSequenceNumber = () => {
@@ -87,9 +83,8 @@ class SettingsVoucherNumber extends Component {
 
   onChangeStartNumber = (e) => {
     const { value } = e.target;
-    const { mutator } = this.props;
 
-    mutator.sequenceNumber.replace(value);
+    this.setState({ sequenceNumber: value });
   };
 
   render() {

@@ -31,7 +31,7 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, onChangeStart
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
           name="sequenceNumber"
           type="number"
-          value={firstSequenceNumber}
+          value={1}
           onChange={onChangeStartNumber}
         />
       </Col>
