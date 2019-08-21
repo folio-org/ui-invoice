@@ -1,5 +1,3 @@
-import { get } from 'lodash';
-import { getFormValues } from 'redux-form';
 import {
   VOUCHERS_API,
   VOUCHER_LINES_API,
@@ -28,15 +26,8 @@ export const VOUCHER_NUMBER_START = {
   ...BASE_RESOURCE,
   path: VOUCHER_NUMBER_START_API,
   POST: {
-
-    path: (queryParams, pathComponents, resourceData, categories, stripesParams) => {
-      const { stripes } = stripesParams;
-
-      let { sequenceNumber } = getFormValues('configForm')(stripes.store.getState()) || {};
-
-      if (!sequenceNumber) {
-        sequenceNumber = get(resourceData, ['voucher_number', 'records', 0, 'sequenceNumber']);
-      }
+    path: (queryParams, pathComponents, resourceData) => {
+      const { sequenceNumber } = resourceData;
 
       if (sequenceNumber) return `${VOUCHER_NUMBER_START_API}/${sequenceNumber}`;
 

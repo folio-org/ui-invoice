@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
+import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -22,6 +23,7 @@ import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
 class SettingsVoucherNumber extends Component {
   static manifest = Object.freeze({
     voucherNumber: VOUCHER_NUMBER_START,
+    sequenceNumber: {},
   });
 
   static propTypes = {
@@ -43,8 +45,12 @@ class SettingsVoucherNumber extends Component {
   };
 
   onReset = () => {
-    const { mutator } = this.props;
+    const { mutator, stripes } = this.props;
+    let { sequenceNumber } = getFormValues('configForm')(stripes.store.getState()) || {};
 
+    if (!sequenceNumber) sequenceNumber = this.getStartSequenceNumber();
+
+    mutator.sequenceNumber.replace(sequenceNumber);
     mutator.voucherNumber.POST({}).catch(() => {
       this.callout.current.sendCallout({
         type: 'error',
