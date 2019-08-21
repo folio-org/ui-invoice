@@ -14,7 +14,7 @@ import {
 
 import css from './VoucherNumber.css';
 
-const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
+const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber, onChangeStartNumber }) => (
   <Fragment>
     <Row>
       <Col xs={12}>
@@ -27,11 +27,12 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
     </Row>
     <Row>
       <Col xs={12}>
-        <Field
-          component={TextField}
+        <TextField
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
           name="sequenceNumber"
           type="number"
+          value={firstSequenceNumber}
+          onChange={onChangeStartNumber}
         />
       </Col>
     </Row>
@@ -79,6 +80,7 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
 
 SettingsVoucherNumberForm.propTypes = {
   onReset: PropTypes.func.isRequired,
+  onChangeStartNumber: PropTypes.func.isRequired,
   firstSequenceNumber: PropTypes.string.isRequired,
 };
 

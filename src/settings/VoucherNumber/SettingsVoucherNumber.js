@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { get } from 'lodash';
-import { getFormValues } from 'redux-form';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -40,17 +39,23 @@ class SettingsVoucherNumber extends Component {
     this.callout = React.createRef();
   }
 
-  beforeSave = ({ voucherNumberPrefix, allowVoucherNumberEdit }) => {
-    return JSON.stringify({ voucherNumberPrefix, allowVoucherNumberEdit });
-  };
+  componentDidUpdate(prevProps) {
+    const sequenceNumber = this.getStartSequenceNumber();
+    const { resources } = prevProps;
+    const sequenceValue = get(resources, 'sequenceNumber', '');
+
+    if (sequenceValue !== sequenceNumber) {
+      const { mutator } = this.props;
+
+      mutator.sequenceNumber.replace(sequenceNumber);
+    }
+  }
+
+  beforeSave = (data) => JSON.stringify(data);
 
   onReset = () => {
-    const { mutator, stripes } = this.props;
-    let { sequenceNumber } = getFormValues('configForm')(stripes.store.getState()) || {};
+    const { mutator } = this.props;
 
-    if (!sequenceNumber) sequenceNumber = this.getStartSequenceNumber();
-
-    mutator.sequenceNumber.replace(sequenceNumber);
     mutator.voucherNumber.POST({}).catch(() => {
       this.callout.current.sendCallout({
         type: 'error',
@@ -80,6 +85,13 @@ class SettingsVoucherNumber extends Component {
     };
   };
 
+  onChangeStartNumber = (e) => {
+    const { value } = e.target;
+    const { mutator } = this.props;
+
+    mutator.sequenceNumber.replace(value);
+  };
+
   render() {
     const { label } = this.props;
 
@@ -97,6 +109,7 @@ class SettingsVoucherNumber extends Component {
           <SettingsVoucherNumberForm
             onReset={this.onReset}
             firstSequenceNumber={sequenceNumber}
+            onChangeStartNumber={this.onChangeStartNumber}
           />
         </div>
         <Callout ref={this.callout} />

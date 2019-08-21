@@ -26,12 +26,6 @@ export const VOUCHER_NUMBER_START = {
   ...BASE_RESOURCE,
   path: VOUCHER_NUMBER_START_API,
   POST: {
-    path: (queryParams, pathComponents, resourceData) => {
-      const { sequenceNumber } = resourceData;
-
-      if (sequenceNumber) return `${VOUCHER_NUMBER_START_API}/${sequenceNumber}`;
-
-      return undefined;
-    },
+    path: `${VOUCHER_NUMBER_START_API}/%{sequenceNumber}`,
   },
 };
