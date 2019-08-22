@@ -11,6 +11,7 @@ import {
   Button,
   KeyValue,
 } from '@folio/stripes/components';
+import { DEFAULT_VOUCHER_START_NUMBER } from '../../common/constants';
 
 import css from './VoucherNumber.css';
 
@@ -31,7 +32,7 @@ const SettingsVoucherNumberForm = ({ onReset, sequenceNumber, onChangeStartNumbe
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
           name="sequenceNumber"
           type="number"
-          value={1}
+          value={DEFAULT_VOUCHER_START_NUMBER}
           onChange={onChangeStartNumber}
         />
       </Col>

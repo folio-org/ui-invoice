@@ -12,6 +12,7 @@ import { stripesShape } from '@folio/stripes/core';
 import {
   CONFIG_MODULE_INVOICE,
   CONFIG_NAME_VOUCHER_NUMBER,
+  DEFAULT_VOUCHER_START_NUMBER,
 } from '../../common/constants';
 import {
   VOUCHER_NUMBER_START,
@@ -22,7 +23,7 @@ import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
 class SettingsVoucherNumber extends Component {
   static manifest = Object.freeze({
     voucherNumber: VOUCHER_NUMBER_START,
-    sequenceNumber: {},
+    sequenceNumber: { initialValue: DEFAULT_VOUCHER_START_NUMBER },
   });
 
   static propTypes = {
@@ -30,10 +31,6 @@ class SettingsVoucherNumber extends Component {
     stripes: stripesShape.isRequired,
     mutator: PropTypes.object.isRequired,
     resources: PropTypes.object.isRequired,
-  };
-
-  state = {
-    sequenceNumber: 1,
   };
 
   constructor(props) {
@@ -47,10 +44,8 @@ class SettingsVoucherNumber extends Component {
 
   onReset = async () => {
     const { mutator } = this.props;
-    const { sequenceNumber } = this.state;
 
     try {
-      await mutator.sequenceNumber.replace(sequenceNumber);
       await mutator.voucherNumber.POST({});
     } catch (e) {
       this.callout.current.sendCallout({
@@ -72,9 +67,10 @@ class SettingsVoucherNumber extends Component {
   };
 
   onChangeStartNumber = (e) => {
+    const { mutator } = this.props;
     const { value } = e.target;
 
-    this.setState({ sequenceNumber: value });
+    mutator.sequenceNumber.replace(value);
   };
 
   render() {
