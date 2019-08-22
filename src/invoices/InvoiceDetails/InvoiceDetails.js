@@ -6,7 +6,6 @@ import { get } from 'lodash';
 import {
   Accordion,
   AccordionSet,
-  Button,
   Col,
   ConfirmationModal,
   ExpandAllButton,
@@ -131,12 +130,6 @@ class InvoiceDetails extends Component {
       </PaneMenu>
     );
 
-    const viewVoucherButton = (
-      <Button>
-        <FormattedMessage id="ui-invoice.invoice.details.voucher.button" />
-      </Button>
-    );
-
     return (
       <Pane
         id="pane-invoiceDetails"
@@ -178,6 +171,7 @@ class InvoiceDetails extends Component {
               billTo={invoice.billTo}
               invoiceTotalUnits={invoiceTotalUnits}
               acqUnits={invoice.acqUnitIds}
+              currency={invoice.currency}
             />
           </Accordion>
           <Accordion
@@ -206,13 +200,7 @@ class InvoiceDetails extends Component {
             />
           </Accordion>
           {showVoucherInformation &&
-            <Accordion
-              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.title" />}
-              id={SECTIONS_INVOICE.VOUCHER}
-              displayWhenOpen={viewVoucherButton}
-            >
-              <VoucherInformationContainer invoiceId={invoice.id} />
-            </Accordion>
+            <VoucherInformationContainer invoiceId={invoice.id} />
           }
         </AccordionSet>
         {showConfirmDelete && (

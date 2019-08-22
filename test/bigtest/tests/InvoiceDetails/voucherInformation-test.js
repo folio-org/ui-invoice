@@ -4,11 +4,13 @@ import { expect } from 'chai';
 import { INVOICE_STATUS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
+import VoucherView from '../../interactors/VoucherView';
 
 describe('Voucher information', () => {
   setupApplication();
 
   const invoiceDetails = new InvoiceDetails();
+  const voucherView = new VoucherView();
 
   beforeEach(async function () {
     const user = this.server.create('user', {
@@ -33,6 +35,7 @@ describe('Voucher information', () => {
 
     this.server.create('voucherLine', {
       voucherId: voucher.id,
+      fundDistributions: [{ code: 'TEST_CODE' }],
     });
 
     this.visit(`/invoice/view/${invoice.id}`);
@@ -41,5 +44,18 @@ describe('Voucher information', () => {
 
   it('voucher information accordion should be displayed', () => {
     expect(invoiceDetails.voucherAccordion).to.be.true;
+  });
+
+  describe('click voucher view button', () => {
+    beforeEach(async function () {
+      await invoiceDetails.buttonVoucherView.click();
+    });
+
+    it('should redirect to voucher view page', () => {
+      expect(invoiceDetails.isPresent).to.be.false;
+      expect(voucherView.isPresent).to.be.true;
+      expect(voucherView.voucherAccordion).to.be.true;
+      expect(voucherView.voucherLinesAccordion).to.be.true;
+    });
   });
 });

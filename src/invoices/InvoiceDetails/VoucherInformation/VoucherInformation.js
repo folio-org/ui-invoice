@@ -2,17 +2,17 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { stripesConnect } from '@folio/stripes/core';
 import {
-  Col,
   Headline,
-  KeyValue,
   MultiColumnList,
-  Row,
 } from '@folio/stripes/components';
 import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
 
-import { formatDate } from '../../../common/utils';
+import VoucherDetails from '../../Voucher/VoucherDetails';
+import {
+  groupByExternalAccNumber,
+  getTotalAmount,
+} from '../../Voucher/utils';
 
 const visibleColumns = ['externalAccountNumber', 'amount'];
 const columnMapping = {
@@ -25,10 +25,16 @@ const columnWidths = {
 };
 
 const VoucherInformation = ({ voucher, voucherLines = [] }) => {
+  const groupedVoucherLines = groupByExternalAccNumber(voucherLines);
+  const linesWithTotalAmount = Object.values(groupedVoucherLines).map(lines => ({
+    totalAmount: getTotalAmount(lines),
+    externalAccountNumber: lines[0].externalAccountNumber,
+  }));
+
   const resultsFormatter = {
     amount: line => (
       <AmountWithCurrencyField
-        amount={line.amount}
+        amount={line.totalAmount}
         currency={voucher.invoiceCurrency}
       />
     ),
@@ -36,82 +42,7 @@ const VoucherInformation = ({ voucher, voucherLines = [] }) => {
 
   return (
     <Fragment>
-      <Row>
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.status" />}
-            value={voucher.status}
-          />
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
-            value={voucher.voucherNumber}
-          />
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherDate" />}
-            value={formatDate(voucher.voucherDate)}
-          />
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.total" />}
-          >
-            <AmountWithCurrencyField
-              amount={voucher.amount}
-              currency={voucher.invoiceCurrency}
-            />
-          </KeyValue>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.exchangeRate" />}
-            value={voucher.exchangeRate}
-          />
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
-            value={voucher.disbursementNumber}
-          />
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
-            value={formatDate(voucher.disbursementDate)}
-          />
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
-          >
-            <AmountWithCurrencyField
-              amount={voucher.disbursementAmount}
-              currency={voucher.invoiceCurrency}
-            />
-          </KeyValue>
-        </Col>
-      </Row>
-
-      <Row>
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountingCode" />}
-            value={voucher.accountingCode}
-          />
-        </Col>
-      </Row>
+      <VoucherDetails voucher={voucher} />
 
       <Headline
         margin="none"
@@ -123,7 +54,7 @@ const VoucherInformation = ({ voucher, voucherLines = [] }) => {
       <MultiColumnList
         columnMapping={columnMapping}
         columnWidths={columnWidths}
-        contentData={voucherLines}
+        contentData={linesWithTotalAmount}
         formatter={resultsFormatter}
         visibleColumns={visibleColumns}
       />
@@ -136,4 +67,4 @@ VoucherInformation.propTypes = {
   voucherLines: PropTypes.arrayOf(PropTypes.object),
 };
 
-export default stripesConnect(VoucherInformation);
+export default VoucherInformation;
