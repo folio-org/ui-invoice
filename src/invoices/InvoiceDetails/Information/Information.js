@@ -10,12 +10,12 @@ import {
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AcqUnitsView,
+  AmountWithCurrencyField,
   sourceLabels,
 } from '@folio/stripes-acq-components';
 
 import {
   getInvoiceStatusLabel,
-  formatAmount,
   formatDate,
 } from '../../../common/utils';
 import ApprovedBy from '../../../common/components/ApprovedBy';
@@ -36,6 +36,7 @@ const Information = ({
   billTo,
   invoiceTotalUnits,
   acqUnits,
+  currency,
 }) => {
   return (
     <Fragment>
@@ -103,19 +104,28 @@ const Information = ({
 
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
-            {formatAmount(total)}
+            <AmountWithCurrencyField
+              amount={total}
+              currency={currency}
+            />
           </KeyValue>
         </Col>
 
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}>
-            {formatAmount(adjustmentsTotal)}
+            <AmountWithCurrencyField
+              amount={adjustmentsTotal}
+              currency={currency}
+            />
           </KeyValue>
         </Col>
 
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
-            {formatAmount(subTotal)}
+            <AmountWithCurrencyField
+              amount={subTotal}
+              currency={currency}
+            />
           </KeyValue>
         </Col>
 
@@ -142,6 +152,7 @@ Information.propTypes = {
   billTo: PropTypes.string,
   invoiceTotalUnits: PropTypes.number,
   acqUnits: PropTypes.arrayOf(PropTypes.string),
+  currency: PropTypes.string,
 };
 
 Information.defaultProps = {
@@ -156,6 +167,7 @@ Information.defaultProps = {
   source: '',
   invoiceTotalUnits: 0,
   acqUnits: [],
+  currency: '',
 };
 
 export default Information;

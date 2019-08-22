@@ -178,6 +178,7 @@ class InvoiceDetails extends Component {
               billTo={invoice.billTo}
               invoiceTotalUnits={invoiceTotalUnits}
               acqUnits={invoice.acqUnitIds}
+              currency={invoice.currency}
             />
           </Accordion>
           <Accordion
