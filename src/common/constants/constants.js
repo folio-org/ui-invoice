@@ -129,5 +129,3 @@ export const ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS = [
     value: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.separateFrom,
   },
 ];
-
-export const DEFAULT_VOUCHER_START_NUMBER = 1;
