@@ -13,6 +13,7 @@ import {
   makeQueryFunction,
 } from '@folio/stripes/smart-components';
 import {
+  AmountWithCurrencyField,
   changeSearchIndex,
   getActiveFilters,
   handleFilterChange,
@@ -27,7 +28,6 @@ import {
 } from '../../common/constants';
 import {
   getInvoiceStatusLabel,
-  formatAmount,
   formatDate,
 } from '../../common/utils';
 import {
@@ -65,7 +65,12 @@ const columnWidths = {
 const baseResultsFormatter = {
   invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
-  total: invoice => formatAmount(invoice.total),
+  total: invoice => (
+    <AmountWithCurrencyField
+      amount={invoice.total}
+      currency={invoice.currency}
+    />
+  ),
 };
 const getHelperResourcePath = (helper, id) => `${INVOICE_API}/${id}`;
 
