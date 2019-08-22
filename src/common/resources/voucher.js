@@ -17,6 +17,14 @@ export const VOUCHER = {
   },
 };
 
+export const VOUCHER_BY_ID = {
+  ...BASE_RESOURCE,
+  path: VOUCHERS_API,
+  GET: {
+    path: `${VOUCHERS_API}/:{voucherId}`,
+  },
+};
+
 export const VOUCHER_LINES = {
   ...BASE_RESOURCE,
   path: VOUCHER_LINES_API,

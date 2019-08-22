@@ -10,3 +10,8 @@ export const SECTIONS_INVOICE_LINE = {
   fundDistribution: 'fundDistribution',
   adjustments: 'adjustments',
 };
+
+export const SECTIONS_VOUCHER = {
+  VOUCHER: 'voucher',
+  VOUCHER_LINES: 'voucherLines',
+};

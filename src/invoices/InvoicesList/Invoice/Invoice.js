@@ -7,6 +7,7 @@ import queryString from 'query-string';
 
 import { stripesShape } from '@folio/stripes/core';
 
+import Voucher from '../../Voucher/Voucher';
 import InvoiceDetailsLayer from './InvoiceDetailsLayer';
 import InvoiceEditLayer from './InvoiceEditLayer';
 import InvoiceLine from '../InvoiceLine/InvoiceLine';
@@ -60,6 +61,17 @@ class Invoice extends Component {
                 />
               );
             }
+          }
+        />
+        <Route
+          path={`${path}/voucher/`}
+          render={
+            props => (
+              <Voucher
+                {...this.props}
+                {...props}
+              />
+            )
           }
         />
       </Switch>

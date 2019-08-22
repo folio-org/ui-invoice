@@ -200,5 +200,17 @@
 
   "validation.required": "Required!",
 
+  "voucher.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
+  "voucher.paneSubTitle": "Voucher number - {voucherNumber}",
+  "voucher.voucherTitle": "Voucher information",
+  "voucher.voucherLinesTitle": "Voucher lines",
+  "voucher.voucherLinesTitle.externalAccountNumber": "External account number: {externalAccountNumber}",
+  "voucher.voucherLines.lineNumber": "Line number",
+  "voucher.voucherLines.group": "Group",
+  "voucher.voucherLines.fundCode": "Fund code",
+  "voucher.voucherLines.externalAccountNumber": "External account number",
+  "voucher.voucherLines.amount": "Amount",
+  "voucher.voucherLines.total": "Total: ",
+
   "find-po-line-plugin-unavailable": "Find PO line plugin is not available"
 }
