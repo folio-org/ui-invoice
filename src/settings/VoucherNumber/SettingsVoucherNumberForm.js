@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import { Field } from 'redux-form';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -8,13 +7,12 @@ import {
   Row,
   Checkbox,
   TextField,
-  Button,
-  KeyValue,
 } from '@folio/stripes/components';
+import SettingsVoucherNumberReset from './SettingsVoucherNumberReset';
 
 import css from './VoucherNumber.css';
 
-const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
+const SettingsVoucherNumberForm = () => (
   <Fragment>
     <Row>
       <Col xs={12}>
@@ -25,46 +23,9 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
         />
       </Col>
     </Row>
-    <Row>
-      <Col xs={12}>
-        <Field
-          component={TextField}
-          label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
-          name="sequenceNumber"
-          disabled
-          required
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col
-        xs={12}
-        data-test-invoice-settings-voucher-number-start
-      >
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.settings.voucherNumber.firstInSequence" />}
-          value={firstSequenceNumber}
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col xs={12}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.settings.voucherNumber.nextInSequence" />}
-          value={+firstSequenceNumber + 1}
-        />
-      </Col>
-    </Row>
-    <Row>
-      <Col xs={12}>
-        <Button
-          onClick={onReset}
-          data-test-invoice-settings-voucher-number-reset
-        >
-          <FormattedMessage id="ui-invoice.settings.voucherNumber.reset" />
-        </Button>
-      </Col>
-    </Row>
+
+    <SettingsVoucherNumberReset />
+
     <Row>
       <Col xs={12} className={css.allowNumberEdit}>
         <Field
@@ -78,9 +39,6 @@ const SettingsVoucherNumberForm = ({ onReset, firstSequenceNumber }) => (
   </Fragment>
 );
 
-SettingsVoucherNumberForm.propTypes = {
-  onReset: PropTypes.func.isRequired,
-  firstSequenceNumber: PropTypes.string.isRequired,
-};
+SettingsVoucherNumberForm.propTypes = {};
 
 export default SettingsVoucherNumberForm;
