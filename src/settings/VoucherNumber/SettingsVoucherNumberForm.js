@@ -52,7 +52,6 @@ const SettingsVoucherNumberForm = ({ onReset, sequenceNumber, onChangeStartNumbe
       <Col xs={12}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.nextInSequence" />}
-          value={+sequenceNumber + 1}
         />
       </Col>
     </Row>
