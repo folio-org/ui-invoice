@@ -23,7 +23,15 @@ const configInvoices = server => {
   server.put(`${INVOICE_API}/:id`, () => null);
 
   server.get(`${INVOICE_API}/:id`, (schema, request) => {
-    return schema.invoices.find(request.params.id).attrs;
+    const invoiceSchema = schema.invoices.find(request.params.id);
+
+    if (!invoiceSchema) {
+      return new Response(404, {
+        'X-Okapi-Token': `myOkapiToken:${Date.now()}`,
+      }, {});
+    }
+
+    return invoiceSchema.attrs;
   });
 
   server.delete(`${INVOICE_API}/:id`, 'invoice');

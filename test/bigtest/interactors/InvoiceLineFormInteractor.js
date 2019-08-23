@@ -5,10 +5,12 @@ import {
   isPresent,
 } from '@bigtest/interactor';
 
-import OptionListInteractor from './OptionListInteractor';
-import TextFieldInteractor from './TextFieldInteractor';
-import ButtonInteractor from './ButtonInteractor';
-import SelectInteractor from './SelectInteractor';
+import {
+  OptionListInteractor,
+  TextFieldInteractor,
+  SelectInteractor,
+  ButtonInteractor,
+} from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 @interactor class AdjustmentsForm {
   static defaultScope = '#adjustments';

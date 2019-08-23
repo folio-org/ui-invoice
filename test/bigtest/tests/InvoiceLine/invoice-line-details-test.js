@@ -1,11 +1,12 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+
 import setupApplication from '../../helpers/setup-application';
 import InvoiceLineDetailsInteractor from '../../interactors/InvoiceLineDetailsInteractor';
 import InvoiceLineFormInteractor from '../../interactors/InvoiceLineFormInteractor';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
-import ConfirmationInteractor from '../../interactors/ConfirmationInteractor';
 
 describe('Invoice line details', () => {
   setupApplication();

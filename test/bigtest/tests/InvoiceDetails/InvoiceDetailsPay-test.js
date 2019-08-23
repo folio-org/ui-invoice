@@ -1,11 +1,12 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+
 import { INVOICE_STATUS } from '../../../../src/common/constants';
 
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
-import ConfirmationInteractor from '../../interactors/ConfirmationInteractor';
 
 const createInvoice = (server, status, withLines = true) => {
   const vendor = server.create('vendor');

@@ -1,3 +1,5 @@
+import { Response } from '@bigtest/mirage';
+
 import { INVOICE_LINE_API } from '../../../../src/common/constants';
 
 const configLines = server => {
@@ -21,7 +23,15 @@ const configLines = server => {
   });
 
   server.get(`${INVOICE_LINE_API}/:id`, (schema, request) => {
-    return schema.lines.find(request.params.id).attrs;
+    const invoiceLineSchema = schema.lines.find(request.params.id);
+
+    if (!invoiceLineSchema) {
+      return new Response(404, {
+        'X-Okapi-Token': `myOkapiToken:${Date.now()}`,
+      }, {});
+    }
+
+    return invoiceLineSchema.attrs;
   });
 
   server.delete(`${INVOICE_LINE_API}/:id`, 'line');
