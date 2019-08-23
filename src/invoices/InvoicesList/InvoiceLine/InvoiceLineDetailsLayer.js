@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -6,6 +6,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import { LoadingPane } from '../../../common/components';
 import { invoiceLineResource } from '../../../common/resources';
 import InvoiceLineDetails from '../../InvoiceLineDetails';
+import TagsContainer from '../../Tags';
 
 class InvoiceLineDetailsLayer extends Component {
   static manifest = Object.freeze({
@@ -19,6 +20,12 @@ class InvoiceLineDetailsLayer extends Component {
     resources: PropTypes.object.isRequired,
     showToast: PropTypes.func.isRequired,
   }
+
+  state = {
+    isTagsPaneOpened: false,
+  };
+
+  toggleTagsPane = () => this.setState(({ isTagsPaneOpened }) => ({ isTagsPaneOpened: !isTagsPaneOpened }));
 
   getInvoiceLine = () => get(this.props.resources, ['invoiceLine', 'records', 0]);
 
@@ -51,19 +58,32 @@ class InvoiceLineDetailsLayer extends Component {
 
   render() {
     const {
+      mutator,
       resources,
     } = this.props;
+    const { isTagsPaneOpened } = this.state;
+
     const invoiceLine = this.getInvoiceLine();
     const hasLoaded = get(resources, 'invoiceLine.hasLoaded');
 
     return hasLoaded
       ? (
-        <InvoiceLineDetails
-          closeInvoiceLine={this.closeInvoiceLine}
-          deleteInvoiceLine={this.deleteInvoiceLine}
-          goToEditInvoiceLine={this.goToEditInvoiceLine}
-          invoiceLine={invoiceLine}
-        />
+        <Fragment>
+          <InvoiceLineDetails
+            closeInvoiceLine={this.closeInvoiceLine}
+            deleteInvoiceLine={this.deleteInvoiceLine}
+            goToEditInvoiceLine={this.goToEditInvoiceLine}
+            invoiceLine={invoiceLine}
+            tagsToggle={this.toggleTagsPane}
+          />
+          {isTagsPaneOpened && (
+            <TagsContainer
+              putMutator={mutator.invoiceLine.PUT}
+              recordObj={invoiceLine}
+              onClose={this.toggleTagsPane}
+            />
+          )}
+        </Fragment>
       )
       : <LoadingPane onClose={this.closeInvoiceLine} />;
   }

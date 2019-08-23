@@ -6,6 +6,8 @@ import {
   text,
 } from '@bigtest/interactor';
 
+import TagsAction from './common/TagsAction';
+
 @interactor class Header {
   static defaultScope = '#pane-invoiceLineDetails [class*=paneTitleLabel---]';
 }
@@ -30,6 +32,7 @@ export default interactor(class InvoiceLineDetailsInteractor {
   actions = new Actions();
   header = new Header();
   buttonCloseLine = new Interactor('#pane-invoiceLineDetails [class*=paneHeader---] [class*=paneHeaderButtonsArea---] [class*=paneMenu---] [class*=iconButton---]');
+  tagsAction = new TagsAction('[data-test-invoice-line-tags-action]');
   isLoaded = isPresent('[class*=paneTitleLabel---]');
 
   whenLoaded() {

@@ -2,9 +2,11 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 export const DATE_FORMAT = 'MM/DD/YYYY';
+export const CONFIG_MODULE_TAGS = 'TAGS';
 export const CONFIG_MODULE_TENANT = 'TENANT';
 export const CONFIG_MODULE_INVOICE = 'INVOICE';
 export const CONFIG_NAME_ADJUSTMENTS = 'adjustments';
+export const CONFIG_NAME_TAGS_ENABLED = 'tags_enabled';
 export const CONFIG_NAME_VOUCHER_NUMBER = 'voucherNumber';
 export const LIMIT_MAX = 2147483647;
 export const ORGANIZATION_STATUS_ACTIVE = 'Active';
