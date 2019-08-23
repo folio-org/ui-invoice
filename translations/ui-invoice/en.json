@@ -166,11 +166,13 @@
   "invoice.details.voucher.voucherLines": "Voucher lines",
   "invoice.details.voucher.voucherNumber": "Voucher number",
 
+  "invoice.links.title": "Links",
   "invoice.link.name": "Link name",
   "invoice.link.url": "External URL",
   "invoice.link.add": "Add link",
 
   "invoice.documents.title": "Documents",
+  "invoice.documents.name": "Document name",
 
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",

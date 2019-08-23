@@ -28,6 +28,7 @@ import Information from './Information';
 import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
 import VoucherInformationContainer from './VoucherInformation';
+import DocumentsDetails from './DocumentsDetails';
 import styles from './InvoiceDetails.css';
 
 class InvoiceDetails extends Component {
@@ -37,6 +38,7 @@ class InvoiceDetails extends Component {
     onEdit: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     invoice: PropTypes.object.isRequired,
+    invoiceDocuments: PropTypes.arrayOf(PropTypes.object),
     deleteInvoice: PropTypes.func.isRequired,
     totalInvoiceLines: PropTypes.number.isRequired,
     invoiceTotalUnits: PropTypes.number,
@@ -56,7 +58,9 @@ class InvoiceDetails extends Component {
   }
 
   state = {
-    sections: {},
+    sections: {
+      [SECTIONS_INVOICE.DOCUMENTS]: false,
+    },
     showConfirmDelete: false,
   };
 
@@ -93,6 +97,7 @@ class InvoiceDetails extends Component {
       deleteInvoice,
       onClose,
       invoice,
+      invoiceDocuments,
       totalInvoiceLines,
       invoiceTotalUnits,
       tagsEnabled,
@@ -202,6 +207,12 @@ class InvoiceDetails extends Component {
           {showVoucherInformation &&
             <VoucherInformationContainer invoiceId={invoice.id} />
           }
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
+            id={SECTIONS_INVOICE.DOCUMENTS}
+          >
+            <DocumentsDetails />
+          </Accordion>
         </AccordionSet>
         {showConfirmDelete && (
           <ConfirmationModal
