@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Field,
+  getFormValues,
 } from 'redux-form';
 
 import {
@@ -29,6 +30,7 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   FieldDatepicker,
   FieldSelection,
+  FieldsFundDistribution,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -64,6 +66,9 @@ class InvoiceLineForm extends Component {
   static propTypes = {
     initialValues: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    stripes: PropTypes.shape({
+      store: PropTypes.object.isRequired,
+    }).isRequired,
     onCancel: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
@@ -109,8 +114,10 @@ class InvoiceLineForm extends Component {
       onCancel,
       pristine,
       submitting,
+      stripes,
     } = this.props;
     const { sections } = this.state;
+    const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const { accountNumber, poLineId, metadata } = initialValues;
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
@@ -270,10 +277,12 @@ class InvoiceLineForm extends Component {
                       </Col>
                     </Row>
                   </Accordion>
-                  {/* <Accordion
+                  <Accordion
                     id={SECTIONS.fundDistribution}
                     label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-                  /> */}
+                  >
+                    <FieldsFundDistribution formValues={formValues} />
+                  </Accordion>
                   <Accordion
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
