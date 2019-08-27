@@ -114,12 +114,10 @@ class InvoiceLineForm extends Component {
       onCancel,
       pristine,
       submitting,
-      stripes,
     } = this.props;
     const { sections } = this.state;
-    const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
-    const { accountNumber, poLineId, metadata } = initialValues;
+    const { accountNumber, poLineId, metadata, subTotal } = initialValues;
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
     const isDisabledToEditAccountNumber = isEditPostApproval || (poLineId && accountNumber);
 
@@ -281,7 +279,11 @@ class InvoiceLineForm extends Component {
                     id={SECTIONS.fundDistribution}
                     label={<FormattedMessage id="ui-invoice.fundDistribution" />}
                   >
-                    <FieldsFundDistribution formValues={formValues} />
+                    <FieldsFundDistribution
+                      disabled={isEditPostApproval}
+                      price={subTotal}
+                      formValues={initialValues}
+                    />
                   </Accordion>
                   <Accordion
                     id={SECTIONS.adjustments}
