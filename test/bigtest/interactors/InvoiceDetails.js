@@ -38,6 +38,8 @@ export default interactor(class InvoiceDetails {
   actions = new MenuActions();
   tagsAction = new TagsAction('[data-test-invoice-tags-action]');
 
+  buttonApproveInvoice = new Interactor('[data-test-invoice-action-approve]');
+
   buttonCreateLine = new Interactor('[data-test-button-create-line]');
   header = new Header();
   approvedBy = new ApprovedBy();
