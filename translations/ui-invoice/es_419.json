@@ -193,5 +193,6 @@
     "voucher.voucherLines.total": "Total: ",
     "settings.voucherNumber.startNumber.error": "Start number could not be saved.",
     "invoice.links.title": "Links",
-    "invoice.documents.name": "Document name"
+    "invoice.documents.name": "Document name",
+    "addTagFor": "Add tag for: {filterValue}"
 }
