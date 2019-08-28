@@ -79,7 +79,7 @@
     "invoiceLine.subTotal": "Sub-total",
     "adjustment.type": "Select adjustment",
     "adjustment.description": "Description",
-    "adjustment.amount": "Amount",
+    "adjustment.amount": "Importo",
     "invoiceLineInformation": "Invoice line information",
     "fundDistribution": "Fund distribution",
     "adjustments": "Adjustments",
@@ -193,5 +193,6 @@
     "voucher.voucherLines.total": "Total: ",
     "settings.voucherNumber.startNumber.error": "Start number could not be saved.",
     "invoice.links.title": "Links",
-    "invoice.documents.name": "Document name"
+    "invoice.documents.name": "Document name",
+    "addTagFor": "Add tag for: {filterValue}"
 }
