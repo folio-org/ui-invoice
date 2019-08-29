@@ -3,7 +3,6 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Field,
-  getFormValues,
 } from 'redux-form';
 
 import {
@@ -30,7 +29,7 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   FieldDatepicker,
   FieldSelection,
-  FieldsFundDistribution,
+  FundDistributionFieldsContainer,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -279,9 +278,9 @@ class InvoiceLineForm extends Component {
                     id={SECTIONS.fundDistribution}
                     label={<FormattedMessage id="ui-invoice.fundDistribution" />}
                   >
-                    <FieldsFundDistribution
+                    <FundDistributionFieldsContainer
                       disabled={isEditPostApproval}
-                      price={subTotal}
+                      totalAmount={subTotal}
                       formValues={initialValues}
                     />
                   </Accordion>
