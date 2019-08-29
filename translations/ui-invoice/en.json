@@ -175,6 +175,11 @@
   "invoice.documents.title": "Documents",
   "invoice.documents.name": "Document name",
 
+  "invoice.actions.approve": "Approve",
+  "invoice.actions.approve.success": "Invoice has been approved successfully",
+  "invoice.actions.approve.confirmation.heading": "Approve invoice",
+  "invoice.actions.approve.confirmation.message": "Are you sure you want to approve invoice?",
+
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
