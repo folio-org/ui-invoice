@@ -180,6 +180,11 @@
   "invoice.actions.approve.confirmation.heading": "Approve invoice",
   "invoice.actions.approve.confirmation.message": "Are you sure you want to approve invoice?",
 
+  "invoice.actions.pay": "Pay",
+  "invoice.actions.pay.success": "Invoice has been paid successfully",
+  "invoice.actions.pay.confirmation.heading": "Pay invoice",
+  "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?",
+
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
