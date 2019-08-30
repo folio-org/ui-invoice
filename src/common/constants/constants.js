@@ -27,6 +27,9 @@ export const INVOICE_STATUSES_OPTIONS = [
   { label: <FormattedMessage id="ui-invoice.invoice.status.cancelled" />, value: INVOICE_STATUS.cancelled },
 ];
 
+export const PRE_PAY_INVOICE_STATUSES_OPTIONS = INVOICE_STATUSES_OPTIONS
+  .filter(option => option.value !== INVOICE_STATUS.paid);
+
 export const PAYMENT_METHOD = {
   cash: 'Cash',
   creditCard: 'Credit Card P Card',

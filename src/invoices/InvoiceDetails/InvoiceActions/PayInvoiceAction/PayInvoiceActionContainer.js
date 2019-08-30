@@ -10,30 +10,30 @@ import {
 import {
   invoiceResource,
 } from '../../../../common/resources';
-import ApproveInvoiceAction from './ApproveInvoiceAction';
+import PayInvoiceAction from './PayInvoiceAction';
 
-const ApproveInvoiceActionContainer = ({ mutator, invoice }) => {
+const PayInvoiceActionContainer = ({ mutator, invoice }) => {
   return (
     <IfPermission perm="invoice.item.approve">
-      <ApproveInvoiceAction
+      <PayInvoiceAction
         invoice={invoice}
-        saveInvoice={mutator.invoiceApproval.PUT}
+        saveInvoice={mutator.invoicePay.PUT}
       />
     </IfPermission>
   );
 };
 
-ApproveInvoiceActionContainer.manifest = Object.freeze({
-  invoiceApproval: {
+PayInvoiceActionContainer.manifest = Object.freeze({
+  invoicePay: {
     ...invoiceResource,
     fetch: false,
     accumulate: true,
   },
 });
 
-ApproveInvoiceActionContainer.propTypes = {
+PayInvoiceActionContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
   invoice: PropTypes.object.isRequired,
 };
 
-export default withRouter(stripesConnect(ApproveInvoiceActionContainer));
+export default withRouter(stripesConnect(PayInvoiceActionContainer));
