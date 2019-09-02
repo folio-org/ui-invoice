@@ -14,7 +14,7 @@ import PayInvoiceAction from './PayInvoiceAction';
 
 const PayInvoiceActionContainer = ({ mutator, invoice }) => {
   return (
-    <IfPermission perm="invoice.item.approve">
+    <IfPermission perm="invoice.item.pay">
       <PayInvoiceAction
         invoice={invoice}
         saveInvoice={mutator.invoicePay.PUT}

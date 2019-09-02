@@ -35,7 +35,7 @@ const PayInvoiceAction = ({ saveInvoice, invoice }) => {
     <div className={css.payInvoiceActionWrapper}>
       <Button
         data-test-invoice-action-pay
-        buttonStyle="default"
+        buttonStyle="primary"
         onClick={togglePayConfirmation}
       >
         <FormattedMessage id="ui-invoice.invoice.actions.pay" />
