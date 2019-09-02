@@ -116,11 +116,20 @@
       },
       {
         "permissionName": "ui-invoice.approve",
-        "displayName": "Invoice: approve and pay",
+        "displayName": "Invoice: Approve invoice",
         "visible": true,
         "description": "",
         "subPermissions": [
           "invoice.item.approve"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.pay",
+        "displayName": "Invoice: Pay invoice",
+        "visible": true,
+        "description": "",
+        "subPermissions": [
+          "invoice.item.pay"
         ]
       },
       {
