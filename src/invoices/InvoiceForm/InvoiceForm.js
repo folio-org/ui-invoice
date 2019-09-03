@@ -39,6 +39,7 @@ import {
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
 import {
   INVOICE_STATUSES_OPTIONS,
+  PRE_PAY_INVOICE_STATUSES_OPTIONS,
   ORGANIZATION_STATUS_ACTIVE,
   PAYMENT_METHODS_OPTIONS,
 } from '../../common/constants';
@@ -47,6 +48,8 @@ import {
   getAccountingCodeOptions,
   getAddressOptions,
   getOrganizationOptions,
+  isPayable,
+  isPaid,
   IS_EDIT_POST_APPROVAL,
   parseAddressConfigs,
   toggleSection,
@@ -164,6 +167,10 @@ class InvoiceForm extends Component {
     const accountingCodeOptions = getAccountingCodeOptions(selectedVendor);
     const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
+    const statusOptions = isPayable(initialValues.status) || isPaid(initialValues.status)
+      ? INVOICE_STATUSES_OPTIONS
+      : PRE_PAY_INVOICE_STATUSES_OPTIONS;
+
     return (
       <form>
         <Paneset>
@@ -215,7 +222,7 @@ class InvoiceForm extends Component {
                       </Col>
                       <Col data-test-col-status xs={3}>
                         <FieldSelection
-                          dataOptions={INVOICE_STATUSES_OPTIONS}
+                          dataOptions={statusOptions}
                           id="invoice-status"
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}
                           name="status"

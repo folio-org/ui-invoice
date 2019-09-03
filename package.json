@@ -115,6 +115,24 @@
         ]
       },
       {
+        "permissionName": "ui-invoice.approve",
+        "displayName": "Invoice: Approve invoice",
+        "visible": true,
+        "description": "",
+        "subPermissions": [
+          "invoice.item.approve"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.pay",
+        "displayName": "Invoice: Pay invoice",
+        "visible": true,
+        "description": "",
+        "subPermissions": [
+          "invoice.item.pay"
+        ]
+      },
+      {
         "permissionName": "ui-invoice.acq.unit.assignment.assign",
         "displayName": "Invoice: Assign acquisition units to new invoice",
         "description": "",

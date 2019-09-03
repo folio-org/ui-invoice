@@ -75,7 +75,7 @@ const TagsForm = ({
   const addTag = useCallback(
     ({ inputValue }) => {
       const tag = inputValue.replace(/\s|\|/g, '').toLowerCase();
-      const updatedTags = savedTags.concat(tag);
+      const updatedTags = savedTags.concat(tag).filter(Boolean);
 
       setSavedTags(updatedTags);
       onAdd(updatedTags);

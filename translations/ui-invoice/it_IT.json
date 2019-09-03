@@ -79,7 +79,7 @@
     "invoiceLine.subTotal": "Sub-total",
     "adjustment.type": "Select adjustment",
     "adjustment.description": "Description",
-    "adjustment.amount": "Amount",
+    "adjustment.amount": "Importo",
     "invoiceLineInformation": "Invoice line information",
     "fundDistribution": "Fund distribution",
     "adjustments": "Adjustments",
@@ -193,5 +193,14 @@
     "voucher.voucherLines.total": "Total: ",
     "settings.voucherNumber.startNumber.error": "Start number could not be saved.",
     "invoice.links.title": "Links",
-    "invoice.documents.name": "Document name"
+    "invoice.documents.name": "Document name",
+    "addTagFor": "Add tag for: {filterValue}",
+    "invoice.actions.approve": "Approve",
+    "invoice.actions.approve.success": "Invoice has been approved successfully",
+    "invoice.actions.approve.confirmation.heading": "Approve invoice",
+    "invoice.actions.approve.confirmation.message": "Are you sure you want to approve invoice?",
+    "invoice.actions.pay": "Pay",
+    "invoice.actions.pay.success": "Invoice has been paid successfully",
+    "invoice.actions.pay.confirmation.heading": "Pay invoice",
+    "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?"
 }

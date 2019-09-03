@@ -1,10 +1,14 @@
 // eslint-disable-next-line filenames/match-exported
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Switch from 'react-router-dom/Switch';
 import Route from 'react-router-dom/Route';
 
 import { stripesShape } from '@folio/stripes/core';
+import { Callout } from '@folio/stripes/components';
+import {
+  ToastContext,
+} from '@folio/stripes-acq-components';
 
 import Invoices from './invoices';
 import Settings from './settings';
@@ -18,6 +22,8 @@ class Invoice extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.callout = React.createRef();
 
     this.connectedInvoices = props.stripes.connect(Invoices);
   }
@@ -35,12 +41,17 @@ class Invoice extends React.Component {
     }
 
     return (
-      <Switch>
-        <Route
-          path={path}
-          component={this.connectedInvoices}
-        />
-      </Switch>
+      <Fragment>
+        <ToastContext.Provider value={this.callout}>
+          <Switch>
+            <Route
+              path={path}
+              component={this.connectedInvoices}
+            />
+          </Switch>
+        </ToastContext.Provider>
+        <Callout ref={this.callout} />
+      </Fragment>
     );
   }
 }
