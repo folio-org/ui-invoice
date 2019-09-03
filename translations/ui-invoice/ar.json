@@ -194,5 +194,13 @@
     "settings.voucherNumber.startNumber.error": "تعذر حفظ رقم البدء",
     "invoice.links.title": "الروابط",
     "invoice.documents.name": "اسم الوثيقة",
-    "addTagFor": "إضافة وسم لـ: {filterValue}"
+    "addTagFor": "إضافة وسم لـ: {filterValue}",
+    "invoice.actions.approve": "قبول",
+    "invoice.actions.approve.success": "تمت قبول الفاتورة بنجاح",
+    "invoice.actions.approve.confirmation.heading": "قبول الفاتورة",
+    "invoice.actions.approve.confirmation.message": "هل أنت متأكد من أنك تريد قبول الفانورة؟",
+    "invoice.actions.pay": "سداد",
+    "invoice.actions.pay.success": "تم سداد الفاتورة بنجاح",
+    "invoice.actions.pay.confirmation.heading": "سداد الفاتورة",
+    "invoice.actions.pay.confirmation.message": "هل أنت متأكد من أنك تريد سداد الفانورة؟"
 }
