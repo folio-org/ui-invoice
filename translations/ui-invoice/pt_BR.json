@@ -194,5 +194,13 @@
     "settings.voucherNumber.startNumber.error": "O número inicial não pôde ser salvo.",
     "invoice.links.title": "Links",
     "invoice.documents.name": "Nome do documento",
-    "addTagFor": "Adicionar tag para: {filterValue}"
+    "addTagFor": "Adicionar tag para: {filterValue}",
+    "invoice.actions.approve": "Aprovar",
+    "invoice.actions.approve.success": "A fatura foi aprovada com sucesso",
+    "invoice.actions.approve.confirmation.heading": "Aprovar fatura",
+    "invoice.actions.approve.confirmation.message": "Tem certeza de que deseja aprovar a fatura?",
+    "invoice.actions.pay": "Pagar",
+    "invoice.actions.pay.success": "A fatura foi paga com sucesso",
+    "invoice.actions.pay.confirmation.heading": "Pagar fatura",
+    "invoice.actions.pay.confirmation.message": "Tem certeza de que deseja pagar a fatura?"
 }
