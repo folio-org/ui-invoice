@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Field,
+  getFormValues,
 } from 'redux-form';
 
 import {
@@ -29,7 +30,8 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   FieldDatepicker,
   FieldSelection,
-  FundDistributionFieldsContainer,
+  FundDistributionFields,
+  parseNumber,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -38,6 +40,7 @@ import {
   toggleSection,
   validateRequired,
   getAccountNumberOptions,
+  calculateTotalAmount,
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
@@ -113,10 +116,13 @@ class InvoiceLineForm extends Component {
       onCancel,
       pristine,
       submitting,
+      stripes,
     } = this.props;
     const { sections } = this.state;
+    const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
-    const { accountNumber, poLineId, metadata, subTotal } = initialValues;
+    const { accountNumber, poLineId, metadata } = initialValues;
+    const totalAmount = calculateTotalAmount(formValues);
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
     const isDisabledToEditAccountNumber = isEditPostApproval || (poLineId && accountNumber);
 
@@ -229,6 +235,7 @@ class InvoiceLineForm extends Component {
                           name="subTotal"
                           required
                           type="number"
+                          parse={parseNumber}
                           validate={validateRequired}
                         />
                       </Col>
@@ -278,10 +285,10 @@ class InvoiceLineForm extends Component {
                     id={SECTIONS.fundDistribution}
                     label={<FormattedMessage id="ui-invoice.fundDistribution" />}
                   >
-                    <FundDistributionFieldsContainer
+                    <FundDistributionFields
                       disabled={isEditPostApproval}
-                      totalAmount={subTotal}
-                      formValues={initialValues}
+                      totalAmount={totalAmount}
+                      formValues={formValues}
                     />
                   </Accordion>
                   <Accordion

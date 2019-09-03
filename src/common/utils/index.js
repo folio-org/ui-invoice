@@ -6,3 +6,4 @@ export * from './parseAddressConfigs';
 export * from './showToast';
 export * from './toggleSection';
 export * from './validators';
+export * from './calculateTotalAmount';
