@@ -31,7 +31,7 @@ import {
   FieldDatepicker,
   FieldSelection,
   FundDistributionFields,
-  parseNumber,
+  parseNumberFieldValue,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -235,7 +235,7 @@ class InvoiceLineForm extends Component {
                           name="subTotal"
                           required
                           type="number"
-                          parse={parseNumber}
+                          parse={parseNumberFieldValue}
                           validate={validateRequired}
                         />
                       </Col>

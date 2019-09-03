@@ -19,7 +19,7 @@ import {
 } from '@folio/stripes/components';
 import {
   FieldSelect,
-  parseNumber,
+  parseNumberFieldValue,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -109,7 +109,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
             name={`${elem}.value`}
             required
             type="number"
-            parse={parseNumber}
+            parse={parseNumberFieldValue}
             validate={validateRequired}
             disabled={disabled}
           />
