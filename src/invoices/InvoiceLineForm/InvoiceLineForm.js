@@ -25,6 +25,7 @@ import {
   Row,
   TextField,
 } from '@folio/stripes/components';
+import { stripesShape } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
@@ -68,9 +69,7 @@ class InvoiceLineForm extends Component {
   static propTypes = {
     initialValues: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    stripes: PropTypes.shape({
-      store: PropTypes.object.isRequired,
-    }).isRequired,
+    stripes: stripesShape.isRequired,
     onCancel: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
