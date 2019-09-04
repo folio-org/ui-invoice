@@ -13,6 +13,10 @@ import {
   Row,
 } from '@folio/stripes/components';
 
+import {
+  FundDistributionView,
+} from '@folio/stripes-acq-components';
+
 import TagsBadge from '../Tags/TagsBadge';
 import ActionMenu from './ActionMenu';
 import InvoiceLineInformation from './InvoiceLineInformation';
@@ -76,6 +80,8 @@ class InvoiceLineDetails extends Component {
     const { sections, showConfirmDelete } = this.state;
     const { invoiceLineNumber, adjustments } = invoiceLine;
     const tags = get(invoiceLine, ['tags', 'tagList'], []);
+    const fundDistributions = get(invoiceLine, 'fundDistributions', []);
+    const total = get(invoiceLine, 'total', 0);
 
     const paneTitle = (
       <FormattedMessage
@@ -122,7 +128,12 @@ class InvoiceLineDetails extends Component {
           <Accordion
             id={SECTIONS_INVOICE_LINE.fundDistribution}
             label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-          />
+          >
+            <FundDistributionView
+              fundDistributions={fundDistributions}
+              totalAmount={total}
+            />
+          </Accordion>
           <Accordion
             id={SECTIONS_INVOICE_LINE.adjustments}
             label={<FormattedMessage id="ui-invoice.adjustments" />}

@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Field,
+  getFormValues,
 } from 'redux-form';
 
 import {
@@ -24,11 +25,14 @@ import {
   Row,
   TextField,
 } from '@folio/stripes/components';
+import { stripesShape } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   FieldDatepicker,
   FieldSelection,
+  FundDistributionFields,
+  parseNumberFieldValue,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -37,6 +41,7 @@ import {
   toggleSection,
   validateRequired,
   getAccountNumberOptions,
+  calculateTotalAmount,
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
@@ -64,6 +69,7 @@ class InvoiceLineForm extends Component {
   static propTypes = {
     initialValues: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
+    stripes: stripesShape.isRequired,
     onCancel: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
@@ -109,10 +115,13 @@ class InvoiceLineForm extends Component {
       onCancel,
       pristine,
       submitting,
+      stripes,
     } = this.props;
     const { sections } = this.state;
+    const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const { accountNumber, poLineId, metadata } = initialValues;
+    const totalAmount = calculateTotalAmount(formValues);
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
     const isDisabledToEditAccountNumber = isEditPostApproval || (poLineId && accountNumber);
 
@@ -225,6 +234,7 @@ class InvoiceLineForm extends Component {
                           name="subTotal"
                           required
                           type="number"
+                          parse={parseNumberFieldValue}
                           validate={validateRequired}
                         />
                       </Col>
@@ -270,10 +280,16 @@ class InvoiceLineForm extends Component {
                       </Col>
                     </Row>
                   </Accordion>
-                  {/* <Accordion
+                  <Accordion
                     id={SECTIONS.fundDistribution}
                     label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-                  /> */}
+                  >
+                    <FundDistributionFields
+                      disabled={isEditPostApproval}
+                      totalAmount={totalAmount}
+                      formValues={formValues}
+                    />
+                  </Accordion>
                   <Accordion
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}

@@ -17,7 +17,10 @@ import {
   Selection,
   TextField,
 } from '@folio/stripes/components';
-import { FieldSelect } from '@folio/stripes-acq-components';
+import {
+  FieldSelect,
+  parseNumberFieldValue,
+} from '@folio/stripes-acq-components';
 
 import {
   ADJUSTMENT_PRORATE_OPTIONS,
@@ -106,6 +109,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
             name={`${elem}.value`}
             required
             type="number"
+            parse={parseNumberFieldValue}
             validate={validateRequired}
             disabled={disabled}
           />
