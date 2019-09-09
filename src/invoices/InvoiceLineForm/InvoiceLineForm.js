@@ -127,7 +127,7 @@ class InvoiceLineForm extends Component {
     const totalAmount = calculateTotalAmount(formValues);
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
     const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
-    const isDisabledEditFundDistribution = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
+    const isDisabledEditFundDistribution = IS_EDIT_POST_APPROVAL(invoice.id, invoice.status);
 
     const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
     const paneTitle = initialValues.id
