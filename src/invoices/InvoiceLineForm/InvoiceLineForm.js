@@ -75,6 +75,7 @@ class InvoiceLineForm extends Component {
     submitting: PropTypes.bool.isRequired,
     dispatch: PropTypes.func.isRequired,
     change: PropTypes.func.isRequired,
+    invoice: PropTypes.object.isRequired,
     vendorCode: PropTypes.string,
     accounts: PropTypes.arrayOf(PropTypes.object),
     adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
@@ -116,6 +117,7 @@ class InvoiceLineForm extends Component {
       pristine,
       submitting,
       stripes,
+      invoice,
     } = this.props;
     const { sections } = this.state;
     const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
@@ -124,6 +126,7 @@ class InvoiceLineForm extends Component {
     const totalAmount = calculateTotalAmount(formValues);
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
     const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
+    const isDisabledEditFundDistribution = IS_EDIT_POST_APPROVAL(invoice.id, invoice.status);
 
     const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
     const paneTitle = initialValues.id
@@ -285,7 +288,7 @@ class InvoiceLineForm extends Component {
                     label={<FormattedMessage id="ui-invoice.fundDistribution" />}
                   >
                     <FundDistributionFields
-                      disabled={isEditPostApproval}
+                      disabled={isDisabledEditFundDistribution}
                       totalAmount={totalAmount}
                       formValues={formValues}
                     />
