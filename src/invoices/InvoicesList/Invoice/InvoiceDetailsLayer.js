@@ -81,7 +81,7 @@ class InvoiceDetailsLayer extends Component {
     const hasLoaded = get(resources, 'invoice.hasLoaded');
     const totalInvoiceLines = get(resources, ['invoiceLines', 'other', 'totalRecords'], 0);
     const invoiceTotalUnits = get(resources, 'invoiceLines.records.0.invoiceLines', []).reduce((total, line) => (
-      total + line.quantity
+      total + +line.quantity
     ), 0);
 
     return hasLoaded

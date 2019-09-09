@@ -7,7 +7,7 @@ import {
   fillable,
 } from '@bigtest/interactor';
 
-import OptionListInteractor from './OptionListInteractor';
+import { OptionListInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 @interactor class PaymentMethodInteractor {
   options = new OptionListInteractor('#sl-invoice-payment-method');
@@ -54,5 +54,9 @@ export default interactor(class InvoiceForm {
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
+  }
+
+  whenDestroyed() {
+    return this.timeout(5000).when(() => !this.isLoaded);
   }
 });

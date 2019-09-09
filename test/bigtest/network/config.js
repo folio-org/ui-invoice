@@ -1,13 +1,18 @@
+import {
+  configTags,
+  configUsers,
+  configUnits,
+  configVendors,
+  configMemberships,
+  configFunds,
+} from '@folio/stripes-acq-components/test/bigtest/network';
+
 import configInvoices from './configs/invoices';
 import configLines from './configs/lines';
-import configVendors from './configs/vendors';
-import configUnits from './configs/units';
-import configUsers from './configs/users';
 import configVouchers from './configs/vouchers';
 import configVoucherLines from './configs/voucherLines';
 import configSettingVoucherNumber from './configs/settingVoucherNumber';
 import configDocuments from './configs/documents';
-import configTags from './configs/tags';
 
 export default function config() {
   configInvoices(this);
@@ -20,4 +25,6 @@ export default function config() {
   configSettingVoucherNumber(this);
   configDocuments(this);
   configTags(this);
+  configMemberships(this);
+  configFunds(this);
 }

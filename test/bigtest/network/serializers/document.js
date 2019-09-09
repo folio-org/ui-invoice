@@ -1,4 +1,4 @@
-import BaseSerializer from './base';
+import { BaseSerializer } from '@folio/stripes-acq-components/test/bigtest/network';
 
 const { isArray } = Array;
 

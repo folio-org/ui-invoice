@@ -1,18 +1,3 @@
-import BaseSerializer from './base';
+import { buildBaseSerializer } from '@folio/stripes-acq-components/test/bigtest/network';
 
-const { isArray } = Array;
-
-export default BaseSerializer.extend({
-  serialize(...args) {
-    const json = BaseSerializer.prototype.serialize.apply(this, args);
-
-    if (isArray(json.invoices)) {
-      return {
-        invoices: json.invoices,
-        totalRecords: json.invoices.length,
-      };
-    }
-
-    return json.invoices;
-  },
-});
+export default buildBaseSerializer('invoices', 'invoices');

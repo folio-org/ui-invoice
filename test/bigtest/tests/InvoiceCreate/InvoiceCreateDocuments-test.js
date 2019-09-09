@@ -3,13 +3,13 @@ import { expect } from 'chai';
 
 import setupApplication from '../../helpers/setup-application';
 import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
-import InvoicesListInteractor from '../../interactors/InvoicesList';
+import InvoiceDetails from '../../interactors/InvoiceDetails';
 
 describe('Invoice create with documents', () => {
   setupApplication();
 
   const invoiceForm = new InvoiceFormInteractor();
-  const invoicesList = new InvoicesListInteractor();
+  const invoiceDetails = new InvoiceDetails();
 
   beforeEach(async function () {
     this.server.createList('vendor', 2);
@@ -31,15 +31,16 @@ describe('Invoice create with documents', () => {
     await invoiceForm.documentsAndLinks.links(0).fillUrl('test url');
 
     await invoiceForm.saveButton.click();
+    await invoiceForm.whenDestroyed();
 
-    await invoicesList.whenLoaded();
+    await invoiceDetails.whenLoaded();
   });
 
   it('should close form', () => {
     expect(invoiceForm.isPresent).to.be.false;
   });
 
-  it('should open invoice list', () => {
-    expect(invoicesList.isPresent).to.be.true;
+  it('should open invoice details', () => {
+    expect(invoiceDetails.isPresent).to.be.true;
   });
 });
