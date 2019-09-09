@@ -108,6 +108,7 @@ class InvoiceLineEditLayer extends Component {
               onCancel={onCloseEdit}
               vendorCode={vendorCode}
               accounts={accounts}
+              invoice={invoice}
               adjustmentsPresets={adjustmentsPresets}
             />
           )
