@@ -45,7 +45,6 @@ import {
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
-import { INVOICE_STATUS } from '../../common/constants/constants';
 
 const INVOICE_LINE_FORM = 'invoiceLineForm';
 
