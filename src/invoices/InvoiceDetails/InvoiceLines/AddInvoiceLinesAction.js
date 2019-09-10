@@ -2,21 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import {
-  Pluggable,
-  withStripes,
-} from '@folio/stripes/core';
+import { Pluggable } from '@folio/stripes/core';
 
 const buttonLabel = <FormattedMessage id="ui-invoice.invoice.details.lines.add" />;
 
-const AddInvoiceLinesAction = ({ addLines, stripes }) => {
+const AddInvoiceLinesAction = ({ addLines }) => {
   return (
     <Pluggable
       aria-haspopup="true"
-      dataKey="invoiceLines"
       searchButtonStyle="default"
       searchLabel={buttonLabel}
-      stripes={stripes}
       type="find-po-line"
       addLines={addLines}
     >
@@ -27,7 +22,6 @@ const AddInvoiceLinesAction = ({ addLines, stripes }) => {
 
 AddInvoiceLinesAction.propTypes = {
   addLines: PropTypes.func.isRequired,
-  stripes: PropTypes.object.isRequired,
 };
 
-export default withStripes(AddInvoiceLinesAction);
+export default AddInvoiceLinesAction;

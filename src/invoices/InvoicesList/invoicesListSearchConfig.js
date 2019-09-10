@@ -1,9 +1,4 @@
-export const invoicesSearchTemplate = `(
-  voucherNumber="%{query.query}*" OR
-  vendorInvoiceNo="%{query.query}*" OR
-  poNumbers="%{query.query}*" OR
-  accountingCode="%{query.query}*"
-)`;
+import { generateQueryTemplate } from '@folio/stripes-acq-components';
 
 const indexes = [
   'voucherNumber',
@@ -18,3 +13,4 @@ const keywordIndex = {
 };
 
 export const searchableIndexes = [keywordIndex, ...indexes.map(index => ({ label: index, value: index }))];
+export const invoicesSearchTemplate = generateQueryTemplate(indexes);
