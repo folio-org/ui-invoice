@@ -67,8 +67,8 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.0",
       "configuration": "2.0",
-      "organizations-storage.organizations": "1.0 2.0",
-      "invoice": "1.0",
+      "organizations-storage.organizations": "2.0",
+      "invoice": "1.0 2.0",
       "users": "15.0"
     },
     "icons": [
