@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -65,10 +65,10 @@
     "route": "/invoice",
     "queryResource": "query",
     "okapiInterfaces": {
-      "acquisitions-units": "1.0",
+      "acquisitions-units": "1.1",
       "configuration": "2.0",
-      "organizations-storage.organizations": "2.0",
-      "invoice": "1.0 2.0",
+      "organizations-storage.organizations": "2.1",
+      "invoice": "2.0",
       "users": "15.0"
     },
     "icons": [
