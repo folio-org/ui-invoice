@@ -4,6 +4,7 @@ export const SECTIONS_INVOICE = {
   VENDOR_DETAILS: 'vendorDetails',
   VOUCHER: 'voucher',
   DOCUMENTS: 'documents',
+  ADJUSTMENTS: 'adjustments',
 };
 
 export const SECTIONS_INVOICE_LINE = {

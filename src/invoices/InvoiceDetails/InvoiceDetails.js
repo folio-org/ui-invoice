@@ -35,6 +35,7 @@ import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
 import VoucherInformationContainer from './VoucherInformation';
 import DocumentsDetails from './DocumentsDetails';
+import AdjustmentsDetails from '../AdjustmentsDetails';
 import styles from './InvoiceDetails.css';
 
 class InvoiceDetails extends Component {
@@ -111,6 +112,7 @@ class InvoiceDetails extends Component {
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
     const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
     const tags = get(invoice, 'tags.tagList', []);
+    const adjustments = get(invoice, 'adjustments', []);
 
     const paneTitle = (
       <FormattedMessage
@@ -209,6 +211,12 @@ class InvoiceDetails extends Component {
             />
           </Accordion>
           <Accordion
+            label={<FormattedMessage id="ui-invoice.adjustments" />}
+            id={SECTIONS_INVOICE.ADJUSTMENTS}
+          >
+            <AdjustmentsDetails adjustments={adjustments} />
+          </Accordion>
+          <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
             id={SECTIONS_INVOICE.VENDOR_DETAILS}
           >
@@ -227,6 +235,7 @@ class InvoiceDetails extends Component {
           >
             <DocumentsDetails />
           </Accordion>
+
         </AccordionSet>
         {showConfirmDelete && (
           <ConfirmationModal
