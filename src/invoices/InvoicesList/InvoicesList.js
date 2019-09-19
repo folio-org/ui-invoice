@@ -55,13 +55,6 @@ const columnMapping = {
   status: <FormattedMessage id="ui-invoice.invoice.list.status" />,
   total: <FormattedMessage id="ui-invoice.invoice.list.total" />,
 };
-const columnWidths = {
-  vendorInvoiceNo: '18%',
-  vendor: '35%',
-  invoiceDate: '18%',
-  status: '18%',
-  total: '11%',
-};
 const baseResultsFormatter = {
   invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
@@ -221,7 +214,6 @@ class InvoicesList extends Component {
           resultCountIncrement={RESULT_COUNT_INCREMENT}
           visibleColumns={visibleColumns}
           columnMapping={columnMapping}
-          columnWidths={columnWidths}
           resultsFormatter={resultsFormatter}
           viewRecordComponent={Invoice}
           onSelectRow={onSelectRow}

@@ -23,13 +23,6 @@ const columnMapping = {
   externalAccountNumber: <FormattedMessage id="ui-invoice.voucher.voucherLines.externalAccountNumber" />,
   amount: <FormattedMessage id="ui-invoice.voucher.voucherLines.amount" />,
 };
-const columnWidths = {
-  lineNumber: '20%',
-  group: '20%',
-  fundCode: '20%',
-  externalAccountNumber: '20%',
-  amount: '20%',
-};
 
 const VoucherLinesDetails = ({ voucherLines, currency }) => {
   const groupedVoucherLines = groupByExternalAccNumber(voucherLines);
@@ -59,7 +52,6 @@ const VoucherLinesDetails = ({ voucherLines, currency }) => {
 
           <MultiColumnList
             columnMapping={columnMapping}
-            columnWidths={columnWidths}
             contentData={lines}
             formatter={resultsFormatter}
             visibleColumns={visibleColumns}
