@@ -20,13 +20,6 @@ const columnMapping = {
   adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
 };
-const columnWidths = {
-  description: '40%',
-  invoiceLineNumber: '15%',
-  quantity: '15%',
-  adjustmentsTotal: '15%',
-  total: '15%',
-};
 
 class InvoiceLines extends Component {
   static manifest = Object.freeze({
@@ -101,7 +94,6 @@ class InvoiceLines extends Component {
           contentData={invoiceLinesItems}
           visibleColumns={visibleColumns}
           columnMapping={columnMapping}
-          columnWidths={columnWidths}
           onRowClick={this.openLineDetails}
           formatter={resultsFormatter}
         />

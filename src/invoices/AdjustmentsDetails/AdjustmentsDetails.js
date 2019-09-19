@@ -20,12 +20,6 @@ const columnMapping = {
   prorate: <FormattedMessage id="ui-invoice.settings.adjustments.prorate" />,
   relationToTotal: <FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />,
 };
-const columnWidths = {
-  description: '40%',
-  value: '20%',
-  prorate: '20%',
-  relationToTotal: '20%',
-};
 const resultsFormatter = {
   prorate: d => d.prorate && <FormattedMessage id={ADJUSTMENT_PRORATE_LABELS[d.prorate]} />,
   relationToTotal: d => <FormattedMessage id={ADJUSTMENT_RELATION_TO_TOTAL_LABELS[d.relationToTotal]} />,
@@ -37,7 +31,6 @@ const AdjustmentsDetails = ({ adjustments }) => {
       <Col xs={12}>
         <MultiColumnList
           columnMapping={columnMapping}
-          columnWidths={columnWidths}
           contentData={adjustments}
           formatter={resultsFormatter}
           id="invoice-lines-adjustments-list"
