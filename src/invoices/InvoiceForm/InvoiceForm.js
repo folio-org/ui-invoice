@@ -161,6 +161,7 @@ class InvoiceForm extends Component {
     const metadata = initialValues.metadata;
     const approvedBy = get(initialValues, 'approvedBy');
     const isEditMode = Boolean(initialValues.id);
+    const isStatusPaid = isPaid(initialValues.status);
 
     const activeVendors = this.getActiveVendors();
     const selectedVendor = find(activeVendors, { id: get(formValues, 'vendorId') });
@@ -223,6 +224,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-status xs={3}>
                         <FieldSelection
                           dataOptions={statusOptions}
+                          disabled={isStatusPaid}
                           id="invoice-status"
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}
                           name="status"
