@@ -10,14 +10,18 @@ import { IfPermission } from '@folio/stripes/core';
 import AddInvoiceLinesAction from './AddInvoiceLinesAction';
 import styles from './InvoiceLines.css';
 
-const InvoiceLinesActions = ({ addLines, createLine }) => (
+const InvoiceLinesActions = ({ addLines, createLine, isDisabled }) => (
   <IfPermission perm="invoice.invoice-lines.item.post">
     <div className={styles.invoiceLinesActions}>
-      <AddInvoiceLinesAction addLines={addLines} />
+      <AddInvoiceLinesAction
+        addLines={addLines}
+        isDisabled={isDisabled}
+      />
 
       <Button
         data-test-button-create-line
         onClick={createLine}
+        disabled={isDisabled}
       >
         <FormattedMessage id="ui-invoice.button.createLine" />
       </Button>
@@ -28,6 +32,11 @@ const InvoiceLinesActions = ({ addLines, createLine }) => (
 InvoiceLinesActions.propTypes = {
   addLines: PropTypes.func.isRequired,
   createLine: PropTypes.func.isRequired,
+  isDisabled: PropTypes.bool,
+};
+
+InvoiceLinesActions.defaultProps = {
+  isDisabled: false,
 };
 
 export default InvoiceLinesActions;
