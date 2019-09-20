@@ -87,12 +87,17 @@ class InvoiceDetails extends Component {
     );
   }
 
-  renderLinesActions = () => (
-    <InvoiceLinesActions
-      createLine={this.props.createLine}
-      addLines={this.props.addLines}
-    />
-  );
+  renderLinesActions = () => {
+    const { invoice } = this.props;
+
+    return (
+      <InvoiceLinesActions
+        createLine={this.props.createLine}
+        addLines={this.props.addLines}
+        isDisabled={IS_EDIT_POST_APPROVAL(invoice.id, invoice.status)}
+      />
+    );
+  }
 
   mountDeleteLineConfirm = () => this.setState({ showConfirmDelete: true });
 
