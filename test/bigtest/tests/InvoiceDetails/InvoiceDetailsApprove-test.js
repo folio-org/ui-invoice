@@ -3,10 +3,11 @@ import { expect } from 'chai';
 
 import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
-import { INVOICE_STATUS } from '../../../../src/common/constants';
+import { INVOICE_API, INVOICE_STATUS } from '../../../../src/common/constants';
 
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
+import { APPROVE_ERROR_CODES } from '../../../../src/common/utils';
 
 const createInvoice = (server, status, withLines = true) => {
   const vendor = server.create('vendor');
@@ -88,6 +89,35 @@ describe('Invoice details - approve action', () => {
     });
 
     it('should be done after submit button click', () => {
+      expect(approveConfirmation.isPresent).to.be.false;
+    });
+  });
+
+  describe.only('approve error is visible', () => {
+    const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
+
+    beforeEach(async function () {
+      const invoice = createInvoice(this.server, INVOICE_STATUS.review, true);
+
+      const INVOICE_APPROVE_RESPONSE = {
+        'errors': [{
+          'message': 'Voucher number prefix must contains only Unicode letters',
+          'code': APPROVE_ERROR_CODES.voucherNumberPrefixNotAlpha,
+          'parameters': [],
+          'id': invoice.id,
+        }],
+        'total_records': 1,
+      };
+
+      this.server.put(`${INVOICE_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
+
+      this.visit(`/invoice/view/${invoice.id}`);
+      await invoiceDetails.whenLoaded();
+      await invoiceDetails.buttonApproveInvoice.click();
+      await approveConfirmation.confirm();
+    });
+
+    it('should close Confirmation Modal and open Error modal', () => {
       expect(approveConfirmation.isPresent).to.be.false;
     });
   });

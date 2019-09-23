@@ -1,4 +1,4 @@
-const APPROVE_ERROR_CODES = {
+export const APPROVE_ERROR_CODES = {
   voucherNumberPrefixNotAlpha: 'voucherNumberPrefixNotAlpha',
   FundDistributionsNotPresent: 'FundDistributionsNotPresent',
 };
