@@ -7,3 +7,4 @@ export * from './showToast';
 export * from './toggleSection';
 export * from './validators';
 export * from './calculateTotalAmount';
+export * from './getApproveErrorMessage';
