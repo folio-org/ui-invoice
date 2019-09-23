@@ -93,7 +93,7 @@ describe('Invoice details - approve action', () => {
     });
   });
 
-  describe.only('approve error is visible', () => {
+  describe('approve error is visible', () => {
     const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
 
     beforeEach(async function () {
