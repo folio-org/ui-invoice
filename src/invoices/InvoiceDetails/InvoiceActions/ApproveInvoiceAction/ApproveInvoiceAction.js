@@ -13,6 +13,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_STATUS } from '../../../../common/constants';
+import { getApproveErrorMessage } from '../../../../common/utils/getApproveErrorMessage';
 
 import css from './ApproveInvoiceAction.css';
 
@@ -31,7 +32,7 @@ const ApproveInvoiceAction = ({ saveInvoice, invoice }) => {
             const { errors } = await response.json();
             const errorCode = get(errors, [0, 'code']);
 
-            showCallout(`ui-invoice.invoice.actions.approve.error.${errorCode}`, 'error');
+            showCallout(getApproveErrorMessage(errorCode), 'error');
           } catch (e) {
             showCallout('ui-invoice.invoice.actions.approve.error', 'error');
           }
