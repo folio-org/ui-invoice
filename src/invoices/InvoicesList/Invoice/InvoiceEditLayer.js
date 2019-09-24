@@ -73,8 +73,6 @@ class InvoiceEditLayer extends Component {
       stripes,
     } = this.props;
 
-    if (!get(resources, 'invoiceDocuments.hasLoaded', false)) return false;
-
     const invoiceDocuments = get(resources, 'invoiceDocuments.records', []);
     const invoice = {
       ...get(resources, ['invoice', 'records', 0]),
