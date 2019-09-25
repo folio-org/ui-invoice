@@ -464,4 +464,5 @@ class InvoiceForm extends Component {
 export default stripesForm({
   form: INVOICE_FORM,
   navigationCheck: true,
+  enableReinitialize: true,
 })(InvoiceForm);
