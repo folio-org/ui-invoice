@@ -180,11 +180,11 @@
     "settings.voucherNumber.nextInSequence": "Next number in sequence",
     "settings.voucherNumber.reset": "Reset sequence",
     "settings.voucherNumber.allowVoucherNumberEdit": "Allow voucher number to be edited",
-    "voucher.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
-    "voucher.paneSubTitle": "Voucher number - {voucherNumber}",
-    "voucher.voucherTitle": "Voucher information",
-    "voucher.voucherLinesTitle": "Voucher lines",
-    "voucher.voucherLinesTitle.externalAccountNumber": "External account number: {externalAccountNumber}",
+    "voucher.paneTitle": "Número de factura del proveedor: {vendorInvoiceNo}",
+    "voucher.paneSubTitle": "Número de vale: {voucherNumber}",
+    "voucher.voucherTitle": "Información sobre los vales",
+    "voucher.voucherLinesTitle": "Líneas de vales",
+    "voucher.voucherLinesTitle.externalAccountNumber": "Número de cuenta externa: {externalAccountNumber}",
     "voucher.voucherLines.lineNumber": "Número de línea",
     "voucher.voucherLines.group": "Grupo",
     "voucher.voucherLines.fundCode": "Código de fondo",
@@ -202,5 +202,8 @@
     "invoice.actions.pay": "Pagar",
     "invoice.actions.pay.success": "La factura ha sido pagada exitosamente",
     "invoice.actions.pay.confirmation.heading": "Pagar factura",
-    "invoice.actions.pay.confirmation.message": "¿Estás seguro de que quieres pagar la factura?"
+    "invoice.actions.pay.confirmation.message": "¿Estás seguro de que quieres pagar la factura?",
+    "invoice.actions.approve.error": "Invoice was not approved",
+    "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line"
 }
