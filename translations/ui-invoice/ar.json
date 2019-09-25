@@ -202,5 +202,8 @@
     "invoice.actions.pay": "سداد",
     "invoice.actions.pay.success": "تم سداد الفاتورة بنجاح",
     "invoice.actions.pay.confirmation.heading": "سداد الفاتورة",
-    "invoice.actions.pay.confirmation.message": "هل أنت متأكد من أنك تريد سداد الفانورة؟"
+    "invoice.actions.pay.confirmation.message": "هل أنت متأكد من أنك تريد سداد الفانورة؟",
+    "invoice.actions.approve.error": "لم يتم الموافقة على الفاتورة",
+    "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "يجب أن تحتوي بادئة رقم القسمية على أحرف يونيكود فقط",
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "يجب وجود توزيع تمويل واحد على الأقل لكل خط فاتورة مرتبط به"
 }
