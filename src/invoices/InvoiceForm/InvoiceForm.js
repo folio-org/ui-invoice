@@ -226,7 +226,7 @@ class InvoiceForm extends Component {
                           dataOptions={statusOptions}
                           disabled={isStatusPaid}
                           id="invoice-status"
-                          label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}
+                          labelId="ui-invoice.invoice.details.information.status"
                           name="status"
                           required
                           validate={validateRequired}
@@ -283,7 +283,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-bill-to-name xs={3}>
                         <FieldSelection
                           dataOptions={getAddressOptions(addresses)}
-                          label={<FormattedMessage id="ui-invoice.invoice.billToName" />}
+                          labelId="ui-invoice.invoice.billToName"
                           name="billTo"
                         />
                       </Col>
@@ -343,7 +343,7 @@ class InvoiceForm extends Component {
                           dataOptions={getOrganizationOptions(activeVendors)}
                           disabled={isEditPostApproval}
                           id="invoice-vendor"
-                          label={<FormattedMessage id="ui-invoice.invoice.vendorName" />}
+                          labelId="ui-invoice.invoice.vendorName"
                           name="vendorId"
                           onChange={this.selectVendor}
                           required
@@ -354,7 +354,7 @@ class InvoiceForm extends Component {
                         <FieldSelection
                           dataOptions={accountingCodeOptions}
                           disabled={isEditPostApproval || !selectedVendor}
-                          label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
+                          labelId="ui-invoice.invoice.accountingCode"
                           name="accountingCode"
                         />
                       </Col>
@@ -387,7 +387,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-currency xs={3}>
                         <FieldSelection
                           dataOptions={currenciesOptions}
-                          label={<FormattedMessage id="ui-invoice.invoice.currency" />}
+                          labelId="ui-invoice.invoice.currency"
                           name="currency"
                           disabled={isEditPostApproval}
                           required
@@ -398,7 +398,7 @@ class InvoiceForm extends Component {
                         <FieldSelection
                           dataOptions={PAYMENT_METHODS_OPTIONS}
                           id="invoice-payment-method"
-                          label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
+                          labelId="ui-invoice.invoice.paymentMethod"
                           name="paymentMethod"
                           required
                           validate={validateRequired}

@@ -38,7 +38,7 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources }) => {
     mutator.voucherLines.reset();
 
     mutator.voucher.GET().then(response => {
-      const voucherId = response[0].id;
+      const voucherId = get(response, '0.id');
 
       if (voucherId) {
         mutator.voucherLines.GET({

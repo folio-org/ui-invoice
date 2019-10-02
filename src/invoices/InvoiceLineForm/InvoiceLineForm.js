@@ -261,7 +261,7 @@ class InvoiceLineForm extends Component {
                           dataOptions={getAccountNumberOptions(accountNumbers)}
                           disabled={isDisabledToEditAccountNumber}
                           id="invoice-line-account-number"
-                          label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
+                          labelId="ui-invoice.invoiceLine.accountNumber"
                           name="accountNumber"
                           onChange={this.changeAccountNumber}
                         />
