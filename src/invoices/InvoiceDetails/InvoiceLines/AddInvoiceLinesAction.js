@@ -15,6 +15,7 @@ const AddInvoiceLinesAction = ({ addLines, isDisabled }) => {
       type="find-po-line"
       addLines={addLines}
       disabled={isDisabled}
+      dataKey="find-po-line"
     >
       <FormattedMessage id="ui-invoice.find-po-line-plugin-unavailable" />
     </Pluggable>

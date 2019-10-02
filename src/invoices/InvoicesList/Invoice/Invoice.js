@@ -24,7 +24,6 @@ class Invoice extends Component {
   constructor(props) {
     super(props);
 
-    this.connectedInvoiceDetailsLayer = props.stripes.connect(InvoiceDetailsLayer);
     this.connectedInvoiceEditLayer = props.stripes.connect(InvoiceEditLayer);
   }
 
@@ -52,7 +51,7 @@ class Invoice extends Component {
             props => {
               const LayerComponent = layer === 'edit'
                 ? this.connectedInvoiceEditLayer
-                : this.connectedInvoiceDetailsLayer;
+                : InvoiceDetailsLayer;
 
               return (
                 <LayerComponent
