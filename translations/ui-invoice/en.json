@@ -1,5 +1,5 @@
 {
-  "meta.title": "Invoice",
+  "meta.title": "Invoices",
 
   "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
   "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
