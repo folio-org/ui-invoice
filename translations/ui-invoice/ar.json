@@ -33,7 +33,7 @@
     "invoice.approvedBy": "تم قبوله بواسطة",
     "invoice.currency": "العملة",
     "invoice.folioInvoiceNo": "رقم فاتورة فوليو",
-    "invoice.details.information.adjustment": "تعديل",
+    "invoice.details.information.adjustment": "إجمالي التعديلات",
     "extendedInformation": "معلومات موسعة",
     "errors.invoiceHasNotBeenCreated": "لم يتم إنشاء الفاتورة",
     "errors.invoiceHasNotBeenSaved": "لم يتم حفظ الفاتورة",
