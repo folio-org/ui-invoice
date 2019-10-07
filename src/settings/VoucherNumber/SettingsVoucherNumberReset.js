@@ -41,11 +41,15 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
         ),
       });
     }
-  }, [sequenceNumber]);
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [sequenceNumber]);
 
   useEffect(() => {
     setSequenceNumber(getStartSequenceNumber());
-  }, [resources.voucherNumber]);
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [resources.voucherNumber]);
 
   return (
     <Fragment>

@@ -10,7 +10,8 @@ import {
 import { OptionListInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 @interactor class PaymentMethodInteractor {
-  options = new OptionListInteractor('#sl-invoice-payment-method');
+  static defaultScope = '#invoice-payment-method';
+  value = value();
 }
 
 @interactor class StatusInteractor {

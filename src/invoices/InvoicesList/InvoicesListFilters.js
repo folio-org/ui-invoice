@@ -14,11 +14,11 @@ import {
   OrganizationFilter,
   organizationsShape,
   SourceFilter,
+  PAYMENT_METHOD_OPTIONS,
 } from '@folio/stripes-acq-components';
 
 import {
   INVOICE_STATUSES_OPTIONS,
-  PAYMENT_METHODS_OPTIONS,
 } from '../../common/constants';
 import {
   FILTERS,
@@ -90,7 +90,7 @@ class InvoicesListFilters extends Component {
           labelId="ui-invoice.invoice.paymentMethod"
           name={FILTERS.PAYMENT_METHOD}
           onChange={onChange}
-          options={PAYMENT_METHODS_OPTIONS}
+          options={PAYMENT_METHOD_OPTIONS}
         />
         <AcqDateRangeFilter
           id={FILTERS.APPROVAL_DATE}

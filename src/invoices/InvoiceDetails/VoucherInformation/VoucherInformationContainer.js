@@ -48,7 +48,9 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources }) => {
         });
       }
     });
-  }, [invoiceId]);
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [invoiceId]);
 
   if (isLoading) {
     return (

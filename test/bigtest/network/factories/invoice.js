@@ -1,9 +1,8 @@
 import { Factory, faker } from '@bigtest/mirage';
 
-import {
-  INVOICE_STATUS,
-  PAYMENT_METHOD,
-} from '../../../../src/common/constants';
+import { PAYMENT_METHOD } from '@folio/stripes-acq-components';
+
+import { INVOICE_STATUS } from '../../../../src/common/constants';
 
 export default Factory.extend({
   id: faker.random.uuid,
