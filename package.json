@@ -22,8 +22,8 @@
     "@bigtest/mirage": "^0.0.1",
     "@bigtest/mocha": "^0.5.1",
     "@bigtest/react": "^0.1.2",
-    "@folio/eslint-config-stripes": "^4.1.0",
-    "@folio/stripes": "^2.7.0",
+    "@folio/eslint-config-stripes": "^4.2.0",
+    "@folio/stripes": "^2.9.0",
     "@folio/stripes-cli": "^1.12.0",
     "babel-eslint": "^9.0.0",
     "babel-polyfill": "^6.26.0",
@@ -45,19 +45,22 @@
     "prop-types": "^15.6.0",
     "query-string": "^6.7.0",
     "react-intl": "^2.4.0",
-    "react-router-dom": "^4.1.1",
     "react-router-prop-types": "^1.0.4",
     "redux-form": "^7.4.2"
   },
   "peerDependencies": {
-    "@folio/stripes": "^2.7.0",
-    "react": "*",
+    "@folio/stripes": "^2.9.0",
     "react-dom": "*",
-    "redux": "*",
-    "redux-form": "*"
+    "react-router-dom": "^5.1.2",
+    "react": "*",
+    "redux-form": "*",
+    "redux": "*"
   },
   "optionalDependencies": {
     "@folio/plugin-find-po-line": "^1.0.0"
+  },
+  "resolutions" : {
+    "@folio/stripes-connect": "~5.3.0"
   },
   "stripes": {
     "actsAs": ["app", "settings"],
@@ -67,9 +70,11 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.1",
       "configuration": "2.0",
-      "organizations-storage.organizations": "2.1",
       "invoice": "2.0",
-      "users": "15.0"
+      "organizations-storage.organizations": "2.1",
+      "users": "15.0",
+      "voucher-number": "1.0",
+      "voucher": "1.1 2.0"
     },
     "icons": [
       {
