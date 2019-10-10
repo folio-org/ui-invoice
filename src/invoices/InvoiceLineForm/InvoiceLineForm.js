@@ -133,6 +133,7 @@ class InvoiceLineForm extends Component {
       ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
       : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
     const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
+    const fundDistributions = get(formValues, 'fundDistributions');
 
     return (
       <form id="invoice-line-form">
@@ -289,8 +290,9 @@ class InvoiceLineForm extends Component {
                   >
                     <FundDistributionFields
                       disabled={isDisabledEditFundDistribution}
+                      fundDistribution={fundDistributions}
+                      name="fundDistributions"
                       totalAmount={totalAmount}
-                      formValues={formValues}
                     />
                   </Accordion>
                   <Accordion
