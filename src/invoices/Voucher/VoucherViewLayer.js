@@ -39,6 +39,7 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
 
       mutator.query.update({ _path });
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [params.id],
   );
 

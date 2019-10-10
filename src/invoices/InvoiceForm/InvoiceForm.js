@@ -34,6 +34,8 @@ import {
   AcqUnitsField,
   FieldDatepicker,
   FieldSelection,
+  FieldSelect,
+  PAYMENT_METHOD_OPTIONS,
 } from '@folio/stripes-acq-components';
 
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
@@ -41,7 +43,6 @@ import {
   INVOICE_STATUSES_OPTIONS,
   PRE_PAY_INVOICE_STATUSES_OPTIONS,
   ORGANIZATION_STATUS_ACTIVE,
-  PAYMENT_METHODS_OPTIONS,
 } from '../../common/constants';
 import {
   expandAll,
@@ -395,13 +396,12 @@ class InvoiceForm extends Component {
                         />
                       </Col>
                       <Col data-test-col-payment-method xs={3}>
-                        <FieldSelection
-                          dataOptions={PAYMENT_METHODS_OPTIONS}
+                        <FieldSelect
+                          dataOptions={PAYMENT_METHOD_OPTIONS}
                           id="invoice-payment-method"
-                          labelId="ui-invoice.invoice.paymentMethod"
+                          label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
                           name="paymentMethod"
                           required
-                          validate={validateRequired}
                         />
                       </Col>
                       <Col data-test-col-export-to-accounting xs={3}>

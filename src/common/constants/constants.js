@@ -30,28 +30,6 @@ export const INVOICE_STATUSES_OPTIONS = [
 export const PRE_PAY_INVOICE_STATUSES_OPTIONS = INVOICE_STATUSES_OPTIONS
   .filter(option => option.value !== INVOICE_STATUS.paid);
 
-export const PAYMENT_METHOD = {
-  cash: 'Cash',
-  creditCard: 'Credit Card P Card',
-  eft: 'EFT',
-  depositAccount: 'Deposit Account',
-  physicalCheck: 'Physical Check',
-  bankDraft: 'Bank Draft',
-  internalTransfer: 'Internal Transfer',
-  other: 'other',
-};
-
-export const PAYMENT_METHODS_OPTIONS = [
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.cash" />, value: PAYMENT_METHOD.cash },
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.creditCard" />, value: PAYMENT_METHOD.creditCard },
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.eft" />, value: PAYMENT_METHOD.eft },
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.depositAccount" />, value: PAYMENT_METHOD.depositAccount },
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.physicalCheck" />, value: PAYMENT_METHOD.physicalCheck },
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.bankDraft" />, value: PAYMENT_METHOD.bankDraft },
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.internalTransfer" />, value: PAYMENT_METHOD.internalTransfer },
-  { label: <FormattedMessage id="ui-invoice.paymentMethod.other" />, value: PAYMENT_METHOD.other },
-];
-
 export const POST_APPROVAL_STATUSES = [INVOICE_STATUS.approved, INVOICE_STATUS.paid, INVOICE_STATUS.cancelled];
 
 export const ADJUSTMENT_TYPE_VALUES = {
