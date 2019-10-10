@@ -69,6 +69,7 @@ const TagsForm = ({
 
       setSavedTags(updatedTags);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [savedTags],
   );
 
@@ -80,6 +81,7 @@ const TagsForm = ({
       setSavedTags(updatedTags);
       onAdd(updatedTags);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [savedTags],
   );
 

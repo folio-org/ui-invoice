@@ -29,7 +29,9 @@ const TagsContainer = (props) => {
 
   useEffect(() => {
     refreshRemote(props);
-  }, [recordObj]);
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [recordObj]);
 
   const entityTags = get(recordObj, ['tags', 'tagList'], []);
   const allTags = get(resources, ['tags', 'records'], []);
@@ -44,6 +46,7 @@ const TagsContainer = (props) => {
       updatedRecordObj.tags = { tagList };
       putMutator(updatedRecordObj);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [recordObj],
   );
 
@@ -55,6 +58,7 @@ const TagsContainer = (props) => {
       updatedRecordObj.tags = { tagList: sortBy(uniq([...tags, ...tagList])) };
       putMutator(updatedRecordObj);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [recordObj],
   );
 
@@ -75,6 +79,7 @@ const TagsContainer = (props) => {
         calloutRef.current.sendCallout({ message });
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [allTags],
   );
 

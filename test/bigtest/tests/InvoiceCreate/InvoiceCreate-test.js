@@ -1,6 +1,8 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { PAYMENT_METHOD } from '@folio/stripes-acq-components';
+
 import setupApplication from '../../helpers/setup-application';
 import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 import InvoicesListInteractor from '../../interactors/InvoicesList';
@@ -37,7 +39,7 @@ describe('Invoice create', () => {
         await invoiceForm.vendorInvoiceNo.fill('vendorInvoiceNo');
         await invoiceForm.invoiceDate.fill('2019-01-01').blur();
         await invoiceForm.approvalDate.fill('2019-01-02').blur();
-        await invoiceForm.paymentMethod.options.list(1).click();
+        await invoiceForm.paymentMethod.select(PAYMENT_METHOD.cash);
         await invoiceForm.status.options.list(1).click();
         await invoiceForm.vendorButton.click();
         await invoiceForm.vendor.options.list(1).click();
