@@ -34,8 +34,6 @@
     "mocha": "^5.2.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
     "sinon": "^6.3.4"
   },
   "dependencies": {
@@ -52,15 +50,10 @@
     "@folio/stripes": "^2.9.0",
     "react-dom": "*",
     "react-router-dom": "^5.1.2",
-    "react": "*",
-    "redux-form": "*",
-    "redux": "*"
+    "react": "*"
   },
   "optionalDependencies": {
     "@folio/plugin-find-po-line": "^1.0.0"
-  },
-  "resolutions" : {
-    "@folio/stripes-connect": "~5.3.0"
   },
   "stripes": {
     "actsAs": ["app", "settings"],
@@ -70,7 +63,7 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.1",
       "configuration": "2.0",
-      "invoice": "2.0",
+      "invoice": "2.0 3.0",
       "organizations-storage.organizations": "2.1",
       "users": "15.0",
       "voucher-number": "1.0",
