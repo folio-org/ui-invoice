@@ -45,6 +45,7 @@ import {
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
+import validate from './validate';
 
 const INVOICE_LINE_FORM = 'invoiceLineForm';
 
@@ -318,4 +319,5 @@ class InvoiceLineForm extends Component {
 export default stripesForm({
   form: INVOICE_LINE_FORM,
   navigationCheck: true,
+  validate,
 })(InvoiceLineForm);
