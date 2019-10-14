@@ -45,6 +45,7 @@ import {
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
+import validate from './validate';
 
 const INVOICE_LINE_FORM = 'invoiceLineForm';
 
@@ -133,6 +134,7 @@ class InvoiceLineForm extends Component {
       ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
       : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
     const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
+    const fundDistributions = get(formValues, 'fundDistributions');
 
     return (
       <form id="invoice-line-form">
@@ -289,8 +291,9 @@ class InvoiceLineForm extends Component {
                   >
                     <FundDistributionFields
                       disabled={isDisabledEditFundDistribution}
+                      fundDistribution={fundDistributions}
+                      name="fundDistributions"
                       totalAmount={totalAmount}
-                      formValues={formValues}
                     />
                   </Accordion>
                   <Accordion
@@ -316,4 +319,5 @@ class InvoiceLineForm extends Component {
 export default stripesForm({
   form: INVOICE_LINE_FORM,
   navigationCheck: true,
+  validate,
 })(InvoiceLineForm);
