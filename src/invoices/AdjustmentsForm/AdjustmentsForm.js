@@ -10,7 +10,9 @@ import { find } from 'lodash';
 import {
   Button,
   ButtonGroup,
+  Card,
   Col,
+  IconButton,
   KeyValue,
   RepeatableField,
   Row,
@@ -19,11 +21,13 @@ import {
 } from '@folio/stripes/components';
 import {
   FieldSelect,
+  FundDistributionFields,
   parseNumberFieldValue,
 } from '@folio/stripes-acq-components';
 
 import {
   ADJUSTMENT_PRORATE_OPTIONS,
+  ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS,
   ADJUSTMENT_TYPE_VALUES,
 } from '../../common/constants';
@@ -81,74 +85,113 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
     );
   };
 
-  const renderAdjustment = (elem) => {
+  const renderAdjustment = (elem, index, fields) => {
+    const onRemove = () => {
+      fields.remove(index);
+    };
+    const adjustment = fields.get(index);
+    const showFundDistribution = !isLineAdjustments
+      && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
+      && adjustment.type === ADJUSTMENT_TYPE_VALUES.amount;
+
     return (
-      <Row>
-        <Col
-          data-test-adjustment-description
-          xs
-        >
-          <Field
-            component={TextField}
-            fullWidth
-            label={<FormattedMessage id="ui-invoice.adjustment.description" />}
-            name={`${elem}.description`}
-            required
-            validate={validateRequired}
-            disabled={disabled}
-          />
-        </Col>
-        <Col
-          data-test-adjustment-amount
-          xs
-        >
-          <Field
-            component={TextField}
-            fullWidth
-            label={<FormattedMessage id="ui-invoice.adjustment.amount" />}
-            name={`${elem}.value`}
-            required
-            type="number"
-            parse={parseNumberFieldValue}
-            validate={validateRequired}
-            disabled={disabled}
-          />
-        </Col>
-        <Col xs>
-          <Field
-            label="label"
-            name={`${elem}.type`}
-            component={renderTypeToggle}
-          />
-        </Col>
-        {
-          !isLineAdjustments && (
-            <Col xs>
-              <FieldSelect
-                label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
-                name={`${elem}.prorate`}
-                dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
-                required
-                validate={validateRequired}
+      <Card
+        headerEnd={(
+          <FormattedMessage id="stripes-components.deleteThisItem">
+            {label => (
+              <IconButton
+                data-test-repeatable-field-remove-item-button
+                icon="trash"
+                onClick={onRemove}
+                size="medium"
                 disabled={disabled}
+                ariaLabel={label}
               />
-            </Col>
-          )
-        }
-        <Col
-          data-test-adjustment-relation-to-total
-          xs
-        >
-          <FieldSelect
-            label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
-            name={`${elem}.relationToTotal`}
-            dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
-            required
-            validate={validateRequired}
-            disabled={disabled}
+            )}
+          </FormattedMessage>
+        )}
+        headerStart={(
+          <FormattedMessage
+            id="ui-invoice.adjustment.headerLabel"
+            values={{ index: index + 1 }}
           />
-        </Col>
-      </Row>
+        )}
+      >
+        <Row>
+          <Col
+            data-test-adjustment-description
+            xs
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-invoice.adjustment.description" />}
+              name={`${elem}.description`}
+              required
+              validate={validateRequired}
+              disabled={disabled}
+            />
+          </Col>
+          <Col
+            data-test-adjustment-amount
+            xs
+          >
+            <Field
+              component={TextField}
+              fullWidth
+              label={<FormattedMessage id="ui-invoice.adjustment.amount" />}
+              name={`${elem}.value`}
+              required
+              type="number"
+              parse={parseNumberFieldValue}
+              validate={validateRequired}
+              disabled={disabled}
+            />
+          </Col>
+          <Col xs>
+            <Field
+              label="label"
+              name={`${elem}.type`}
+              component={renderTypeToggle}
+            />
+          </Col>
+          {
+            !isLineAdjustments && (
+              <Col xs>
+                <FieldSelect
+                  label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
+                  name={`${elem}.prorate`}
+                  dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
+                  required
+                  validate={validateRequired}
+                  disabled={disabled}
+                />
+              </Col>
+            )
+          }
+          <Col
+            data-test-adjustment-relation-to-total
+            xs
+          >
+            <FieldSelect
+              label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
+              name={`${elem}.relationToTotal`}
+              dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
+              required
+              validate={validateRequired}
+              disabled={disabled}
+            />
+          </Col>
+        </Row>
+        {showFundDistribution && (
+          <FundDistributionFields
+            disabled={disabled}
+            fundDistribution={adjustment.fundDistributions}
+            name={`${elem}.fundDistributions`}
+            totalAmount={adjustment.value}
+          />
+        )}
+      </Card>
     );
   };
 
@@ -171,6 +214,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
           id="adjustments"
           name="adjustments"
           onAdd={onAdd}
+          onRemove={false}
           renderField={renderAdjustment}
         />
       </Col>
