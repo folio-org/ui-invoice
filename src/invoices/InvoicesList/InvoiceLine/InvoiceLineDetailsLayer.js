@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { Tags } from '@folio/stripes-acq-components';
+
 import { LoadingPane } from '../../../common/components';
 import { invoiceLineResource } from '../../../common/resources';
 import InvoiceLineDetails from '../../InvoiceLineDetails';
-import TagsContainer from '../../Tags';
 
 class InvoiceLineDetailsLayer extends Component {
   static manifest = Object.freeze({
@@ -77,7 +78,7 @@ class InvoiceLineDetailsLayer extends Component {
             tagsToggle={this.toggleTagsPane}
           />
           {isTagsPaneOpened && (
-            <TagsContainer
+            <Tags
               putMutator={mutator.invoiceLine.PUT}
               recordObj={invoiceLine}
               onClose={this.toggleTagsPane}

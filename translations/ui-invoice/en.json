@@ -42,6 +42,7 @@
   "invoiceLine.delete.message": "Delete invoice line?",
   "invoiceLine.total": "Total number of invoice lines: {total}",
 
+  "adjustment.headerLabel": "Adjustment {index}",
   "adjustment.type": "Select adjustment",
   "adjustment.type.sign.percent": "%",
   "adjustment.type.sign.amount": "$",

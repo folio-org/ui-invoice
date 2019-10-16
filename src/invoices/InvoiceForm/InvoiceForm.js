@@ -60,8 +60,8 @@ import ApprovedBy from '../../common/components/ApprovedBy';
 import AdjustmentsForm from '../AdjustmentsForm';
 import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
-
-import invocieCss from '../Invoice.css';
+import validate from './validate';
+import invoiceCss from '../Invoice.css';
 
 const CREATE_UNITS_PERM = 'invoice.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
@@ -289,7 +289,7 @@ class InvoiceForm extends Component {
                         />
                       </Col>
                       <Col
-                        className={invocieCss.addressWrapper}
+                        className={invoiceCss.addressWrapper}
                         xs={3}
                       >
                         <KeyValue
@@ -465,4 +465,5 @@ export default stripesForm({
   form: INVOICE_FORM,
   navigationCheck: true,
   enableReinitialize: true,
+  validate,
 })(InvoiceForm);

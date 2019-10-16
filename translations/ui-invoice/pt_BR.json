@@ -102,14 +102,6 @@
     "invoice.delete.heading": "Excluir {vendorInvoiceNo}?",
     "invoice.delete.message": "Excluir fatura?",
     "invoice.dateCreated": "Data de criação",
-    "paymentMethod.cash": "Dinheiro",
-    "paymentMethod.creditCard": "Cartão de crédito",
-    "paymentMethod.other": "Outros",
-    "paymentMethod.internalTransfer": "Transferência interna",
-    "paymentMethod.bankDraft": "Letra de câmbio",
-    "paymentMethod.physicalCheck": "Cheque",
-    "paymentMethod.depositAccount": "Conta de depósito",
-    "paymentMethod.eft": "EFT",
     "links": "Links",
     "search.voucherNumber": "Número do voucher",
     "search.vendorInvoiceNo": "Número da fatura do fornecedor",
@@ -203,7 +195,7 @@
     "invoice.actions.pay.success": "A fatura foi paga com sucesso",
     "invoice.actions.pay.confirmation.heading": "Pagar fatura",
     "invoice.actions.pay.confirmation.message": "Tem certeza de que deseja pagar a fatura?",
-    "invoice.actions.approve.error": "Invoice was not approved",
-    "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line"
+    "invoice.actions.approve.error": "A fatura não foi aprovada",
+    "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "O prefixo do número do voucher deve conter apenas letras Unicode",
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada"
 }

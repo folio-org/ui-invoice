@@ -15,9 +15,9 @@ import {
 
 import {
   FundDistributionView,
+  TagsBadge,
 } from '@folio/stripes-acq-components';
 
-import TagsBadge from '../Tags/TagsBadge';
 import ActionMenu from './ActionMenu';
 import InvoiceLineInformation from './InvoiceLineInformation';
 import {

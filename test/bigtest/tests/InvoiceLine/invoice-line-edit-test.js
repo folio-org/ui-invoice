@@ -20,6 +20,7 @@ describe('Invoice line edit', () => {
   const invoiceLineDetails = new InvoiceLineDetailsInteractor();
 
   beforeEach(async function () {
+    const fund = this.server.create('fund');
     const vendor = this.server.create('vendor', {
       accounts: [{
         accountNo: ACCOUNT_NUMBER,
@@ -33,6 +34,10 @@ describe('Invoice line edit', () => {
       invoiceId: invoice.id,
       accountNumber: ACCOUNT_NUMBER,
       accountingCode: ACCOUNTING_CODE,
+      fundDistributions: [{
+        fundId: fund.id,
+        value: 100,
+      }],
     });
 
     this.visit(`/invoice/view/${invoice.id}/line/${invoiceLine.id}/edit`);
