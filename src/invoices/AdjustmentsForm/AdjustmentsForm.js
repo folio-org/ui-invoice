@@ -20,6 +20,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
+  CurrencySymbol,
   FieldSelect,
   FundDistributionFields,
   parseNumberFieldValue,
@@ -29,6 +30,7 @@ import {
   ADJUSTMENT_PRORATE_OPTIONS,
   ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS,
+  ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
 } from '../../common/constants';
 import {
@@ -44,7 +46,7 @@ const getAdjustmentFromPreset = ({ description, prorate, relationToTotal, type, 
   value: defaultAmount,
 });
 
-const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) => {
+const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments }) => {
   const [adjPreset, setAdjPreset] = useState();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
@@ -78,7 +80,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
             data-test-adjustments-type-amount
             disabled={disabled}
           >
-            <FormattedMessage id="ui-invoice.adjustment.type.sign.amount" />
+            <CurrencySymbol currency={currency} />
           </Button>
         </ButtonGroup>
       </KeyValue>
@@ -92,6 +94,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
     const adjustment = fields.get(index);
     const showFundDistribution = !isLineAdjustments
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
+      && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
       && adjustment.type === ADJUSTMENT_TYPE_VALUES.amount;
 
     return (
@@ -185,6 +188,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
         </Row>
         {showFundDistribution && (
           <FundDistributionFields
+            currency={currency}
             disabled={disabled}
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
@@ -198,12 +202,17 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
   return (
     <Row>
       <Col xs={12}>
-        <Selection
-          dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
-          label={<FormattedMessage id="ui-invoice.adjustment.presetAdjustment" />}
-          onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
-          disabled={disabled}
-        />
+        <FormattedMessage id="ui-invoice.adjustment.presetAdjustment">
+          {translatedLabel => (
+            <Selection
+              dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
+              label={translatedLabel}
+              onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
+              disabled={disabled}
+            />
+          )}
+        </FormattedMessage>
+
       </Col>
       <Col xs={12}>
         <FieldArray
@@ -224,6 +233,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
 
 AdjustmentsForm.propTypes = {
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
+  currency: PropTypes.string,
   disabled: PropTypes.bool,
   isLineAdjustments: PropTypes.bool,
 };

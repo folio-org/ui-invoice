@@ -157,6 +157,7 @@ class InvoiceForm extends Component {
       : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
     const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
+    const currency = get(formValues, 'currency');
     const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
     const metadata = initialValues.metadata;
@@ -311,6 +312,7 @@ class InvoiceForm extends Component {
                           label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
                           name="lockTotal"
                           type="checkbox"
+                          vertical
                         />
                       </Col>
                     </Row>
@@ -321,6 +323,7 @@ class InvoiceForm extends Component {
                   >
                     <AdjustmentsForm
                       adjustmentsPresets={adjustmentsPresets}
+                      currency={currency}
                       disabled={isEditPostApproval}
                     />
                   </Accordion>
@@ -383,6 +386,7 @@ class InvoiceForm extends Component {
                           name="chkSubscriptionOverlap"
                           disabled={isEditPostApproval}
                           type="checkbox"
+                          vertical
                         />
                       </Col>
                       <Col data-test-col-currency xs={3}>
