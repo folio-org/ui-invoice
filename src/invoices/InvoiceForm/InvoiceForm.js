@@ -325,6 +325,7 @@ class InvoiceForm extends Component {
                       adjustmentsPresets={adjustmentsPresets}
                       currency={currency}
                       disabled={isEditPostApproval}
+                      invoiceSubTotal={initialValues.subTotal}
                     />
                   </Accordion>
                   <Accordion
