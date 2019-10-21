@@ -8,6 +8,8 @@ import {
   MultiColumnList,
 } from '@folio/stripes/components';
 
+import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
+import { AmountWithPercentField } from '../../common/components';
 import {
   ADJUSTMENT_PRORATE_LABELS,
   ADJUSTMENT_RELATION_TO_TOTAL_LABELS,
@@ -23,6 +25,7 @@ const columnMapping = {
 const resultsFormatter = {
   prorate: d => d.prorate && <FormattedMessage id={ADJUSTMENT_PRORATE_LABELS[d.prorate]} />,
   relationToTotal: d => <FormattedMessage id={ADJUSTMENT_RELATION_TO_TOTAL_LABELS[d.relationToTotal]} />,
+  value: d => (d.type === 'Percentage' ? <AmountWithPercentField amount={d.value} /> : <AmountWithCurrencyField amount={d.value} />),
 };
 
 const AdjustmentsDetails = ({ adjustments }) => {

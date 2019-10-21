@@ -1,5 +1,8 @@
 # Change history for ui-invoice
 
+## [1.2.0] (IN PROGRESS)
+* [UINV-59](https://issues.folio.org/browse/UINV-12) Make invoice and invoice line adjustments amount formatted
+
 ## [1.1.0](https://github.com/folio-org/ui-invoice/tree/v1.1.0) (2019-09-11)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.0.0...v1.1.0)
 
