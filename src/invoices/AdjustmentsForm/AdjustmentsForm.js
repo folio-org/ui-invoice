@@ -46,7 +46,7 @@ const getAdjustmentFromPreset = ({ description, prorate, relationToTotal, type, 
   value: defaultAmount,
 });
 
-const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments }) => {
+const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments, invoiceSubTotal }) => {
   const [adjPreset, setAdjPreset] = useState();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
@@ -94,8 +94,10 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
     const adjustment = fields.get(index);
     const showFundDistribution = !isLineAdjustments
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
-      && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
-      && adjustment.type === ADJUSTMENT_TYPE_VALUES.amount;
+      && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
+    const adjustmentAmount = adjustment.type === ADJUSTMENT_TYPE_VALUES.amount
+      ? adjustment.value
+      : invoiceSubTotal * adjustment.value / 100;
 
     return (
       <Card
@@ -192,7 +194,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
             disabled={disabled}
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
-            totalAmount={adjustment.value}
+            totalAmount={adjustmentAmount}
           />
         )}
       </Card>
@@ -236,12 +238,14 @@ AdjustmentsForm.propTypes = {
   currency: PropTypes.string,
   disabled: PropTypes.bool,
   isLineAdjustments: PropTypes.bool,
+  invoiceSubTotal: PropTypes.number,
 };
 
 AdjustmentsForm.defaultProps = {
   adjustmentsPresets: [],
   disabled: false,
   isLineAdjustments: false,
+  invoiceSubTotal: 0,
 };
 
 export default AdjustmentsForm;
