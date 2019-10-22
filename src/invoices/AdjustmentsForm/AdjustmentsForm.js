@@ -95,9 +95,11 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
     const showFundDistribution = !isLineAdjustments
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
       && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
+
+    const adjustmentValue = adjustment.value || 0;
     const adjustmentAmount = adjustment.type === ADJUSTMENT_TYPE_VALUES.amount
-      ? adjustment.value
-      : invoiceSubTotal * adjustment.value / 100;
+      ? adjustmentValue
+      : invoiceSubTotal * adjustmentValue / 100;
 
     return (
       <Card
