@@ -1,5 +1,5 @@
 {
-    "meta.title": "Invoice",
+    "meta.title": "Invoices",
     "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
     "invoice.status.approved": "Approved",
     "invoice.status.open": "Open",
@@ -197,5 +197,6 @@
     "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?",
     "invoice.actions.approve.error": "Invoice was not approved",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contain only Unicode letters",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line"
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
+    "adjustment.headerLabel": "Adjustment {index}"
 }

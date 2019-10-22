@@ -1,5 +1,5 @@
 {
-    "meta.title": "Fatura",
+    "meta.title": "Faturas",
     "invoice.details.paneTitle": "Número da fatura do fornecedor: {vendorInvoiceNo}",
     "invoice.status.approved": "Aprovado",
     "invoice.status.open": "Aberto",
@@ -197,5 +197,6 @@
     "invoice.actions.pay.confirmation.message": "Tem certeza de que deseja pagar a fatura?",
     "invoice.actions.approve.error": "A fatura não foi aprovada",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "O prefixo do número do voucher deve conter apenas letras Unicode",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada"
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
+    "adjustment.headerLabel": "Ajuste {index}"
 }

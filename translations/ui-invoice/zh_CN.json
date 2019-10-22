@@ -195,7 +195,8 @@
     "invoice.actions.pay.success": "发票已成功付款",
     "invoice.actions.pay.confirmation.heading": "支付发票",
     "invoice.actions.pay.confirmation.message": "确定要支付发票吗？",
-    "invoice.actions.approve.error": "Invoice was not approved",
-    "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line"
+    "invoice.actions.approve.error": "发票未获批准",
+    "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "凭证编号前缀必须仅包含Unicode字母",
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "每个关联发票行至少应有一个经费分配",
+    "adjustment.headerLabel": "调整{index}"
 }
