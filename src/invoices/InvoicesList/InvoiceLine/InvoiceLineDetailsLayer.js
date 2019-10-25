@@ -3,15 +3,21 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
-import { Tags } from '@folio/stripes-acq-components';
+import {
+  LoadingPane,
+  Tags,
+} from '@folio/stripes-acq-components';
 
-import { LoadingPane } from '../../../common/components';
-import { invoiceLineResource } from '../../../common/resources';
+import {
+  invoiceLineResource,
+  invoiceResource,
+} from '../../../common/resources';
 import InvoiceLineDetails from '../../InvoiceLineDetails';
 
 class InvoiceLineDetailsLayer extends Component {
   static manifest = Object.freeze({
     invoiceLine: invoiceLineResource,
+    invoice: invoiceResource,
     query: {},
   });
 
@@ -29,6 +35,8 @@ class InvoiceLineDetailsLayer extends Component {
   toggleTagsPane = () => this.setState(({ isTagsPaneOpened }) => ({ isTagsPaneOpened: !isTagsPaneOpened }));
 
   getInvoiceLine = () => get(this.props.resources, ['invoiceLine', 'records', 0]);
+
+  getInvoice = () => get(this.props.resources, ['invoice', 'records', 0]);
 
   closeInvoiceLine = () => {
     const { match: { params }, mutator } = this.props;
@@ -65,13 +73,15 @@ class InvoiceLineDetailsLayer extends Component {
     const { isTagsPaneOpened } = this.state;
 
     const invoiceLine = this.getInvoiceLine();
-    const hasLoaded = get(resources, 'invoiceLine.hasLoaded');
+    const invoice = this.getInvoice();
+    const hasLoaded = get(resources, 'invoiceLine.hasLoaded') && get(resources, 'invoice.hasLoaded');
 
     return hasLoaded
       ? (
         <Fragment>
           <InvoiceLineDetails
             closeInvoiceLine={this.closeInvoiceLine}
+            currency={invoice.currency}
             deleteInvoiceLine={this.deleteInvoiceLine}
             goToEditInvoiceLine={this.goToEditInvoiceLine}
             invoiceLine={invoiceLine}

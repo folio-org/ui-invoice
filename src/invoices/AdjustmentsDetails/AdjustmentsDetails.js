@@ -7,10 +7,12 @@ import {
   Row,
   MultiColumnList,
 } from '@folio/stripes/components';
+import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
 
 import {
   ADJUSTMENT_PRORATE_LABELS,
   ADJUSTMENT_RELATION_TO_TOTAL_LABELS,
+  ADJUSTMENT_TYPE_VALUES,
 } from '../../common/constants';
 
 const visibleColumns = ['description', 'value', 'prorate', 'relationToTotal'];
@@ -20,12 +22,23 @@ const columnMapping = {
   prorate: <FormattedMessage id="ui-invoice.settings.adjustments.prorate" />,
   relationToTotal: <FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />,
 };
-const resultsFormatter = {
-  prorate: d => d.prorate && <FormattedMessage id={ADJUSTMENT_PRORATE_LABELS[d.prorate]} />,
-  relationToTotal: d => <FormattedMessage id={ADJUSTMENT_RELATION_TO_TOTAL_LABELS[d.relationToTotal]} />,
-};
 
-const AdjustmentsDetails = ({ adjustments }) => {
+const AdjustmentsDetails = ({ adjustments, currency }) => {
+  const resultsFormatter = {
+    value: d => (
+      d.type === ADJUSTMENT_TYPE_VALUES.amount
+        ? (
+          <AmountWithCurrencyField
+            amount={d.value}
+            currency={currency}
+          />
+        )
+        : `${d.value}%`
+    ),
+    prorate: d => d.prorate && <FormattedMessage id={ADJUSTMENT_PRORATE_LABELS[d.prorate]} />,
+    relationToTotal: d => <FormattedMessage id={ADJUSTMENT_RELATION_TO_TOTAL_LABELS[d.relationToTotal]} />,
+  };
+
   return (
     <Row>
       <Col xs={12}>
@@ -43,6 +56,7 @@ const AdjustmentsDetails = ({ adjustments }) => {
 
 AdjustmentsDetails.propTypes = {
   adjustments: PropTypes.arrayOf(PropTypes.object),
+  currency: PropTypes.string,
 };
 
 AdjustmentsDetails.defaultProps = {

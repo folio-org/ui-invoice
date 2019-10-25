@@ -219,7 +219,10 @@ class InvoiceDetails extends Component {
             label={<FormattedMessage id="ui-invoice.adjustments" />}
             id={SECTIONS_INVOICE.ADJUSTMENTS}
           >
-            <AdjustmentsDetails adjustments={adjustments} />
+            <AdjustmentsDetails
+              adjustments={adjustments}
+              currency={invoice.currency}
+            />
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
