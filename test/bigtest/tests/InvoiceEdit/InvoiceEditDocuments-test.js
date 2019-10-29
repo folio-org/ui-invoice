@@ -56,7 +56,7 @@ describe('Invoice edit documents', () => {
       await invoiceForm.documentsAndLinks.links(0).removeButton.click();
       await invoiceForm.documentsAndLinks.documents(0).removeButton.click();
 
-      await invoiceForm.saveButton.click();
+      await invoiceForm.formFooter.saveButton.click();
 
       await invoicesList.whenLoaded();
     });
