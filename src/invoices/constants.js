@@ -5,6 +5,7 @@ export const SECTIONS_INVOICE = {
   VOUCHER: 'voucher',
   DOCUMENTS: 'documents',
   ADJUSTMENTS: 'adjustments',
+  FUND_DISTRIBUTION: 'fundDistribution',
 };
 
 export const SECTIONS_INVOICE_LINE = {

@@ -34,6 +34,7 @@ import {
   ADJUSTMENT_TYPE_VALUES,
 } from '../../common/constants';
 import {
+  calculateAdjustmentAmount,
   getAdjustmentPresetOptions,
   validateRequired,
 } from '../../common/utils';
@@ -96,10 +97,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
       && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
 
-    const adjustmentValue = adjustment.value || 0;
-    const adjustmentAmount = adjustment.type === ADJUSTMENT_TYPE_VALUES.amount
-      ? adjustmentValue
-      : invoiceSubTotal * adjustmentValue / 100;
+    const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal);
 
     return (
       <Card

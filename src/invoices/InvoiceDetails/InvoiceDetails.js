@@ -14,8 +14,10 @@ import {
   PaneMenu,
   IconButton,
 } from '@folio/stripes/components';
+import { FundDistributionView } from '@folio/stripes-acq-components';
 
 import {
+  calculateAdjustmentAmount,
   expandAll,
   isPayable,
   IS_EDIT_POST_APPROVAL,
@@ -118,6 +120,19 @@ class InvoiceDetails extends Component {
     const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
     const tags = get(invoice, 'tags.tagList', []);
     const adjustments = get(invoice, 'adjustments', []);
+    const fundDistributions = adjustments.reduce((acc, adjustment) => {
+      if (adjustment.fundDistributions) {
+        adjustment.fundDistributions.forEach((distr) => {
+          acc.push({
+            ...distr,
+            adjustmentDescription: adjustment.description,
+            totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal),
+          });
+        });
+      }
+
+      return acc;
+    }, []);
 
     const paneTitle = (
       <FormattedMessage
@@ -213,6 +228,15 @@ class InvoiceDetails extends Component {
             <InvoiceLines
               currency={invoice.currency}
               invoiceId={invoice.id}
+            />
+          </Accordion>
+          <Accordion
+            id={SECTIONS_INVOICE.FUND_DISTRIBUTION}
+            label={<FormattedMessage id="ui-invoice.fundDistribution" />}
+          >
+            <FundDistributionView
+              currency={invoice.currency}
+              fundDistributions={fundDistributions}
             />
           </Accordion>
           <Accordion
