@@ -198,5 +198,7 @@
     "invoice.actions.approve.error": "Invoice was not approved",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contain only Unicode letters",
     "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
-    "adjustment.headerLabel": "Adjustment {index}"
+    "adjustment.headerLabel": "Adjustment {index}",
+    "saveAndClose": "Save & close",
+    "cancel": "Cancel"
 }

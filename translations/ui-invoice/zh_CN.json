@@ -198,5 +198,7 @@
     "invoice.actions.approve.error": "发票未获批准",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "凭证编号前缀必须仅包含Unicode字母",
     "invoice.actions.approve.error.FundDistributionsNotPresent": "每个关联发票行至少应有一个经费分配",
-    "adjustment.headerLabel": "调整{index}"
+    "adjustment.headerLabel": "调整{index}",
+    "saveAndClose": "Save & close",
+    "cancel": "Cancel"
 }
