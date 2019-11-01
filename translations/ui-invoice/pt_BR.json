@@ -199,6 +199,6 @@
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "O prefixo do número do voucher deve conter apenas letras Unicode",
     "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
     "adjustment.headerLabel": "Ajuste {index}",
-    "saveAndClose": "Save & close",
-    "cancel": "Cancel"
+    "saveAndClose": "Salvar e fechar",
+    "cancel": "Cancelar"
 }
