@@ -11,6 +11,7 @@ import {
   SelectInteractor,
   ButtonInteractor,
 } from '@folio/stripes-acq-components/test/bigtest/interactors';
+import FormFooterInteractor from './common/FormFooter';
 
 @interactor class AdjustmentsForm {
   static defaultScope = '#adjustments';
@@ -23,7 +24,6 @@ import {
 
 export default interactor(class InvoiceLineFormInteractor {
   static defaultScope = '#invoice-line-form';
-  buttonSave = new Interactor('[data-test-button-invoice-line-save]');
   description = new TextFieldInteractor('input[name="description"]');
   quantity = new TextFieldInteractor('input[name="quantity"]');
   subTotal = new TextFieldInteractor('input[name="subTotal"]');
@@ -31,6 +31,7 @@ export default interactor(class InvoiceLineFormInteractor {
   accountNumberButton = new Interactor('#invoice-line-account-number');
   accountNumberOptions = new OptionListInteractor('#sl-invoice-line-account-number');
   adjustmentsForm = new AdjustmentsForm();
+  formFooter = new FormFooterInteractor();
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);

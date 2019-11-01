@@ -52,7 +52,7 @@ describe('Invoice edit', () => {
 
     beforeEach(async function () {
       await invoiceForm.termsInput.fill('new test value');
-      await invoiceForm.saveButton.click();
+      await invoiceForm.formFooter.saveButton.click();
       await invoicesList.whenLoaded();
     });
 

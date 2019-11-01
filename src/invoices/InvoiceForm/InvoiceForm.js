@@ -14,14 +14,12 @@ import {
 import {
   Accordion,
   AccordionSet,
-  Button,
   Checkbox,
   Col,
   currenciesOptions,
   ExpandAllButton,
   KeyValue,
   Pane,
-  PaneMenu,
   Paneset,
   Row,
   TextArea,
@@ -49,14 +47,17 @@ import {
   getAccountingCodeOptions,
   getAddressOptions,
   getOrganizationOptions,
-  isPayable,
-  isPaid,
   IS_EDIT_POST_APPROVAL,
+  isPaid,
+  isPayable,
   parseAddressConfigs,
   toggleSection,
   validateRequired,
 } from '../../common/utils';
-import ApprovedBy from '../../common/components/ApprovedBy';
+import {
+  ApprovedBy,
+  FormFooter,
+} from '../../common/components';
 import AdjustmentsForm from '../AdjustmentsForm';
 import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
@@ -74,23 +75,6 @@ const SECTIONS = {
   vendorInformation: 'vendorInformation',
   voucherInformation: 'voucherInformation',
   documents: 'documents',
-};
-
-const getLastMenu = (handleSubmit, pristine, submitting) => {
-  return (
-    <PaneMenu>
-      <Button
-        data-test-button-save-invoice
-        marginBottom0
-        buttonStyle="primary"
-        onClick={handleSubmit}
-        type="submit"
-        disabled={pristine || submitting}
-      >
-        <FormattedMessage id="ui-invoice.save" />
-      </Button>
-    </PaneMenu>
-  );
 };
 
 class InvoiceForm extends Component {
@@ -140,21 +124,30 @@ class InvoiceForm extends Component {
 
   render() {
     const {
+      dispatch,
+      handleSubmit,
       initialValues,
       onCancel,
-      handleSubmit,
-      pristine,
-      submitting,
       parentResources,
+      pristine,
       stripes,
-      dispatch,
+      submitting,
     } = this.props;
     const { sections } = this.state;
     const vendorInvoiceNo = get(initialValues, 'vendorInvoiceNo', '');
-    const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
     const paneTitle = initialValues.id
       ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
       : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
+    const paneFooter = (
+      <FormFooter
+        id="clickable-save"
+        label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+        pristine={pristine}
+        submitting={submitting}
+        handleSubmit={handleSubmit}
+        onCancel={onCancel}
+      />
+    );
     const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
     const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
     const currency = get(formValues, 'currency');
@@ -180,8 +173,8 @@ class InvoiceForm extends Component {
           <Pane
             defaultWidth="fill"
             dismissible
+            footer={paneFooter}
             id="pane-invoice-form"
-            lastMenu={lastMenu}
             onClose={onCancel}
             paneTitle={paneTitle}
           >

@@ -38,7 +38,7 @@ describe('Invoice line create', () => {
       await invoiceLineForm.description.fill('test value');
       await invoiceLineForm.accountNumberButton.click();
       await invoiceLineForm.accountNumberOptions.list(1).click();
-      await invoiceLineForm.buttonSave.click();
+      await invoiceLineForm.formFooter.saveButton.click();
     });
 
     it('shows edit line form, since required fields are missing', () => {
@@ -49,7 +49,7 @@ describe('Invoice line create', () => {
       beforeEach(async function () {
         await invoiceLineForm.quantity.fill('2');
         await invoiceLineForm.subTotal.fill('300');
-        await invoiceLineForm.buttonSave.click();
+        await invoiceLineForm.formFooter.saveButton.click();
         await invoiceDetails.whenLoaded();
       });
 

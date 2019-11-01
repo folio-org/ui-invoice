@@ -8,6 +8,7 @@ import {
 } from '@bigtest/interactor';
 
 import { OptionListInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+import FormFooterInteractor from './common/FormFooter';
 
 @interactor class PaymentMethodInteractor {
   static defaultScope = '#invoice-payment-method';
@@ -40,7 +41,6 @@ import { OptionListInteractor } from '@folio/stripes-acq-components/test/bigtest
 export default interactor(class InvoiceForm {
   static defaultScope = '#pane-invoice-form';
   isLoaded = isPresent('[class*=paneTitleLabel---]');
-  saveButton = new Interactor('[data-test-button-save-invoice]');
   termsInput = new Interactor('input[name="paymentTerms"]');
   termsInputValue = value('input[name="paymentTerms"]');
   vendorInvoiceNo = new Interactor('input[name="vendorInvoiceNo"]');
@@ -52,6 +52,7 @@ export default interactor(class InvoiceForm {
   vendorButton = new Interactor('#invoice-vendor');
   invoiceInformation = new Interactor('#accordion-toggle-button-invoiceInformation');
   documentsAndLinks = new DocumentsInteractor();
+  formFooter = new FormFooterInteractor();
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
