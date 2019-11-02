@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import {
   Field,
@@ -59,8 +59,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
     fields.push(newAdjustment);
   };
 
-  // eslint-disable-next-line react/prop-types
-  const renderTypeToggle = ({ input: { value, onChange } }) => {
+  const renderTypeToggle = useCallback(({ input: { value, onChange } }) => {
     return (
       <KeyValue label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}>
         <ButtonGroup
@@ -86,7 +85,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
         </ButtonGroup>
       </KeyValue>
     );
-  };
+  }, [currency, disabled]);
 
   const renderAdjustment = (elem, index, fields) => {
     const onRemove = () => {
