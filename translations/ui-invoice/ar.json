@@ -199,6 +199,6 @@
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "يجب أن تحتوي بادئة رقم القسمية على أحرف يونيكود فقط",
     "invoice.actions.approve.error.FundDistributionsNotPresent": "يجب وجود توزيع تمويل واحد على الأقل لكل خط فاتورة مرتبط به",
     "adjustment.headerLabel": "تعديل {index}",
-    "saveAndClose": "Save & close",
-    "cancel": "Cancel"
+    "saveAndClose": "حفظ وإغلاق",
+    "cancel": "إلغاء"
 }

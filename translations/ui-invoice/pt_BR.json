@@ -182,7 +182,7 @@
     "voucher.voucherLines.fundCode": "Código do fundo",
     "voucher.voucherLines.externalAccountNumber": "Número da conta externa",
     "voucher.voucherLines.amount": "Quantia",
-    "voucher.voucherLines.total": "Total:",
+    "voucher.voucherLines.total": "Total: ",
     "settings.voucherNumber.startNumber.error": "O número inicial não pôde ser salvo.",
     "invoice.links.title": "Links",
     "invoice.documents.name": "Nome do documento",

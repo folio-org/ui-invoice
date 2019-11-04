@@ -2,7 +2,7 @@
     "meta.title": "Invoices",
     "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
     "invoice.status.approved": "Approved",
-    "invoice.status.open": "Open",
+    "invoice.status.open": "Открыт",
     "invoice.status.reviewed": "Reviewed",
     "invoice.status.paid": "Paid",
     "invoice.status.cancelled": "Cancelled",
@@ -83,7 +83,7 @@
     "invoiceLineInformation": "Invoice line information",
     "fundDistribution": "Fund distribution",
     "adjustments": "Adjustments",
-    "status.Open": "Open",
+    "status.Open": "Открыто",
     "invoice.details.lines.add": "Add",
     "invoice.details.lines.list.description": "Title",
     "invoice.details.lines.list.number": "Line number",
@@ -199,6 +199,6 @@
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Префикс номера ваучера должен содержать только буквы Юникода.",
     "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
     "adjustment.headerLabel": "Adjustment {index}",
-    "saveAndClose": "Save & close",
-    "cancel": "Cancel"
+    "saveAndClose": "Сохранить и закрыть",
+    "cancel": "Отмена"
 }
