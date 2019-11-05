@@ -10,4 +10,5 @@ export const FILTERS = {
   SOURCE: 'source',
   EXPORT_TO_ACCOUNTING: 'exportToAccounting',
   ACQUISITIONS_UNIT: 'acquisitionsUnit',
+  TAGS: 'tags',
 };
