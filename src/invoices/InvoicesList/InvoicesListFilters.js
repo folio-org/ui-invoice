@@ -8,6 +8,7 @@ import {
 import {
   AcqCheckboxFilter,
   AcqDateRangeFilter,
+  AcqTagsFilter,
   AcqUnitFilter,
   acqUnitsShape,
   BooleanFilter,
@@ -47,6 +48,14 @@ class InvoicesListFilters extends Component {
 
     return (
       <AccordionSet>
+        <AcqCheckboxFilter
+          id={FILTERS.STATUS}
+          activeFilters={activeFilters[FILTERS.STATUS]}
+          labelId="ui-invoice.invoice.details.information.status"
+          name={FILTERS.STATUS}
+          onChange={onChange}
+          options={INVOICE_STATUSES_OPTIONS}
+        />
         <OrganizationFilter
           id={FILTERS.VENDOR}
           activeFilters={activeFilters[FILTERS.VENDOR]}
@@ -77,6 +86,12 @@ class InvoicesListFilters extends Component {
           onChange={onChange}
           acqUnits={acqUnits}
         />
+        <AcqTagsFilter
+          activeFilters={activeFilters[FILTERS.TAGS]}
+          id={FILTERS.TAGS}
+          name={FILTERS.TAGS}
+          onChange={onChange}
+        />
         <AcqDateRangeFilter
           id={FILTERS.PAYMENT_DUE}
           activeFilters={activeFilters[FILTERS.PAYMENT_DUE]}
@@ -98,14 +113,6 @@ class InvoicesListFilters extends Component {
           labelId="ui-invoice.invoice.approvalDate"
           name={FILTERS.APPROVAL_DATE}
           onChange={onChange}
-        />
-        <AcqCheckboxFilter
-          id={FILTERS.STATUS}
-          activeFilters={activeFilters[FILTERS.STATUS]}
-          labelId="ui-invoice.invoice.details.information.status"
-          name={FILTERS.STATUS}
-          onChange={onChange}
-          options={INVOICE_STATUSES_OPTIONS}
         />
         <SourceFilter
           activeFilters={activeFilters[FILTERS.SOURCE]}
