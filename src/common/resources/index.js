@@ -1,6 +1,7 @@
 export * from './acqUnit';
 export * from './configAddress';
 export * from './configAdjustments';
+export * from './configApprovals';
 export * from './invoice';
 export * from './configTags';
 export * from './vendor';

@@ -58,6 +58,9 @@
   "adjustments.relationToTotal.inAdditionTo": "In addition to",
   "adjustments.relationToTotal.includedIn": "Included in",
   "adjustments.relationToTotal.separateFrom": "Separate from",
+
+  "settings.general.label": "General",
+
   "settings.adjustments.alwaysShow": "Always show",
   "settings.adjustments.prorate": "Pro rate",
   "settings.adjustments.description": "Description",
@@ -78,6 +81,9 @@
   "settings.voucherNumber.reset": "Reset sequence",
   "settings.voucherNumber.allowVoucherNumberEdit": "Allow voucher number to be edited",
   "settings.voucherNumber.startNumber.error": "Start number could not be saved.",
+
+  "settings.approvals.label": "Approvals",
+  "settings.approvals.isApprovePayEnabled": "Approval and pay in one click",
 
   "invoice.dateCreated": "Date created",
   "invoice.editLayer": "Edit invoice",
@@ -171,10 +177,17 @@
   "invoice.actions.approve": "Approve",
   "invoice.actions.approve.success": "Invoice has been approved successfully",
   "invoice.actions.approve.error": "Invoice was not approved",
+  "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
   "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
   "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
   "invoice.actions.approve.confirmation.heading": "Approve invoice",
   "invoice.actions.approve.confirmation.message": "Are you sure you want to approve invoice?",
+
+  "invoice.actions.approveAndPay": "Approve & pay",
+  "invoice.actions.approveAndPay.error": "Invoice was not approved/paid",
+  "invoice.actions.approveAndPay.success": "Invoice has been approved and paid successfully",
+  "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
+  "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
 
   "invoice.actions.pay": "Pay",
   "invoice.actions.pay.success": "Invoice has been paid successfully",
