@@ -200,5 +200,14 @@
     "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
     "adjustment.headerLabel": "Ajuste {index}",
     "saveAndClose": "Salvar e fechar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "settings.general.label": "General",
+    "settings.approvals.label": "Approvals",
+    "settings.approvals.isApprovePayEnabled": "Approval and pay in one click",
+    "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
+    "invoice.actions.approveAndPay": "Approve & pay",
+    "invoice.actions.approveAndPay.error": "Invoice was not approved/paid",
+    "invoice.actions.approveAndPay.success": "Invoice has been approved and paid successfully",
+    "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
+    "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?"
 }
