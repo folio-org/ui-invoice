@@ -34,10 +34,11 @@ import {
   ACQUISITIONS_UNITS,
   CONFIG_ADJUSTMENTS,
   configAddress,
+  invoicesResource,
   VENDORS,
 } from '../../common/resources';
 
-import InvoiceForm from '../InvoiceForm';
+import InvoiceEditLayer from './Invoice/InvoiceEditLayer';
 import {
   invoicesSearchTemplate,
   searchableIndexes,
@@ -123,6 +124,11 @@ class InvoicesList extends Component {
     acqUnits: ACQUISITIONS_UNITS,
     configAddress,
     configAdjustments: CONFIG_ADJUSTMENTS,
+    validateInvoice: {
+      ...invoicesResource,
+      accumulate: true,
+      fetch: false,
+    },
   });
 
   constructor(props, context) {
@@ -226,7 +232,7 @@ class InvoicesList extends Component {
           disableRecordCreation={disableRecordCreation}
           browseOnly={browseOnly}
           showSingleResult={showSingleResult}
-          editRecordComponent={InvoiceForm}
+          editRecordComponent={InvoiceEditLayer}
           newRecordInitialValues={{
             chkSubscriptionOverlap: true,
             currency: 'USD',

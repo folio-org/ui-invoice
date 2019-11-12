@@ -1,14 +1,24 @@
-import React, { Component } from 'react';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import {
+  FormattedMessage,
   injectIntl,
   intlShape,
 } from 'react-intl';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import { withRouter } from 'react-router-dom';
 
 import {
+  ConfirmationModal,
   Layer,
 } from '@folio/stripes/components';
+import { stripesConnect } from '@folio/stripes/core';
+import {
+  sourceValues,
+  useModalToggle,
+  useShowToast,
+} from '@folio/stripes-acq-components';
 
 import {
   invoiceResource,
@@ -20,90 +30,150 @@ import {
 } from '../utils';
 import InvoiceForm from '../../InvoiceForm';
 
-class InvoiceEditLayer extends Component {
-  static manifest = Object.freeze({
-    invoice: invoiceResource,
-    invoiceDocuments: {
-      ...invoiceDocumentsResource,
-      accumulate: true,
-    },
-  });
+function InvoiceEditLayer({
+  connectedSource,
+  intl,
+  match,
+  mutator,
+  okapi,
+  onCancel,
+  onCloseEdit,
+  onSubmit,
+  parentMutator,
+  parentResources,
+  resources,
+  stripes,
+}) {
+  useEffect(() => {
+    mutator.invoiceDocuments.reset();
+    mutator.invoiceDocuments.GET();
+  }, []);
 
-  static propTypes = {
-    connectedSource: PropTypes.object.isRequired,
-    onCloseEdit: PropTypes.func.isRequired,
-    parentResources: PropTypes.object.isRequired,
-    parentMutator: PropTypes.object.isRequired,
-    resources: PropTypes.object.isRequired,
-    mutator: PropTypes.object.isRequired,
-    stripes: PropTypes.object.isRequired,
-    okapi: PropTypes.object.isRequired,
-    intl: intlShape.isRequired,
-    showToast: PropTypes.func.isRequired,
-  }
+  const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
+  const [forceSaveValues, setForceSaveValues] = useState();
+  const showToast = useShowToast();
+  const closeScreen = onCancel || onCloseEdit;
+  const { params: { id } } = match;
+  const isCreate = !id;
 
-  componentDidMount() {
-    this.props.mutator.invoiceDocuments.reset();
-    this.props.mutator.invoiceDocuments.GET();
-  }
+  const saveInvoiceHandler = useCallback(invoice => {
+    let validationRequest = Promise.resolve();
 
-  saveInvoice = (invoice) => {
-    const { onCloseEdit, parentMutator, showToast, okapi, resources } = this.props;
+    if (!forceSaveValues) {
+      const { vendorInvoiceNo, invoiceDate, vendorId } = invoice;
+      const params = {
+        query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${invoiceDate}*" AND vendorId=="${vendorId}"`,
+      };
 
-    saveInvoice(invoice, resources.invoiceDocuments.records, parentMutator.records, okapi)
-      .then(() => {
+      validationRequest = parentMutator.validateInvoice.GET({ params })
+        // eslint-disable-next-line consistent-return
+        .then(existingInvoices => {
+          if (existingInvoices.length) {
+            toggleNotUnique();
+            setForceSaveValues(invoice);
+
+            return {};
+          }
+        });
+    }
+
+    return validationRequest
+      .then(() => saveInvoice(invoice, resources.invoiceDocuments.records, parentMutator.records, okapi))
+      .then(savedRecord => {
         showToast('ui-invoice.invoice.invoiceHasBeenSaved');
-        onCloseEdit();
+        if (isCreate) {
+          setTimeout(() => onSubmit(savedRecord), 0);
+        } else {
+          onCloseEdit();
+        }
       })
       .catch(() => {
         showToast('ui-invoice.errors.invoiceHasNotBeenSaved', 'error');
-
-        return { id: 'Unable to save invoice' };
       });
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [forceSaveValues, id, isCreate, okapi]);
 
-  render() {
-    const {
-      connectedSource,
-      intl,
-      onCloseEdit,
-      parentMutator,
-      parentResources,
-      resources,
-      stripes,
-    } = this.props;
-
-    const invoiceDocuments = get(resources, 'invoiceDocuments.records', []);
-    const invoice = {
-      ...get(resources, ['invoice', 'records', 0]),
-      documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
-      links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
+  const invoiceDocuments = get(resources, 'invoiceDocuments.records', []);
+  const invoice = !isCreate
+    ? get(resources, ['invoice', 'records', 0], {})
+    : {
+      chkSubscriptionOverlap: true,
+      currency: stripes.currency,
+      source: sourceValues.user,
     };
-    const hasLoaded = get(resources, 'invoice.hasLoaded');
+  const initialValues = {
+    ...invoice,
+    documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
+    links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
+  };
 
-    return (
-      <Layer
-        isOpen
-        contentLabel={intl.formatMessage({ id: 'ui-invoice.invoice.editLayer' })}
-      >
-        {hasLoaded
-          ? (
-            <InvoiceForm
-              stripes={stripes}
-              initialValues={invoice}
-              connectedSource={connectedSource}
-              parentResources={parentResources}
-              parentMutator={parentMutator}
-              onSubmit={this.saveInvoice}
-              onCancel={onCloseEdit}
+  const hasLoaded = !id || get(resources, 'invoice.hasLoaded');
+
+  const formNode = hasLoaded
+    ? (
+      <Fragment>
+        <InvoiceForm
+          stripes={stripes}
+          initialValues={initialValues}
+          connectedSource={connectedSource}
+          parentResources={parentResources}
+          parentMutator={parentMutator}
+          onSubmit={saveInvoiceHandler}
+          onCancel={closeScreen}
+        />
+        {
+          isNotUniqueOpen && (
+            <ConfirmationModal
+              id="fund-name-is-not-unique-confirmation"
+              heading={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.heading" />}
+              message={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.message" />}
+              onCancel={() => {
+                toggleNotUnique();
+                setForceSaveValues(null);
+              }}
+              onConfirm={() => saveInvoiceHandler(forceSaveValues)}
+              open
             />
           )
-          : <LoadingPane onClose={onCloseEdit} />
         }
+      </Fragment>
 
+    )
+    : <LoadingPane onClose={closeScreen} />;
+
+  return isCreate
+    ? formNode
+    : (
+      <Layer
+        contentLabel={intl.formatMessage({ id: 'ui-invoice.invoice.editLayer' })}
+        isOpen
+      >
+        {formNode}
       </Layer>
     );
-  }
 }
 
-export default injectIntl(InvoiceEditLayer);
+InvoiceEditLayer.manifest = Object.freeze({
+  invoice: invoiceResource,
+  invoiceDocuments: {
+    ...invoiceDocumentsResource,
+    accumulate: true,
+  },
+});
+
+InvoiceEditLayer.propTypes = {
+  connectedSource: PropTypes.object.isRequired,
+  intl: intlShape.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+  mutator: PropTypes.object.isRequired,
+  okapi: PropTypes.object.isRequired,
+  onCancel: PropTypes.func,  // SearchAndSort callback to close create form
+  onCloseEdit: PropTypes.func,
+  onSubmit: PropTypes.func,  // SearchAndSort callback when item is created
+  parentMutator: PropTypes.object.isRequired,
+  parentResources: PropTypes.object.isRequired,
+  resources: PropTypes.object.isRequired,
+  stripes: PropTypes.object.isRequired,
+};
+
+export default withRouter(stripesConnect(injectIntl(InvoiceEditLayer)));
