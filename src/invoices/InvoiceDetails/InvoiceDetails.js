@@ -19,7 +19,6 @@ import { FundDistributionView } from '@folio/stripes-acq-components';
 import {
   calculateAdjustmentAmount,
   expandAll,
-  isPayable,
   IS_EDIT_POST_APPROVAL,
   toggleSection,
 } from '../../common/utils';
@@ -28,10 +27,7 @@ import {
   SECTIONS_INVOICE,
 } from '../constants';
 import ActionMenu from './ActionMenu';
-import {
-  ApproveInvoiceAction,
-  PayInvoiceAction,
-} from './InvoiceActions';
+import InvoiceActions from './InvoiceActions';
 import Information from './Information';
 import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
@@ -173,16 +169,10 @@ class InvoiceDetails extends Component {
       >
         <Row end="xs">
           <Col xs={12}>
-            {
-              totalInvoiceLines > 0 && isPayable(invoice.status) && (
-                <PayInvoiceAction invoice={invoice} />
-              )
-            }
-            {
-              totalInvoiceLines > 0 && !IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) && (
-                <ApproveInvoiceAction invoice={invoice} />
-              )
-            }
+            <InvoiceActions
+              invoiceLinesCount={totalInvoiceLines}
+              invoice={invoice}
+            />
             <ExpandAllButton
               accordionStatus={sections}
               onToggle={this.expandAll}
