@@ -209,5 +209,7 @@
     "invoice.actions.approveAndPay.error": "Invoice was not approved/paid",
     "invoice.actions.approveAndPay.success": "Invoice has been approved and paid successfully",
     "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
-    "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?"
+    "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
+    "invoice.isNotUnique.confirmation.heading": "Save invoice",
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number"
 }
