@@ -78,7 +78,7 @@ function InvoiceEditLayer({
         });
     }
 
-    return validationRequest
+    validationRequest
       .then(() => saveInvoice(invoice, invoiceDocuments, parentMutator.records, okapi))
       .then(savedRecord => {
         showToast('ui-invoice.invoice.invoiceHasBeenSaved');
