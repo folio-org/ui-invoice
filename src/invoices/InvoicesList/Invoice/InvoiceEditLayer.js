@@ -57,11 +57,11 @@ function InvoiceEditLayer({
   const isCreate = !id;
   const invoiceDocuments = get(resources, 'invoiceDocuments.records', []);
 
-  const saveInvoiceHandler = useCallback(invoice => {
+  const saveInvoiceHandler = useCallback(formValues => {
     let validationRequest = Promise.resolve();
 
     if (!forceSaveValues) {
-      const { vendorInvoiceNo, invoiceDate, vendorId } = invoice;
+      const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
       const params = {
         query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${invoiceDate}*" AND vendorId=="${vendorId}"`,
       };
@@ -71,7 +71,7 @@ function InvoiceEditLayer({
         .then(existingInvoices => {
           if (existingInvoices.length) {
             toggleNotUnique();
-            setForceSaveValues(invoice);
+            setForceSaveValues(formValues);
 
             return Promise.reject();
           }
@@ -79,7 +79,7 @@ function InvoiceEditLayer({
     }
 
     validationRequest
-      .then(() => saveInvoice(invoice, invoiceDocuments, parentMutator.records, okapi))
+      .then(() => saveInvoice(formValues, invoiceDocuments, parentMutator.records, okapi))
       .then(savedRecord => {
         showToast('ui-invoice.invoice.invoiceHasBeenSaved');
         if (isCreate) {
