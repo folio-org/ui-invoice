@@ -210,6 +210,6 @@
     "invoice.actions.approveAndPay.success": "A fatura foi aprovada e paga com sucesso",
     "invoice.actions.approveAndPay.confirmation.heading": "Aprovar e pagar a fatura",
     "invoice.actions.approveAndPay.confirmation.message": "Tem certeza de que deseja aprovar e pagar a fatura?",
-    "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number"
+    "invoice.isNotUnique.confirmation.heading": "Salvar fatura",
+    "invoice.isNotUnique.confirmation.message": "Parece ser um número de fatura duplicado"
 }
