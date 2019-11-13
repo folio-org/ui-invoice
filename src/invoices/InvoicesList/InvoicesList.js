@@ -46,7 +46,6 @@ import {
 import { filterConfig } from './invoicesListFilterConfig';
 import Invoice from './Invoice';
 import InvoicesListFilters from './InvoicesListFilters';
-import { saveInvoice } from './utils';
 
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'total'];
 const columnMapping = {
@@ -75,7 +74,6 @@ class InvoicesList extends Component {
   static propTypes = {
     mutator: PropTypes.object.isRequired,
     resources: PropTypes.object.isRequired,
-    okapi: PropTypes.object.isRequired,
     intl: intlShape.isRequired,
     stripes: PropTypes.object,
     onSelectRow: PropTypes.func,
@@ -140,28 +138,13 @@ class InvoicesList extends Component {
     this.changeSearchIndex = changeSearchIndex.bind(this);
   }
 
-  // eslint-disable-next-line consistent-return
-  onCreate = async (invoice) => {
-    const { mutator, okapi } = this.props;
+  onCreate = ({ id }) => {
+    const { mutator } = this.props;
 
-    try {
-      const { id } = await saveInvoice(
-        invoice,
-        [],
-        mutator.records,
-        okapi,
-      );
-
-      this.showToast('ui-invoice.invoice.invoiceHasBeenCreated');
-      mutator.query.update({
-        _path: `/invoice/view/${id}`,
-        layer: null,
-      });
-    } catch (response) {
-      this.showToast('ui-invoice.errors.invoiceHasNotBeenCreated', 'error');
-
-      return { id: 'Unable to create invoice' };
-    }
+    mutator.query.update({
+      _path: `/invoice/view/${id}`,
+      layer: null,
+    });
   }
 
   renderFilters = (onChange) => {

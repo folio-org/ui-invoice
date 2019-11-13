@@ -55,6 +55,7 @@ function InvoiceEditLayer({
   const closeScreen = onCancel || onCloseEdit;
   const { params: { id } } = match;
   const isCreate = !id;
+  const invoiceDocuments = get(resources, 'invoiceDocuments.records', []);
 
   const saveInvoiceHandler = useCallback(invoice => {
     let validationRequest = Promise.resolve();
@@ -72,28 +73,27 @@ function InvoiceEditLayer({
             toggleNotUnique();
             setForceSaveValues(invoice);
 
-            return {};
+            return Promise.reject();
           }
         });
     }
 
     return validationRequest
-      .then(() => saveInvoice(invoice, resources.invoiceDocuments.records, parentMutator.records, okapi))
+      .then(() => saveInvoice(invoice, invoiceDocuments, parentMutator.records, okapi))
       .then(savedRecord => {
         showToast('ui-invoice.invoice.invoiceHasBeenSaved');
         if (isCreate) {
-          setTimeout(() => onSubmit(savedRecord), 0);
+          onSubmit(savedRecord);
         } else {
-          onCloseEdit();
+          setTimeout(onCloseEdit);
         }
       })
       .catch(() => {
         showToast('ui-invoice.errors.invoiceHasNotBeenSaved', 'error');
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [forceSaveValues, id, isCreate, okapi]);
+  }, [forceSaveValues, id, isCreate, okapi, invoiceDocuments]);
 
-  const invoiceDocuments = get(resources, 'invoiceDocuments.records', []);
   const invoice = !isCreate
     ? get(resources, ['invoice', 'records', 0], {})
     : {

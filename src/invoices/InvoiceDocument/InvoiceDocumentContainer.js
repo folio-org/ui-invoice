@@ -23,7 +23,7 @@ const InvoiceDocumentContainer = ({ mutator, documentId, name }) => {
   return (
     <InvoiceDocument
       name={name}
-      downloadDocument={documentId && downloadDocument}
+      downloadDocument={documentId ? downloadDocument : undefined}
     />
   );
 };
