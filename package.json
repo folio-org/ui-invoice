@@ -95,10 +95,12 @@
         "displayName": "Invoice: Permissions required to call services apart from mod-invoice",
         "description": "",
         "subPermissions": [
-          "acquisitions-units.units.collection.get",
           "acquisitions-units.memberships.collection.get",
+          "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
+          "finance.funds.collection.get",
           "organizations-storage.organizations.collection.get",
+          "tags.collection.get",
           "users.collection.get"
         ]
       },

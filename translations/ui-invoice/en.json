@@ -194,6 +194,9 @@
   "invoice.actions.pay.confirmation.heading": "Pay invoice",
   "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?",
 
+  "invoice.isNotUnique.confirmation.heading": "Save invoice",
+  "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",

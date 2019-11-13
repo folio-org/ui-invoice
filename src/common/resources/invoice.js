@@ -5,6 +5,12 @@ import {
 } from '../constants';
 import { BASE_RESOURCE } from './base';
 
+export const invoicesResource = {
+  ...BASE_RESOURCE,
+  path: INVOICE_API,
+  records: 'invoices',
+};
+
 export const invoiceResource = {
   ...BASE_RESOURCE,
   path: `${INVOICE_API}/:{id}`,
