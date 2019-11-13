@@ -1,6 +1,8 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+
 import setupApplication from '../../helpers/setup-application';
 import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 import InvoicesListInteractor from '../../interactors/InvoicesList';
@@ -51,12 +53,14 @@ describe('Invoice edit documents', () => {
 
   describe('save invoice with removed documents', () => {
     const invoicesList = new InvoicesListInteractor();
+    const confirmation = new ConfirmationInteractor('#invoice-is-not-unique-confirmation');
 
     beforeEach(async function () {
       await invoiceForm.documentsAndLinks.links(0).removeButton.click();
       await invoiceForm.documentsAndLinks.documents(0).removeButton.click();
 
       await invoiceForm.formFooter.saveButton.click();
+      await confirmation.confirm();
 
       await invoicesList.whenLoaded();
     });

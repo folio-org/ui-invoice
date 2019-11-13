@@ -124,7 +124,7 @@ function InvoiceEditLayer({
         {
           isNotUniqueOpen && (
             <ConfirmationModal
-              id="fund-name-is-not-unique-confirmation"
+              id="invoice-is-not-unique-confirmation"
               heading={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.heading" />}
               message={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.message" />}
               onCancel={() => {
