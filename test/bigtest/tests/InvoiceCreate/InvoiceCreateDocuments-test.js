@@ -32,7 +32,7 @@ describe('Invoice create with documents', () => {
     await invoiceForm.documentsAndLinks.links(0).fillName('test link');
     await invoiceForm.documentsAndLinks.links(0).fillUrl('test url');
 
-    await invoiceForm.saveButton.click();
+    await invoiceForm.formFooter.saveButton.click();
     await invoiceForm.whenDestroyed();
 
     await invoiceDetails.whenLoaded();

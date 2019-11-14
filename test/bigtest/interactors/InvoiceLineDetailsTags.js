@@ -8,7 +8,7 @@ import {
 } from '@bigtest/interactor';
 
 @interactor class SelectedTags {
-  static defaultScope = '[class*=multiSelectControlGroup---]';
+  static defaultScope = '#tagsPane [class*=multiSelectControlGroup---]';
   list = collection('[class*=multiSelectValueList---] [class*=valueChipRoot---]', {
     deleteTag: clickable('[class*=iconButton---]'),
   });

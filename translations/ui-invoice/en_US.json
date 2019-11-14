@@ -1,5 +1,5 @@
 {
-    "meta.title": "Invoice",
+    "meta.title": "Invoices",
     "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
     "invoice.status.approved": "Approved",
     "invoice.status.open": "Open",
@@ -197,5 +197,19 @@
     "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?",
     "invoice.actions.approve.error": "Invoice was not approved",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contain only Unicode letters",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line"
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
+    "adjustment.headerLabel": "Adjustment {index}",
+    "saveAndClose": "Save & close",
+    "cancel": "Cancel",
+    "settings.general.label": "General",
+    "settings.approvals.label": "Approvals",
+    "settings.approvals.isApprovePayEnabled": "Approval and pay in one click",
+    "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
+    "invoice.actions.approveAndPay": "Approve & pay",
+    "invoice.actions.approveAndPay.error": "Invoice was not approved/paid",
+    "invoice.actions.approveAndPay.success": "Invoice has been approved and paid successfully",
+    "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
+    "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
+    "invoice.isNotUnique.confirmation.heading": "Save invoice",
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number"
 }

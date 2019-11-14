@@ -9,14 +9,14 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
+import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
 
 import {
   getInvoiceStatusLabel,
-  formatAmount,
   formatDate,
 } from '../../common/utils';
 
-const InvoiceLineInformation = ({ invoiceLine }) => {
+const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
   const metadata = invoiceLine.metadata;
 
   return (
@@ -42,8 +42,8 @@ const InvoiceLineInformation = ({ invoiceLine }) => {
         </Col>
         <Col xs={3}>
           <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.poLineId" />}
-            value={invoiceLine.poLineId}
+            label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}
+            value={poLineNumber}
           />
         </Col>
         <Col xs={3}>
@@ -71,10 +71,12 @@ const InvoiceLineInformation = ({ invoiceLine }) => {
           />
         </Col>
         <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}
-            value={formatAmount(invoiceLine.subTotal)}
-          />
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}>
+            <AmountWithCurrencyField
+              amount={invoiceLine.subTotal}
+              currency={currency}
+            />
+          </KeyValue>
         </Col>
         <Col xs={3}>
           <KeyValue
@@ -116,10 +118,13 @@ const InvoiceLineInformation = ({ invoiceLine }) => {
 
 InvoiceLineInformation.propTypes = {
   invoiceLine: PropTypes.object,
+  currency: PropTypes.string,
+  poLineNumber: PropTypes.string,
 };
 
 InvoiceLineInformation.defaultProps = {
   invoiceLine: {},
+  poLineNumber: '',
 };
 
 export default InvoiceLineInformation;

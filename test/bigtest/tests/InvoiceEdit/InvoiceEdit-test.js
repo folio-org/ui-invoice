@@ -2,6 +2,7 @@ import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
 import { FUND_DISTR_TYPE } from '@folio/stripes-acq-components';
+import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 import {
   ADJUSTMENT_PRORATE_VALUES,
@@ -49,10 +50,12 @@ describe('Invoice edit', () => {
 
   describe('Add data and save invoice', () => {
     const invoicesList = new InvoicesListInteractor();
+    const confirmation = new ConfirmationInteractor('#invoice-is-not-unique-confirmation');
 
     beforeEach(async function () {
       await invoiceForm.termsInput.fill('new test value');
-      await invoiceForm.saveButton.click();
+      await invoiceForm.formFooter.saveButton.click();
+      await confirmation.confirm();
       await invoicesList.whenLoaded();
     });
 

@@ -36,7 +36,13 @@ class InvoiceLineDetails extends Component {
     goToEditInvoiceLine: PropTypes.func.isRequired,
     invoiceLine: PropTypes.object.isRequired,
     tagsToggle: PropTypes.func.isRequired,
+    currency: PropTypes.string,
+    poLineNumber: PropTypes.string,
   };
+
+  static defaultProps = {
+    poLineNumber: '',
+  }
 
   constructor(props, context) {
     super(props, context);
@@ -73,8 +79,10 @@ class InvoiceLineDetails extends Component {
   render() {
     const {
       closeInvoiceLine,
+      currency,
       deleteInvoiceLine,
       invoiceLine,
+      poLineNumber,
       tagsToggle,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
@@ -123,13 +131,18 @@ class InvoiceLineDetails extends Component {
             id={SECTIONS_INVOICE_LINE.invoiceLineInformation}
             label={<FormattedMessage id="ui-invoice.invoiceLineInformation" />}
           >
-            <InvoiceLineInformation invoiceLine={invoiceLine} />
+            <InvoiceLineInformation
+              currency={currency}
+              invoiceLine={invoiceLine}
+              poLineNumber={poLineNumber}
+            />
           </Accordion>
           <Accordion
             id={SECTIONS_INVOICE_LINE.fundDistribution}
             label={<FormattedMessage id="ui-invoice.fundDistribution" />}
           >
             <FundDistributionView
+              currency={currency}
               fundDistributions={fundDistributions}
               totalAmount={total}
             />
@@ -138,7 +151,10 @@ class InvoiceLineDetails extends Component {
             id={SECTIONS_INVOICE_LINE.adjustments}
             label={<FormattedMessage id="ui-invoice.adjustments" />}
           >
-            <AdjustmentsDetails adjustments={adjustments} />
+            <AdjustmentsDetails
+              adjustments={adjustments}
+              currency={currency}
+            />
           </Accordion>
         </AccordionSet>
         {showConfirmDelete && (

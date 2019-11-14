@@ -63,11 +63,12 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.1",
       "configuration": "2.0",
-      "invoice": "2.0 3.0",
+      "invoice": "3.0",
+      "orders": "8.0",
       "organizations-storage.organizations": "2.1",
       "users": "15.0",
       "voucher-number": "1.0",
-      "voucher": "1.1 2.0"
+      "voucher": "2.0"
     },
     "icons": [
       {
@@ -95,10 +96,12 @@
         "displayName": "Invoice: Permissions required to call services apart from mod-invoice",
         "description": "",
         "subPermissions": [
-          "acquisitions-units.units.collection.get",
           "acquisitions-units.memberships.collection.get",
+          "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
+          "finance.funds.collection.get",
           "organizations-storage.organizations.collection.get",
+          "tags.collection.get",
           "users.collection.get"
         ]
       },

@@ -1,5 +1,5 @@
 {
-    "meta.title": "Fatura",
+    "meta.title": "Faturas",
     "invoice.details.paneTitle": "Número da fatura do fornecedor: {vendorInvoiceNo}",
     "invoice.status.approved": "Aprovado",
     "invoice.status.open": "Aberto",
@@ -182,7 +182,7 @@
     "voucher.voucherLines.fundCode": "Código do fundo",
     "voucher.voucherLines.externalAccountNumber": "Número da conta externa",
     "voucher.voucherLines.amount": "Quantia",
-    "voucher.voucherLines.total": "Total:",
+    "voucher.voucherLines.total": "Total: ",
     "settings.voucherNumber.startNumber.error": "O número inicial não pôde ser salvo.",
     "invoice.links.title": "Links",
     "invoice.documents.name": "Nome do documento",
@@ -197,5 +197,19 @@
     "invoice.actions.pay.confirmation.message": "Tem certeza de que deseja pagar a fatura?",
     "invoice.actions.approve.error": "A fatura não foi aprovada",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "O prefixo do número do voucher deve conter apenas letras Unicode",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada"
+    "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
+    "adjustment.headerLabel": "Ajuste {index}",
+    "saveAndClose": "Salvar e fechar",
+    "cancel": "Cancelar",
+    "settings.general.label": "Geral",
+    "settings.approvals.label": "Aprovações",
+    "settings.approvals.isApprovePayEnabled": "Aprovação e pagamento com um clique",
+    "invoice.actions.approve.error.poLineUpdateFailure": "Um ou mais registros da linha do pedido não podem ser atualizados",
+    "invoice.actions.approveAndPay": "Aprovar e pagar",
+    "invoice.actions.approveAndPay.error": "A fatura não foi aprovada/paga",
+    "invoice.actions.approveAndPay.success": "A fatura foi aprovada e paga com sucesso",
+    "invoice.actions.approveAndPay.confirmation.heading": "Aprovar e pagar a fatura",
+    "invoice.actions.approveAndPay.confirmation.message": "Tem certeza de que deseja aprovar e pagar a fatura?",
+    "invoice.isNotUnique.confirmation.heading": "Salvar fatura",
+    "invoice.isNotUnique.confirmation.message": "Parece ser um número de fatura duplicado"
 }

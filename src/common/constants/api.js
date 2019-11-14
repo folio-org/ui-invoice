@@ -1,11 +1,12 @@
 export const ACQUISITIONS_UNITS_API = 'acquisitions-units/units';
+export const CONFIG_API = 'configurations/entries';
 export const INVOICE_API = 'invoice/invoices';
 export const INVOICE_DOCUMENTS_API = '/documents';
 export const INVOICE_LINE_API = 'invoice/invoice-lines';
-export const VENDORS_API = 'organizations-storage/organizations';
-export const CONFIG_API = 'configurations/entries';
+export const PO_LINES_API = 'orders/order-lines';
+export const TAGS_API = 'tags';
 export const USERS_API = 'users';
-export const VOUCHERS_API = 'voucher/vouchers';
+export const VENDORS_API = 'organizations-storage/organizations';
 export const VOUCHER_LINES_API = 'voucher/voucher-lines';
 export const VOUCHER_NUMBER_START_API = 'voucher/voucher-number/start';
-export const TAGS_API = 'tags';
+export const VOUCHERS_API = 'voucher/vouchers';

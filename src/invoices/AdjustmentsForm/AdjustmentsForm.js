@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 import {
   Field,
@@ -20,6 +20,7 @@ import {
   TextField,
 } from '@folio/stripes/components';
 import {
+  CurrencySymbol,
   FieldSelect,
   FundDistributionFields,
   parseNumberFieldValue,
@@ -29,9 +30,11 @@ import {
   ADJUSTMENT_PRORATE_OPTIONS,
   ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS,
+  ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
 } from '../../common/constants';
 import {
+  calculateAdjustmentAmount,
   getAdjustmentPresetOptions,
   validateRequired,
 } from '../../common/utils';
@@ -44,7 +47,7 @@ const getAdjustmentFromPreset = ({ description, prorate, relationToTotal, type, 
   value: defaultAmount,
 });
 
-const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) => {
+const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments, invoiceSubTotal }) => {
   const [adjPreset, setAdjPreset] = useState();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
@@ -56,8 +59,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
     fields.push(newAdjustment);
   };
 
-  // eslint-disable-next-line react/prop-types
-  const renderTypeToggle = ({ input: { value, onChange } }) => {
+  const renderTypeToggle = useCallback(({ input: { value, onChange } }) => {
     return (
       <KeyValue label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}>
         <ButtonGroup
@@ -78,12 +80,12 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
             data-test-adjustments-type-amount
             disabled={disabled}
           >
-            <FormattedMessage id="ui-invoice.adjustment.type.sign.amount" />
+            <CurrencySymbol currency={currency} />
           </Button>
         </ButtonGroup>
       </KeyValue>
     );
-  };
+  }, [currency, disabled]);
 
   const renderAdjustment = (elem, index, fields) => {
     const onRemove = () => {
@@ -92,7 +94,9 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
     const adjustment = fields.get(index);
     const showFundDistribution = !isLineAdjustments
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
-      && adjustment.type === ADJUSTMENT_TYPE_VALUES.amount;
+      && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
+
+    const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal);
 
     return (
       <Card
@@ -185,10 +189,11 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
         </Row>
         {showFundDistribution && (
           <FundDistributionFields
+            currency={currency}
             disabled={disabled}
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
-            totalAmount={adjustment.value}
+            totalAmount={adjustmentAmount}
           />
         )}
       </Card>
@@ -198,12 +203,17 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
   return (
     <Row>
       <Col xs={12}>
-        <Selection
-          dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
-          label={<FormattedMessage id="ui-invoice.adjustment.presetAdjustment" />}
-          onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
-          disabled={disabled}
-        />
+        <FormattedMessage id="ui-invoice.adjustment.presetAdjustment">
+          {translatedLabel => (
+            <Selection
+              dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
+              label={translatedLabel}
+              onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
+              disabled={disabled}
+            />
+          )}
+        </FormattedMessage>
+
       </Col>
       <Col xs={12}>
         <FieldArray
@@ -224,14 +234,17 @@ const AdjustmentsForm = ({ adjustmentsPresets, disabled, isLineAdjustments }) =>
 
 AdjustmentsForm.propTypes = {
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
+  currency: PropTypes.string,
   disabled: PropTypes.bool,
   isLineAdjustments: PropTypes.bool,
+  invoiceSubTotal: PropTypes.number,
 };
 
 AdjustmentsForm.defaultProps = {
   adjustmentsPresets: [],
   disabled: false,
   isLineAdjustments: false,
+  invoiceSubTotal: 0,
 };
 
 export default AdjustmentsForm;

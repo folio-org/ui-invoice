@@ -25,7 +25,7 @@ describe('Invoice create', () => {
   describe('Add data and save invoice', () => {
     beforeEach(async function () {
       await invoiceForm.termsInput.fill('test value');
-      await invoiceForm.saveButton.click();
+      await invoiceForm.formFooter.saveButton.click();
     });
 
     it('closes edit form', () => {
@@ -43,7 +43,7 @@ describe('Invoice create', () => {
         await invoiceForm.status.options.list(1).click();
         await invoiceForm.vendorButton.click();
         await invoiceForm.vendor.options.list(1).click();
-        await invoiceForm.saveButton.click();
+        await invoiceForm.formFooter.saveButton.click();
         await invoicesList.whenLoaded();
       });
 

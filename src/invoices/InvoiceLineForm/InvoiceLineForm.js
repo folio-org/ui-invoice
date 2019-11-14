@@ -15,12 +15,10 @@ import {
 import {
   Accordion,
   AccordionSet,
-  Button,
   Checkbox,
   Col,
   ExpandAllButton,
   Pane,
-  PaneMenu,
   Paneset,
   Row,
   TextField,
@@ -36,35 +34,19 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  calculateTotalAmount,
   expandAll,
+  getAccountNumberOptions,
   IS_EDIT_POST_APPROVAL,
   toggleSection,
   validateRequired,
-  getAccountNumberOptions,
-  calculateTotalAmount,
 } from '../../common/utils';
+import { FormFooter } from '../../common/components';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
 import validate from './validate';
 
 const INVOICE_LINE_FORM = 'invoiceLineForm';
-
-const getLastMenu = (handleSubmit, pristine, submitting) => {
-  return (
-    <PaneMenu>
-      <Button
-        data-test-button-invoice-line-save
-        marginBottom0
-        buttonStyle="primary"
-        onClick={handleSubmit}
-        type="submit"
-        disabled={pristine || submitting}
-      >
-        <FormattedMessage id="ui-invoice.save" />
-      </Button>
-    </PaneMenu>
-  );
-};
 
 class InvoiceLineForm extends Component {
   static propTypes = {
@@ -114,11 +96,11 @@ class InvoiceLineForm extends Component {
       adjustmentsPresets,
       handleSubmit,
       initialValues,
+      invoice,
       onCancel,
       pristine,
-      submitting,
       stripes,
-      invoice,
+      submitting,
     } = this.props;
     const { sections } = this.state;
     const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
@@ -129,10 +111,19 @@ class InvoiceLineForm extends Component {
     const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
     const isDisabledEditFundDistribution = IS_EDIT_POST_APPROVAL(invoice.id, invoice.status);
 
-    const lastMenu = getLastMenu(handleSubmit, pristine, submitting);
     const paneTitle = initialValues.id
       ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
       : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
+    const paneFooter = (
+      <FormFooter
+        id="clickable-save"
+        label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+        pristine={pristine}
+        submitting={submitting}
+        handleSubmit={handleSubmit}
+        onCancel={onCancel}
+      />
+    );
     const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
     const fundDistributions = get(formValues, 'fundDistributions');
 
@@ -142,8 +133,8 @@ class InvoiceLineForm extends Component {
           <Pane
             defaultWidth="fill"
             dismissible
+            footer={paneFooter}
             id="pane-invoice-line-form"
-            lastMenu={lastMenu}
             onClose={onCancel}
             paneTitle={paneTitle}
           >
@@ -188,15 +179,6 @@ class InvoiceLineForm extends Component {
                           name="invoiceLineStatus"
                           disabled
                           required
-                        />
-                      </Col>
-                      <Col data-test-col-invoice-line-po-line-id xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoiceLine.poLineId" />}
-                          name="poLineId"
-                          disabled
-                          type="text"
                         />
                       </Col>
                       <Col data-test-col-invoice-line-subscription-info xs={3}>

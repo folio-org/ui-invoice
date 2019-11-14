@@ -14,10 +14,11 @@ import {
   PaneMenu,
   IconButton,
 } from '@folio/stripes/components';
+import { FundDistributionView } from '@folio/stripes-acq-components';
 
 import {
+  calculateAdjustmentAmount,
   expandAll,
-  isPayable,
   IS_EDIT_POST_APPROVAL,
   toggleSection,
 } from '../../common/utils';
@@ -26,10 +27,7 @@ import {
   SECTIONS_INVOICE,
 } from '../constants';
 import ActionMenu from './ActionMenu';
-import {
-  ApproveInvoiceAction,
-  PayInvoiceAction,
-} from './InvoiceActions';
+import InvoiceActions from './InvoiceActions';
 import Information from './Information';
 import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
@@ -118,6 +116,19 @@ class InvoiceDetails extends Component {
     const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
     const tags = get(invoice, 'tags.tagList', []);
     const adjustments = get(invoice, 'adjustments', []);
+    const fundDistributions = adjustments.reduce((acc, adjustment) => {
+      if (adjustment.fundDistributions) {
+        adjustment.fundDistributions.forEach((distr) => {
+          acc.push({
+            ...distr,
+            adjustmentDescription: adjustment.description,
+            totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal),
+          });
+        });
+      }
+
+      return acc;
+    }, []);
 
     const paneTitle = (
       <FormattedMessage
@@ -158,16 +169,10 @@ class InvoiceDetails extends Component {
       >
         <Row end="xs">
           <Col xs={12}>
-            {
-              totalInvoiceLines > 0 && isPayable(invoice.status) && (
-                <PayInvoiceAction invoice={invoice} />
-              )
-            }
-            {
-              totalInvoiceLines > 0 && !IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) && (
-                <ApproveInvoiceAction invoice={invoice} />
-              )
-            }
+            <InvoiceActions
+              invoiceLinesCount={totalInvoiceLines}
+              invoice={invoice}
+            />
             <ExpandAllButton
               accordionStatus={sections}
               onToggle={this.expandAll}
@@ -216,10 +221,22 @@ class InvoiceDetails extends Component {
             />
           </Accordion>
           <Accordion
+            id={SECTIONS_INVOICE.FUND_DISTRIBUTION}
+            label={<FormattedMessage id="ui-invoice.fundDistribution" />}
+          >
+            <FundDistributionView
+              currency={invoice.currency}
+              fundDistributions={fundDistributions}
+            />
+          </Accordion>
+          <Accordion
             label={<FormattedMessage id="ui-invoice.adjustments" />}
             id={SECTIONS_INVOICE.ADJUSTMENTS}
           >
-            <AdjustmentsDetails adjustments={adjustments} />
+            <AdjustmentsDetails
+              adjustments={adjustments}
+              currency={invoice.currency}
+            />
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
