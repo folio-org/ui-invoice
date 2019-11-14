@@ -25,7 +25,7 @@
   "invoiceLine.description": "Description",
   "invoiceLine.invoiceLineNumber": "Invoice line number",
   "invoiceLine.invoiceLineStatus": "Invoice line status",
-  "invoiceLine.poLineId": "PO line ID",
+  "invoiceLine.poLineNumber": "PO line number",
   "invoiceLine.subscriptionInfo": "Subscription info",
   "invoiceLine.subscriptionStart": "Subscription start date",
   "invoiceLine.subscriptionEnd": "Subscription end date",

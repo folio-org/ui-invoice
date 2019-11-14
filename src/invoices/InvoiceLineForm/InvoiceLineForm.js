@@ -181,15 +181,6 @@ class InvoiceLineForm extends Component {
                           required
                         />
                       </Col>
-                      <Col data-test-col-invoice-line-po-line-id xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoiceLine.poLineId" />}
-                          name="poLineId"
-                          disabled
-                          type="text"
-                        />
-                      </Col>
                       <Col data-test-col-invoice-line-subscription-info xs={3}>
                         <Field
                           component={TextField}

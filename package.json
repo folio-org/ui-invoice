@@ -63,11 +63,12 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.1",
       "configuration": "2.0",
-      "invoice": "2.0 3.0",
+      "invoice": "3.0",
+      "orders": "8.0",
       "organizations-storage.organizations": "2.1",
       "users": "15.0",
       "voucher-number": "1.0",
-      "voucher": "1.1 2.0"
+      "voucher": "2.0"
     },
     "icons": [
       {

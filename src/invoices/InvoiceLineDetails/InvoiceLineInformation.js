@@ -16,7 +16,7 @@ import {
   formatDate,
 } from '../../common/utils';
 
-const InvoiceLineInformation = ({ invoiceLine, currency }) => {
+const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
   const metadata = invoiceLine.metadata;
 
   return (
@@ -42,8 +42,8 @@ const InvoiceLineInformation = ({ invoiceLine, currency }) => {
         </Col>
         <Col xs={3}>
           <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.poLineId" />}
-            value={invoiceLine.poLineId}
+            label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}
+            value={poLineNumber}
           />
         </Col>
         <Col xs={3}>
@@ -119,10 +119,12 @@ const InvoiceLineInformation = ({ invoiceLine, currency }) => {
 InvoiceLineInformation.propTypes = {
   invoiceLine: PropTypes.object,
   currency: PropTypes.string,
+  poLineNumber: PropTypes.string,
 };
 
 InvoiceLineInformation.defaultProps = {
   invoiceLine: {},
+  poLineNumber: '',
 };
 
 export default InvoiceLineInformation;

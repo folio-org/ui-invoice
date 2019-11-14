@@ -1,103 +1,144 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
+  baseManifest,
   LoadingPane,
   Tags,
+  useModalToggle,
 } from '@folio/stripes-acq-components';
 
 import {
   invoiceLineResource,
   invoiceResource,
 } from '../../../common/resources';
+import { PO_LINES_API } from '../../../common/constants';
 import InvoiceLineDetails from '../../InvoiceLineDetails';
 
-class InvoiceLineDetailsLayer extends Component {
-  static manifest = Object.freeze({
-    invoiceLine: invoiceLineResource,
-    invoice: invoiceResource,
-    query: {},
-  });
+const InvoiceLineDetailsLayer = ({
+  history,
+  match: { params },
+  mutator,
+  showToast,
+}) => {
+  const [polNumber, setPolNumber] = useState('');
+  const [invoice, setInvoice] = useState({});
+  const [invoiceLine, setInvoiceLine] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [isTagsPaneOpened, setTagsPaneOpened] = useModalToggle();
 
-  static propTypes = {
-    match: ReactRouterPropTypes.match,
-    mutator: PropTypes.object.isRequired,
-    resources: PropTypes.object.isRequired,
-    showToast: PropTypes.func.isRequired,
-  }
+  const fetchInvoiceLineDetails = useCallback(
+    () => {
+      setIsLoading(true);
+      mutator.invoice.GET().then(response => setInvoice(response));
+      mutator.invoiceLine.GET()
+        .then(line => {
+          setInvoiceLine(line);
+          if (line.poLineId) {
+            mutator.poLine.GET({
+              path: `${PO_LINES_API}/${line.poLineId}`,
+            }).then(({ poLineNumber }) => setPolNumber(poLineNumber));
+          }
+          setIsLoading(false);
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [params.id],
+  );
 
-  state = {
-    isTagsPaneOpened: false,
+  useEffect(fetchInvoiceLineDetails, [params.id]);
+
+  const updateInvoiceLineTagList = async (line) => {
+    await mutator.invoiceLine.PUT(line);
+    fetchInvoiceLineDetails();
   };
 
-  toggleTagsPane = () => this.setState(({ isTagsPaneOpened }) => ({ isTagsPaneOpened: !isTagsPaneOpened }));
+  const closeInvoiceLine = useCallback(
+    () => {
+      const path = `/invoice/view/${params.id}`;
 
-  getInvoiceLine = () => get(this.props.resources, ['invoiceLine', 'records', 0]);
+      history.push(path);
+    },
+    [params.id, history],
+  );
 
-  getInvoice = () => get(this.props.resources, ['invoice', 'records', 0]);
+  const goToEditInvoiceLine = useCallback(
+    () => {
+      const path = `/invoice/view/${params.id}/line/${params.lineId}/edit`;
 
-  closeInvoiceLine = () => {
-    const { match: { params }, mutator } = this.props;
-    const _path = `/invoice/view/${params.id}`;
+      history.push(path);
+    },
+    [params.id, params.lineId, history],
+  );
 
-    mutator.query.update({ _path });
+  const deleteInvoiceLine = useCallback(
+    () => {
+      mutator.invoiceLine.DELETE({ id: params.lineId })
+        .then(() => {
+          showToast('ui-invoice.invoiceLine.hasBeenDeleted');
+          closeInvoiceLine();
+        })
+        .catch(() => {
+          showToast('ui-invoice.errors.invoiceLineHasNotBeenDeleted', 'error');
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [params.lineId],
+  );
+
+  if (isLoading) {
+    return (
+      <LoadingPane onClose={closeInvoiceLine} />
+    );
   }
 
-  goToEditInvoiceLine = () => {
-    const { match: { params }, mutator } = this.props;
-    const _path = `/invoice/view/${params.id}/line/${params.lineId}/edit`;
+  return (
+    <Fragment>
+      <InvoiceLineDetails
+        closeInvoiceLine={closeInvoiceLine}
+        currency={invoice.currency}
+        deleteInvoiceLine={deleteInvoiceLine}
+        goToEditInvoiceLine={goToEditInvoiceLine}
+        invoiceLine={invoiceLine}
+        poLineNumber={polNumber}
+        tagsToggle={setTagsPaneOpened}
+      />
+      {isTagsPaneOpened && (
+        <Tags
+          putMutator={updateInvoiceLineTagList}
+          recordObj={invoiceLine}
+          onClose={setTagsPaneOpened}
+        />
+      )}
+    </Fragment>
+  );
+};
 
-    mutator.query.update({ _path });
-  }
+InvoiceLineDetailsLayer.manifest = Object.freeze({
+  invoiceLine: {
+    ...invoiceLineResource,
+    accumulate: true,
+    fetch: false,
+  },
+  invoice: {
+    ...invoiceResource,
+    accumulate: true,
+    fetch: false,
+  },
+  poLine: {
+    ...baseManifest,
+    path: PO_LINES_API,
+    accumulate: true,
+    fetch: false,
+  },
+});
 
-  deleteInvoiceLine = () => {
-    const { match: { params: { lineId } }, mutator, showToast } = this.props;
-
-    mutator.invoiceLine.DELETE({ id: lineId })
-      .then(() => {
-        showToast('ui-invoice.invoiceLine.hasBeenDeleted');
-        this.closeInvoiceLine();
-      })
-      .catch(() => {
-        showToast('ui-invoice.errors.invoiceLineHasNotBeenDeleted', 'error');
-      });
-  }
-
-  render() {
-    const {
-      mutator,
-      resources,
-    } = this.props;
-    const { isTagsPaneOpened } = this.state;
-
-    const invoiceLine = this.getInvoiceLine();
-    const invoice = this.getInvoice();
-    const hasLoaded = get(resources, 'invoiceLine.hasLoaded') && get(resources, 'invoice.hasLoaded');
-
-    return hasLoaded
-      ? (
-        <Fragment>
-          <InvoiceLineDetails
-            closeInvoiceLine={this.closeInvoiceLine}
-            currency={invoice.currency}
-            deleteInvoiceLine={this.deleteInvoiceLine}
-            goToEditInvoiceLine={this.goToEditInvoiceLine}
-            invoiceLine={invoiceLine}
-            tagsToggle={this.toggleTagsPane}
-          />
-          {isTagsPaneOpened && (
-            <Tags
-              putMutator={mutator.invoiceLine.PUT}
-              recordObj={invoiceLine}
-              onClose={this.toggleTagsPane}
-            />
-          )}
-        </Fragment>
-      )
-      : <LoadingPane onClose={this.closeInvoiceLine} />;
-  }
-}
+InvoiceLineDetailsLayer.propTypes = {
+  history: ReactRouterPropTypes.history.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+  mutator: PropTypes.object.isRequired,
+  showToast: PropTypes.func.isRequired,
+};
 
 export default InvoiceLineDetailsLayer;
