@@ -66,7 +66,6 @@
     "button.addAdjustment": "Adicionar ajuste",
     "invoiceLine.invoiceLineNumber": "Número da linha da fatura",
     "invoiceLine.invoiceLineStatus": "Status da linha de fatura",
-    "invoiceLine.poLineId": "ID da linha do pedido",
     "invoiceLine.subscriptionInfo": "Informações da assinatura",
     "invoiceLine.subscriptionStart": "Data de início da assinatura",
     "invoiceLine.subscriptionEnd": "Data de término da assinatura",
@@ -211,5 +210,6 @@
     "invoice.actions.approveAndPay.confirmation.heading": "Aprovar e pagar a fatura",
     "invoice.actions.approveAndPay.confirmation.message": "Tem certeza de que deseja aprovar e pagar a fatura?",
     "invoice.isNotUnique.confirmation.heading": "Salvar fatura",
-    "invoice.isNotUnique.confirmation.message": "Parece ser um número de fatura duplicado"
+    "invoice.isNotUnique.confirmation.message": "Parece ser um número de fatura duplicado",
+    "invoiceLine.poLineNumber": "Número da linha do pedido"
 }
