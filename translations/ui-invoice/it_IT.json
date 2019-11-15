@@ -1,5 +1,5 @@
 {
-    "meta.title": "Fattura",
+    "meta.title": "Fatture",
     "invoice.details.paneTitle": "Numero fattura fornitore - {vendorInvoiceNo}",
     "invoice.status.approved": "Approvato",
     "invoice.status.open": "Open",
@@ -66,7 +66,6 @@
     "button.addAdjustment": "Add adjustment",
     "invoiceLine.invoiceLineNumber": "Invoice line number",
     "invoiceLine.invoiceLineStatus": "Invoice line status",
-    "invoiceLine.poLineId": "PO line ID",
     "invoiceLine.subscriptionInfo": "Info abbonamento",
     "invoiceLine.subscriptionStart": "Data di inizio abbonamento",
     "invoiceLine.subscriptionEnd": "Data di fine abbonamento",
@@ -211,5 +210,6 @@
     "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
     "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number"
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+    "invoiceLine.poLineNumber": "PO line number"
 }

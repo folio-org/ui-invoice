@@ -66,7 +66,6 @@
     "button.addAdjustment": "添加调整",
     "invoiceLine.invoiceLineNumber": "发票行号",
     "invoiceLine.invoiceLineStatus": "发票行状态",
-    "invoiceLine.poLineId": "订单行ID",
     "invoiceLine.subscriptionInfo": "订阅信息",
     "invoiceLine.subscriptionStart": "订阅开始日期",
     "invoiceLine.subscriptionEnd": "订阅结束日期",
@@ -211,5 +210,6 @@
     "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
     "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number"
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+    "invoiceLine.poLineNumber": "PO line number"
 }

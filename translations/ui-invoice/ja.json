@@ -66,7 +66,6 @@
     "button.addAdjustment": "Add adjustment",
     "invoiceLine.invoiceLineNumber": "Invoice line number",
     "invoiceLine.invoiceLineStatus": "Invoice line status",
-    "invoiceLine.poLineId": "PO line ID",
     "invoiceLine.subscriptionInfo": "Subscription info",
     "invoiceLine.subscriptionStart": "Subscription start date",
     "invoiceLine.subscriptionEnd": "Subscription end date",
@@ -211,5 +210,6 @@
     "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
     "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number"
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+    "invoiceLine.poLineNumber": "PO line number"
 }
