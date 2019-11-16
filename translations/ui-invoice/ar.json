@@ -66,7 +66,6 @@
     "button.addAdjustment": "إضافة تعديل",
     "invoiceLine.invoiceLineNumber": "رقم سطر الفواتير",
     "invoiceLine.invoiceLineStatus": "حالة سطر الفواتير",
-    "invoiceLine.poLineId": "معرّف سطر أمر الشراء",
     "invoiceLine.subscriptionInfo": "معلومات الاشتراك",
     "invoiceLine.subscriptionStart": "تاريخ بدء الاشتراك",
     "invoiceLine.subscriptionEnd": "تاريخ إنتهاء الاشتراك",
@@ -211,5 +210,6 @@
     "invoice.actions.approveAndPay.confirmation.heading": "قبول وسداد الفاتورة",
     "invoice.actions.approveAndPay.confirmation.message": "هل أنت متأكد من أنك تريد قبول الفاتورة وسدادها؟",
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number"
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+    "invoiceLine.poLineNumber": "PO line number"
 }
