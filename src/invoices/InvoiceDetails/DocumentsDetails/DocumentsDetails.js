@@ -9,15 +9,36 @@ import {
   MultiColumnList,
 } from '@folio/stripes/components';
 
+import InvoiceDocument from '../../InvoiceDocument';
+
 const linksVisibleColumns = ['name', 'url'];
 const linksColumnMapping = {
   name: <FormattedMessage id="ui-invoice.invoice.link.name" />,
   url: <FormattedMessage id="ui-invoice.invoice.link.url" />,
 };
+const linksFormatter = {
+  url: l => (
+    <a
+      href={l.url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {l.url}
+    </a>
+  ),
+};
 
 const documentsVisibleColumns = ['name'];
 const documentsColumnMapping = {
   name: <FormattedMessage id="ui-invoice.invoice.documents.name" />,
+};
+const documentsFormatter = {
+  name: d => (
+    <InvoiceDocument
+      name={d.name}
+      documentId={d.id}
+    />
+  ),
 };
 
 const DocumentsDetails = ({ invoiceDocuments }) => {
@@ -33,6 +54,8 @@ const DocumentsDetails = ({ invoiceDocuments }) => {
             contentData={invoiceDocuments.filter(invoiceDocument => invoiceDocument.url)}
             visibleColumns={linksVisibleColumns}
             columnMapping={linksColumnMapping}
+            formatter={linksFormatter}
+            interactive={false}
           />
         </Col>
       </Row>
@@ -47,6 +70,8 @@ const DocumentsDetails = ({ invoiceDocuments }) => {
             contentData={invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url)}
             visibleColumns={documentsVisibleColumns}
             columnMapping={documentsColumnMapping}
+            formatter={documentsFormatter}
+            interactive={false}
           />
         </Col>
       </Row>
