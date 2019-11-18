@@ -209,7 +209,7 @@
     "invoice.actions.approveAndPay.success": "تم قبول الفاتورة وسدادها بنجاح",
     "invoice.actions.approveAndPay.confirmation.heading": "قبول وسداد الفاتورة",
     "invoice.actions.approveAndPay.confirmation.message": "هل أنت متأكد من أنك تريد قبول الفاتورة وسدادها؟",
-    "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
-    "invoiceLine.poLineNumber": "PO line number"
+    "invoice.isNotUnique.confirmation.heading": "حفظ الفاتورة",
+    "invoice.isNotUnique.confirmation.message": "يبدو أن هذا رقم فاتورة مكرر",
+    "invoiceLine.poLineNumber": "رقم سطر أمر الشراء"
 }
