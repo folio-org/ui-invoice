@@ -202,7 +202,7 @@
     "cancel": "Cancel",
     "settings.general.label": "General",
     "settings.approvals.label": "Approvals",
-    "settings.approvals.isApprovePayEnabled": "Approval and pay in one click",
+    "settings.approvals.isApprovePayEnabled": "Approve and pay in one click",
     "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
     "invoice.actions.approveAndPay": "Approve & pay",
     "invoice.actions.approveAndPay.error": "Invoice was not approved/paid",
