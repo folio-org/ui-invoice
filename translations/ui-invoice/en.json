@@ -83,7 +83,7 @@
   "settings.voucherNumber.startNumber.error": "Start number could not be saved.",
 
   "settings.approvals.label": "Approvals",
-  "settings.approvals.isApprovePayEnabled": "Approval and pay in one click",
+  "settings.approvals.isApprovePayEnabled": "Approve and pay in one click",
 
   "invoice.dateCreated": "Date created",
   "invoice.editLayer": "Edit invoice",
