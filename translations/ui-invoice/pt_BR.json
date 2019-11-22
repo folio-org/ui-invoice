@@ -202,7 +202,7 @@
     "cancel": "Cancelar",
     "settings.general.label": "Geral",
     "settings.approvals.label": "Aprovações",
-    "settings.approvals.isApprovePayEnabled": "Aprovação e pagamento com um clique",
+    "settings.approvals.isApprovePayEnabled": "Aprovar e pagar com um clique",
     "invoice.actions.approve.error.poLineUpdateFailure": "Um ou mais registros da linha do pedido não podem ser atualizados",
     "invoice.actions.approveAndPay": "Aprovar e pagar",
     "invoice.actions.approveAndPay.error": "A fatura não foi aprovada/paga",
