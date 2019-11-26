@@ -177,6 +177,7 @@
   "invoice.actions.approve": "Approve",
   "invoice.actions.approve.success": "Invoice has been approved successfully",
   "invoice.actions.approve.error": "Invoice was not approved",
+  "invoice.actions.approve.error.fundCanNotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
   "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
   "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
   "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
@@ -190,6 +191,7 @@
   "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
 
   "invoice.actions.pay": "Pay",
+  "invoice.actions.pay.error": "Invoice was not paid",
   "invoice.actions.pay.success": "Invoice has been paid successfully",
   "invoice.actions.pay.confirmation.heading": "Pay invoice",
   "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?",
