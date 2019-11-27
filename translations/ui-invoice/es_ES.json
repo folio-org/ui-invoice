@@ -211,5 +211,7 @@
     "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
     "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
-    "invoiceLine.poLineNumber": "PO line number"
+    "invoiceLine.poLineNumber": "PO line number",
+    "invoice.actions.approve.error.fundCanNotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+    "invoice.actions.pay.error": "Invoice was not paid"
 }
