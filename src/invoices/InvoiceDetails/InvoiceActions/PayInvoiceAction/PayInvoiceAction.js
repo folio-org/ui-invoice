@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { get } from 'lodash';
 
 import {
   Button,
@@ -12,6 +13,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_STATUS } from '../../../../common/constants';
+import { getApproveErrorMessage } from '../../../../common/utils/getApproveErrorMessage';
 
 import css from './PayInvoiceAction.css';
 
@@ -24,7 +26,21 @@ const PayInvoiceAction = ({ saveInvoice, invoice }) => {
       const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
 
       saveInvoice(paidInvoice)
-        .then(() => showCallout('ui-invoice.invoice.actions.pay.success'));
+        .then(() => showCallout('ui-invoice.invoice.actions.pay.success'))
+        .catch(async (response) => {
+          try {
+            const { errors } = await response.json();
+            const errorCode = get(errors, [0, 'code']);
+
+            showCallout(
+              getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error'),
+              'error',
+            );
+          } catch (e) {
+            showCallout('ui-invoice.invoice.actions.pay.error', 'error');
+          }
+        });
+
       togglePayConfirmation();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
