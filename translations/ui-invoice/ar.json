@@ -211,5 +211,7 @@
     "invoice.actions.approveAndPay.confirmation.message": "هل أنت متأكد من أنك تريد قبول الفاتورة وسدادها؟",
     "invoice.isNotUnique.confirmation.heading": "حفظ الفاتورة",
     "invoice.isNotUnique.confirmation.message": "يبدو أن هذا رقم فاتورة مكرر",
-    "invoiceLine.poLineNumber": "رقم سطر أمر الشراء"
+    "invoiceLine.poLineNumber": "رقم سطر أمر الشراء",
+    "invoice.actions.approve.error.fundCanNotBePaid": "لا يمكن سداد أحد توزيعات التمويل أو أكثر في هذه الفاتورة بسبب عدم وجود مال كافٍ في الميزانية",
+    "invoice.actions.pay.error": "لم يتم سداد الفاتورة"
 }
