@@ -1,7 +1,6 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-export const DATE_FORMAT = 'MM/DD/YYYY';
 export const CONFIG_MODULE_TAGS = 'TAGS';
 export const CONFIG_MODULE_TENANT = 'TENANT';
 export const CONFIG_MODULE_INVOICE = 'INVOICE';
