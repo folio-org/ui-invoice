@@ -55,9 +55,6 @@
   "optionalDependencies": {
     "@folio/plugin-find-po-line": "^1.0.0"
   },
-  "resolutions": {
-    "fake-xml-http-request": "2.0.0"
-  },
   "stripes": {
     "actsAs": ["app", "settings"],
     "displayName": "ui-invoice.meta.title",
