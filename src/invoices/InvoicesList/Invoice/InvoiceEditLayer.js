@@ -47,6 +47,7 @@ function InvoiceEditLayer({
   useEffect(() => {
     mutator.invoiceDocuments.reset();
     mutator.invoiceDocuments.GET();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
