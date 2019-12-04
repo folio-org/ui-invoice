@@ -212,6 +212,6 @@
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
     "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
     "invoiceLine.poLineNumber": "PO line number",
-    "invoice.actions.approve.error.fundCanNotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
-    "invoice.actions.pay.error": "Invoice was not paid"
+    "invoice.actions.approve.error.fundCanNotBePaid": "Una o più distribuzioni di fondi su questa fattura non possono essere pagate, perché non ci sono abbastanza soldi in bilancio",
+    "invoice.actions.pay.error": "La fattura non è stata pagata"
 }
