@@ -1,5 +1,32 @@
 # Change history for ui-invoice
 
+## [1.2.0](https://github.com/folio-org/ui-invoice/tree/v1.2.0) (2019-12-04)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.1.0...v1.2.0)
+
+### Stories
+* [UINV-66](https://issues.folio.org/browse/UINV-66) View invoice adjustments accordion
+* [UINV-68](https://issues.folio.org/browse/UINV-68) Create fund distributions based on percentage or amount
+* [UINV-71](https://issues.folio.org/browse/UINV-71) Add ability to specify fund distro for non-prorated invoice adjustments
+* [UINV-76](https://issues.folio.org/browse/UINV-76) Cannot distinguish between percent and amount adjustments
+* [UINV-80](https://issues.folio.org/browse/UINV-80) Update view for Fund distribution information on Invoice and invoice line
+* [UINV-78](https://issues.folio.org/browse/UINV-78) Invoices: Update "save and close" and "Cancel" Buttons - UX
+* [UINV-81](https://issues.folio.org/browse/UINV-81) Filter invoices by tags
+* [UINV-85](https://issues.folio.org/browse/UINV-85) Approve and pay invoice in one click
+* [UINV-2](https://issues.folio.org/browse/UINV-2) Duplication checking for vendor invoice number
+* [UINV-82](https://issues.folio.org/browse/UINV-82) Display POL number instead of UUID
+* [UINV-61](https://issues.folio.org/browse/UINV-61) Invoice View Details: Documents and Links section behavior
+* [UINV-83](https://issues.folio.org/browse/UINV-83) Prevent paying with Funds that have insufficient amounts to cover distribution
+* [UINV-88](https://issues.folio.org/browse/UINV-88) Date format inconsistent between search and edit screen
+
+### Bug Fixes
+* [UINV-64](https://issues.folio.org/browse/UINV-64) Do not allow user to Approve an Invoice in edit screen if status is "Paid"
+* [STCOM-590](https://issues.folio.org/browse/STCOM-590) Invoice: MCL column width updates
+* [UINV-42](https://issues.folio.org/browse/UINV-42) Shouldn't be allowed to add invoiceLines to an "approved" or "paid" invoice
+* [UINV-65](https://issues.folio.org/browse/UINV-65) Show valid error message on "Approve" Invoice if voucher prefix is invalid
+* [UIOR-365](https://issues.folio.org/browse/UIOR-365) fix acq units loading
+* [UINV-72](https://issues.folio.org/browse/UINV-72) Change application menu name to plural
+* [UINV-89](https://issues.folio.org/browse/UINV-89) Settings: Spelling mistake
+
 ## [1.1.0](https://github.com/folio-org/ui-invoice/tree/v1.1.0) (2019-09-11)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.0.0...v1.1.0)
 

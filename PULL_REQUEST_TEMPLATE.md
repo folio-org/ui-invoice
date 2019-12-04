@@ -1,11 +1,6 @@
 <!--
   If you have a relevant JIRA issue number, please put it in the issue title.
-  Example: MODGOBI-43 Move "Renewals" information to Purchase Order level
-
-  TL;DR
-    - https://www.youtube.com/watch?v=5aHmO_S8FQ4
-    - http://www.olitreadwell.com/2016/05/22/how-to-write-great-pull-requests/
-    - https://www.atlassian.com/blog/git/written-unwritten-guide-pull-requests
+  Example: MODORDERS-70 Orders schema updates
 -->
 
 ## Purpose
@@ -23,7 +18,7 @@
   section."
 
   If you have a relevant JIRA issue, add a link directly to the issue URL here.
-  Example: https://issues.folio.org/browse/UINV-1
+  Example: https://issues.folio.org/browse/MODORDERS-70
  -->
 
 ## Approach
@@ -52,17 +47,13 @@
 
 ## Pre-Merge Checklist
 Before merging this PR, please go through the following list and take appropriate actions.
-
+- [ ] I've added appropriate record to the CHANGELOG.md
 - Does this PR meet or exceed the expected quality standards?
   - [ ] Code coverage on new code is 80% or greater
   - [ ] Duplications on new code is 3% or less
   - [ ] There are no major code smells or security issues
 - Does this introduce breaking changes?
-  - [ ] Were any API paths or methods changed, added or removed?
-  - [ ] Were there any schema changes?
-  - [ ] Did any of the interface versions change?
-  - [ ] Were permissions changed, added, or removed?
-  - [ ] Are there new interface dependencies?
+  - [ ] If any API-related changes - okapi interfaces and permissions are reviewed/changed correspondingly
   - [ ] There are no breaking changes in this PR.
 
 If there are breaking changes, please **STOP** and consider the following:
