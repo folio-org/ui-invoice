@@ -1,5 +1,11 @@
 # Change history for ui-invoice
 
+## [1.2.1](https://github.com/folio-org/ui-invoice/tree/v1.2.1) (in progress)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.0...v1.2.1)
+
+### Bug Fixes
+* [UINV-93](https://issues.folio.org/browse/UINV-93) Address lookup not working in Invoices
+
 ## [1.2.0](https://github.com/folio-org/ui-invoice/tree/v1.2.0) (2019-12-04)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.1.0...v1.2.0)
 
