@@ -11,7 +11,7 @@ export const configAddress = {
   path: CONFIG_API,
   GET: {
     params: {
-      query: `(module=${CONFIG_MODULE_TENANT} and configName=addresses)`,
+      query: `(module=${CONFIG_MODULE_TENANT} and configName=tenant.addresses)`,
     },
   },
 };
