@@ -201,17 +201,17 @@
     "saveAndClose": "Save & close",
     "cancel": "Cancel",
     "settings.general.label": "General",
-    "settings.approvals.label": "Approvals",
+    "settings.approvals.label": "Aprobaciones",
     "settings.approvals.isApprovePayEnabled": "Approve and pay in one click",
     "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
-    "invoice.actions.approveAndPay": "Approve & pay",
+    "invoice.actions.approveAndPay": "Aprobar y pagar",
     "invoice.actions.approveAndPay.error": "Invoice was not approved/paid",
     "invoice.actions.approveAndPay.success": "Invoice has been approved and paid successfully",
     "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
     "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
-    "invoice.isNotUnique.confirmation.heading": "Save invoice",
+    "invoice.isNotUnique.confirmation.heading": "Guardar factura",
     "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
     "invoiceLine.poLineNumber": "PO line number",
     "invoice.actions.approve.error.fundCanNotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
-    "invoice.actions.pay.error": "Invoice was not paid"
+    "invoice.actions.pay.error": "La factura no fue pagada"
 }
