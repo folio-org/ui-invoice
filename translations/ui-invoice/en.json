@@ -228,8 +228,6 @@
 
   "status.Open": "Open",
 
-  "validation.required": "Required!",
-
   "voucher.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
   "voucher.paneSubTitle": "Voucher number - {voucherNumber}",
   "voucher.voucherTitle": "Voucher information",

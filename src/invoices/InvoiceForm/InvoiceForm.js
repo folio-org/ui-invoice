@@ -34,6 +34,7 @@ import {
   FieldSelection,
   FieldSelect,
   PAYMENT_METHOD_OPTIONS,
+  validateRequired,
 } from '@folio/stripes-acq-components';
 
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
@@ -52,7 +53,6 @@ import {
   isPayable,
   parseAddressConfigs,
   toggleSection,
-  validateRequired,
 } from '../../common/utils';
 import {
   ApprovedBy,

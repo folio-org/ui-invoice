@@ -31,7 +31,8 @@ import {
   FieldSelection,
   FundDistributionFields,
   parseNumberFieldValue,
-  validateRequiredNotNegative,
+  validateRequiredNumber,
+  validateRequired,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -40,7 +41,6 @@ import {
   getAccountNumberOptions,
   IS_EDIT_POST_APPROVAL,
   toggleSection,
-  validateRequired,
 } from '../../common/utils';
 import { FormFooter } from '../../common/components';
 import AdjustmentsForm from '../AdjustmentsForm';
@@ -223,7 +223,7 @@ class InvoiceLineForm extends Component {
                           required
                           type="number"
                           parse={parseNumberFieldValue}
-                          validate={validateRequiredNotNegative}
+                          validate={validateRequiredNumber}
                         />
                       </Col>
                       <Col data-test-col-invoice-line-vendor-ref-no xs={3}>
