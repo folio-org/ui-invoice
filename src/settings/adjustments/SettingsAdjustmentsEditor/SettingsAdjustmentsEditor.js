@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'redux-form';
 
-import { FieldSelect } from '@folio/stripes-acq-components';
+import {
+  FieldSelect,
+  validateRequired,
+} from '@folio/stripes-acq-components';
 import {
   Button,
   Checkbox,
@@ -22,7 +25,6 @@ import {
   ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS,
   ADJUSTMENT_TYPE_OPTIONS,
 } from '../../../common/constants';
-import { validateRequired } from '../../../common/utils';
 
 class SettingsAdjustmentsEditor extends Component {
   static propTypes = {

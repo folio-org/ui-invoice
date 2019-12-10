@@ -24,6 +24,7 @@ import {
   FieldSelect,
   FundDistributionFields,
   parseNumberFieldValue,
+  validateRequired,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -36,7 +37,6 @@ import {
 import {
   calculateAdjustmentAmount,
   getAdjustmentPresetOptions,
-  validateRequired,
 } from '../../common/utils';
 
 const getAdjustmentFromPreset = ({ description, prorate, relationToTotal, type, defaultAmount }) => ({
