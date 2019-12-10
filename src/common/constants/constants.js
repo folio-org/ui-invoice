@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 export const CONFIG_MODULE_TAGS = 'TAGS';
 export const CONFIG_MODULE_TENANT = 'TENANT';
 export const CONFIG_MODULE_INVOICE = 'INVOICE';
-export const CONFIG_NAME_ADJUSTMENTS = 'adjustments';
+export const CONFIG_NAME_ADJUSTMENTS = `${CONFIG_MODULE_INVOICE}.adjustments`;
 export const CONFIG_NAME_TAGS_ENABLED = 'tags_enabled';
 export const CONFIG_NAME_VOUCHER_NUMBER = 'voucherNumber';
 export const CONFIG_NAME_APPROVALS = 'approvals';

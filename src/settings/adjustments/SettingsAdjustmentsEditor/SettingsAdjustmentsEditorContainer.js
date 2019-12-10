@@ -58,7 +58,7 @@ class SettingsAdjustmentsEditorContainer extends Component {
     } else {
       body = {
         module: CONFIG_MODULE_INVOICE,
-        configName: `${CONFIG_MODULE_INVOICE}.${CONFIG_NAME_ADJUSTMENTS}`,
+        configName: CONFIG_NAME_ADJUSTMENTS,
         code: (new Date()).valueOf(),
       };
     }
