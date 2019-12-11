@@ -107,7 +107,7 @@ class InvoiceLineForm extends Component {
     const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const { accountNumber, poLineId, metadata } = initialValues;
-    const totalAmount = calculateTotalAmount(formValues);
+    const totalAmount = calculateTotalAmount(formValues, stripes);
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
     const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
     const isDisabledEditFundDistribution = IS_EDIT_POST_APPROVAL(invoice.id, invoice.status);

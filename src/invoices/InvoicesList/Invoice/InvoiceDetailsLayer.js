@@ -25,6 +25,7 @@ function InvoiceDetailsLayer({
   match: { params: { id } },
   mutator,
   showToast,
+  stripes,
 }) {
   const createLine = () => {
     mutator.query.update({ _path: `${url}/line/create` });
@@ -74,6 +75,7 @@ function InvoiceDetailsLayer({
         deleteInvoice={deleteInvoice}
         tagsEnabled={tagsEnabled}
         tagsToggle={tagsToggle}
+        stripes={stripes}
       />
     )
     : <LoadingPane onClose={onClose} />;
@@ -98,6 +100,7 @@ InvoiceDetailsLayer.propTypes = {
   showToast: PropTypes.func.isRequired,
   tagsToggle: PropTypes.func.isRequired,
   tagsEnabled: PropTypes.bool,
+  stripes: PropTypes.object.isRequired,
 };
 
 InvoiceDetailsLayer.defaultProps = {
