@@ -6,6 +6,7 @@
 ### Bug Fixes
 * [UINV-93](https://issues.folio.org/browse/UINV-93) Address lookup not working in Invoices
 * [UINV-94](https://issues.folio.org/browse/UINV-94) Not able to create invoice lines with $0 subtotal
+* [UINV-96](https://issues.folio.org/browse/UINV-94) Can not create pre-set adjustments
 
 ## [1.2.0](https://github.com/folio-org/ui-invoice/tree/v1.2.0) (2019-12-04)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.1.0...v1.2.0)
