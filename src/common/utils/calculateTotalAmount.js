@@ -7,8 +7,8 @@ import {
   ADJUSTMENT_TYPE_VALUES,
 } from '../constants';
 
-export const calculateAdjustmentAmount = (adjustment, invoiceSubTotal, stripes, currency) => {
-  const multiplier = getMoneyMultiplier(stripes, currency);
+export const calculateAdjustmentAmount = (adjustment, invoiceSubTotal, currency) => {
+  const multiplier = getMoneyMultiplier(currency);
   const adjustmentValue = Number(get(adjustment, 'value') || 0);
   const adjustmentType = get(adjustment, 'type', ADJUSTMENT_TYPE_VALUES.amount);
 
@@ -19,13 +19,13 @@ export const calculateAdjustmentAmount = (adjustment, invoiceSubTotal, stripes, 
   return Math.round(amount * multiplier) / multiplier;
 };
 
-export const calculateTotalAmount = (formValues, stripes) => {
-  const multiplier = getMoneyMultiplier(stripes);
+export const calculateTotalAmount = (formValues, currency) => {
+  const multiplier = getMoneyMultiplier(currency);
   const subTotal = Number(get(formValues, 'subTotal') || 0);
   const adjustments = get(formValues, 'adjustments', []);
   const adjustmentsTotal = adjustments.reduce((sum, adjustment) => {
     const adjustmentRelationToTotal = get(adjustment, 'relationToTotal');
-    const total = calculateAdjustmentAmount(adjustment, subTotal, stripes);
+    const total = calculateAdjustmentAmount(adjustment, subTotal, currency);
 
     if (adjustmentRelationToTotal === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo) {
       return sum + total;

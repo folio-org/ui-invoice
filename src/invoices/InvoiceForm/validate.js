@@ -6,15 +6,15 @@ import { calculateAdjustmentAmount } from '../../common/utils';
 function validate(values, { stripes }) {
   const errors = {};
   const adjustments = values.adjustments || [];
-  const currency = values.currency;
+  const currency = values.currency || stripes.currency;
   const adjustmentsErrors = [];
 
   adjustments.forEach((adjustment, index) => {
     const { value, fundDistributions, prorate } = adjustment;
 
     if (prorate === ADJUSTMENT_PRORATE_VALUES.notProrated && fundDistributions && value) {
-      const adjustmentAmount = calculateAdjustmentAmount(adjustment, values.subTotal, stripes, currency);
-      const fundDistributionErrors = validateFundDistribution(fundDistributions, adjustmentAmount, stripes, currency);
+      const adjustmentAmount = calculateAdjustmentAmount(adjustment, values.subTotal, currency);
+      const fundDistributionErrors = validateFundDistribution(fundDistributions, adjustmentAmount, currency);
 
       if (fundDistributionErrors) adjustmentsErrors[index] = { fundDistributions: fundDistributionErrors };
     }
