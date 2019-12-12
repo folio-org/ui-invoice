@@ -1,6 +1,6 @@
 # Change history for ui-invoice
 
-## [1.2.1](https://github.com/folio-org/ui-invoice/tree/v1.2.1) (in progress)
+## [1.2.1](https://github.com/folio-org/ui-invoice/tree/v1.2.1) (2019-12-12)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.0...v1.2.1)
 
 ### Bug Fixes
