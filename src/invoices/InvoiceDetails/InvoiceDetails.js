@@ -124,7 +124,7 @@ class InvoiceDetails extends Component {
           acc.push({
             ...distr,
             adjustmentDescription: adjustment.description,
-            totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal, stripes, invoice.currency),
+            totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal, invoice.currency),
           });
         });
       }

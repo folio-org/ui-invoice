@@ -100,7 +100,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
       && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
 
-    const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal, stripes, currency);
+    const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal, currency || stripes.currency);
 
     return (
       <Card
