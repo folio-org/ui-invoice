@@ -30,13 +30,13 @@
  developers *work* with your solution in the future.
 -->
 
-#### TODOS and Open Questions
 <!-- OPTIONAL
+#### TODOS and Open Questions
 - [ ] Use GitHub checklists. When solved, check the box and explain the answer.
 -->
 
-## Learning
 <!-- OPTIONAL
+## Learning
   Help out not only your reviewer, but also your fellow developer!
   Sometimes there are key pieces of information that you used to come up
   with your solution. Don't let all that hard work go to waste! A
