@@ -26,6 +26,10 @@ import {
   parseNumberFieldValue,
   validateRequired,
 } from '@folio/stripes-acq-components';
+import {
+  withStripes,
+  stripesShape,
+} from '@folio/stripes/core';
 
 import {
   ADJUSTMENT_PRORATE_OPTIONS,
@@ -47,7 +51,7 @@ const getAdjustmentFromPreset = ({ description, prorate, relationToTotal, type, 
   value: defaultAmount,
 });
 
-const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments, invoiceSubTotal }) => {
+const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments, invoiceSubTotal, stripes }) => {
   const [adjPreset, setAdjPreset] = useState();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
@@ -96,7 +100,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
       && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
 
-    const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal);
+    const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal, currency || stripes.currency);
 
     return (
       <Card
@@ -238,6 +242,7 @@ AdjustmentsForm.propTypes = {
   disabled: PropTypes.bool,
   isLineAdjustments: PropTypes.bool,
   invoiceSubTotal: PropTypes.number,
+  stripes: stripesShape,
 };
 
 AdjustmentsForm.defaultProps = {
@@ -247,4 +252,4 @@ AdjustmentsForm.defaultProps = {
   invoiceSubTotal: 0,
 };
 
-export default AdjustmentsForm;
+export default withStripes(AdjustmentsForm);

@@ -48,6 +48,7 @@ class InvoiceDetails extends Component {
     invoiceTotalUnits: PropTypes.number,
     tagsToggle: PropTypes.func.isRequired,
     tagsEnabled: PropTypes.bool,
+    stripes: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -110,6 +111,7 @@ class InvoiceDetails extends Component {
       invoiceTotalUnits,
       tagsEnabled,
       tagsToggle,
+      stripes,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
@@ -122,7 +124,7 @@ class InvoiceDetails extends Component {
           acc.push({
             ...distr,
             adjustmentDescription: adjustment.description,
-            totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal),
+            totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal, invoice.currency),
           });
         });
       }
