@@ -54,7 +54,6 @@
     "invoice.invoiceHasBeenSaved": "发票已保存",
     "vendorInformation": "供应商信息",
     "voucherInformation": "凭证信息",
-    "validation.required": "必填！",
     "errors.invoiceLineHasNotBeenSaved": "发票行尚未保存",
     "button.createLine": "新建",
     "invoiceLine.editLayer": "编辑发票行",
