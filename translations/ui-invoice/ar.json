@@ -54,7 +54,6 @@
     "invoice.invoiceHasBeenSaved": "تم حفظ الفاتورة",
     "vendorInformation": "بيانات المورّد",
     "voucherInformation": "معلومات القسيمة",
-    "validation.required": "مطلوب!",
     "errors.invoiceLineHasNotBeenSaved": "لم يتم حفظ سطر الفواتير",
     "button.createLine": "جديد",
     "invoiceLine.editLayer": "تحرير سطر الفاتورة",

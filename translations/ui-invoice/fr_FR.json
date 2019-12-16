@@ -54,7 +54,6 @@
     "invoice.invoiceHasBeenSaved": "La facture a été sauvegardée",
     "vendorInformation": "Informations sur le fournisseur",
     "voucherInformation": "Informations sur le bon",
-    "validation.required": "Obligatoire",
     "errors.invoiceLineHasNotBeenSaved": "La ligne de facturation n'a pas été enregistrée.",
     "button.createLine": "Nouveau",
     "invoiceLine.editLayer": "Modifier la ligne de facture",

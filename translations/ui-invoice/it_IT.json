@@ -54,7 +54,6 @@
     "invoice.invoiceHasBeenSaved": "La fattura è stata salvata",
     "vendorInformation": "Informazioni fornitore",
     "voucherInformation": "Informazioni voucher",
-    "validation.required": "Obbligatorio!",
     "errors.invoiceLineHasNotBeenSaved": "La fattura non è stata salvata",
     "button.createLine": "Nuovo",
     "invoiceLine.editLayer": "Edit invoice line",

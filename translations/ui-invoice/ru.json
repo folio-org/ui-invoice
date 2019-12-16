@@ -54,7 +54,6 @@
     "invoice.invoiceHasBeenSaved": "Invoice has been saved",
     "vendorInformation": "Vendor information",
     "voucherInformation": "Voucher information",
-    "validation.required": "Обязательно!",
     "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
     "button.createLine": "Новый",
     "invoiceLine.editLayer": "Edit invoice line",
