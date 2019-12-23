@@ -33,7 +33,7 @@
     "invoice.approvedBy": "Approved by",
     "invoice.currency": "Currency",
     "invoice.folioInvoiceNo": "FOLIO invoice number",
-    "invoice.details.information.adjustment": "Total adjustments",
+    "invoice.details.information.adjustment": "Ajustes totales",
     "extendedInformation": "Extended information",
     "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
     "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
