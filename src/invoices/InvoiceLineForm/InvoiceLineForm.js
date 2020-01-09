@@ -29,10 +29,11 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   FieldDatepicker,
   FieldSelection,
+  FormFooter,
   FundDistributionFields,
   parseNumberFieldValue,
-  validateRequiredNumber,
   validateRequired,
+  validateRequiredNumber,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -42,7 +43,6 @@ import {
   IS_EDIT_POST_APPROVAL,
   toggleSection,
 } from '../../common/utils';
-import { FormFooter } from '../../common/components';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_LINE as SECTIONS } from '../constants';
 import validate from './validate';

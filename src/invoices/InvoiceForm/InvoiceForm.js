@@ -31,8 +31,9 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AcqUnitsField,
   FieldDatepicker,
-  FieldSelection,
   FieldSelect,
+  FieldSelection,
+  FormFooter,
   PAYMENT_METHOD_OPTIONS,
   validateRequired,
 } from '@folio/stripes-acq-components';
@@ -56,7 +57,6 @@ import {
 } from '../../common/utils';
 import {
   ApprovedBy,
-  FormFooter,
 } from '../../common/components';
 import AdjustmentsForm from '../AdjustmentsForm';
 import InvoiceLinksForm from './InvoiceLinksForm';
