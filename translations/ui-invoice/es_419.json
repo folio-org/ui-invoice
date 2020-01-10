@@ -217,14 +217,14 @@
     "invoiceLine.fundDistribution": "Invoice line fund distribution",
     "invoiceLine.fundId": "Fund ID",
     "invoiceLine.poLineId": "PO line ID",
-    "invoiceLine.value": "Value",
-    "invoiceLine.tags": "Invoice line tags",
-    "adjustment": "Adjustment",
-    "invoice.invoiceAdminData": "Invoice admin data",
+    "invoiceLine.value": "Valor",
+    "invoiceLine.tags": "Etiquetas de línea de factura",
+    "adjustment": "Ajuste",
+    "invoice.invoiceAdminData": "Datos administrativos de la factura",
     "invoice.invoiceAdjustments": "Invoice adjustments",
     "invoice.invoiceExtendedInformation": "Invoice extended information",
-    "invoice.invoiceLinksAndDocuments": "Invoice links & documents",
+    "invoice.invoiceLinksAndDocuments": "Enlaces de facturas y documentos",
     "invoice.invoiceTags": "Invoice tags",
-    "invoice.invoiceVendorInformation": "Invoice vendor information",
-    "tag": "Tag"
+    "invoice.invoiceVendorInformation": "Información del proveedor de la factura",
+    "tag": "Etiqueta"
 }
