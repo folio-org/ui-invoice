@@ -219,12 +219,12 @@
     "invoiceLine.poLineId": "PO line ID",
     "invoiceLine.value": "Value",
     "invoiceLine.tags": "Invoice line tags",
-    "adjustment": "Adjustment",
+    "adjustment": "Ajustement",
     "invoice.invoiceAdminData": "Invoice admin data",
     "invoice.invoiceAdjustments": "Invoice adjustments",
     "invoice.invoiceExtendedInformation": "Invoice extended information",
     "invoice.invoiceLinksAndDocuments": "Invoice links & documents",
     "invoice.invoiceTags": "Invoice tags",
     "invoice.invoiceVendorInformation": "Invoice vendor information",
-    "tag": "Tag"
+    "tag": "Mot-clé"
 }
