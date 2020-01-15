@@ -1,5 +1,11 @@
 # Change history for ui-invoice
 
+## [1.3.0](https://github.com/folio-org/ui-invoice/tree/v1.3.0) (in progress)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.0...v1.3.0)
+
+### Stories
+* [UINV-109](https://issues.folio.org/browse/UINV-109) Limit document size
+
 ## [1.2.1](https://github.com/folio-org/ui-invoice/tree/v1.2.1) (2019-12-12)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.0...v1.2.1)
 

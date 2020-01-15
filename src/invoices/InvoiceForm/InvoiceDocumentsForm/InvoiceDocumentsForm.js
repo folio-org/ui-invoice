@@ -11,13 +11,29 @@ import {
   Row,
   Label,
 } from '@folio/stripes/components';
-import { FileUploader } from '@folio/stripes-acq-components';
+import {
+  FileUploader,
+  useShowCallout,
+} from '@folio/stripes-acq-components';
 
 import InvoiceDocumentFields from './InvoiceDocumentFields';
 
+const MAX_SIZE = 2 * (10 ** 6);
+
 const InvoiceDocumentsForm = ({ dispatch }) => {
+  const showCallout = useShowCallout();
+
   const selectFile = useCallback(
     (file) => {
+      if (MAX_SIZE < file.size) {
+        showCallout({
+          messageId: 'ui-invoice.errors.fileLimit',
+          type: 'error',
+        });
+
+        return;
+      }
+
       const reader = new FileReader();
 
       reader.onload = (event) => {
@@ -29,6 +45,7 @@ const InvoiceDocumentsForm = ({ dispatch }) => {
 
       reader.readAsDataURL(file);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch],
   );
 
