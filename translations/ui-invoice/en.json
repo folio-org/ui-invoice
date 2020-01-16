@@ -6,6 +6,7 @@
   "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
   "errors.invoiceHasNotBeenDeleted": "Invoice has not been deleted",
   "errors.invoiceLineHasNotBeenDeleted": "Invoice has not been deleted",
+  "errors.fileLimit": "File exceeds the size limit",
 
   "button.addAdjustment": "Add adjustment",
   "button.createLine": "New",
