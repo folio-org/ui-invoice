@@ -226,5 +226,6 @@
     "invoice.invoiceLinksAndDocuments": "روابط ومستندات الفاتورة",
     "invoice.invoiceTags": "وسوم الفاتورة",
     "invoice.invoiceVendorInformation": "بيانات مورّد الفاتورة",
-    "tag": "وسم"
+    "tag": "وسم",
+    "errors.fileLimit": "حجم الملف يتجاوز الحد المسموح به"
 }
