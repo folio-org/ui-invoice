@@ -226,5 +226,6 @@
     "invoice.invoiceLinksAndDocuments": "Links e documentos da fatura",
     "invoice.invoiceTags": "Tags da fatura",
     "invoice.invoiceVendorInformation": "Informações do fornecedor da fatura",
-    "tag": "Tag"
+    "tag": "Tag",
+    "errors.fileLimit": "O arquivo excede o limite de tamanho"
 }

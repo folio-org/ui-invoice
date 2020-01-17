@@ -226,5 +226,6 @@
     "invoice.invoiceLinksAndDocuments": "Enlaces de facturas y documentos",
     "invoice.invoiceTags": "Invoice tags",
     "invoice.invoiceVendorInformation": "Información del proveedor de la factura",
-    "tag": "Etiqueta"
+    "tag": "Etiqueta",
+    "errors.fileLimit": "File exceeds the size limit"
 }
