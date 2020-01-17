@@ -18,7 +18,7 @@ import {
 
 import InvoiceDocumentFields from './InvoiceDocumentFields';
 
-const MAX_SIZE = 2 * (10 ** 6);
+const MAX_SIZE = 20 * (10 ** 6);
 
 const InvoiceDocumentsForm = ({ dispatch }) => {
   const showCallout = useShowCallout();
