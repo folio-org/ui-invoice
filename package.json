@@ -67,7 +67,7 @@
       "configuration": "2.0",
       "invoice": "3.0 3.1",
       "finance.funds": "1.0",
-      "orders": "8.0",
+      "order-lines": "1.0",
       "organizations-storage.organizations": "2.1 2.2",
       "tags": "1.0",
       "users": "15.0 15.1",
