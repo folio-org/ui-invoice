@@ -1,40 +1,20 @@
-import { Response } from '@bigtest/mirage';
+import {
+  createGetAll,
+  createGetById,
+  createPost,
+  createPut,
+} from '@folio/stripes-acq-components/test/bigtest/network/configs';
 
 import { INVOICE_API } from '../../../../src/common/constants';
 
+const SCHEMA_NAME = 'invoices';
+
 const configInvoices = server => {
-  server.get(INVOICE_API, (schema) => {
-    return schema.invoices.all();
-  });
-
-  server.post(INVOICE_API, (schema, request) => {
-    const attrs = JSON.parse(request.requestBody) || {};
-    const { id, status, vendorInvoiceNo, paymentMethod, currency, source, invoiceDate, vendorId } = attrs;
-
-    if (!(id && status && vendorInvoiceNo && paymentMethod && currency && source && invoiceDate && vendorId)) {
-      return new Response(400, {
-        'X-Okapi-Token': `myOkapiToken:${Date.now()}`,
-      }, {});
-    }
-
-    return schema.invoices.create(attrs).attrs;
-  });
-
-  server.put(`${INVOICE_API}/:id`, () => null);
-
-  server.get(`${INVOICE_API}/:id`, (schema, request) => {
-    const invoiceSchema = schema.invoices.find(request.params.id);
-
-    if (!invoiceSchema) {
-      return new Response(404, {
-        'X-Okapi-Token': `myOkapiToken:${Date.now()}`,
-      }, {});
-    }
-
-    return invoiceSchema.attrs;
-  });
-
+  server.get(INVOICE_API, createGetAll(SCHEMA_NAME));
+  server.get(`${INVOICE_API}/:id`, createGetById(SCHEMA_NAME));
+  server.put(`${INVOICE_API}/:id`, createPut(SCHEMA_NAME));
   server.delete(`${INVOICE_API}/:id`, 'invoice');
+  server.post(`${INVOICE_API}`, createPost(SCHEMA_NAME));
 };
 
 export default configInvoices;

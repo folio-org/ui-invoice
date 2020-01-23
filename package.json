@@ -19,7 +19,6 @@
   },
   "devDependencies": {
     "@bigtest/interactor": "^0.8.1",
-    "@bigtest/mirage": "^0.0.1",
     "@bigtest/mocha": "^0.5.1",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^4.2.0",
@@ -33,6 +32,8 @@
     "eslint-plugin-jest": "^23.0.4",
     "eslint-plugin-no-only-tests": "^2.3.0",
     "eslint-plugin-react-hooks": "^2.0.1",
+    "faker": "^4.1.0",
+    "miragejs": "^0.1.32",
     "mocha": "^5.2.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
