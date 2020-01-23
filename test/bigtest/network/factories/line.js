@@ -1,4 +1,5 @@
-import { Factory, faker } from '@bigtest/mirage';
+import { Factory } from 'miragejs';
+import faker from 'faker';
 
 import { FUND_DISTR_TYPE } from '@folio/stripes-acq-components';
 

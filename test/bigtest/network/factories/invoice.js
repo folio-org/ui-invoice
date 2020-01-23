@@ -1,4 +1,5 @@
-import { Factory, faker } from '@bigtest/mirage';
+import { Factory } from 'miragejs';
+import faker from 'faker';
 
 import { PAYMENT_METHOD } from '@folio/stripes-acq-components';
 

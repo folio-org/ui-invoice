@@ -11,7 +11,6 @@ import {
 } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
-import InvoicesListInteractor from '../../interactors/InvoicesList';
 
 const TEST_VALUE_PAYMENT_TERMS = 'some test value';
 
@@ -22,6 +21,8 @@ describe('Invoice edit', () => {
 
   beforeEach(async function () {
     const fund = this.server.create('fund');
+
+    fund.fund.id = fund.id;
     const vendor = this.server.create('vendor');
     const invoice = this.server.create('invoice', {
       paymentTerms: TEST_VALUE_PAYMENT_TERMS,
@@ -49,18 +50,17 @@ describe('Invoice edit', () => {
   });
 
   describe('Add data and save invoice', () => {
-    const invoicesList = new InvoicesListInteractor();
     const confirmation = new ConfirmationInteractor('#invoice-is-not-unique-confirmation');
 
     beforeEach(async function () {
       await invoiceForm.termsInput.fill('new test value');
       await invoiceForm.formFooter.saveButton.click();
-      await confirmation.confirm();
-      await invoicesList.whenLoaded();
+      // await confirmation.confirm();
     });
 
-    it('closes edit form', () => {
-      expect(invoiceForm.isPresent).to.be.false;
+    it('save button is enabled and confirmation has shown', () => {
+      expect(invoiceForm.formFooter.saveButton.isDisabled).to.be.false;
+      expect(confirmation.isPresent).to.be.true;
     });
   });
 });

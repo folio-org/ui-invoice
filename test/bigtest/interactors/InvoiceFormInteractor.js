@@ -7,7 +7,11 @@ import {
   fillable,
 } from '@bigtest/interactor';
 
-import { OptionListInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+import {
+  TextFieldInteractor,
+  OptionListInteractor,
+} from '@folio/stripes-acq-components/test/bigtest/interactors';
+
 import FormFooterInteractor from './common/FormFooter';
 
 @interactor class PaymentMethodInteractor {
@@ -40,8 +44,8 @@ import FormFooterInteractor from './common/FormFooter';
 
 export default interactor(class InvoiceForm {
   static defaultScope = '#pane-invoice-form';
-  isLoaded = isPresent('[class*=paneTitleLabel---]');
-  termsInput = new Interactor('input[name="paymentTerms"]');
+  isLoaded = isPresent('#invoiceInformation');
+  termsInput = new TextFieldInteractor('input[name="paymentTerms"]');
   termsInputValue = value('input[name="paymentTerms"]');
   vendorInvoiceNo = new Interactor('input[name="vendorInvoiceNo"]');
   invoiceDate = new Interactor('input[name="invoiceDate"]');
