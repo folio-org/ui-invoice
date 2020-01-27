@@ -227,5 +227,5 @@
     "invoice.invoiceTags": "Invoice tags",
     "invoice.invoiceVendorInformation": "Invoice vendor information",
     "tag": "Tag",
-    "errors.fileLimit": "File exceeds the size limit"
+    "errors.fileLimit": "Il file supera le dimensioni massime"
 }
