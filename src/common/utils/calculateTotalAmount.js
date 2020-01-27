@@ -14,7 +14,7 @@ export const calculateAdjustmentAmount = (adjustment, invoiceSubTotal, currency)
 
   const amount = adjustmentType === ADJUSTMENT_TYPE_VALUES.amount
     ? adjustmentValue
-    : invoiceSubTotal * adjustmentValue / 100;
+    : (invoiceSubTotal * adjustmentValue) / 100;
 
   return Math.round(amount * multiplier) / multiplier;
 };

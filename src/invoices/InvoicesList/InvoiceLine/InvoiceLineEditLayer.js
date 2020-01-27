@@ -27,19 +27,6 @@ class InvoiceLineEditLayer extends Component {
     vendor: VENDOR,
   });
 
-  static propTypes = {
-    connectedSource: PropTypes.object.isRequired,
-    onCloseEdit: PropTypes.func.isRequired,
-    parentResources: PropTypes.object.isRequired,
-    parentMutator: PropTypes.object.isRequired,
-    resources: PropTypes.object.isRequired,
-    stripes: PropTypes.object.isRequired,
-    intl: intlShape.isRequired,
-    showToast: PropTypes.func.isRequired,
-    match: ReactRouterPropTypes.match,
-    mutator: PropTypes.object.isRequired,
-  }
-
   saveInvoiceLine = (invoiceLine) => {
     const { onCloseEdit, mutator, showToast } = this.props;
     const mutatorMethod = invoiceLine.id ? 'PUT' : 'POST';
@@ -107,12 +94,24 @@ class InvoiceLineEditLayer extends Component {
               adjustmentsPresets={adjustmentsPresets}
             />
           )
-          : <LoadingPane onClose={onCloseEdit} />
-        }
+          : <LoadingPane onClose={onCloseEdit} />}
 
       </Layer>
     );
   }
 }
+
+InvoiceLineEditLayer.propTypes = {
+  connectedSource: PropTypes.object.isRequired,
+  onCloseEdit: PropTypes.func.isRequired,
+  parentResources: PropTypes.object.isRequired,
+  parentMutator: PropTypes.object.isRequired,
+  resources: PropTypes.object.isRequired,
+  stripes: PropTypes.object.isRequired,
+  intl: intlShape.isRequired,
+  showToast: PropTypes.func.isRequired,
+  match: ReactRouterPropTypes.match,
+  mutator: PropTypes.object.isRequired,
+};
 
 export default injectIntl(InvoiceLineEditLayer);
