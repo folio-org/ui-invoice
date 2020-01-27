@@ -48,7 +48,6 @@ class InvoiceDetails extends Component {
     invoiceTotalUnits: PropTypes.number,
     tagsToggle: PropTypes.func.isRequired,
     tagsEnabled: PropTypes.bool,
-    stripes: PropTypes.object.isRequired,
   };
 
   static defaultProps = {
@@ -111,7 +110,6 @@ class InvoiceDetails extends Component {
       invoiceTotalUnits,
       tagsEnabled,
       tagsToggle,
-      stripes,
     } = this.props;
     const { sections, showConfirmDelete } = this.state;
     const vendorInvoiceNo = invoice.vendorInvoiceNo;
@@ -250,9 +248,7 @@ class InvoiceDetails extends Component {
               accountingCode={invoice.accountingCode}
             />
           </Accordion>
-          {showVoucherInformation &&
-            <VoucherInformationContainer invoiceId={invoice.id} />
-          }
+          {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
           <Accordion
             label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
             id={SECTIONS_INVOICE.DOCUMENTS}
