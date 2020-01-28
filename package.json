@@ -88,8 +88,9 @@
       },
       {
         "permissionName": "settings.invoice.enabled",
-        "displayName": "Settings (invoice): display list of settings pages",
+        "displayName": "Settings (Invoice): Can view and edit settings",
         "subPermissions": [
+          "configuration.all",
           "settings.enabled"
         ],
         "visible": true
