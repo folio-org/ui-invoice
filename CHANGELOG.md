@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-114](https://issues.folio.org/browse/UINV-114) Invoice line not retrieving Total estimated price when linking POL
 * [UIOR-239](https://issues.folio.org/browse/UIOR-239) Use titleOrPackage instead of title
 * [UINV-107](https://issues.folio.org/browse/UINV-107) Update settings permission label
 * [UINV-112](https://issues.folio.org/browse/UINV-112) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
