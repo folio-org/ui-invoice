@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UIOR-239](https://issues.folio.org/browse/UIOR-239) Use titleOrPackage instead of title
 * [UINV-107](https://issues.folio.org/browse/UINV-107) Update settings permission label
 * [UINV-112](https://issues.folio.org/browse/UINV-112) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
 * [MODORDERS-354](https://issues.folio.org/browse/MODORDERS-354) Divide the interface into smaller ones

@@ -23,7 +23,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   return {
     invoiceId,
     invoiceLineStatus: INVOICE_STATUS.open,
-    description: poLine.title,
+    description: poLine.titleOrPackage,
     poLineId: poLine.id,
     comment: poLine.poLineDescription,
     fundDistributions: poLine.fundDistribution,
