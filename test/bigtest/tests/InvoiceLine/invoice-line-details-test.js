@@ -20,7 +20,7 @@ describe('Invoice line details', () => {
     const invoice = this.server.create('invoice', {
       vendorId: vendor.id,
     });
-    const invoiceLine = this.server.create('line', {
+    const invoiceLine = this.server.create('invoiceline', {
       invoiceId: invoice.id,
     });
 
