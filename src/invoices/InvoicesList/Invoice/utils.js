@@ -20,6 +20,11 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
     }
   }
 
+  console.log((
+    quantityPhysical * get(poLine, 'cost.listUnitPrice', 0)
+    + quantityElectronic * get(poLine, 'cost.listUnitPriceElectronic', 0)
+  ));
+
   return {
     invoiceId,
     invoiceLineStatus: INVOICE_STATUS.open,
@@ -33,7 +38,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
     quantity: quantityElectronic + quantityPhysical,
     subTotal: (
       quantityPhysical * get(poLine, 'cost.listUnitPrice', 0)
-      + quantityElectronic * get(poLine, 'cost.quantityElectronic', 0)
+      + quantityElectronic * get(poLine, 'cost.listUnitPriceElectronic', 0)
     ),
     ...optionalProps,
   };
