@@ -30,7 +30,7 @@ describe('Invoice line edit', () => {
     const invoice = this.server.create('invoice', {
       vendorId: vendor.id,
     });
-    const invoiceLine = this.server.create('line', {
+    const invoiceLine = this.server.create('invoiceline', {
       invoiceId: invoice.id,
       accountNumber: ACCOUNT_NUMBER,
       accountingCode: ACCOUNTING_CODE,
@@ -68,6 +68,7 @@ describe('Invoice line edit', () => {
       expect(invoiceDetails.isPresent).to.be.true;
     });
 
+    // TODO seems replace doesn't work properly, test should be fixed
     describe('click on edited line', () => {
       beforeEach(async function () {
         await invoiceDetails.linesSection.list(0).click();

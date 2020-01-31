@@ -23,7 +23,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   return {
     invoiceId,
     invoiceLineStatus: INVOICE_STATUS.open,
-    description: poLine.title,
+    description: poLine.titleOrPackage,
     poLineId: poLine.id,
     comment: poLine.poLineDescription,
     fundDistributions: poLine.fundDistribution,
@@ -33,7 +33,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
     quantity: quantityElectronic + quantityPhysical,
     subTotal: (
       quantityPhysical * get(poLine, 'cost.listUnitPrice', 0)
-      + quantityElectronic * get(poLine, 'cost.quantityElectronic', 0)
+      + quantityElectronic * get(poLine, 'cost.listUnitPriceElectronic', 0)
     ),
     ...optionalProps,
   };

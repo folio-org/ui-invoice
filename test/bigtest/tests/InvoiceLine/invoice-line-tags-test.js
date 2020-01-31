@@ -20,7 +20,7 @@ describe('Invoice line details tags', () => {
       id: invoice.vendorId,
     });
 
-    const invoiceLine = this.server.create('line', {
+    const invoiceLine = this.server.create('invoiceline', {
       invoiceId: invoice.id,
       tags: {
         tagList: tags,

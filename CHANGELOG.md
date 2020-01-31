@@ -1,9 +1,13 @@
 # Change history for ui-invoice
 
-## [1.3.0](https://github.com/folio-org/ui-invoice/tree/v1.3.0) (in progress)
-[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.0...v1.3.0)
+## (IN PROGRESS)
 
 ### Stories
+* [UINV-114](https://issues.folio.org/browse/UINV-114) Invoice line not retrieving Total estimated price when linking POL
+* [UIOR-239](https://issues.folio.org/browse/UIOR-239) Use titleOrPackage instead of title
+* [UINV-107](https://issues.folio.org/browse/UINV-107) Update settings permission label
+* [UINV-112](https://issues.folio.org/browse/UINV-112) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
+* [MODORDERS-354](https://issues.folio.org/browse/MODORDERS-354) Divide the interface into smaller ones
 * [UINV-109](https://issues.folio.org/browse/UINV-109) Limit document size
 * [UIOR-472](https://issues.folio.org/browse/UIOR-472) Display encumbered value on POL for orders made in currency other than system currency
 

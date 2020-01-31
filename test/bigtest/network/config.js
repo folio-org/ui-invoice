@@ -8,7 +8,7 @@ import {
 } from '@folio/stripes-acq-components/test/bigtest/network';
 
 import configInvoices from './configs/invoices';
-import configLines from './configs/lines';
+import configInvoiceLines from './configs/lines';
 import configVouchers from './configs/vouchers';
 import configVoucherLines from './configs/voucherLines';
 import configSettingVoucherNumber from './configs/settingVoucherNumber';
@@ -16,7 +16,7 @@ import configDocuments from './configs/documents';
 
 export default function config() {
   configInvoices(this);
-  configLines(this);
+  configInvoiceLines(this);
   configVendors(this);
   configUnits(this);
   configUsers(this);

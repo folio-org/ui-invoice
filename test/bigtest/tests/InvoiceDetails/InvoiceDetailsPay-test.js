@@ -16,7 +16,7 @@ const createInvoice = (server, status, withLines = true) => {
   });
 
   if (withLines) {
-    server.create('line', {
+    server.create('invoiceline', {
       invoiceId: invoice.id,
     });
   }
