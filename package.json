@@ -104,6 +104,7 @@
           "acquisitions-units.units.collection.get",
           "configuration.entries.collection.get",
           "finance.funds.collection.get",
+          "finance.transactions.collection.get",
           "organizations-storage.organizations.collection.get",
           "tags.collection.get",
           "users.collection.get"
