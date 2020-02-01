@@ -11,6 +11,7 @@ import {
   ExpandAllButton,
   Pane,
   Row,
+  PaneMenu,
 } from '@folio/stripes/components';
 
 import {
@@ -99,10 +100,12 @@ class InvoiceLineDetails extends Component {
     );
 
     const lastMenu = (
-      <TagsBadge
-        tagsToggle={tagsToggle}
-        tagsQuantity={tags.length}
-      />
+      <PaneMenu>
+        <TagsBadge
+          tagsToggle={tagsToggle}
+          tagsQuantity={tags.length}
+        />
+      </PaneMenu>
     );
 
     return (
