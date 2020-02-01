@@ -82,7 +82,7 @@ function InvoiceDetails({
   const vendorInvoiceNo = invoice.vendorInvoiceNo;
   const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
   const tags = get(invoice, 'tags.tagList', []);
-  const adjustments = get(invoice, 'adjustments');
+  const adjustments = get(invoice, 'adjustments', []);
   const fundDistributions = useMemo(
     () => adjustments.reduce((acc, adjustment) => {
       if (adjustment.fundDistributions) {
