@@ -215,7 +215,7 @@
     "invoiceLine.adminData": "Invoice line admin data",
     "invoiceLine.adjustments": "Invoice line adjustments",
     "invoiceLine.fundDistribution": "Invoice line fund distribution",
-    "invoiceLine.fundId": "Fund ID",
+    "invoiceLine.fundId": "ID fondi",
     "invoiceLine.poLineId": "PO line ID",
     "invoiceLine.value": "Value",
     "invoiceLine.tags": "Invoice line tags",
