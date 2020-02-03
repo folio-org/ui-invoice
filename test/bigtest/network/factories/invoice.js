@@ -15,4 +15,5 @@ export default Factory.extend({
   currency: 'USD',
   approvalDate: faker.date.past,
   paymentMethod: PAYMENT_METHOD.cash,
+  adjustments: [],
 });

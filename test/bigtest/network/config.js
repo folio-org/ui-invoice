@@ -5,6 +5,7 @@ import {
   configVendors,
   configMemberships,
   configFunds,
+  configTransactions,
 } from '@folio/stripes-acq-components/test/bigtest/network';
 
 import configInvoices from './configs/invoices';
@@ -27,4 +28,5 @@ export default function config() {
   configTags(this);
   configMemberships(this);
   configFunds(this);
+  configTransactions(this);
 }
