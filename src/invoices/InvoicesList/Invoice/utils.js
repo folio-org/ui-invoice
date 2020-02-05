@@ -31,10 +31,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
     subscriptionStart: get(poLine, 'details.subscriptionFrom'),
     subscriptionEnd: get(poLine, 'details.subscriptionTo'),
     quantity: quantityElectronic + quantityPhysical,
-    subTotal: (
-      quantityPhysical * get(poLine, 'cost.listUnitPrice', 0)
-      + quantityElectronic * get(poLine, 'cost.listUnitPriceElectronic', 0)
-    ),
+    subTotal: poLine?.cost?.poLineEstimatedPrice || 0,
     ...optionalProps,
   };
 };
