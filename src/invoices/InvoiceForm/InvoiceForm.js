@@ -168,7 +168,7 @@ class InvoiceForm extends Component {
       : PRE_PAY_INVOICE_STATUSES_OPTIONS;
 
     return (
-      <form>
+      <form style={{ height: '100vh' }}>
         <Paneset>
           <Pane
             defaultWidth="fill"

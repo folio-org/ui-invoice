@@ -89,7 +89,7 @@ class InvoiceLineDetails extends Component {
     const { sections, showConfirmDelete } = this.state;
     const { invoiceLineNumber, adjustments } = invoiceLine;
     const tags = get(invoiceLine, ['tags', 'tagList'], []);
-    const fundDistributions = get(invoiceLine, 'fundDistributions', []);
+    const fundDistributions = get(invoiceLine, 'fundDistributions');
     const total = get(invoiceLine, 'total', 0);
 
     const paneTitle = (
