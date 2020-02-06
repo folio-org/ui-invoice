@@ -129,7 +129,10 @@ class InvoiceLineForm extends Component {
     const fundDistributions = get(formValues, 'fundDistributions');
 
     return (
-      <form id="invoice-line-form">
+      <form
+        id="invoice-line-form"
+        style={{ height: '100vh' }}
+      >
         <Paneset>
           <Pane
             defaultWidth="fill"
