@@ -208,7 +208,7 @@
     "invoice.actions.approveAndPay.confirmation.heading": "Approuver et payer la facture",
     "invoice.actions.approveAndPay.confirmation.message": "Êtes-vous sûr(e) de vouloir approuver et payer la facture?",
     "invoice.isNotUnique.confirmation.heading": "Sauvegarder la facture",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+    "invoice.isNotUnique.confirmation.message": "Cela semble être un numéro de facture en double",
     "invoiceLine.poLineNumber": "Numéro de ligne de commande",
     "invoice.actions.approve.error.fundCanNotBePaid": "Une ou plusieurs répartitions budgétaires sur cette facture ne peuvent pas être payées, car le budget est insuffisant.",
     "invoice.actions.pay.error": "La facture n'a pas été payée",
