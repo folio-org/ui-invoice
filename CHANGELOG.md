@@ -11,6 +11,9 @@
 * [UINV-109](https://issues.folio.org/browse/UINV-109) Limit document size
 * [UIOR-472](https://issues.folio.org/browse/UIOR-472) Display encumbered value on POL for orders made in currency other than system currency
 
+### Bug fixes
+* [UINV-105](https://issues.folio.org/browse/UINV-105) Save and close and cancel bar not fixed to bottom of form
+
 ## [1.2.1](https://github.com/folio-org/ui-invoice/tree/v1.2.1) (2019-12-12)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.0...v1.2.1)
 
