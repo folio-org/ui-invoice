@@ -227,5 +227,8 @@
     "invoice.invoiceTags": "Tags da fatura",
     "invoice.invoiceVendorInformation": "Informações do fornecedor da fatura",
     "tag": "Tag",
-    "errors.fileLimit": "O arquivo excede o limite de tamanho"
+    "errors.fileLimit": "O arquivo excede o limite de tamanho",
+    "settings.vouchers.label": "Vouchers",
+    "settings.batchGroups.label": "Grupos de lotes",
+    "settings.batchGroupConfiguration.label": "Configuração do grupo de lotes"
 }

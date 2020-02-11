@@ -227,5 +227,8 @@
     "invoice.invoiceTags": "وسوم الفاتورة",
     "invoice.invoiceVendorInformation": "بيانات مورّد الفاتورة",
     "tag": "وسم",
-    "errors.fileLimit": "حجم الملف يتجاوز الحد المسموح به"
+    "errors.fileLimit": "حجم الملف يتجاوز الحد المسموح به",
+    "settings.vouchers.label": "قسائم الشراء",
+    "settings.batchGroups.label": "مجموعات بالدفعة",
+    "settings.batchGroupConfiguration.label": "تهيئة المجموعة بالدفعة"
 }
