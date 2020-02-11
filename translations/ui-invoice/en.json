@@ -82,6 +82,15 @@
   "settings.adjustments.remove.success": "The adjustment was deleted",
   "settings.adjustments.remove.error": "The adjustment was not deleted",
 
+  "settings.approvals.label": "Approvals",
+  "settings.approvals.isApprovePayEnabled": "Approve and pay in one click",
+
+  "settings.vouchers.label": "Vouchers",
+
+  "settings.batchGroups.label": "Batch groups",
+
+  "settings.batchGroupConfiguration.label": "Batch group configuration",
+
   "settings.voucherNumber.label": "Voucher number",
   "settings.voucherNumber.prefix": "Prefix",
   "settings.voucherNumber.startNumber": "Starting number",
@@ -90,9 +99,6 @@
   "settings.voucherNumber.reset": "Reset sequence",
   "settings.voucherNumber.allowVoucherNumberEdit": "Allow voucher number to be edited",
   "settings.voucherNumber.startNumber.error": "Start number could not be saved.",
-
-  "settings.approvals.label": "Approvals",
-  "settings.approvals.isApprovePayEnabled": "Approve and pay in one click",
 
   "invoice.dateCreated": "Date created",
   "invoice.editLayer": "Edit invoice",
