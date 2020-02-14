@@ -54,7 +54,7 @@ describe('Invoice details - pay action', () => {
       });
 
       it(`should ${isPresent ? '' : 'not'} be preent`, () => {
-        expect(invoiceDetails.buttonPayInvoice.isPresent).to.equal(isPresent);
+        expect(invoiceDetails.actions.buttonPayInvoice.isPresent).to.equal(isPresent);
       });
     });
   });
@@ -67,7 +67,7 @@ describe('Invoice details - pay action', () => {
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
-      await invoiceDetails.buttonPayInvoice.click();
+      await invoiceDetails.actions.buttonPayInvoice.click();
     });
 
     it('should be done after pay button click', () => {
@@ -83,7 +83,7 @@ describe('Invoice details - pay action', () => {
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
-      await invoiceDetails.buttonPayInvoice.click();
+      await invoiceDetails.actions.buttonPayInvoice.click();
       await payConfirmation.confirm();
     });
 

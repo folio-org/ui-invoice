@@ -55,7 +55,7 @@ describe('Invoice details - approve action', () => {
       });
 
       it(`should ${isPresent ? '' : 'not'} be preent`, () => {
-        expect(invoiceDetails.buttonApproveInvoice.isPresent).to.equal(isPresent);
+        expect(invoiceDetails.actions.buttonApproveInvoice.isPresent).to.equal(isPresent);
       });
     });
   });
@@ -68,7 +68,7 @@ describe('Invoice details - approve action', () => {
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
-      await invoiceDetails.buttonApproveInvoice.click();
+      await invoiceDetails.actions.buttonApproveInvoice.click();
     });
 
     it('should be done after approve button click', () => {
@@ -84,7 +84,7 @@ describe('Invoice details - approve action', () => {
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
-      await invoiceDetails.buttonApproveInvoice.click();
+      await invoiceDetails.actions.buttonApproveInvoice.click();
       await approveConfirmation.confirm();
     });
 
@@ -113,7 +113,7 @@ describe('Invoice details - approve action', () => {
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
-      await invoiceDetails.buttonApproveInvoice.click();
+      await invoiceDetails.actions.buttonApproveInvoice.click();
       await approveConfirmation.confirm();
     });
 

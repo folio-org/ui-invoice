@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-119](https://issues.folio.org/browse/UINV-119) Move record action buttons into "Action" button UX pattern
 * [UINV-100](https://issues.folio.org/browse/UINV-100) Settings: Add Batch group and Batch group settings subheadings to invoice settings
 * [UINV-114](https://issues.folio.org/browse/UINV-114) Invoice line not retrieving Total estimated price when linking POL
 * [UIOR-239](https://issues.folio.org/browse/UIOR-239) Use titleOrPackage instead of title
