@@ -1,110 +1,261 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { stripesConnect } from '@folio/stripes/core';
-import { withTags } from '@folio/stripes/smart-components';
-
-import { LoadingPane } from '../../../common/components';
 import {
+  baseManifest,
+  LoadingPane,
+  useShowCallout,
+} from '@folio/stripes-acq-components';
+
+import { getApproveErrorMessage } from '../../../common/utils';
+import {
+  configApprovals,
   invoiceResource,
   invoiceLinesResource,
-  VENDOR,
 } from '../../../common/resources';
+import {
+  INVOICE_STATUS,
+  VENDORS_API,
+} from '../../../common/constants';
 import InvoiceDetails from '../../InvoiceDetails';
 import { createInvoiceLineFromPOL } from './utils';
 
 function InvoiceDetailsLayer({
   onClose,
   onEdit,
-  resources,
-  tagsEnabled,
-  tagsToggle,
   match: { url },
   match: { params: { id } },
+  history,
   mutator,
-  showToast,
-  stripes,
 }) {
-  const createLine = () => {
-    mutator.query.update({ _path: `${url}/line/create` });
-  };
+  const showCallout = useShowCallout();
+  const [isLoading, setIsLoading] = useState(false);
+  const [invoice, setInvoice] = useState({});
+  const [invoiceLines, setInvoiceLines] = useState({});
+  const [vendor, setVendor] = useState({});
+  const [isApprovePayEnabled, setIsApprovePayEnabled] = useState(false);
 
-  const addLines = poLines => {
-    const { id: invoiceId } = get(resources, ['invoice', 'records', 0]);
-    const vendor = get(resources, ['vendor', 'records', 0]);
-
-    poLines.map(
-      poLine => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, invoiceId, vendor)),
-    );
-  };
-
-  const deleteInvoice = useCallback(
+  const fetchInvoiceData = useCallback(
     () => {
-      mutator.invoice.DELETE({ id })
-        .then(() => {
-          showToast('ui-invoice.invoice.invoiceHasBeenDeleted');
-          onClose();
+      setIsLoading(true);
+      setInvoice({});
+      setInvoiceLines({});
+      setVendor({});
+
+      mutator.invoice.GET()
+        .then(invoiceResponse => {
+          setInvoice(invoiceResponse);
+
+          const vendorPromise = mutator.vendor.GET({
+            path: `${VENDORS_API}/${invoiceResponse.vendorId}`,
+          });
+          const invoiceLinesPromise = mutator.invoiceLines.GET({
+            params: {
+              query: `(invoiceId==${invoiceResponse.id}) sortBy metadata.createdDate invoiceLineNumber`,
+            },
+          });
+          const approvalsConfigPromise = mutator.invoiceActionsApprovals.GET();
+
+          return Promise.all([vendorPromise, invoiceLinesPromise, approvalsConfigPromise]);
+        })
+        .then(([vendorResp, invoiceLinesResp, approvalsConfigResp]) => {
+          setVendor(vendorResp);
+          setInvoiceLines(invoiceLinesResp);
+
+          let approvalsConfig;
+
+          try {
+            approvalsConfig = JSON.parse(get(approvalsConfigResp, [0, 'value'], '{}'));
+          } catch (e) {
+            approvalsConfig = {};
+          }
+
+          setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
         })
         .catch(() => {
-          showToast('ui-invoice.errors.invoiceHasNotBeenDeleted', 'error');
-        });
+          showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
+        })
+        .finally(() => setIsLoading(false));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [id],
   );
 
-  const invoice = get(resources, ['invoice', 'records', 0]);
-  const hasLoaded = get(resources, 'invoice.hasLoaded');
-  const totalInvoiceLines = get(resources, ['invoiceLines', 'other', 'totalRecords'], 0);
-  const invoiceTotalUnits = get(resources, 'invoiceLines.records.0.invoiceLines', []).reduce((total, line) => (
+  useEffect(fetchInvoiceData, [id]);
+
+  const createLine = useCallback(
+    () => {
+      history.push(`${url}/line/create`);
+    },
+    [url, history],
+  );
+
+  const addLines = useCallback(
+    async (poLines) => {
+      await poLines.map(
+        poLine => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor)),
+      );
+      fetchInvoiceData();
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id],
+  );
+
+  const deleteInvoice = useCallback(
+    () => {
+      mutator.invoice.DELETE({ id })
+        .then(() => {
+          showCallout({ messageId: 'ui-invoice.invoice.invoiceHasBeenDeleted' });
+          onClose();
+        })
+        .catch(() => {
+          showCallout({ messageId: 'ui-invoice.errors.invoiceHasNotBeenDeleted', type: 'error' });
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id, onClose],
+  );
+
+  const approveInvoice = useCallback(
+    () => {
+      const approvedInvoice = { ...invoice, status: INVOICE_STATUS.approved };
+
+      mutator.invoice.PUT(approvedInvoice)
+        .then(setInvoice)
+        .then(() => showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' }))
+        .catch(async (response) => {
+          try {
+            const { errors } = await response.json();
+            const errorCode = get(errors, [0, 'code']);
+
+            showCallout({ messageId: getApproveErrorMessage(errorCode), type: 'error' });
+          } catch (e) {
+            showCallout({ messageId: 'ui-invoice.invoice.actions.approve.error', type: 'error' });
+          }
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [invoice],
+  );
+
+  const payInvoice = useCallback(
+    () => {
+      const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
+
+      mutator.invoice.PUT(paidInvoice)
+        .then(setInvoice)
+        .then(() => showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' }))
+        .catch(async (response) => {
+          try {
+            const { errors } = await response.json();
+            const errorCode = get(errors, [0, 'code']);
+
+            showCallout({
+              messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error'),
+              type: 'error',
+            });
+          } catch (e) {
+            showCallout({ messageId: 'ui-invoice.invoice.actions.pay.error', type: 'error' });
+          }
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [invoice],
+  );
+
+  const approveAndPayInvoice = useCallback(
+    () => {
+      mutator.invoice.PUT({ ...invoice, status: INVOICE_STATUS.approved })
+        .then(() => mutator.invoice.GET())
+        .then(invoiceResponse => {
+          mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
+        })
+        .then(setInvoice)
+        .then(() => showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' }))
+        .catch(async (response) => {
+          try {
+            const { errors } = await response.json();
+            const errorCode = get(errors, [0, 'code']);
+
+            showCallout({
+              messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error'),
+              type: 'error',
+            });
+          } catch (e) {
+            showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.error', type: 'error' });
+          }
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [invoice],
+  );
+
+  const updateInvoice = useCallback(
+    (data) => {
+      mutator.invoice.PUT(data)
+        .then(() => mutator.invoice.GET())
+        .then(setInvoice);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id],
+  );
+
+  const invoiceTotalUnits = get(invoiceLines, 'invoiceLines', []).reduce((total, line) => (
     total + +line.quantity
   ), 0);
 
-  return hasLoaded
-    ? (
-      <InvoiceDetails
-        addLines={addLines}
-        createLine={createLine}
-        onClose={onClose}
-        onEdit={onEdit}
-        invoice={invoice}
-        totalInvoiceLines={totalInvoiceLines}
-        invoiceTotalUnits={invoiceTotalUnits}
-        deleteInvoice={deleteInvoice}
-        tagsEnabled={tagsEnabled}
-        tagsToggle={tagsToggle}
-        stripes={stripes}
-      />
-    )
-    : <LoadingPane onClose={onClose} />;
+  if (isLoading) {
+    return <LoadingPane onClose={onClose} />;
+  }
+
+  return (
+    <InvoiceDetails
+      addLines={addLines}
+      approveAndPayInvoice={approveAndPayInvoice}
+      approveInvoice={approveInvoice}
+      createLine={createLine}
+      deleteInvoice={deleteInvoice}
+      invoice={invoice}
+      invoiceLines={invoiceLines.invoiceLines}
+      invoiceTotalUnits={invoiceTotalUnits}
+      isApprovePayEnabled={isApprovePayEnabled}
+      onClose={onClose}
+      onEdit={onEdit}
+      onUpdate={updateInvoice}
+      payInvoice={payInvoice}
+      totalInvoiceLines={invoiceLines.totalRecords}
+    />
+  );
 }
 
 InvoiceDetailsLayer.manifest = Object.freeze({
-  invoice: invoiceResource,
-  invoiceLines: {
-    ...invoiceLinesResource,
+  invoice: {
+    ...invoiceResource,
+    accumulate: true,
     fetch: false,
   },
-  vendor: VENDOR,
-  query: {},
+  invoiceLines: {
+    ...invoiceLinesResource,
+    accumulate: true,
+    fetch: false,
+  },
+  invoiceActionsApprovals: configApprovals,
+  vendor: {
+    ...baseManifest,
+    accumulate: true,
+    fetch: false,
+  },
 });
 
 InvoiceDetailsLayer.propTypes = {
   match: ReactRouterPropTypes.match,
+  history: ReactRouterPropTypes.history.isRequired,
   mutator: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
-  resources: PropTypes.object.isRequired,
-  showToast: PropTypes.func.isRequired,
-  tagsToggle: PropTypes.func.isRequired,
-  tagsEnabled: PropTypes.bool,
-  stripes: PropTypes.object.isRequired,
 };
 
-InvoiceDetailsLayer.defaultProps = {
-  tagsEnabled: false,
-};
-
-export default stripesConnect(withTags(InvoiceDetailsLayer));
+export default stripesConnect(InvoiceDetailsLayer);

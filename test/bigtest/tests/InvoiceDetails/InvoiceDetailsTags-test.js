@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
-import TagsPane from '../../interactors/common/TagsPane';
+import TagsPane from '../../interactors/InvoiceLineDetailsTags';
 
 const tags = ['tag1', 'tag2'];
 
@@ -29,10 +29,6 @@ describe('Invoice details tags', () => {
 
   it('should be displayed', () => {
     expect(invoiceDetails.tagsAction.isPresent).to.be.true;
-  });
-
-  it('should display tags count', () => {
-    expect(invoiceDetails.tagsAction.count).to.equal(tags.length.toString());
   });
 
   describe('click action', () => {

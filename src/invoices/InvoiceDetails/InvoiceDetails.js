@@ -12,12 +12,13 @@ import {
   Pane,
   Row,
   PaneMenu,
-  IconButton,
 } from '@folio/stripes/components';
 import {
   FundDistributionView,
   useModalToggle,
   useAccordionToggle,
+  TagsBadge,
+  TagsPane,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -28,10 +29,9 @@ import { INVOICE_STATUS } from '../../common/constants';
 import {
   SECTIONS_INVOICE,
 } from '../constants';
-import ActionMenu from './ActionMenu';
 import InvoiceActions from './InvoiceActions';
 import Information from './Information';
-import InvoiceLines, { InvoiceLinesActions } from './InvoiceLines';
+import InvoiceLinesContainer, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
 import VoucherInformationContainer from './VoucherInformation';
 import DocumentsDetails from './DocumentsDetails';
@@ -40,17 +40,25 @@ import styles from './InvoiceDetails.css';
 
 function InvoiceDetails({
   addLines,
+  approveAndPayInvoice,
+  approveInvoice,
   createLine,
   deleteInvoice,
   invoice,
+  invoiceLines,
   invoiceTotalUnits,
+  isApprovePayEnabled,
   onClose,
   onEdit,
-  tagsEnabled,
-  tagsToggle,
+  onUpdate,
+  payInvoice,
   totalInvoiceLines,
 }) {
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
+  const [isApproveConfirmationOpen, toggleApproveConfirmation] = useModalToggle();
+  const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
+  const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
+  const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const [expandAll, sections, toggleSection] = useAccordionToggle({
     [SECTIONS_INVOICE.DOCUMENTS]: false,
   });
@@ -58,7 +66,9 @@ function InvoiceDetails({
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
     return (
-      <ActionMenu
+      <InvoiceActions
+        invoiceLinesCount={totalInvoiceLines}
+        invoice={invoice}
         onEdit={() => {
           onToggle();
           onEdit();
@@ -67,6 +77,19 @@ function InvoiceDetails({
           onToggle();
           toggleDeleteConfirmation();
         }}
+        onApprove={() => {
+          onToggle();
+          toggleApproveConfirmation();
+        }}
+        onPay={() => {
+          onToggle();
+          togglePayConfirmation();
+        }}
+        onApproveAndPay={() => {
+          onToggle();
+          toggleApproveAndPayConfirmation();
+        }}
+        isApprovePayEnabled={isApprovePayEnabled}
       />
     );
   };
@@ -109,155 +132,200 @@ function InvoiceDetails({
 
   const lastMenu = (
     <PaneMenu>
-      {tagsEnabled && (
-        <FormattedMessage id="ui-invoice.showTags">
-          {(title) => (
-            <IconButton
-              data-test-invoice-tags-action
-              ariaLabel={title}
-              badgeCount={tags.length}
-              icon="tag"
-              id="clickable-show-tags"
-              onClick={tagsToggle}
-              title={title}
-            />
-          )}
-        </FormattedMessage>
-      )}
+      <TagsBadge
+        tagsQuantity={tags.length}
+        tagsToggle={toggleTagsPane}
+      />
     </PaneMenu>
   );
 
   return (
-    <Pane
-      id="pane-invoiceDetails"
-      defaultWidth="fill"
-      dismissible
-      onClose={onClose}
-      paneTitle={paneTitle}
-      actionMenu={renderActionMenu}
-      lastMenu={lastMenu}
-    >
-      <Row end="xs">
-        <Col xs={12}>
-          <InvoiceActions
-            invoiceLinesCount={totalInvoiceLines}
-            invoice={invoice}
-          />
-          <ExpandAllButton
-            accordionStatus={sections}
-            onToggle={expandAll}
-          />
-        </Col>
-      </Row>
-      <AccordionSet
-        accordionStatus={sections}
-        onToggle={toggleSection}
+    <>
+      <Pane
+        id="pane-invoiceDetails"
+        defaultWidth="fill"
+        dismissible
+        onClose={onClose}
+        paneTitle={paneTitle}
+        actionMenu={renderActionMenu}
+        lastMenu={lastMenu}
       >
-        <Accordion
-          label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
-          id={SECTIONS_INVOICE.INFORMATION}
+        <Row end="xs">
+          <Col xs={12}>
+            <ExpandAllButton
+              accordionStatus={sections}
+              onToggle={expandAll}
+            />
+          </Col>
+        </Row>
+        <AccordionSet
+          accordionStatus={sections}
+          onToggle={toggleSection}
         >
-          <Information
-            adjustmentsTotal={invoice.adjustmentsTotal}
-            approvalDate={invoice.approvalDate}
-            approvedBy={invoice.approvedBy}
-            invoiceDate={invoice.invoiceDate}
-            paymentDue={invoice.paymentDue}
-            paymentTerms={invoice.paymentTerms}
-            status={invoice.status}
-            subTotal={invoice.subTotal}
-            total={invoice.total}
-            source={invoice.source}
-            metadata={invoice.metadata}
-            billTo={invoice.billTo}
-            invoiceTotalUnits={invoiceTotalUnits}
-            acqUnits={invoice.acqUnitIds}
-            currency={invoice.currency}
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
+            id={SECTIONS_INVOICE.INFORMATION}
+          >
+            <Information
+              adjustmentsTotal={invoice.adjustmentsTotal}
+              approvalDate={invoice.approvalDate}
+              approvedBy={invoice.approvedBy}
+              invoiceDate={invoice.invoiceDate}
+              paymentDue={invoice.paymentDue}
+              paymentTerms={invoice.paymentTerms}
+              status={invoice.status}
+              subTotal={invoice.subTotal}
+              total={invoice.total}
+              source={invoice.source}
+              metadata={invoice.metadata}
+              billTo={invoice.billTo}
+              invoiceTotalUnits={invoiceTotalUnits}
+              acqUnits={invoice.acqUnitIds}
+              currency={invoice.currency}
+            />
+          </Accordion>
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
+            id={SECTIONS_INVOICE.LINES}
+            displayWhenOpen={renderLinesActions}
+            displayWhenClosed={
+              <div className={styles.invoiceLinesCount}>
+                {totalInvoiceLines}
+              </div>
+            }
+          >
+            <InvoiceLinesContainer
+              currency={invoice.currency}
+              invoiceLines={invoiceLines}
+            />
+          </Accordion>
+          <Accordion
+            id={SECTIONS_INVOICE.FUND_DISTRIBUTION}
+            label={<FormattedMessage id="ui-invoice.fundDistribution" />}
+          >
+            <FundDistributionView
+              currency={invoice.currency}
+              fundDistributions={fundDistributions}
+            />
+          </Accordion>
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.adjustments" />}
+            id={SECTIONS_INVOICE.ADJUSTMENTS}
+          >
+            <AdjustmentsDetails
+              adjustments={adjustments}
+              currency={invoice.currency}
+            />
+          </Accordion>
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
+            id={SECTIONS_INVOICE.VENDOR_DETAILS}
+          >
+            <VendorDetails
+              vendorInvoiceNo={vendorInvoiceNo}
+              vendorId={invoice.vendorId}
+              accountingCode={invoice.accountingCode}
+            />
+          </Accordion>
+          {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
+            id={SECTIONS_INVOICE.DOCUMENTS}
+          >
+            <DocumentsDetails />
+          </Accordion>
+        </AccordionSet>
+        {showConfirmDelete && (
+          <ConfirmationModal
+            id="delete-invoice-confirmation"
+            confirmLabel={<FormattedMessage id="ui-invoice.invoice.delete.confirmLabel" />}
+            heading={<FormattedMessage id="ui-invoice.invoice.delete.heading" values={{ vendorInvoiceNo }} />}
+            message={<FormattedMessage id="ui-invoice.invoice.delete.message" />}
+            onCancel={toggleDeleteConfirmation}
+            onConfirm={deleteInvoice}
+            open
           />
-        </Accordion>
-        <Accordion
-          label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
-          id={SECTIONS_INVOICE.LINES}
-          displayWhenOpen={renderLinesActions}
-          displayWhenClosed={
-            <div className={styles.invoiceLinesCount}>
-              {totalInvoiceLines}
-            </div>
-          }
-        >
-          <InvoiceLines
-            currency={invoice.currency}
-            invoiceId={invoice.id}
+        )}
+        {
+          isApproveConfirmationOpen && (
+            <ConfirmationModal
+              id="approve-invoice-confirmation"
+              heading={<FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.heading" />}
+              message={<FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.message" />}
+              onCancel={toggleApproveConfirmation}
+              onConfirm={() => {
+                toggleApproveConfirmation();
+                approveInvoice();
+              }}
+              open
+            />
+          )
+        }
+        {
+          isPayConfirmationOpen && (
+            <ConfirmationModal
+              id="pay-invoice-confirmation"
+              heading={<FormattedMessage id="ui-invoice.invoice.actions.pay.confirmation.heading" />}
+              message={<FormattedMessage id="ui-invoice.invoice.actions.pay.confirmation.message" />}
+              onCancel={togglePayConfirmation}
+              onConfirm={() => {
+                togglePayConfirmation();
+                payInvoice();
+              }}
+              open
+            />
+          )
+        }
+        {
+          isApproveAndPayConfirmationOpen && (
+            <ConfirmationModal
+              id="approve-pay-invoice-confirmation"
+              heading={<FormattedMessage id="ui-invoice.invoice.actions.approveAndPay.confirmation.heading" />}
+              message={<FormattedMessage id="ui-invoice.invoice.actions.approveAndPay.confirmation.message" />}
+              onCancel={toggleApproveAndPayConfirmation}
+              onConfirm={() => {
+                toggleApproveAndPayConfirmation();
+                approveAndPayInvoice();
+              }}
+              open
+            />
+          )
+        }
+      </Pane>
+      {
+        isTagsOpened && (
+          <TagsPane
+            onClose={toggleTagsPane}
+            entity={invoice}
+            updateEntity={onUpdate}
           />
-        </Accordion>
-        <Accordion
-          id={SECTIONS_INVOICE.FUND_DISTRIBUTION}
-          label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-        >
-          <FundDistributionView
-            currency={invoice.currency}
-            fundDistributions={fundDistributions}
-          />
-        </Accordion>
-        <Accordion
-          label={<FormattedMessage id="ui-invoice.adjustments" />}
-          id={SECTIONS_INVOICE.ADJUSTMENTS}
-        >
-          <AdjustmentsDetails
-            adjustments={adjustments}
-            currency={invoice.currency}
-          />
-        </Accordion>
-        <Accordion
-          label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
-          id={SECTIONS_INVOICE.VENDOR_DETAILS}
-        >
-          <VendorDetails
-            vendorInvoiceNo={vendorInvoiceNo}
-            vendorId={invoice.vendorId}
-            accountingCode={invoice.accountingCode}
-          />
-        </Accordion>
-        {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
-        <Accordion
-          label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
-          id={SECTIONS_INVOICE.DOCUMENTS}
-        >
-          <DocumentsDetails />
-        </Accordion>
-
-      </AccordionSet>
-      {showConfirmDelete && (
-        <ConfirmationModal
-          id="delete-invoice-confirmation"
-          confirmLabel={<FormattedMessage id="ui-invoice.invoice.delete.confirmLabel" />}
-          heading={<FormattedMessage id="ui-invoice.invoice.delete.heading" values={{ vendorInvoiceNo }} />}
-          message={<FormattedMessage id="ui-invoice.invoice.delete.message" />}
-          onCancel={toggleDeleteConfirmation}
-          onConfirm={deleteInvoice}
-          open
-        />
-      )}
-    </Pane>
+        )
+      }
+    </>
   );
 }
 
 InvoiceDetails.propTypes = {
   addLines: PropTypes.func.isRequired,
+  approveAndPayInvoice: PropTypes.func.isRequired,
+  approveInvoice: PropTypes.func.isRequired,
   createLine: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  invoice: PropTypes.object.isRequired,
   deleteInvoice: PropTypes.func.isRequired,
-  totalInvoiceLines: PropTypes.number.isRequired,
+  invoice: PropTypes.object.isRequired,
+  invoiceLines: PropTypes.arrayOf(PropTypes.object),
   invoiceTotalUnits: PropTypes.number,
-  tagsToggle: PropTypes.func.isRequired,
-  tagsEnabled: PropTypes.bool,
+  isApprovePayEnabled: PropTypes.bool,
+  onClose: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
+  payInvoice: PropTypes.func.isRequired,
+  totalInvoiceLines: PropTypes.number.isRequired,
 };
 
 InvoiceDetails.defaultProps = {
   invoiceTotalUnits: 0,
-  tagsEnabled: false,
+  isApprovePayEnabled: false,
+  invoiceLines: [],
 };
 
 export default InvoiceDetails;

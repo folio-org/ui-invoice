@@ -1,1 +1,1 @@
-export { default } from './InvoiceActionsContainer';
+export { default } from './InvoiceActions';

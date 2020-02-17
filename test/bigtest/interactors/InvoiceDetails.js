@@ -17,6 +17,8 @@ import TagsAction from './common/TagsAction';
   static defaultScope = '#invoice-details-actions';
   deleteLine = new Interactor('[data-test-button-delete-invoice]');
   editLine = new Interactor('[data-test-button-edit-invoice]');
+  buttonApproveInvoice = new Interactor('[data-test-invoice-action-approve]');
+  buttonPayInvoice = new Interactor('[data-test-invoice-action-pay]');
 }
 
 @interactor class ApprovedBy {
@@ -36,10 +38,7 @@ export default interactor(class InvoiceDetails {
 
   // Actions
   actions = new MenuActions();
-  tagsAction = new TagsAction('[data-test-invoice-tags-action]');
-
-  buttonApproveInvoice = new Interactor('[data-test-invoice-action-approve]');
-  buttonPayInvoice = new Interactor('[data-test-invoice-action-pay]');
+  tagsAction = new TagsAction('[icon=tag]');
 
   buttonCreateLine = new Interactor('[data-test-button-create-line]');
   header = new Header();

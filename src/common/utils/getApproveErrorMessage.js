@@ -1,8 +1,8 @@
 export const APPROVE_ERROR_CODES = {
   voucherNumberPrefixNotAlpha: 'voucherNumberPrefixNotAlpha',
-  FundDistributionsNotPresent: 'FundDistributionsNotPresent',
+  fundDistributionsNotPresent: 'fundDistributionsNotPresent',
   poLineUpdateFailure: 'poLineUpdateFailure',
-  fundCanNotBePaid: 'fundCanNotBePaid',
+  fundCannotBePaid: 'fundCannotBePaid',
 };
 
 export const getApproveErrorMessage = (errorCode, genericError = 'ui-invoice.invoice.actions.approve.error') => {
