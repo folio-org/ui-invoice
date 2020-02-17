@@ -92,7 +92,8 @@
         "displayName": "Settings (Invoice): Can view and edit settings",
         "subPermissions": [
           "configuration.all",
-          "settings.enabled"
+          "settings.enabled",
+          "ui-invoice.third-party-services"
         ],
         "visible": true
       },

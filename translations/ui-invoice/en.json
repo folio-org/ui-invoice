@@ -88,6 +88,9 @@
   "settings.vouchers.label": "Vouchers",
 
   "settings.batchGroups.label": "Batch groups",
+  "settings.batchGroups.labelSingular": "Batch group",
+  "settings.batchGroups.column.name": "Name",
+  "settings.batchGroups.column.description": "Description",
 
   "settings.batchGroupConfiguration.label": "Batch group configuration",
 
