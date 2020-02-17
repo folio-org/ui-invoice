@@ -195,7 +195,6 @@
     "invoice.actions.pay.confirmation.message": "Êtes-vous sûr(e) de vouloir payer la facture?",
     "invoice.actions.approve.error": "La facture n'a pas été approuvée",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Le préfixe du numéro de bon doit contenir uniquement des lettres Unicode",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "Au moins une répartition budgétaire doit être présentée pour chaque ligne de facturation associée",
     "adjustment.headerLabel": "Ajustement {index}",
     "saveAndClose": "Sauvegarder et fermer",
     "settings.general.label": "Général",
@@ -210,7 +209,6 @@
     "invoice.isNotUnique.confirmation.heading": "Sauvegarder la facture",
     "invoice.isNotUnique.confirmation.message": "Cela semble être un numéro de facture en double",
     "invoiceLine.poLineNumber": "Numéro de ligne de commande",
-    "invoice.actions.approve.error.fundCanNotBePaid": "Une ou plusieurs répartitions budgétaires sur cette facture ne peuvent pas être payées, car le budget est insuffisant.",
     "invoice.actions.pay.error": "La facture n'a pas été payée",
     "invoiceLine.adminData": "Données d'administration de la ligne de facturation",
     "invoiceLine.adjustments": "Ajustements de ligne de facturation",
@@ -230,5 +228,8 @@
     "errors.fileLimit": "Le fichier dépasse la taille limite",
     "settings.vouchers.label": "Vouchers",
     "settings.batchGroups.label": "Batch groups",
-    "settings.batchGroupConfiguration.label": "Batch group configuration"
+    "settings.batchGroupConfiguration.label": "Batch group configuration",
+    "invoice.actions.load.error": "Failed to load invoice data",
+    "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+    "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line"
 }

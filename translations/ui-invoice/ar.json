@@ -195,7 +195,6 @@
     "invoice.actions.pay.confirmation.message": "هل أنت متأكد من أنك تريد سداد الفانورة؟",
     "invoice.actions.approve.error": "لم يتم الموافقة على الفاتورة",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "يجب أن تحتوي بادئة رقم القسمية على أحرف يونيكود فقط",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "يجب وجود توزيع تمويل واحد على الأقل لكل خط فاتورة مرتبط به",
     "adjustment.headerLabel": "تعديل {index}",
     "saveAndClose": "حفظ وإغلاق",
     "settings.general.label": "عام",
@@ -210,7 +209,6 @@
     "invoice.isNotUnique.confirmation.heading": "حفظ الفاتورة",
     "invoice.isNotUnique.confirmation.message": "يبدو أن هذا رقم فاتورة مكرر",
     "invoiceLine.poLineNumber": "رقم سطر أمر الشراء",
-    "invoice.actions.approve.error.fundCanNotBePaid": "لا يمكن سداد أحد توزيعات التمويل أو أكثر في هذه الفاتورة بسبب عدم وجود مال كافٍ في الميزانية",
     "invoice.actions.pay.error": "لم يتم سداد الفاتورة",
     "invoiceLine.adminData": "بيانات إدارة سطر الفاتورة",
     "invoiceLine.adjustments": "تعديلات سطر الفاتورة",
@@ -230,5 +228,8 @@
     "errors.fileLimit": "حجم الملف يتجاوز الحد المسموح به",
     "settings.vouchers.label": "قسائم الشراء",
     "settings.batchGroups.label": "مجموعات بالدفعة",
-    "settings.batchGroupConfiguration.label": "تهيئة المجموعة بالدفعة"
+    "settings.batchGroupConfiguration.label": "تهيئة المجموعة بالدفعة",
+    "invoice.actions.load.error": "فشل تحميل بيانات الفاتورة",
+    "invoice.actions.approve.error.fundCannotBePaid": "لا يمكن سداد أحد توزيعات التمويل أو أكثر في هذه الفاتورة بسبب عدم وجود مال كافٍ في الميزانية",
+    "invoice.actions.approve.error.fundDistributionsNotPresent": "يجب وجود توزيع تمويل واحد على الأقل لكل خط فاتورة مرتبط به"
 }
