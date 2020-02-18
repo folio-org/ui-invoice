@@ -26,7 +26,7 @@ class BatchGroupsSettings extends React.Component {
 
     return (
       <this.connectedControlledVocab
-        actionSuppressor={{ delete: suppressDelete }}
+        actionSuppressor={{ delete: suppressDelete, edit: () => false }}
         baseUrl="batch-groups"
         columnMapping={columnMapping}
         data-test-batch-groups-settings
