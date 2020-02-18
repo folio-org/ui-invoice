@@ -13,6 +13,7 @@ const columnMapping = {
   description: <FormattedMessage id="ui-invoice.settings.batchGroups.column.description" />,
 };
 const SYSTEM_GROUP_ID = '2a2cb998-1437-41d1-88ad-01930aaeadd5';
+const suppressDelete = group => group.id === SYSTEM_GROUP_ID;
 
 class BatchGroupsSettings extends React.Component {
   constructor(props) {
@@ -22,23 +23,14 @@ class BatchGroupsSettings extends React.Component {
 
   render() {
     const { intl, stripes } = this.props;
-    const hasPerm = stripes.hasPerm('settings.invoice.enabled');
-    const getDisableAttr = () => ({
-      disabled: !hasPerm,
-    });
-    const actionProps = {
-      create: getDisableAttr,
-      edit: getDisableAttr,
-      delete: group => ({ disabled: !hasPerm || group.id === SYSTEM_GROUP_ID }),
-    };
 
     return (
       <this.connectedControlledVocab
-        actionProps={actionProps}
+        actionSuppressor={{ delete: suppressDelete }}
         baseUrl="batch-groups"
         columnMapping={columnMapping}
         data-test-batch-groups-settings
-        editable={hasPerm}
+        editable
         hiddenFields={['numberOfObjects']}
         id="batch-groups"
         label={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.label' })}
