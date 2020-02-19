@@ -8,6 +8,7 @@ import {
   configTransactions,
 } from '@folio/stripes-acq-components/test/bigtest/network';
 
+import configBatchGroups from './configs/batchgroup';
 import configInvoices from './configs/invoices';
 import configInvoiceLines from './configs/lines';
 import configVouchers from './configs/vouchers';
@@ -29,4 +30,5 @@ export default function config() {
   configMemberships(this);
   configFunds(this);
   configTransactions(this);
+  configBatchGroups(this);
 }

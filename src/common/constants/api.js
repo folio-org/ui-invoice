@@ -1,4 +1,5 @@
 export const ACQUISITIONS_UNITS_API = 'acquisitions-units/units';
+export const BATCH_GROUPS_API = 'batch-groups';
 export const CONFIG_API = 'configurations/entries';
 export const INVOICE_API = 'invoice/invoices';
 export const INVOICE_DOCUMENTS_API = '/documents';
