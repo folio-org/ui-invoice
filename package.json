@@ -91,6 +91,7 @@
         "permissionName": "settings.invoice.enabled",
         "displayName": "Settings (Invoice): Can view and edit settings",
         "subPermissions": [
+          "batch-groups.all",
           "configuration.all",
           "settings.enabled",
           "ui-invoice.third-party-services"
