@@ -15,6 +15,9 @@ const columnMapping = {
 const SYSTEM_GROUP_ID = '2a2cb998-1437-41d1-88ad-01930aaeadd5';
 const suppressDelete = group => group.id === SYSTEM_GROUP_ID;
 
+// eslint-disable-next-line no-unused-vars
+const preUpdateHook = ({ metadata, ...rest }) => rest;
+
 class BatchGroupsSettings extends React.Component {
   constructor(props) {
     super(props);
@@ -33,6 +36,7 @@ class BatchGroupsSettings extends React.Component {
         editable
         hiddenFields={['numberOfObjects']}
         id="batch-groups"
+        preUpdateHook={preUpdateHook}
         label={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.label' })}
         labelSingular={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.labelSingular' })}
         nameKey="name"
