@@ -26,17 +26,6 @@ const InvoiceActions = ({
 }) => {
   return (
     <MenuSection id="invoice-details-actions">
-      <IfPermission perm="invoice.invoices.item.delete">
-        <Button
-          buttonStyle="dropdownItem"
-          data-test-button-delete-invoice
-          onClick={onDelete}
-        >
-          <Icon size="small" icon="trash">
-            <FormattedMessage id="ui-invoice.button.delete" />
-          </Icon>
-        </Button>
-      </IfPermission>
       <IfPermission perm="invoice.invoices.item.put">
         <Button
           buttonStyle="dropdownItem"
@@ -90,6 +79,17 @@ const InvoiceActions = ({
           </IfPermission>
         )
       }
+      <IfPermission perm="invoice.invoices.item.delete">
+        <Button
+          buttonStyle="dropdownItem"
+          data-test-button-delete-invoice
+          onClick={onDelete}
+        >
+          <Icon size="small" icon="trash">
+            <FormattedMessage id="ui-invoice.button.delete" />
+          </Icon>
+        </Button>
+      </IfPermission>
     </MenuSection>
   );
 };
