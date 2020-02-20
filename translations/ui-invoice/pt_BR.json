@@ -231,5 +231,8 @@
     "settings.batchGroupConfiguration.label": "Configuração do grupo de lotes",
     "invoice.actions.load.error": "Falha ao carregar os dados da fatura",
     "invoice.actions.approve.error.fundCannotBePaid": "Uma ou mais distribuições de fundos nesta fatura não podem ser pagas, porque não há dinheiro suficiente no orçamento",
-    "invoice.actions.approve.error.fundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada"
+    "invoice.actions.approve.error.fundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
+    "settings.batchGroups.labelSingular": "Grupo de lotes",
+    "settings.batchGroups.column.name": "Nome",
+    "settings.batchGroups.column.description": "Descrição"
 }
