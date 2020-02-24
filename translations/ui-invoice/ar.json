@@ -232,7 +232,7 @@
     "invoice.actions.load.error": "فشل تحميل بيانات الفاتورة",
     "invoice.actions.approve.error.fundCannotBePaid": "لا يمكن سداد أحد توزيعات التمويل أو أكثر في هذه الفاتورة بسبب عدم وجود مال كافٍ في الميزانية",
     "invoice.actions.approve.error.fundDistributionsNotPresent": "يجب وجود توزيع تمويل واحد على الأقل لكل خط فاتورة مرتبط به",
-    "settings.batchGroups.labelSingular": "Batch group",
-    "settings.batchGroups.column.name": "Name",
-    "settings.batchGroups.column.description": "Description"
+    "settings.batchGroups.labelSingular": "مجموعة بالدفعة",
+    "settings.batchGroups.column.name": "الاسم",
+    "settings.batchGroups.column.description": "الوصف"
 }
