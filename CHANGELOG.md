@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-101](https://issues.folio.org/browse/UINV-101) Invoice settings: Batch groupsCreate settings form for Batch group settings (Multiple Batch groups)
 * [UINV-111](https://issues.folio.org/browse/UINV-111) Invoice settings: Batch groups
 * [UINV-119](https://issues.folio.org/browse/UINV-119) Move record action buttons into "Action" button UX pattern
 * [UINV-100](https://issues.folio.org/browse/UINV-100) Settings: Add Batch group and Batch group settings subheadings to invoice settings
