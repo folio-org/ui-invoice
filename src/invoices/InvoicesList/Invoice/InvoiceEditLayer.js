@@ -28,6 +28,9 @@ import { LoadingPane } from '../../../common/components';
 import {
   saveInvoice,
 } from '../utils';
+import {
+  getAlwaysShownAdjustmentsList,
+} from './utils';
 import InvoiceForm from '../../InvoiceForm';
 
 function InvoiceEditLayer({
@@ -95,6 +98,7 @@ function InvoiceEditLayer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forceSaveValues, id, isCreate, okapi, invoiceDocuments]);
 
+  const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
   const invoice = !isCreate
     ? get(resources, ['invoice', 'records', 0], {})
     : {
@@ -106,6 +110,7 @@ function InvoiceEditLayer({
     ...invoice,
     documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
+    adjustments: isCreate ? alwaysShowAdjustments : invoice.adjustments,
   };
 
   const hasLoaded = !id || get(resources, 'invoice.hasLoaded');

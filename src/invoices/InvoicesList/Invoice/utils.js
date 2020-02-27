@@ -35,3 +35,28 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
     ...optionalProps,
   };
 };
+
+export const getAlwaysShownAdjustmentsList = (configs) => {
+  const shownAdjustmentslist = configs.map(({ id, value = {} }) => {
+    let adjustment = value || {};
+
+    try {
+      adjustment = JSON.parse(adjustment);
+    } catch (e) {
+      adjustment = {};
+    }
+
+    return {
+      id,
+      ...adjustment,
+      value: adjustment.defaultAmount,
+    };
+  }).filter(adj => adj.alwaysShow);
+
+  return shownAdjustmentslist.map(adjustment => {
+    delete adjustment.alwaysShow;
+    delete adjustment.defaultAmount;
+
+    return adjustment;
+  });
+};
