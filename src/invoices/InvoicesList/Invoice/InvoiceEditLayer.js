@@ -109,13 +109,12 @@ function InvoiceEditLayer({
       chkSubscriptionOverlap: true,
       currency: stripes.currency,
       source: sourceValues.user,
+      adjustments: alwaysShowAdjustments,
     };
-  const initialAdjustmentsValue = isCreate ? alwaysShowAdjustments : invoice.adjustments;
   const initialValues = {
     ...invoice,
     documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
-    adjustments: initialAdjustmentsValue,
   };
 
   const hasLoaded = !id || get(resources, 'invoice.hasLoaded');
