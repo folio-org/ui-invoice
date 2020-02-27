@@ -31,6 +31,9 @@ import {
 import {
   getAlwaysShownAdjustmentsList,
 } from './utils';
+import {
+  getSettingsAdjustmentsList,
+} from '../../../settings/adjustments/util';
 import InvoiceForm from '../../InvoiceForm';
 
 function InvoiceEditLayer({
@@ -98,7 +101,8 @@ function InvoiceEditLayer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forceSaveValues, id, isCreate, okapi, invoiceDocuments]);
 
-  const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
+  const allAdjustments = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
+  const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
   const invoice = !isCreate
     ? get(resources, ['invoice', 'records', 0], {})
     : {
@@ -106,11 +110,12 @@ function InvoiceEditLayer({
       currency: stripes.currency,
       source: sourceValues.user,
     };
+  const initialAdjustmentsValue = isCreate ? alwaysShowAdjustments : invoice.adjustments;
   const initialValues = {
     ...invoice,
     documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
-    adjustments: isCreate ? alwaysShowAdjustments : invoice.adjustments,
+    adjustments: initialAdjustmentsValue,
   };
 
   const hasLoaded = !id || get(resources, 'invoice.hasLoaded');
