@@ -38,12 +38,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
 };
 
 export const getAlwaysShownAdjustmentsList = (adjustments) => (
-  adjustments.filter(({ adjustment }) => adjustment.alwaysShow).map(({ id, adjustment }) => {
-    const adj = getAdjustmentFromPreset(adjustment);
-
-    return {
-      id,
-      ...adj,
-    };
+  adjustments.filter(({ adjustment }) => adjustment.alwaysShow).map(({ adjustment }) => {
+    return getAdjustmentFromPreset(adjustment);
   })
 );
