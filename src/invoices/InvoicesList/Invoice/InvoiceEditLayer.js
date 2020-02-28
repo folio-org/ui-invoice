@@ -28,6 +28,12 @@ import { LoadingPane } from '../../../common/components';
 import {
   saveInvoice,
 } from '../utils';
+import {
+  getAlwaysShownAdjustmentsList,
+} from './utils';
+import {
+  getSettingsAdjustmentsList,
+} from '../../../settings/adjustments/util';
 import InvoiceForm from '../../InvoiceForm';
 
 function InvoiceEditLayer({
@@ -95,12 +101,15 @@ function InvoiceEditLayer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forceSaveValues, id, isCreate, okapi, invoiceDocuments]);
 
+  const allAdjustments = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
+  const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
   const invoice = !isCreate
     ? get(resources, ['invoice', 'records', 0], {})
     : {
       chkSubscriptionOverlap: true,
       currency: stripes.currency,
       source: sourceValues.user,
+      adjustments: alwaysShowAdjustments,
     };
   const initialValues = {
     ...invoice,
