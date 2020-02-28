@@ -42,14 +42,7 @@ import {
   calculateAdjustmentAmount,
   getAdjustmentPresetOptions,
 } from '../../common/utils';
-
-const getAdjustmentFromPreset = ({ description, prorate, relationToTotal, type, defaultAmount }) => ({
-  description,
-  prorate,
-  relationToTotal,
-  type,
-  value: defaultAmount,
-});
+import { getAdjustmentFromPreset } from '../utils';
 
 const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments, invoiceSubTotal, stripes }) => {
   const [adjPreset, setAdjPreset] = useState();
