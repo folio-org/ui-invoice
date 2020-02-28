@@ -14,6 +14,8 @@
   "button.edit": "Edit",
   "button.new": "New",
   "button.remove": "Remove",
+  "button.runManualExport": "Run manual export",
+  "button.save": "Save",
 
   "showTags": "Show tags",
   "addTagFor": "Add tag for: {filterValue}",
@@ -93,6 +95,7 @@
   "settings.batchGroups.column.description": "Description",
 
   "settings.batchGroupConfiguration.label": "Batch group configuration",
+  "settings.batchGroupConfiguration.batchGroup": "Batch group",
 
   "settings.voucherNumber.label": "Voucher number",
   "settings.voucherNumber.prefix": "Prefix",
