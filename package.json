@@ -22,7 +22,7 @@
     "@bigtest/mocha": "^0.5.1",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^5.0.0",
-    "@folio/stripes": "^2.9.0",
+    "@folio/stripes": "^3.0.0",
     "@folio/stripes-cli": "^1.12.0",
     "babel-eslint": "^9.0.0",
     "chai": "^4.2.0",
@@ -35,6 +35,9 @@
     "mocha": "^5.2.0",
     "react": "^16.5.1",
     "react-dom": "^16.5.1",
+    "react-intl": "^2.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
     "regenerator-runtime": "^0.13.3",
     "sinon": "^6.3.4"
   },
@@ -46,15 +49,15 @@
     "prop-types": "^15.6.0",
     "query-string": "^6.7.0",
     "react-final-form": "^6.3.0",
-    "react-intl": "^2.4.0",
     "react-router-prop-types": "^1.0.4",
     "redux-form": "^7.4.2"
   },
   "peerDependencies": {
-    "@folio/stripes": "^2.9.0",
-    "react-dom": "*",
-    "react-router-dom": "^5.1.2",
-    "react": "*"
+    "@folio/stripes": "^3.0.0",
+    "react": "*",
+    "react-intl": "^2.5.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "optionalDependencies": {
     "@folio/plugin-find-po-line": "^1.0.0"
