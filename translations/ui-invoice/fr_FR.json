@@ -57,7 +57,7 @@
     "errors.invoiceLineHasNotBeenSaved": "La ligne de facturation n'a pas été enregistrée.",
     "button.createLine": "Nouveau",
     "invoiceLine.editLayer": "Modifier la ligne de facture",
-    "invoiceLine.paneTitle.edit": "Editer la ligne de facturation - {invoiceLineNumber}",
+    "invoiceLine.paneTitle.edit": "Éditer la ligne de facturation - {invoiceLineNumber}",
     "invoiceLine.paneTitle.create": "Créer une ligne de facture fournisseur",
     "invoiceLine.hasBeenSaved": "La ligne de facturation a été enregistrée.",
     "invoiceLine.description": "Description",
@@ -171,7 +171,7 @@
     "settings.voucherNumber.reset": "Réinitialiser la séquence",
     "settings.voucherNumber.allowVoucherNumberEdit": "Autoriser l'édition du numéro de bon",
     "voucher.paneTitle": "Numéro de facture fournisseur - {vendorInvoiceNo}",
-    "voucher.paneSubTitle": "Numéro de bon  {voucherNumber} - {voucherNumber}",
+    "voucher.paneSubTitle": "Numéro de bon - {voucherNumber}",
     "voucher.voucherTitle": "Informations sur le bon",
     "voucher.voucherLinesTitle": "Lignes de bon",
     "voucher.voucherLinesTitle.externalAccountNumber": "Numéro de compte externe: {externalAccountNumber}",
@@ -234,5 +234,8 @@
     "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
     "settings.batchGroups.labelSingular": "Batch group",
     "settings.batchGroups.column.name": "Nom",
-    "settings.batchGroups.column.description": "Description"
+    "settings.batchGroups.column.description": "Description",
+    "button.runManualExport": "Exécuter l'exportation manuelle",
+    "button.save": "Sauvegarder",
+    "settings.batchGroupConfiguration.batchGroup": "Groupe de lots"
 }

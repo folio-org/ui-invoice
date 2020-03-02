@@ -234,5 +234,8 @@
     "invoice.actions.approve.error.fundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
     "settings.batchGroups.labelSingular": "Grupo de lotes",
     "settings.batchGroups.column.name": "Nome",
-    "settings.batchGroups.column.description": "Descrição"
+    "settings.batchGroups.column.description": "Descrição",
+    "button.runManualExport": "Executar exportação manual",
+    "button.save": "Salvar",
+    "settings.batchGroupConfiguration.batchGroup": "Grupo de lotes"
 }

@@ -234,5 +234,8 @@
     "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
     "settings.batchGroups.labelSingular": "Batch group",
     "settings.batchGroups.column.name": "Name",
-    "settings.batchGroups.column.description": "Description"
+    "settings.batchGroups.column.description": "Description",
+    "button.runManualExport": "Run manual export",
+    "button.save": "Save",
+    "settings.batchGroupConfiguration.batchGroup": "Batch group"
 }

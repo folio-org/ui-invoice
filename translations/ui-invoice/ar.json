@@ -234,5 +234,8 @@
     "invoice.actions.approve.error.fundDistributionsNotPresent": "يجب وجود توزيع تمويل واحد على الأقل لكل خط فاتورة مرتبط به",
     "settings.batchGroups.labelSingular": "مجموعة بالدفعة",
     "settings.batchGroups.column.name": "الاسم",
-    "settings.batchGroups.column.description": "الوصف"
+    "settings.batchGroups.column.description": "الوصف",
+    "button.runManualExport": "تشغيل التصدير اليدوي",
+    "button.save": "حفظ",
+    "settings.batchGroupConfiguration.batchGroup": "مجموعة بالدفعة"
 }
