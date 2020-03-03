@@ -7,26 +7,29 @@ import {
   LoadingPane,
   Tags,
   useModalToggle,
+  useShowCallout,
 } from '@folio/stripes-acq-components';
+import { stripesConnect } from '@folio/stripes/core';
 
 import {
   invoiceLineResource,
   invoiceResource,
-} from '../../../common/resources';
-import { PO_LINES_API } from '../../../common/constants';
-import InvoiceLineDetails from '../../InvoiceLineDetails';
+} from '../../common/resources';
+import { PO_LINES_API } from '../../common/constants';
+import InvoiceLineDetails from './InvoiceLineDetails';
 
-const InvoiceLineDetailsLayer = ({
+const InvoiceLineDetailsContainer = ({
   history,
+  location,
   match: { params },
   mutator,
-  showToast,
 }) => {
   const [polNumber, setPolNumber] = useState('');
   const [invoice, setInvoice] = useState({});
   const [invoiceLine, setInvoiceLine] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isTagsPaneOpened, setTagsPaneOpened] = useModalToggle();
+  const showCallout = useShowCallout();
 
   const fetchInvoiceLineDetails = useCallback(
     () => {
@@ -56,31 +59,39 @@ const InvoiceLineDetailsLayer = ({
 
   const closeInvoiceLine = useCallback(
     () => {
-      const path = `/invoice/view/${params.id}`;
+      const pathname = `/invoice/view/${params.id}`;
 
-      history.push(path);
+      history.push({
+        pathname,
+        search: location.search,
+      });
     },
-    [params.id, history],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [params.id, location.search],
   );
 
   const goToEditInvoiceLine = useCallback(
     () => {
-      const path = `/invoice/view/${params.id}/line/${params.lineId}/edit`;
+      const pathname = `/invoice/view/${params.id}/line/${params.lineId}/edit`;
 
-      history.push(path);
+      history.push({
+        pathname,
+        search: location.search,
+      });
     },
-    [params.id, params.lineId, history],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [params.id, params.lineId, location.search],
   );
 
   const deleteInvoiceLine = useCallback(
     () => {
       mutator.invoiceLine.DELETE({ id: params.lineId })
         .then(() => {
-          showToast('ui-invoice.invoiceLine.hasBeenDeleted');
+          showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenDeleted' });
           closeInvoiceLine();
         })
         .catch(() => {
-          showToast('ui-invoice.errors.invoiceLineHasNotBeenDeleted', 'error');
+          showCallout({ messageId: 'ui-invoice.errors.invoiceLineHasNotBeenDeleted', type: 'error' });
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -115,7 +126,7 @@ const InvoiceLineDetailsLayer = ({
   );
 };
 
-InvoiceLineDetailsLayer.manifest = Object.freeze({
+InvoiceLineDetailsContainer.manifest = Object.freeze({
   invoiceLine: {
     ...invoiceLineResource,
     accumulate: true,
@@ -134,11 +145,12 @@ InvoiceLineDetailsLayer.manifest = Object.freeze({
   },
 });
 
-InvoiceLineDetailsLayer.propTypes = {
+InvoiceLineDetailsContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
   mutator: PropTypes.object.isRequired,
   showToast: PropTypes.func.isRequired,
 };
 
-export default InvoiceLineDetailsLayer;
+export default stripesConnect(InvoiceLineDetailsContainer);

@@ -244,6 +244,7 @@
   "invoice.paneTitle.create": "Create vendor invoice",
   "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
 
+  "search": "Search",
   "search.accountingCode": "Accounting code",
   "search.voucherNumber": "Voucher number",
   "search.vendorInvoiceNo": "Vendor invoice number",

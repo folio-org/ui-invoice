@@ -1,7 +1,6 @@
 import { find, get } from 'lodash';
 
-import { INVOICE_STATUS } from '../../../common/constants';
-import { getAdjustmentFromPreset } from '../../utils';
+import { INVOICE_STATUS } from '../../common/constants';
 
 // eslint-disable-next-line import/prefer-default-export
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
@@ -36,9 +35,3 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
     ...optionalProps,
   };
 };
-
-export const getAlwaysShownAdjustmentsList = (adjustments) => (
-  adjustments.filter(({ adjustment }) => adjustment.alwaysShow).map(({ adjustment }) => {
-    return getAdjustmentFromPreset(adjustment);
-  })
-);

@@ -8,7 +8,7 @@ import {
   Button,
   Col,
   Icon,
-  Layer,
+  Paneset,
   MenuSection,
   Pane,
   PaneMenu,
@@ -69,14 +69,14 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
 
   if (isLoading) {
     return (
-      <Layer isOpen>
+      <Paneset>
         <LoadingPane onClose={closeVoucher} />
-      </Layer>
+      </Paneset>
     );
   }
 
   return (
-    <Layer isOpen>
+    <Paneset>
       <Pane
         actionMenu={renderActionMenu}
         appIcon={<AppIcon app="invoice" size="small" />}
@@ -111,7 +111,7 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
           </Col>
         </Row>
       </Pane>
-    </Layer>
+    </Paneset>
   );
 };
 
