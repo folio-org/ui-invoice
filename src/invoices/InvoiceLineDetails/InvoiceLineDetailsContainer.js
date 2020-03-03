@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
@@ -105,7 +105,7 @@ const InvoiceLineDetailsContainer = ({
   }
 
   return (
-    <Fragment>
+    <>
       <InvoiceLineDetails
         closeInvoiceLine={closeInvoiceLine}
         currency={invoice.currency}
@@ -122,7 +122,7 @@ const InvoiceLineDetailsContainer = ({
           onClose={setTagsPaneOpened}
         />
       )}
-    </Fragment>
+    </>
   );
 };
 

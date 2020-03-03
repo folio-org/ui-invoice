@@ -1,5 +1,5 @@
 // eslint-disable-next-line filenames/match-exported
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { stripesShape } from '@folio/stripes/core';
@@ -33,12 +33,12 @@ class Invoice extends React.Component {
     }
 
     return (
-      <Fragment>
+      <>
         <ToastContext.Provider value={this.callout}>
           <Invoices />
         </ToastContext.Provider>
         <Callout ref={this.callout} />
-      </Fragment>
+      </>
     );
   }
 }

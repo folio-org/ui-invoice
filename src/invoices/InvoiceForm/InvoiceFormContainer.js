@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   FormattedMessage,
 } from 'react-intl';
@@ -124,7 +124,7 @@ function InvoiceFormContainer({
   }
 
   return (
-    <Fragment>
+    <>
       <InvoiceForm
         initialValues={initialValues}
         parentResources={resources}
@@ -149,7 +149,7 @@ function InvoiceFormContainer({
           />
         )
       }
-    </Fragment>
+    </>
   );
 }
 

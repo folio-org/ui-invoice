@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   Switch,
   Route,
@@ -18,7 +18,7 @@ const callout = React.createRef();
 
 const Invoices = () => {
   return (
-    <Fragment>
+    <>
       <ToastContext.Provider value={callout}>
         <Switch>
           <Route
@@ -48,7 +48,7 @@ const Invoices = () => {
         </Switch>
       </ToastContext.Provider>
       <Callout ref={callout} />
-    </Fragment>
+    </>
   );
 };
 

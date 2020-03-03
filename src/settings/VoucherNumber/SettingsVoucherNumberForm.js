@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Field } from 'redux-form';
 import { FormattedMessage } from 'react-intl';
 
@@ -13,7 +13,7 @@ import SettingsVoucherNumberReset from './SettingsVoucherNumberReset';
 import css from './VoucherNumber.css';
 
 const SettingsVoucherNumberForm = () => (
-  <Fragment>
+  <>
     <Row>
       <Col xs={12}>
         <Field
@@ -36,7 +36,7 @@ const SettingsVoucherNumberForm = () => (
         />
       </Col>
     </Row>
-  </Fragment>
+  </>
 );
 
 SettingsVoucherNumberForm.propTypes = {};
