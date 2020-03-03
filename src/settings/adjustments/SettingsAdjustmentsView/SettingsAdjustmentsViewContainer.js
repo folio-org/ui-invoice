@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -51,7 +51,7 @@ class SettingsAdjustmentsViewContainer extends Component {
     const adjustment = get(adjustments, '0');
 
     return (
-      <Fragment>
+      <>
         <SettingsAdjustmentsView
           adjustment={adjustment}
           close={close}
@@ -59,7 +59,7 @@ class SettingsAdjustmentsViewContainer extends Component {
           rootPath={rootPath}
         />
         <Callout ref={this.createCalloutRef} />
-      </Fragment>
+      </>
     );
   }
 }

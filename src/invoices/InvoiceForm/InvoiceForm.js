@@ -3,7 +3,6 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import {
   Field,
-  getFormValues,
 } from 'redux-form';
 
 import {
@@ -25,7 +24,6 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import { stripesShape } from '@folio/stripes/core';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
@@ -67,7 +65,7 @@ import invoiceCss from '../Invoice.css';
 const CREATE_UNITS_PERM = 'invoice.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
 
-const INVOICE_FORM = 'invoiceForm';
+export const INVOICE_FORM = 'invoiceForm';
 const SECTIONS = {
   invoiceInformation: 'invoiceInformation',
   extendedInformation: 'extendedInformation',
@@ -87,7 +85,9 @@ class InvoiceForm extends Component {
     parentResources: PropTypes.object.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
-    stripes: stripesShape,
+    filledBillTo: PropTypes.string.isRequired,
+    filledVendorId: PropTypes.string.isRequired,
+    filledCurrency: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -122,16 +122,21 @@ class InvoiceForm extends Component {
     dispatch(change('accountingCode', accountingCode || ''));
   }
 
+  closeForm = () => {
+    this.props.onCancel();
+  };
+
   render() {
     const {
       dispatch,
       handleSubmit,
       initialValues,
-      onCancel,
       parentResources,
       pristine,
-      stripes,
       submitting,
+      filledBillTo,
+      filledVendorId,
+      filledCurrency,
     } = this.props;
     const { sections } = this.state;
     const vendorInvoiceNo = get(initialValues, 'vendorInvoiceNo', '');
@@ -145,13 +150,11 @@ class InvoiceForm extends Component {
         pristine={pristine}
         submitting={submitting}
         handleSubmit={handleSubmit}
-        onCancel={onCancel}
+        onCancel={this.closeForm}
       />
     );
     const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
-    const formValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
-    const currency = get(formValues, 'currency');
-    const addressBillTo = get(find(addresses, { id: formValues.billTo }), 'address', '');
+    const addressBillTo = get(find(addresses, { id: filledBillTo }), 'address', '');
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
     const metadata = initialValues.metadata;
     const approvedBy = get(initialValues, 'approvedBy');
@@ -159,7 +162,7 @@ class InvoiceForm extends Component {
     const isStatusPaid = isPaid(initialValues.status);
 
     const activeVendors = this.getActiveVendors();
-    const selectedVendor = find(activeVendors, { id: get(formValues, 'vendorId') });
+    const selectedVendor = find(activeVendors, { id: filledVendorId });
     const accountingCodeOptions = getAccountingCodeOptions(selectedVendor);
     const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
@@ -175,7 +178,7 @@ class InvoiceForm extends Component {
             dismissible
             footer={paneFooter}
             id="pane-invoice-form"
-            onClose={onCancel}
+            onClose={this.closeForm}
             paneTitle={paneTitle}
           >
             <Row>
@@ -316,7 +319,7 @@ class InvoiceForm extends Component {
                   >
                     <AdjustmentsForm
                       adjustmentsPresets={adjustmentsPresets}
-                      currency={currency}
+                      currency={filledCurrency}
                       disabled={isEditPostApproval}
                       invoiceSubTotal={initialValues.subTotal}
                     />

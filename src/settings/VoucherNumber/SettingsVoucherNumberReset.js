@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -52,7 +52,7 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
   [resources.voucherNumber]);
 
   return (
-    <Fragment>
+    <>
       <Row>
         <Col xs={12}>
           <TextField
@@ -94,7 +94,7 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
         </Col>
       </Row>
       <Callout ref={callout} />
-    </Fragment>
+    </>
   );
 };
 

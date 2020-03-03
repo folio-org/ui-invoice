@@ -39,7 +39,7 @@ describe('Invoice edit documents', () => {
       },
     });
 
-    this.visit(`/invoice/view/${invoice.id}?layer=edit`);
+    this.visit(`/invoice/edit/${invoice.id}`);
     await invoiceForm.whenLoaded();
   });
 

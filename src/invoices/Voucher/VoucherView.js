@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -26,7 +26,7 @@ const VoucherView = ({ voucher, voucherLines }) => {
   );
 
   return (
-    <Fragment>
+    <>
       <Row end="xs">
         <Col xs={12}>
           <ExpandAllButton
@@ -53,7 +53,7 @@ const VoucherView = ({ voucher, voucherLines }) => {
           />
         </Accordion>
       </AccordionSet>
-    </Fragment>
+    </>
   );
 };
 

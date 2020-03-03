@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-118](https://issues.folio.org/browse/UINV-118) TECH-DEBT refactor Invoice list to not use SearchAndSort
 * [UINV-122](https://issues.folio.org/browse/UINV-122) Add "always show" preset adjustments to invoice when creating new invoice
 * [UINV-101](https://issues.folio.org/browse/UINV-101) Invoice settings: Batch groupsCreate settings form for Batch group settings (Multiple Batch groups)
 * [UINV-111](https://issues.folio.org/browse/UINV-111) Invoice settings: Batch groups

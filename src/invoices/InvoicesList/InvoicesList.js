@@ -1,52 +1,42 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
-  FormattedMessage,
-  injectIntl,
-  intlShape,
-} from 'react-intl';
-import { get } from 'lodash';
+  Route,
+  withRouter,
+} from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
+import { FormattedMessage } from 'react-intl';
 
-import { Callout } from '@folio/stripes/components';
 import {
-  SearchAndSort,
-  makeQueryFunction,
-} from '@folio/stripes/smart-components';
+  Paneset,
+  MultiColumnList,
+} from '@folio/stripes/components';
 import {
   AmountWithCurrencyField,
-  changeSearchIndex,
-  getActiveFilters,
-  handleFilterChange,
-  showToast,
-  sourceValues,
+  FiltersPane,
+  ResultsPane,
+  ResetButton,
+  SingleSearchForm,
+  useLocationFilters,
+  useLocationSorting,
+  useToggle,
 } from '@folio/stripes-acq-components';
 
-import packageInfo from '../../../package';
-import {
-  // api
-  INVOICE_API,
-} from '../../common/constants';
 import {
   getInvoiceStatusLabel,
   formatDate,
 } from '../../common/utils';
-import {
-  ACQUISITIONS_UNITS,
-  CONFIG_ADJUSTMENTS,
-  configAddress,
-  invoicesResource,
-  VENDORS,
-} from '../../common/resources';
 
-import InvoiceEditLayer from './Invoice/InvoiceEditLayer';
+import { InvoiceDetailsContainer } from '../InvoiceDetails';
+import { InvoiceLineDetailsContainer } from '../InvoiceLineDetails';
+
+import { InvoicesListFiltersContainer } from './InvoicesListFilters';
+import InvoicesListLastMenu from './InvoicesListLastMenu';
 import {
-  invoicesSearchTemplate,
   searchableIndexes,
-} from './invoicesListSearchConfig';
-import { filterConfig } from './invoicesListFilterConfig';
-import Invoice from './Invoice';
-import InvoicesListFilters from './InvoicesListFilters';
+} from './InvoicesListSearchConfig';
 
+const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'total'];
 const columnMapping = {
   vendorInvoiceNo: <FormattedMessage id="ui-invoice.invoice.list.vendorInvoiceNo" />,
@@ -55,7 +45,9 @@ const columnMapping = {
   status: <FormattedMessage id="ui-invoice.invoice.list.status" />,
   total: <FormattedMessage id="ui-invoice.invoice.list.total" />,
 };
-const baseResultsFormatter = {
+const sortableFields = ['vendorInvoiceNo', 'invoiceDate', 'status', 'total'];
+const resultsFormatter = {
+  vendor: invoice => invoice?.vendor?.name,
   invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
   total: invoice => (
@@ -65,175 +57,125 @@ const baseResultsFormatter = {
     />
   ),
 };
-const getHelperResourcePath = (helper, id) => `${INVOICE_API}/${id}`;
 
-const INITIAL_RESULT_COUNT = 30;
-const RESULT_COUNT_INCREMENT = 30;
+const InvoicesList = ({
+  history,
+  isLoading,
+  location,
+  onNeedMoreData,
+  resetData,
+  invoices,
+  invoicesCount,
+}) => {
+  const [
+    filters,
+    searchQuery,
+    applyFilters,
+    applySearch,
+    changeSearch,
+    resetFilters,
+    changeIndex,
+    searchIndex,
+  ] = useLocationFilters(location, history, resetData);
+  const [
+    sortingField,
+    sortingDirection,
+    changeSorting,
+  ] = useLocationSorting(location, history, resetData, sortableFields);
+  const [isFiltersOpened, toggleFilters] = useToggle(true);
 
-class InvoicesList extends Component {
-  static propTypes = {
-    mutator: PropTypes.object.isRequired,
-    resources: PropTypes.object.isRequired,
-    intl: intlShape.isRequired,
-    stripes: PropTypes.object,
-    onSelectRow: PropTypes.func,
-    disableRecordCreation: PropTypes.bool,
-    showSingleResult: PropTypes.bool,
-    browseOnly: PropTypes.bool,
-    packageInfo: PropTypes.object,
-  };
+  const renderLastMenu = useCallback(() => <InvoicesListLastMenu />, []);
 
-  static defaultProps = {
-    showSingleResult: true,
-    browseOnly: false,
-  };
-
-  static manifest = Object.freeze({
-    initializedFilterConfig: { initialValue: false },
-    query: {
-      initialValue: {
-        query: '',
-        filters: '',
-        sort: 'Name',
-      },
+  const selecteInvoice = useCallback(
+    (e, { id }) => {
+      history.push({
+        pathname: `/invoice/view/${id}`,
+        search: location.search,
+      });
     },
-    resultCount: { initialValue: INITIAL_RESULT_COUNT },
-    records: {
-      type: 'okapi',
-      clear: true,
-      records: 'invoices',
-      recordsRequired: '%{resultCount}',
-      path: INVOICE_API,
-      perRequest: RESULT_COUNT_INCREMENT,
-      throwErrors: false,
-      GET: {
-        params: {
-          query: makeQueryFunction(
-            'cql.allRecords=1',
-            invoicesSearchTemplate,
-            {},
-            filterConfig,
-          ),
-        },
-        staticFallback: { params: {} },
-      },
-    },
-    vendors: VENDORS,
-    acqUnits: ACQUISITIONS_UNITS,
-    configAddress,
-    configAdjustments: CONFIG_ADJUSTMENTS,
-    validateInvoice: {
-      ...invoicesResource,
-      accumulate: true,
-      fetch: false,
-    },
-  });
+    [history, location.search],
+  );
 
-  constructor(props, context) {
-    super(props, context);
-    this.callout = React.createRef();
-    this.showToast = showToast.bind(this);
-    this.getActiveFilters = getActiveFilters.bind(this);
-    this.handleFilterChange = handleFilterChange.bind(this);
-    this.changeSearchIndex = changeSearchIndex.bind(this);
-  }
+  return (
+    <Paneset data-test-invoices-list>
+      {isFiltersOpened && (
+        <FiltersPane>
+          <SingleSearchForm
+            applySearch={applySearch}
+            changeSearch={changeSearch}
+            searchQuery={searchQuery}
+            isLoading={isLoading}
+            ariaLabelId="ui-invoice.search"
+            searchableIndexes={searchableIndexes}
+            changeSearchIndex={changeIndex}
+            selectedIndex={searchIndex}
+          />
 
-  onCreate = ({ id }) => {
-    const { mutator } = this.props;
+          <ResetButton
+            id="reset-invoice-filters"
+            reset={resetFilters}
+            disabled={!location.search}
+          />
 
-    mutator.query.update({
-      _path: `/invoice/view/${id}`,
-      layer: null,
-    });
-  }
+          <InvoicesListFiltersContainer
+            activeFilters={filters}
+            applyFilters={applyFilters}
+          />
+        </FiltersPane>
+      )}
 
-  renderFilters = (onChange) => {
-    const { resources } = this.props;
-    const acqUnits = get(resources, 'acqUnits.records', []);
-    const vendors = get(resources, 'vendors.records', []);
-
-    return resources.query
-      ? (
-        <InvoicesListFilters
-          activeFilters={this.getActiveFilters()}
-          acqUnits={acqUnits}
-          onChange={onChange}
-          queryMutator={this.props.mutator.query}
-          vendors={vendors}
-        />
-      )
-      : null;
-  };
-
-  getTranslateSearchableIndexes() {
-    const { intl: { formatMessage } } = this.props;
-
-    return searchableIndexes.map(index => {
-      const label = formatMessage({ id: `ui-invoice.search.${index.label}` });
-
-      return { ...index, label };
-    });
-  }
-
-  render() {
-    const {
-      browseOnly,
-      disableRecordCreation,
-      mutator,
-      onSelectRow,
-      resources,
-      showSingleResult,
-      stripes,
-    } = this.props;
-
-    const vendors = get(resources, 'vendors.records', []);
-
-    const resultsFormatter = {
-      ...baseResultsFormatter,
-      vendor: ({ vendorId }) => get(vendors.find(({ id }) => id === vendorId), 'name', ''),
-    };
-
-    return (
-      <div data-test-invoices-list>
-        <SearchAndSort
-          packageInfo={this.props.packageInfo || packageInfo}
-          objectName="invoice"
-          baseRoute={packageInfo.stripes.route}
-          initialResultCount={INITIAL_RESULT_COUNT}
-          resultCountIncrement={RESULT_COUNT_INCREMENT}
+      <ResultsPane
+        title={resultsPaneTitle}
+        count={invoicesCount}
+        renderLastMenu={renderLastMenu}
+        toggleFiltersPane={toggleFilters}
+      >
+        <MultiColumnList
+          id="invocies-list"
+          totalCount={invoicesCount}
+          contentData={invoices}
           visibleColumns={visibleColumns}
           columnMapping={columnMapping}
-          resultsFormatter={resultsFormatter}
-          viewRecordComponent={Invoice}
-          onSelectRow={onSelectRow}
-          viewRecordPerms="invoice.invoices.item.get"
-          newRecordPerms="invoice.invoices.item.post"
-          parentResources={resources}
-          parentMutator={mutator}
-          detailProps={{ showToast: this.showToast }}
-          stripes={stripes}
-          disableRecordCreation={disableRecordCreation}
-          browseOnly={browseOnly}
-          showSingleResult={showSingleResult}
-          editRecordComponent={InvoiceEditLayer}
-          newRecordInitialValues={{
-            chkSubscriptionOverlap: true,
-            currency: 'USD',
-            source: sourceValues.user,
-          }}
-          massageNewRecord={() => null}
-          onCreate={this.onCreate}
-          searchableIndexes={this.getTranslateSearchableIndexes()}
-          renderFilters={this.renderFilters}
-          onFilterChange={this.handleFilterChange}
-          onChangeIndex={this.changeSearchIndex}
-          selectedIndex={get(resources.query, 'qindex')}
-          getHelperResourcePath={getHelperResourcePath}
+          formatter={resultsFormatter}
+          loading={isLoading}
+          autosize
+          virtualize
+          onNeedMoreData={onNeedMoreData}
+          onRowClick={selecteInvoice}
+          sortOrder={sortingField}
+          sortDirection={sortingDirection}
+          onHeaderClick={changeSorting}
         />
-        <Callout ref={this.callout} />
-      </div>
-    );
-  }
-}
+      </ResultsPane>
 
-export default injectIntl(InvoicesList);
+      <Route
+        path="/invoice/view/:id/line/:lineId/view"
+        component={InvoiceLineDetailsContainer}
+      />
+
+      <Route
+        path="/invoice/view/:id"
+        component={InvoiceDetailsContainer}
+        exact
+      />
+    </Paneset>
+  );
+};
+
+InvoicesList.propTypes = {
+  onNeedMoreData: PropTypes.func.isRequired,
+  resetData: PropTypes.func.isRequired,
+  invoicesCount: PropTypes.number,
+  isLoading: PropTypes.bool,
+  invoices: PropTypes.arrayOf(PropTypes.object),
+  history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
+};
+
+InvoicesList.defaultProps = {
+  invoicesCount: 0,
+  isLoading: false,
+  invoices: [],
+};
+
+export default withRouter(InvoicesList);

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -37,7 +37,7 @@ const VoucherInformation = ({ voucher, voucherLines = [] }) => {
   };
 
   return (
-    <Fragment>
+    <>
       <VoucherDetails voucher={voucher} />
 
       <Headline
@@ -53,7 +53,7 @@ const VoucherInformation = ({ voucher, voucherLines = [] }) => {
         formatter={resultsFormatter}
         visibleColumns={visibleColumns}
       />
-    </Fragment>
+    </>
   );
 };
 

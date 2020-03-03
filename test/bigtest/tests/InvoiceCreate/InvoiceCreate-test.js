@@ -14,7 +14,7 @@ describe('Invoice create', () => {
 
   beforeEach(async function () {
     this.server.createList('vendor', 2);
-    this.visit('/invoice?layer=create');
+    this.visit('/invoice/create');
     await invoiceForm.whenLoaded();
   });
 

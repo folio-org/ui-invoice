@@ -10,26 +10,25 @@ import {
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import { getApproveErrorMessage } from '../../../common/utils';
+import { getApproveErrorMessage } from '../../common/utils';
 import {
   configApprovals,
   invoiceResource,
   invoiceLinesResource,
-} from '../../../common/resources';
+} from '../../common/resources';
 import {
   INVOICE_STATUS,
   VENDORS_API,
-} from '../../../common/constants';
-import InvoiceDetails from '../../InvoiceDetails';
+} from '../../common/constants';
+import InvoiceDetails from './InvoiceDetails';
 import { createInvoiceLineFromPOL } from './utils';
 
-function InvoiceDetailsLayer({
-  onClose,
-  onEdit,
+function InvoiceDetailsContainer({
   match: { url },
   match: { params: { id } },
   history,
   mutator,
+  location,
 }) {
   const showCallout = useShowCallout();
   const [isLoading, setIsLoading] = useState(false);
@@ -84,13 +83,39 @@ function InvoiceDetailsLayer({
     [id],
   );
 
+  const closePane = useCallback(
+    () => {
+      history.push({
+        pathname: '/invoice',
+        search: location.search,
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [location.search],
+  );
+
+  const onEdit = useCallback(
+    () => {
+      history.push({
+        pathname: `/invoice/edit/${id}`,
+        search: location.search,
+      });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id, location.search],
+  );
+
   useEffect(fetchInvoiceData, [id]);
 
   const createLine = useCallback(
     () => {
-      history.push(`${url}/line/create`);
+      history.push({
+        pathname: `${url}/line/create`,
+        search: location.search,
+      });
     },
-    [url, history],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [url, location.search],
   );
 
   const addLines = useCallback(
@@ -109,14 +134,14 @@ function InvoiceDetailsLayer({
       mutator.invoice.DELETE({ id })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.invoiceHasBeenDeleted' });
-          onClose();
+          closePane();
         })
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.errors.invoiceHasNotBeenDeleted', type: 'error' });
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id, onClose],
+    [id, closePane],
   );
 
   const approveInvoice = useCallback(
@@ -208,7 +233,7 @@ function InvoiceDetailsLayer({
   ), 0);
 
   if (isLoading) {
-    return <LoadingPane onClose={onClose} />;
+    return <LoadingPane onClose={closePane} />;
   }
 
   return (
@@ -222,7 +247,7 @@ function InvoiceDetailsLayer({
       invoiceLines={invoiceLines.invoiceLines}
       invoiceTotalUnits={invoiceTotalUnits}
       isApprovePayEnabled={isApprovePayEnabled}
-      onClose={onClose}
+      onClose={closePane}
       onEdit={onEdit}
       onUpdate={updateInvoice}
       payInvoice={payInvoice}
@@ -231,7 +256,7 @@ function InvoiceDetailsLayer({
   );
 }
 
-InvoiceDetailsLayer.manifest = Object.freeze({
+InvoiceDetailsContainer.manifest = Object.freeze({
   invoice: {
     ...invoiceResource,
     accumulate: true,
@@ -250,12 +275,11 @@ InvoiceDetailsLayer.manifest = Object.freeze({
   },
 });
 
-InvoiceDetailsLayer.propTypes = {
+InvoiceDetailsContainer.propTypes = {
   match: ReactRouterPropTypes.match,
   history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
   mutator: PropTypes.object.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
 };
 
-export default stripesConnect(InvoiceDetailsLayer);
+export default stripesConnect(InvoiceDetailsContainer);

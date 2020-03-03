@@ -61,6 +61,8 @@ describe('Invoice line edit', () => {
       await invoiceLineForm.adjustmentsForm.relationToTotalInputs(0)
         .selectAndBlur(ADJUSTMENT_RELATION_TO_TOTAL_VALUES.separateFrom);
       await invoiceLineForm.formFooter.saveButton.click();
+
+      await invoiceDetails.whenLoaded();
     });
 
     it('closes edit invoice line form', () => {

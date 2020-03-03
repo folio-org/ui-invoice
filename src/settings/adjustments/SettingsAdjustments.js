@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   Route,
   Switch,
@@ -55,7 +55,7 @@ class SettingsAdjustments extends Component {
     const adjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
 
     return (
-      <Fragment>
+      <>
         <Switch>
           <Route
             exact
@@ -101,7 +101,7 @@ class SettingsAdjustments extends Component {
           />
         </Switch>
         <Callout ref={this.callout} />
-      </Fragment>
+      </>
     );
   }
 }

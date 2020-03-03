@@ -23,7 +23,7 @@ describe('Invoices list', () => {
     await invoicesList.whenLoaded();
   });
 
-  it('shows the list of organization items', () => {
+  it('shows the list of invoice items', () => {
     expect(invoicesList.isPresent).to.equal(true);
   });
 

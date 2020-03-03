@@ -9,14 +9,19 @@ const InvoiceLinesContainer = ({
   currency,
   invoiceLines,
   history,
+  location,
 }) => {
   const openLineDetails = useCallback(
     (e, invoiceLine) => {
-      const path = `/invoice/view/${invoiceLine.invoiceId}/line/${invoiceLine.id}/view`;
+      const pathname = `/invoice/view/${invoiceLine.invoiceId}/line/${invoiceLine.id}/view`;
 
-      history.push(path);
+      history.push({
+        pathname,
+        search: location.search,
+      });
     },
-    [history],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [location],
   );
 
   return (
@@ -31,6 +36,7 @@ const InvoiceLinesContainer = ({
 InvoiceLinesContainer.propTypes = {
   currency: PropTypes.string.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
 };
 

@@ -8,11 +8,11 @@ import {
 export default interactor(class InvoicesListInteractor {
   static defaultScope = '[data-test-invoices-list]';
 
-  newInvoiceButton = new Interactor('#clickable-newinvoice');
+  newInvoiceButton = new Interactor('#clickable-newInvoice');
 
-  invocies = collection('[role=row] a');
+  invocies = collection('[role=group] [role=row]');
 
-  isLoaded = isPresent('#pane-results');
+  isLoaded = isPresent('#invocies-list');
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
   }
