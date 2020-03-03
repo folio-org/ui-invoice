@@ -150,7 +150,6 @@ InvoiceLineDetailsContainer.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
   mutator: PropTypes.object.isRequired,
-  showToast: PropTypes.func.isRequired,
 };
 
 export default stripesConnect(InvoiceLineDetailsContainer);

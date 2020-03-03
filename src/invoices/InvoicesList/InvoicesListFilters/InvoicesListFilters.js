@@ -11,7 +11,6 @@ import {
   AcqUnitFilter,
   acqUnitsShape,
   BooleanFilter,
-  OrganizationFilter,
   PluggableOrganizationFilter,
   SourceFilter,
   PAYMENT_METHOD_OPTIONS,
