@@ -32,12 +32,13 @@ import {
 } from './constants';
 
 const trimTime = value => value.slice(0, 5);
+import { BatchVoucherExportsList } from './BatchVoucherExportsList';
 
 const BatchGroupConfigurationForm = ({
   batchGroups,
   handleSubmit,
   pristine,
-  selectBatchGroup,
+  setSelectedBatchGroupId,
   submitting,
   form,
   selectedBatchGroupId,
@@ -180,6 +181,11 @@ const BatchGroupConfigurationForm = ({
           </Button>
         </Col>
       </Row>
+      <BatchGroupsField
+        batchGroups={batchGroups}
+        setSelectedBatchGroupId={setSelectedBatchGroupId}
+      />
+      <BatchVoucherExportsList batchGroupId={selectedBatchGroupId} />
     </Pane>
   );
 };

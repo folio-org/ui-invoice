@@ -74,6 +74,7 @@
       "acquisitions-units": "1.1",
       "batch-group": "1.0",
       "batch-voucher.export-configurations": "1.0",
+      "batch-voucher-exports": "1.0",
       "configuration": "2.0",
       "finance.funds": "1.0",
       "invoice": "3.2",
