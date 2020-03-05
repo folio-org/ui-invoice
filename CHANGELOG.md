@@ -3,6 +3,11 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-118](https://issues.folio.org/browse/UINV-118) TECH-DEBT refactor Invoice list to not use SearchAndSort
+* [UINV-122](https://issues.folio.org/browse/UINV-122) Add "always show" preset adjustments to invoice when creating new invoice
+* [UINV-101](https://issues.folio.org/browse/UINV-101) Invoice settings: Batch groupsCreate settings form for Batch group settings (Multiple Batch groups)
+* [UINV-111](https://issues.folio.org/browse/UINV-111) Invoice settings: Batch groups
+* [UINV-119](https://issues.folio.org/browse/UINV-119) Move record action buttons into "Action" button UX pattern
 * [UINV-100](https://issues.folio.org/browse/UINV-100) Settings: Add Batch group and Batch group settings subheadings to invoice settings
 * [UINV-114](https://issues.folio.org/browse/UINV-114) Invoice line not retrieving Total estimated price when linking POL
 * [UIOR-239](https://issues.folio.org/browse/UIOR-239) Use titleOrPackage instead of title

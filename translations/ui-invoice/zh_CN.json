@@ -195,7 +195,6 @@
     "invoice.actions.pay.confirmation.message": "确定要支付发票吗？",
     "invoice.actions.approve.error": "发票未获批准",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "凭证编号前缀必须仅包含Unicode字母",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "每个关联发票行至少应有一个经费分配",
     "adjustment.headerLabel": "调整{index}",
     "saveAndClose": "保存并关闭",
     "settings.general.label": "通用",
@@ -210,7 +209,6 @@
     "invoice.isNotUnique.confirmation.heading": "保存发票",
     "invoice.isNotUnique.confirmation.message": "这似乎是重复的发票号",
     "invoiceLine.poLineNumber": "订单行号",
-    "invoice.actions.approve.error.fundCanNotBePaid": "由于预算中没有足够的资金，因此无法支付此发票上的一项或多项经费分配",
     "invoice.actions.pay.error": "发票未支付",
     "invoiceLine.adminData": "Invoice line admin data",
     "invoiceLine.adjustments": "Invoice line adjustments",
@@ -230,5 +228,11 @@
     "errors.fileLimit": "File exceeds the size limit",
     "settings.vouchers.label": "Vouchers",
     "settings.batchGroups.label": "Batch groups",
-    "settings.batchGroupConfiguration.label": "Batch group configuration"
+    "settings.batchGroupConfiguration.label": "Batch group configuration",
+    "invoice.actions.load.error": "Failed to load invoice data",
+    "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+    "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
+    "settings.batchGroups.labelSingular": "Batch group",
+    "settings.batchGroups.column.name": "Name",
+    "settings.batchGroups.column.description": "Description"
 }

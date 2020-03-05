@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import {
   Route,
   Switch,
@@ -9,8 +9,10 @@ import { FormattedMessage } from 'react-intl';
 
 import { get } from 'lodash';
 
-import { stripesShape } from '@folio/stripes/core';
-import { Callout } from '@folio/stripes/components';
+import {
+  CalloutContext,
+  stripesShape,
+} from '@folio/stripes/core';
 
 import { CONFIG_ADJUSTMENTS } from '../../common/resources';
 import SettingsAdjustmentsList from './SettingsAdjustmentsList';
@@ -19,6 +21,7 @@ import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsView';
 import { getSettingsAdjustmentsList } from './util';
 
 class SettingsAdjustments extends Component {
+  static contextType = CalloutContext;
   static manifest = Object.freeze({
     configAdjustments: CONFIG_ADJUSTMENTS,
   });
@@ -31,12 +34,6 @@ class SettingsAdjustments extends Component {
     resources: PropTypes.object,
   };
 
-  constructor(props) {
-    super(props);
-
-    this.callout = React.createRef();
-  }
-
   closePane = () => {
     const { history, match: { path } } = this.props;
 
@@ -44,7 +41,7 @@ class SettingsAdjustments extends Component {
   }
 
   showSuccessDeleteMessage = () => {
-    this.callout.current.sendCallout({
+    this.context.sendCallout({
       type: 'success',
       message: <FormattedMessage id="ui-invoice.settings.adjustments.remove.success" />,
     });
@@ -55,53 +52,50 @@ class SettingsAdjustments extends Component {
     const adjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
 
     return (
-      <Fragment>
-        <Switch>
-          <Route
-            exact
-            path={path}
-            render={() => (
-              <SettingsAdjustmentsList
-                label={label}
-                rootPath={path}
-                adjustments={adjustments}
-              />
-            )}
-          />
-          <Route
-            exact
-            path={`${path}/create`}
-            render={(props) => (
-              <SettingsAdjustmentsEditorContainer
-                {...props}
-                close={this.closePane}
-              />
-            )}
-          />
-          <Route
-            path={`${path}/:id/view`}
-            render={(props) => (
-              <SettingsAdjustmentsViewContainer
-                {...props}
-                close={this.closePane}
-                rootPath={path}
-                showSuccessDeleteMessage={this.showSuccessDeleteMessage}
-              />
-            )}
-          />
-          <Route
-            exact
-            path={`${path}/:id/edit`}
-            render={(props) => (
-              <SettingsAdjustmentsEditorContainer
-                {...props}
-                close={this.closePane}
-              />
-            )}
-          />
-        </Switch>
-        <Callout ref={this.callout} />
-      </Fragment>
+      <Switch>
+        <Route
+          exact
+          path={path}
+          render={() => (
+            <SettingsAdjustmentsList
+              label={label}
+              rootPath={path}
+              adjustments={adjustments}
+            />
+          )}
+        />
+        <Route
+          exact
+          path={`${path}/create`}
+          render={(props) => (
+            <SettingsAdjustmentsEditorContainer
+              {...props}
+              close={this.closePane}
+            />
+          )}
+        />
+        <Route
+          path={`${path}/:id/view`}
+          render={(props) => (
+            <SettingsAdjustmentsViewContainer
+              {...props}
+              close={this.closePane}
+              rootPath={path}
+              showSuccessDeleteMessage={this.showSuccessDeleteMessage}
+            />
+          )}
+        />
+        <Route
+          exact
+          path={`${path}/:id/edit`}
+          render={(props) => (
+            <SettingsAdjustmentsEditorContainer
+              {...props}
+              close={this.closePane}
+            />
+          )}
+        />
+      </Switch>
     );
   }
 }

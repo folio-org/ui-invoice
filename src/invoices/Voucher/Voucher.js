@@ -2,6 +2,7 @@ import React from 'react';
 import {
   Route,
   Switch,
+  withRouter,
 } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
@@ -39,4 +40,4 @@ Voucher.propTypes = {
   match: ReactRouterPropTypes.match,
 };
 
-export default Voucher;
+export default withRouter(Voucher);

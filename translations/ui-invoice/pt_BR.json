@@ -195,7 +195,6 @@
     "invoice.actions.pay.confirmation.message": "Tem certeza de que deseja pagar a fatura?",
     "invoice.actions.approve.error": "A fatura não foi aprovada",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "O prefixo do número do voucher deve conter apenas letras Unicode",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
     "adjustment.headerLabel": "Ajuste {index}",
     "saveAndClose": "Salvar e fechar",
     "settings.general.label": "Geral",
@@ -210,7 +209,6 @@
     "invoice.isNotUnique.confirmation.heading": "Salvar fatura",
     "invoice.isNotUnique.confirmation.message": "Parece ser um número de fatura duplicado",
     "invoiceLine.poLineNumber": "Número da linha do pedido",
-    "invoice.actions.approve.error.fundCanNotBePaid": "Uma ou mais distribuições de fundos nesta fatura não podem ser pagas, porque não há dinheiro suficiente no orçamento",
     "invoice.actions.pay.error": "A fatura não foi paga",
     "invoiceLine.adminData": "Dados administrativos da linha da fatura",
     "invoiceLine.adjustments": "Ajustes na linha da fatura",
@@ -230,5 +228,11 @@
     "errors.fileLimit": "O arquivo excede o limite de tamanho",
     "settings.vouchers.label": "Vouchers",
     "settings.batchGroups.label": "Grupos de lotes",
-    "settings.batchGroupConfiguration.label": "Configuração do grupo de lotes"
+    "settings.batchGroupConfiguration.label": "Configuração do grupo de lotes",
+    "invoice.actions.load.error": "Falha ao carregar os dados da fatura",
+    "invoice.actions.approve.error.fundCannotBePaid": "Uma ou mais distribuições de fundos nesta fatura não podem ser pagas, porque não há dinheiro suficiente no orçamento",
+    "invoice.actions.approve.error.fundDistributionsNotPresent": "Pelo menos uma distribuição de fundos deve existir para cada linha de fatura associada",
+    "settings.batchGroups.labelSingular": "Grupo de lotes",
+    "settings.batchGroups.column.name": "Nome",
+    "settings.batchGroups.column.description": "Descrição"
 }

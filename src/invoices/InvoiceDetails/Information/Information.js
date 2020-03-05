@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -39,7 +39,7 @@ const Information = ({
   currency,
 }) => {
   return (
-    <Fragment>
+    <>
       {metadata && <ViewMetaData metadata={metadata} />}
       <Row>
         <Col xs={3}>
@@ -133,7 +133,7 @@ const Information = ({
           <BillTo billToId={billTo} />
         </Col>
       </Row>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import {
   interactor,
-  Interactor,
 } from '@bigtest/interactor';
 
 import { ButtonInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -13,7 +13,7 @@ import InvoiceDocument from '../../../InvoiceDocument';
 import css from './InvoiceDocumentFields.css';
 
 const InvoiceDocumentFields = ({ fields }) => (
-  <Fragment>
+  <>
     {
       fields.map((elem, index) => {
         const invoiceDocument = fields.get(index);
@@ -52,7 +52,7 @@ const InvoiceDocumentFields = ({ fields }) => (
         );
       })
     }
-  </Fragment>
+  </>
 );
 
 InvoiceDocumentFields.propTypes = {

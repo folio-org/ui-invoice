@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
+import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
@@ -17,7 +19,7 @@ import {
 import { SECTIONS_INVOICE } from '../../constants';
 import VoucherInformation from './VoucherInformation';
 
-const VoucherInformationContainer = ({ invoiceId, mutator, resources }) => {
+const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }) => {
   const voucher = get(resources, ['voucher', 'records', 0], {});
   const voucherLines = get(resources, ['voucherLines', 'records'], []);
   const isLoading = !get(resources, ['voucher', 'hasLoaded']);
@@ -27,7 +29,10 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources }) => {
     <Button
       data-test-view-voucher-button
       disabled={!voucher.id}
-      to={voucherViewPath}
+      to={{
+        pathname: voucherViewPath,
+        search: location.search,
+      }}
     >
       <FormattedMessage id="ui-invoice.invoice.details.voucher.button" />
     </Button>
@@ -90,7 +95,8 @@ VoucherInformationContainer.propTypes = {
     voucher: PropTypes.object.isRequired,
     voucherLines: PropTypes.object.isRequired,
   }).isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
   resources: PropTypes.object.isRequired,
 };
 
-export default stripesConnect(VoucherInformationContainer);
+export default withRouter(stripesConnect(VoucherInformationContainer));

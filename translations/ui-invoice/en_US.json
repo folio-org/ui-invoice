@@ -195,7 +195,6 @@
     "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?",
     "invoice.actions.approve.error": "Invoice was not approved",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contain only Unicode letters",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
     "adjustment.headerLabel": "Adjustment {index}",
     "saveAndClose": "Save & close",
     "settings.general.label": "General",
@@ -210,7 +209,6 @@
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
     "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
     "invoiceLine.poLineNumber": "PO line number",
-    "invoice.actions.approve.error.fundCanNotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
     "invoice.actions.pay.error": "Invoice was not paid",
     "invoiceLine.adminData": "Invoice line admin data",
     "invoiceLine.adjustments": "Invoice line adjustments",
@@ -230,5 +228,11 @@
     "errors.fileLimit": "File exceeds the size limit",
     "settings.vouchers.label": "Vouchers",
     "settings.batchGroups.label": "Batch groups",
-    "settings.batchGroupConfiguration.label": "Batch group configuration"
+    "settings.batchGroupConfiguration.label": "Batch group configuration",
+    "invoice.actions.load.error": "Failed to load invoice data",
+    "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+    "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
+    "settings.batchGroups.labelSingular": "Batch group",
+    "settings.batchGroups.column.name": "Name",
+    "settings.batchGroups.column.description": "Description"
 }

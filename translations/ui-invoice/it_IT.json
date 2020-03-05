@@ -195,7 +195,6 @@
     "invoice.actions.pay.confirmation.message": "Sei sicuro di voler pagare la fattura?",
     "invoice.actions.approve.error": "La fattura non è stata approvata",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
-    "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
     "adjustment.headerLabel": "Rettifica {index}",
     "saveAndClose": "Salva e chiudi",
     "settings.general.label": "Generale",
@@ -210,7 +209,6 @@
     "invoice.isNotUnique.confirmation.heading": "Salva fattura",
     "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
     "invoiceLine.poLineNumber": "PO line number",
-    "invoice.actions.approve.error.fundCanNotBePaid": "Una o più distribuzioni di fondi su questa fattura non possono essere pagate, perché non ci sono abbastanza soldi in bilancio",
     "invoice.actions.pay.error": "La fattura non è stata pagata",
     "invoiceLine.adminData": "Invoice line admin data",
     "invoiceLine.adjustments": "Invoice line adjustments",
@@ -230,5 +228,11 @@
     "errors.fileLimit": "Il file supera le dimensioni massime",
     "settings.vouchers.label": "Vouchers",
     "settings.batchGroups.label": "Batch groups",
-    "settings.batchGroupConfiguration.label": "Batch group configuration"
+    "settings.batchGroupConfiguration.label": "Batch group configuration",
+    "invoice.actions.load.error": "Impossibile caricare i dati della fattura",
+    "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+    "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
+    "settings.batchGroups.labelSingular": "Batch group",
+    "settings.batchGroups.column.name": "Name",
+    "settings.batchGroups.column.description": "Description"
 }

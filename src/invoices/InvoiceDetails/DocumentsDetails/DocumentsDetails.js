@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -43,7 +43,7 @@ const documentsFormatter = {
 
 const DocumentsDetails = ({ invoiceDocuments }) => {
   return (
-    <Fragment>
+    <>
       <Row>
         <Col xs={12}>
           <Label>
@@ -75,7 +75,7 @@ const DocumentsDetails = ({ invoiceDocuments }) => {
           />
         </Col>
       </Row>
-    </Fragment>
+    </>
   );
 };
 

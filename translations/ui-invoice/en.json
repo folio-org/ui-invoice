@@ -15,6 +15,8 @@
   "button.save": "Save",
   "button.new": "New",
   "button.remove": "Remove",
+  "button.runManualExport": "Run manual export",
+  "button.save": "Save",
 
   "showTags": "Show tags",
   "addTagFor": "Add tag for: {filterValue}",
@@ -89,8 +91,12 @@
   "settings.vouchers.label": "Vouchers",
 
   "settings.batchGroups.label": "Batch groups",
+  "settings.batchGroups.labelSingular": "Batch group",
+  "settings.batchGroups.column.name": "Name",
+  "settings.batchGroups.column.description": "Description",
 
   "settings.batchGroupConfiguration.label": "Batch group configuration",
+  "settings.batchGroupConfiguration.batchGroup": "Batch group",
 
   "settings.voucherNumber.label": "Voucher number",
   "settings.voucherNumber.prefix": "Prefix",
@@ -196,13 +202,15 @@
   "invoice.documents.title": "Documents",
   "invoice.documents.name": "Document name",
 
+  "invoice.actions.load.error": "Failed to load invoice data",
+
   "invoice.actions.approve": "Approve",
   "invoice.actions.approve.success": "Invoice has been approved successfully",
   "invoice.actions.approve.error": "Invoice was not approved",
-  "invoice.actions.approve.error.fundCanNotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+  "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
   "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
   "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
-  "invoice.actions.approve.error.FundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
+  "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
   "invoice.actions.approve.confirmation.heading": "Approve invoice",
   "invoice.actions.approve.confirmation.message": "Are you sure you want to approve invoice?",
 
@@ -237,6 +245,7 @@
   "invoice.paneTitle.create": "Create vendor invoice",
   "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
 
+  "search": "Search",
   "search.accountingCode": "Accounting code",
   "search.voucherNumber": "Voucher number",
   "search.vendorInvoiceNo": "Vendor invoice number",

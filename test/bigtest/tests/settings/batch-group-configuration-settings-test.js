@@ -10,6 +10,8 @@ describe('Batch group configuration settings', function () {
   const setting = new BatchGroupConfigurationSettingsInteractor();
 
   beforeEach(function () {
+    this.server.create('batchgroup');
+
     this.visit('/settings/invoice/batch-group-configuration');
   });
 

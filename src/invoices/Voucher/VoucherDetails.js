@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -12,7 +12,7 @@ import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
 import { formatDate } from '../../common/utils';
 
 const VoucherDetails = ({ voucher }) => (
-  <Fragment>
+  <>
     <Row>
       <Col xs={3}>
         <KeyValue
@@ -89,7 +89,7 @@ const VoucherDetails = ({ voucher }) => (
         />
       </Col>
     </Row>
-  </Fragment>
+  </>
 );
 
 VoucherDetails.propTypes = {
