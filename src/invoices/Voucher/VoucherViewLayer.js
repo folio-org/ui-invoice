@@ -11,7 +11,6 @@ import {
   Layer,
   MenuSection,
   Pane,
-  PaneMenu,
   Row,
 } from '@folio/stripes/components';
 import {
@@ -43,29 +42,23 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
     [params.id],
   );
 
-  const renderActionMenu = () => (
-    <MenuSection id="voucher-actions">
-      <Button
-        buttonStyle="dropdownItem"
-        data-test-edit-voucher-button
-      >
-        <Icon size="small" icon="edit">
-          <FormattedMessage id="ui-invoice.button.edit" />
-        </Icon>
-      </Button>
-    </MenuSection>
-  );
+  const renderActionMenu = () => {
+    const path = `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`;
 
-  const lastMenu = (
-    <PaneMenu>
-      <Button
-        marginBottom0
-        buttonStyle="primary"
-      >
-        <FormattedMessage id="ui-invoice.button.edit" />
-      </Button>
-    </PaneMenu>
-  );
+    return (
+      <MenuSection id="voucher-actions">
+        <Button
+          buttonStyle="dropdownItem"
+          data-test-edit-voucher-button
+          to={path}
+        >
+          <Icon size="small" icon="edit" >
+            <FormattedMessage id="ui-invoice.button.edit" />
+          </Icon>
+        </Button>
+      </MenuSection>
+    );
+  };
 
   if (isLoading) {
     return (
@@ -83,7 +76,6 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
         defaultWidth="fill"
         dismissible
         id="pane-voucher"
-        lastMenu={lastMenu}
         onClose={closeVoucher}
         paneSub={
           <FormattedMessage

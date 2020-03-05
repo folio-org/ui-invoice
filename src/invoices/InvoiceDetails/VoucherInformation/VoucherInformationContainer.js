@@ -36,7 +36,6 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources }) => {
   useEffect(() => {
     mutator.voucher.reset();
     mutator.voucherLines.reset();
-
     mutator.voucher.GET().then(response => {
       const voucherId = get(response, '0.id');
 
