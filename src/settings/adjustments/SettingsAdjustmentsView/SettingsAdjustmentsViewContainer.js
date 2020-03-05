@@ -5,14 +5,17 @@ import { FormattedMessage } from 'react-intl';
 
 import { get } from 'lodash';
 
-import { Callout } from '@folio/stripes/components';
-import { stripesConnect } from '@folio/stripes/core';
+import {
+  CalloutContext,
+  stripesConnect,
+} from '@folio/stripes/core';
 
 import { CONFIG_ADJUSTMENT } from '../../../common/resources';
 import { getSettingsAdjustmentsList } from '../util';
 import SettingsAdjustmentsView from './SettingsAdjustmentsView';
 
 class SettingsAdjustmentsViewContainer extends Component {
+  static contextType = CalloutContext;
   static manifest = Object.freeze({
     configAdjustment: CONFIG_ADJUSTMENT,
   });
@@ -26,10 +29,6 @@ class SettingsAdjustmentsViewContainer extends Component {
     resources: PropTypes.object,
   };
 
-  createCalloutRef = ref => {
-    this.callout = ref;
-  };
-
   deleteAdjustment = async () => {
     const { close, mutator: { configAdjustment }, match: { params: { id } }, showSuccessDeleteMessage } = this.props;
 
@@ -38,7 +37,7 @@ class SettingsAdjustmentsViewContainer extends Component {
       close();
       showSuccessDeleteMessage();
     } catch (e) {
-      this.callout.sendCallout({
+      this.context.sendCallout({
         message: <FormattedMessage id="ui-invoice.settings.adjustments.remove.error" />,
         type: 'error',
       });
@@ -51,15 +50,12 @@ class SettingsAdjustmentsViewContainer extends Component {
     const adjustment = get(adjustments, '0');
 
     return (
-      <>
-        <SettingsAdjustmentsView
-          adjustment={adjustment}
-          close={close}
-          onDelete={this.deleteAdjustment}
-          rootPath={rootPath}
-        />
-        <Callout ref={this.createCalloutRef} />
-      </>
+      <SettingsAdjustmentsView
+        adjustment={adjustment}
+        close={close}
+        onDelete={this.deleteAdjustment}
+        rootPath={rootPath}
+      />
     );
   }
 }

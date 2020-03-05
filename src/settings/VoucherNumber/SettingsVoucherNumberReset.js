@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -10,16 +10,16 @@ import {
   Row,
   Button,
   KeyValue,
-  Callout,
   TextField,
 } from '@folio/stripes/components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
   VOUCHER_NUMBER_START,
 } from '../../common/resources';
 
 const SettingsVoucherNumberReset = ({ resources, mutator }) => {
-  const callout = useRef();
+  const sendCallout = useShowCallout();
   const [sequenceNumber, setSequenceNumber] = useState();
 
   const getStartSequenceNumber = useCallback(() => {
@@ -31,7 +31,7 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
       await mutator.sequenceNumber.replace(sequenceNumber);
       await mutator.voucherNumber.POST({});
     } catch (e) {
-      callout.current.sendCallout({
+      sendCallout({
         type: 'error',
         message: (
           <FormattedMessage
@@ -93,7 +93,6 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
           </Button>
         </Col>
       </Row>
-      <Callout ref={callout} />
     </>
   );
 };
