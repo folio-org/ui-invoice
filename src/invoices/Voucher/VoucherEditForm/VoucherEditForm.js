@@ -9,7 +9,6 @@ import {
   Col,
   TextField,
   Pane,
-  Paneset,
 } from '@folio/stripes/components';
 import {
   FieldDatepicker,
@@ -40,7 +39,10 @@ const VoucherEditForm = ({
   );
 
   return (
-    <form style={{ height: '100vh' }}>
+    <form
+      data-test-edit-voucher-form
+      style={{ height: '100vh' }}
+    >
       <Pane
         appIcon={<AppIcon app="invoice" size="small" />}
         defaultWidth="fill"
@@ -62,38 +64,34 @@ const VoucherEditForm = ({
         }
       >
         <Row>
-          <Col xs={12} md={8} mdOffset={2}>
-            <Row>
-              <Col xs={3}>
-                <Field
-                  label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
-                  name="voucherNumber"
-                  disabled={!isAllowVoucherNumberEdit}
-                  component={TextField}
-                />
-              </Col>
-              <Col xs={3}>
-                <Field
-                  label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
-                  name="disbursementNumber"
-                  component={TextField}
-                />
-              </Col>
-              <Col xs={3}>
-                <Field
-                  label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
-                  name="disbursementDate"
-                  component={FieldDatepicker}
-                />
-              </Col>
-              <Col xs={3}>
-                <Field
-                  label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
-                  name="disbursementAmount"
-                  component={TextField}
-                />
-              </Col>
-            </Row>
+          <Col xs={3}>
+            <Field
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
+              name="voucherNumber"
+              disabled={!isAllowVoucherNumberEdit}
+              component={TextField}
+            />
+          </Col>
+          <Col xs={3}>
+            <Field
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
+              name="disbursementNumber"
+              component={TextField}
+            />
+          </Col>
+          <Col xs={3}>
+            <Field
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
+              name="disbursementDate"
+              component={FieldDatepicker}
+            />
+          </Col>
+          <Col xs={3}>
+            <Field
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
+              name="disbursementAmount"
+              component={TextField}
+            />
           </Col>
         </Row>
       </Pane>

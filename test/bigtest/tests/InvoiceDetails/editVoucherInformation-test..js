@@ -1,10 +1,11 @@
 import { beforeEach, describe } from '@bigtest/mocha';
+import { expect } from 'chai';
 
 import { INVOICE_STATUS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import EditVoucherView from '../../interactors/EditVoucherView';
 
-describe.only('Edit voucher information', () => {
+describe('Edit voucher information', () => {
   setupApplication();
 
   const editVoucherView = new EditVoucherView();
@@ -21,13 +22,8 @@ describe.only('Edit voucher information', () => {
       status: INVOICE_STATUS.approved,
     });
 
-    // this.server.create('vendor', {
-    //   id: invoice.vendorId,
-    // });
-
     const voucher = this.server.create('voucher', {
       invoiceId: invoice.id,
-      invoiceCurrency: invoice.currency,
     });
 
     this.visit(`/invoice/view/${invoice.id}/voucher/${voucher.id}/edit`);
@@ -35,6 +31,8 @@ describe.only('Edit voucher information', () => {
   });
 
   it('Voucher edit form should be displayed', () => {
-    expect(editVoucherView.voucherForm).to.be.true;
+    expect(editVoucherView.voucherNumberInput).to.be.true;
+    expect(editVoucherView.disbursementNumberInput).to.be.true;
+    expect(editVoucherView.disbursementAmountInput).to.be.true;
   });
 });

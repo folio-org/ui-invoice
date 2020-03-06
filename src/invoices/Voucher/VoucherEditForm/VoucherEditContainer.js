@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { get } from 'lodash';
 
-import { Layer } from '@folio/stripes/components';
+import { Paneset } from '@folio/stripes/components';
 import {
   stripesConnect,
 } from '@folio/stripes/core';
@@ -17,11 +17,20 @@ import {
 import { getIsAllowVoucherNumberEdit } from '../utils';
 import VoucherEditForm from './VoucherEditForm';
 
-const VoucherEditLayer = ({ match: { params }, mutator, resources }) => {
-  const voucher = get(resources, ['voucher', 'records', 0]);
+const VoucherEditContainer = ({ match: { params }, mutator, resources }) => {
+  const [voucher, setVoucher] = useState();
   const vendorInvoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
   const isAllowVoucherNumberEdit = getIsAllowVoucherNumberEdit(get(resources, ['configVoucherNumber', 'records', 0]));
-  const isLoading = !get(resources, ['voucher', 'hasLoaded']);
+
+  useEffect(() => {
+    mutator.voucher.GET({
+      params: {
+        query: `voucherId=${params.voucherId}`,
+      },
+    }).then(response => setVoucher(response));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const closeVoucherForm = useCallback(
     () => {
       const _path = `/invoice/view/${params.id}/voucher/${params.voucherId}/view`;
@@ -40,38 +49,39 @@ const VoucherEditLayer = ({ match: { params }, mutator, resources }) => {
     [mutator.voucher],
   );
 
-  if (isLoading) {
+  if (!(voucher && vendorInvoiceNo)) {
     return (
-      <Layer isOpen>
+      <Paneset>
         <LoadingPane onClose={closeVoucherForm} />
-      </Layer>
+      </Paneset>
     );
   }
 
   return (
-    <Layer isOpen>
-      <VoucherEditForm
-        initialValues={voucher}
-        onSubmit={saveVoucher}
-        onCancel={closeVoucherForm}
-        vendorInvoiceNo={vendorInvoiceNo}
-        isAllowVoucherNumberEdit={isAllowVoucherNumberEdit}
-      />
-    </Layer>
+    <VoucherEditForm
+      initialValues={voucher}
+      onSubmit={saveVoucher}
+      onCancel={closeVoucherForm}
+      vendorInvoiceNo={vendorInvoiceNo}
+      isAllowVoucherNumberEdit={isAllowVoucherNumberEdit}
+    />
   );
 };
 
-VoucherEditLayer.manifest = Object.freeze({
-  voucher: VOUCHER_BY_ID,
+VoucherEditContainer.manifest = Object.freeze({
+  voucher: {
+    ...VOUCHER_BY_ID,
+    accumulate: true,
+  },
   invoice: invoiceResource,
   configVoucherNumber,
   query: {},
 });
 
-VoucherEditLayer.propTypes = {
+VoucherEditContainer.propTypes = {
   match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,
   resources: PropTypes.object.isRequired,
 };
 
-export default stripesConnect(VoucherEditLayer);
+export default stripesConnect(VoucherEditContainer);

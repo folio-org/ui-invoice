@@ -7,7 +7,7 @@ import {
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import VoucherViewLayer from './VoucherViewLayer';
-import { VoucherEditLayer } from './VoucherEditForm';
+import { VoucherEditContainer } from './VoucherEditForm';
 
 const Voucher = ({ match: { path } }) => (
   <Switch>
@@ -27,7 +27,7 @@ const Voucher = ({ match: { path } }) => (
       path={`${path}:voucherId/edit`}
       render={
         props => (
-          <VoucherEditLayer
+          <VoucherEditContainer
             {...props}
           />
         )

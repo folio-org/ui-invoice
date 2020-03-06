@@ -1,1 +1,1 @@
-export { default as VoucherEditLayer } from './VoucherEditLayer';
+export { default as VoucherEditContainer } from './VoucherEditContainer';

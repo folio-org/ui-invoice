@@ -1,9 +1,15 @@
+import {
+  createGetAll,
+  createGetById,
+} from '@folio/stripes-acq-components/test/bigtest/network/configs';
+
 import { VOUCHERS_API } from '../../../../src/common/constants/api';
 
+const SCHEMA_NAME = 'vouchers';
+
 const configVouchers = server => {
-  server.get(VOUCHERS_API, (schema) => {
-    return schema.vouchers.all();
-  });
+  server.get(VOUCHERS_API, createGetAll(SCHEMA_NAME));
+  server.get(`${VOUCHERS_API}/:id`, createGetById(SCHEMA_NAME));
 };
 
 export default configVouchers;
