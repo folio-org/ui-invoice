@@ -25,8 +25,7 @@ describe('Invoice create with documents', () => {
     await invoiceForm.approvalDate.fill('2019-01-02').blur();
     await invoiceForm.paymentMethod.select(PAYMENT_METHOD.cash);
     await invoiceForm.status.options.list(1).click();
-    await invoiceForm.vendorButton.click();
-    await invoiceForm.vendor.options.list(1).click();
+    await invoiceForm.vendorField.fill('Amazon');
 
     await invoiceForm.documentsAndLinks.addLinkButton.click();
     await invoiceForm.documentsAndLinks.links(0).fillName('test link');

@@ -9,7 +9,6 @@ export const CONFIG_NAME_TAGS_ENABLED = 'tags_enabled';
 export const CONFIG_NAME_VOUCHER_NUMBER = 'voucherNumber';
 export const CONFIG_NAME_APPROVALS = 'approvals';
 export const LIMIT_MAX = 2147483647;
-export const ORGANIZATION_STATUS_ACTIVE = 'Active';
 
 export const INVOICE_STATUS = {
   open: 'Open',

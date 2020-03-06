@@ -14,6 +14,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   buildDateRangeQuery,
   makeQueryBuilder,
+  useLocationReset,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -50,7 +51,7 @@ const buildInvoicesQuery = makeQueryBuilder(
 
 const resetData = () => {};
 
-const InvoicesListContainer = ({ mutator, location }) => {
+const InvoicesListContainer = ({ mutator, location, history }) => {
   const [invoices, setInvoices] = useState([]);
   const [organizationsMap, setOrganizationsMap] = useState({});
   const [invoicesCount, setInvoicesCount] = useState(0);
@@ -112,15 +113,19 @@ const InvoicesListContainer = ({ mutator, location }) => {
     [invoicesOffset],
   );
 
+  const refreshList = () => {
+    setInvoices([]);
+    setInvoicesOffset(0);
+    loadInvoices(0);
+  };
+
   useEffect(
-    () => {
-      setInvoices([]);
-      setInvoicesOffset(0);
-      loadInvoices(0);
-    },
+    refreshList,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [location.search],
   );
+
+  useLocationReset(history, location, '/invoice', refreshList);
 
   return (
     <InvoicesList
@@ -148,6 +153,7 @@ InvoicesListContainer.manifest = Object.freeze({
 InvoicesListContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default withRouter(stripesConnect(InvoicesListContainer));

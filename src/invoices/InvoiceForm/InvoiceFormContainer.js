@@ -21,13 +21,14 @@ import {
   useShowToast,
 } from '@folio/stripes-acq-components';
 
+import { VENDORS_API } from '../../common/constants';
 import {
   CONFIG_ADJUSTMENTS,
   configAddress,
   invoiceDocumentsResource,
   invoiceResource,
   invoicesResource,
-  VENDORS,
+  VENDOR,
 } from '../../common/resources';
 import { LoadingPane } from '../../common/components';
 import {
@@ -100,20 +101,23 @@ function InvoiceFormContainer({
   const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
   const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
   const invoice = !isCreate
-    ? get(resources, ['invoiceFormInvoice', 'records', 0], {})
+    ? get(resources, ['invoice', 'records', 0], {})
     : {
       chkSubscriptionOverlap: true,
       currency: stripes.currency,
       source: sourceValues.user,
       adjustments: alwaysShowAdjustments,
     };
+  const invoiceVendor = !isCreate ? get(resources, ['invoiceFormVendor', 'records', 0]) : undefined;
   const initialValues = {
     ...invoice,
     documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
   };
 
-  const hasLoaded = !id || get(resources, 'invoiceFormInvoice.hasLoaded');
+  const hasLoaded = !id || (
+    get(resources, 'invoice.hasLoaded') && get(resources, 'invoiceFormVendor.hasLoaded')
+  );
 
   if (!hasLoaded) {
     return (
@@ -127,6 +131,7 @@ function InvoiceFormContainer({
     <>
       <InvoiceForm
         initialValues={initialValues}
+        initialVendor={invoiceVendor}
         parentResources={resources}
         onSubmit={saveInvoiceHandler}
         onCancel={onCancel}
@@ -154,7 +159,7 @@ function InvoiceFormContainer({
 }
 
 InvoiceFormContainer.manifest = Object.freeze({
-  invoiceFormInvoice: invoiceResource,
+  invoice: invoiceResource,
   invoiceFormDocuments: {
     ...invoiceDocumentsResource,
     accumulate: true,
@@ -166,7 +171,7 @@ InvoiceFormContainer.manifest = Object.freeze({
   },
   configAdjustments: CONFIG_ADJUSTMENTS,
   configAddress,
-  vendors: VENDORS,
+  invoiceFormVendor: VENDOR,
 });
 
 InvoiceFormContainer.propTypes = {
