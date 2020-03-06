@@ -17,6 +17,7 @@ import {
 import {
   AppIcon,
 } from '@folio/stripes/core';
+import { EDIT_VOUCHER_FORM } from './constants';
 
 const VoucherEditForm = ({
   handleSubmit,
@@ -110,7 +111,7 @@ VoucherEditForm.propTypes = {
 };
 
 export default stripesForm({
-  form: 'voucherInfo',
+  form: EDIT_VOUCHER_FORM,
   navigationCheck: true,
   enableReinitialize: true,
 })(VoucherEditForm);
