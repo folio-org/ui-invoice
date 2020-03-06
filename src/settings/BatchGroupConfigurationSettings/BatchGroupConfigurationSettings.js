@@ -46,27 +46,29 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
 
   const fetchExportConfig = useCallback(
     (id) => {
-      setIsLoading(true);
-      setExportConfig();
-      setCredentials();
+      if (id) {
+        setIsLoading(true);
+        setExportConfig();
+        setCredentials();
 
-      mutator.exportConfig.GET({
-        params: {
-          query: `batchGroupId==${id}`,
-        },
-      })
-        .then(([config = {}]) => {
-          const exportConfigId = config.id;
-
-          setExportConfig(config);
-          mutator.exportConfigId.update({ id: exportConfigId });
-
-          return exportConfigId
-            ? mutator.credentials.GET()
-            : {};
+        mutator.exportConfig.GET({
+          params: {
+            query: `batchGroupId==${id}`,
+          },
         })
-        .then(setCredentials)
-        .finally(() => setIsLoading(false));
+          .then(([config = {}]) => {
+            const exportConfigId = config.id;
+
+            setExportConfig(config);
+            mutator.exportConfigId.update({ id: exportConfigId });
+
+            return exportConfigId
+              ? mutator.credentials.GET()
+              : {};
+          })
+          .then(setCredentials)
+          .finally(() => setIsLoading(false));
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedBatchGroupId],
