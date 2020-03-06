@@ -151,7 +151,7 @@ const BatchGroupConfigurationForm = ({
         </Col>
       </Row>
 
-      <Row middle="xs">
+      <Row bottom="xs">
         <Col
           data-test-col-username
           xs={4}
