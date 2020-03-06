@@ -29,6 +29,7 @@ const TogglePassword = ({ name }) => {
         <Button
           data-test-toggle-password-button
           onClick={togglePassword}
+          style={{ marginBottom: '15px' }}
         >
           {
             showPassword
