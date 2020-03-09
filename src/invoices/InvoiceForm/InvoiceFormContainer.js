@@ -108,7 +108,7 @@ function InvoiceFormContainer({
       source: sourceValues.user,
       adjustments: alwaysShowAdjustments,
     };
-  const invoiceVendor = !isCreate ? get(resources, ['invoiceFormVendor', 'records', 0]) : undefined;
+  const invoiceVendor = isCreate ? undefined : get(resources, ['invoiceFormVendor', 'records', 0]);
   const initialValues = {
     ...invoice,
     documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
