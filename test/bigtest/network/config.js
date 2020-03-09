@@ -15,6 +15,8 @@ import configVouchers from './configs/vouchers';
 import configVoucherLines from './configs/voucherLines';
 import configSettingVoucherNumber from './configs/settingVoucherNumber';
 import configDocuments from './configs/documents';
+import configExportConfig from './configs/exportConfig';
+import configCredentials from './configs/credentials';
 
 export default function config() {
   configInvoices(this);
@@ -31,4 +33,6 @@ export default function config() {
   configFunds(this);
   configTransactions(this);
   configBatchGroups(this);
+  configExportConfig(this);
+  configCredentials(this);
 }

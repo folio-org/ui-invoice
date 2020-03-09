@@ -4,6 +4,7 @@ export * from './configAddress';
 export * from './configAdjustments';
 export * from './configApprovals';
 export * from './configTags';
+export * from './exportConfigs';
 export * from './invoice';
 export * from './tags';
 export * from './vendor';
