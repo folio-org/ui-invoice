@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Field } from 'redux-form';
 
-import stripesForm from '@folio/stripes/form';
+import stripesFinalForm from '@folio/stripes/form';
 import {
   Row,
   Col,
@@ -42,7 +41,6 @@ const VoucherEditForm = ({
   return (
     <form
       data-test-edit-voucher-form
-      style={{ height: '100vh' }}
     >
       <Pane
         appIcon={<AppIcon app="invoice" size="small" />}
@@ -66,32 +64,28 @@ const VoucherEditForm = ({
       >
         <Row>
           <Col xs={3}>
-            <Field
+            <TextField
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
               name="voucherNumber"
               disabled={!isAllowVoucherNumberEdit}
-              component={TextField}
             />
           </Col>
           <Col xs={3}>
-            <Field
+            <TextField
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
               name="disbursementNumber"
-              component={TextField}
             />
           </Col>
           <Col xs={3}>
-            <Field
+            <FieldDatepicker
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
               name="disbursementDate"
-              component={FieldDatepicker}
             />
           </Col>
           <Col xs={3}>
-            <Field
+            <TextField
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
               name="disbursementAmount"
-              component={TextField}
             />
           </Col>
         </Row>
@@ -110,7 +104,7 @@ VoucherEditForm.propTypes = {
   vendorInvoiceNo: PropTypes.string.isRequired,
 };
 
-export default stripesForm({
+export default stripesFinalForm({
   form: EDIT_VOUCHER_FORM,
   navigationCheck: true,
   enableReinitialize: true,

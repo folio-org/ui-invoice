@@ -11,9 +11,3 @@ export const groupByExternalAccNumber = voucherLines => (
 export const getTotalAmount = grupedVoucherLines => (
   grupedVoucherLines.map(({ amount }) => amount).reduce((acc, amount) => (acc + amount), 0)
 );
-
-export const getIsAllowVoucherNumberEdit = (setting) => {
-  const { allowVoucherNumberEdit } = setting?.value ? JSON.parse(setting.value) : {};
-
-  return allowVoucherNumberEdit;
-};

@@ -14,24 +14,12 @@ const Voucher = ({ match: { path } }) => (
     <Route
       exact
       path={`${path}:voucherId/view`}
-      render={
-        props => (
-          <VoucherViewLayer
-            {...props}
-          />
-        )
-      }
+      component={VoucherViewLayer}
     />
     <Route
       exact
       path={`${path}:voucherId/edit`}
-      render={
-        props => (
-          <VoucherEditContainer
-            {...props}
-          />
-        )
-    }
+      component={VoucherEditContainer}
     />
   </Switch>
 );

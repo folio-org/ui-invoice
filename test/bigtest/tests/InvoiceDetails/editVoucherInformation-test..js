@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 import { INVOICE_STATUS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
-import EditVoucherView from '../../interactors/EditVoucherView';
+import EditVoucherView from '../../interactors/VoucherEditInteractor';
 
 describe('Edit voucher information', () => {
   setupApplication();

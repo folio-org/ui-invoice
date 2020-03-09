@@ -52,7 +52,7 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
           data-test-edit-voucher-button
           to={path}
         >
-          <Icon size="small" icon="edit" >
+          <Icon size="small" icon="edit">
             <FormattedMessage id="ui-invoice.button.edit" />
           </Icon>
         </Button>

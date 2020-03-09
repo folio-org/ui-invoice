@@ -1,14 +1,13 @@
+import { baseManifest } from '@folio/stripes-acq-components';
 import {
   CONFIG_API,
   CONFIG_MODULE_INVOICE,
   CONFIG_NAME_VOUCHER_NUMBER,
 } from '../constants';
 
-import { BASE_RESOURCE } from './base';
-
 // eslint-disable-next-line import/prefer-default-export
 export const configVoucherNumber = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   records: 'configs',
   path: CONFIG_API,
   GET: {

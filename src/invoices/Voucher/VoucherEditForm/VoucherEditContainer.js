@@ -3,29 +3,33 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { get } from 'lodash';
 
-import { Paneset } from '@folio/stripes/components';
+import { Paneset, LoadingPane } from '@folio/stripes/components';
 import {
   stripesConnect,
 } from '@folio/stripes/core';
+import { getConfigSetting } from '@folio/stripes-acq-components';
 
-import { LoadingPane } from '../../../common/components';
 import {
   invoiceResource,
   VOUCHER_BY_ID,
   configVoucherNumber,
 } from '../../../common/resources';
-import { getIsAllowVoucherNumberEdit } from '../utils';
 import VoucherEditForm from './VoucherEditForm';
 
-const VoucherEditContainer = ({ match: { params }, mutator, resources }) => {
+const VoucherEditContainer = ({
+  match: { params },
+  mutator,
+  resources,
+  history,
+}) => {
   const [voucher, setVoucher] = useState();
   const vendorInvoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
-  const isAllowVoucherNumberEdit = getIsAllowVoucherNumberEdit(get(resources, ['configVoucherNumber', 'records', 0]));
+  const { allowVoucherNumberEdit } = getConfigSetting(get(resources, 'configVoucherNumber.records', {}));
 
   useEffect(() => {
     mutator.voucher.GET({
       params: {
-        query: `voucherId=${params.voucherId}`,
+        id: params.voucherId,
       },
     }).then(response => setVoucher(response));
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -35,7 +39,7 @@ const VoucherEditContainer = ({ match: { params }, mutator, resources }) => {
     () => {
       const _path = `/invoice/view/${params.id}/voucher/${params.voucherId}/view`;
 
-      mutator.query.update({ _path });
+      history.push(_path);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params.id],
@@ -46,7 +50,7 @@ const VoucherEditContainer = ({ match: { params }, mutator, resources }) => {
       mutator.voucher.PUT(vouch).then(closeVoucherForm);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mutator.voucher],
+    [closeVoucherForm],
   );
 
   if (!(voucher && vendorInvoiceNo)) {
@@ -63,7 +67,7 @@ const VoucherEditContainer = ({ match: { params }, mutator, resources }) => {
       onSubmit={saveVoucher}
       onCancel={closeVoucherForm}
       vendorInvoiceNo={vendorInvoiceNo}
-      isAllowVoucherNumberEdit={isAllowVoucherNumberEdit}
+      isAllowVoucherNumberEdit={allowVoucherNumberEdit}
     />
   );
 };
@@ -75,13 +79,13 @@ VoucherEditContainer.manifest = Object.freeze({
   },
   invoice: invoiceResource,
   configVoucherNumber,
-  query: {},
 });
 
 VoucherEditContainer.propTypes = {
   match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,
   resources: PropTypes.object.isRequired,
+  history: ReactRouterPropTypes.history,
 };
 
 export default stripesConnect(VoucherEditContainer);
