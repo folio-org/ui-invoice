@@ -88,14 +88,18 @@ const InvoiceLineDetailsContainer = ({
       mutator.invoiceLine.DELETE({ id: params.lineId })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenDeleted' });
-          closeInvoiceLine();
+
+          history.replace({
+            pathname: `/invoice/view/${params.id}`,
+            search: location.search,
+          });
         })
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.errors.invoiceLineHasNotBeenDeleted', type: 'error' });
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.lineId],
+    [params.lineId, location.search],
   );
 
   if (isLoading) {
