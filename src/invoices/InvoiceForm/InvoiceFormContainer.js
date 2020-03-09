@@ -21,7 +21,6 @@ import {
   useShowToast,
 } from '@folio/stripes-acq-components';
 
-import { VENDORS_API } from '../../common/constants';
 import {
   CONFIG_ADJUSTMENTS,
   configAddress,
