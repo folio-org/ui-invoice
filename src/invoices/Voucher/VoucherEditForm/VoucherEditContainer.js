@@ -41,8 +41,8 @@ const VoucherEditContainer = ({
 
         return Promise.all([invoicePromise, configVoucherPromise]);
       })
-      .then(([invoiceResponse, configVoucherPromise]) => {
-        const { allowVoucherNumberEdit } = getConfigSetting(configVoucherPromise);
+      .then(([invoiceResponse, configVoucherResponse]) => {
+        const { allowVoucherNumberEdit } = getConfigSetting(configVoucherResponse);
 
         setVoucherInvoiceNo(invoiceResponse.vendorInvoiceNo);
         setAllowVoucherNumberEdit(allowVoucherNumberEdit);
