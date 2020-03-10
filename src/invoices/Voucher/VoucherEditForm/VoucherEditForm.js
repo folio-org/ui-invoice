@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { Field } from 'react-final-form';
 
-import stripesFinalForm from '@folio/stripes/form';
+import stripesFinalForm from '@folio/stripes/final-form';
 import {
   Row,
   Col,
@@ -11,13 +12,12 @@ import {
   Paneset,
 } from '@folio/stripes/components';
 import {
-  FieldDatepicker,
+  FieldDatepickerFinal as Datepicker,
   FormFooter,
 } from '@folio/stripes-acq-components';
 import {
   AppIcon,
 } from '@folio/stripes/core';
-import { EDIT_VOUCHER_FORM } from './constants';
 
 const VoucherEditForm = ({
   handleSubmit,
@@ -40,60 +40,62 @@ const VoucherEditForm = ({
   );
 
   return (
-    <form
+    <Paneset
       data-test-edit-voucher-form
     >
-      <Paneset>
-        <Pane
-          appIcon={<AppIcon app="invoice" size="small" />}
-          defaultWidth="fill"
-          dismissible
-          id="pane-edit-voucher"
-          footer={paneFooter}
-          onClose={onCancel}
-          paneSub={
-            <FormattedMessage
-              id="ui-invoice.voucher.paneSubTitle"
-              values={{ voucherNumber: initialValues.voucherNumber }}
+      <Pane
+        appIcon={<AppIcon app="invoice" size="small" />}
+        defaultWidth="fill"
+        dismissible
+        id="pane-edit-voucher"
+        footer={paneFooter}
+        onClose={onCancel}
+        paneSub={
+          <FormattedMessage
+            id="ui-invoice.voucher.paneSubTitle"
+            values={{ voucherNumber: initialValues.voucherNumber }}
+          />
+        }
+        paneTitle={
+          <FormattedMessage
+            id="ui-invoice.voucher.paneTitle"
+            values={{ vendorInvoiceNo }}
+          />
+        }
+      >
+        <Row>
+          <Col xs={3}>
+            <Field
+              component={TextField}
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
+              name="voucherNumber"
+              disabled={!isAllowVoucherNumberEdit}
             />
-          }
-          paneTitle={
-            <FormattedMessage
-              id="ui-invoice.voucher.paneTitle"
-              values={{ vendorInvoiceNo }}
+          </Col>
+          <Col xs={3}>
+            <Field
+              component={TextField}
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
+              name="disbursementNumber"
             />
-          }
-        >
-          <Row>
-            <Col xs={3}>
-              <TextField
-                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
-                name="voucherNumber"
-                disabled={!isAllowVoucherNumberEdit}
-              />
-            </Col>
-            <Col xs={3}>
-              <TextField
-                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
-                name="disbursementNumber"
-              />
-            </Col>
-            <Col xs={3}>
-              <FieldDatepicker
-                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
-                name="disbursementDate"
-              />
-            </Col>
-            <Col xs={3}>
-              <TextField
-                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
-                name="disbursementAmount"
-              />
-            </Col>
-          </Row>
-        </Pane>
-      </Paneset>
-    </form>
+          </Col>
+          <Col xs={3}>
+            <Field
+              component={Datepicker}
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
+              name="disbursementDate"
+            />
+          </Col>
+          <Col xs={3}>
+            <Field
+              component={TextField}
+              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
+              name="disbursementAmount"
+            />
+          </Col>
+        </Row>
+      </Pane>
+    </Paneset>
   );
 };
 
@@ -108,7 +110,6 @@ VoucherEditForm.propTypes = {
 };
 
 export default stripesFinalForm({
-  form: EDIT_VOUCHER_FORM,
+  subscription: { values: true },
   navigationCheck: true,
-  enableReinitialize: true,
 })(VoucherEditForm);

@@ -3,11 +3,17 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { get } from 'lodash';
 
-import { Paneset, LoadingPane } from '@folio/stripes/components';
+import {
+  Paneset,
+  LoadingView,
+} from '@folio/stripes/components';
 import {
   stripesConnect,
 } from '@folio/stripes/core';
-import { getConfigSetting } from '@folio/stripes-acq-components';
+import {
+  getConfigSetting,
+  useShowCallout,
+} from '@folio/stripes-acq-components';
 
 import {
   invoiceResource,
@@ -25,13 +31,18 @@ const VoucherEditContainer = ({
   const [voucher, setVoucher] = useState();
   const vendorInvoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
   const { allowVoucherNumberEdit } = getConfigSetting(get(resources, 'configVoucherNumber.records', {}));
+  const showCallout = useShowCallout();
 
   useEffect(() => {
     mutator.voucher.GET({
       params: {
         id: params.voucherId,
       },
-    }).then(response => setVoucher(response));
+    })
+      .then(setVoucher)
+      .catch(() => {
+        showCallout({ messageId: 'ui-invoice.errors.voucherLoadingFailed', type: 'error' });
+      });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -47,7 +58,12 @@ const VoucherEditContainer = ({
 
   const saveVoucher = useCallback(
     (vouch) => {
-      mutator.voucher.PUT(vouch).then(closeVoucherForm);
+      mutator.voucher.PUT(vouch)
+        .then(() => showCallout({ messageId: 'ui-invoice.invoice.details.voucher.save.success' }))
+        .then(closeVoucherForm)
+        .catch(() => {
+          showCallout({ messageId: 'ui-invoice.errors.voucherHasNotBeenSaved', type: 'error' });
+        });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [closeVoucherForm],
@@ -56,7 +72,7 @@ const VoucherEditContainer = ({
   if (!(voucher && vendorInvoiceNo)) {
     return (
       <Paneset>
-        <LoadingPane onClose={closeVoucherForm} />
+        <LoadingView onClose={closeVoucherForm} />
       </Paneset>
     );
   }

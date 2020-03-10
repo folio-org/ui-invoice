@@ -4,11 +4,13 @@ import { expect } from 'chai';
 import { INVOICE_STATUS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import EditVoucherView from '../../interactors/VoucherEditInteractor';
+import InvoiceDetails from '../../interactors/InvoiceDetails';
 
 describe('Edit voucher information', () => {
   setupApplication();
 
   const editVoucherView = new EditVoucherView();
+  const invoiceDetails = new InvoiceDetails();
 
   beforeEach(async function () {
     const user = this.server.create('user', {
@@ -32,7 +34,19 @@ describe('Edit voucher information', () => {
 
   it('Voucher edit form should be displayed', () => {
     expect(editVoucherView.voucherNumberInput).to.be.true;
-    expect(editVoucherView.disbursementNumberInput).to.be.true;
-    expect(editVoucherView.disbursementAmountInput).to.be.true;
+  });
+  
+  describe('Fill and save voucher form', () => {
+
+    beforeEach(async function () {
+      await editVoucherView.disbursementNumberInput.fill('test');
+      await editVoucherView.disbursementAmountInput.fill('test');
+      await editVoucherView.saveFormButton.click();
+      await editVoucherView.whenDestroyed();
+    });
+    
+    it('Close edit voucher form', () => {
+      expect(editVoucherView.isPresent).to.be.false;
+    })
   });
 });
