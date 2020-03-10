@@ -32,20 +32,17 @@ const VoucherEditContainer = ({
   const showCallout = useShowCallout();
 
   useEffect(() => {
-    mutator.voucher.GET()
-      .then(voucherResponse => {
-        setVoucher(voucherResponse);
+    const voucherPromie = mutator.voucher.GET();
+    const invoicePromise = mutator.invoice.GET();
+    const configVoucherPromise = mutator.configVoucherNumber.GET();
 
-        const invoicePromise = mutator.invoice.GET();
-        const configVoucherPromise = mutator.configVoucherNumber.GET();
-
-        return Promise.all([invoicePromise, configVoucherPromise]);
-      })
-      .then(([invoiceResponse, configVoucherResponse]) => {
+    Promise.all([invoicePromise, configVoucherPromise, voucherPromie])
+      .then(([invoiceResponse, configVoucherResponse, voucherResponse]) => {
         const { allowVoucherNumberEdit } = getConfigSetting(configVoucherResponse);
 
         setVoucherInvoiceNo(invoiceResponse.vendorInvoiceNo);
         setAllowVoucherNumberEdit(allowVoucherNumberEdit);
+        setVoucher(voucherResponse);
       })
       .catch(() => {
         showCallout({ messageId: 'ui-invoice.errors.voucherLoadingFailed', type: 'error' });
