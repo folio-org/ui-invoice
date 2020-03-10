@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { get } from 'lodash';
 
 import {
-  Paneset,
   LoadingView,
 } from '@folio/stripes/components';
 import {
@@ -25,7 +23,6 @@ import VoucherEditForm from './VoucherEditForm';
 const VoucherEditContainer = ({
   match: { params },
   mutator,
-  resources,
   history,
   location,
 }) => {
@@ -35,25 +32,26 @@ const VoucherEditContainer = ({
   const showCallout = useShowCallout();
 
   useEffect(() => {
-    mutator.voucher.GET({
-      params: {
-        id: params.voucherId,
-      },
-    })
-      .then(setVoucher)
+    mutator.voucher.GET()
+      .then(voucherResponse => {
+        setVoucher(voucherResponse);
+
+        const invoicePromise = mutator.invoice.GET();
+        const configVoucherPromise = mutator.configVoucherNumber.GET();
+
+        return Promise.all([invoicePromise, configVoucherPromise]);
+      })
+      .then(([invoiceResponse, configVoucherPromise]) => {
+        const { allowVoucherNumberEdit } = getConfigSetting(configVoucherPromise);
+
+        setVoucherInvoiceNo(invoiceResponse.vendorInvoiceNo);
+        setAllowVoucherNumberEdit(allowVoucherNumberEdit);
+      })
       .catch(() => {
         showCallout({ messageId: 'ui-invoice.errors.voucherLoadingFailed', type: 'error' });
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    const invoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
-    const { allowVoucherNumberEdit } = getConfigSetting(get(resources, 'configVoucherNumber.records', {}));
-
-    setAllowVoucherNumberEdit(allowVoucherNumberEdit);
-    setVoucherInvoiceNo(invoiceNo);
-  }, [resources]);
 
   const closeVoucherForm = useCallback(
     () => {
@@ -65,7 +63,7 @@ const VoucherEditContainer = ({
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.id],
+    [params.id, location.search],
   );
 
   const saveVoucher = useCallback(
@@ -85,9 +83,7 @@ const VoucherEditContainer = ({
 
   if (!(voucher && vendorInvoiceNo)) {
     return (
-      <Paneset>
-        <LoadingView onClose={closeVoucherForm} />
-      </Paneset>
+      <LoadingView onClose={closeVoucherForm} />
     );
   }
 
@@ -107,14 +103,19 @@ VoucherEditContainer.manifest = Object.freeze({
     ...VOUCHER_BY_ID,
     accumulate: true,
   },
-  invoice: invoiceResource,
-  configVoucherNumber,
+  invoice: {
+    ...invoiceResource,
+    accumulate: true,
+  },
+  configVoucherNumber: {
+    ...configVoucherNumber,
+    accumulate: true,
+  },
 });
 
 VoucherEditContainer.propTypes = {
   match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,
-  resources: PropTypes.object.isRequired,
   history: ReactRouterPropTypes.history,
   location: ReactRouterPropTypes.location,
 };

@@ -40,10 +40,9 @@ const VoucherViewLayer = ({ match: { params }, history, location, resources }) =
         pathname: _path,
         search: location.search,
       });
-      // mutator.query.update({ _path });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.id],
+    [params.id, location.search],
   );
 
   const renderActionMenu = useCallback(() => {
@@ -66,7 +65,7 @@ const VoucherViewLayer = ({ match: { params }, history, location, resources }) =
       </MenuSection>
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [location.search]);
 
   if (isLoading) {
     return (
