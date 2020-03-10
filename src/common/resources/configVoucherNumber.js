@@ -5,7 +5,6 @@ import {
   CONFIG_NAME_VOUCHER_NUMBER,
 } from '../constants';
 
-// eslint-disable-next-line import/prefer-default-export
 export const configVoucherNumber = {
   ...baseManifest,
   records: 'configs',

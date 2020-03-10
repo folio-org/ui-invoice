@@ -26,7 +26,7 @@ import {
 } from '../../common/resources';
 import VoucherView from './VoucherView';
 
-const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
+const VoucherViewLayer = ({ match: { params }, history, location, resources }) => {
   const voucher = get(resources, ['voucher', 'records', 0]);
   const voucherLines = get(resources, ['voucherLines', 'records'], []);
   const vendorInvoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
@@ -36,14 +36,21 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
     () => {
       const _path = `/invoice/view/${params.id}`;
 
-      mutator.query.update({ _path });
+      history.push({
+        pathname: _path,
+        search: location.search,
+      });
+      // mutator.query.update({ _path });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params.id],
   );
 
-  const renderActionMenu = () => {
-    const path = `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`;
+  const renderActionMenu = useCallback(() => {
+    const path = {
+      pathname: `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`,
+      search: location.search,
+    };
 
     return (
       <MenuSection id="voucher-actions">
@@ -58,7 +65,8 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
         </Button>
       </MenuSection>
     );
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isLoading) {
     return (
@@ -116,12 +124,12 @@ VoucherViewLayer.manifest = Object.freeze({
     },
   },
   invoice: invoiceResource,
-  query: {},
 });
 
 VoucherViewLayer.propTypes = {
   match: ReactRouterPropTypes.match,
-  mutator: PropTypes.object.isRequired,
+  history: ReactRouterPropTypes.history,
+  location: ReactRouterPropTypes.location,
   resources: PropTypes.object.isRequired,
 };
 

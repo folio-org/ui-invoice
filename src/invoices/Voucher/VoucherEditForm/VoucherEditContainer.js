@@ -27,10 +27,11 @@ const VoucherEditContainer = ({
   mutator,
   resources,
   history,
+  location,
 }) => {
   const [voucher, setVoucher] = useState();
-  const vendorInvoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
-  const { allowVoucherNumberEdit } = getConfigSetting(get(resources, 'configVoucherNumber.records', {}));
+  const [vendorInvoiceNo, setVoucherInvoiceNo] = useState();
+  const [isAllowVoucherNumberEdit, setAllowVoucherNumberEdit] = useState();
   const showCallout = useShowCallout();
 
   useEffect(() => {
@@ -46,11 +47,22 @@ const VoucherEditContainer = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    const invoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
+    const { allowVoucherNumberEdit } = getConfigSetting(get(resources, 'configVoucherNumber.records', {}));
+
+    setAllowVoucherNumberEdit(allowVoucherNumberEdit);
+    setVoucherInvoiceNo(invoiceNo);
+  }, [resources]);
+
   const closeVoucherForm = useCallback(
     () => {
       const _path = `/invoice/view/${params.id}/voucher/${params.voucherId}/view`;
 
-      history.push(_path);
+      history.push({
+        pathname: _path,
+        search: location.search,
+      });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params.id],
@@ -59,8 +71,10 @@ const VoucherEditContainer = ({
   const saveVoucher = useCallback(
     (vouch) => {
       mutator.voucher.PUT(vouch)
-        .then(() => showCallout({ messageId: 'ui-invoice.invoice.details.voucher.save.success' }))
-        .then(closeVoucherForm)
+        .then(() => {
+          showCallout({ messageId: 'ui-invoice.invoice.details.voucher.save.success' });
+          closeVoucherForm();
+        })
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.errors.voucherHasNotBeenSaved', type: 'error' });
         });
@@ -83,7 +97,7 @@ const VoucherEditContainer = ({
       onSubmit={saveVoucher}
       onCancel={closeVoucherForm}
       vendorInvoiceNo={vendorInvoiceNo}
-      isAllowVoucherNumberEdit={allowVoucherNumberEdit}
+      isAllowVoucherNumberEdit={isAllowVoucherNumberEdit}
     />
   );
 };
@@ -102,6 +116,7 @@ VoucherEditContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
   resources: PropTypes.object.isRequired,
   history: ReactRouterPropTypes.history,
+  location: ReactRouterPropTypes.location,
 };
 
 export default stripesConnect(VoucherEditContainer);

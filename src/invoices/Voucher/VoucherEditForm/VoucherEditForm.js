@@ -12,7 +12,7 @@ import {
   Paneset,
 } from '@folio/stripes/components';
 import {
-  FieldDatepickerFinal as Datepicker,
+  FieldDatepickerFinal,
   FormFooter,
 } from '@folio/stripes-acq-components';
 import {
@@ -30,7 +30,7 @@ const VoucherEditForm = ({
 }) => {
   const paneFooter = (
     <FormFooter
-      id="clickable-save"
+      id="save-voucher-button"
       label={<FormattedMessage id="ui-invoice.saveAndClose" />}
       pristine={pristine}
       submitting={submitting}
@@ -80,8 +80,7 @@ const VoucherEditForm = ({
             />
           </Col>
           <Col xs={3}>
-            <Field
-              component={Datepicker}
+            <FieldDatepickerFinal
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
               name="disbursementDate"
             />
@@ -110,6 +109,5 @@ VoucherEditForm.propTypes = {
 };
 
 export default stripesFinalForm({
-  subscription: { values: true },
   navigationCheck: true,
 })(VoucherEditForm);
