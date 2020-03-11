@@ -11,7 +11,6 @@ import {
   Paneset,
   MenuSection,
   Pane,
-  PaneMenu,
   Row,
 } from '@folio/stripes/components';
 import {
@@ -27,7 +26,7 @@ import {
 } from '../../common/resources';
 import VoucherView from './VoucherView';
 
-const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
+const VoucherViewLayer = ({ match: { params }, history, location, resources }) => {
   const voucher = get(resources, ['voucher', 'records', 0]);
   const voucherLines = get(resources, ['voucherLines', 'records'], []);
   const vendorInvoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
@@ -37,35 +36,36 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
     () => {
       const _path = `/invoice/view/${params.id}`;
 
-      mutator.query.update({ _path });
+      history.push({
+        pathname: _path,
+        search: location.search,
+      });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.id],
+    [params.id, location.search],
   );
 
-  const renderActionMenu = () => (
-    <MenuSection id="voucher-actions">
-      <Button
-        buttonStyle="dropdownItem"
-        data-test-edit-voucher-button
-      >
-        <Icon size="small" icon="edit">
-          <FormattedMessage id="ui-invoice.button.edit" />
-        </Icon>
-      </Button>
-    </MenuSection>
-  );
+  const renderActionMenu = useCallback(() => {
+    const path = {
+      pathname: `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`,
+      search: location.search,
+    };
 
-  const lastMenu = (
-    <PaneMenu>
-      <Button
-        marginBottom0
-        buttonStyle="primary"
-      >
-        <FormattedMessage id="ui-invoice.button.edit" />
-      </Button>
-    </PaneMenu>
-  );
+    return (
+      <MenuSection id="voucher-actions">
+        <Button
+          buttonStyle="dropdownItem"
+          data-test-edit-voucher-button
+          to={path}
+        >
+          <Icon size="small" icon="edit">
+            <FormattedMessage id="ui-invoice.button.edit" />
+          </Icon>
+        </Button>
+      </MenuSection>
+    );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search]);
 
   if (isLoading) {
     return (
@@ -83,7 +83,6 @@ const VoucherViewLayer = ({ match: { params }, mutator, resources }) => {
         defaultWidth="fill"
         dismissible
         id="pane-voucher"
-        lastMenu={lastMenu}
         onClose={closeVoucher}
         paneSub={
           <FormattedMessage
@@ -124,12 +123,12 @@ VoucherViewLayer.manifest = Object.freeze({
     },
   },
   invoice: invoiceResource,
-  query: {},
 });
 
 VoucherViewLayer.propTypes = {
   match: ReactRouterPropTypes.match,
-  mutator: PropTypes.object.isRequired,
+  history: ReactRouterPropTypes.history,
+  location: ReactRouterPropTypes.location,
   resources: PropTypes.object.isRequired,
 };
 

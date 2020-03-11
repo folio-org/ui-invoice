@@ -7,19 +7,19 @@ import {
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import VoucherViewLayer from './VoucherViewLayer';
+import { VoucherEditContainer } from './VoucherEditForm';
 
 const Voucher = ({ match: { path } }) => (
   <Switch>
     <Route
       exact
       path={`${path}:voucherId/view`}
-      render={
-        props => (
-          <VoucherViewLayer
-            {...props}
-          />
-        )
-      }
+      component={VoucherViewLayer}
+    />
+    <Route
+      exact
+      path={`${path}:voucherId/edit`}
+      component={VoucherEditContainer}
     />
   </Switch>
 );

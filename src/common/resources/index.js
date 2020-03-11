@@ -9,3 +9,4 @@ export * from './invoice';
 export * from './tags';
 export * from './vendor';
 export * from './voucher';
+export * from './configVoucherNumber';
