@@ -134,14 +134,18 @@ function InvoiceDetailsContainer({
       mutator.invoice.DELETE({ id })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.invoiceHasBeenDeleted' });
-          closePane();
+
+          history.replace({
+            pathname: '/invoice',
+            search: location.search,
+          });
         })
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.errors.invoiceHasNotBeenDeleted', type: 'error' });
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id, closePane],
+    [id, location.search],
   );
 
   const approveInvoice = useCallback(

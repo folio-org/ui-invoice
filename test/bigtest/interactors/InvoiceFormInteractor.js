@@ -23,10 +23,6 @@ import FormFooterInteractor from './common/FormFooter';
   options = new OptionListInteractor('#sl-invoice-status');
 }
 
-@interactor class VendorInteractor {
-  options = new OptionListInteractor('#sl-invoice-vendor');
-}
-
 @interactor class DocumentsInteractor {
   options = new OptionListInteractor('#documents');
 
@@ -52,8 +48,7 @@ export default interactor(class InvoiceForm {
   approvalDate = new Interactor('input[name="approvalDate"]');
   paymentMethod = new PaymentMethodInteractor();
   status = new StatusInteractor();
-  vendor = new VendorInteractor();
-  vendorButton = new Interactor('#invoice-vendor');
+  vendorField = new Interactor('input[name="vendorId"]');
   invoiceInformation = new Interactor('#accordion-toggle-button-invoiceInformation');
   documentsAndLinks = new DocumentsInteractor();
   formFooter = new FormFooterInteractor();

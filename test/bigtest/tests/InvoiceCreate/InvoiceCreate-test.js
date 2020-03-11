@@ -41,8 +41,7 @@ describe('Invoice create', () => {
         await invoiceForm.approvalDate.fill('2019-01-02').blur();
         await invoiceForm.paymentMethod.select(PAYMENT_METHOD.cash);
         await invoiceForm.status.options.list(1).click();
-        await invoiceForm.vendorButton.click();
-        await invoiceForm.vendor.options.list(1).click();
+        await invoiceForm.vendorField.fill('Amazon');
         await invoiceForm.formFooter.saveButton.click();
         await invoicesList.whenLoaded();
       });

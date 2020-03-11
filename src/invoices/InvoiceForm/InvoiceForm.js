@@ -34,19 +34,18 @@ import {
   FormFooter,
   PAYMENT_METHOD_OPTIONS,
   validateRequired,
+  FieldOrganization,
 } from '@folio/stripes-acq-components';
 
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
 import {
   INVOICE_STATUSES_OPTIONS,
   PRE_PAY_INVOICE_STATUSES_OPTIONS,
-  ORGANIZATION_STATUS_ACTIVE,
 } from '../../common/constants';
 import {
   expandAll,
   getAccountingCodeOptions,
   getAddressOptions,
-  getOrganizationOptions,
   IS_EDIT_POST_APPROVAL,
   isPaid,
   isPayable,
@@ -80,6 +79,7 @@ class InvoiceForm extends Component {
     change: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
+    initialVendor: PropTypes.object,
     handleSubmit: PropTypes.func.isRequired,
     onCancel: PropTypes.func.isRequired,
     parentResources: PropTypes.object.isRequired,
@@ -96,31 +96,29 @@ class InvoiceForm extends Component {
       sections: {
         [SECTIONS.voucherInformation]: false,
       },
+      selectedVendor: undefined,
     };
     this.expandAll = expandAll.bind(this);
     this.toggleSection = toggleSection.bind(this);
   }
 
-  getOrgRecords() {
-    return get(this.props.parentResources, 'vendors.records', []);
-  }
-
-  getActiveVendors() {
-    return this.getOrgRecords().filter(o => o.isVendor && o.status === ORGANIZATION_STATUS_ACTIVE);
-  }
-
-  selectVendor = (e, selectedVendorId) => {
+  selectVendor = (vendor) => {
     const {
       dispatch,
       change,
     } = this.props;
-    const selectedVendor = this.getOrgRecords().find(({ id }) => id === selectedVendorId);
-    const erpCode = selectedVendor.erpCode;
-    const hasAnyAccountingCode = selectedVendor.accounts.some(({ appSystemNo }) => Boolean(appSystemNo));
-    const accountingCode = hasAnyAccountingCode ? null : erpCode;
+    const { selectedVendor } = this.state;
 
-    dispatch(change('accountingCode', accountingCode || ''));
-  }
+    if (selectedVendor?.id !== vendor.id) {
+      this.setState({ selectedVendor: vendor });
+
+      const erpCode = vendor.erpCode;
+      const hasAnyAccountingCode = vendor.accounts?.some(({ appSystemNo }) => Boolean(appSystemNo));
+      const accountingCode = hasAnyAccountingCode ? null : erpCode;
+
+      dispatch(change('accountingCode', accountingCode || ''));
+    }
+  };
 
   closeForm = () => {
     this.props.onCancel();
@@ -129,8 +127,10 @@ class InvoiceForm extends Component {
   render() {
     const {
       dispatch,
+      change,
       handleSubmit,
       initialValues,
+      initialVendor,
       parentResources,
       pristine,
       submitting,
@@ -138,7 +138,7 @@ class InvoiceForm extends Component {
       filledVendorId,
       filledCurrency,
     } = this.props;
-    const { sections } = this.state;
+    const { sections, selectedVendor } = this.state;
     const vendorInvoiceNo = get(initialValues, 'vendorInvoiceNo', '');
     const paneTitle = initialValues.id
       ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
@@ -160,10 +160,8 @@ class InvoiceForm extends Component {
     const approvedBy = get(initialValues, 'approvedBy');
     const isEditMode = Boolean(initialValues.id);
     const isStatusPaid = isPaid(initialValues.status);
-
-    const activeVendors = this.getActiveVendors();
-    const selectedVendor = find(activeVendors, { id: filledVendorId });
-    const accountingCodeOptions = getAccountingCodeOptions(selectedVendor);
+    const vendor = selectedVendor || initialVendor;
+    const accountingCodeOptions = getAccountingCodeOptions(vendor);
     const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
     const statusOptions = isPayable(initialValues.status) || isPaid(initialValues.status)
@@ -174,7 +172,7 @@ class InvoiceForm extends Component {
       <form style={{ height: '100vh' }}>
         <Paneset>
           <Pane
-            defaultWidth="fill"
+            defaultWidth="100%"
             dismissible
             footer={paneFooter}
             id="pane-invoice-form"
@@ -339,22 +337,24 @@ class InvoiceForm extends Component {
                           validate={validateRequired}
                         />
                       </Col>
+
                       <Col xs={6}>
-                        <FieldSelection
-                          dataOptions={getOrganizationOptions(activeVendors)}
+                        <FieldOrganization
+                          dispatch={dispatch}
+                          change={change}
                           disabled={isEditPostApproval}
-                          id="invoice-vendor"
+                          id={filledVendorId}
                           labelId="ui-invoice.invoice.vendorName"
                           name="vendorId"
-                          onChange={this.selectVendor}
+                          onSelect={this.selectVendor}
                           required
-                          validate={validateRequired}
                         />
                       </Col>
+
                       <Col data-test-col-accounting-code xs={3}>
                         <FieldSelection
                           dataOptions={accountingCodeOptions}
-                          disabled={isEditPostApproval || !selectedVendor}
+                          disabled={isEditPostApproval || !vendor}
                           labelId="ui-invoice.invoice.accountingCode"
                           name="accountingCode"
                         />
