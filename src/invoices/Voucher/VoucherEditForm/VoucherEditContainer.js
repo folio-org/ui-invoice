@@ -32,11 +32,11 @@ const VoucherEditContainer = ({
   const showCallout = useShowCallout();
 
   useEffect(() => {
-    const voucherPromie = mutator.voucher.GET();
+    const voucherPromise = mutator.voucher.GET();
     const invoicePromise = mutator.invoice.GET();
     const configVoucherPromise = mutator.configVoucherNumber.GET();
 
-    Promise.all([invoicePromise, configVoucherPromise, voucherPromie])
+    Promise.all([invoicePromise, configVoucherPromise, voucherPromise])
       .then(([invoiceResponse, configVoucherResponse, voucherResponse]) => {
         const { allowVoucherNumberEdit } = getConfigSetting(configVoucherResponse);
 
