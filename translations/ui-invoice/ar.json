@@ -262,5 +262,8 @@
     "settings.batchGroupConfiguration.weekdays.Sunday": "الأحد",
     "settings.batchGroupConfiguration.weekdays.Thursday": "الخميس",
     "settings.batchGroupConfiguration.weekdays.Tuesday": "الثلاثاء",
-    "settings.batchGroupConfiguration.weekdays.Wednesday": "الأربعاء"
+    "settings.batchGroupConfiguration.weekdays.Wednesday": "الأربعاء",
+    "errors.voucherHasNotBeenSaved": "لم يتم حفظ القسيمة",
+    "errors.voucherLoadingFailed": "لم يتم تحميل القسيمة",
+    "invoice.details.voucher.save.success": "تم حفظ القسيمة بنجاح"
 }
