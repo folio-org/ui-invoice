@@ -227,12 +227,12 @@
     "tag": "Mot-clé",
     "errors.fileLimit": "Le fichier dépasse la taille limite",
     "settings.vouchers.label": "Bons d'achat/vouchers",
-    "settings.batchGroups.label": "Batch groups",
+    "settings.batchGroups.label": "Groupes de lots",
     "settings.batchGroupConfiguration.label": "Batch group configuration",
     "invoice.actions.load.error": "Échec du chargement de données de facturation",
     "invoice.actions.approve.error.fundCannotBePaid": "Une ou plusieurs éléments de cette facture ne peuvent pas être payés, car le budget est insuffisant.",
     "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
-    "settings.batchGroups.labelSingular": "Batch group",
+    "settings.batchGroups.labelSingular": "Groupe de lot",
     "settings.batchGroups.column.name": "Nom",
     "settings.batchGroups.column.description": "Description",
     "button.runManualExport": "Exécuter l'exportation manuelle",
@@ -262,5 +262,8 @@
     "settings.batchGroupConfiguration.weekdays.Sunday": "D",
     "settings.batchGroupConfiguration.weekdays.Thursday": "J",
     "settings.batchGroupConfiguration.weekdays.Tuesday": "M",
-    "settings.batchGroupConfiguration.weekdays.Wednesday": "M"
+    "settings.batchGroupConfiguration.weekdays.Wednesday": "M",
+    "errors.voucherHasNotBeenSaved": "Le bon n'a pas été enregistré",
+    "errors.voucherLoadingFailed": "Le bon n'a pas été chargé",
+    "invoice.details.voucher.save.success": "Le bon a été enregistré avec succès"
 }
