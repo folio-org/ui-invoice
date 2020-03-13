@@ -76,11 +76,11 @@
       "batch-voucher.export-configurations": "1.0",
       "configuration": "2.0",
       "finance.funds": "1.0",
-      "invoice": "3.3",
+      "invoice": "3.2",
       "order-lines": "1.0",
       "organizations-storage.organizations": "3.0",
       "tags": "1.0",
-      "users": "15.0",
+      "users": "15.1",
       "voucher-number": "1.0",
       "voucher": "2.1"
     },
