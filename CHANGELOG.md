@@ -2,7 +2,13 @@
 
 ## (IN PROGRESS)
 
+## [2.0.0]https://github.com/folio-org/ui-invoice/tree/v2.0.0) (2020-03-13)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.1...v2.0.0)
+
+* bump the @folio/stripes peer to v3.0.0
+
 ### Stories
+* [UINV-124](https://issues.folio.org/browse/UINV-124) Invoices - Replace org selection components with organization lookup
 * [UINV-117](https://issues.folio.org/browse/UINV-117) Allow user to edit voucher information
 * [UINV-103](https://issues.folio.org/browse/UINV-103) Add voucher settings for a given Batch group
 * [UINV-118](https://issues.folio.org/browse/UINV-118) TECH-DEBT refactor Invoice list to not use SearchAndSort
@@ -12,15 +18,18 @@
 * [UINV-119](https://issues.folio.org/browse/UINV-119) Move record action buttons into "Action" button UX pattern
 * [UINV-100](https://issues.folio.org/browse/UINV-100) Settings: Add Batch group and Batch group settings subheadings to invoice settings
 * [UINV-114](https://issues.folio.org/browse/UINV-114) Invoice line not retrieving Total estimated price when linking POL
+* [FOLIO-2436](https://issues.folio.org/browse/FOLIO-2436) organizations-storage.organizations version
 * [UIOR-239](https://issues.folio.org/browse/UIOR-239) Use titleOrPackage instead of title
 * [UINV-107](https://issues.folio.org/browse/UINV-107) Update settings permission label
 * [UINV-112](https://issues.folio.org/browse/UINV-112) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
 * [MODORDERS-354](https://issues.folio.org/browse/MODORDERS-354) Divide the interface into smaller ones
 * [UINV-109](https://issues.folio.org/browse/UINV-109) Limit document size
 * [UIOR-472](https://issues.folio.org/browse/UIOR-472) Display encumbered value on POL for orders made in currency other than system currency
+* [UINV-102](https://issues.folio.org/browse/UINV-102) Add translations
 
 ### Bug fixes
 * [UINV-105](https://issues.folio.org/browse/UINV-105) Save and close and cancel bar not fixed to bottom of form
+* [UINV-112](https://issues.folio.org/browse/UINV-112) Security update eslint to >= 6.2.1 or eslint-util >= 1.4.1
 
 ## [1.2.1](https://github.com/folio-org/ui-invoice/tree/v1.2.1) (2019-12-12)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.0...v1.2.1)
