@@ -263,7 +263,7 @@
     "settings.batchGroupConfiguration.weekdays.Thursday": "Qui",
     "settings.batchGroupConfiguration.weekdays.Tuesday": "Ter",
     "settings.batchGroupConfiguration.weekdays.Wednesday": "Qua",
-    "errors.voucherHasNotBeenSaved": "Voucher has not been saved",
-    "errors.voucherLoadingFailed": "Voucher has not been loaded",
-    "invoice.details.voucher.save.success": "Voucher has been successfully saved"
+    "errors.voucherHasNotBeenSaved": "O voucher não foi salvo",
+    "errors.voucherLoadingFailed": "O voucher não foi carregado",
+    "invoice.details.voucher.save.success": "O voucher foi salvo com sucesso"
 }
