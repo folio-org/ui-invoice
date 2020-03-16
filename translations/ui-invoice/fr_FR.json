@@ -228,7 +228,7 @@
     "errors.fileLimit": "Le fichier dépasse la taille limite",
     "settings.vouchers.label": "Bons d'achat/vouchers",
     "settings.batchGroups.label": "Groupes de lots",
-    "settings.batchGroupConfiguration.label": "Batch group configuration",
+    "settings.batchGroupConfiguration.label": "Configuration du groupe de lots",
     "invoice.actions.load.error": "Échec du chargement de données de facturation",
     "invoice.actions.approve.error.fundCannotBePaid": "Une ou plusieurs éléments de cette facture ne peuvent pas être payés, car le budget est insuffisant.",
     "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
