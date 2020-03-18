@@ -202,6 +202,7 @@ function InvoiceDetailsContainer({
         .then(invoiceResponse => {
           mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })
+        .then(() => mutator.invoice.GET())
         .then(setInvoice)
         .then(() => showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' }))
         .catch(async (response) => {
