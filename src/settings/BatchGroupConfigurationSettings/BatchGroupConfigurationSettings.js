@@ -18,7 +18,7 @@ import {
 import { EXPORT_CONFIGURATIONS_API } from '../../common/constants';
 import { SCHEDULE_EXPORT } from './constants';
 import { saveExportConfig } from './utils';
-import BatchGroupConfigurationForm from './BatchGroupCongiurationForm';
+import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
 
 const BatchGroupConfigurationSettings = ({ mutator }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -47,7 +47,6 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   const fetchExportConfig = useCallback(
     (id) => {
       if (id) {
-        setIsLoading(true);
         setExportConfig();
         setCredentials();
 
@@ -66,19 +65,20 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
               ? mutator.credentials.GET()
               : {};
           })
-          .then(setCredentials)
-          .finally(() => setIsLoading(false));
+          .then(setCredentials);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedBatchGroupId],
   );
 
-  useEffect(() => {
-    fetchExportConfig(selectedBatchGroupId);
-  },
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [selectedBatchGroupId]);
+  useEffect(
+    () => {
+      fetchExportConfig(selectedBatchGroupId);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedBatchGroupId],
+  );
 
   const onSave = useCallback(
     (formValues) => {
