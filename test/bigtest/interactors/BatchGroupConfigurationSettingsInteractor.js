@@ -1,4 +1,5 @@
 import {
+  collection,
   interactor,
   Interactor,
   isPresent,
@@ -18,6 +19,12 @@ import { ButtonInteractor } from '@folio/stripes-acq-components/test/bigtest/int
   value = value();
 }
 
+@interactor class BatchVoucherExports {
+  list = collection('[role="group"] [role="row"]', {
+    downloadButton: new ButtonInteractor('[icon="download"]'),
+  });
+}
+
 export default @interactor class BatchGroupConfigurationSettingsInteractor {
   static defaultScope = '[data-test-batch-group-configuration-settings]';
 
@@ -32,9 +39,14 @@ export default @interactor class BatchGroupConfigurationSettingsInteractor {
   format = new FormatInteractor();
   validationMessage = text('[class*=feedbackError---]');
 
+  batchVoucherExports = new BatchVoucherExports('#batch-voucher-exports');
   isLoaded = isPresent('#pane-batch-group-configuration');
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
+  }
+
+  whenBatchVoucherExportsLoaded() {
+    return this.timeout(10000).when(() => isPresent('#batch-voucher-exports'));
   }
 }

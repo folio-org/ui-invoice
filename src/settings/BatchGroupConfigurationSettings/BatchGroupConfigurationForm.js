@@ -30,6 +30,7 @@ import {
   SCHEDULE_EXPORT,
   WEEKDAYS_OPTIONS,
 } from './constants';
+import { BatchVoucherExportsList } from './BatchVoucherExportsList';
 
 const trimTime = value => value.slice(0, 5);
 
@@ -180,6 +181,7 @@ const BatchGroupConfigurationForm = ({
           </Button>
         </Col>
       </Row>
+      <BatchVoucherExportsList batchGroupId={selectedBatchGroupId} />
     </Pane>
   );
 };
