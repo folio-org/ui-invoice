@@ -265,5 +265,11 @@
     "settings.batchGroupConfiguration.weekdays.Wednesday": "M",
     "errors.voucherHasNotBeenSaved": "Le bon n'a pas été enregistré",
     "errors.voucherLoadingFailed": "Le bon n'a pas été chargé",
-    "invoice.details.voucher.save.success": "Le bon a été enregistré avec succès"
+    "invoice.details.voucher.save.success": "Le bon a été enregistré avec succès",
+    "settings.BatchVoucherExports.date": "Date",
+    "settings.BatchVoucherExports.status": "Status",
+    "settings.BatchVoucherExports.status.pending": "Pending",
+    "settings.BatchVoucherExports.status.generated": "Generated",
+    "settings.BatchVoucherExports.status.uploaded": "Uploaded",
+    "settings.BatchVoucherExports.status.error": "Error"
 }

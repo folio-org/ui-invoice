@@ -265,5 +265,11 @@
     "settings.batchGroupConfiguration.weekdays.Wednesday": "Qua",
     "errors.voucherHasNotBeenSaved": "O voucher não foi salvo",
     "errors.voucherLoadingFailed": "O voucher não foi carregado",
-    "invoice.details.voucher.save.success": "O voucher foi salvo com sucesso"
+    "invoice.details.voucher.save.success": "O voucher foi salvo com sucesso",
+    "settings.BatchVoucherExports.date": "Data",
+    "settings.BatchVoucherExports.status": "Status",
+    "settings.BatchVoucherExports.status.pending": "Pendente",
+    "settings.BatchVoucherExports.status.generated": "Gerado",
+    "settings.BatchVoucherExports.status.uploaded": "Carregado",
+    "settings.BatchVoucherExports.status.error": "Erro"
 }
