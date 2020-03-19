@@ -17,6 +17,7 @@ import { ButtonInteractor } from '@folio/stripes-acq-components/test/bigtest/int
 @interactor class FormatInteractor {
   static defaultScope = 'select[name="format"]';
   value = value();
+}
 
 @interactor class BatchVoucherExports {
   list = collection('[role="group"] [role="row"]', {
