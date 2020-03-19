@@ -38,7 +38,7 @@ const BatchGroupConfigurationForm = ({
   batchGroups,
   handleSubmit,
   pristine,
-  setSelectedBatchGroupId,
+  selectBatchGroup,
   submitting,
   form,
   selectedBatchGroupId,
