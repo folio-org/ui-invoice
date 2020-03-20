@@ -11,12 +11,13 @@ const BatchGroupConfigurationFormFooter = ({
   pristine,
   submitting,
   handleSubmit,
+  runManualExport,
 }) => {
   const start = (
     <Button
       buttonStyle="default mega"
       data-test-run-manual-export-button
-      disabled
+      onClick={runManualExport}
     >
       <FormattedMessage id="ui-invoice.button.runManualExport" />
     </Button>
@@ -46,6 +47,7 @@ BatchGroupConfigurationFormFooter.propTypes = {
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  runManualExport: PropTypes.func.isRequired,
 };
 
 export default BatchGroupConfigurationFormFooter;

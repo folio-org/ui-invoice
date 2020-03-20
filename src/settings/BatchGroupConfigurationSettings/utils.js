@@ -4,6 +4,7 @@ import {
   keys,
   pickBy,
 } from 'lodash';
+import moment from 'moment';
 
 const REGEXP_URI = new RegExp('^$|([f][t][p])([s])?://.+$');
 
@@ -43,4 +44,14 @@ export const saveExportConfig = (
         });
       }
     });
+};
+
+export const createMockVoucherExport = (mutatorFn, batchGroupId) => {
+  return mutatorFn.POST({
+    status: 'Uploaded',
+    message: '227 Transfer complete',
+    batchGroupId,
+    start: moment.utc().format(),
+    end: moment.utc().add(1, 'hours').format(),
+  });
 };

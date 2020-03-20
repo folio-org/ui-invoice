@@ -8,7 +8,7 @@ export const batchVoucherExportsResource = {
   path: BATCH_VOUCHER_EXPORTS_API,
   GET: {
     params: {
-      query: 'cql.allRecords=1 sortby end start/sort.descending',
+      query: 'cql.allRecords=1 sortby end/sort.descending start/sort.descending',
     },
   },
   records: 'batchVoucherExports',

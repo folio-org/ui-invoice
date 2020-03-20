@@ -13,7 +13,7 @@ function BatchVoucherExportsListContainer({ batchGroupId, mutator }) {
     () => {
       if (batchGroupId) {
         mutator.batchVoucherExports.GET({
-          params: { query: `batchGroupId==${batchGroupId} sortby end start/sort.descending` },
+          params: { query: `batchGroupId==${batchGroupId} sortby end/sort.descending start/sort.descending` },
         })
           .then(setBatchVoucherExports)
           .catch(() => setBatchVoucherExports([]));
