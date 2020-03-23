@@ -266,10 +266,10 @@
     "errors.voucherHasNotBeenSaved": "لم يتم حفظ القسيمة",
     "errors.voucherLoadingFailed": "لم يتم تحميل القسيمة",
     "invoice.details.voucher.save.success": "تم حفظ القسيمة بنجاح",
-    "settings.BatchVoucherExports.date": "Date",
-    "settings.BatchVoucherExports.status": "Status",
-    "settings.BatchVoucherExports.status.pending": "Pending",
-    "settings.BatchVoucherExports.status.generated": "Generated",
-    "settings.BatchVoucherExports.status.uploaded": "Uploaded",
-    "settings.BatchVoucherExports.status.error": "Error"
+    "settings.BatchVoucherExports.date": "التاريخ",
+    "settings.BatchVoucherExports.status": "الحالة",
+    "settings.BatchVoucherExports.status.pending": "قيد الانتظار",
+    "settings.BatchVoucherExports.status.generated": "تم التوليد",
+    "settings.BatchVoucherExports.status.uploaded": "مرفوع",
+    "settings.BatchVoucherExports.status.error": "خطأ"
 }
