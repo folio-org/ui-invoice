@@ -3,6 +3,7 @@ export const APPROVE_ERROR_CODES = {
   fundDistributionsNotPresent: 'fundDistributionsNotPresent',
   poLineUpdateFailure: 'poLineUpdateFailure',
   fundCannotBePaid: 'fundCannotBePaid',
+  transactionCreationFailure: 'transactionCreationFailure',
 };
 
 export const getApproveErrorMessage = (errorCode, genericError = 'ui-invoice.invoice.actions.approve.error') => {

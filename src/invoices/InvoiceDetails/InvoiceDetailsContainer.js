@@ -153,8 +153,10 @@ function InvoiceDetailsContainer({
       const approvedInvoice = { ...invoice, status: INVOICE_STATUS.approved };
 
       mutator.invoice.PUT(approvedInvoice)
-        .then(setInvoice)
-        .then(() => showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' }))
+        .then(() => {
+          showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' });
+          fetchInvoiceData();
+        })
         .catch(async (response) => {
           try {
             const { errors } = await response.json();
@@ -175,8 +177,10 @@ function InvoiceDetailsContainer({
       const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
 
       mutator.invoice.PUT(paidInvoice)
-        .then(setInvoice)
-        .then(() => showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' }))
+        .then(() => {
+          showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
+          fetchInvoiceData();
+        })
         .catch(async (response) => {
           try {
             const { errors } = await response.json();
@@ -202,9 +206,10 @@ function InvoiceDetailsContainer({
         .then(invoiceResponse => {
           mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })
-        .then(() => mutator.invoice.GET())
-        .then(setInvoice)
-        .then(() => showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' }))
+        .then(() => {
+          showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' });
+          fetchInvoiceData();
+        })
         .catch(async (response) => {
           try {
             const { errors } = await response.json();
