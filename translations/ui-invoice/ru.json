@@ -268,8 +268,8 @@
     "invoice.details.voucher.save.success": "Ваучер был успешно сохранён",
     "settings.BatchVoucherExports.date": "Date",
     "settings.BatchVoucherExports.status": "Status",
-    "settings.BatchVoucherExports.status.pending": "Pending",
-    "settings.BatchVoucherExports.status.generated": "Generated",
-    "settings.BatchVoucherExports.status.uploaded": "Uploaded",
-    "settings.BatchVoucherExports.status.error": "Error"
+    "settings.BatchVoucherExports.status.pending": "Ожидание",
+    "settings.BatchVoucherExports.status.generated": "Cозданный",
+    "settings.BatchVoucherExports.status.uploaded": "Загружен",
+    "settings.BatchVoucherExports.status.error": "Ошибка"
 }
