@@ -17,7 +17,6 @@ const BatchGroupConfigurationFormFooter = ({
     <Button
       buttonStyle="default mega"
       data-test-run-manual-export-button
-      disabled
       onClick={runManualExport}
     >
       <FormattedMessage id="ui-invoice.button.runManualExport" />

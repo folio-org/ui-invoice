@@ -31,7 +31,7 @@ function InvoiceDetailsContainer({
   location,
 }) {
   const showCallout = useShowCallout();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [invoice, setInvoice] = useState({});
   const [invoiceLines, setInvoiceLines] = useState({});
   const [vendor, setVendor] = useState({});
