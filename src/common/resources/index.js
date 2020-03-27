@@ -1,6 +1,5 @@
 export * from './acqUnit';
 export * from './batchGroups';
-export * from './batchVoucherExportsResource';
 export * from './configAddress';
 export * from './configAdjustments';
 export * from './configApprovals';

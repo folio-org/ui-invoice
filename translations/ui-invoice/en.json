@@ -123,13 +123,6 @@
   "settings.batchGroupConfiguration.weekdays.Tuesday": "T",
   "settings.batchGroupConfiguration.weekdays.Wednesday": "W",
 
-  "settings.BatchVoucherExports.date": "Date",
-  "settings.BatchVoucherExports.status": "Status",
-  "settings.BatchVoucherExports.status.pending": "Pending",
-  "settings.BatchVoucherExports.status.generated": "Generated",
-  "settings.BatchVoucherExports.status.uploaded": "Uploaded",
-  "settings.BatchVoucherExports.status.error": "Error",
-
   "settings.voucherNumber.label": "Voucher number",
   "settings.voucherNumber.prefix": "Prefix",
   "settings.voucherNumber.startNumber": "Starting number",

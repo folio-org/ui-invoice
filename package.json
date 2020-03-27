@@ -73,7 +73,6 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.1",
       "batch-group": "1.0",
-      "batch-voucher.batch-voucher-exports": "1.0",
       "batch-voucher.export-configurations": "1.0",
       "configuration": "2.0",
       "finance.funds": "1.0",
@@ -103,9 +102,8 @@
         "displayName": "Settings (Invoice): Can view and edit settings",
         "subPermissions": [
           "batch-groups.all",
-          "batch-voucher.batch-voucher-exports.collection.get",
-          "batch-voucher.export-configurations.all",
           "configuration.all",
+          "batch-voucher.export-configurations.all",
           "settings.enabled",
           "ui-invoice.third-party-services"
         ],
