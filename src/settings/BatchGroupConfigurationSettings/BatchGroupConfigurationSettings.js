@@ -12,13 +12,12 @@ import {
 
 import {
   batchGroupsResource,
-  batchVoucherExportsResource,
   credentialsResource,
   exportConfigsResource,
 } from '../../common/resources';
 import { EXPORT_CONFIGURATIONS_API } from '../../common/constants';
 import { SCHEDULE_EXPORT } from './constants';
-import { createMockVoucherExport, saveExportConfig } from './utils';
+import { saveExportConfig } from './utils';
 import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
 
 const BatchGroupConfigurationSettings = ({ mutator }) => {
@@ -81,12 +80,6 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
     [selectedBatchGroupId],
   );
 
-  const runManualExport = useCallback(
-    () => createMockVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedBatchGroupId],
-  );
-
   const onSave = useCallback(
     (formValues) => {
       saveExportConfig(formValues, mutator, credentials)
@@ -133,7 +126,6 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
       onSubmit={onSave}
       selectedBatchGroupId={selectedBatchGroupId}
       selectBatchGroup={setSelectedBatchGroupId}
-      runManualExport={runManualExport}
     />
   );
 };
@@ -146,7 +138,6 @@ BatchGroupConfigurationSettings.manifest = Object.freeze({
     path: `${EXPORT_CONFIGURATIONS_API}/%{exportConfigId.id}/credentials`,
   },
   exportConfigId: {},
-  batchVoucherExports: batchVoucherExportsResource,
 });
 
 BatchGroupConfigurationSettings.propTypes = {

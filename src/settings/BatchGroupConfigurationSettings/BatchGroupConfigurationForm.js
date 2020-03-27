@@ -42,7 +42,6 @@ const BatchGroupConfigurationForm = ({
   submitting,
   form,
   selectedBatchGroupId,
-  runManualExport,
 }) => {
   const formValues = get(form.getState(), 'values', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
@@ -51,7 +50,6 @@ const BatchGroupConfigurationForm = ({
     <BatchGroupConfigurationFormFooter
       handleSubmit={handleSubmit}
       pristine={pristine}
-      runManualExport={runManualExport}
       submitting={submitting}
     />
   );
@@ -190,13 +188,12 @@ const BatchGroupConfigurationForm = ({
 
 BatchGroupConfigurationForm.propTypes = {
   batchGroups: PropTypes.arrayOf(PropTypes.object),
-  form: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool,
-  runManualExport: PropTypes.func.isRequired,
   selectBatchGroup: PropTypes.func.isRequired,
-  selectedBatchGroupId: PropTypes.string,
   submitting: PropTypes.bool,
+  form: PropTypes.object,
+  selectedBatchGroupId: PropTypes.string,
 };
 
 export default stripesFinalForm({
