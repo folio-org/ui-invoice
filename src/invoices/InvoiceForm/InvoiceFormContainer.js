@@ -61,8 +61,6 @@ function InvoiceFormContainer({
   const isCreate = !id;
   const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
 
-  const invoiceFormValues = getFormValues(INVOICE_FORM)(stripes.store.getState());
-
   const saveInvoiceHandler = useCallback(formValues => {
     let validationRequest = Promise.resolve();
 
@@ -107,6 +105,8 @@ function InvoiceFormContainer({
       source: sourceValues.user,
       adjustments: alwaysShowAdjustments,
     };
+
+  const invoiceFormValues = getFormValues(INVOICE_FORM)(stripes.store.getState()) || invoice;
   const invoiceVendor = isCreate ? undefined : get(resources, ['invoiceFormVendor', 'records', 0]);
   const initialValues = {
     ...invoice,

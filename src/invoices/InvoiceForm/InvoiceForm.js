@@ -85,8 +85,8 @@ class InvoiceForm extends Component {
     parentResources: PropTypes.object.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
-    filledBillTo: PropTypes.string.isRequired,
-    filledVendorId: PropTypes.string.isRequired,
+    filledBillTo: PropTypes.string,
+    filledVendorId: PropTypes.string,
     filledCurrency: PropTypes.string.isRequired,
   };
 

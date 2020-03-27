@@ -1,6 +1,11 @@
 # Change history for ui-invoice
 
 ## (IN PROGRESS)
+### Stories
+### Bug fixes
+
+## [2.0.1]https://github.com/folio-org/ui-invoice/tree/v2.0.1) (2020-03-27)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.0.0...v2.0.1)
 
 ### Stories
 * [UINV-106](https://issues.folio.org/browse/UINV-106) Display Batch vouchers in settings
