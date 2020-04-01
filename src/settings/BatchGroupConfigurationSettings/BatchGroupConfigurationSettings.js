@@ -18,7 +18,10 @@ import {
 } from '../../common/resources';
 import { EXPORT_CONFIGURATIONS_API } from '../../common/constants';
 import { SCHEDULE_EXPORT } from './constants';
-import { createMockVoucherExport, saveExportConfig } from './utils';
+import {
+  createManualVoucherExport,
+  saveExportConfig,
+} from './utils';
 import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
 
 const BatchGroupConfigurationSettings = ({ mutator }) => {
@@ -27,6 +30,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   const [selectedBatchGroupId, setSelectedBatchGroupId] = useState();
   const [exportConfig, setExportConfig] = useState();
   const [credentials, setCredentials] = useState();
+  const [batchVoucherExports, setBatchVoucherExports] = useState();
   const showCallout = useShowCallout();
 
   useEffect(() => {
@@ -44,6 +48,24 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   },
   // eslint-disable-next-line react-hooks/exhaustive-deps
   []);
+
+  const fetchBatchVoucherExports = useCallback(
+    (id) => {
+      if (id) {
+        setBatchVoucherExports();
+
+        mutator.batchVoucherExports.GET({
+          params: {
+            query: `batchGroupId==${id} sortby end/sort.descending start/sort.descending`,
+          },
+        })
+          .then(setBatchVoucherExports)
+          .catch(() => setBatchVoucherExports([]));
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedBatchGroupId],
+  );
 
   const fetchExportConfig = useCallback(
     (id) => {
@@ -76,15 +98,32 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   useEffect(
     () => {
       fetchExportConfig(selectedBatchGroupId);
+      fetchBatchVoucherExports(selectedBatchGroupId);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedBatchGroupId],
   );
 
   const runManualExport = useCallback(
-    () => createMockVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId),
+    () => {
+      const batchGroupCreatedDate = batchGroups.find(({ id }) => id === selectedBatchGroupId).metadata.createdDate;
+      const start = batchVoucherExports[0]?.end || batchGroupCreatedDate;
+
+      createManualVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId, start)
+        .then(() => {
+          fetchBatchVoucherExports(selectedBatchGroupId);
+          showCallout({
+            messageId: 'ui-invoice.settings.runManualExport.success',
+            type: 'success',
+          });
+        })
+        .catch(() => showCallout({
+          messageId: 'ui-invoice.settings.runManualExport.error',
+          type: 'error',
+        }));
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedBatchGroupId],
+    [selectedBatchGroupId, batchVoucherExports, batchGroups],
   );
 
   const onSave = useCallback(
@@ -129,6 +168,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   return (
     <BatchGroupConfigurationForm
       batchGroups={batchGroups}
+      batchVoucherExports={batchVoucherExports}
       initialValues={initialValues}
       onSubmit={onSave}
       selectedBatchGroupId={selectedBatchGroupId}

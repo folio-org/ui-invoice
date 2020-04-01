@@ -46,12 +46,10 @@ export const saveExportConfig = (
     });
 };
 
-export const createMockVoucherExport = (mutatorFn, batchGroupId) => {
+export const createManualVoucherExport = (mutatorFn, batchGroupId, start) => {
   return mutatorFn.POST({
-    status: 'Uploaded',
-    message: '227 Transfer complete',
     batchGroupId,
-    start: moment.utc().format(),
-    end: moment.utc().add(1, 'hours').format(),
+    start,
+    end: moment.utc().format(),
   });
 };

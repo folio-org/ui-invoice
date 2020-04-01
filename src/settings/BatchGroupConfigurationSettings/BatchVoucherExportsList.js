@@ -9,7 +9,7 @@ import {
 } from '@folio/stripes/components';
 import { FolioFormattedTime } from '@folio/stripes-acq-components';
 
-import { BATCH_VOUCHER_EXPORT_STATUS_LABEL } from '../../../common/constants';
+import { BATCH_VOUCHER_EXPORT_STATUS_LABEL } from '../../common/constants';
 
 const columnMapping = {
   date: <FormattedMessage id="ui-invoice.settings.BatchVoucherExports.date" />,
@@ -32,7 +32,9 @@ const cellFormatters = {
   status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
 };
 
-export function BatchVoucherExportsList({ batchVoucherExports }) {
+export default function BatchVoucherExportsList({ batchVoucherExports }) {
+  if (!batchVoucherExports) return null;
+
   return (
     <MultiColumnList
       columnMapping={columnMapping}
