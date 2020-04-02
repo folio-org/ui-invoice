@@ -50,7 +50,7 @@ const BatchGroupConfigurationForm = ({
   const formValues = get(form.getState(), 'values', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
   const [isManualExportConfirmation, toggleManualExportConfirmation] = useModalToggle();
-  const selectedBatchGroupName = batchGroups.find(({ id }) => id === selectedBatchGroupId).name;
+  const selectedBatchGroupName = batchGroups.find(({ id }) => id === selectedBatchGroupId)?.name;
 
   const onRunManualExport = useCallback(
     () => {

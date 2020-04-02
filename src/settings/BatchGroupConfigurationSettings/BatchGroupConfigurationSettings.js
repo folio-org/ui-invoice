@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 import { LoadingPane } from '@folio/stripes/components';
 import {
+  LIMIT_MAX,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
@@ -49,23 +50,19 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   []);
 
-  const fetchBatchVoucherExports = useCallback(
-    (id) => {
-      if (id) {
-        setBatchVoucherExports();
+  const fetchBatchVoucherExports = (id) => {
+    if (id) {
+      setBatchVoucherExports();
 
-        mutator.batchVoucherExports.GET({
-          params: {
-            query: `batchGroupId==${id} sortby end/sort.descending start/sort.descending`,
-          },
-        })
-          .then(setBatchVoucherExports)
-          .catch(() => setBatchVoucherExports([]));
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedBatchGroupId],
-  );
+      mutator.batchVoucherExports.GET({
+        params: {
+          query: `batchGroupId==${id} sortby end/sort.descending start/sort.descending`,
+          limit: `${LIMIT_MAX}`,
+        },
+      })
+        .then(setBatchVoucherExports);
+    }
+  };
 
   const fetchExportConfig = useCallback(
     (id) => {
@@ -106,8 +103,8 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
 
   const runManualExport = useCallback(
     () => {
-      const batchGroupCreatedDate = batchGroups.find(({ id }) => id === selectedBatchGroupId).metadata.createdDate;
-      const start = batchVoucherExports[0]?.end || batchGroupCreatedDate;
+      const start = batchVoucherExports[0]?.end ||
+        batchGroups.find(({ id }) => id === selectedBatchGroupId)?.metadata.createdDate;
 
       createManualVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId, start)
         .then(() => {
@@ -123,7 +120,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
         }));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedBatchGroupId, batchVoucherExports, batchGroups],
+    [selectedBatchGroupId, batchVoucherExports, batchGroups, showCallout],
   );
 
   const onSave = useCallback(
