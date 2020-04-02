@@ -32,7 +32,7 @@ import {
   SCHEDULE_EXPORT,
   WEEKDAYS_OPTIONS,
 } from './constants';
-import BatchVoucherExportsList from './BatchVoucherExportsList';
+import { BatchVoucherExportsList } from './BatchVoucherExportsList';
 
 const trimTime = value => value.slice(0, 5);
 

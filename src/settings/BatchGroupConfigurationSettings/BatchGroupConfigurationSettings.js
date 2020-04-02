@@ -60,7 +60,8 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
           limit: `${LIMIT_MAX}`,
         },
       })
-        .then(setBatchVoucherExports);
+        .then(setBatchVoucherExports)
+        .catch(() => setBatchVoucherExports([]));
     }
   };
 

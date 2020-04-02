@@ -32,7 +32,7 @@ const cellFormatters = {
   status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
 };
 
-export default function BatchVoucherExportsList({ batchVoucherExports }) {
+export function BatchVoucherExportsList({ batchVoucherExports }) {
   if (!batchVoucherExports) return null;
 
   return (
