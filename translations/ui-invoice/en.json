@@ -18,6 +18,7 @@
   "button.remove": "Remove",
   "button.runManualExport": "Run manual export",
   "button.save": "Save",
+  "button.continue": "Continue",
 
   "showTags": "Show tags",
   "addTagFor": "Add tag for: {filterValue}",
@@ -138,6 +139,11 @@
   "settings.voucherNumber.reset": "Reset sequence",
   "settings.voucherNumber.allowVoucherNumberEdit": "Allow voucher number to be edited",
   "settings.voucherNumber.startNumber.error": "Start number could not be saved.",
+
+  "settings.actions.manualExport.heading": "Run manual export",
+  "settings.actions.manualExport.message": "All vouchers created since last export for the batch group {selectedBatchGroupName} will be exported and this process cannot be reversed",
+  "settings.runManualExport.success": "Vouchers have been successfully exported",
+  "settings.runManualExport.error": "Vouchers were not exported",
 
   "invoice.dateCreated": "Date created",
   "invoice.editLayer": "Edit invoice",
@@ -303,6 +309,6 @@
   "voucher.voucherLines.externalAccountNumber": "External account number",
   "voucher.voucherLines.amount": "Amount",
   "voucher.voucherLines.total": "Total: ",
-  
+
   "find-po-line-plugin-unavailable": "Find PO line plugin is not available"
 }

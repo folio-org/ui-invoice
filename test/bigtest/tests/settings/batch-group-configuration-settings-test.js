@@ -27,6 +27,7 @@ describe('Batch group configuration settings', function () {
     expect(setting.batchGroup).to.be.true;
     expect(setting.batchGroupSelect).to.be.false;
     expect(setting.saveButton.isDisabled).to.be.true;
+    expect(setting.runManualExportButton.isDisabled).to.be.true;
   });
 
   describe('select daily schedule export', () => {
@@ -76,7 +77,7 @@ describe('Batch group configuration settings', function () {
     });
   });
 
-  describe('save export configuraation', () => {
+  describe('save export configuration', () => {
     beforeEach(async function () {
       await setting.scheduleExport.select('Daily');
       await setting.startTime.fill('12:00 AM');

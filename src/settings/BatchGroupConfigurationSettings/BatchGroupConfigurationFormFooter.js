@@ -8,16 +8,17 @@ import {
 } from '@folio/stripes/components';
 
 const BatchGroupConfigurationFormFooter = ({
-  pristine,
-  submitting,
+  exportConfigId,
   handleSubmit,
+  pristine,
   runManualExport,
+  submitting,
 }) => {
   const start = (
     <Button
       buttonStyle="default mega"
       data-test-run-manual-export-button
-      disabled
+      disabled={!exportConfigId}
       onClick={runManualExport}
     >
       <FormattedMessage id="ui-invoice.button.runManualExport" />
@@ -49,6 +50,7 @@ BatchGroupConfigurationFormFooter.propTypes = {
   submitting: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   runManualExport: PropTypes.func.isRequired,
+  exportConfigId: PropTypes.string,
 };
 
 export default BatchGroupConfigurationFormFooter;

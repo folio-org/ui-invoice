@@ -6,9 +6,7 @@ import React, {
 import PropTypes from 'prop-types';
 
 import { LoadingPane } from '@folio/stripes/components';
-import {
-  useShowCallout,
-} from '@folio/stripes-acq-components';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
   batchGroupsResource,
@@ -17,8 +15,14 @@ import {
   exportConfigsResource,
 } from '../../common/resources';
 import { EXPORT_CONFIGURATIONS_API } from '../../common/constants';
-import { SCHEDULE_EXPORT } from './constants';
-import { createMockVoucherExport, saveExportConfig } from './utils';
+import {
+  RESULT_COUNT_INCREMENT,
+  SCHEDULE_EXPORT,
+} from './constants';
+import {
+  createManualVoucherExport,
+  saveExportConfig,
+} from './utils';
 import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
 
 const BatchGroupConfigurationSettings = ({ mutator }) => {
@@ -27,7 +31,10 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   const [selectedBatchGroupId, setSelectedBatchGroupId] = useState();
   const [exportConfig, setExportConfig] = useState();
   const [credentials, setCredentials] = useState();
+  const [batchVoucherExports, setBatchVoucherExports] = useState();
   const showCallout = useShowCallout();
+  const [recordsCount, setRecordsCount] = useState(0);
+  const [recordsOffset, setRecordsOffset] = useState(0);
 
   useEffect(() => {
     setIsLoading(true);
@@ -44,6 +51,39 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   },
   // eslint-disable-next-line react-hooks/exhaustive-deps
   []);
+
+  const fetchBatchVoucherExports = useCallback(
+    (_batchGroupId, offset = 0) => {
+      if (!_batchGroupId) return Promise.reject();
+
+      return mutator.batchVoucherExports.GET({
+        params: {
+          limit: RESULT_COUNT_INCREMENT,
+          offset,
+          query: `batchGroupId==${_batchGroupId} sortby end/sort.descending start/sort.descending`,
+        },
+      })
+        .then(recordsResponse => {
+          if (!offset) setRecordsCount(recordsResponse.totalRecords);
+          setBatchVoucherExports((prev) => [
+            ...(prev || []),
+            ...recordsResponse.batchVoucherExports,
+          ]);
+        })
+        .catch(() => setBatchVoucherExports([]));
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
+
+  const refreshList = useCallback(
+    () => {
+      setBatchVoucherExports([]);
+      setRecordsOffset(0);
+      fetchBatchVoucherExports(selectedBatchGroupId, 0);
+    },
+    [selectedBatchGroupId, fetchBatchVoucherExports],
+  );
 
   const fetchExportConfig = useCallback(
     (id) => {
@@ -76,15 +116,44 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   useEffect(
     () => {
       fetchExportConfig(selectedBatchGroupId);
+      refreshList();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [selectedBatchGroupId],
   );
 
+  const onNeedMoreData = useCallback(
+    () => {
+      const newOffset = recordsOffset + RESULT_COUNT_INCREMENT;
+
+      fetchBatchVoucherExports(selectedBatchGroupId, newOffset)
+        .then(() => {
+          setRecordsOffset(newOffset);
+        });
+    },
+    [selectedBatchGroupId, fetchBatchVoucherExports, recordsOffset],
+  );
+
   const runManualExport = useCallback(
-    () => createMockVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId),
+    () => {
+      const start = batchVoucherExports[0]?.end ||
+        batchGroups.find(({ id }) => id === selectedBatchGroupId)?.metadata.createdDate;
+
+      createManualVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId, start)
+        .then(() => {
+          refreshList();
+          showCallout({
+            messageId: 'ui-invoice.settings.runManualExport.success',
+            type: 'success',
+          });
+        })
+        .catch(() => showCallout({
+          messageId: 'ui-invoice.settings.runManualExport.error',
+          type: 'error',
+        }));
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedBatchGroupId],
+    [selectedBatchGroupId, batchVoucherExports, batchGroups, showCallout],
   );
 
   const onSave = useCallback(
@@ -120,7 +189,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
     }
     : { batchGroupId: selectedBatchGroupId };
 
-  if (isLoading) {
+  if (isLoading || !exportConfig) {
     return (
       <LoadingPane defaultWidth="fill" />
     );
@@ -129,11 +198,14 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   return (
     <BatchGroupConfigurationForm
       batchGroups={batchGroups}
+      batchVoucherExports={batchVoucherExports}
       initialValues={initialValues}
       onSubmit={onSave}
       selectedBatchGroupId={selectedBatchGroupId}
       selectBatchGroup={setSelectedBatchGroupId}
       runManualExport={runManualExport}
+      onNeedMoreData={onNeedMoreData}
+      recordsCount={recordsCount}
     />
   );
 };
@@ -146,7 +218,10 @@ BatchGroupConfigurationSettings.manifest = Object.freeze({
     path: `${EXPORT_CONFIGURATIONS_API}/%{exportConfigId.id}/credentials`,
   },
   exportConfigId: {},
-  batchVoucherExports: batchVoucherExportsResource,
+  batchVoucherExports: {
+    ...batchVoucherExportsResource,
+    records: null,
+  },
 });
 
 BatchGroupConfigurationSettings.propTypes = {
