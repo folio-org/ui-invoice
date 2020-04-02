@@ -159,7 +159,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
     }
     : { batchGroupId: selectedBatchGroupId };
 
-  if (isLoading) {
+  if (isLoading || !exportConfig) {
     return (
       <LoadingPane defaultWidth="fill" />
     );

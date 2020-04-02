@@ -7,7 +7,10 @@ import {
   value,
 } from '@bigtest/interactor';
 
-import { ButtonInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+import {
+  ButtonInteractor,
+  ConfirmationInteractor,
+} from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 @interactor class ScheduleExportInteractor {
   static defaultScope = 'select[name="scheduleExport"]';
@@ -40,6 +43,7 @@ export default @interactor class BatchGroupConfigurationSettingsInteractor {
   validationMessage = text('[class*=feedbackError---]');
 
   batchVoucherExports = new BatchVoucherExports('#batch-voucher-exports');
+  manualExportConfirmation = new ConfirmationInteractor('#run-manual-export-confirmation');
   isLoaded = isPresent('#pane-batch-group-configuration');
 
   whenLoaded() {
