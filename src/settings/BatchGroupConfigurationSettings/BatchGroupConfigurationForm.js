@@ -41,7 +41,9 @@ const BatchGroupConfigurationForm = ({
   batchVoucherExports,
   form,
   handleSubmit,
+  onNeedMoreData,
   pristine,
+  recordsCount,
   runManualExport,
   selectBatchGroup,
   selectedBatchGroupId,
@@ -197,7 +199,11 @@ const BatchGroupConfigurationForm = ({
           </Button>
         </Col>
       </Row>
-      <BatchVoucherExportsList batchVoucherExports={batchVoucherExports} />
+      <BatchVoucherExportsList
+        batchVoucherExports={batchVoucherExports}
+        onNeedMoreData={onNeedMoreData}
+        recordsCount={recordsCount}
+      />
 
       {isManualExportConfirmation && (
         <ConfirmationModal
@@ -224,7 +230,9 @@ BatchGroupConfigurationForm.propTypes = {
   batchVoucherExports: PropTypes.arrayOf(PropTypes.object),
   form: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
+  onNeedMoreData: PropTypes.func,
   pristine: PropTypes.bool,
+  recordsCount: PropTypes.number,
   runManualExport: PropTypes.func.isRequired,
   selectBatchGroup: PropTypes.func.isRequired,
   selectedBatchGroupId: PropTypes.string,

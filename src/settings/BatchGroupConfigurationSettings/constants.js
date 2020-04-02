@@ -27,3 +27,5 @@ export const SCHEDULE_EXPORT_OPTIONS = Object.values(SCHEDULE_EXPORT).map(schedu
   labelId: `ui-invoice.settings.batchGroupConfiguration.scheduleExport.${schedule}`,
   value: schedule,
 }));
+
+export const RESULT_COUNT_INCREMENT = 10;

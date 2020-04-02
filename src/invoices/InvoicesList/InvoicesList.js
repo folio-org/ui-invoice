@@ -145,6 +145,7 @@ const InvoicesList = ({
           sortOrder={sortingField}
           sortDirection={sortingDirection}
           onHeaderClick={changeSorting}
+          pagingType="click"
         />
       </ResultsPane>
 
