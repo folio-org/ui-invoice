@@ -131,7 +131,7 @@ class InvoiceLineDetails extends Component {
           onToggle={this.toggleSection}
         >
           <Accordion
-            id={SECTIONS_INVOICE_LINE.invoiceLineInformation}
+            id={SECTIONS_INVOICE_LINE.information}
             label={<FormattedMessage id="ui-invoice.invoiceLineInformation" />}
           >
             <InvoiceLineInformation

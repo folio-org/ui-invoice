@@ -19,7 +19,7 @@ import TagsAction from './common/TagsAction';
 }
 
 @interactor class Adjustments {
-  static defaultScope = '#adjustments';
+  static defaultScope = '#invoiceLineAdjustments';
   list = collection('#invoice-lines-adjustments-list [class*=mclRow---]', {
     rowText: text(),
   });

@@ -55,6 +55,7 @@ import {
 import {
   ApprovedBy,
 } from '../../common/components';
+import { SECTIONS_INVOICE as SECTIONS } from '../constants';
 import AdjustmentsForm from '../AdjustmentsForm';
 import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
@@ -65,14 +66,6 @@ const CREATE_UNITS_PERM = 'invoice.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
 
 export const INVOICE_FORM = 'invoiceForm';
-const SECTIONS = {
-  invoiceInformation: 'invoiceInformation',
-  extendedInformation: 'extendedInformation',
-  adjustments: 'adjustments',
-  vendorInformation: 'vendorInformation',
-  voucherInformation: 'voucherInformation',
-  documents: 'documents',
-};
 
 class InvoiceForm extends Component {
   static propTypes = {
@@ -94,7 +87,7 @@ class InvoiceForm extends Component {
     super(props);
     this.state = {
       sections: {
-        [SECTIONS.voucherInformation]: false,
+        [SECTIONS.INFORMATION]: false,
       },
       selectedVendor: undefined,
     };
@@ -188,7 +181,7 @@ class InvoiceForm extends Component {
                 </Row>
                 <AccordionSet accordionStatus={sections} onToggle={this.toggleSection}>
                   <Accordion
-                    id={SECTIONS.invoiceInformation}
+                    id={SECTIONS.INFORMATION}
                     label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
                   >
                     {metadata && <ViewMetaData metadata={metadata} />}
@@ -317,7 +310,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion>
                   <Accordion
-                    id={SECTIONS.adjustments}
+                    id={SECTIONS.ADJUSTMENTS}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
                   >
                     <AdjustmentsForm
@@ -328,7 +321,7 @@ class InvoiceForm extends Component {
                     />
                   </Accordion>
                   <Accordion
-                    id={SECTIONS.vendorInformation}
+                    id={SECTIONS.VENDOR_DETAILS}
                     label={<FormattedMessage id="ui-invoice.vendorInformation" />}
                   >
                     <Row>
@@ -368,7 +361,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion>
                   <Accordion
-                    id={SECTIONS.extendedInformation}
+                    id={SECTIONS.EXRENDED_INFORMATION}
                     label={<FormattedMessage id="ui-invoice.extendedInformation" />}
                   >
                     <Row>
@@ -424,7 +417,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion>
                   {/* <Accordion
-                    id={SECTIONS.voucherInformation}
+                    id={SECTIONS.VOUCHER}
                     label={<FormattedMessage id="ui-invoice.voucherInformation" />}
                   >
                     <Row>
@@ -442,7 +435,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion> */}
                   <Accordion
-                    id={SECTIONS.documents}
+                    id={SECTIONS.DOCUMENTS}
                     label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
                   >
                     <Row>

@@ -4,14 +4,15 @@ export const SECTIONS_INVOICE = {
   VENDOR_DETAILS: 'vendorDetails',
   VOUCHER: 'voucher',
   DOCUMENTS: 'documents',
-  ADJUSTMENTS: 'adjustments',
-  FUND_DISTRIBUTION: 'fundDistribution',
+  ADJUSTMENTS: 'invoiceAdjustments',
+  FUND_DISTRIBUTION: 'invoiceFundDistribution',
+  EXRENDED_INFORMATION: 'extendedInformation',
 };
 
 export const SECTIONS_INVOICE_LINE = {
-  invoiceLineInformation: 'invoiceLineInformation',
-  fundDistribution: 'fundDistribution',
-  adjustments: 'adjustments',
+  information: 'invoiceLineInformation',
+  fundDistribution: 'invoiceLineFundDistribution',
+  adjustments: 'invoiceLineAdjustments',
 };
 
 export const SECTIONS_VOUCHER = {

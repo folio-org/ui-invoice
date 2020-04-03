@@ -151,7 +151,7 @@ class InvoiceLineForm extends Component {
                 </Row>
                 <AccordionSet accordionStatus={sections} onToggle={this.toggleSection}>
                   <Accordion
-                    id={SECTIONS.invoiceLineInformation}
+                    id={SECTIONS.information}
                     label={<FormattedMessage id="ui-invoice.invoiceLineInformation" />}
                   >
                     {metadata && <ViewMetaData metadata={metadata} />}
