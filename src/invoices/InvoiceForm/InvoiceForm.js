@@ -87,7 +87,7 @@ class InvoiceForm extends Component {
     super(props);
     this.state = {
       sections: {
-        [SECTIONS.INFORMATION]: false,
+        [SECTIONS.information]: false,
       },
       selectedVendor: undefined,
     };
@@ -181,7 +181,7 @@ class InvoiceForm extends Component {
                 </Row>
                 <AccordionSet accordionStatus={sections} onToggle={this.toggleSection}>
                   <Accordion
-                    id={SECTIONS.INFORMATION}
+                    id={SECTIONS.information}
                     label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
                   >
                     {metadata && <ViewMetaData metadata={metadata} />}
@@ -310,7 +310,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion>
                   <Accordion
-                    id={SECTIONS.ADJUSTMENTS}
+                    id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
                   >
                     <AdjustmentsForm
@@ -321,7 +321,7 @@ class InvoiceForm extends Component {
                     />
                   </Accordion>
                   <Accordion
-                    id={SECTIONS.VENDOR_DETAILS}
+                    id={SECTIONS.vendorDetails}
                     label={<FormattedMessage id="ui-invoice.vendorInformation" />}
                   >
                     <Row>
@@ -361,7 +361,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion>
                   <Accordion
-                    id={SECTIONS.EXRENDED_INFORMATION}
+                    id={SECTIONS.extendedInformation}
                     label={<FormattedMessage id="ui-invoice.extendedInformation" />}
                   >
                     <Row>
@@ -417,7 +417,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion>
                   {/* <Accordion
-                    id={SECTIONS.VOUCHER}
+                    id={SECTIONS.voucher}
                     label={<FormattedMessage id="ui-invoice.voucherInformation" />}
                   >
                     <Row>
@@ -435,7 +435,7 @@ class InvoiceForm extends Component {
                     </Row>
                   </Accordion> */}
                   <Accordion
-                    id={SECTIONS.DOCUMENTS}
+                    id={SECTIONS.documents}
                     label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
                   >
                     <Row>

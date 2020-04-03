@@ -60,7 +60,7 @@ function InvoiceDetails({
   const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const [expandAll, sections, toggleSection] = useAccordionToggle({
-    [SECTIONS_INVOICE.DOCUMENTS]: false,
+    [SECTIONS_INVOICE.documents]: false,
   });
 
   // eslint-disable-next-line react/prop-types
@@ -164,7 +164,7 @@ function InvoiceDetails({
         >
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
-            id={SECTIONS_INVOICE.INFORMATION}
+            id={SECTIONS_INVOICE.information}
           >
             <Information
               adjustmentsTotal={invoice.adjustmentsTotal}
@@ -186,7 +186,7 @@ function InvoiceDetails({
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
-            id={SECTIONS_INVOICE.LINES}
+            id={SECTIONS_INVOICE.lines}
             displayWhenOpen={renderLinesActions}
             displayWhenClosed={
               <div className={styles.invoiceLinesCount}>
@@ -200,7 +200,7 @@ function InvoiceDetails({
             />
           </Accordion>
           <Accordion
-            id={SECTIONS_INVOICE.FUND_DISTRIBUTION}
+            id={SECTIONS_INVOICE.fundDistribution}
             label={<FormattedMessage id="ui-invoice.fundDistribution" />}
           >
             <FundDistributionView
@@ -210,7 +210,7 @@ function InvoiceDetails({
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.adjustments" />}
-            id={SECTIONS_INVOICE.ADJUSTMENTS}
+            id={SECTIONS_INVOICE.adjustments}
           >
             <AdjustmentsDetails
               adjustments={adjustments}
@@ -219,7 +219,7 @@ function InvoiceDetails({
           </Accordion>
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
-            id={SECTIONS_INVOICE.VENDOR_DETAILS}
+            id={SECTIONS_INVOICE.vendorDetails}
           >
             <VendorDetails
               vendorInvoiceNo={vendorInvoiceNo}
@@ -230,7 +230,7 @@ function InvoiceDetails({
           {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
           <Accordion
             label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
-            id={SECTIONS_INVOICE.DOCUMENTS}
+            id={SECTIONS_INVOICE.documents}
           >
             <DocumentsDetails />
           </Accordion>

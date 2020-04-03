@@ -1,12 +1,12 @@
 export const SECTIONS_INVOICE = {
-  INFORMATION: 'information',
-  LINES: 'invoiceLines',
-  VENDOR_DETAILS: 'vendorDetails',
-  VOUCHER: 'voucher',
-  DOCUMENTS: 'documents',
-  ADJUSTMENTS: 'invoiceAdjustments',
-  FUND_DISTRIBUTION: 'invoiceFundDistribution',
-  EXRENDED_INFORMATION: 'extendedInformation',
+  information: 'information',
+  lines: 'invoiceLines',
+  vendorDetails: 'vendorDetails',
+  voucher: 'voucher',
+  documents: 'documents',
+  adjustments: 'invoiceAdjustments',
+  fundDistribution: 'invoiceFundDistribution',
+  extendedInformation: 'extendedInformation',
 };
 
 export const SECTIONS_INVOICE_LINE = {

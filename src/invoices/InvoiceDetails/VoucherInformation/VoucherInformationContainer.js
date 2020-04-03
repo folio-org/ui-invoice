@@ -68,7 +68,7 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }
   return (
     <Accordion
       label={<FormattedMessage id="ui-invoice.invoice.details.voucher.title" />}
-      id={SECTIONS_INVOICE.VOUCHER}
+      id={SECTIONS_INVOICE.voucher}
       displayWhenOpen={viewVoucherButton}
     >
       <VoucherInformation
