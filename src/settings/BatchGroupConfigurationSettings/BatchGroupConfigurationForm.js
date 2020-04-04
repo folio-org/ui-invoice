@@ -150,6 +150,7 @@ const BatchGroupConfigurationForm = ({
         >
           <Field
             component={TextField}
+            id="uploadURI"
             label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.uploadLocation" />}
             name="uploadURI"
             type="text"
@@ -176,6 +177,7 @@ const BatchGroupConfigurationForm = ({
           xs={4}
         >
           <Field
+            id="username"
             label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
             name="username"
             component={TextField}

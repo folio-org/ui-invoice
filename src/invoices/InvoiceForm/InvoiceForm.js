@@ -212,6 +212,7 @@ class InvoiceForm extends Component {
                         <Field
                           component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
+                          id="paymentTerms"
                           name="paymentTerms"
                           disabled={isEditPostApproval}
                           type="text"
@@ -249,6 +250,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-sub-total xs={3}>
                         <Field
                           component={TextField}
+                          id="subTotal"
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}
                           name="subTotal"
                           disabled
@@ -259,6 +261,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-adjustments-total xs={3}>
                         <Field
                           component={TextField}
+                          id="adjustmentsTotal"
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}
                           name="adjustmentsTotal"
                           disabled
@@ -269,6 +272,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-total xs={3}>
                         <Field
                           component={TextField}
+                          id="total"
                           label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}
                           name="total"
                           disabled
@@ -295,6 +299,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-note xs={3}>
                         <Field
                           component={TextArea}
+                          id="note"
                           label={<FormattedMessage id="ui-invoice.invoice.note" />}
                           name="note"
                           type="text"
@@ -330,6 +335,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-vendor-invoice-no xs={3}>
                         <Field
                           component={TextField}
+                          id="vendorInvoiceNo"
                           label={<FormattedMessage id="ui-invoice.invoice.vendorInvoiceNo" />}
                           name="vendorInvoiceNo"
                           required
@@ -369,6 +375,7 @@ class InvoiceForm extends Component {
                       <Col data-test-col-folio-invoice-no xs={3}>
                         <Field
                           component={TextField}
+                          id="folioInvoiceNo"
                           label={<FormattedMessage id="ui-invoice.invoice.folioInvoiceNo" />}
                           name="folioInvoiceNo"
                           disabled

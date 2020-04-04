@@ -126,6 +126,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
             <Field
               component={TextField}
               fullWidth
+              id={`${elem}.description`}
               label={<FormattedMessage id="ui-invoice.adjustment.description" />}
               name={`${elem}.description`}
               required
@@ -140,6 +141,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
             <Field
               component={TextField}
               fullWidth
+              id={`${elem}.value`}
               label={<FormattedMessage id="ui-invoice.adjustment.amount" />}
               name={`${elem}.value`}
               required

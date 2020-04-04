@@ -159,6 +159,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-description xs={3}>
                         <Field
                           component={TextField}
+                          id="description"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.description" />}
                           name="description"
                           required
@@ -169,6 +170,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-number xs={3}>
                         <Field
                           component={TextField}
+                          id="invoiceLineNumber"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineNumber" />}
                           name="invoiceLineNumber"
                           disabled
@@ -179,6 +181,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-status xs={3}>
                         <Field
                           component={TextField}
+                          id="invoiceLineStatus"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineStatus" />}
                           name="invoiceLineStatus"
                           disabled
@@ -189,6 +192,7 @@ class InvoiceLineForm extends Component {
                         <Field
                           component={TextField}
                           disabled={isEditPostApproval}
+                          id="subscriptionInfo"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionInfo" />}
                           name="subscriptionInfo"
                         />
@@ -211,6 +215,7 @@ class InvoiceLineForm extends Component {
                         <Field
                           component={TextField}
                           disabled={isEditPostApproval}
+                          id="quantity"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.quantity" />}
                           name="quantity"
                           required
@@ -221,6 +226,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-sub-total xs={3}>
                         <Field
                           component={TextField}
+                          id="subTotal"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}
                           name="subTotal"
                           required
@@ -232,6 +238,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-vendor-ref-no xs={3}>
                         <Field
                           component={TextField}
+                          id="vendorRefNo"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
                           name="vendorRefNo"
                         />
@@ -239,6 +246,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-account-number xs={3}>
                         <Field
                           component={TextField}
+                          id="accountingCode"
                           label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
                           name="accountingCode"
                           disabled
@@ -257,6 +265,7 @@ class InvoiceLineForm extends Component {
                       <Col data-test-col-invoice-line-comment xs={3}>
                         <Field
                           component={TextField}
+                          id="comment"
                           label={<FormattedMessage id="ui-invoice.invoiceLine.comment" />}
                           name="comment"
                         />
