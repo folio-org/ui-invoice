@@ -18,6 +18,7 @@ const SettingsVoucherNumberForm = () => (
       <Col xs={12}>
         <Field
           component={TextField}
+          id="voucherNumberPrefix"
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.prefix" />}
           name="voucherNumberPrefix"
         />

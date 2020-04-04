@@ -56,6 +56,7 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
       <Row>
         <Col xs={12}>
           <TextField
+            id="sequenceNumber"
             label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
             name="sequenceNumber"
             type="number"

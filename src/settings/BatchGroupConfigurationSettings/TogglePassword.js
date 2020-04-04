@@ -20,6 +20,7 @@ const TogglePassword = ({ name }) => {
           autoComplete="new-password"
           component={TextField}
           fullWidth
+          id={name}
           label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.password" />}
           name={name}
           type={showPassword ? 'text' : 'password'}

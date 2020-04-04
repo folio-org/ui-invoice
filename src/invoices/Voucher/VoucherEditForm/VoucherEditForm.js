@@ -67,6 +67,7 @@ const VoucherEditForm = ({
           <Col xs={3}>
             <Field
               component={TextField}
+              id="voucherNumber"
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
               name="voucherNumber"
               disabled={!isAllowVoucherNumberEdit}
@@ -75,6 +76,7 @@ const VoucherEditForm = ({
           <Col xs={3}>
             <Field
               component={TextField}
+              id="disbursementNumber"
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
               name="disbursementNumber"
             />
@@ -88,6 +90,7 @@ const VoucherEditForm = ({
           <Col xs={3}>
             <Field
               component={TextField}
+              id="disbursementAmount"
               label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
               name="disbursementAmount"
             />
