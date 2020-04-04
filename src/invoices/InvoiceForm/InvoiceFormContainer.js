@@ -33,8 +33,8 @@ import { LoadingPane } from '../../common/components';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
-
-import InvoiceForm, { INVOICE_FORM } from './InvoiceForm';
+import { INVOICE_FORM } from '../constants';
+import InvoiceForm from './InvoiceForm';
 import {
   saveInvoice,
   getAlwaysShownAdjustmentsList,

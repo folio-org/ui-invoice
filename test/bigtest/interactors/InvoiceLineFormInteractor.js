@@ -27,7 +27,7 @@ export default interactor(class InvoiceLineFormInteractor {
   description = new TextFieldInteractor('input[name="description"]');
   quantity = new TextFieldInteractor('input[name="quantity"]');
   subTotal = new TextFieldInteractor('input[name="subTotal"]');
-  isLoaded = isPresent('#invoiceLineInformation');
+  isLoaded = isPresent('#invoiceLineForm-information');
   accountNumberButton = new Interactor('#invoice-line-account-number');
   accountNumberOptions = new OptionListInteractor('#sl-invoice-line-account-number');
   adjustmentsForm = new AdjustmentsForm();
