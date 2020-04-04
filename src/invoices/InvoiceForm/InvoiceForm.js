@@ -173,13 +173,23 @@ class InvoiceForm extends Component {
             paneTitle={paneTitle}
           >
             <Row>
-              <Col xs={12} md={8} mdOffset={2}>
+              <Col
+                xs={12}
+                md={8}
+                mdOffset={2}
+              >
                 <Row end="xs">
                   <Col xs={12}>
-                    <ExpandAllButton accordionStatus={sections} onToggle={this.expandAll} />
+                    <ExpandAllButton
+                      accordionStatus={sections}
+                      onToggle={this.expandAll}
+                    />
                   </Col>
                 </Row>
-                <AccordionSet accordionStatus={sections} onToggle={this.toggleSection}>
+                <AccordionSet
+                  accordionStatus={sections}
+                  onToggle={this.toggleSection}
+                >
                   <Accordion
                     id={SECTIONS.information}
                     label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
