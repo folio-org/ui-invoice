@@ -1,9 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
   AccordionSet,
+  AccordionStatus,
   Accordion,
   Col,
   Row,
@@ -15,47 +16,33 @@ import { SECTIONS_VOUCHER } from '../constants';
 import VoucherDetails from './VoucherDetails';
 import VoucherLinesDetails from './VoucherLinesDetails';
 
-const VoucherView = ({ voucher, voucherLines }) => {
-  const [sections, setSections] = useState({});
-
-  const expandAll = useCallback(
-    (allSections) => {
-      setSections(allSections);
-    },
-    [],
-  );
-
-  return (
-    <>
-      <Row end="xs">
-        <Col xs={12}>
-          <ExpandAllButton
-            accordionStatus={sections}
-            onToggle={expandAll}
-          />
-        </Col>
-      </Row>
-      <AccordionSet accordionStatus={sections}>
-        <Accordion
-          label={<FormattedMessage id="ui-invoice.voucher.voucherTitle" />}
-          id={SECTIONS_VOUCHER.VOUCHER}
-        >
-          {voucher.metadata && <ViewMetaData metadata={voucher.metadata} />}
-          <VoucherDetails voucher={voucher} />
-        </Accordion>
-        <Accordion
-          label={<FormattedMessage id="ui-invoice.voucher.voucherLinesTitle" />}
-          id={SECTIONS_VOUCHER.VOUCHER_LINES}
-        >
-          <VoucherLinesDetails
-            voucherLines={voucherLines}
-            currency={voucher.invoiceCurrency}
-          />
-        </Accordion>
-      </AccordionSet>
-    </>
-  );
-};
+const VoucherView = ({ voucher, voucherLines }) => (
+  <AccordionStatus>
+    <Row end="xs">
+      <Col xs={12}>
+        <ExpandAllButton />
+      </Col>
+    </Row>
+    <AccordionSet>
+      <Accordion
+        label={<FormattedMessage id="ui-invoice.voucher.voucherTitle" />}
+        id={SECTIONS_VOUCHER.voucher}
+      >
+        {voucher.metadata && <ViewMetaData metadata={voucher.metadata} />}
+        <VoucherDetails voucher={voucher} />
+      </Accordion>
+      <Accordion
+        label={<FormattedMessage id="ui-invoice.voucher.voucherLinesTitle" />}
+        id={SECTIONS_VOUCHER.voucherLines}
+      >
+        <VoucherLinesDetails
+          voucherLines={voucherLines}
+          currency={voucher.invoiceCurrency}
+        />
+      </Accordion>
+    </AccordionSet>
+  </AccordionStatus>
+);
 
 VoucherView.propTypes = {
   voucher: PropTypes.object.isRequired,

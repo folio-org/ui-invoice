@@ -6,6 +6,7 @@ import { get } from 'lodash';
 import {
   Accordion,
   AccordionSet,
+  AccordionStatus,
   Col,
   ConfirmationModal,
   ExpandAllButton,
@@ -24,10 +25,6 @@ import InvoiceLineInformation from './InvoiceLineInformation';
 import {
   SECTIONS_INVOICE_LINE,
 } from '../constants';
-import {
-  expandAll,
-  toggleSection,
-} from '../../common/utils';
 import AdjustmentsDetails from '../AdjustmentsDetails';
 
 class InvoiceLineDetails extends Component {
@@ -45,14 +42,7 @@ class InvoiceLineDetails extends Component {
     poLineNumber: '',
   }
 
-  constructor(props, context) {
-    super(props, context);
-    this.expandAll = expandAll.bind(this);
-    this.toggleSection = toggleSection.bind(this);
-  }
-
   state = {
-    sections: {},
     showConfirmDelete: false,
   };
 
@@ -86,7 +76,7 @@ class InvoiceLineDetails extends Component {
       poLineNumber,
       tagsToggle,
     } = this.props;
-    const { sections, showConfirmDelete } = this.state;
+    const { showConfirmDelete } = this.state;
     const { invoiceLineNumber, adjustments } = invoiceLine;
     const tags = get(invoiceLine, ['tags', 'tagList'], []);
     const fundDistributions = get(invoiceLine, 'fundDistributions');
@@ -118,48 +108,44 @@ class InvoiceLineDetails extends Component {
         actionMenu={this.renderActionMenu}
         lastMenu={lastMenu}
       >
-        <Row end="xs">
-          <Col xs={12}>
-            <ExpandAllButton
-              accordionStatus={sections}
-              onToggle={this.expandAll}
-            />
-          </Col>
-        </Row>
-        <AccordionSet
-          accordionStatus={sections}
-          onToggle={this.toggleSection}
-        >
-          <Accordion
-            id={SECTIONS_INVOICE_LINE.information}
-            label={<FormattedMessage id="ui-invoice.invoiceLineInformation" />}
-          >
-            <InvoiceLineInformation
-              currency={currency}
-              invoiceLine={invoiceLine}
-              poLineNumber={poLineNumber}
-            />
-          </Accordion>
-          <Accordion
-            id={SECTIONS_INVOICE_LINE.fundDistribution}
-            label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-          >
-            <FundDistributionView
-              currency={currency}
-              fundDistributions={fundDistributions}
-              totalAmount={total}
-            />
-          </Accordion>
-          <Accordion
-            id={SECTIONS_INVOICE_LINE.adjustments}
-            label={<FormattedMessage id="ui-invoice.adjustments" />}
-          >
-            <AdjustmentsDetails
-              adjustments={adjustments}
-              currency={currency}
-            />
-          </Accordion>
-        </AccordionSet>
+        <AccordionStatus>
+          <Row end="xs">
+            <Col xs={12}>
+              <ExpandAllButton />
+            </Col>
+          </Row>
+          <AccordionSet>
+            <Accordion
+              id={SECTIONS_INVOICE_LINE.information}
+              label={<FormattedMessage id="ui-invoice.invoiceLineInformation" />}
+            >
+              <InvoiceLineInformation
+                currency={currency}
+                invoiceLine={invoiceLine}
+                poLineNumber={poLineNumber}
+              />
+            </Accordion>
+            <Accordion
+              id={SECTIONS_INVOICE_LINE.fundDistribution}
+              label={<FormattedMessage id="ui-invoice.fundDistribution" />}
+            >
+              <FundDistributionView
+                currency={currency}
+                fundDistributions={fundDistributions}
+                totalAmount={total}
+              />
+            </Accordion>
+            <Accordion
+              id={SECTIONS_INVOICE_LINE.adjustments}
+              label={<FormattedMessage id="ui-invoice.adjustments" />}
+            >
+              <AdjustmentsDetails
+                adjustments={adjustments}
+                currency={currency}
+              />
+            </Accordion>
+          </AccordionSet>
+        </AccordionStatus>
         {showConfirmDelete && (
           <ConfirmationModal
             id="delete-invoice-line-confirmation"

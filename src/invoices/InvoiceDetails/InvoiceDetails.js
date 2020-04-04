@@ -6,6 +6,7 @@ import { get } from 'lodash';
 import {
   Accordion,
   AccordionSet,
+  AccordionStatus,
   Col,
   ConfirmationModal,
   ExpandAllButton,
@@ -16,7 +17,6 @@ import {
 import {
   FundDistributionView,
   useModalToggle,
-  useAccordionToggle,
   TagsBadge,
   TagsPane,
 } from '@folio/stripes-acq-components';
@@ -27,7 +27,7 @@ import {
 } from '../../common/utils';
 import { INVOICE_STATUS } from '../../common/constants';
 import {
-  SECTIONS_INVOICE,
+  SECTIONS_INVOICE as SECTIONS,
 } from '../constants';
 import InvoiceActions from './InvoiceActions';
 import Information from './Information';
@@ -59,9 +59,6 @@ function InvoiceDetails({
   const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
   const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
-  const [expandAll, sections, toggleSection] = useAccordionToggle({
-    [SECTIONS_INVOICE.documents]: false,
-  });
 
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
@@ -150,91 +147,87 @@ function InvoiceDetails({
         actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
-        <Row end="xs">
-          <Col xs={12}>
-            <ExpandAllButton
-              accordionStatus={sections}
-              onToggle={expandAll}
-            />
-          </Col>
-        </Row>
-        <AccordionSet
-          accordionStatus={sections}
-          onToggle={toggleSection}
-        >
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
-            id={SECTIONS_INVOICE.information}
-          >
-            <Information
-              adjustmentsTotal={invoice.adjustmentsTotal}
-              approvalDate={invoice.approvalDate}
-              approvedBy={invoice.approvedBy}
-              invoiceDate={invoice.invoiceDate}
-              paymentDue={invoice.paymentDue}
-              paymentTerms={invoice.paymentTerms}
-              status={invoice.status}
-              subTotal={invoice.subTotal}
-              total={invoice.total}
-              source={invoice.source}
-              metadata={invoice.metadata}
-              billTo={invoice.billTo}
-              invoiceTotalUnits={invoiceTotalUnits}
-              acqUnits={invoice.acqUnitIds}
-              currency={invoice.currency}
-            />
-          </Accordion>
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
-            id={SECTIONS_INVOICE.lines}
-            displayWhenOpen={renderLinesActions}
-            displayWhenClosed={
-              <div className={styles.invoiceLinesCount}>
-                {totalInvoiceLines}
-              </div>
-            }
-          >
-            <InvoiceLinesContainer
-              currency={invoice.currency}
-              invoiceLines={invoiceLines}
-            />
-          </Accordion>
-          <Accordion
-            id={SECTIONS_INVOICE.fundDistribution}
-            label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-          >
-            <FundDistributionView
-              currency={invoice.currency}
-              fundDistributions={fundDistributions}
-            />
-          </Accordion>
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.adjustments" />}
-            id={SECTIONS_INVOICE.adjustments}
-          >
-            <AdjustmentsDetails
-              adjustments={adjustments}
-              currency={invoice.currency}
-            />
-          </Accordion>
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
-            id={SECTIONS_INVOICE.vendorDetails}
-          >
-            <VendorDetails
-              vendorInvoiceNo={vendorInvoiceNo}
-              vendorId={invoice.vendorId}
-              accountingCode={invoice.accountingCode}
-            />
-          </Accordion>
-          {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
-            id={SECTIONS_INVOICE.documents}
-          >
-            <DocumentsDetails />
-          </Accordion>
-        </AccordionSet>
+        <AccordionStatus>
+          <Row end="xs">
+            <Col xs={12}>
+              <ExpandAllButton />
+            </Col>
+          </Row>
+          <AccordionSet initialStatus={{ [SECTIONS.documents]: false }}>
+            <Accordion
+              label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
+              id={SECTIONS.information}
+            >
+              <Information
+                adjustmentsTotal={invoice.adjustmentsTotal}
+                approvalDate={invoice.approvalDate}
+                approvedBy={invoice.approvedBy}
+                invoiceDate={invoice.invoiceDate}
+                paymentDue={invoice.paymentDue}
+                paymentTerms={invoice.paymentTerms}
+                status={invoice.status}
+                subTotal={invoice.subTotal}
+                total={invoice.total}
+                source={invoice.source}
+                metadata={invoice.metadata}
+                billTo={invoice.billTo}
+                invoiceTotalUnits={invoiceTotalUnits}
+                acqUnits={invoice.acqUnitIds}
+                currency={invoice.currency}
+              />
+            </Accordion>
+            <Accordion
+              label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
+              id={SECTIONS.lines}
+              displayWhenOpen={renderLinesActions}
+              displayWhenClosed={
+                <div className={styles.invoiceLinesCount}>
+                  {totalInvoiceLines}
+                </div>
+              }
+            >
+              <InvoiceLinesContainer
+                currency={invoice.currency}
+                invoiceLines={invoiceLines}
+              />
+            </Accordion>
+            <Accordion
+              id={SECTIONS.fundDistribution}
+              label={<FormattedMessage id="ui-invoice.fundDistribution" />}
+            >
+              <FundDistributionView
+                currency={invoice.currency}
+                fundDistributions={fundDistributions}
+              />
+            </Accordion>
+            <Accordion
+              label={<FormattedMessage id="ui-invoice.adjustments" />}
+              id={SECTIONS.adjustments}
+            >
+              <AdjustmentsDetails
+                adjustments={adjustments}
+                currency={invoice.currency}
+              />
+            </Accordion>
+            <Accordion
+              label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
+              id={SECTIONS.vendorDetails}
+            >
+              <VendorDetails
+                vendorInvoiceNo={vendorInvoiceNo}
+                vendorId={invoice.vendorId}
+                accountingCode={invoice.accountingCode}
+              />
+            </Accordion>
+            {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
+            <Accordion
+              label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
+              id={SECTIONS.documents}
+            >
+              <DocumentsDetails />
+            </Accordion>
+          </AccordionSet>
+        </AccordionStatus>
         {showConfirmDelete && (
           <ConfirmationModal
             id="delete-invoice-confirmation"

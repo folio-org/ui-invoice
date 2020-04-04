@@ -40,7 +40,7 @@ import FormFooterInteractor from './common/FormFooter';
 
 export default interactor(class InvoiceForm {
   static defaultScope = '#pane-invoice-form';
-  isLoaded = isPresent('#information');
+  isLoaded = isPresent('#invoiceForm-information');
   termsInput = new TextFieldInteractor('input[name="paymentTerms"]');
   termsInputValue = value('input[name="paymentTerms"]');
   vendorInvoiceNo = new Interactor('input[name="vendorInvoiceNo"]');
@@ -49,7 +49,7 @@ export default interactor(class InvoiceForm {
   paymentMethod = new PaymentMethodInteractor();
   status = new StatusInteractor();
   vendorField = new Interactor('input[name="vendorId"]');
-  invoiceInformation = new Interactor('#accordion-toggle-button-information');
+  invoiceInformation = new Interactor('#accordion-toggle-button-invoiceForm-information');
   documentsAndLinks = new DocumentsInteractor();
   formFooter = new FormFooterInteractor();
 
