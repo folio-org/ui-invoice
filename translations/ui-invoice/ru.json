@@ -272,7 +272,7 @@
     "settings.BatchVoucherExports.status.generated": "Cозданный",
     "settings.BatchVoucherExports.status.uploaded": "Загружен",
     "settings.BatchVoucherExports.status.error": "Ошибка",
-    "button.continue": "Continue",
+    "button.continue": "Продолжить",
     "settings.actions.manualExport.heading": "Run manual export",
     "settings.actions.manualExport.message": "All vouchers created since last export for the batch group {selectedBatchGroupName} will be exported and this process cannot be reversed",
     "settings.runManualExport.success": "Vouchers have been successfully exported",
