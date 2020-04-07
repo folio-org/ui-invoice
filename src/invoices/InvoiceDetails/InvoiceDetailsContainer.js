@@ -17,7 +17,6 @@ import {
   invoiceLinesResource,
 } from '../../common/resources';
 import {
-  BATCH_GROUPS_API,
   INVOICE_STATUS,
   VENDORS_API,
 } from '../../common/constants';
@@ -61,7 +60,7 @@ function InvoiceDetailsContainer({
 
           return Promise.all([vendorPromise, invoiceLinesPromise, approvalsConfigPromise]);
         })
-        .then(([vendorResp, invoiceLinesResp, approvalsConfigResp, batchGroupResp]) => {
+        .then(([vendorResp, invoiceLinesResp, approvalsConfigResp]) => {
           setVendor(vendorResp);
           setInvoiceLines(invoiceLinesResp);
 

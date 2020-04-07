@@ -18,7 +18,7 @@ import {
   getInvoiceStatusLabel,
   formatDate,
 } from '../../../common/utils';
-import BatchGroupValue from '../BatchGroupValue'
+import BatchGroupValue from '../BatchGroupValue';
 import ApprovedBy from '../../../common/components/ApprovedBy';
 import BillTo from './BillTo';
 
@@ -163,7 +163,6 @@ Information.propTypes = {
   invoiceTotalUnits: PropTypes.number,
   acqUnits: PropTypes.arrayOf(PropTypes.string),
   currency: PropTypes.string,
-  batchGroupName: PropTypes.string,
 };
 
 Information.defaultProps = {
