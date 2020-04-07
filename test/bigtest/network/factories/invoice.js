@@ -16,4 +16,5 @@ export default Factory.extend({
   approvalDate: faker.date.past,
   paymentMethod: PAYMENT_METHOD.cash,
   adjustments: [],
+  batchGroupId: faker.random.uuid,
 });

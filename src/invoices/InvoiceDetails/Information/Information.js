@@ -37,6 +37,7 @@ const Information = ({
   invoiceTotalUnits,
   acqUnits,
   currency,
+  batchGroupName,
 }) => {
   return (
     <>
@@ -132,6 +133,13 @@ const Information = ({
         <Col xs={6}>
           <BillTo billToId={billTo} />
         </Col>
+
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.batchGroup" />}
+            value={batchGroupName}
+          />
+        </Col>
       </Row>
     </>
   );
@@ -153,6 +161,7 @@ Information.propTypes = {
   invoiceTotalUnits: PropTypes.number,
   acqUnits: PropTypes.arrayOf(PropTypes.string),
   currency: PropTypes.string,
+  batchGroupName: PropTypes.string,
 };
 
 Information.defaultProps = {

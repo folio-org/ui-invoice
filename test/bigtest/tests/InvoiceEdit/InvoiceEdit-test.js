@@ -20,6 +20,7 @@ describe('Invoice edit', () => {
   const invoiceForm = new InvoiceFormInteractor();
 
   beforeEach(async function () {
+    const batchGroup = this.server.create('batchgroup');
     const fund = this.server.create('fund');
 
     fund.fund.id = fund.id;
@@ -39,6 +40,7 @@ describe('Invoice edit', () => {
           value: 100,
         }],
       }],
+      batchGroupId: batchGroup.id,
     });
 
     this.visit(`/invoice/edit/${invoice.id}`);

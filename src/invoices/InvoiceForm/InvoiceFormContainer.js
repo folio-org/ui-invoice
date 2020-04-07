@@ -22,6 +22,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  batchGroupsResource,
   CONFIG_ADJUSTMENTS,
   configAddress,
   invoiceDocumentsResource,
@@ -48,9 +49,17 @@ function InvoiceFormContainer({
   resources,
   stripes,
 }) {
+  const [batchGroups, setBatchGroups] = useState();
+
   useEffect(() => {
+    setBatchGroups();
+
     mutator.invoiceFormDocuments.reset();
     mutator.invoiceFormDocuments.GET();
+
+    mutator.batchGroups.GET()
+      .then(setBatchGroups)
+      .catch(() => setBatchGroups([]));
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -97,6 +106,7 @@ function InvoiceFormContainer({
 
   const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
   const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
+  const batchGroupId = isCreate && (batchGroups?.length === 1) ? batchGroups[0]?.id : undefined;
   const invoice = !isCreate
     ? get(resources, ['invoice', 'records', 0], {})
     : {
@@ -104,6 +114,7 @@ function InvoiceFormContainer({
       currency: stripes.currency,
       source: sourceValues.user,
       adjustments: alwaysShowAdjustments,
+      batchGroupId,
     };
 
   const invoiceFormValues = getFormValues(INVOICE_FORM)(stripes.store.getState()) || invoice;
@@ -114,8 +125,8 @@ function InvoiceFormContainer({
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
   };
 
-  const hasLoaded = !id || (
-    get(resources, 'invoice.hasLoaded') && get(resources, 'invoiceFormVendor.hasLoaded')
+  const hasLoaded = (!id && batchGroups) || (
+    get(resources, 'invoice.hasLoaded') && get(resources, 'invoiceFormVendor.hasLoaded') && batchGroups
   );
 
   if (!hasLoaded) {
@@ -137,6 +148,7 @@ function InvoiceFormContainer({
         filledBillTo={invoiceFormValues?.billTo}
         filledVendorId={invoiceFormValues?.vendorId}
         filledCurrency={invoiceFormValues?.currency}
+        batchGroups={batchGroups}
       />
       {
         isNotUniqueOpen && (
@@ -171,6 +183,7 @@ InvoiceFormContainer.manifest = Object.freeze({
   configAdjustments: CONFIG_ADJUSTMENTS,
   configAddress,
   invoiceFormVendor: VENDOR,
+  batchGroups: batchGroupsResource,
 });
 
 InvoiceFormContainer.propTypes = {

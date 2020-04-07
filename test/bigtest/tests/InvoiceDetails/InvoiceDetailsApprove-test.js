@@ -10,10 +10,12 @@ import InvoiceDetails from '../../interactors/InvoiceDetails';
 import { APPROVE_ERROR_CODES } from '../../../../src/common/utils';
 
 const createInvoice = (server, status, withLines = true) => {
+  const batchGroup = server.create('batchgroup');
   const vendor = server.create('vendor');
   const invoice = server.create('invoice', {
     status,
     vendorId: vendor.id,
+    batchGroupId: batchGroup.id,
   });
 
   if (withLines) {

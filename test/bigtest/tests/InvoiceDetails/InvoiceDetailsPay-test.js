@@ -9,10 +9,12 @@ import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 
 const createInvoice = (server, status, withLines = true) => {
+  const batchGroup = server.create('batchgroup');
   const vendor = server.create('vendor');
   const invoice = server.create('invoice', {
     status,
     vendorId: vendor.id,
+    batchGroupId: batchGroup.id,
   });
 
   if (withLines) {

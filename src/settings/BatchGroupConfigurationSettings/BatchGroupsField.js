@@ -7,15 +7,15 @@ import {
   Select,
 } from '@folio/stripes/components';
 
+import { getBatchGroupsOptions } from '../../common/utils';
+
 const BatchGroupsField = ({
   batchGroups,
   selectBatchGroup,
   selectedBatchGroupId,
 }) => {
   const batchGroupsOptions = useMemo(() => {
-    if (!batchGroups) return [];
-
-    return batchGroups.map(({ name, id }) => ({ label: name, value: id })) || [];
+    return getBatchGroupsOptions(batchGroups);
   }, [batchGroups]);
 
   const onChange = useCallback(

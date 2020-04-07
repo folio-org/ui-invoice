@@ -27,8 +27,10 @@ describe('Invoice line edit', () => {
         appSystemNo: ACCOUNTING_CODE,
       }],
     });
+    const batchGroup = this.server.create('batchgroup');
     const invoice = this.server.create('invoice', {
       vendorId: vendor.id,
+      batchGroupId: batchGroup.id,
     });
     const invoiceLine = this.server.create('invoiceline', {
       invoiceId: invoice.id,

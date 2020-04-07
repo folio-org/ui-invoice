@@ -17,6 +17,7 @@ import {
   invoiceLinesResource,
 } from '../../common/resources';
 import {
+  BATCH_GROUPS_API,
   INVOICE_STATUS,
   VENDORS_API,
 } from '../../common/constants';
@@ -36,6 +37,7 @@ function InvoiceDetailsContainer({
   const [invoiceLines, setInvoiceLines] = useState({});
   const [vendor, setVendor] = useState({});
   const [isApprovePayEnabled, setIsApprovePayEnabled] = useState(false);
+  const [batchGroupName, setBatchGroupName] = useState();
 
   const fetchInvoiceData = useCallback(
     () => {
@@ -43,6 +45,7 @@ function InvoiceDetailsContainer({
       setInvoice({});
       setInvoiceLines({});
       setVendor({});
+      setBatchGroupName();
 
       mutator.invoice.GET()
         .then(invoiceResponse => {
@@ -57,12 +60,16 @@ function InvoiceDetailsContainer({
             },
           });
           const approvalsConfigPromise = mutator.invoiceActionsApprovals.GET();
+          const batchGroupPromise = mutator.batchGroup.GET({
+            path: `${BATCH_GROUPS_API}/${invoiceResponse.batchGroupId}`,
+          });
 
-          return Promise.all([vendorPromise, invoiceLinesPromise, approvalsConfigPromise]);
+          return Promise.all([vendorPromise, invoiceLinesPromise, approvalsConfigPromise, batchGroupPromise]);
         })
-        .then(([vendorResp, invoiceLinesResp, approvalsConfigResp]) => {
+        .then(([vendorResp, invoiceLinesResp, approvalsConfigResp, batchGroupResp]) => {
           setVendor(vendorResp);
           setInvoiceLines(invoiceLinesResp);
+          setBatchGroupName(batchGroupResp.name);
 
           let approvalsConfig;
 
@@ -251,6 +258,7 @@ function InvoiceDetailsContainer({
       addLines={addLines}
       approveAndPayInvoice={approveAndPayInvoice}
       approveInvoice={approveInvoice}
+      batchGroupName={batchGroupName}
       createLine={createLine}
       deleteInvoice={deleteInvoice}
       invoice={invoice}
@@ -279,6 +287,11 @@ InvoiceDetailsContainer.manifest = Object.freeze({
   },
   invoiceActionsApprovals: configApprovals,
   vendor: {
+    ...baseManifest,
+    accumulate: true,
+    fetch: false,
+  },
+  batchGroup: {
     ...baseManifest,
     accumulate: true,
     fetch: false,
