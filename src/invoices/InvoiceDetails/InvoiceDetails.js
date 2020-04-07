@@ -42,7 +42,6 @@ function InvoiceDetails({
   addLines,
   approveAndPayInvoice,
   approveInvoice,
-  batchGroupName,
   createLine,
   deleteInvoice,
   invoice,
@@ -163,7 +162,7 @@ function InvoiceDetails({
                 adjustmentsTotal={invoice.adjustmentsTotal}
                 approvalDate={invoice.approvalDate}
                 approvedBy={invoice.approvedBy}
-                batchGroupName={batchGroupName}
+                batchGroupId={invoice.batchGroupId}
                 invoiceDate={invoice.invoiceDate}
                 paymentDue={invoice.paymentDue}
                 paymentTerms={invoice.paymentTerms}
@@ -304,7 +303,6 @@ InvoiceDetails.propTypes = {
   addLines: PropTypes.func.isRequired,
   approveAndPayInvoice: PropTypes.func.isRequired,
   approveInvoice: PropTypes.func.isRequired,
-  batchGroupName: PropTypes.string,
   createLine: PropTypes.func.isRequired,
   deleteInvoice: PropTypes.func.isRequired,
   invoice: PropTypes.object.isRequired,

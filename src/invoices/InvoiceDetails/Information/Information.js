@@ -18,6 +18,7 @@ import {
   getInvoiceStatusLabel,
   formatDate,
 } from '../../../common/utils';
+import BatchGroupValue from '../BatchGroupValue'
 import ApprovedBy from '../../../common/components/ApprovedBy';
 import BillTo from './BillTo';
 
@@ -25,6 +26,7 @@ const Information = ({
   adjustmentsTotal,
   approvalDate,
   approvedBy,
+  batchGroupId,
   invoiceDate,
   paymentDue,
   metadata,
@@ -37,7 +39,6 @@ const Information = ({
   invoiceTotalUnits,
   acqUnits,
   currency,
-  batchGroupName,
 }) => {
   return (
     <>
@@ -135,9 +136,9 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue
+          <BatchGroupValue
+            id={batchGroupId}
             label={<FormattedMessage id="ui-invoice.invoice.details.information.batchGroup" />}
-            value={batchGroupName}
           />
         </Col>
       </Row>
@@ -149,6 +150,7 @@ Information.propTypes = {
   adjustmentsTotal: PropTypes.number,
   approvalDate: PropTypes.string,
   approvedBy: PropTypes.string,
+  batchGroupId: PropTypes.string,
   invoiceDate: PropTypes.string,
   paymentDue: PropTypes.string,
   paymentTerms: PropTypes.string,
