@@ -52,6 +52,7 @@ export function BatchVoucherExportsList({ batchVoucherExports, onNeedMoreData, r
       sortOrder="date"
       totalCount={recordsCount}
       visibleColumns={visibleColumns}
+      virtualize
     />
   );
 }
