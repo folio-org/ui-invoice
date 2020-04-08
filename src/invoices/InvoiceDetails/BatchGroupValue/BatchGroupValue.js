@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   KeyValue,
-  Spinner,
+  Loading,
 } from '@folio/stripes/components';
 
 import { batchGroupByPropResource } from '../../../common/resources';
@@ -30,13 +30,13 @@ const BatchGroupValue = ({ id, label, mutator }) => {
   );
 
   if (!batchGroup) {
-    return <Spinner />;
+    return <Loading />;
   }
 
   return (
     <KeyValue
       label={label}
-      value={batchGroup?.name}
+      value={batchGroup.name}
     />
   );
 };
