@@ -203,6 +203,7 @@
   "invoice.details.information.subTotal": "Sub-total",
   "invoice.details.information.billToName": "Bill to name",
   "invoice.details.information.billToAddress": "Bill to address",
+  "invoice.details.information.batchGroup": "Batch group",
 
   "invoice.details.lines.title": "Invoice lines",
   "invoice.details.lines.add": "Add",

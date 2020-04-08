@@ -63,6 +63,7 @@ import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 import validate from './validate';
 import invoiceCss from '../Invoice.css';
+import FieldBatchGroup from './FieldBatchGroup';
 
 const CREATE_UNITS_PERM = 'invoice.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
@@ -81,6 +82,7 @@ class InvoiceForm extends Component {
     filledBillTo: PropTypes.string,
     filledVendorId: PropTypes.string,
     filledCurrency: PropTypes.string.isRequired,
+    batchGroups: PropTypes.arrayOf(PropTypes.object),
   };
 
   constructor(props) {
@@ -125,6 +127,7 @@ class InvoiceForm extends Component {
       filledBillTo,
       filledVendorId,
       filledCurrency,
+      batchGroups,
     } = this.props;
     const { selectedVendor } = this.state;
     const vendorInvoiceNo = get(initialValues, 'vendorInvoiceNo', '');
@@ -305,6 +308,12 @@ class InvoiceForm extends Component {
                             name="lockTotal"
                             type="checkbox"
                             vertical
+                          />
+                        </Col>
+                        <Col data-test-col-batch-group xs={3}>
+                          <FieldBatchGroup
+                            batchGroups={batchGroups}
+                            isEditPostApproval={isEditPostApproval}
                           />
                         </Col>
                       </Row>

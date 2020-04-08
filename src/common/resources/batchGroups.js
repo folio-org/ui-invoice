@@ -4,7 +4,6 @@ import {
   BATCH_GROUPS_API,
 } from '../constants';
 
-// eslint-disable-next-line import/prefer-default-export
 export const batchGroupsResource = {
   ...baseManifest,
   path: BATCH_GROUPS_API,
@@ -14,6 +13,13 @@ export const batchGroupsResource = {
     },
   },
   records: 'batchGroups',
+  accumulate: true,
+  fetch: false,
+};
+
+export const batchGroupByPropResource = {
+  ...baseManifest,
+  path: `${BATCH_GROUPS_API}/!{id}`,
   accumulate: true,
   fetch: false,
 };

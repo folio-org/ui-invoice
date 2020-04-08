@@ -15,3 +15,8 @@ export const getAdjustmentPresetOptions = (configAdjustments) => [
     label: d.adjustment.description,
   })),
 ];
+
+export const getBatchGroupsOptions = (batchGroups = []) => batchGroups.map(({ name, id }) => ({
+  label: name,
+  value: id,
+}));

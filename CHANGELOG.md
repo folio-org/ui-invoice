@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-130](https://issues.folio.org/browse/UINV-130) Add batch group to invoice
 * [UINV-104](https://issues.folio.org/browse/UINV-104) Run voucher export manually
 * [UINV-106](https://issues.folio.org/browse/UINV-106) Display Batch vouchers in settings
 

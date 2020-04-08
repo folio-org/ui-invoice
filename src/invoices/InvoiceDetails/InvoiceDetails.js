@@ -162,6 +162,7 @@ function InvoiceDetails({
                 adjustmentsTotal={invoice.adjustmentsTotal}
                 approvalDate={invoice.approvalDate}
                 approvedBy={invoice.approvedBy}
+                batchGroupId={invoice.batchGroupId}
                 invoiceDate={invoice.invoiceDate}
                 paymentDue={invoice.paymentDue}
                 paymentTerms={invoice.paymentTerms}
