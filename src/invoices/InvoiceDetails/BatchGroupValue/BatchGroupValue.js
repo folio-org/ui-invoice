@@ -5,7 +5,10 @@ import React, {
 import PropTypes from 'prop-types';
 
 import { stripesConnect } from '@folio/stripes/core';
-import { KeyValue } from '@folio/stripes/components';
+import {
+  KeyValue,
+  Spinner,
+} from '@folio/stripes/components';
 
 import { batchGroupByPropResource } from '../../../common/resources';
 
@@ -18,12 +21,17 @@ const BatchGroupValue = ({ id, label, mutator }) => {
 
       if (id) {
         mutator.invoiceBatchGroup.GET()
-          .then(setBatchGroup);
+          .then(setBatchGroup)
+          .catch(() => setBatchGroup({}));
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [id],
   );
+
+  if (!batchGroup) {
+    return <Spinner />;
+  }
 
   return (
     <KeyValue

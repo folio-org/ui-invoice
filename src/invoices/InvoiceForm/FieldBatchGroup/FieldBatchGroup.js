@@ -1,9 +1,6 @@
 import React, { useMemo } from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
 
-import { TextField } from '@folio/stripes/components';
 import {
   FieldSelection,
   validateRequired,
@@ -17,30 +14,19 @@ const FieldBatchGroup = ({ batchGroups, isEditPostApproval }) => {
   }, [batchGroups]);
 
   const labelId = 'ui-invoice.invoice.details.information.batchGroup';
+  const isDisabled = isEditPostApproval || batchGroups.length === 1;
 
-  return batchGroups.length > 1
-    ? (
-      <FieldSelection
-        dataOptions={batchGroupsOptions}
-        disabled={isEditPostApproval}
-        id="invoice-batch-groups"
-        labelId={labelId}
-        name="batchGroupId"
-        required
-        validate={validateRequired}
-      />
-    )
-    : (
-      <Field
-        component={TextField}
-        disabled
-        format={() => batchGroups[0]?.name}
-        id="invoice-batch-group"
-        label={<FormattedMessage id={labelId} />}
-        name="batchGroupId"
-        type="text"
-      />
-    );
+  return (
+    <FieldSelection
+      dataOptions={batchGroupsOptions}
+      disabled={isDisabled}
+      id="invoice-batch-groups"
+      labelId={labelId}
+      name="batchGroupId"
+      required
+      validate={validateRequired}
+    />
+  );
 };
 
 FieldBatchGroup.propTypes = {

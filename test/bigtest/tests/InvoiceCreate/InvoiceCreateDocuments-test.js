@@ -15,6 +15,7 @@ describe('Invoice create with documents', () => {
 
   beforeEach(async function () {
     this.server.createList('vendor', 2);
+    this.server.create('batchgroup');
     this.visit('/invoice/create');
 
     await invoiceForm.whenLoaded();
