@@ -182,7 +182,7 @@ class InvoiceForm extends Component {
                       <ExpandAllButton />
                     </Col>
                   </Row>
-                  <AccordionSet initialStatus={{ [SECTIONS.information]: false }}>
+                  <AccordionSet initialStatus={{ [SECTIONS.voucher]: false }}>
                     <Accordion
                       id={SECTIONS.information}
                       label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
