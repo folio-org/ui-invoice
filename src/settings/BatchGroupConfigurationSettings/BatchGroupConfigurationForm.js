@@ -52,6 +52,7 @@ const BatchGroupConfigurationForm = ({
   testConnection,
 }) => {
   const formValues = get(form.getState(), 'values', {});
+  const initialValues = get(form.getState(), 'initialValues', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
   const [isManualExportConfirmation, toggleManualExportConfirmation] = useModalToggle();
   const selectedBatchGroupName = batchGroups.find(({ id }) => id === selectedBatchGroupId)?.name;
@@ -184,8 +185,8 @@ const BatchGroupConfigurationForm = ({
             name="username"
             component={TextField}
             fullWidth
-            required
-            validate={validateRequired}
+            required={Boolean(initialValues.username)}
+            validate={initialValues.username ? validateRequired : undefined}
           />
         </Col>
 
@@ -200,6 +201,7 @@ const BatchGroupConfigurationForm = ({
           <Button
             buttonStyle="primary"
             bottomMargin0
+            data-test-connection-test-button
             disabled={!(formValues.id && formValues.uploadURI && hasCredsSaved)}
             onClick={testConnection}
           >
