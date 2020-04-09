@@ -46,7 +46,7 @@ describe('Test connection', function () {
     beforeEach(async function () {
       this.server.post(
         `${EXPORT_CONFIGURATIONS_API}/:id/credentials/test`,
-        () => new Response(500, { errors: [{cause: 'some error'}] }),
+        () => new Response(500, { errors: [{ cause: 'some error' }] }),
       );
       await page.testConnectionBtn.click();
     });
