@@ -16,10 +16,11 @@ describe('Batch group configuration settings', function () {
 
   const setting = new BatchGroupConfigurationSettingsInteractor();
 
-  beforeEach(function () {
+  beforeEach(async function () {
     this.server.create('batchgroup');
-
     this.visit('/settings/invoice/batch-group-configuration');
+
+    await setting.whenCredsAreLoaded();
   });
 
   it('should render batch group value and export config form', () => {
@@ -28,6 +29,7 @@ describe('Batch group configuration settings', function () {
     expect(setting.batchGroupSelect).to.be.false;
     expect(setting.saveButton.isDisabled).to.be.true;
     expect(setting.runManualExportButton.isDisabled).to.be.true;
+    expect(setting.testConnectionBtn.isDisabled).to.be.true;
   });
 
   describe('select daily schedule export', () => {

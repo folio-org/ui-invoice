@@ -9,4 +9,5 @@ export default server => {
     return schema.credentials.all();
   });
   server.post(`${EXPORT_CONFIGURATIONS_API}/:id/credentials`, createPost('credentials'));
+  server.post(`${EXPORT_CONFIGURATIONS_API}/:id/credentials/test`, () => ({}));
 };

@@ -114,6 +114,8 @@
   "settings.batchGroupConfiguration.scheduleExport": "Schedule export",
   "settings.batchGroupConfiguration.setTime": "Set time",
   "settings.batchGroupConfiguration.testConnection": "Test connection",
+  "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
+  "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}",
   "settings.batchGroupConfiguration.uploadLocation": "Upload location",
   "settings.batchGroupConfiguration.username": "Username",
   "settings.batchGroupConfiguration.weekdays.Friday": "F",

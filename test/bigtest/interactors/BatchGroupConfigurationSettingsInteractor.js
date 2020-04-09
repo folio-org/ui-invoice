@@ -45,9 +45,14 @@ export default @interactor class BatchGroupConfigurationSettingsInteractor {
   batchVoucherExports = new BatchVoucherExports('#batch-voucher-exports');
   manualExportConfirmation = new ConfirmationInteractor('#run-manual-export-confirmation');
   isLoaded = isPresent('#pane-batch-group-configuration');
+  testConnectionBtn = new ButtonInteractor('[data-test-connection-test-button]');
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
+  }
+
+  whenCredsAreLoaded() {
+    return this.timeout(5000).when(() => isPresent('[data-test-col-username]'));
   }
 
   whenBatchVoucherExportsLoaded() {

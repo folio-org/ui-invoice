@@ -41,6 +41,7 @@ const BatchGroupConfigurationForm = ({
   batchVoucherExports,
   form,
   handleSubmit,
+  hasCredsSaved,
   onNeedMoreData,
   pristine,
   recordsCount,
@@ -48,8 +49,10 @@ const BatchGroupConfigurationForm = ({
   selectBatchGroup,
   selectedBatchGroupId,
   submitting,
+  testConnection,
 }) => {
   const formValues = get(form.getState(), 'values', {});
+  const initialValues = get(form.getState(), 'initialValues', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
   const [isManualExportConfirmation, toggleManualExportConfirmation] = useModalToggle();
   const selectedBatchGroupName = batchGroups.find(({ id }) => id === selectedBatchGroupId)?.name;
@@ -182,6 +185,8 @@ const BatchGroupConfigurationForm = ({
             name="username"
             component={TextField}
             fullWidth
+            required={Boolean(initialValues.username)}
+            validate={initialValues.username ? validateRequired : undefined}
           />
         </Col>
 
@@ -195,7 +200,10 @@ const BatchGroupConfigurationForm = ({
         >
           <Button
             buttonStyle="primary"
-            disabled
+            bottomMargin0
+            data-test-connection-test-button
+            disabled={!(formValues.id && formValues.uploadURI && hasCredsSaved)}
+            onClick={testConnection}
           >
             <FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.testConnection" />
           </Button>
@@ -232,6 +240,7 @@ BatchGroupConfigurationForm.propTypes = {
   batchVoucherExports: PropTypes.arrayOf(PropTypes.object),
   form: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
+  hasCredsSaved: PropTypes.bool.isRequired,
   onNeedMoreData: PropTypes.func,
   pristine: PropTypes.bool,
   recordsCount: PropTypes.number,
@@ -239,6 +248,7 @@ BatchGroupConfigurationForm.propTypes = {
   selectBatchGroup: PropTypes.func.isRequired,
   selectedBatchGroupId: PropTypes.string,
   submitting: PropTypes.bool,
+  testConnection: PropTypes.func.isRequired,
 };
 
 export default stripesFinalForm({

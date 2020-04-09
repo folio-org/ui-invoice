@@ -17,3 +17,10 @@ export const credentialsResource = {
   accumulate: true,
   fetch: false,
 };
+
+export const testConnectionResource = {
+  ...baseManifest,
+  accumulate: true,
+  clientGeneratePk: false,
+  fetch: false,
+};
