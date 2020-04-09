@@ -276,5 +276,6 @@
     "settings.actions.manualExport.heading": "تشغيل التصدير اليدوي",
     "settings.actions.manualExport.message": "سيتم تصدير جميع القسائم التي تم إنشاؤها منذ آخر تصدير لمجموعة الدفعة {selectedBatchGroupName} ولا يمكن التراجع عن هذه العملية",
     "settings.runManualExport.success": "تم تصدير القسائم بنجاح",
-    "settings.runManualExport.error": "لم يتم تصدير القسائم"
+    "settings.runManualExport.error": "لم يتم تصدير القسائم",
+    "invoice.details.information.batchGroup": "Batch group"
 }

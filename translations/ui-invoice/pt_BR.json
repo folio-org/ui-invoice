@@ -273,8 +273,9 @@
     "settings.BatchVoucherExports.status.uploaded": "Carregado",
     "settings.BatchVoucherExports.status.error": "Erro",
     "button.continue": "Continuar",
-    "settings.actions.manualExport.heading": "Run manual export",
-    "settings.actions.manualExport.message": "All vouchers created since last export for the batch group {selectedBatchGroupName} will be exported and this process cannot be reversed",
-    "settings.runManualExport.success": "Vouchers have been successfully exported",
-    "settings.runManualExport.error": "Vouchers were not exported"
+    "settings.actions.manualExport.heading": "Executar exportação manual",
+    "settings.actions.manualExport.message": "Todos os vouchers criados desde a última operação de exportação para o grupo de lotes {selectedBatchGroupName} serão exportados e este processo não pode ser revertido",
+    "settings.runManualExport.success": "Os vouchers foram exportados com sucesso",
+    "settings.runManualExport.error": "Os vouchers não foram exportados",
+    "invoice.details.information.batchGroup": "Grupo de lotes"
 }
