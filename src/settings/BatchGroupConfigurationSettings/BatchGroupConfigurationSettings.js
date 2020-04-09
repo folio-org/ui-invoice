@@ -4,6 +4,8 @@ import React, {
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
+import { get } from 'lodash';
 
 import { LoadingPane } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
@@ -13,6 +15,7 @@ import {
   batchVoucherExportsResource,
   credentialsResource,
   exportConfigsResource,
+  testConnectionResource,
 } from '../../common/resources';
 import { EXPORT_CONFIGURATIONS_API } from '../../common/constants';
 import {
@@ -175,9 +178,44 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
     [selectedBatchGroupId, credentials],
   );
 
+  const testConnection = useCallback(
+    () => {
+      mutator.testConnection.POST({})
+        .then(() => {
+          showCallout({
+            messageId: 'ui-invoice.settings.batchGroupConfiguration.testConnection.success',
+            type: 'success',
+          });
+        })
+        .catch(async errorResp => {
+          let parsedResp;
+
+          try {
+            parsedResp = await errorResp.json();
+          } catch (parsingException) {
+            parsedResp = errorResp;
+          }
+
+          showCallout({
+            message: (
+              <FormattedMessage
+                id="ui-invoice.settings.batchGroupConfiguration.testConnection.error"
+                values={{ cause: get(parsedResp, 'errors.0.cause') }}
+              />
+            ),
+            timeout: 0,
+            type: 'error',
+          });
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [showCallout],
+  );
+
   const initialValues = exportConfig?.id
     ? {
-      ...credentials,
+      username: credentials?.username,
+      password: credentials?.password,
       ...exportConfig,
       batchGroupId: selectedBatchGroupId,
       scheduleExport: exportConfig?.enableScheduledExport
@@ -206,6 +244,8 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
       runManualExport={runManualExport}
       onNeedMoreData={onNeedMoreData}
       recordsCount={recordsCount}
+      testConnection={testConnection}
+      hasCredsSaved={Boolean(credentials?.id)}
     />
   );
 };
@@ -221,6 +261,10 @@ BatchGroupConfigurationSettings.manifest = Object.freeze({
   batchVoucherExports: {
     ...batchVoucherExportsResource,
     records: null,
+  },
+  testConnection: {
+    ...testConnectionResource,
+    path: `${EXPORT_CONFIGURATIONS_API}/%{exportConfigId.id}/credentials/test`,
   },
 });
 
