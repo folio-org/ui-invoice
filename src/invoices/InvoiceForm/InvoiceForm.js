@@ -104,9 +104,11 @@ class InvoiceForm extends Component {
 
       const erpCode = vendor.erpCode;
       const hasAnyAccountingCode = vendor.accounts?.some(({ appSystemNo }) => Boolean(appSystemNo));
+      const paymentMethod = vendor.paymentMethod;
       const accountingCode = hasAnyAccountingCode ? null : erpCode;
 
       dispatch(change('accountingCode', accountingCode || ''));
+      dispatch(change('paymentMethod', paymentMethod || ''));
     }
   };
 

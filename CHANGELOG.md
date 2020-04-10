@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-139](https://issues.folio.org/browse/UINV-139) Populate "Payment method" with Vendor payment method if available
 * [UINV-110](https://issues.folio.org/browse/UINV-110) Test voucher settings ftp connection
 * [UINV-130](https://issues.folio.org/browse/UINV-130) Add batch group to invoice
 * [UINV-104](https://issues.folio.org/browse/UINV-104) Run voucher export manually
