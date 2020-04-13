@@ -7,7 +7,10 @@ import {
   Layout,
   MultiColumnList,
 } from '@folio/stripes/components';
-import { FolioFormattedTime } from '@folio/stripes-acq-components';
+import {
+  FolioFormattedTime,
+  acqRowFormatter,
+} from '@folio/stripes-acq-components';
 
 import { BATCH_VOUCHER_EXPORT_STATUS_LABEL } from '../../common/constants';
 import { RESULT_COUNT_INCREMENT } from './constants';
@@ -33,6 +36,8 @@ const cellFormatters = {
   status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
 };
 
+const rowProps = { alignLastColToEnd: true };
+
 export function BatchVoucherExportsList({ batchVoucherExports, onNeedMoreData, recordsCount }) {
   if (!batchVoucherExports) return null;
 
@@ -44,15 +49,17 @@ export function BatchVoucherExportsList({ batchVoucherExports, onNeedMoreData, r
       formatter={cellFormatters}
       id="batch-voucher-exports"
       interactive={false}
-      onHeaderClick={() => {}}
+      onHeaderClick={() => { }}
       onNeedMoreData={onNeedMoreData}
       pageAmount={RESULT_COUNT_INCREMENT}
       pagingType="click"
+      rowFormatter={acqRowFormatter}
+      rowProps={rowProps}
       sortDirection="descending"
       sortOrder="date"
       totalCount={recordsCount}
-      visibleColumns={visibleColumns}
       virtualize
+      visibleColumns={visibleColumns}
     />
   );
 }
