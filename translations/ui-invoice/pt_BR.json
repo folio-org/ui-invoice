@@ -277,5 +277,7 @@
     "settings.actions.manualExport.message": "Todos os vouchers criados desde a última operação de exportação para o grupo de lotes {selectedBatchGroupName} serão exportados e este processo não pode ser revertido",
     "settings.runManualExport.success": "Os vouchers foram exportados com sucesso",
     "settings.runManualExport.error": "Os vouchers não foram exportados",
-    "invoice.details.information.batchGroup": "Grupo de lotes"
+    "invoice.details.information.batchGroup": "Grupo de lotes",
+    "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
+    "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}"
 }
