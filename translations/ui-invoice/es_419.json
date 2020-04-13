@@ -277,5 +277,7 @@
     "settings.actions.manualExport.message": "All vouchers created since last export for the batch group {selectedBatchGroupName} will be exported and this process cannot be reversed",
     "settings.runManualExport.success": "Vouchers have been successfully exported",
     "settings.runManualExport.error": "Vouchers were not exported",
-    "invoice.details.information.batchGroup": "Batch group"
+    "invoice.details.information.batchGroup": "Batch group",
+    "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
+    "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}"
 }
