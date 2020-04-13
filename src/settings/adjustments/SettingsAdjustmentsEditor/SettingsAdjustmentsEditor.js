@@ -4,21 +4,20 @@ import { FormattedMessage } from 'react-intl';
 import { Field } from 'redux-form';
 
 import {
-  FieldSelect,
-  validateRequired,
-} from '@folio/stripes-acq-components';
-import {
-  Button,
   Checkbox,
   Col,
   Layer,
   Pane,
-  PaneMenu,
   Row,
   TextField,
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
+import {
+  FieldSelect,
+  FormFooter,
+  validateRequired,
+} from '@folio/stripes-acq-components';
 
 import {
   ADJUSTMENT_PRORATE_OPTIONS,
@@ -36,30 +35,26 @@ class SettingsAdjustmentsEditor extends Component {
     metadata: PropTypes.object,
   };
 
-  getLastMenu() {
-    const { pristine, submitting } = this.props;
-
-    return (
-      <PaneMenu>
-        <Button
-          id="save-adjustment-button"
-          type="submit"
-          marginBottom0
-          disabled={pristine || submitting}
-        >
-          <FormattedMessage id="ui-invoice.save" />
-        </Button>
-      </PaneMenu>
-    );
-  }
-
   render() {
     const {
       handleSubmit,
       close,
       title,
       metadata,
+      pristine,
+      submitting,
     } = this.props;
+
+    const formFooter = (
+      <FormFooter
+        id="save-adjustment-button"
+        label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+        pristine={pristine}
+        submitting={submitting}
+        handleSubmit={handleSubmit}
+        onCancel={close}
+      />
+    );
 
     return (
       <Layer
@@ -68,7 +63,7 @@ class SettingsAdjustmentsEditor extends Component {
       >
         <form
           id="settings-adjustments-form"
-          onSubmit={handleSubmit}
+          style={{ height: '100vh' }}
         >
           <Pane
             id="settings-adjustments-editor"
@@ -76,7 +71,7 @@ class SettingsAdjustmentsEditor extends Component {
             paneTitle={title}
             dismissible
             onClose={close}
-            lastMenu={this.getLastMenu()}
+            footer={formFooter}
           >
             <Row center="xs">
               <Col xs={12} md={8}>
@@ -153,6 +148,18 @@ class SettingsAdjustmentsEditor extends Component {
                       dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
                       required
                       validate={validateRequired}
+                    />
+                  </Col>
+                  <Col
+                    data-test-export-to-accounting
+                    xs={3}
+                  >
+                    <Field
+                      component={Checkbox}
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
+                      name="exportToAccounting"
+                      type="checkbox"
+                      vertical
                     />
                   </Col>
                 </Row>

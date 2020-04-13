@@ -11,6 +11,7 @@ import {
   Button,
   ButtonGroup,
   Card,
+  Checkbox,
   Col,
   IconButton,
   KeyValue,
@@ -183,6 +184,18 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
               required
               validate={validateRequired}
               disabled={disabled}
+            />
+          </Col>
+          <Col
+            data-test-adjustment-export-to-accounting
+            xs
+          >
+            <Field
+              component={Checkbox}
+              label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
+              name={`${elem}.exportToAccounting`}
+              type="checkbox"
+              vertical
             />
           </Col>
         </Row>
