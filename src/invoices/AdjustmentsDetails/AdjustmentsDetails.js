@@ -47,6 +47,7 @@ const AdjustmentsDetails = ({ adjustments, currency }) => {
           contentData={adjustments}
           formatter={resultsFormatter}
           id="invoice-lines-adjustments-list"
+          interactive={false}
           visibleColumns={visibleColumns}
         />
       </Col>
