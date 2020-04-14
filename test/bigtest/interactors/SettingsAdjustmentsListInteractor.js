@@ -13,6 +13,7 @@ export default interactor(class SettingsAdjustmentsListInteractor {
   list = collection('[data-test-nav-list-item]', {
     click: clickable(),
   });
+
   isLoaded = isPresent('[data-test-new-adjustment-button]');
 
   whenLoaded() {

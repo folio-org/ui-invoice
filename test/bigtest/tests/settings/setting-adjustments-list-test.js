@@ -25,7 +25,7 @@ describe('Adjustments list', function () {
       value: adjustmentConfig,
     });
 
-    this.visit(`/settings/invoice/adjustments`);
+    this.visit('/settings/invoice/adjustments');
     await setting.whenLoaded();
   });
 
