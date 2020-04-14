@@ -6,6 +6,20 @@ import { PAYMENT_METHOD } from '@folio/stripes-acq-components';
 import setupApplication from '../../helpers/setup-application';
 import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 import InvoicesListInteractor from '../../interactors/InvoicesList';
+import {
+  CONFIG_MODULE_INVOICE,
+  CONFIG_NAME_ADJUSTMENTS,
+} from '../../../../src/common/constants';
+
+const adjustmentConfig = JSON.stringify({
+  alwaysShow: true,
+  exportToAccounting: true,
+  prorate: 'Not prorated',
+  relationToTotal: 'Included in',
+  type: 'Amount',
+  description: 'Test',
+  defaultAmount: 100,
+});
 
 describe('Invoice create', () => {
   setupApplication();
@@ -15,12 +29,19 @@ describe('Invoice create', () => {
   beforeEach(async function () {
     this.server.createList('vendor', 2);
     this.server.create('batchgroup');
+    this.server.create('config', {
+      module: CONFIG_MODULE_INVOICE,
+      configName: CONFIG_NAME_ADJUSTMENTS,
+      enabled: true,
+      value: adjustmentConfig,
+    });
     this.visit('/invoice/create');
     await invoiceForm.whenLoaded();
   });
 
   it('displays an create invoice form', () => {
     expect(invoiceForm.isPresent).to.be.true;
+    expect(invoiceForm.adjustments).to.be.true;
   });
 
   describe('Add data and save invoice', () => {

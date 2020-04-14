@@ -6,6 +6,7 @@ import {
   configMemberships,
   configFunds,
   configTransactions,
+  configConfigs,
 } from '@folio/stripes-acq-components/test/bigtest/network';
 
 import configBatchGroups from './configs/batchgroup';
@@ -37,4 +38,5 @@ export default function config() {
   configExportConfig(this);
   configCredentials(this);
   configBatchVoucherExports(this);
+  configConfigs(this);
 }
