@@ -11,7 +11,7 @@ import {
   CONFIG_NAME_ADJUSTMENTS,
 } from '../../../../src/common/constants';
 
-const adjustmentConfig = JSON.stringify({
+export const adjustmentConfig = JSON.stringify({
   alwaysShow: true,
   exportToAccounting: true,
   prorate: 'Not prorated',

@@ -25,6 +25,7 @@ class SettingsAdjustmentsList extends Component {
 
     const lastMenu = (
       <Button
+        data-test-new-adjustment-button
         to={`${rootPath}/create`}
         buttonStyle="primary paneHeaderNewButton"
         marginBottom0
