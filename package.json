@@ -78,7 +78,7 @@
       "batch-voucher.export-configurations": "1.0",
       "configuration": "2.0",
       "finance.funds": "1.0",
-      "invoice": "3.2",
+      "invoice": "3.2 4.0",
       "order-lines": "1.0",
       "organizations-storage.organizations": "3.0",
       "tags": "1.0",

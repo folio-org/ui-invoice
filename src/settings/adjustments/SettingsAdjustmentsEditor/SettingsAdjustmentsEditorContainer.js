@@ -24,6 +24,7 @@ import SettingsAdjustmentsEditor from './SettingsAdjustmentsEditor';
 
 const INITIAL_VALUES = {
   alwaysShow: true,
+  exportToAccounting: false,
   prorate: ADJUSTMENT_PRORATE_VALUES.notProrated,
   relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo,
   type: ADJUSTMENT_TYPE_VALUES.amount,

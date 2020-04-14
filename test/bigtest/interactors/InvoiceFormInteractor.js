@@ -52,6 +52,7 @@ export default interactor(class InvoiceForm {
   invoiceInformation = new Interactor('#accordion-toggle-button-invoiceForm-information');
   documentsAndLinks = new DocumentsInteractor();
   formFooter = new FormFooterInteractor();
+  adjustments = isPresent('#adjustments');
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);

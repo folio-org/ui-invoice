@@ -4,6 +4,7 @@
 
 ### Stories
 * [UINV-138](https://issues.folio.org/browse/UINV-138) Align actions icons in table to right hand side of view pane(s)
+* [UINV-123](https://issues.folio.org/browse/UINV-123) Add "Export to accounting" toggle to Adjustments
 * [UINV-139](https://issues.folio.org/browse/UINV-139) Populate "Payment method" with Vendor payment method if available
 * [UINV-110](https://issues.folio.org/browse/UINV-110) Test voucher settings ftp connection
 * [UINV-130](https://issues.folio.org/browse/UINV-130) Add batch group to invoice

@@ -76,6 +76,7 @@
   "settings.general.label": "General",
 
   "settings.adjustments.alwaysShow": "Always show",
+  "settings.adjustments.exportToAccounting": "Export to accounting",
   "settings.adjustments.prorate": "Pro rate",
   "settings.adjustments.description": "Description",
   "settings.adjustments.type": "Type",
