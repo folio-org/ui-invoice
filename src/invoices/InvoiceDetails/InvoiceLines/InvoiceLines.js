@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { MultiColumnList } from '@folio/stripes/components';
+import {
+  Icon,
+  MultiColumnList,
+} from '@folio/stripes/components';
 import {
   acqRowFormatter,
   AmountWithCurrencyField,
@@ -10,8 +13,9 @@ import {
 
 import styles from './InvoiceLines.css';
 
-const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'adjustmentsTotal', 'total'];
+const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'adjustmentsTotal', 'total', 'arrow'];
 const columnMapping = {
+  arrow: null,
   description: <FormattedMessage id="ui-invoice.invoice.details.lines.list.description" />,
   invoiceLineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.number" />,
   quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
@@ -40,6 +44,7 @@ const InvoiceLines = ({
         currency={currency}
       />
     ),
+    arrow: () => <Icon icon="caret-right" />,
   };
 
   return (
