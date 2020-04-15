@@ -2,19 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { MultiColumnList } from '@folio/stripes/components';
-import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
+import {
+  Icon,
+  MultiColumnList,
+} from '@folio/stripes/components';
+import {
+  acqRowFormatter,
+  AmountWithCurrencyField,
+} from '@folio/stripes-acq-components';
 
 import styles from './InvoiceLines.css';
 
-const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'adjustmentsTotal', 'total'];
+const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'adjustmentsTotal', 'total', 'arrow'];
 const columnMapping = {
+  arrow: null,
   description: <FormattedMessage id="ui-invoice.invoice.details.lines.list.description" />,
   invoiceLineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.number" />,
   quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
   adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
 };
+const alignRowProps = { alignLastColToEnd: true };
 
 const InvoiceLines = ({
   currency,
@@ -36,6 +44,7 @@ const InvoiceLines = ({
         currency={currency}
       />
     ),
+    arrow: () => <Icon icon="caret-right" />,
   };
 
   return (
@@ -54,6 +63,8 @@ const InvoiceLines = ({
         columnMapping={columnMapping}
         onRowClick={openLineDetails}
         formatter={resultsFormatter}
+        rowFormatter={acqRowFormatter}
+        rowProps={alignRowProps}
       />
     </>
   );
