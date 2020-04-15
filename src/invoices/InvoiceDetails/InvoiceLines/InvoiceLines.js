@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { MultiColumnList } from '@folio/stripes/components';
-import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
+import {
+  acqRowFormatter,
+  AmountWithCurrencyField,
+} from '@folio/stripes-acq-components';
 
 import styles from './InvoiceLines.css';
 
@@ -15,6 +18,7 @@ const columnMapping = {
   adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
 };
+const alignRowProps = { alignLastColToEnd: true };
 
 const InvoiceLines = ({
   currency,
@@ -54,6 +58,8 @@ const InvoiceLines = ({
         columnMapping={columnMapping}
         onRowClick={openLineDetails}
         formatter={resultsFormatter}
+        rowFormatter={acqRowFormatter}
+        rowProps={alignRowProps}
       />
     </>
   );
