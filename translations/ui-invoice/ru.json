@@ -279,5 +279,9 @@
     "settings.runManualExport.error": "Vouchers were not exported",
     "invoice.details.information.batchGroup": "Batch group",
     "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
-    "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}"
+    "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}",
+    "settings.adjustments.exportToAccounting": "Export to accounting",
+    "errors.cantLoadInvoiceLine": "Error loading invoice line",
+    "errors.cantLoadInvoice": "Error loading invoice",
+    "errors.cantLoadVendor": "Error loading vendor"
 }

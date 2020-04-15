@@ -73,7 +73,7 @@
     "invoiceLine.accountNumber": "帐号",
     "invoiceLine.accountingCode": "账户代码",
     "invoiceLine.comment": "留言",
-    "invoiceLine.releaseEncumbrance": "释放预留",
+    "invoiceLine.releaseEncumbrance": "释放预支",
     "invoiceLine.subTotal": "小计",
     "adjustment.type": "选择调整",
     "adjustment.description": "描述",
@@ -279,5 +279,9 @@
     "settings.runManualExport.error": "凭证未导出",
     "invoice.details.information.batchGroup": "批次组",
     "settings.batchGroupConfiguration.testConnection.success": "连接有效",
-    "settings.batchGroupConfiguration.testConnection.error": "连接错误： {cause}"
+    "settings.batchGroupConfiguration.testConnection.error": "连接错误： {cause}",
+    "settings.adjustments.exportToAccounting": "Export to accounting",
+    "errors.cantLoadInvoiceLine": "Error loading invoice line",
+    "errors.cantLoadInvoice": "Error loading invoice",
+    "errors.cantLoadVendor": "Error loading vendor"
 }
