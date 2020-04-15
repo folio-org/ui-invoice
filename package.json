@@ -78,6 +78,8 @@
       "batch-voucher.export-configurations": "1.0",
       "configuration": "2.0",
       "finance.funds": "1.0",
+      "contributor-name-types": "1.2",
+      "identifier-types": "1.2",
       "invoice": "3.2 4.0",
       "order-lines": "1.0",
       "organizations-storage.organizations": "3.0",
@@ -122,9 +124,14 @@
           "configuration.entries.collection.get",
           "finance.funds.collection.get",
           "finance.transactions.collection.get",
+          "inventory-storage.contributor-name-types.collection.get",
+          "inventory-storage.identifier-types.collection.get",
+          "orders.po-lines.collection.get",
+          "orders.po-lines.item.get",
           "organizations-storage.organizations.collection.get",
           "organizations-storage.organizations.item.get",
           "tags.collection.get",
+          "tags.item.post",
           "users.collection.get"
         ]
       },
