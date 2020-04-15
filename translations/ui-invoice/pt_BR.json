@@ -278,6 +278,10 @@
     "settings.runManualExport.success": "Os vouchers foram exportados com sucesso",
     "settings.runManualExport.error": "Os vouchers não foram exportados",
     "invoice.details.information.batchGroup": "Grupo de lotes",
-    "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
-    "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}"
+    "settings.batchGroupConfiguration.testConnection.success": "A conexão é válida",
+    "settings.batchGroupConfiguration.testConnection.error": "Erro de conexão: {cause}",
+    "settings.adjustments.exportToAccounting": "Export to accounting",
+    "errors.cantLoadInvoiceLine": "Error loading invoice line",
+    "errors.cantLoadInvoice": "Error loading invoice",
+    "errors.cantLoadVendor": "Error loading vendor"
 }

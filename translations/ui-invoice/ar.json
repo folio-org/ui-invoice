@@ -279,5 +279,9 @@
     "settings.runManualExport.error": "لم يتم تصدير القسائم",
     "invoice.details.information.batchGroup": "مجموعة بالدفعة",
     "settings.batchGroupConfiguration.testConnection.success": "الاتصال صالح",
-    "settings.batchGroupConfiguration.testConnection.error": "خطأ في الاتصال: {cause}"
+    "settings.batchGroupConfiguration.testConnection.error": "خطأ في الاتصال: {cause}",
+    "settings.adjustments.exportToAccounting": "تصدير إلى المحاسبة",
+    "errors.cantLoadInvoiceLine": "خطأ في تحميل سطر الفاتورة",
+    "errors.cantLoadInvoice": "خطأ في تحميل الفاتورة",
+    "errors.cantLoadVendor": "خطأ في تحميل المورّد"
 }
