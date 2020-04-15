@@ -1,37 +1,94 @@
-import React, { Component } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
-  Paneset,
+  LoadingView,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 
+import { VENDORS_API } from '../../common/constants';
 import {
   CONFIG_ADJUSTMENTS,
   invoiceLineResource,
   invoiceResource,
   VENDOR,
 } from '../../common/resources';
-import { LoadingPane } from '../../common/components';
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
 import InvoiceLineForm from './InvoiceLineForm';
 
-class InvoiceLineFormContainer extends Component {
-  static manifest = Object.freeze({
-    invoice: invoiceResource,
-    invoiceLine: invoiceLineResource,
-    vendor: VENDOR,
-    configAdjustments: CONFIG_ADJUSTMENTS,
-  });
+function InvoiceLineFormContainer({
+  match: { params: { id, lineId } },
+  onClose,
+  mutator,
+  resources,
+  showCallout,
+  stripes,
+}) {
+  const [invoiceLine, setInvoiceLine] = useState();
+  const [invoice, setInvoice] = useState();
+  const [vendor, setVendor] = useState();
 
-  saveInvoiceLine = (invoiceLine) => {
-    const { onClose, mutator, showCallout } = this.props;
-    const mutatorMethod = invoiceLine.id ? 'PUT' : 'POST';
+  useEffect(
+    () => {
+      (lineId
+        ? mutator.invoiceLine.GET()
+        : Promise.resolve({
+          invoiceId: id,
+          invoiceLineStatus: invoice.status,
+          fundDistributions: [],
+        }))
+        .then(setInvoiceLine)
+        .catch(() => {
+          showCallout({
+            messageId: 'ui-invoice.errors.cantLoadInvoiceLine',
+            type: 'error',
+            timeout: 0,
+          });
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [lineId],
+  );
 
-    mutator.invoiceLine[mutatorMethod](invoiceLine)
+  useEffect(
+    () => {
+      mutator.invoice.GET()
+        .then(
+          invoiceResponse => {
+            setInvoice(invoiceResponse);
+
+            return invoiceResponse.vendorId
+              ? mutator.vendor.GET({ path: `${VENDORS_API}/${invoiceResponse.vendorId}` })
+              : {};
+          },
+          () => {
+            showCallout({
+              messageId: 'ui-invoice.errors.cantLoadInvoice',
+              type: 'error',
+              timeout: 0,
+            });
+          },
+        )
+        .then(setVendor)
+        .catch(() => {
+          showCallout({
+            messageId: 'ui-invoice.errors.cantLoadVendor',
+            type: 'error',
+            timeout: 0,
+          });
+
+        });
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [id],
+  );
+  const saveInvoiceLine = useCallback((values) => {
+    const mutatorMethod = values.id ? 'PUT' : 'POST';
+
+    mutator.invoiceLine[mutatorMethod](values)
       .then(() => {
         showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenSaved' });
         onClose();
@@ -41,55 +98,54 @@ class InvoiceLineFormContainer extends Component {
 
         return { id: 'Unable to save invoice line' };
       });
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onClose, showCallout]);
 
-  hasLoaded() {
-    const { match: { params: { lineId } }, resources: { invoiceLine, invoice, vendor } } = this.props;
+  const hasLoaded = invoice && invoiceLine && vendor;
+  const vendorCode = get(vendor, 'erpCode', '');
+  const accounts = get(vendor, 'accounts', []);
+  const adjustmentsPresets = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
 
-    return (!lineId || get(invoiceLine, 'hasLoaded')) && get(invoice, 'hasLoaded') && get(vendor, 'hasLoaded');
-  }
-
-  render() {
-    const {
-      match: { params: { id, lineId } },
-      onClose,
-      resources,
-      stripes,
-    } = this.props;
-    const invoice = get(resources, ['invoice', 'records', 0], {});
-    const invoiceLine = lineId
-      ? get(resources, ['invoiceLine', 'records', 0])
-      : {
-        invoiceId: id,
-        invoiceLineStatus: invoice.status,
-        fundDistributions: [],
-      };
-    const vendor = get(resources, ['vendor', 'records', 0]);
-    const vendorCode = get(vendor, 'erpCode', '');
-    const accounts = get(vendor, 'accounts', []);
-    const adjustmentsPresets = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
-
-    return (this.hasLoaded()
-      ? (
-        <InvoiceLineForm
-          stripes={stripes}
-          initialValues={invoiceLine}
-          onSubmit={this.saveInvoiceLine}
-          onCancel={onClose}
-          vendorCode={vendorCode}
-          accounts={accounts}
-          invoice={invoice}
-          adjustmentsPresets={adjustmentsPresets}
-        />
-      )
-      : (
-        <Paneset>
-          <LoadingPane onClose={onClose} />
-        </Paneset>
-      )
-    );
-  }
+  return (hasLoaded
+    ? (
+      <InvoiceLineForm
+        stripes={stripes}
+        initialValues={invoiceLine}
+        onSubmit={saveInvoiceLine}
+        onCancel={onClose}
+        vendorCode={vendorCode}
+        accounts={accounts}
+        invoice={invoice}
+        adjustmentsPresets={adjustmentsPresets}
+      />
+    )
+    : (
+      <LoadingView
+        dismissible
+        onClose={onClose}
+      />
+    )
+  );
 }
+
+InvoiceLineFormContainer.manifest = Object.freeze({
+  invoice: {
+    ...invoiceResource,
+    accumulate: true,
+    fetch: false,
+  },
+  invoiceLine: {
+    ...invoiceLineResource,
+    accumulate: true,
+    fetch: false,
+  },
+  vendor: {
+    ...VENDOR,
+    accumulate: true,
+    fetch: false,
+  },
+  configAdjustments: CONFIG_ADJUSTMENTS,
+});
 
 InvoiceLineFormContainer.propTypes = {
   onClose: PropTypes.func.isRequired,

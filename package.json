@@ -123,6 +123,7 @@
           "finance.funds.collection.get",
           "finance.transactions.collection.get",
           "organizations-storage.organizations.collection.get",
+          "organizations-storage.organizations.item.get",
           "tags.collection.get",
           "users.collection.get"
         ]
