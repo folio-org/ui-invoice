@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 ### Stories
 ### Bug fixes
+* [UINV-142](https://issues.folio.org/browse/UINV-142) user with invoice permissions can't CRUD invoice lines or add from POL
 
 ## [2.0.2]https://github.com/folio-org/ui-invoice/tree/v2.0.2) (2020-03-27)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.0.0...v2.0.2)
