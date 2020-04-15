@@ -33,21 +33,17 @@ function InvoiceLineFormContainer({
 
   useEffect(
     () => {
-      (lineId
-        ? mutator.invoiceLine.GET()
-        : Promise.resolve({
-          invoiceId: id,
-          invoiceLineStatus: invoice.status,
-          fundDistributions: [],
-        }))
-        .then(setInvoiceLine)
-        .catch(() => {
-          showCallout({
-            messageId: 'ui-invoice.errors.cantLoadInvoiceLine',
-            type: 'error',
-            timeout: 0,
+      if (lineId) {
+        mutator.invoiceLine.GET()
+          .then(setInvoiceLine)
+          .catch(() => {
+            showCallout({
+              messageId: 'ui-invoice.errors.cantLoadInvoiceLine',
+              type: 'error',
+              timeout: 0,
+            });
           });
-        });
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [lineId],
@@ -79,7 +75,6 @@ function InvoiceLineFormContainer({
             type: 'error',
             timeout: 0,
           });
-
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -101,16 +96,23 @@ function InvoiceLineFormContainer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onClose, showCallout]);
 
-  const hasLoaded = invoice && invoiceLine && vendor;
+  const hasLoaded = (!lineId || invoiceLine) && invoice && vendor;
   const vendorCode = get(vendor, 'erpCode', '');
   const accounts = get(vendor, 'accounts', []);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
+  const initialValues = lineId
+    ? invoiceLine
+    : {
+      invoiceId: id,
+      invoiceLineStatus: invoice?.status,
+      fundDistributions: [],
+    };
 
   return (hasLoaded
     ? (
       <InvoiceLineForm
         stripes={stripes}
-        initialValues={invoiceLine}
+        initialValues={initialValues}
         onSubmit={saveInvoiceLine}
         onCancel={onClose}
         vendorCode={vendorCode}
