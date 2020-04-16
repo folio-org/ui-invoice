@@ -12,12 +12,16 @@ const BatchVouchersContainer = ({ mutator, batchVoucherId }) => {
       mutator.batchVouchers.GET();
       // then download file
     },
-    [mutator.batchVouchers],
+    [],
   );
+
+  if (!batchVoucherId) {
+    return null;
+  }
 
   return (
     <BatchVouchers
-      downloadBatchVouchers={batchVoucherId ? downloadBatchVouchers : undefined}
+      downloadBatchVouchers={downloadBatchVouchers}
     />
   );
 };
@@ -29,10 +33,6 @@ BatchVouchersContainer.manifest = Object.freeze({
 BatchVouchersContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
   batchVoucherId: PropTypes.string,
-};
-
-BatchVouchersContainer.defaultProps = {
-  batchVoucherId: '',
 };
 
 export default stripesConnect(BatchVouchersContainer);

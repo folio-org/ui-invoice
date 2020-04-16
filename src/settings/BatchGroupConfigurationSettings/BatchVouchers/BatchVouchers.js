@@ -4,15 +4,11 @@ import PropTypes from 'prop-types';
 import { IconButton } from '@folio/stripes/components';
 
 const BatchVouchers = ({ downloadBatchVouchers }) => (
-  downloadBatchVouchers
-    ? (
-      <IconButton
-        data-test-batch-voucher-export-download
-        icon="download"
-        onClick={downloadBatchVouchers}
-      />
-    )
-    : null
+  <IconButton
+    data-test-batch-voucher-export-download
+    icon="download"
+    onClick={downloadBatchVouchers}
+  />
 );
 
 BatchVouchers.propTypes = {
