@@ -280,8 +280,8 @@
     "invoice.details.information.batchGroup": "Grupo de lotes",
     "settings.batchGroupConfiguration.testConnection.success": "A conexão é válida",
     "settings.batchGroupConfiguration.testConnection.error": "Erro de conexão: {cause}",
-    "settings.adjustments.exportToAccounting": "Export to accounting",
-    "errors.cantLoadInvoiceLine": "Error loading invoice line",
-    "errors.cantLoadInvoice": "Error loading invoice",
-    "errors.cantLoadVendor": "Error loading vendor"
+    "settings.adjustments.exportToAccounting": "Exportar para contabilidade",
+    "errors.cantLoadInvoiceLine": "Erro ao carregar a linha da fatura",
+    "errors.cantLoadInvoice": "Erro ao carregar a fatura",
+    "errors.cantLoadVendor": "Erro ao carregar o fornecedor"
 }
