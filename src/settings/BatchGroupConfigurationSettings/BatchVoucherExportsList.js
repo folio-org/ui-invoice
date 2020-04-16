@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import {
-  IconButton,
-  Layout,
-  MultiColumnList,
-} from '@folio/stripes/components';
+import { MultiColumnList } from '@folio/stripes/components';
 import {
   FolioFormattedTime,
   acqRowFormatter,
@@ -14,6 +10,7 @@ import {
 
 import { BATCH_VOUCHER_EXPORT_STATUS_LABEL } from '../../common/constants';
 import { RESULT_COUNT_INCREMENT } from './constants';
+import BatchVouchersContainer from './BatchVouchers';
 
 const columnMapping = {
   date: <FormattedMessage id="ui-invoice.settings.BatchVoucherExports.date" />,
@@ -25,13 +22,9 @@ const cellFormatters = {
   date: d => (
     <FolioFormattedTime dateString={d.end || d.start} />
   ),
-  exportButton: () => (
-    <Layout element="span" className="full textRight">
-      <IconButton
-        data-test-batch-voucher-export-download
-        icon="download"
-      />
-    </Layout>
+  // eslint-disable-next-line react/prop-types
+  exportButton: ({ batchVoucherId }) => (
+    <BatchVouchersContainer batchVoucherId={batchVoucherId} />
   ),
   status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
 };
