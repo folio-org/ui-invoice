@@ -29,3 +29,8 @@ export const SCHEDULE_EXPORT_OPTIONS = Object.values(SCHEDULE_EXPORT).map(schedu
 }));
 
 export const RESULT_COUNT_INCREMENT = 10;
+
+export const EXPORT_FORMATS_HEADER_MAP = Object.values(EXPORT_FORMAT).reduce((acc, format) => ({
+  ...acc,
+  [format]: { 'Accept': format.toLowerCase() },
+}), {});
