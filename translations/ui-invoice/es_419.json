@@ -281,7 +281,7 @@
     "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
     "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}",
     "settings.adjustments.exportToAccounting": "Export to accounting",
-    "errors.cantLoadInvoiceLine": "Error loading invoice line",
-    "errors.cantLoadInvoice": "Error loading invoice",
-    "errors.cantLoadVendor": "Error loading vendor"
+    "errors.cantLoadInvoiceLine": "Error al cargar línea de factura",
+    "errors.cantLoadInvoice": "Error al cargar la factura",
+    "errors.cantLoadVendor": "Error al cargar proveedor"
 }
