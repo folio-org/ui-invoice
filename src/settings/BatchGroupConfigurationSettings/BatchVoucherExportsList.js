@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -21,19 +21,22 @@ const visibleColumns = ['date', 'status', 'exportButton'];
 const rowProps = { alignLastColToEnd: true };
 
 export function BatchVoucherExportsList({ batchVoucherExports, format, onNeedMoreData, recordsCount }) {
-  const cellFormatters = {
-    date: d => (
-      <FolioFormattedTime dateString={d.end || d.start} />
-    ),
-    // eslint-disable-next-line react/prop-types
-    exportButton: ({ batchVoucherId }) => (
-      <ExportVoucherButton
-        batchVoucherId={batchVoucherId}
-        format={format}
-      />
-    ),
-    status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
-  };
+  const cellFormatters = useMemo(
+    () => ({
+      date: d => (
+        <FolioFormattedTime dateString={d.end || d.start} />
+      ),
+      // eslint-disable-next-line react/prop-types
+      exportButton: ({ batchVoucherId }) => (
+        <ExportVoucherButton
+          batchVoucherId={batchVoucherId}
+          format={format}
+        />
+      ),
+      status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
+    }),
+    [format],
+  );
 
   if (!batchVoucherExports) return null;
 

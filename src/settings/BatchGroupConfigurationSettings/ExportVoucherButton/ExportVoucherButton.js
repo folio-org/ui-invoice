@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import saveAs from 'file-saver';
 
 import {
-  stripesConnect,
   stripesShape,
+  withStripes,
 } from '@folio/stripes/core';
 import { IconButton } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
@@ -65,4 +65,4 @@ ExportVoucherButton.propTypes = {
   stripes: stripesShape,
 };
 
-export default stripesConnect(ExportVoucherButton);
+export default withStripes(ExportVoucherButton);

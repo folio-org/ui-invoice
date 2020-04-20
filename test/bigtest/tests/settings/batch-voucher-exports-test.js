@@ -6,6 +6,7 @@ import {
   BATCH_VOUCHERS_API,
   BATCH_VOUCHER_EXPORT_STATUS,
 } from '../../../../src/common/constants';
+import { EXPORT_FORMAT } from '../../../../src/settings/BatchGroupConfigurationSettings/constants';
 import setupApplication from '../../helpers/setup-application';
 import BatchGroupConfigurationSettingsInteractor from '../../interactors/BatchGroupConfigurationSettingsInteractor';
 
@@ -17,6 +18,11 @@ describe('Batch voucher exports list', function () {
 
   beforeEach(async function () {
     const batchGroup = this.server.create('batchgroup');
+
+    this.server.create('exportConfig', {
+      batchGroupId: batchGroup.id,
+      format: EXPORT_FORMAT.json,
+    });
 
     batchVoucherExport = this.server.create('batchvoucherexport', {
       batchGroupId: batchGroup.id,
