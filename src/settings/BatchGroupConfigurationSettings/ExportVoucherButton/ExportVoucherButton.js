@@ -18,9 +18,9 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
     async () => {
       try {
         const httpHeaders = {
-          ...EXPORT_FORMATS_HEADER_MAP[format],
+          'Accept': EXPORT_FORMATS_HEADER_MAP[format],
           'X-Okapi-Tenant': stripes.okapi.tenant,
-          'X-Okapi-Token': stripes.store.getState().okapi.token,
+          'X-Okapi-Token': stripes.okapi.token,
         };
 
         const batchVouchers = await fetch(

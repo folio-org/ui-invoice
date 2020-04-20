@@ -1,6 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
+import { CONTENT_TYPES } from '../../common/constants';
+
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 export const WEEKDAYS_OPTIONS = Object.values(WEEKDAYS).map(day => ({
@@ -30,7 +32,7 @@ export const SCHEDULE_EXPORT_OPTIONS = Object.values(SCHEDULE_EXPORT).map(schedu
 
 export const RESULT_COUNT_INCREMENT = 10;
 
-export const EXPORT_FORMATS_HEADER_MAP = Object.values(EXPORT_FORMAT).reduce((acc, format) => ({
-  ...acc,
-  [format]: { 'Accept': format.toLowerCase() },
-}), {});
+export const EXPORT_FORMATS_HEADER_MAP = {
+  [EXPORT_FORMAT.json]: CONTENT_TYPES.json,
+  [EXPORT_FORMAT.xml]: CONTENT_TYPES.xml,
+};
