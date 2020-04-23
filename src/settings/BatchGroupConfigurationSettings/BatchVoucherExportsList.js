@@ -1,12 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import {
-  IconButton,
-  Layout,
-  MultiColumnList,
-} from '@folio/stripes/components';
+import { MultiColumnList } from '@folio/stripes/components';
 import {
   FolioFormattedTime,
   acqRowFormatter,
@@ -14,6 +10,7 @@ import {
 
 import { BATCH_VOUCHER_EXPORT_STATUS_LABEL } from '../../common/constants';
 import { RESULT_COUNT_INCREMENT } from './constants';
+import ExportVoucherButton from './ExportVoucherButton';
 
 const columnMapping = {
   date: <FormattedMessage id="ui-invoice.settings.BatchVoucherExports.date" />,
@@ -21,24 +18,26 @@ const columnMapping = {
   exportButton: ' ',
 };
 const visibleColumns = ['date', 'status', 'exportButton'];
-const cellFormatters = {
-  date: d => (
-    <FolioFormattedTime dateString={d.end || d.start} />
-  ),
-  exportButton: () => (
-    <Layout element="span" className="full textRight">
-      <IconButton
-        data-test-batch-voucher-export-download
-        icon="download"
-      />
-    </Layout>
-  ),
-  status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
-};
-
 const rowProps = { alignLastColToEnd: true };
 
-export function BatchVoucherExportsList({ batchVoucherExports, onNeedMoreData, recordsCount }) {
+export function BatchVoucherExportsList({ batchVoucherExports, format, onNeedMoreData, recordsCount }) {
+  const cellFormatters = useMemo(
+    () => ({
+      date: d => (
+        <FolioFormattedTime dateString={d.end || d.start} />
+      ),
+      // eslint-disable-next-line react/prop-types
+      exportButton: ({ batchVoucherId }) => (
+        <ExportVoucherButton
+          batchVoucherId={batchVoucherId}
+          format={format}
+        />
+      ),
+      status: ({ status }) => BATCH_VOUCHER_EXPORT_STATUS_LABEL[status],
+    }),
+    [format],
+  );
+
   if (!batchVoucherExports) return null;
 
   return (
@@ -66,6 +65,7 @@ export function BatchVoucherExportsList({ batchVoucherExports, onNeedMoreData, r
 
 BatchVoucherExportsList.propTypes = {
   batchVoucherExports: PropTypes.arrayOf(PropTypes.object),
+  format: PropTypes.string,
   onNeedMoreData: PropTypes.func,
   recordsCount: PropTypes.number,
 };

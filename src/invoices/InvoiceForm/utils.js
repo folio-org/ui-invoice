@@ -1,6 +1,7 @@
 import { differenceBy } from 'lodash';
 
 import {
+  CONTENT_TYPES,
   INVOICE_API,
   INVOICE_DOCUMENTS_API,
 } from '../../common/constants';
@@ -31,7 +32,7 @@ export const saveDocument = (documentBody, okapi) => {
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
       'X-Okapi-Token': okapi.token,
-      'Content-Type': 'application/json',
+      'Content-Type': CONTENT_TYPES.json,
     },
     body: JSON.stringify(documentBody),
   });
@@ -43,7 +44,7 @@ export const deleteDocument = ({ id, invoiceId }, okapi) => {
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
       'X-Okapi-Token': okapi.token,
-      'Content-Type': 'application/json',
+      'Content-Type': CONTENT_TYPES.json,
     },
   });
 };

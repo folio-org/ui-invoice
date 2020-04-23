@@ -111,3 +111,8 @@ export const ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS = [
     value: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.separateFrom,
   },
 ];
+
+export const CONTENT_TYPES = {
+  json: 'application/json',
+  xml: 'application/xml',
+};

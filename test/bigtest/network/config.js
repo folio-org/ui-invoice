@@ -19,6 +19,7 @@ import configDocuments from './configs/documents';
 import configExportConfig from './configs/exportConfig';
 import configCredentials from './configs/credentials';
 import configBatchVoucherExports from './configs/batchVoucherExports';
+import configBatchVoucher from './configs/batchVoucher';
 
 export default function config() {
   configInvoices(this);
@@ -39,4 +40,5 @@ export default function config() {
   configCredentials(this);
   configBatchVoucherExports(this);
   configConfigs(this);
+  configBatchVoucher(this);
 }

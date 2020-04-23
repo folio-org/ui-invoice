@@ -211,6 +211,7 @@ const BatchGroupConfigurationForm = ({
       </Row>
       <BatchVoucherExportsList
         batchVoucherExports={batchVoucherExports}
+        format={formValues.format}
         onNeedMoreData={onNeedMoreData}
         recordsCount={recordsCount}
       />
