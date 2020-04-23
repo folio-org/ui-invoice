@@ -1,5 +1,5 @@
 {
-    "meta.title": "发票",
+    "meta.title": "發票",
     "invoice.details.paneTitle": "供应商发票号 - {vendorInvoiceNo}",
     "invoice.status.approved": "已批准",
     "invoice.status.open": "打开",
@@ -280,8 +280,9 @@
     "invoice.details.information.batchGroup": "Batch group",
     "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
     "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}",
-    "settings.adjustments.exportToAccounting": "Export to accounting",
-    "errors.cantLoadInvoiceLine": "Error loading invoice line",
-    "errors.cantLoadInvoice": "Error loading invoice",
-    "errors.cantLoadVendor": "Error loading vendor"
+    "settings.adjustments.exportToAccounting": "輸出到會計",
+    "errors.cantLoadInvoiceLine": "載入發票行時發生問題",
+    "errors.cantLoadInvoice": "載入發票時發生問題",
+    "errors.cantLoadVendor": "載入廠商時發生問題",
+    "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded"
 }

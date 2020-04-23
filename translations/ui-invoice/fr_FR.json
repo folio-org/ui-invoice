@@ -283,5 +283,6 @@
     "settings.adjustments.exportToAccounting": "Transmettre en comptabilité",
     "errors.cantLoadInvoiceLine": "Erreur lors du chargement de la ligne de facturation",
     "errors.cantLoadInvoice": "Erreur lors du chargement de la facture",
-    "errors.cantLoadVendor": "Erreur lors du chargement du fournisseur"
+    "errors.cantLoadVendor": "Erreur lors du chargement du fournisseur",
+    "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded"
 }
