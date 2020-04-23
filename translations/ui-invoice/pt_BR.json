@@ -283,5 +283,6 @@
     "settings.adjustments.exportToAccounting": "Exportar para contabilidade",
     "errors.cantLoadInvoiceLine": "Erro ao carregar a linha da fatura",
     "errors.cantLoadInvoice": "Erro ao carregar a fatura",
-    "errors.cantLoadVendor": "Erro ao carregar o fornecedor"
+    "errors.cantLoadVendor": "Erro ao carregar o fornecedor",
+    "settings.BatchVoucherExports.download.error": "Os lotes de vouchers não foram baixados"
 }
