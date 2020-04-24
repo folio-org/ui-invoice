@@ -1,7 +1,9 @@
 # Change history for ui-invoice
 
 ## (IN PROGRESS)
-### Stories
+
+## [2.0.3]https://github.com/folio-org/ui-invoice/tree/v2.0.3) (2020-04-24)
+
 ### Bug fixes
 * [UINV-142](https://issues.folio.org/browse/UINV-142) user with invoice permissions can't CRUD invoice lines or add from POL
 
