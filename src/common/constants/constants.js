@@ -114,5 +114,6 @@ export const ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS = [
 
 export const CONTENT_TYPES = {
   json: 'application/json',
+  octet: 'application/octet-stream',
   xml: 'application/xml',
 };

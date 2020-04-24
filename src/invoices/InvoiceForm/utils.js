@@ -32,7 +32,7 @@ export const saveDocument = (documentBody, okapi) => {
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
       'X-Okapi-Token': okapi.token,
-      'Content-Type': CONTENT_TYPES.json,
+      'Content-Type': CONTENT_TYPES.octet,
     },
     body: JSON.stringify(documentBody),
   });
