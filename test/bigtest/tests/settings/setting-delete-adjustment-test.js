@@ -25,6 +25,8 @@ describe('Delete adjustment', function () {
       value: adjustmentConfig,
     });
 
+    this.visit('/settings/invoice/adjustments');
+    await settingList.whenLoaded();
     this.visit(`/settings/invoice/adjustments/${adjustment.id}/view`);
     await setting.whenLoaded();
   });
