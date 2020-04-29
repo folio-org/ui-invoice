@@ -12,6 +12,7 @@ describe('Create new adjustment', function () {
 
   beforeEach(async function () {
     this.visit('/settings/invoice/adjustments');
+    await settingList.whenLoaded();
     this.visit('/settings/invoice/adjustments/create');
     await setting.whenLoaded();
   });
