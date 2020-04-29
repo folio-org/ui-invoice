@@ -11,6 +11,7 @@ describe('Settings', () => {
 
   describe('adjustments', () => {
     beforeEach(function () {
+      this.visit('/settings/invoice');
       this.visit('/settings/invoice/adjustments');
     });
 
