@@ -11,6 +11,7 @@ describe('Create new adjustment', function () {
   const settingList = new SettingsAdjustmentsListInteractor();
 
   beforeEach(async function () {
+    this.visit('/settings/invoice/adjustments');
     this.visit('/settings/invoice/adjustments/create');
     await setting.whenLoaded();
   });
