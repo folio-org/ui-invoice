@@ -37,8 +37,4 @@ ApprovedBy.propTypes = {
   }).isRequired,
 };
 
-ApprovedBy.defaultProps = {
-  approvedByUserId: null,
-};
-
 export default stripesConnect(ApprovedBy);
