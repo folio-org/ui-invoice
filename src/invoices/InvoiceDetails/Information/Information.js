@@ -168,7 +168,6 @@ Information.propTypes = {
 Information.defaultProps = {
   adjustmentsTotal: 0,
   approvalDate: '',
-  approvedBy: '',
   invoiceDate: '',
   paymentDue: '',
   paymentTerms: '',
@@ -177,7 +176,6 @@ Information.defaultProps = {
   source: '',
   invoiceTotalUnits: 0,
   acqUnits: [],
-  currency: '',
 };
 
 export default Information;
