@@ -63,6 +63,9 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },
+  "resolutions": {
+    "moment": "2.24.0"
+  },
   "optionalDependencies": {
     "@folio/plugin-find-organization": "*",
     "@folio/plugin-find-po-line": "*"
