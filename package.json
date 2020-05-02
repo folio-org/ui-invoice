@@ -63,6 +63,9 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1"
   },
+  "resolutions": {
+    "moment": "2.24.0"
+  },
   "optionalDependencies": {
     "@folio/plugin-find-organization": "*",
     "@folio/plugin-find-po-line": "*"
@@ -81,7 +84,7 @@
       "finance.funds": "1.0",
       "contributor-name-types": "1.2",
       "identifier-types": "1.2",
-      "invoice": "3.2 4.0",
+      "invoice": "4.0 5.0",
       "order-lines": "1.0",
       "organizations-storage.organizations": "3.0",
       "tags": "1.0",
