@@ -280,9 +280,9 @@
     "invoice.details.information.batchGroup": "批次组",
     "settings.batchGroupConfiguration.testConnection.success": "连接有效",
     "settings.batchGroupConfiguration.testConnection.error": "连接错误： {cause}",
-    "settings.adjustments.exportToAccounting": "Export to accounting",
-    "errors.cantLoadInvoiceLine": "Error loading invoice line",
+    "settings.adjustments.exportToAccounting": "导出到账户",
+    "errors.cantLoadInvoiceLine": "加载发票行出错",
     "errors.cantLoadInvoice": "Error loading invoice",
     "errors.cantLoadVendor": "Error loading vendor",
-    "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded"
+    "settings.BatchVoucherExports.download.error": "未下载批凭证"
 }
