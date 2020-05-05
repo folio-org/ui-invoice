@@ -36,3 +36,8 @@ export const EXPORT_FORMATS_HEADER_MAP = {
   [EXPORT_FORMAT.json]: CONTENT_TYPES.json,
   [EXPORT_FORMAT.xml]: CONTENT_TYPES.xml,
 };
+
+export const EXPORT_FORMAT_FILE_EXTENSION = {
+  [EXPORT_FORMAT.json]: 'json',
+  [EXPORT_FORMAT.xml]: 'xml',
+};
