@@ -25,6 +25,7 @@ import {
 @interactor class BatchVoucherExports {
   list = collection('[role="group"] [role="row"]', {
     downloadButton: new ButtonInteractor('[icon="download"]'),
+    rowText: text(),
   });
 }
 

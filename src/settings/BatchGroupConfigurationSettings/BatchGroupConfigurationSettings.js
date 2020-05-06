@@ -1,6 +1,7 @@
 import React, {
   useCallback,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
@@ -17,7 +18,11 @@ import {
   exportConfigsResource,
   testConnectionResource,
 } from '../../common/resources';
-import { EXPORT_CONFIGURATIONS_API } from '../../common/constants';
+import {
+  BATCH_VOUCHER_EXPORT_STATUS,
+  BATCH_VOUCHER_EXPORTS_API,
+  EXPORT_CONFIGURATIONS_API,
+} from '../../common/constants';
 import {
   RESULT_COUNT_INCREMENT,
   SCHEDULE_EXPORT,
@@ -38,6 +43,11 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   const showCallout = useShowCallout();
   const [recordsCount, setRecordsCount] = useState(0);
   const [recordsOffset, setRecordsOffset] = useState(0);
+  const runningInterval = useRef();
+
+  useEffect(() => {
+    return () => clearInterval(runningInterval.current);
+  }, []);
 
   useEffect(() => {
     setIsLoading(true);
@@ -143,8 +153,27 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
         batchGroups.find(({ id }) => id === selectedBatchGroupId)?.metadata.createdDate;
 
       createManualVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId, start)
-        .then(() => {
+        .then(({ id }) => {
           refreshList();
+
+          clearInterval(runningInterval.current);
+          runningInterval.current = setInterval(() => {
+            mutator.batchVoucherExports.GET({ path: `${BATCH_VOUCHER_EXPORTS_API}/${id}` })
+              .then((updated) => {
+                const status = updated.status;
+
+                if (status !== BATCH_VOUCHER_EXPORT_STATUS.pending) {
+                  clearInterval(runningInterval.current);
+                  setBatchVoucherExports(prev => prev.map(d => {
+                    return d.id !== id || d.status === status ? d : {
+                      ...d,
+                      status,
+                    };
+                  }));
+                }
+              });
+          }, 4000);
+
           showCallout({
             messageId: 'ui-invoice.settings.runManualExport.success',
             type: 'success',
