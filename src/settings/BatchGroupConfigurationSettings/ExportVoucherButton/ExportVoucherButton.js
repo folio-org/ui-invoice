@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import saveAs from 'file-saver';
+import { saveAs } from 'file-saver';
 
 import {
   stripesShape,
@@ -10,7 +10,10 @@ import { IconButton } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { BATCH_VOUCHERS_API } from '../../../common/constants';
-import { EXPORT_FORMATS_HEADER_MAP } from '../constants';
+import {
+  EXPORT_FORMAT_FILE_EXTENSION,
+  EXPORT_FORMATS_HEADER_MAP,
+} from '../constants';
 
 const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
   const showCallout = useShowCallout();
@@ -33,7 +36,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
         } else {
           const blob = await batchVouchers.blob();
 
-          saveAs(blob, batchVoucherId);
+          saveAs(blob, `${batchVoucherId}.${EXPORT_FORMAT_FILE_EXTENSION[format]}`);
         }
       } catch (e) {
         showCallout({
