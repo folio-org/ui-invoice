@@ -22,7 +22,7 @@ describe('Batch group manual voucher export', function () {
 
   it('displays run manual export confirmation modal', () => {
     expect(setting.manualExportConfirmation.isPresent).to.be.true;
-    expect(setting.batchVoucherExports.list().length).to.equal(0);
+    expect(setting.batchVoucherExports.isPresent).to.be.false;
   });
 
   describe('Confirm run manual export', () => {
