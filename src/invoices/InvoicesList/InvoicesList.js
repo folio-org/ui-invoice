@@ -14,8 +14,9 @@ import {
 import {
   AmountWithCurrencyField,
   FiltersPane,
-  ResultsPane,
+  NoResultsMessage,
   ResetButton,
+  ResultsPane,
   SingleSearchForm,
   useLocationFilters,
   useLocationSorting,
@@ -66,6 +67,7 @@ const InvoicesList = ({
   resetData,
   invoices,
   invoicesCount,
+  refreshList,
 }) => {
   const [
     filters,
@@ -95,11 +97,19 @@ const InvoicesList = ({
     },
     [history, location.search],
   );
+  const resultsStatusMessage = (
+    <NoResultsMessage
+      isLoading={isLoading}
+      filters={filters}
+      isFiltersOpened={isFiltersOpened}
+      toggleFilters={toggleFilters}
+    />
+  );
 
   return (
     <Paneset data-test-invoices-list>
       {isFiltersOpened && (
-        <FiltersPane>
+        <FiltersPane toggleFilters={toggleFilters}>
           <SingleSearchForm
             applySearch={applySearch}
             changeSearch={changeSearch}
@@ -129,6 +139,8 @@ const InvoicesList = ({
         count={invoicesCount}
         renderLastMenu={renderLastMenu}
         toggleFiltersPane={toggleFilters}
+        filters={filters}
+        isFiltersOpened={isFiltersOpened}
       >
         <MultiColumnList
           id="invocies-list"
@@ -146,6 +158,8 @@ const InvoicesList = ({
           sortDirection={sortingDirection}
           onHeaderClick={changeSorting}
           pagingType="click"
+          isEmptyMessage={resultsStatusMessage}
+          hasMargin
         />
       </ResultsPane>
 
@@ -156,8 +170,13 @@ const InvoicesList = ({
 
       <Route
         path="/invoice/view/:id"
-        component={InvoiceDetailsContainer}
         exact
+        render={props => (
+          <InvoiceDetailsContainer
+            {...props}
+            refreshList={refreshList}
+          />
+        )}
       />
     </Paneset>
   );
@@ -171,6 +190,7 @@ InvoicesList.propTypes = {
   invoices: PropTypes.arrayOf(PropTypes.object),
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
+  refreshList: PropTypes.func.isRequired,
 };
 
 InvoicesList.defaultProps = {
