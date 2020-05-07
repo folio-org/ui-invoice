@@ -65,6 +65,7 @@ describe('Invoice line details tags', () => {
       await invoiceLineDetails.tagsAction.click();
       await tagsPane.whenLoaded();
       await tagsPane.selectedTags.list(0).deleteTag();
+      await invoiceLineDetails.whenLoaded();
     });
 
     it('should delete one tag', () => {
@@ -78,6 +79,7 @@ describe('Invoice line details tags', () => {
       await tagsPane.whenLoaded();
       await tagsPane.selectedTags.fillTag('tag3');
       await tagsPane.addTag();
+      await invoiceLineDetails.whenLoaded();
     });
 
     it('should add one new tag', () => {

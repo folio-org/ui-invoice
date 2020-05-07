@@ -42,7 +42,10 @@ const InvoiceLineDetailsContainer = ({
 
           return line.poLineId && mutator.poLine.GET({ path: `${PO_LINES_API}/${line.poLineId}` });
         })
-        .then(poLine => setPolNumber(poLine?.poLineNumber || ''));
+        .then(
+          poLine => setPolNumber(poLine?.poLineNumber || ''),
+          () => setPolNumber(''),
+        );
 
       return Promise.all([invoicePromies, invoiceLinePromise]);
     },

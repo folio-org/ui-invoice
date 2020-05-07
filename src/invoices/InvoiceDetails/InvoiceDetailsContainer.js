@@ -145,9 +145,16 @@ function InvoiceDetailsContainer({
             pathname: '/invoice',
             search: location.search,
           });
-        }, () => {
+        }, async (response) => {
           setIsLoading(false);
           showCallout({ messageId: 'ui-invoice.errors.invoiceHasNotBeenDeleted', type: 'error' });
+          try {
+            const { errors } = await response.json();
+            const message = errors[0].message;
+
+            if (message) showCallout({ message, type: 'error' });
+          // eslint-disable-next-line no-empty
+          } catch (e) {}
         });
     },
     [history, id, location.search, mutator.invoice, refreshList, showCallout],
