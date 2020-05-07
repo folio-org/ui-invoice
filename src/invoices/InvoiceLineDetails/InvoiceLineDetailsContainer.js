@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { LoadingPane } from '@folio/stripes/components';
 import {
   baseManifest,
-  LoadingPane,
   Tags,
   useModalToggle,
   useShowCallout,
@@ -22,8 +22,10 @@ const InvoiceLineDetailsContainer = ({
   history,
   location,
   match: { params },
-  mutator,
+  mutator: originMutator,
 }) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const mutator = useMemo(() => originMutator, []);
   const [polNumber, setPolNumber] = useState('');
   const [invoice, setInvoice] = useState({});
   const [invoiceLine, setInvoiceLine] = useState({});
@@ -33,28 +35,31 @@ const InvoiceLineDetailsContainer = ({
 
   const fetchInvoiceLineDetails = useCallback(
     () => {
-      setIsLoading(true);
-      mutator.invoice.GET().then(response => setInvoice(response));
-      mutator.invoiceLine.GET()
+      const invoicePromies = mutator.invoice.GET().then(response => setInvoice(response));
+      const invoiceLinePromise = mutator.invoiceLine.GET()
         .then(line => {
           setInvoiceLine(line);
-          if (line.poLineId) {
-            mutator.poLine.GET({
-              path: `${PO_LINES_API}/${line.poLineId}`,
-            }).then(({ poLineNumber }) => setPolNumber(poLineNumber));
-          }
-          setIsLoading(false);
-        });
+
+          return line.poLineId && mutator.poLine.GET({ path: `${PO_LINES_API}/${line.poLineId}` });
+        })
+        .then(poLine => setPolNumber(poLine?.poLineNumber || ''));
+
+      return Promise.all([invoicePromies, invoiceLinePromise]);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.id],
+    [mutator.invoice, mutator.invoiceLine, mutator.poLine],
   );
 
-  useEffect(fetchInvoiceLineDetails, [params.id]);
+  useEffect(() => {
+    setIsLoading(true);
+    fetchInvoiceLineDetails().finally(setIsLoading);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [params.id]);
 
   const updateInvoiceLineTagList = async (line) => {
+    setIsLoading(true);
     await mutator.invoiceLine.PUT(line);
-    fetchInvoiceLineDetails();
+    await fetchInvoiceLineDetails();
+    setIsLoading(false);
   };
 
   const closeInvoiceLine = useCallback(
@@ -66,8 +71,7 @@ const InvoiceLineDetailsContainer = ({
         search: location.search,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.id, location.search],
+    [params.id, history, location.search],
   );
 
   const goToEditInvoiceLine = useCallback(
@@ -79,32 +83,31 @@ const InvoiceLineDetailsContainer = ({
         search: location.search,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.id, params.lineId, location.search],
+    [params.id, params.lineId, history, location.search],
   );
 
   const deleteInvoiceLine = useCallback(
     () => {
-      mutator.invoiceLine.DELETE({ id: params.lineId })
+      setIsLoading(true);
+      mutator.invoiceLine.DELETE({ id: params.lineId }, { silent: true })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenDeleted' });
-
           history.replace({
             pathname: `/invoice/view/${params.id}`,
             search: location.search,
           });
         })
         .catch(() => {
+          setIsLoading(false);
           showCallout({ messageId: 'ui-invoice.errors.invoiceLineHasNotBeenDeleted', type: 'error' });
         });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.lineId, location.search],
+    [mutator.invoiceLine, params.lineId, params.id, showCallout, history, location.search],
   );
 
-  if (isLoading) {
+  if (isLoading || invoiceLine?.id !== params.lineId) {
     return (
-      <LoadingPane onClose={closeInvoiceLine} />
+      <LoadingPane dismissible onClose={closeInvoiceLine} />
     );
   }
 

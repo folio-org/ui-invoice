@@ -1,12 +1,10 @@
 import React, {
   useCallback,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import {
-  withRouter,
-} from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import queryString from 'query-string';
 
@@ -14,7 +12,6 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   buildDateRangeQuery,
   makeQueryBuilder,
-  useLocationReset,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -51,14 +48,16 @@ const buildInvoicesQuery = makeQueryBuilder(
 
 const resetData = () => {};
 
-const InvoicesListContainer = ({ mutator, location, history }) => {
+const InvoicesListContainer = ({ mutator: originMutator, location }) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const mutator = useMemo(() => originMutator, []);
   const [invoices, setInvoices] = useState([]);
   const [organizationsMap, setOrganizationsMap] = useState({});
   const [invoicesCount, setInvoicesCount] = useState(0);
   const [invoicesOffset, setInvoicesOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadInvoices = (offset) => {
+  const loadInvoices = useCallback((offset) => {
     setIsLoading(true);
 
     return mutator.invoicesListInvoices.GET({
@@ -98,34 +97,30 @@ const InvoicesListContainer = ({ mutator, location, history }) => {
         ]);
       })
       .finally(() => setIsLoading(false));
+  }, [
+    location.search, mutator.invoicesListInvoices, mutator.invoicesListOrganizations, organizationsMap,
+  ]);
+
+  const onNeedMoreData = () => {
+    const newOffset = invoicesOffset + RESULT_COUNT_INCREMENT;
+
+    loadInvoices(newOffset)
+      .then(() => {
+        setInvoicesOffset(newOffset);
+      });
   };
 
-  const onNeedMoreData = useCallback(
-    () => {
-      const newOffset = invoicesOffset + RESULT_COUNT_INCREMENT;
-
-      loadInvoices(newOffset)
-        .then(() => {
-          setInvoicesOffset(newOffset);
-        });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [invoicesOffset],
-  );
-
-  const refreshList = () => {
+  const refreshList = useCallback(() => {
     setInvoices([]);
     setInvoicesOffset(0);
     loadInvoices(0);
-  };
+  }, [loadInvoices]);
 
   useEffect(
     refreshList,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [location.search],
   );
-
-  useLocationReset(history, location, '/invoice', refreshList);
 
   return (
     <InvoicesList
@@ -134,6 +129,7 @@ const InvoicesListContainer = ({ mutator, location, history }) => {
       invoicesCount={invoicesCount}
       isLoading={isLoading}
       invoices={invoices}
+      refreshList={refreshList}
     />
   );
 };
@@ -153,7 +149,6 @@ InvoicesListContainer.manifest = Object.freeze({
 InvoicesListContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
 };
 
-export default withRouter(stripesConnect(InvoicesListContainer));
+export default stripesConnect(InvoicesListContainer);

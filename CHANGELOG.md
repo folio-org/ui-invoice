@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-147](https://issues.folio.org/browse/UINV-147) Display record loading icon in view pane after user clicks action
 * [UINV-146](https://issues.folio.org/browse/UINV-146) Support breaking changes on the back-end for Limit document size feature
 * [UINV-126](https://issues.folio.org/browse/UINV-126) Download batch vouchers
 * [UINV-138](https://issues.folio.org/browse/UINV-138) Align actions icons in table to right hand side of view pane(s)

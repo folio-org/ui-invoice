@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { LoadingPane } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   baseManifest,
-  LoadingPane,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
@@ -27,9 +27,12 @@ function InvoiceDetailsContainer({
   match: { url },
   match: { params: { id } },
   history,
-  mutator,
+  mutator: originMutator,
   location,
+  refreshList,
 }) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const mutator = useMemo(() => originMutator, []);
   const showCallout = useShowCallout();
   const [isLoading, setIsLoading] = useState(true);
   const [invoice, setInvoice] = useState({});
@@ -39,12 +42,11 @@ function InvoiceDetailsContainer({
 
   const fetchInvoiceData = useCallback(
     () => {
-      setIsLoading(true);
       setInvoice({});
       setInvoiceLines({});
       setVendor({});
 
-      mutator.invoice.GET()
+      return mutator.invoice.GET()
         .then(invoiceResponse => {
           setInvoice(invoiceResponse);
 
@@ -76,8 +78,15 @@ function InvoiceDetailsContainer({
         })
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
-        })
-        .finally(() => setIsLoading(false));
+        });
+    },
+    [mutator.invoice, mutator.invoiceActionsApprovals, mutator.invoiceLines, mutator.vendor, showCallout],
+  );
+
+  useEffect(
+    () => {
+      setIsLoading(true);
+      fetchInvoiceData().finally(setIsLoading);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [id],
@@ -90,8 +99,7 @@ function InvoiceDetailsContainer({
         search: location.search,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.search],
+    [history, location.search],
   );
 
   const onEdit = useCallback(
@@ -101,11 +109,8 @@ function InvoiceDetailsContainer({
         search: location.search,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id, location.search],
+    [history, id, location.search],
   );
-
-  useEffect(fetchInvoiceData, [id]);
 
   const createLine = useCallback(
     () => {
@@ -114,50 +119,52 @@ function InvoiceDetailsContainer({
         search: location.search,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [url, location.search],
+    [history, url, location.search],
   );
 
   const addLines = useCallback(
     async (poLines) => {
+      setIsLoading(true);
       await poLines.map(
         poLine => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor)),
       );
-      fetchInvoiceData();
+      await fetchInvoiceData();
+      setIsLoading(false);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id],
+    [fetchInvoiceData, id, mutator.invoiceLines, vendor],
   );
 
   const deleteInvoice = useCallback(
     () => {
-      mutator.invoice.DELETE({ id })
+      setIsLoading(true);
+      mutator.invoice.DELETE({ id }, { silent: true })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.invoiceHasBeenDeleted' });
-
+          refreshList();
           history.replace({
             pathname: '/invoice',
             search: location.search,
           });
-        })
-        .catch(() => {
+        }, () => {
+          setIsLoading(false);
           showCallout({ messageId: 'ui-invoice.errors.invoiceHasNotBeenDeleted', type: 'error' });
         });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id, location.search],
+    [history, id, location.search, mutator.invoice, refreshList, showCallout],
   );
 
   const approveInvoice = useCallback(
     () => {
       const approvedInvoice = { ...invoice, status: INVOICE_STATUS.approved };
 
+      setIsLoading(true);
       mutator.invoice.PUT(approvedInvoice)
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' });
-          fetchInvoiceData();
-        })
-        .catch(async (response) => {
+          refreshList();
+
+          return fetchInvoiceData();
+        }, async (response) => {
           try {
             const { errors } = await response.json();
             const errorCode = get(errors, [0, 'code']);
@@ -166,22 +173,24 @@ function InvoiceDetailsContainer({
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.approve.error', type: 'error' });
           }
-        });
+        })
+        .finally(setIsLoading);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [invoice],
+    [fetchInvoiceData, invoice, mutator.invoice, refreshList, showCallout],
   );
 
   const payInvoice = useCallback(
     () => {
       const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
 
+      setIsLoading(true);
       mutator.invoice.PUT(paidInvoice)
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
-          fetchInvoiceData();
-        })
-        .catch(async (response) => {
+          refreshList();
+
+          return fetchInvoiceData();
+        }, async (response) => {
           try {
             const { errors } = await response.json();
             const errorCode = get(errors, [0, 'code']);
@@ -193,22 +202,19 @@ function InvoiceDetailsContainer({
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.pay.error', type: 'error' });
           }
-        });
+        })
+        .finally(setIsLoading);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [invoice],
+    [fetchInvoiceData, invoice, mutator.invoice, refreshList, showCallout],
   );
 
   const approveAndPayInvoice = useCallback(
     () => {
+      setIsLoading(true);
       mutator.invoice.PUT({ ...invoice, status: INVOICE_STATUS.approved })
         .then(() => mutator.invoice.GET())
         .then(invoiceResponse => {
-          mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
-        })
-        .then(() => {
-          showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' });
-          fetchInvoiceData();
+          return mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })
         .catch(async (response) => {
           try {
@@ -222,10 +228,17 @@ function InvoiceDetailsContainer({
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.error', type: 'error' });
           }
-        });
+          throw new Error('approveAndPay error');
+        })
+        .then(() => {
+          showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' });
+          refreshList();
+
+          return fetchInvoiceData();
+        })
+        .finally(setIsLoading);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [invoice],
+    [fetchInvoiceData, invoice, mutator.invoice, refreshList, showCallout],
   );
 
   const updateInvoice = useCallback(
@@ -234,16 +247,15 @@ function InvoiceDetailsContainer({
         .then(() => mutator.invoice.GET())
         .then(setInvoice);
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id],
+    [mutator.invoice],
   );
 
   const invoiceTotalUnits = get(invoiceLines, 'invoiceLines', []).reduce((total, line) => (
     total + +line.quantity
   ), 0);
 
-  if (isLoading) {
-    return <LoadingPane onClose={closePane} />;
+  if (isLoading || invoice?.id !== id) {
+    return <LoadingPane dismissible onClose={closePane} />;
   }
 
   return (
@@ -290,6 +302,7 @@ InvoiceDetailsContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
   mutator: PropTypes.object.isRequired,
+  refreshList: PropTypes.func.isRequired,
 };
 
 export default stripesConnect(InvoiceDetailsContainer);
