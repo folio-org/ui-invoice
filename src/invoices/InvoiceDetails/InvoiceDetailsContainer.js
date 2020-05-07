@@ -17,6 +17,7 @@ import {
   invoiceLinesResource,
 } from '../../common/resources';
 import {
+  INVOICE_API,
   INVOICE_STATUS,
   VENDORS_API,
 } from '../../common/constants';
@@ -46,7 +47,7 @@ function InvoiceDetailsContainer({
       setInvoiceLines({});
       setVendor({});
 
-      return mutator.invoice.GET()
+      return mutator.invoice.GET({ path: `${INVOICE_API}/${id}` })
         .then(invoiceResponse => {
           setInvoice(invoiceResponse);
 
@@ -55,7 +56,7 @@ function InvoiceDetailsContainer({
           });
           const invoiceLinesPromise = mutator.invoiceLines.GET({
             params: {
-              query: `(invoiceId==${invoiceResponse.id}) sortBy metadata.createdDate invoiceLineNumber`,
+              query: `(invoiceId==${id}) sortBy metadata.createdDate invoiceLineNumber`,
             },
           });
           const approvalsConfigPromise = mutator.invoiceActionsApprovals.GET();
@@ -80,7 +81,7 @@ function InvoiceDetailsContainer({
           showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
         });
     },
-    [mutator.invoice, mutator.invoiceActionsApprovals, mutator.invoiceLines, mutator.vendor, showCallout],
+    [id, mutator.invoice, mutator.invoiceActionsApprovals, mutator.invoiceLines, mutator.vendor, showCallout],
   );
 
   useEffect(
@@ -153,8 +154,8 @@ function InvoiceDetailsContainer({
             const message = errors[0].message;
 
             if (message) showCallout({ message, type: 'error' });
-          // eslint-disable-next-line no-empty
-          } catch (e) {}
+            // eslint-disable-next-line no-empty
+          } catch (e) { }
         });
     },
     [history, id, location.search, mutator.invoice, refreshList, showCallout],
