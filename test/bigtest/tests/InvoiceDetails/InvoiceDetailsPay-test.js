@@ -1,10 +1,10 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
+import { Response } from 'miragejs';
 
 import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
-import { INVOICE_STATUS } from '../../../../src/common/constants';
-
+import { INVOICE_API, INVOICE_STATUS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 
@@ -30,6 +30,7 @@ describe('Invoice details - pay action', () => {
   setupApplication();
 
   const invoiceDetails = new InvoiceDetails();
+  const payConfirmation = new ConfirmationInteractor('#pay-invoice-confirmation');
 
   const testAvailabilityOptions = [
     [INVOICE_STATUS.open, true, false],
@@ -62,8 +63,6 @@ describe('Invoice details - pay action', () => {
   });
 
   describe('confirmation modal open', () => {
-    const payConfirmation = new ConfirmationInteractor('#pay-invoice-confirmation');
-
     beforeEach(async function () {
       const invoice = createInvoice(this.server, INVOICE_STATUS.approved, true);
 
@@ -78,8 +77,6 @@ describe('Invoice details - pay action', () => {
   });
 
   describe('confirmation modal close', () => {
-    const payConfirmation = new ConfirmationInteractor('#pay-invoice-confirmation');
-
     beforeEach(async function () {
       const invoice = createInvoice(this.server, INVOICE_STATUS.approved, true);
 
@@ -91,6 +88,25 @@ describe('Invoice details - pay action', () => {
 
     it('should be done after submit button click', () => {
       expect(payConfirmation.isPresent).to.be.false;
+    });
+  });
+
+  describe('click pay invoice that cant be payed', () => {
+    beforeEach(async function () {
+      const invoice = createInvoice(this.server, INVOICE_STATUS.approved);
+
+      this.server.put(`${INVOICE_API}/${invoice.id}`, () => {
+        return new Response(400, { errors: [{ code: 'test', message: 'cant approve' }] });
+      });
+      this.visit(`/invoice/view/${invoice.id}`);
+      await invoiceDetails.whenLoaded();
+      await invoiceDetails.actions.buttonPayInvoice.click();
+      await payConfirmation.confirm();
+      await invoiceDetails.whenLoaded();
+    });
+
+    it('stays on invoice details', () => {
+      expect(invoiceDetails.isPresent).to.be.true;
     });
   });
 });

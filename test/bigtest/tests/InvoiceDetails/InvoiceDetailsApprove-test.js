@@ -31,6 +31,7 @@ describe('Invoice details - approve action', () => {
   setupApplication();
 
   const invoiceDetails = new InvoiceDetails();
+  const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
 
   const testAvailabilityOptions = [
     [INVOICE_STATUS.open, true, true],
@@ -63,8 +64,6 @@ describe('Invoice details - approve action', () => {
   });
 
   describe('confirmation modal open', () => {
-    const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
-
     beforeEach(async function () {
       const invoice = createInvoice(this.server, INVOICE_STATUS.open, true);
 
@@ -79,8 +78,6 @@ describe('Invoice details - approve action', () => {
   });
 
   describe('confirmation modal close', () => {
-    const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
-
     beforeEach(async function () {
       const invoice = createInvoice(this.server, INVOICE_STATUS.review, true);
 
@@ -96,8 +93,6 @@ describe('Invoice details - approve action', () => {
   });
 
   describe('approve error is visible', () => {
-    const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
-
     beforeEach(async function () {
       const invoice = createInvoice(this.server, INVOICE_STATUS.review, true);
 
