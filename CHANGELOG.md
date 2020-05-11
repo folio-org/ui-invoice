@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UIREC-42](https://issues.folio.org/browse/UIREC-42) Filter by Acq unit
 * [UINV-147](https://issues.folio.org/browse/UINV-147) Display record loading icon in view pane after user clicks action
 * [UINV-146](https://issues.folio.org/browse/UINV-146) Support breaking changes on the back-end for Limit document size feature
 * [UINV-126](https://issues.folio.org/browse/UINV-126) Download batch vouchers

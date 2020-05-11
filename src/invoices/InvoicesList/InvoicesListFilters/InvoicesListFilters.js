@@ -9,7 +9,6 @@ import {
   AcqDateRangeFilter,
   AcqTagsFilter,
   AcqUnitFilter,
-  acqUnitsShape,
   BooleanFilter,
   PluggableOrganizationFilter,
   SourceFilter,
@@ -26,7 +25,6 @@ import {
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
 const InvoicesListFilters = ({
-  acqUnits,
   activeFilters,
   applyFilters,
 }) => {
@@ -74,7 +72,6 @@ const InvoicesListFilters = ({
         labelId="ui-invoice.invoice.acquisitionsUnit"
         name={FILTERS.ACQUISITIONS_UNIT}
         onChange={adaptedApplyFilters}
-        acqUnits={acqUnits}
       />
       <AcqTagsFilter
         activeFilters={activeFilters[FILTERS.TAGS]}
@@ -124,11 +121,6 @@ const InvoicesListFilters = ({
 InvoicesListFilters.propTypes = {
   activeFilters: PropTypes.object.isRequired,
   applyFilters: PropTypes.func.isRequired,
-  acqUnits: acqUnitsShape,
-};
-
-InvoicesListFilters.defaultProps = {
-  acqUnits: [],
 };
 
 export default InvoicesListFilters;

@@ -31,7 +31,7 @@ import {
 import { InvoiceDetailsContainer } from '../InvoiceDetails';
 import { InvoiceLineDetailsContainer } from '../InvoiceLineDetails';
 
-import { InvoicesListFiltersContainer } from './InvoicesListFilters';
+import InvoicesListFilters from './InvoicesListFilters';
 import InvoicesListLastMenu from './InvoicesListLastMenu';
 import {
   searchableIndexes,
@@ -127,7 +127,7 @@ const InvoicesList = ({
             disabled={!location.search}
           />
 
-          <InvoicesListFiltersContainer
+          <InvoicesListFilters
             activeFilters={filters}
             applyFilters={applyFilters}
           />
