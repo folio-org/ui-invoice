@@ -18,7 +18,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   sourceValues,
   useModalToggle,
-  useShowToast,
+  useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -60,12 +60,12 @@ function InvoiceFormContainer({
     mutator.batchGroups.GET()
       .then(setBatchGroups)
       .catch(() => setBatchGroups([]));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
   const [forceSaveValues, setForceSaveValues] = useState();
-  const showToast = useShowToast();
+  const showToast = useShowCallout();
   const { params: { id } } = match;
   const isCreate = !id;
   const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
@@ -94,14 +94,14 @@ function InvoiceFormContainer({
     validationRequest
       .then(() => saveInvoice(formValues, invoiceDocuments, mutator.invoiceFormInvoices, okapi))
       .then(savedRecord => {
-        showToast('ui-invoice.invoice.invoiceHasBeenSaved');
+        showToast({ messageId: 'ui-invoice.invoice.invoiceHasBeenSaved' });
 
         setTimeout(() => onCancel(savedRecord.id));
       })
       .catch(() => {
-        showToast('ui-invoice.errors.invoiceHasNotBeenSaved', 'error');
+        showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forceSaveValues, id, isCreate, okapi, invoiceDocuments]);
 
   const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));

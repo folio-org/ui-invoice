@@ -2,8 +2,8 @@ import React from 'react';
 import {
   FormattedMessage,
   injectIntl,
-  intlShape,
 } from 'react-intl';
+import PropTypes from 'prop-types';
 
 import { stripesShape } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
@@ -51,7 +51,7 @@ class BatchGroupsSettings extends React.Component {
 }
 
 BatchGroupsSettings.propTypes = {
-  intl: intlShape.isRequired,
+  intl: PropTypes.object.isRequired,
   stripes: stripesShape.isRequired,
 };
 
