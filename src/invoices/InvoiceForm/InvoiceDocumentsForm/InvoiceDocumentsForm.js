@@ -18,7 +18,8 @@ import {
 
 import InvoiceDocumentFields from './InvoiceDocumentFields';
 
-const MAX_SIZE = 20 * (10 ** 6);
+const MAX_SIZE_MB = 5;
+const MAX_SIZE = MAX_SIZE_MB * (10 ** 6);
 
 const InvoiceDocumentsForm = ({ dispatch }) => {
   const showCallout = useShowCallout();
@@ -29,6 +30,7 @@ const InvoiceDocumentsForm = ({ dispatch }) => {
         showCallout({
           messageId: 'ui-invoice.errors.fileLimit',
           type: 'error',
+          values: { size: MAX_SIZE_MB },
         });
 
         return;

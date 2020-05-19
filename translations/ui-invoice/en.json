@@ -9,7 +9,7 @@
   "errors.cantLoadInvoiceLine": "Error loading invoice line",
   "errors.cantLoadInvoice": "Error loading invoice",
   "errors.cantLoadVendor": "Error loading vendor",
-  "errors.fileLimit": "File exceeds the size limit",
+  "errors.fileLimit": "File exceeds the size limit of {size}MB",
   "errors.voucherHasNotBeenSaved": "Voucher has not been saved",
   "errors.voucherLoadingFailed": "Voucher has not been loaded",
 
