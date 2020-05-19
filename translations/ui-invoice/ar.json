@@ -73,7 +73,7 @@
     "invoiceLine.accountNumber": "رقم الحساب",
     "invoiceLine.accountingCode": "رمز المحاسبة",
     "invoiceLine.comment": "تعليق",
-    "invoiceLine.releaseEncumbrance": "إصدار الأعباء",
+    "invoiceLine.releaseEncumbrance": "إصدار التكاليف",
     "invoiceLine.subTotal": "المجموع الفرعي",
     "adjustment.type": "اختر التعديل",
     "adjustment.description": "الوصف",
