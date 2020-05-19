@@ -10,7 +10,6 @@ export const INVOICE_LINE_API = 'invoice/invoice-lines';
 export const PO_LINES_API = 'orders/order-lines';
 export const TAGS_API = 'tags';
 export const USERS_API = 'users';
-export const VENDORS_API = 'organizations-storage/organizations';
 export const VOUCHER_LINES_API = 'voucher/voucher-lines';
 export const VOUCHER_NUMBER_START_API = 'voucher/voucher-number/start';
 export const VOUCHERS_API = 'voucher/vouchers';
