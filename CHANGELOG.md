@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-148](https://issues.folio.org/browse/UINV-148) update size limit error message to include the size limit
 * [UINV-149](https://issues.folio.org/browse/UINV-149) Invoice app: Update to Stripes v4
 * [UIREC-42](https://issues.folio.org/browse/UIREC-42) Filter by Acq unit
 * [UINV-147](https://issues.folio.org/browse/UINV-147) Display record loading icon in view pane after user clicks action
