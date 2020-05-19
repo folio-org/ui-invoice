@@ -225,7 +225,7 @@
     "invoice.invoiceTags": "Invoice tags",
     "invoice.invoiceVendorInformation": "Invoice vendor information",
     "tag": "Tag",
-    "errors.fileLimit": "File exceeds the size limit",
+    "errors.fileLimit": "File exceeds the size limit of {size}MB",
     "settings.vouchers.label": "Vouchers",
     "settings.batchGroups.label": "Batch groups",
     "settings.batchGroupConfiguration.label": "Batch group configuration",
