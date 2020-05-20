@@ -8,8 +8,8 @@ import {
   LoadingView,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
+import { VENDORS_API } from '@folio/stripes-acq-components';
 
-import { VENDORS_API } from '../../common/constants';
 import {
   CONFIG_ADJUSTMENTS,
   invoiceLineResource,

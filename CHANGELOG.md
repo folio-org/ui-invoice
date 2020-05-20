@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UIORGS-178](https://issues.folio.org/browse/UIORGS-178) Redirect API calls from mod-organizations-storage to mod-organzations
 * [UINV-148](https://issues.folio.org/browse/UINV-148) update size limit error message to include the size limit
 * [UINV-149](https://issues.folio.org/browse/UINV-149) Invoice app: Update to Stripes v4
 * [UIREC-42](https://issues.folio.org/browse/UIREC-42) Filter by Acq unit

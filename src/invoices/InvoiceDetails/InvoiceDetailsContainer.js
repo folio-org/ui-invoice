@@ -8,6 +8,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   baseManifest,
   useShowCallout,
+  VENDORS_API,
 } from '@folio/stripes-acq-components';
 
 import { getApproveErrorMessage } from '../../common/utils';
@@ -19,7 +20,6 @@ import {
 import {
   INVOICE_API,
   INVOICE_STATUS,
-  VENDORS_API,
 } from '../../common/constants';
 import InvoiceDetails from './InvoiceDetails';
 import { createInvoiceLineFromPOL } from './utils';

@@ -1,10 +1,12 @@
 import { get } from 'lodash';
 
-import { VENDORS_API } from '../constants';
-import { BASE_RESOURCE } from './base';
+import {
+  baseManifest,
+  VENDORS_API,
+} from '@folio/stripes-acq-components';
 
 export const VENDORS = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: VENDORS_API,
   GET: {
     params: {
@@ -15,12 +17,12 @@ export const VENDORS = {
 };
 
 export const vendorItem = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: `${VENDORS_API}/!{vendorId}`,
 };
 
 export const VENDOR = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: (queryParams, pathComponents, resourceData, logger, props) => {
     const vendorId = get(props, ['resources', 'invoice', 'records', 0, 'vendorId']);
 
