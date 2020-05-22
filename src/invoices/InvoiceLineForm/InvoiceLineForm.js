@@ -276,6 +276,7 @@ class InvoiceLineForm extends Component {
                     >
                       <FundDistributionFields
                         disabled={isDisabledEditFundDistribution}
+                        formName={INVOICE_LINE_FORM}
                         fundDistribution={fundDistributions}
                         name="fundDistributions"
                         totalAmount={totalAmount}
@@ -289,6 +290,7 @@ class InvoiceLineForm extends Component {
                         adjustmentsPresets={adjustmentsPresets}
                         isLineAdjustments
                         disabled={isEditPostApproval}
+                        formName={INVOICE_LINE_FORM}
                       />
                     </Accordion>
                   </AccordionSet>

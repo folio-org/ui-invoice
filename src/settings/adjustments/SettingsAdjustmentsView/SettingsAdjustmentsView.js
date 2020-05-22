@@ -28,9 +28,13 @@ class SettingsAdjustmentsView extends Component {
     adjustment: { adjustment: {} },
   }
 
-  state = {
-    showConfirmDelete: false,
-  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      showConfirmDelete: false,
+    };
+  }
 
   deleteAdjustment = () => {
     const { onDelete } = this.props;

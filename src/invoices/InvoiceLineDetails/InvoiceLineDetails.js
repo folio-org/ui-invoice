@@ -42,9 +42,13 @@ class InvoiceLineDetails extends Component {
     poLineNumber: '',
   }
 
-  state = {
-    showConfirmDelete: false,
-  };
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      showConfirmDelete: false,
+    };
+  }
 
   renderActionMenu = ({ onToggle }) => {
     const { goToEditInvoiceLine } = this.props;

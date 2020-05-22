@@ -1,63 +1,65 @@
-import React, { Component } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
-
 import { get } from 'lodash';
 
 import {
-  CalloutContext,
   stripesConnect,
 } from '@folio/stripes/core';
+import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { CONFIG_ADJUSTMENT } from '../../../common/resources';
 import { getSettingsAdjustmentsList } from '../util';
 import SettingsAdjustmentsView from './SettingsAdjustmentsView';
 
-class SettingsAdjustmentsViewContainer extends Component {
-  static contextType = CalloutContext;
-  static manifest = Object.freeze({
-    configAdjustment: CONFIG_ADJUSTMENT,
-  });
-
-  static propTypes = {
-    close: PropTypes.func.isRequired,
-    mutator: PropTypes.object.isRequired,
-    match: ReactRouterPropTypes.match.isRequired,
-    rootPath: PropTypes.string.isRequired,
-    showSuccessDeleteMessage: PropTypes.func.isRequired,
-    resources: PropTypes.object,
-  };
-
-  deleteAdjustment = async () => {
-    const { close, mutator: { configAdjustment }, match: { params: { id } }, showSuccessDeleteMessage } = this.props;
-
+function SettingsAdjustmentsViewContainer({
+  close,
+  match: { params: { id } },
+  mutator: { configAdjustment },
+  resources,
+  rootPath,
+  showSuccessDeleteMessage,
+}) {
+  const sendCallout = useShowCallout();
+  const deleteAdjustment = useCallback(async () => {
     try {
       await configAdjustment.DELETE({ id });
       close();
       showSuccessDeleteMessage();
     } catch (e) {
-      this.context.sendCallout({
+      sendCallout({
         message: <FormattedMessage id="ui-invoice.settings.adjustments.remove.error" />,
         type: 'error',
       });
     }
-  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [close, id, sendCallout, showSuccessDeleteMessage]);
 
-  render() {
-    const { close, resources, rootPath } = this.props;
-    const adjustments = getSettingsAdjustmentsList(get(resources, 'configAdjustment.records', []));
-    const adjustment = get(adjustments, '0');
+  const adjustments = getSettingsAdjustmentsList(get(resources, 'configAdjustment.records', []));
+  const adjustment = get(adjustments, '0');
 
-    return (
-      <SettingsAdjustmentsView
-        adjustment={adjustment}
-        close={close}
-        onDelete={this.deleteAdjustment}
-        rootPath={rootPath}
-      />
-    );
-  }
+  return (
+    <SettingsAdjustmentsView
+      adjustment={adjustment}
+      close={close}
+      onDelete={deleteAdjustment}
+      rootPath={rootPath}
+    />
+  );
 }
+
+SettingsAdjustmentsViewContainer.manifest = Object.freeze({
+  configAdjustment: CONFIG_ADJUSTMENT,
+});
+
+SettingsAdjustmentsViewContainer.propTypes = {
+  close: PropTypes.func.isRequired,
+  mutator: PropTypes.object.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+  rootPath: PropTypes.string.isRequired,
+  showSuccessDeleteMessage: PropTypes.func.isRequired,
+  resources: PropTypes.object,
+};
 
 export default stripesConnect(SettingsAdjustmentsViewContainer);
