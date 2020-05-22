@@ -45,7 +45,15 @@ import {
 } from '../../common/utils';
 import { getAdjustmentFromPreset } from '../utils';
 
-const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustments, invoiceSubTotal, stripes }) => {
+const AdjustmentsForm = ({
+  adjustmentsPresets,
+  currency,
+  disabled,
+  formName,
+  invoiceSubTotal,
+  isLineAdjustments,
+  stripes,
+}) => {
   const [adjPreset, setAdjPreset] = useState();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
@@ -203,6 +211,7 @@ const AdjustmentsForm = ({ adjustmentsPresets, currency, disabled, isLineAdjustm
           <FundDistributionFields
             currency={currency}
             disabled={disabled}
+            formName={formName}
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
             totalAmount={adjustmentAmount}
@@ -248,6 +257,7 @@ AdjustmentsForm.propTypes = {
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
   currency: PropTypes.string,
   disabled: PropTypes.bool,
+  formName: PropTypes.string.isRequired,
   isLineAdjustments: PropTypes.bool,
   invoiceSubTotal: PropTypes.number,
   stripes: stripesShape,
