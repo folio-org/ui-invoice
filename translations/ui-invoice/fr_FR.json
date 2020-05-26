@@ -225,7 +225,7 @@
     "invoice.invoiceTags": "Mots clés de facturation",
     "invoice.invoiceVendorInformation": "Informations sur le fournisseur de la facture",
     "tag": "Mot-clé",
-    "errors.fileLimit": "Le fichier dépasse la taille limite",
+    "errors.fileLimit": "Le fichier dépasse la taille limite de {size} Mo",
     "settings.vouchers.label": "Bons d'achat/vouchers",
     "settings.batchGroups.label": "Groupes de lots",
     "settings.batchGroupConfiguration.label": "Configuration du groupe de lots",
