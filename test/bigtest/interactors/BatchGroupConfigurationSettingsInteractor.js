@@ -23,7 +23,7 @@ import {
 }
 
 @interactor class BatchVoucherExports {
-  list = collection('[role="group"] [role="row"]', {
+  list = collection('[data-row-inner]', {
     downloadButton: new ButtonInteractor('[icon="download"]'),
     rowText: text(),
   });

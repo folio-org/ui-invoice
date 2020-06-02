@@ -13,9 +13,9 @@ describe('Invoices list', () => {
   const invoicesList = new InvoicesListInteractor();
 
   beforeEach(async function () {
-    const invocies = this.server.createList('invoice', INVOICES_COUNT);
+    const invoices = this.server.createList('invoice', INVOICES_COUNT);
 
-    invocies.forEach(invoice => this.server.create('vendor', {
+    invoices.forEach(invoice => this.server.create('vendor', {
       id: invoice.vendorId,
     }));
 
@@ -28,7 +28,7 @@ describe('Invoices list', () => {
   });
 
   it('renders row for each invoice from the response', () => {
-    expect(invoicesList.invocies().length).to.be.equal(INVOICES_COUNT);
+    expect(invoicesList.invoices().length).to.be.equal(INVOICES_COUNT);
   });
 
   it('displays create the new invoice button', () => {
