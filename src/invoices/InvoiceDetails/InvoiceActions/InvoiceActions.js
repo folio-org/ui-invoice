@@ -25,6 +25,8 @@ const InvoiceActions = ({
   onEdit,
   onPay,
 }) => {
+  const isDeletable = !(isPayable(invoice.status) || isPaid(invoice.status));
+
   return (
     <MenuSection id="invoice-details-actions">
       <IfPermission perm="invoice.invoices.item.put">
@@ -81,7 +83,7 @@ const InvoiceActions = ({
         )
       }
       {
-        !(isPayable(invoice.status) || isPaid(invoice.status)) && (
+        isDeletable && (
           <IfPermission perm="invoice.invoices.item.delete">
             <Button
               buttonStyle="dropdownItem"
