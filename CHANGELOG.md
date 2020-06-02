@@ -19,6 +19,7 @@
 * [UINV-106](https://issues.folio.org/browse/UINV-106) Display Batch vouchers in settings
 
 ### Bug fixes
+* [UINV-153](https://issues.folio.org/browse/UINV-153) Hide Delete option for invoices that are approved or paid
 * [UINV-128](https://issues.folio.org/browse/UINV-128) Accessibility error: ID attribute value must be unique
 * [UINV-127](https://issues.folio.org/browse/UINV-127) Accessibility Error: Form elements must have labels
 

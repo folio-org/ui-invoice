@@ -143,7 +143,7 @@ const InvoicesList = ({
         isFiltersOpened={isFiltersOpened}
       >
         <MultiColumnList
-          id="invocies-list"
+          id="invoices-list"
           totalCount={invoicesCount}
           contentData={invoices}
           visibleColumns={visibleColumns}

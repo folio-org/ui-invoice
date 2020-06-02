@@ -11,6 +11,7 @@ import {
 
 import {
   isPayable,
+  isPaid,
   IS_EDIT_POST_APPROVAL,
 } from '../../../common/utils';
 
@@ -79,17 +80,21 @@ const InvoiceActions = ({
           </IfPermission>
         )
       }
-      <IfPermission perm="invoice.invoices.item.delete">
-        <Button
-          buttonStyle="dropdownItem"
-          data-test-button-delete-invoice
-          onClick={onDelete}
-        >
-          <Icon size="small" icon="trash">
-            <FormattedMessage id="ui-invoice.button.delete" />
-          </Icon>
-        </Button>
-      </IfPermission>
+      {
+        !(isPayable(invoice.status) || isPaid(invoice.status)) && (
+          <IfPermission perm="invoice.invoices.item.delete">
+            <Button
+              buttonStyle="dropdownItem"
+              data-test-button-delete-invoice
+              onClick={onDelete}
+            >
+              <Icon size="small" icon="trash">
+                <FormattedMessage id="ui-invoice.button.delete" />
+              </Icon>
+            </Button>
+          </IfPermission>
+        )
+      }
     </MenuSection>
   );
 };

@@ -10,9 +10,9 @@ export default interactor(class InvoicesListInteractor {
 
   newInvoiceButton = new Interactor('#clickable-newInvoice');
 
-  invocies = collection('[role=group] [role=row]');
+  invoices = collection('[data-row-inner]');
 
-  isLoaded = isPresent('#invocies-list');
+  isLoaded = isPresent('#invoices-list');
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
   }
