@@ -121,6 +121,7 @@ const InvoiceLineDetailsContainer = ({
         currency={invoice.currency}
         deleteInvoiceLine={deleteInvoiceLine}
         goToEditInvoiceLine={goToEditInvoiceLine}
+        invoiceStatus={invoice.status}
         invoiceLine={invoiceLine}
         poLineNumber={polNumber}
         tagsToggle={setTagsPaneOpened}

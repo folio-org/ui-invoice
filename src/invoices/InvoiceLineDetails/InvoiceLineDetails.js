@@ -20,6 +20,10 @@ import {
   TagsBadge,
 } from '@folio/stripes-acq-components';
 
+import {
+  isPayable,
+  isPaid,
+} from '../../common/utils';
 import ActionMenu from './ActionMenu';
 import InvoiceLineInformation from './InvoiceLineInformation';
 import {
@@ -33,6 +37,7 @@ class InvoiceLineDetails extends Component {
     deleteInvoiceLine: PropTypes.func.isRequired,
     goToEditInvoiceLine: PropTypes.func.isRequired,
     invoiceLine: PropTypes.object.isRequired,
+    invoiceStatus: PropTypes.string.isRequired,
     tagsToggle: PropTypes.func.isRequired,
     currency: PropTypes.string,
     poLineNumber: PropTypes.string,
@@ -51,7 +56,8 @@ class InvoiceLineDetails extends Component {
   }
 
   renderActionMenu = ({ onToggle }) => {
-    const { goToEditInvoiceLine } = this.props;
+    const { goToEditInvoiceLine, invoiceStatus } = this.props;
+    const isDeletable = !(isPayable(invoiceStatus) || isPaid(invoiceStatus));
 
     return (
       <ActionMenu
@@ -63,6 +69,7 @@ class InvoiceLineDetails extends Component {
           onToggle();
           this.mountDeleteLineConfirm();
         }}
+        isDeletable={isDeletable}
       />
     );
   }
