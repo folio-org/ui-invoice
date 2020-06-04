@@ -9,7 +9,7 @@ import {
 } from '@folio/stripes/components';
 import { IfPermission } from '@folio/stripes/core';
 
-const ActionMenu = ({ onDelete, onEdit }) => (
+const ActionMenu = ({ onDelete, onEdit, isDeletable }) => (
   <MenuSection id="invoice-line-details-actions">
     <IfPermission perm="invoice.invoice-lines.item.put">
       <Button
@@ -22,23 +22,26 @@ const ActionMenu = ({ onDelete, onEdit }) => (
         </Icon>
       </Button>
     </IfPermission>
-    <IfPermission perm="invoice.invoice-lines.item.delete">
-      <Button
-        buttonStyle="dropdownItem"
-        data-test-button-delete-invoice-line
-        onClick={onDelete}
-      >
-        <Icon size="small" icon="trash">
-          <FormattedMessage id="ui-invoice.button.delete" />
-        </Icon>
-      </Button>
-    </IfPermission>
+    {isDeletable && (
+      <IfPermission perm="invoice.invoice-lines.item.delete">
+        <Button
+          buttonStyle="dropdownItem"
+          data-test-button-delete-invoice-line
+          onClick={onDelete}
+        >
+          <Icon size="small" icon="trash">
+            <FormattedMessage id="ui-invoice.button.delete" />
+          </Icon>
+        </Button>
+      </IfPermission>
+    )}
   </MenuSection>
 );
 
 ActionMenu.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
+  isDeletable: PropTypes.bool.isRequired,
 };
 
 export default ActionMenu;
