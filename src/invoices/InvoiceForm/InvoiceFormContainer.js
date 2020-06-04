@@ -101,8 +101,8 @@ function InvoiceFormContainer({
       .catch(() => {
         showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [forceSaveValues, id, isCreate, okapi, invoiceDocuments]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [forceSaveValues, id, toggleNotUnique, invoiceDocuments, okapi, showToast, onCancel]);
 
   const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
   const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);

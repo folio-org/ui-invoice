@@ -204,7 +204,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
         }));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [selectedBatchGroupId, credentials],
+    [credentials, fetchExportConfig, selectedBatchGroupId, showCallout],
   );
 
   const testConnection = useCallback(

@@ -75,7 +75,7 @@ const VoucherEditContainer = ({
         });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [closeVoucherForm],
+    [closeVoucherForm, showCallout],
   );
 
   if (!(voucher && vendorInvoiceNo)) {
