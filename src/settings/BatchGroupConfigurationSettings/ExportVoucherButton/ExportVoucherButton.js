@@ -45,8 +45,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
         });
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [batchVoucherId, format],
+    [batchVoucherId, format, showCallout, stripes.okapi.tenant, stripes.okapi.token, stripes.okapi.url],
   );
 
   if (!batchVoucherId) {

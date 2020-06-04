@@ -43,7 +43,7 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
     }
   },
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  [sequenceNumber]);
+  [sendCallout, sequenceNumber]);
 
   useEffect(() => {
     setSequenceNumber(getStartSequenceNumber());
