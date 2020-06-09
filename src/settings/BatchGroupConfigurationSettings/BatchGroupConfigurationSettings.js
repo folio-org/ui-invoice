@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
 import { LoadingPane } from '@folio/stripes/components';
-import { useShowCallout } from '@folio/stripes-acq-components';
+import { LIMIT_MAX, useShowCallout } from '@folio/stripes-acq-components';
 
 import {
   batchGroupsResource,
@@ -106,6 +106,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
 
         mutator.exportConfig.GET({
           params: {
+            limit: `${LIMIT_MAX}`,
             query: `batchGroupId==${id}`,
           },
         })

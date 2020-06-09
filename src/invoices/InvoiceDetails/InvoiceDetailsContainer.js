@@ -7,6 +7,7 @@ import { LoadingPane } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   baseManifest,
+  LIMIT_MAX,
   useShowCallout,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -56,6 +57,7 @@ function InvoiceDetailsContainer({
           });
           const invoiceLinesPromise = mutator.invoiceLines.GET({
             params: {
+              limit: `${LIMIT_MAX}`,
               query: `(invoiceId==${id}) sortBy metadata.createdDate invoiceLineNumber`,
             },
           });
