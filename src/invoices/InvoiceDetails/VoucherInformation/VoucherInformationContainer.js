@@ -11,6 +11,7 @@ import {
   Button,
   Icon,
 } from '@folio/stripes/components';
+import { LIMIT_MAX } from '@folio/stripes-acq-components';
 
 import {
   VOUCHER,
@@ -47,6 +48,7 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }
       if (voucherId) {
         mutator.voucherLines.GET({
           params: {
+            limit: `${LIMIT_MAX}`,
             query: `voucherId==${voucherId}`,
           },
         });

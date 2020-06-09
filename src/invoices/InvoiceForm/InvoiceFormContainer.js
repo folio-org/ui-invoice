@@ -16,6 +16,7 @@ import {
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 import {
+  LIMIT_MAX,
   sourceValues,
   useModalToggle,
   useShowCallout,
@@ -76,6 +77,7 @@ function InvoiceFormContainer({
     if (!forceSaveValues) {
       const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
       const params = {
+        limit: `${LIMIT_MAX}`,
         query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${invoiceDate}*" AND vendorId=="${vendorId}"`,
       };
 
