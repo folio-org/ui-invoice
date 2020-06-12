@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.1.0]https://github.com/folio-org/ui-invoice/tree/v2.1.0) (2020-06-12)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.0.3...v2.1.0)
+
 ### Stories
 * [UIORGS-178](https://issues.folio.org/browse/UIORGS-178) Redirect API calls from mod-organizations-storage to mod-organzations
 * [UINV-148](https://issues.folio.org/browse/UINV-148) update size limit error message to include the size limit

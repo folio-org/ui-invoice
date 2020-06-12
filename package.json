@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "2.0.3",
+  "version": "2.1.0",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -82,7 +82,7 @@
       "finance.funds": "1.0",
       "contributor-name-types": "1.2",
       "identifier-types": "1.2",
-      "invoice": "4.0 5.0",
+      "invoice": "5.0",
       "order-lines": "1.0",
       "organizations.organizations": "1.0",
       "tags": "1.0",
