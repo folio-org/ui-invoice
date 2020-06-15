@@ -225,7 +225,7 @@
     "invoice.invoiceTags": "发票标签",
     "invoice.invoiceVendorInformation": "发票供应商信息",
     "tag": "标签",
-    "errors.fileLimit": "文件超出大小限制",
+    "errors.fileLimit": "文件超出了{size} MB的大小限制",
     "settings.vouchers.label": "凭证",
     "settings.batchGroups.label": "批次组",
     "settings.batchGroupConfiguration.label": "批次组配置",
@@ -282,7 +282,7 @@
     "settings.batchGroupConfiguration.testConnection.error": "连接错误： {cause}",
     "settings.adjustments.exportToAccounting": "导出到账户",
     "errors.cantLoadInvoiceLine": "加载发票行出错",
-    "errors.cantLoadInvoice": "Error loading invoice",
-    "errors.cantLoadVendor": "Error loading vendor",
+    "errors.cantLoadInvoice": "加载发票时出错",
+    "errors.cantLoadVendor": "加载供应商时出错",
     "settings.BatchVoucherExports.download.error": "未下载批凭证"
 }
