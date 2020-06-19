@@ -1,4 +1,5 @@
 export const APPROVE_ERROR_CODES = {
+  accountingCodeNotPresent: 'accountingCodeNotPresent',
   voucherNumberPrefixNotAlpha: 'voucherNumberPrefixNotAlpha',
   fundDistributionsNotPresent: 'fundDistributionsNotPresent',
   poLineUpdateFailure: 'poLineUpdateFailure',
