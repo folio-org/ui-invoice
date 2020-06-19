@@ -254,6 +254,7 @@
   "invoice.actions.approve": "Approve",
   "invoice.actions.approve.success": "Invoice has been approved successfully",
   "invoice.actions.approve.error": "Invoice was not approved",
+  "invoice.actions.approve.error.accountingCodeNotPresent": "Invoice can not be approved (paid), because it requires an accounting code to be export to accounting",
   "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
   "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
   "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
