@@ -284,5 +284,6 @@
     "errors.cantLoadInvoiceLine": "خطأ في تحميل سطر الفاتورة",
     "errors.cantLoadInvoice": "خطأ في تحميل الفاتورة",
     "errors.cantLoadVendor": "خطأ في تحميل المورّد",
-    "settings.BatchVoucherExports.download.error": "لم يتم تنزيل دفعة القسائم"
+    "settings.BatchVoucherExports.download.error": "لم يتم تنزيل دفعة القسائم",
+    "invoice.actions.approve.error.accountingCodeNotPresent": "لا يمكن قبول (دفع) الفاتورة، لأنها تتطلب رمز محاسبة ليتم تصديرها إلى المحاسبة"
 }
