@@ -285,5 +285,5 @@
     "errors.cantLoadInvoice": "Error loading invoice",
     "errors.cantLoadVendor": "Error loading vendor",
     "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded",
-    "invoice.actions.approve.error.accountingCodeNotPresent": "Invoice can not be approved (paid), because it requires an accounting code to be export to accounting"
+    "invoice.actions.approve.error.accountingCodeNotPresent": "Invoice can not be approved (paid), because the identified vendor must have an accounting code for this invoice to be exported to accounting"
 }

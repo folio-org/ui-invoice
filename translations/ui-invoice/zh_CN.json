@@ -285,5 +285,5 @@
     "errors.cantLoadInvoice": "加载发票时出错",
     "errors.cantLoadVendor": "加载供应商时出错",
     "settings.BatchVoucherExports.download.error": "未下载批凭证",
-    "invoice.actions.approve.error.accountingCodeNotPresent": "Invoice can not be approved (paid), because it requires an accounting code to be export to accounting"
+    "invoice.actions.approve.error.accountingCodeNotPresent": "Invoice can not be approved (paid), because the identified vendor must have an accounting code for this invoice to be exported to accounting"
 }

@@ -285,5 +285,5 @@
     "errors.cantLoadInvoice": "Erreur lors du chargement de la facture",
     "errors.cantLoadVendor": "Erreur lors du chargement du fournisseur",
     "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded",
-    "invoice.actions.approve.error.accountingCodeNotPresent": "La facture ne peut pas être approuvée (payée), car elle nécessite un code comptable pour l'envoi en comptabilité"
+    "invoice.actions.approve.error.accountingCodeNotPresent": "La facture ne peut pas être approuvée (payée), car le fournisseur identifié doit avoir un code comptable pour que cette facture soit exportée vers la comptabilité"
 }
