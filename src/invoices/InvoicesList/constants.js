@@ -9,6 +9,6 @@ export const FILTERS = {
   APPROVAL_DATE: 'approvalDate',
   SOURCE: 'source',
   EXPORT_TO_ACCOUNTING: 'exportToAccounting',
-  ACQUISITIONS_UNIT: 'acquisitionsUnit',
+  ACQUISITIONS_UNIT: 'acqUnitIds',
   TAGS: 'tags.tagList',
 };
