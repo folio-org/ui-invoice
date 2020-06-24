@@ -5,6 +5,7 @@
 ### Stories
 
 ### Bug fixes
+* [UINV-160](https://issues.folio.org/browse/UINV-156) Remaining amount of Fund distribution not formatted by invoice/order currency setting
 * [UINV-156](https://issues.folio.org/browse/UINV-156) Support back-end changes related to accountingCode
 
 ## [2.1.2]https://github.com/folio-org/ui-invoice/tree/v2.1.2) (2020-06-12)
