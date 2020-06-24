@@ -96,7 +96,7 @@ class InvoiceLineForm extends Component {
     const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const { accountNumber, poLineId, metadata } = initialValues;
-    const totalAmount = calculateTotalAmount(formValues, stripes.currency);
+    const totalAmount = calculateTotalAmount(formValues, invoice.currency);
     const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
     const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
     const isDisabledEditFundDistribution = IS_EDIT_POST_APPROVAL(invoice.id, invoice.status);
@@ -275,6 +275,7 @@ class InvoiceLineForm extends Component {
                       label={<FormattedMessage id="ui-invoice.fundDistribution" />}
                     >
                       <FundDistributionFields
+                        currency={invoice.currency}
                         disabled={isDisabledEditFundDistribution}
                         formName={INVOICE_LINE_FORM}
                         fundDistribution={fundDistributions}
