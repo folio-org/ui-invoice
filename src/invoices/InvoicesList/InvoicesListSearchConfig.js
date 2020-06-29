@@ -1,7 +1,7 @@
 const indexes = [
   'voucherNumber',
   'vendorInvoiceNo',
-  'poNumbers',
+  // 'poNumbers',  disabled in UINV-163, to enable in UINV-162
   'accountingCode',
 ];
 
@@ -13,7 +13,7 @@ export const searchableIndexes = [
   ...indexes.map(index => ({ labelId: `ui-invoice.search.${index}`, value: index })),
 ];
 
-export const getKeywordQuery = query => [...indexes, 'description'].reduce(
+export const getKeywordQuery = query => [...indexes, 'invoiceLines.description'].reduce(
   (acc, sIndex) => {
     if (acc) {
       return `${acc} or ${sIndex}="${query}*"`;
