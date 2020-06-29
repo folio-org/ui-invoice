@@ -5,6 +5,7 @@
 ### Stories
 
 ### Bug fixes
+* [UINV-163](https://issues.folio.org/browse/UINV-163) Search Keyword not working as expected
 * [UINV-164](https://issues.folio.org/browse/UINV-164) Filter by "Acquisitions Unit" doesn't work
 * [UINV-160](https://issues.folio.org/browse/UINV-160) Remaining amount of Fund distribution not formatted by invoice/order currency setting
 * [UINV-156](https://issues.folio.org/browse/UINV-156) Support back-end changes related to accountingCode
