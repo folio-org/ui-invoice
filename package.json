@@ -68,6 +68,9 @@
     "@folio/plugin-find-organization": "*",
     "@folio/plugin-find-po-line": "*"
   },
+  "stripesDeps": [
+    "@folio/stripes-acq-components"
+  ],
   "stripes": {
     "actsAs": ["app", "settings"],
     "displayName": "ui-invoice.meta.title",
