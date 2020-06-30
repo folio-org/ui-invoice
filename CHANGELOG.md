@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
 ### Bug fixes
 * [UINV-163](https://issues.folio.org/browse/UINV-163) Search Keyword not working as expected
