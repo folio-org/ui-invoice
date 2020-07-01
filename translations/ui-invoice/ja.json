@@ -104,7 +104,7 @@
     "search.voucherNumber": "Voucher number",
     "search.vendorInvoiceNo": "Vendor invoice number",
     "search.poNumbers": "PO numbers",
-    "search.keyword": "Keyword",
+    "search.keyword": "All",
     "invoice.details.information.acqUnits": "購入ユニット",
     "invoice.details.information.billToName": "Bill to name",
     "invoice.details.information.billToAddress": "Bill to address",

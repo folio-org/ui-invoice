@@ -104,7 +104,7 @@
     "search.voucherNumber": "Número de vale",
     "search.vendorInvoiceNo": "Número de factura del proveedor",
     "search.poNumbers": "Números de líneas de pedido",
-    "search.keyword": "Keyword",
+    "search.keyword": "All",
     "invoice.details.information.acqUnits": "Unidades de adquisición",
     "invoice.details.information.billToName": "Enviar a nombre de facturación",
     "invoice.details.information.billToAddress": "Enviar a dirección de facturación",
