@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.1.3]https://github.com/folio-org/ui-invoice/tree/v2.1.3) (2020-07-01)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.1.2...v2.1.3)
+
 ### Stories
 * [UISACQCOMP-3](https://issues.folio.org/browse/UISACQCOMP-3) Handle import of stripes-acq-components to modules and platform
 
