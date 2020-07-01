@@ -104,7 +104,7 @@
     "search.voucherNumber": "Numéro de bon",
     "search.vendorInvoiceNo": "N°/Ref. de facture fournisseur",
     "search.poNumbers": "Numéros de commande",
-    "search.keyword": "Mot-clé",
+    "search.keyword": "Tout",
     "invoice.details.information.acqUnits": "Unité d'acquisition",
     "invoice.details.information.billToName": "Contact facturation",
     "invoice.details.information.billToAddress": "Adresse de facturation",
