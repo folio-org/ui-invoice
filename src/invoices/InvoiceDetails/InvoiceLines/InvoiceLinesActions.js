@@ -7,14 +7,16 @@ import {
 } from '@folio/stripes/components';
 import { IfPermission } from '@folio/stripes/core';
 
-import AddInvoiceLinesAction from './AddInvoiceLinesAction';
+import AddInvoiceLinesActionContainer from './AddInvoiceLinesActionContainer';
 import styles from './InvoiceLines.css';
 
-const InvoiceLinesActions = ({ addLines, createLine, isDisabled }) => (
+const InvoiceLinesActions = ({ addLines, createLine, isDisabled, invoiceCurrency, invoiceVendorId }) => (
   <IfPermission perm="invoice.invoice-lines.item.post">
     <div className={styles.invoiceLinesActions}>
-      <AddInvoiceLinesAction
+      <AddInvoiceLinesActionContainer
         addLines={addLines}
+        invoiceCurrency={invoiceCurrency}
+        invoiceVendorId={invoiceVendorId}
         isDisabled={isDisabled}
       />
 
@@ -32,6 +34,8 @@ const InvoiceLinesActions = ({ addLines, createLine, isDisabled }) => (
 InvoiceLinesActions.propTypes = {
   addLines: PropTypes.func.isRequired,
   createLine: PropTypes.func.isRequired,
+  invoiceCurrency: PropTypes.string.isRequired,
+  invoiceVendorId: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
 };
 
