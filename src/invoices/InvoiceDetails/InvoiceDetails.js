@@ -96,6 +96,8 @@ function InvoiceDetails({
       createLine={createLine}
       addLines={addLines}
       isDisabled={IS_EDIT_POST_APPROVAL(invoice.id, invoice.status)}
+      invoiceCurrency={invoice.currency}
+      invoiceVendorId={invoice.vendorId}
     />
   );
 

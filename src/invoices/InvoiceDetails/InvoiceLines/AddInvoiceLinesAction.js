@@ -6,7 +6,7 @@ import { Pluggable } from '@folio/stripes/core';
 
 const buttonLabel = <FormattedMessage id="ui-invoice.invoice.details.lines.add" />;
 
-const AddInvoiceLinesAction = ({ addLines, isDisabled }) => {
+const AddInvoiceLinesAction = ({ addLines, isDisabled, validateSelectedRecords }) => {
   return (
     <Pluggable
       aria-haspopup="true"
@@ -16,6 +16,7 @@ const AddInvoiceLinesAction = ({ addLines, isDisabled }) => {
       addLines={addLines}
       disabled={isDisabled}
       dataKey="find-po-line"
+      validateSelectedRecords={validateSelectedRecords}
     >
       <FormattedMessage id="ui-invoice.find-po-line-plugin-unavailable" />
     </Pluggable>
@@ -25,6 +26,7 @@ const AddInvoiceLinesAction = ({ addLines, isDisabled }) => {
 AddInvoiceLinesAction.propTypes = {
   addLines: PropTypes.func.isRequired,
   isDisabled: PropTypes.bool,
+  validateSelectedRecords: PropTypes.func.isRequired,
 };
 
 AddInvoiceLinesAction.defaultProps = {
