@@ -285,5 +285,10 @@
     "errors.cantLoadInvoice": "خطأ في تحميل الفاتورة",
     "errors.cantLoadVendor": "خطأ في تحميل المورّد",
     "settings.BatchVoucherExports.download.error": "لم يتم تنزيل دفعة القسائم",
-    "invoice.actions.approve.error.accountingCodeNotPresent": "لا يمكن قبول (دفع) الفاتورة، لأنها تتطلب رمز محاسبة ليتم تصديرها إلى المحاسبة"
+    "invoice.actions.approve.error.accountingCodeNotPresent": "لا يمكن قبول (دفع) الفاتورة، لأنها تتطلب رمز محاسبة ليتم تصديرها إلى المحاسبة",
+    "invoice.actions.addLine.confirmLabel": "تأكيد",
+    "invoice.actions.addLine.currencyMessage": "أنت تقوم بإضافة سطر أمر شراء أو أكثر بعملة مختلفة عن العملة المعرّفة في هذه الفاتورة. إذا كنت لا تزال ترغب في إضافة تلك السطور، يرجى النقر على تأكيد. ملاحظة: سيتم تسجيل التكلفة بالعملة المعرّفة في الفاتورة.",
+    "invoice.actions.addLine.heading": "تأكيد",
+    "invoice.actions.addLine.vendorMessage": "أنت تقوم بإضافة سطر أمر شراء أو أكثر يرجع إلى مورّد مختلف عن المورّد المعرّف في هذه الفاتورة. إذا كنت لا تزال ترغب في إضافة تلك السطور، يرجى النقر على تأكيد. ملاحظة: سيتم ربط المدفوعات بالمورّد المعرّف في الفاتورة.",
+    "invoice.actions.addLine.vendorLoadError": "فشل تحميل بيانات المورّد"
 }
