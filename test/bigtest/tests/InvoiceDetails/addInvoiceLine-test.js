@@ -2,7 +2,7 @@ import React from 'react';
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
-import { Button } from '@folio/stripes/components'
+import { Button } from '@folio/stripes/components';
 import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 import setupApplication from '../../helpers/setup-application';
@@ -27,7 +27,7 @@ describe('Add invoice line', function () {
             purchaseOrderId,
             cost: {
               currency: 'EUR',
-            }
+            },
           }])}
         >
           Add
@@ -42,12 +42,12 @@ describe('Add invoice line', function () {
 
   beforeEach(async function () {
     const invoice = this.server.create('invoice');
-    const orderVendor = this.server.create('vendor')
+    const orderVendor = this.server.create('vendor');
 
     this.server.create('order', {
       id: purchaseOrderId,
       vendor: orderVendor.id,
-    })
+    });
 
     this.server.create('vendor', {
       id: invoice.vendorId,
