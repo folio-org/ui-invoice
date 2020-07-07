@@ -31,6 +31,7 @@ import TagsAction from './common/TagsAction';
   list = collection('#invoice-lines-list [class*=mclRow---]', {
     click: clickable(),
   });
+  addLineBtn = new Interactor('[data-test-plugin-find-po-line-button]');
 }
 
 export default interactor(class InvoiceDetails {

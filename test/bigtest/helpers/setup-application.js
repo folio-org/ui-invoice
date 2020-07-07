@@ -7,10 +7,12 @@ import mirageOptions from '../network';
 mirageOptions.serverType = 'miragejs';
 
 export default function setupApplication({
+  modules,
   scenarios,
   hasAllPerms = true,
 } = {}) {
   setupStripesCore({
+    modules,
     mirageOptions,
     scenarios,
     stripesConfig: {
