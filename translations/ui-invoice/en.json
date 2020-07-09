@@ -275,9 +275,9 @@
   "invoice.actions.pay.confirmation.message": "Are you sure you want to pay invoice?",
 
   "invoice.actions.addLine.confirmLabel": "Confirm",
-  "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency idetified on the invoice.",
+  "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency identified on the invoice.",
   "invoice.actions.addLine.heading": "Confirmation",
-  "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor Identified on the invoice.",
+  "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
   "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data",
 
   "invoice.isNotUnique.confirmation.heading": "Save invoice",
