@@ -287,8 +287,8 @@
     "settings.BatchVoucherExports.download.error": "Os lotes de vouchers não foram baixados",
     "invoice.actions.approve.error.accountingCodeNotPresent": "A fatura não pode ser aprovada (paga), porque o fornecedor identificado deve ter um código contábil para que essa fatura seja exportada para a contabilidade",
     "invoice.actions.addLine.confirmLabel": "Confirm",
-    "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency idetified on the invoice.",
+    "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency identified on the invoice.",
     "invoice.actions.addLine.heading": "Confirmation",
-    "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor Identified on the invoice.",
+    "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
     "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data"
 }
