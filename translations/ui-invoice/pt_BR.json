@@ -286,9 +286,9 @@
     "errors.cantLoadVendor": "Erro ao carregar o fornecedor",
     "settings.BatchVoucherExports.download.error": "Os lotes de vouchers não foram baixados",
     "invoice.actions.approve.error.accountingCodeNotPresent": "A fatura não pode ser aprovada (paga), porque o fornecedor identificado deve ter um código contábil para que essa fatura seja exportada para a contabilidade",
-    "invoice.actions.addLine.confirmLabel": "Confirm",
-    "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency identified on the invoice.",
-    "invoice.actions.addLine.heading": "Confirmation",
-    "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
-    "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data"
+    "invoice.actions.addLine.confirmLabel": "Confirmar",
+    "invoice.actions.addLine.currencyMessage": "Você está adicionando uma ou mais linhas de pedidos que estão em uma moeda diferente daquela identificada nesta fatura. Se você ainda deseja adicioná-los, clique em confirmar. Nota: O custo será registrado na moeda identificada na fatura.",
+    "invoice.actions.addLine.heading": "Confirmação",
+    "invoice.actions.addLine.vendorMessage": "Você está adicionando uma ou mais linhas de pedido que fazem referência a um fornecedor diferente daquele identificado nesta fatura. Se você ainda deseja adicioná-los, clique em confirmar. Nota: Os pagamentos serão associados ao fornecedor identificado na fatura.",
+    "invoice.actions.addLine.vendorLoadError": "Falha ao carregar os dados do fornecedor"
 }
