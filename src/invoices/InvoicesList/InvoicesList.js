@@ -38,20 +38,20 @@ import {
 } from './InvoicesListSearchConfig';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
-const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'total'];
+const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
 const columnMapping = {
   vendorInvoiceNo: <FormattedMessage id="ui-invoice.invoice.list.vendorInvoiceNo" />,
   vendor: <FormattedMessage id="ui-invoice.invoice.list.vendor" />,
   invoiceDate: <FormattedMessage id="ui-invoice.invoice.list.invoiceDate" />,
   status: <FormattedMessage id="ui-invoice.invoice.list.status" />,
-  total: <FormattedMessage id="ui-invoice.invoice.list.total" />,
+  invoiceTotal: <FormattedMessage id="ui-invoice.invoice.list.total" />,
 };
-const sortableFields = ['vendorInvoiceNo', 'invoiceDate', 'status', 'total'];
+const sortableFields = ['vendorInvoiceNo', 'invoiceDate', 'status', 'invoiceTotal'];
 const resultsFormatter = {
   vendor: invoice => invoice?.vendor?.name,
   invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
-  total: invoice => (
+  invoiceTotal: invoice => (
     <AmountWithCurrencyField
       amount={invoice.total}
       currency={invoice.currency}
