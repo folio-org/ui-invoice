@@ -103,13 +103,12 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
           />
         </Col>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.releaseEncumbrance" />}>
-            <Checkbox
-              checked={Boolean(invoiceLine.releaseEncumbrance)}
-              disabled
-              type="checkbox"
-            />
-          </KeyValue>
+          <Checkbox
+            checked={Boolean(invoiceLine.releaseEncumbrance)}
+            disabled
+            label={<FormattedMessage id="ui-invoice.invoiceLine.releaseEncumbrance" />}
+            type="checkbox"
+          />
         </Col>
       </Row>
     </>

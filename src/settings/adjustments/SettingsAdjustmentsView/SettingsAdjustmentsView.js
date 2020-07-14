@@ -131,13 +131,12 @@ class SettingsAdjustmentsView extends Component {
                   data-test-always-show
                   xs={3}
                 >
-                  <KeyValue label={<FormattedMessage id="ui-invoice.settings.adjustments.alwaysShow" />}>
-                    <Checkbox
-                      checked={alwaysShow}
-                      disabled
-                      type="checkbox"
-                    />
-                  </KeyValue>
+                  <Checkbox
+                    checked={alwaysShow}
+                    disabled
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.alwaysShow" />}
+                    type="checkbox"
+                  />
                 </Col>
                 <Col
                   data-test-default-amount
