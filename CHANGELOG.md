@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-167](https://issues.folio.org/browse/UINV-167) Cannot filter invoice by invoice line tag(s)
 * [UINV-161](https://issues.folio.org/browse/UINV-161) Alert user when adding pol to invoice that has a different currency or vendor that the invoice
 
 ## [2.1.3]https://github.com/folio-org/ui-invoice/tree/v2.1.3) (2020-07-01)

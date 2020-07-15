@@ -43,6 +43,11 @@ const buildInvoicesQuery = makeQueryBuilder(
     [FILTERS.INVOICE_DATE]: buildDateRangeQuery.bind(null, [FILTERS.INVOICE_DATE]),
     [FILTERS.PAYMENT_DUE]: buildDateRangeQuery.bind(null, [FILTERS.PAYMENT_DUE]),
     [FILTERS.APPROVAL_DATE]: buildDateRangeQuery.bind(null, [FILTERS.APPROVAL_DATE]),
+    [FILTERS.TAGS]: (filterValue) => {
+      const value = Array.isArray(filterValue) ? filterValue.join('" or "') : filterValue;
+
+      return `(${FILTERS.TAGS}=("${value}") or invoiceLines.tags.tagList=("${value}"))`;
+    },
   },
 );
 
