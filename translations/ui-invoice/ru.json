@@ -73,7 +73,7 @@
     "invoiceLine.accountNumber": "Account number",
     "invoiceLine.accountingCode": "Accounting code",
     "invoiceLine.comment": "Комментарий",
-    "invoiceLine.releaseEncumbrance": "Release encumbrance",
+    "invoiceLine.releaseEncumbrance": "Снять обременение",
     "invoiceLine.subTotal": "Sub-total",
     "adjustment.type": "Select adjustment",
     "adjustment.description": "Описание",
