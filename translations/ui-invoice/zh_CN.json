@@ -104,7 +104,7 @@
     "search.voucherNumber": "凭证号",
     "search.vendorInvoiceNo": "供应商发票号",
     "search.poNumbers": "订单号",
-    "search.keyword": "关键词",
+    "search.keyword": "所有",
     "invoice.details.information.acqUnits": "采购单元",
     "invoice.details.information.billToName": "帐单发送名称",
     "invoice.details.information.billToAddress": "帐单发送地址",
@@ -285,10 +285,10 @@
     "errors.cantLoadInvoice": "加载发票时出错",
     "errors.cantLoadVendor": "加载供应商时出错",
     "settings.BatchVoucherExports.download.error": "未下载批凭证",
-    "invoice.actions.approve.error.accountingCodeNotPresent": "Invoice can not be approved (paid), because the identified vendor must have an accounting code for this invoice to be exported to accounting",
-    "invoice.actions.addLine.confirmLabel": "Confirm",
-    "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency identified on the invoice.",
-    "invoice.actions.addLine.heading": "Confirmation",
-    "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
-    "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data"
+    "invoice.actions.approve.error.accountingCodeNotPresent": "无法批准（已付款）发票，因为已识别的供应商必须具有该发票的会计代码才能导出到会计中",
+    "invoice.actions.addLine.confirmLabel": "确认",
+    "invoice.actions.addLine.currencyMessage": "正在添加的一个或多个采购订单行的币种与该发票上标识的币种不同。如果仍想添加，请单击确认。注意：费用将以发票上指定的货币记录。",
+    "invoice.actions.addLine.heading": "确认",
+    "invoice.actions.addLine.vendorMessage": "正在添加一个或多个采购订单行，这些采购订单行引用的供应商与此发票上标识的供应商不同。如果仍想添加，请单击确认。注意：付款将与发票上指定的供应商相关联。",
+    "invoice.actions.addLine.vendorLoadError": "无法加载供应商数据"
 }
