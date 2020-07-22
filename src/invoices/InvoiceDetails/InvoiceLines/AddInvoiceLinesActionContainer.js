@@ -43,9 +43,9 @@ const AddInvoiceLinesActionContainer = ({ addLines, isDisabled, invoiceCurrency,
 
       return currencies.some(currency => currency !== invoiceCurrency)
         ? toggleCurrencyConfirmation()
-        : addLines(poLines);
+        : addLines(selectedPoLines);
     },
-    [poLines, invoiceCurrency, toggleCurrencyConfirmation, addLines],
+    [invoiceCurrency, toggleCurrencyConfirmation, addLines],
   );
 
   const validateVendor = useCallback(
