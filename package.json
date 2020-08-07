@@ -76,6 +76,7 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.1",
       "batch-group": "1.0",
+      "batch-voucher.batch-vouchers": "2.0",
       "batch-voucher.batch-voucher-exports": "1.0",
       "batch-voucher.export-configurations": "1.0",
       "configuration": "2.0",
@@ -148,7 +149,24 @@
         "description": "",
         "subPermissions": [
           "ui-invoice.third-party-services",
-          "invoice.all"
+          "invoice.invoices.collection.get",
+          "invoice.invoices.item.get",
+          "invoice.invoices.item.post",
+          "invoice.invoices.item.put",
+          "invoice.invoices.item.delete",
+          "invoice.invoice-lines.collection.get",
+          "invoice.invoice-lines.item.get",
+          "invoice.invoice-lines.item.post",
+          "invoice.invoice-lines.item.put",
+          "invoice.invoice-lines.item.delete",
+          "invoice.invoice-number.item.get",
+          "invoice.invoice-number.item.post",
+          "voucher-number.start.post",
+          "voucher-number.start.get",
+          "voucher.all",
+          "invoice.invoices.documents.all",
+          "batch-voucher.export-configurations.all",
+          "batch-groups.all"
         ]
       },
       {
@@ -185,6 +203,15 @@
         "visible": true,
         "subPermissions": [
           "invoice.acquisitions-units-assignments.manage"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.batchVoucher.download",
+        "displayName": "Invoice: Download batch file from invoice record",
+        "description": "",
+        "visible": true,
+        "subPermissions": [
+          "batch-voucher.batch-vouchers.item.get"
         ]
       }
     ]

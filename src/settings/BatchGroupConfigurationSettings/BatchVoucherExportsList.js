@@ -27,9 +27,11 @@ export function BatchVoucherExportsList({ batchVoucherExports, format, onNeedMor
         <FolioFormattedTime dateString={d.end || d.start} />
       ),
       // eslint-disable-next-line react/prop-types
-      exportButton: ({ batchVoucherId }) => (
+      exportButton: ({ batchVoucherId, metadata }) => (
         <ExportVoucherButton
           batchVoucherId={batchVoucherId}
+           // eslint-disable-next-line react/prop-types
+          fileName={metadata?.createdDate || batchVoucherId}
           format={format}
         />
       ),

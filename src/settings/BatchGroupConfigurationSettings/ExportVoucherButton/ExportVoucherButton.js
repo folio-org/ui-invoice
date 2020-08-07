@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { saveAs } from 'file-saver';
 
 import {
+  IfPermission,
   stripesShape,
   withStripes,
 } from '@folio/stripes/core';
@@ -15,7 +16,7 @@ import {
   EXPORT_FORMATS_HEADER_MAP,
 } from '../constants';
 
-const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
+const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
   const showCallout = useShowCallout();
   const downloadBatchVouchers = useCallback(
     async () => {
@@ -36,7 +37,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
         } else {
           const blob = await batchVouchers.blob();
 
-          saveAs(blob, `${batchVoucherId}.${EXPORT_FORMAT_FILE_EXTENSION[format]}`);
+          saveAs(blob, `${fileName}.${EXPORT_FORMAT_FILE_EXTENSION[format]}`);
         }
       } catch (e) {
         showCallout({
@@ -45,7 +46,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
         });
       }
     },
-    [batchVoucherId, format, showCallout, stripes.okapi.tenant, stripes.okapi.token, stripes.okapi.url],
+    [batchVoucherId, format, showCallout, stripes.okapi.tenant, stripes.okapi.token, stripes.okapi.url, fileName],
   );
 
   if (!batchVoucherId) {
@@ -53,16 +54,19 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes }) => {
   }
 
   return (
-    <IconButton
-      data-test-batch-voucher-export-download
-      icon="download"
-      onClick={downloadBatchVouchers}
-    />
+    <IfPermission perm="batch-voucher.batch-vouchers.item.get">
+      <IconButton
+        data-test-batch-voucher-export-download
+        icon="download"
+        onClick={downloadBatchVouchers}
+      />
+    </IfPermission>
   );
 };
 
 ExportVoucherButton.propTypes = {
   batchVoucherId: PropTypes.string,
+  fileName: PropTypes.string,
   format: PropTypes.string,
   stripes: stripesShape,
 };

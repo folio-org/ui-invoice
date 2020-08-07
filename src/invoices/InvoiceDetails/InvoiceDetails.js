@@ -29,13 +29,14 @@ import { INVOICE_STATUS } from '../../common/constants';
 import {
   SECTIONS_INVOICE as SECTIONS,
 } from '../constants';
+import AdjustmentsDetails from '../AdjustmentsDetails';
 import InvoiceActions from './InvoiceActions';
 import Information from './Information';
 import InvoiceLinesContainer, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
 import VoucherInformationContainer from './VoucherInformation';
 import DocumentsDetails from './DocumentsDetails';
-import AdjustmentsDetails from '../AdjustmentsDetails';
+import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
 import styles from './InvoiceDetails.css';
 
 function InvoiceDetails({
@@ -53,6 +54,8 @@ function InvoiceDetails({
   onUpdate,
   payInvoice,
   totalInvoiceLines,
+  batchVoucherExport,
+  exportFormat,
 }) {
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const [isApproveConfirmationOpen, toggleApproveConfirmation] = useModalToggle();
@@ -222,6 +225,17 @@ function InvoiceDetails({
                 accountingCode={invoice.accountingCode}
               />
             </Accordion>
+            {showVoucherInformation && batchVoucherExport && (
+              <Accordion
+                label={<FormattedMessage id="ui-invoice.invoice.details.batchVoucherExport.title" />}
+                id={SECTIONS.batchVoucherExport}
+              >
+                <InvoiceBatchVoucherExport
+                  batchVoucherExport={batchVoucherExport}
+                  exportFormat={exportFormat}
+                />
+              </Accordion>
+            )}
             {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
             <Accordion
               label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
@@ -316,6 +330,8 @@ InvoiceDetails.propTypes = {
   onUpdate: PropTypes.func.isRequired,
   payInvoice: PropTypes.func.isRequired,
   totalInvoiceLines: PropTypes.number.isRequired,
+  batchVoucherExport: PropTypes.object,
+  exportFormat: PropTypes.string,
 };
 
 InvoiceDetails.defaultProps = {

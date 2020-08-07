@@ -7,6 +7,7 @@ import {
   text,
 } from '@bigtest/interactor';
 
+import { SECTIONS_INVOICE } from '../../../src/invoices/constants';
 import TagsAction from './common/TagsAction';
 
 @interactor class Header {
@@ -27,7 +28,7 @@ import TagsAction from './common/TagsAction';
 }
 
 @interactor class LinesSection {
-  static defaultScope = '#invoiceLines';
+  static defaultScope = `#${SECTIONS_INVOICE.lines}`;
   list = collection('#invoice-lines-list [class*=mclRow---]', {
     click: clickable(),
   });
@@ -45,7 +46,8 @@ export default interactor(class InvoiceDetails {
   buttonCreateLine = new Interactor('[data-test-button-create-line]');
   header = new Header();
   approvedBy = new ApprovedBy();
-  voucherAccordion = isPresent('#voucher');
+  voucherAccordion = isPresent(`#${SECTIONS_INVOICE.voucher}`);
+  batchVoucherExportAccordion = isPresent(`#${SECTIONS_INVOICE.batchVoucherExport}`);
   linesSection = new LinesSection();
   buttonVoucherView = new Interactor('[data-test-view-voucher-button]');
 
