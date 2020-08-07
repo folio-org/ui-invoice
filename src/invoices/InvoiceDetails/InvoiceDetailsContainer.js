@@ -68,12 +68,6 @@ function InvoiceDetailsContainer({
             },
           });
           const approvalsConfigPromise = mutator.invoiceActionsApprovals.GET();
-          const batchVoucherExportPromise = mutator.batchVoucherExport.GET({
-            params: {
-              limit: `${LIMIT_MAX}`,
-              query: `batchVouchers.batchedVouchers=folioInvoiceNo:${invoiceResponse.folioInvoiceNo}`,
-            },
-          });
           const exportConfigsPromise = mutator.exportConfigs.GET({
             params: {
               limit: `${LIMIT_MAX}`,
@@ -85,20 +79,19 @@ function InvoiceDetailsContainer({
             vendorPromise,
             invoiceLinesPromise,
             approvalsConfigPromise,
-            batchVoucherExportPromise,
             exportConfigsPromise,
+            invoiceResponse.folioInvoiceNo,
           ]);
         })
         .then(([
           vendorResp,
           invoiceLinesResp,
           approvalsConfigResp,
-          batchVoucherExportResp,
           exportConfigsResp,
+          folioInvoiceNo,
         ]) => {
           setVendor(vendorResp);
           setInvoiceLines(invoiceLinesResp);
-          setBatchVoucherExport(batchVoucherExportResp[0]);
           setExportFormat(exportConfigsResp[0]?.format);
 
           let approvalsConfig;
@@ -110,7 +103,19 @@ function InvoiceDetailsContainer({
           }
 
           setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
+
+          const batchVoucherExportPromise = mutator.batchVoucherExport.GET({
+            params: {
+              limit: `${LIMIT_MAX}`,
+              query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
+            },
+          });
+
+          if (exportConfigsResp[0]?.id) {
+            return batchVoucherExportPromise;
+          } else return Promise.resolve();
         })
+        .then(batchVoucherExportResp => setBatchVoucherExport(batchVoucherExportResp[0]))
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
         });
