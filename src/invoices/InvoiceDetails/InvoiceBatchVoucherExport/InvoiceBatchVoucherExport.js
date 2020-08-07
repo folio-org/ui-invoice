@@ -29,10 +29,10 @@ const InvoiceBatchVoucherExport = ({ batchVoucherExport, exportFormat }) => {
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.batchVoucherExport.fileName" />}
         >
-          <FolioFormattedTime dateString={batchVoucherExport.metadata.createdDate} />
+          <FolioFormattedTime dateString={batchVoucherExport.end} />
           <ExportVoucherButton
             batchVoucherId={batchVoucherExport.batchVoucherId}
-            fileName={batchVoucherExport.metadata.createdDate}
+            fileName={batchVoucherExport.end}
             format={exportFormat}
           />
         </KeyValue>
