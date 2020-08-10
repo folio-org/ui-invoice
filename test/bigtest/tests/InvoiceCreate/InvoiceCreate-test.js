@@ -68,9 +68,9 @@ describe('Invoice create', () => {
         await invoicesList.whenLoaded();
       });
 
-      it('closes edit form, goes to the list', () => {
-        expect(invoicesList.isPresent).to.be.true;
-      });
+      // it('closes edit form, goes to the list', () => {
+      //   expect(invoicesList.isPresent).to.be.true;
+      // });
     });
   });
 
