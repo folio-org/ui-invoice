@@ -124,12 +124,13 @@ const InvoicesList = ({
           <ResetButton
             id="reset-invoice-filters"
             reset={resetFilters}
-            disabled={!location.search}
+            disabled={!location.search || isLoading}
           />
 
           <InvoicesListFilters
             activeFilters={filters}
             applyFilters={applyFilters}
+            disabled={isLoading}
           />
         </FiltersPane>
       )}

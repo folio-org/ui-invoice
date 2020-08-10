@@ -264,6 +264,8 @@
   "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
   "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
   "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
+  "invoice.actions.approve.error.inactiveExpenseClass": "Expense class is Inactive",
+  "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created",
   "invoice.actions.approve.confirmation.heading": "Approve invoice",
   "invoice.actions.approve.confirmation.message": "Are you sure you want to approve invoice?",
 
