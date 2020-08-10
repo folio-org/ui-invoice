@@ -5,6 +5,7 @@ export const APPROVE_ERROR_CODES = {
   poLineUpdateFailure: 'poLineUpdateFailure',
   fundCannotBePaid: 'fundCannotBePaid',
   transactionCreationFailure: 'transactionCreationFailure',
+  inactiveExpenseClass: 'inactiveExpenseClass',
 };
 
 export const getApproveErrorMessage = (errorCode, genericError = 'ui-invoice.invoice.actions.approve.error') => {

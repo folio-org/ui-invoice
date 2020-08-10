@@ -1,6 +1,5 @@
 import React, {
   useCallback,
-  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -12,6 +11,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   buildDateRangeQuery,
   makeQueryBuilder,
+  useList,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -56,32 +56,25 @@ const resetData = () => {};
 const InvoicesListContainer = ({ mutator: originMutator, location }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const mutator = useMemo(() => originMutator, []);
-  const [invoices, setInvoices] = useState([]);
   const [organizationsMap, setOrganizationsMap] = useState({});
-  const [invoicesCount, setInvoicesCount] = useState(0);
-  const [invoicesOffset, setInvoicesOffset] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const loadInvoices = useCallback((offset) => {
-    setIsLoading(true);
-
+  const loadInvoices = useCallback(offset => {
     return mutator.invoicesListInvoices.GET({
       params: {
         limit: RESULT_COUNT_INCREMENT,
         offset,
         query: buildInvoicesQuery(queryString.parse(location.search)),
       },
-    })
-      .then(invoicesResponse => {
-        const organizationsPromise = fetchInvoiceOrganizations(
-          mutator.invoicesListOrganizations, invoicesResponse.invoices, organizationsMap,
-        );
+    });
+  }, [location.search, mutator.invoicesListInvoices]);
 
-        return Promise.all([invoicesResponse, organizationsPromise]);
-      })
-      .then(([invoicesResponse, organizationsResponse]) => {
-        if (!offset) setInvoicesCount(invoicesResponse.totalRecords);
+  const loadInvoicesCB = useCallback((setInvoices, invoicesResponse) => {
+    const organizationsPromise = fetchInvoiceOrganizations(
+      mutator.invoicesListOrganizations, invoicesResponse.invoices, organizationsMap,
+    );
 
+    return organizationsPromise
+      .then(organizationsResponse => {
         const newOrganizationsMap = {
           ...organizationsMap,
           ...organizationsResponse.reduce((acc, orgItem) => {
@@ -100,32 +93,16 @@ const InvoicesListContainer = ({ mutator: originMutator, location }) => {
             vendor: newOrganizationsMap[invoice.vendorId],
           })),
         ]);
-      })
-      .finally(() => setIsLoading(false));
-  }, [
-    location.search, mutator.invoicesListInvoices, mutator.invoicesListOrganizations, organizationsMap,
-  ]);
-
-  const onNeedMoreData = () => {
-    const newOffset = invoicesOffset + RESULT_COUNT_INCREMENT;
-
-    loadInvoices(newOffset)
-      .then(() => {
-        setInvoicesOffset(newOffset);
       });
-  };
+  }, [mutator.invoicesListOrganizations, organizationsMap]);
 
-  const refreshList = useCallback(() => {
-    setInvoices([]);
-    setInvoicesOffset(0);
-    loadInvoices(0);
-  }, [loadInvoices]);
-
-  useEffect(
+  const {
+    records: invoices,
+    recordsCount: invoicesCount,
+    isLoading,
+    onNeedMoreData,
     refreshList,
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.search],
-  );
+  } = useList(true, loadInvoices, loadInvoicesCB, RESULT_COUNT_INCREMENT);
 
   return (
     <InvoicesList

@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Select expense class for Order & Invoice Fund distribution. Refs UIF-213
+
 ### Stories
 * [UINV-159](https://issues.folio.org/browse/UINV-159) Display voucher export details in exclusive accordion
 * [UINV-167](https://issues.folio.org/browse/UINV-167) Cannot filter invoice by invoice line tag(s)
