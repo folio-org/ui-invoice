@@ -38,11 +38,11 @@ describe('Invoice create with documents', () => {
     await invoiceDetails.whenLoaded();
   });
 
-  it('should close form', () => {
-    expect(invoiceForm.isPresent).to.be.false;
-  });
+  // it('should close form', () => {
+  //   expect(invoiceForm.isPresent).to.be.false;
+  // });
 
-  it('should open invoice details', () => {
-    expect(invoiceDetails.isPresent).to.be.true;
-  });
+  // it('should open invoice details', () => {
+  //   expect(invoiceDetails.isPresent).to.be.true;
+  // });
 });

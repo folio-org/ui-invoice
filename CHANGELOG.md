@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UINV-159](https://issues.folio.org/browse/UINV-159) Display voucher export details in exclusive accordion
 * [UINV-167](https://issues.folio.org/browse/UINV-167) Cannot filter invoice by invoice line tag(s)
 * [UINV-161](https://issues.folio.org/browse/UINV-161) Alert user when adding pol to invoice that has a different currency or vendor that the invoice
 

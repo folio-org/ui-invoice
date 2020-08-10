@@ -225,6 +225,11 @@
   "invoice.details.vendor.name": "Vendor name",
   "invoice.details.vendor.accountingCode": "Accounting code",
 
+  "invoice.details.batchVoucherExport.title": "Voucher export details",
+  "invoice.details.batchVoucherExport.batchGroup": "Batch group",
+  "invoice.details.batchVoucherExport.fileName": "Batch file name",
+  "invoice.details.batchVoucherExport.status": "Batch file status",
+
   "invoice.details.voucher.accountingCode": "Accounting code",
   "invoice.details.voucher.amount": "Amount",
   "invoice.details.voucher.button": "View voucher",
@@ -325,5 +330,7 @@
   "voucher.voucherLines.amount": "Amount",
   "voucher.voucherLines.total": "Total: ",
 
-  "find-po-line-plugin-unavailable": "Find PO line plugin is not available"
+  "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
+
+  "permission.batchVoucher.download": "Invoice: Download batch file from invoice record"
 }

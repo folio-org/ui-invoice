@@ -14,9 +14,11 @@ import {
 
 import { getApproveErrorMessage } from '../../common/utils';
 import {
+  batchVoucherExportsResource,
   configApprovals,
-  invoiceResource,
+  exportConfigsResource,
   invoiceLinesResource,
+  invoiceResource,
 } from '../../common/resources';
 import {
   INVOICE_API,
@@ -41,12 +43,16 @@ function InvoiceDetailsContainer({
   const [invoiceLines, setInvoiceLines] = useState({});
   const [vendor, setVendor] = useState({});
   const [isApprovePayEnabled, setIsApprovePayEnabled] = useState(false);
+  const [batchVoucherExport, setBatchVoucherExport] = useState();
+  const [exportFormat, setExportFormat] = useState();
 
   const fetchInvoiceData = useCallback(
     () => {
       setInvoice({});
       setInvoiceLines({});
       setVendor({});
+      setBatchVoucherExport();
+      setExportFormat();
 
       return mutator.invoice.GET({ path: `${INVOICE_API}/${id}` })
         .then(invoiceResponse => {
@@ -62,12 +68,31 @@ function InvoiceDetailsContainer({
             },
           });
           const approvalsConfigPromise = mutator.invoiceActionsApprovals.GET();
+          const exportConfigsPromise = mutator.exportConfigs.GET({
+            params: {
+              limit: `${LIMIT_MAX}`,
+              query: `batchGroupId==${invoiceResponse.batchGroupId}`,
+            },
+          });
 
-          return Promise.all([vendorPromise, invoiceLinesPromise, approvalsConfigPromise]);
+          return Promise.all([
+            vendorPromise,
+            invoiceLinesPromise,
+            approvalsConfigPromise,
+            exportConfigsPromise,
+            invoiceResponse.folioInvoiceNo,
+          ]);
         })
-        .then(([vendorResp, invoiceLinesResp, approvalsConfigResp]) => {
+        .then(([
+          vendorResp,
+          invoiceLinesResp,
+          approvalsConfigResp,
+          exportConfigsResp,
+          folioInvoiceNo,
+        ]) => {
           setVendor(vendorResp);
           setInvoiceLines(invoiceLinesResp);
+          setExportFormat(exportConfigsResp[0]?.format);
 
           let approvalsConfig;
 
@@ -78,12 +103,33 @@ function InvoiceDetailsContainer({
           }
 
           setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
+
+          const batchVoucherExportPromise = mutator.batchVoucherExport.GET({
+            params: {
+              limit: `${LIMIT_MAX}`,
+              query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
+            },
+          });
+
+          if (exportConfigsResp[0]?.id) {
+            return batchVoucherExportPromise;
+          } else return Promise.resolve();
         })
+        .then(batchVoucherExportResp => setBatchVoucherExport(batchVoucherExportResp[0]))
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
         });
     },
-    [id, mutator.invoice, mutator.invoiceActionsApprovals, mutator.invoiceLines, mutator.vendor, showCallout],
+    [
+      id,
+      mutator.invoice,
+      mutator.invoiceActionsApprovals,
+      mutator.invoiceLines,
+      mutator.vendor,
+      mutator.batchVoucherExport,
+      mutator.exportConfigs,
+      showCallout,
+    ],
   );
 
   useEffect(
@@ -284,6 +330,8 @@ function InvoiceDetailsContainer({
       onUpdate={updateInvoice}
       payInvoice={payInvoice}
       totalInvoiceLines={invoiceLines.totalRecords}
+      batchVoucherExport={batchVoucherExport}
+      exportFormat={exportFormat}
     />
   );
 }
@@ -305,6 +353,8 @@ InvoiceDetailsContainer.manifest = Object.freeze({
     accumulate: true,
     fetch: false,
   },
+  exportConfigs: exportConfigsResource,
+  batchVoucherExport: batchVoucherExportsResource,
 });
 
 InvoiceDetailsContainer.propTypes = {

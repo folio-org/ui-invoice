@@ -9,6 +9,7 @@ export const SECTIONS_INVOICE = {
   documents: 'documents',
   adjustments: 'invoiceAdjustments',
   fundDistribution: 'invoiceFundDistribution',
+  batchVoucherExport: 'batchVoucherExport',
 };
 
 export const SECTIONS_INVOICE_FORM = {
