@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Approve status can be selected during invoice create/edit. Refs UINV-174
 * Select expense class for Order & Invoice Fund distribution. Refs UIF-213
 
 ### Stories

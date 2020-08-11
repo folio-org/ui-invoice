@@ -11,8 +11,6 @@ export const getInvoiceStatusLabel = ({ status = '' }) => (
   `ui-invoice.invoice.status.${(status || '').toLowerCase()}`
 );
 
-export const formatAmount = (amount = '') => `$${amount.toLocaleString('en')}`;
-
 export const formatDate = (dateString) => <FolioFormattedDate value={dateString} />;
 
 export const IS_EDIT_POST_APPROVAL = (id, status) => {
@@ -22,3 +20,5 @@ export const IS_EDIT_POST_APPROVAL = (id, status) => {
 export const isPayable = (status) => INVOICE_STATUS.approved === status;
 
 export const isPaid = (status) => INVOICE_STATUS.paid === status;
+
+export const isCancelled = (status) => INVOICE_STATUS.cancelled === status;
