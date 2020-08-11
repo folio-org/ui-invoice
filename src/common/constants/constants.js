@@ -27,7 +27,7 @@ export const INVOICE_STATUSES_OPTIONS = [
 ];
 
 export const PRE_PAY_INVOICE_STATUSES_OPTIONS = INVOICE_STATUSES_OPTIONS
-  .filter(option => option.value !== INVOICE_STATUS.paid);
+  .filter(option => [INVOICE_STATUS.open, INVOICE_STATUS.reviewed].includes(option.value));
 
 export const POST_APPROVAL_STATUSES = [INVOICE_STATUS.approved, INVOICE_STATUS.paid, INVOICE_STATUS.cancelled];
 

@@ -47,6 +47,7 @@ import {
   getAccountingCodeOptions,
   getAddressOptions,
   IS_EDIT_POST_APPROVAL,
+  isCancelled,
   isPaid,
   isPayable,
   parseAddressConfigs,
@@ -124,7 +125,7 @@ const InvoiceForm = ({
   const accountingCodeOptions = getAccountingCodeOptions(vendor);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
-  const statusOptions = isPayable(initialValues.status) || isPaid(initialValues.status)
+  const statusOptions = isPayable(initialValues.status) || isStatusPaid || isCancelled(initialValues.status)
     ? INVOICE_STATUSES_OPTIONS
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
 
@@ -186,7 +187,7 @@ const InvoiceForm = ({
                       <Col data-test-col-status xs={3}>
                         <FieldSelection
                           dataOptions={statusOptions}
-                          disabled={isStatusPaid}
+                          disabled={isEditPostApproval}
                           id="invoice-status"
                           labelId="ui-invoice.invoice.details.information.status"
                           name="status"
