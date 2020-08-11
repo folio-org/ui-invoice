@@ -290,5 +290,12 @@
     "invoice.actions.addLine.currencyMessage": "Você está adicionando uma ou mais linhas de pedidos que estão em uma moeda diferente daquela identificada nesta fatura. Se você ainda deseja adicioná-los, clique em confirmar. Nota: O custo será registrado na moeda identificada na fatura.",
     "invoice.actions.addLine.heading": "Confirmação",
     "invoice.actions.addLine.vendorMessage": "Você está adicionando uma ou mais linhas de pedido que fazem referência a um fornecedor diferente daquele identificado nesta fatura. Se você ainda deseja adicioná-los, clique em confirmar. Nota: Os pagamentos serão associados ao fornecedor identificado na fatura.",
-    "invoice.actions.addLine.vendorLoadError": "Falha ao carregar os dados do fornecedor"
+    "invoice.actions.addLine.vendorLoadError": "Falha ao carregar os dados do fornecedor",
+    "invoice.details.batchVoucherExport.title": "Detalhes de exportação de voucher",
+    "invoice.details.batchVoucherExport.batchGroup": "Grupo de lotes",
+    "invoice.details.batchVoucherExport.fileName": "Nome do arquivo em lote",
+    "invoice.details.batchVoucherExport.status": "Status do arquivo em lote",
+    "permission.batchVoucher.download": "Fatura: Baixe o arquivo em lote do registro da fatura",
+    "invoice.actions.approve.error.inactiveExpenseClass": "A classe de despesas está inativa",
+    "invoice.actions.approve.error.transactionCreationFailure": "Um ou mais registro(s) de transações não foram criados"
 }

@@ -290,5 +290,12 @@
     "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency identified on the invoice.",
     "invoice.actions.addLine.heading": "Подтверждение",
     "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
-    "invoice.actions.addLine.vendorLoadError": "Не удалось загрузить данные о поставщике"
+    "invoice.actions.addLine.vendorLoadError": "Не удалось загрузить данные о поставщике",
+    "invoice.details.batchVoucherExport.title": "Voucher export details",
+    "invoice.details.batchVoucherExport.batchGroup": "Batch group",
+    "invoice.details.batchVoucherExport.fileName": "Batch file name",
+    "invoice.details.batchVoucherExport.status": "Batch file status",
+    "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
+    "invoice.actions.approve.error.inactiveExpenseClass": "Expense class is Inactive",
+    "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created"
 }

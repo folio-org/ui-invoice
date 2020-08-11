@@ -290,5 +290,12 @@
     "invoice.actions.addLine.currencyMessage": "正在添加的一个或多个采购订单行的币种与该发票上标识的币种不同。如果仍想添加，请单击确认。注意：费用将以发票上指定的货币记录。",
     "invoice.actions.addLine.heading": "确认",
     "invoice.actions.addLine.vendorMessage": "正在添加一个或多个采购订单行，这些采购订单行引用的供应商与此发票上标识的供应商不同。如果仍想添加，请单击确认。注意：付款将与发票上指定的供应商相关联。",
-    "invoice.actions.addLine.vendorLoadError": "无法加载供应商数据"
+    "invoice.actions.addLine.vendorLoadError": "无法加载供应商数据",
+    "invoice.details.batchVoucherExport.title": "Voucher export details",
+    "invoice.details.batchVoucherExport.batchGroup": "Batch group",
+    "invoice.details.batchVoucherExport.fileName": "Batch file name",
+    "invoice.details.batchVoucherExport.status": "Batch file status",
+    "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
+    "invoice.actions.approve.error.inactiveExpenseClass": "Expense class is Inactive",
+    "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created"
 }

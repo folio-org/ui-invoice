@@ -290,5 +290,12 @@
     "invoice.actions.addLine.currencyMessage": "أنت تقوم بإضافة سطر أمر شراء أو أكثر بعملة مختلفة عن العملة المعرّفة في هذه الفاتورة. إذا كنت لا تزال ترغب في إضافة تلك السطور، يرجى النقر على تأكيد. ملاحظة: سيتم تسجيل التكلفة بالعملة المعرّفة في الفاتورة.",
     "invoice.actions.addLine.heading": "تأكيد",
     "invoice.actions.addLine.vendorMessage": "أنت تقوم بإضافة سطر أمر شراء أو أكثر يرجع إلى مورّد مختلف عن المورّد المعرّف في هذه الفاتورة. إذا كنت لا تزال ترغب في إضافة تلك السطور، يرجى النقر على تأكيد. ملاحظة: سيتم ربط المدفوعات بالمورّد المعرّف في الفاتورة.",
-    "invoice.actions.addLine.vendorLoadError": "فشل تحميل بيانات المورّد"
+    "invoice.actions.addLine.vendorLoadError": "فشل تحميل بيانات المورّد",
+    "invoice.details.batchVoucherExport.title": "تفاصيل تصدير القسيمة",
+    "invoice.details.batchVoucherExport.batchGroup": "مجموعة بالدفعة",
+    "invoice.details.batchVoucherExport.fileName": "اسم الملف بالدفعة",
+    "invoice.details.batchVoucherExport.status": "حالة الملف بالدفعة",
+    "permission.batchVoucher.download": "الفاتورة: نزّل الملف بالدفعة من تسجيلة الفاتورة",
+    "invoice.actions.approve.error.inactiveExpenseClass": "فئة المصروفات غير نشطة",
+    "invoice.actions.approve.error.transactionCreationFailure": "فشل إنشاء تسجيلة معاملات واحدة أو أكثر"
 }
