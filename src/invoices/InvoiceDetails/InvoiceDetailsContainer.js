@@ -113,7 +113,7 @@ function InvoiceDetailsContainer({
 
           if (exportConfigsResp[0]?.id) {
             return batchVoucherExportPromise;
-          } else return Promise.resolve();
+          } else return Promise.resolve([]);
         })
         .then(batchVoucherExportResp => setBatchVoucherExport(batchVoucherExportResp[0]))
         .catch(() => {
