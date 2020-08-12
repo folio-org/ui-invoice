@@ -10,6 +10,7 @@ const InvoiceLinesContainer = ({
   invoiceLines,
   history,
   location,
+  orderlinesMap,
 }) => {
   const openLineDetails = useCallback(
     (e, invoiceLine) => {
@@ -29,6 +30,7 @@ const InvoiceLinesContainer = ({
       currency={currency}
       invoiceLinesItems={invoiceLines}
       openLineDetails={openLineDetails}
+      orderlinesMap={orderlinesMap}
     />
   );
 };
@@ -38,6 +40,7 @@ InvoiceLinesContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
+  orderlinesMap: PropTypes.object,
 };
 
 InvoiceLinesContainer.defaultProps = {

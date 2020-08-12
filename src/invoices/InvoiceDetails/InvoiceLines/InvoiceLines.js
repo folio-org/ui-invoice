@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -9,6 +9,7 @@ import {
 import {
   acqRowFormatter,
   AmountWithCurrencyField,
+  PAYMENT_STATUS,
 } from '@folio/stripes-acq-components';
 
 import styles from './InvoiceLines.css';
@@ -28,8 +29,9 @@ const InvoiceLines = ({
   currency,
   invoiceLinesItems,
   openLineDetails,
+  orderlinesMap,
 }) => {
-  const resultsFormatter = {
+  const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
     adjustmentsTotal: ({ adjustmentsTotal }) => (
       <AmountWithCurrencyField
@@ -45,7 +47,25 @@ const InvoiceLines = ({
       />
     ),
     arrow: () => <Icon icon="caret-right" />,
-  };
+    // eslint-disable-next-line react/prop-types
+    description: ({ description, poLineId }) => {
+      const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
+
+      return (
+        <>
+          {!poLineIsFullyPaid ? null : (
+            <Icon
+              data-test-line-is-fully-paid-icon
+              icon="exclamation-circle"
+              size="medium"
+              status="warn"
+            />
+          )}
+          {description}
+        </>
+      );
+    },
+  }), [currency, orderlinesMap]);
 
   return (
     <>
@@ -74,6 +94,7 @@ InvoiceLines.propTypes = {
   currency: PropTypes.string.isRequired,
   invoiceLinesItems: PropTypes.arrayOf(PropTypes.object),
   openLineDetails: PropTypes.func.isRequired,
+  orderlinesMap: PropTypes.object,
 };
 
 InvoiceLines.defaultProps = {
