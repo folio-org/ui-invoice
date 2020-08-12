@@ -167,7 +167,8 @@
           "voucher.all",
           "invoice.invoices.documents.all",
           "batch-voucher.export-configurations.all",
-          "batch-groups.all"
+          "batch-groups.all",
+          "batch-voucher.batch-voucher-exports.collection.get"
         ]
       },
       {
