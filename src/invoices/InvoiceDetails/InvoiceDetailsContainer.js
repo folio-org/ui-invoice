@@ -104,15 +104,15 @@ function InvoiceDetailsContainer({
 
           setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
 
-          const batchVoucherExportPromise = mutator.batchVoucherExport.GET({
-            params: {
-              limit: `${LIMIT_MAX}`,
-              query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
-            },
-          });
-
           if (exportConfigsResp[0]?.id) {
-            return batchVoucherExportPromise;
+            return (
+              mutator.batchVoucherExport.GET({
+                params: {
+                  limit: `${LIMIT_MAX}`,
+                  query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
+                },
+              })
+            );
           } else return Promise.resolve([]);
         })
         .then(batchVoucherExportResp => setBatchVoucherExport(batchVoucherExportResp[0]))
