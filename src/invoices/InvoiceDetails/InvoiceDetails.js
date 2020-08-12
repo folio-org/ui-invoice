@@ -10,12 +10,14 @@ import {
   Col,
   ConfirmationModal,
   ExpandAllButton,
+  MessageBanner,
   Pane,
-  Row,
   PaneMenu,
+  Row,
 } from '@folio/stripes/components';
 import {
   FundDistributionView,
+  PAYMENT_STATUS,
   useModalToggle,
   TagsBadge,
   TagsPane,
@@ -51,6 +53,7 @@ function InvoiceDetails({
   isApprovePayEnabled,
   onClose,
   onEdit,
+  orderlinesMap,
   onUpdate,
   payInvoice,
   totalInvoiceLines,
@@ -140,6 +143,8 @@ function InvoiceDetails({
       />
     </PaneMenu>
   );
+  const hasPOLineIsFullyPaid = orderlinesMap &&
+    Object.values(orderlinesMap).some(({ paymentStatus }) => paymentStatus === PAYMENT_STATUS.fullyPaid);
 
   return (
     <>
@@ -154,7 +159,14 @@ function InvoiceDetails({
       >
         <AccordionStatus>
           <Row end="xs">
-            <Col xs={12}>
+            <Col xs={10}>
+              {!hasPOLineIsFullyPaid ? null : (
+                <MessageBanner type="warning">
+                  <FormattedMessage id="ui-invoice.invoice.details.hasFullyPaidPOLine" />
+                </MessageBanner>
+              )}
+            </Col>
+            <Col xs={2}>
               <ExpandAllButton />
             </Col>
           </Row>
@@ -195,6 +207,7 @@ function InvoiceDetails({
               <InvoiceLinesContainer
                 currency={invoice.currency}
                 invoiceLines={invoiceLines}
+                orderlinesMap={orderlinesMap}
               />
             </Accordion>
             <Accordion
@@ -327,6 +340,7 @@ InvoiceDetails.propTypes = {
   isApprovePayEnabled: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
+  orderlinesMap: PropTypes.object,
   onUpdate: PropTypes.func.isRequired,
   payInvoice: PropTypes.func.isRequired,
   totalInvoiceLines: PropTypes.number.isRequired,

@@ -7,7 +7,9 @@ import { LoadingPane } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   baseManifest,
+  batchFetch,
   LIMIT_MAX,
+  orderLinesResource,
   useShowCallout,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -41,6 +43,7 @@ function InvoiceDetailsContainer({
   const [isLoading, setIsLoading] = useState(true);
   const [invoice, setInvoice] = useState({});
   const [invoiceLines, setInvoiceLines] = useState({});
+  const [orderlinesMap, setOrderlinesMap] = useState();
   const [vendor, setVendor] = useState({});
   const [isApprovePayEnabled, setIsApprovePayEnabled] = useState(false);
   const [batchVoucherExport, setBatchVoucherExport] = useState();
@@ -104,18 +107,35 @@ function InvoiceDetailsContainer({
 
           setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
 
-          if (exportConfigsResp[0]?.id) {
-            return (
-              mutator.batchVoucherExport.GET({
-                params: {
-                  limit: `${LIMIT_MAX}`,
-                  query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
-                },
-              })
-            );
-          } else return Promise.resolve([]);
+          const batchVoucherExportPromise = exportConfigsResp[0]?.id
+            ? mutator.batchVoucherExport.GET({
+              params: {
+                limit: `${LIMIT_MAX}`,
+                query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
+              },
+            })
+            : Promise.resolve([]);
+
+          const poLineIdsToRequest = invoiceLinesResp.invoiceLines?.reduce((poLineIds, { poLineId }) => {
+            if (poLineId) {
+              poLineIds.push(poLineId);
+            }
+
+            return poLineIds;
+          }, []);
+
+          const poLinesPromise = batchFetch(mutator.orderLines, poLineIdsToRequest);
+
+          return Promise.all([batchVoucherExportPromise, poLinesPromise]);
         })
-        .then(batchVoucherExportResp => setBatchVoucherExport(batchVoucherExportResp[0]))
+        .then(([batchVoucherExportResp, poLinesResponse]) => {
+          setBatchVoucherExport(batchVoucherExportResp[0]);
+          setOrderlinesMap(poLinesResponse.reduce((acc, poLine) => {
+            acc[poLine.id] = poLine;
+
+            return acc;
+          }, {}));
+        })
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
         });
@@ -125,6 +145,7 @@ function InvoiceDetailsContainer({
       mutator.invoice,
       mutator.invoiceActionsApprovals,
       mutator.invoiceLines,
+      mutator.orderLines,
       mutator.vendor,
       mutator.batchVoucherExport,
       mutator.exportConfigs,
@@ -328,6 +349,7 @@ function InvoiceDetailsContainer({
       onClose={closePane}
       onEdit={onEdit}
       onUpdate={updateInvoice}
+      orderlinesMap={orderlinesMap}
       payInvoice={payInvoice}
       totalInvoiceLines={invoiceLines.totalRecords}
       batchVoucherExport={batchVoucherExport}
@@ -348,6 +370,11 @@ InvoiceDetailsContainer.manifest = Object.freeze({
     fetch: false,
   },
   invoiceActionsApprovals: configApprovals,
+  orderLines: {
+    ...orderLinesResource,
+    accumulate: true,
+    fetch: false,
+  },
   vendor: {
     ...baseManifest,
     accumulate: true,
