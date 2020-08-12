@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Display warning when POL is Fully paid. Refs UINV-173
 * Approve status can be selected during invoice create/edit. Refs UINV-174
 * Select expense class for Order & Invoice Fund distribution. Refs UIF-213
 

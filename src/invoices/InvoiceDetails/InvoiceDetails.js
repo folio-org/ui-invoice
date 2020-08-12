@@ -17,6 +17,7 @@ import {
 } from '@folio/stripes/components';
 import {
   FundDistributionView,
+  PAYMENT_STATUS,
   useModalToggle,
   TagsBadge,
   TagsPane,
@@ -142,6 +143,8 @@ function InvoiceDetails({
       />
     </PaneMenu>
   );
+  const hasPOLineIsFullyPaid = orderlinesMap &&
+    Object.values(orderlinesMap).some(({ paymentStatus }) => paymentStatus === PAYMENT_STATUS.fullyPaid);
 
   return (
     <>
@@ -157,9 +160,11 @@ function InvoiceDetails({
         <AccordionStatus>
           <Row end="xs">
             <Col xs={10}>
-              <MessageBanner type="warning">
-                <FormattedMessage id="ui-invoice.invoice.details.hasFullyPaidPOLine" />
-              </MessageBanner>
+              {!hasPOLineIsFullyPaid ? null : (
+                <MessageBanner type="warning">
+                  <FormattedMessage id="ui-invoice.invoice.details.hasFullyPaidPOLine" />
+                </MessageBanner>
+              )}
             </Col>
             <Col xs={2}>
               <ExpandAllButton />
