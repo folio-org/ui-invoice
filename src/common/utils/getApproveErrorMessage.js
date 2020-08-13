@@ -8,7 +8,7 @@ export const APPROVE_ERROR_CODES = {
   inactiveExpenseClass: 'inactiveExpenseClass',
 };
 
-export const getApproveErrorMessage = (errorCode, genericError = 'ui-invoice.invoice.actions.approve.error', action = 'approve') => {
+export const getActionErrorMessage = (errorCode, genericError = 'ui-invoice.invoice.actions.approve.error', action = 'approve') => {
   return APPROVE_ERROR_CODES[errorCode]
     ? `ui-invoice.invoice.actions.${action}.error.${APPROVE_ERROR_CODES[errorCode]}`
     : genericError;

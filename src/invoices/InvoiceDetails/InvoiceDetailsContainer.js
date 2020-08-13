@@ -15,7 +15,7 @@ import {
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 
-import { getApproveErrorMessage } from '../../common/utils';
+import { getActionErrorMessage } from '../../common/utils';
 import {
   batchVoucherExportsResource,
   configApprovals,
@@ -253,7 +253,7 @@ function InvoiceDetailsContainer({
                 .then(({ name }) => {
                   const values = { expenseClass: name };
 
-                  showCallout({ messageId: getApproveErrorMessage(errorCode), type: 'error', values });
+                  showCallout({ messageId: getActionErrorMessage(errorCode), type: 'error', values });
                 });
             }
           } catch (e) {
@@ -288,7 +288,7 @@ function InvoiceDetailsContainer({
                   const values = { expenseClass: name };
 
                   showCallout({
-                    messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error', 'pay'),
+                    messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error', 'pay'),
                     type: 'error',
                     values,
                   });
@@ -323,7 +323,7 @@ function InvoiceDetailsContainer({
                   const values = { expenseClass: name };
 
                   showCallout({
-                    messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error', 'approveAndPay'),
+                    messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error', 'approveAndPay'),
                     type: 'error',
                     values,
                   });
