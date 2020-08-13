@@ -297,5 +297,6 @@
     "invoice.details.batchVoucherExport.status": "Batch file status",
     "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
     "invoice.actions.approve.error.inactiveExpenseClass": "Expense class is Inactive",
-    "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created"
+    "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created",
+    "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid"
 }
