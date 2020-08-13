@@ -297,5 +297,6 @@
     "invoice.details.batchVoucherExport.status": "Status do arquivo em lote",
     "permission.batchVoucher.download": "Fatura: Baixe o arquivo em lote do registro da fatura",
     "invoice.actions.approve.error.inactiveExpenseClass": "A classe de despesas está inativa",
-    "invoice.actions.approve.error.transactionCreationFailure": "Um ou mais registro(s) de transações não foram criados"
+    "invoice.actions.approve.error.transactionCreationFailure": "Um ou mais registro(s) de transações não foram criados",
+    "invoice.details.hasFullyPaidPOLine": "O status da linha do pedido de compra é Totalmente Pago"
 }

@@ -297,5 +297,6 @@
     "invoice.details.batchVoucherExport.status": "حالة الملف بالدفعة",
     "permission.batchVoucher.download": "الفاتورة: نزّل الملف بالدفعة من تسجيلة الفاتورة",
     "invoice.actions.approve.error.inactiveExpenseClass": "فئة المصروفات غير نشطة",
-    "invoice.actions.approve.error.transactionCreationFailure": "فشل إنشاء تسجيلة معاملات واحدة أو أكثر"
+    "invoice.actions.approve.error.transactionCreationFailure": "فشل إنشاء تسجيلة معاملات واحدة أو أكثر",
+    "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid"
 }
