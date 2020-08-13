@@ -8,6 +8,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   baseManifest,
   batchFetch,
+  EXPENSE_CLASSES_API,
   LIMIT_MAX,
   orderLinesResource,
   useShowCallout,
@@ -245,15 +246,23 @@ function InvoiceDetailsContainer({
           try {
             const { errors } = await response.json();
             const errorCode = get(errors, [0, 'code']);
+            const expenseClassId = errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
 
-            showCallout({ messageId: getApproveErrorMessage(errorCode), type: 'error' });
+            if (expenseClassId) {
+              mutator.expenseClass.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` })
+                .then(({ name }) => {
+                  const values = { expenseClass: name };
+
+                  showCallout({ messageId: getApproveErrorMessage(errorCode), type: 'error', values });
+                });
+            }
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.approve.error', type: 'error' });
           }
         })
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.invoice, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
   const payInvoice = useCallback(
@@ -271,18 +280,27 @@ function InvoiceDetailsContainer({
           try {
             const { errors } = await response.json();
             const errorCode = get(errors, [0, 'code']);
+            const expenseClassId = errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
 
-            showCallout({
-              messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error'),
-              type: 'error',
-            });
+            if (expenseClassId) {
+              mutator.expenseClass.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` })
+                .then(({ name }) => {
+                  const values = { expenseClass: name };
+
+                  showCallout({
+                    messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error', 'pay'),
+                    type: 'error',
+                    values,
+                  });
+                });
+            }
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.pay.error', type: 'error' });
           }
         })
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.invoice, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
   const approveAndPayInvoice = useCallback(
@@ -297,11 +315,20 @@ function InvoiceDetailsContainer({
           try {
             const { errors } = await response.json();
             const errorCode = get(errors, [0, 'code']);
+            const expenseClassId = errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
 
-            showCallout({
-              messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error'),
-              type: 'error',
-            });
+            if (expenseClassId) {
+              mutator.expenseClass.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` })
+                .then(({ name }) => {
+                  const values = { expenseClass: name };
+
+                  showCallout({
+                    messageId: getApproveErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error', 'approveAndPay'),
+                    type: 'error',
+                    values,
+                  });
+                });
+            }
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.error', type: 'error' });
           }
@@ -315,7 +342,7 @@ function InvoiceDetailsContainer({
         })
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.invoice, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
   const updateInvoice = useCallback(
@@ -382,6 +409,11 @@ InvoiceDetailsContainer.manifest = Object.freeze({
   },
   exportConfigs: exportConfigsResource,
   batchVoucherExport: batchVoucherExportsResource,
+  expenseClass: {
+    ...baseManifest,
+    accumulate: true,
+    fetch: false,
+  },
 });
 
 InvoiceDetailsContainer.propTypes = {
