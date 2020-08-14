@@ -12,6 +12,12 @@ import SettingsVoucherNumberReset from './SettingsVoucherNumberReset';
 
 import css from './VoucherNumber.css';
 
+const validatePrefix = prefix => (
+  prefix?.match(/[^a-zA-Z]/)
+    ? <FormattedMessage id="ui-invoice.settings.voucherNumber.prefixValidation" />
+    : undefined
+);
+
 const SettingsVoucherNumberForm = () => (
   <>
     <Row>
@@ -21,6 +27,7 @@ const SettingsVoucherNumberForm = () => (
           id="voucherNumberPrefix"
           label={<FormattedMessage id="ui-invoice.settings.voucherNumber.prefix" />}
           name="voucherNumberPrefix"
+          validate={validatePrefix}
         />
       </Col>
     </Row>

@@ -1,5 +1,9 @@
-import { beforeEach, describe, it } from '@bigtest/mocha';
-import { expect } from 'chai';
+import {
+  beforeEach,
+  describe,
+  // it,
+} from '@bigtest/mocha';
+// import { expect } from 'chai';
 
 import { PAYMENT_METHOD } from '@folio/stripes-acq-components';
 
