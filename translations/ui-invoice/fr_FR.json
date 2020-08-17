@@ -296,7 +296,10 @@
     "invoice.details.batchVoucherExport.fileName": "Batch file name",
     "invoice.details.batchVoucherExport.status": "Batch file status",
     "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
-    "invoice.actions.approve.error.inactiveExpenseClass": "Expense class is Inactive",
+    "invoice.actions.approve.error.inactiveExpenseClass": "Invoice can not be <b>Approved</b> because <b>{expenseClass}</b> is inactive.",
     "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created",
-    "invoice.details.hasFullyPaidPOLine": "Le statut de la ligne de commande est entièrement payé"
+    "invoice.details.hasFullyPaidPOLine": "Le statut de la ligne de commande est entièrement payé",
+    "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because <b>{expenseClass}</b> is inactive.",
+    "invoice.actions.approveAndPay.error.inactiveExpenseClass": "Invoice can not be <b>Approved and Payed</b> because <b>{expenseClass}</b> is inactive.",
+    "settings.voucherNumber.prefixValidation": "Prefix is not valid"
 }
