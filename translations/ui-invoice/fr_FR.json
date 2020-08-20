@@ -292,11 +292,14 @@
     "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
     "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data",
     "invoice.details.batchVoucherExport.title": "Voucher export details",
-    "invoice.details.batchVoucherExport.batchGroup": "Batch group",
-    "invoice.details.batchVoucherExport.fileName": "Batch file name",
+    "invoice.details.batchVoucherExport.batchGroup": "Groupe de lot",
+    "invoice.details.batchVoucherExport.fileName": "Nom du fichier batch",
     "invoice.details.batchVoucherExport.status": "Batch file status",
     "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
-    "invoice.actions.approve.error.inactiveExpenseClass": "Expense class is Inactive",
+    "invoice.actions.approve.error.inactiveExpenseClass": "La facture ne peut pas être <b> approuvée </b> car <b> {expenseClass} </b> est inactif.",
     "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created",
-    "invoice.details.hasFullyPaidPOLine": "Le statut de la ligne de commande est entièrement payé"
+    "invoice.details.hasFullyPaidPOLine": "Le statut de la ligne de commande est entièrement payé",
+    "invoice.actions.pay.error.inactiveExpenseClass": "La facture ne peut pas être <b> payée </b> car <b> {expenseClass} </b> est inactif.",
+    "invoice.actions.approveAndPay.error.inactiveExpenseClass": "Invoice can not be <b>Approved and Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
+    "settings.voucherNumber.prefixValidation": "Le préfixe n'est pas valide"
 }
