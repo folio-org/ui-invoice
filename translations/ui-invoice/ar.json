@@ -298,5 +298,8 @@
     "permission.batchVoucher.download": "الفاتورة: نزّل الملف بالدفعة من تسجيلة الفاتورة",
     "invoice.actions.approve.error.inactiveExpenseClass": "فئة المصروفات غير نشطة",
     "invoice.actions.approve.error.transactionCreationFailure": "فشل إنشاء تسجيلة معاملات واحدة أو أكثر",
-    "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid"
+    "invoice.details.hasFullyPaidPOLine": "حالة سطر أمر الشراء هي مدفوع بالكامل",
+    "invoice.actions.pay.error.inactiveExpenseClass": "لا يمكن<b>دفع</b> الفاتورة لأن <b>{expenseClass}</b> غير نشط.",
+    "invoice.actions.approveAndPay.error.inactiveExpenseClass": "لا يمكن <b>قبول ودفع</b> الفاتورة لأن <b>{expenseClass}</b> غير نشط.",
+    "settings.voucherNumber.prefixValidation": "البادئة غير صالحة"
 }
