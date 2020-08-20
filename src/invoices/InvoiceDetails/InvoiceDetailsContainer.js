@@ -255,6 +255,11 @@ function InvoiceDetailsContainer({
 
                   showCallout({ messageId: getActionErrorMessage(errorCode), type: 'error', values });
                 });
+            } else {
+              showCallout({
+                messageId: getActionErrorMessage(errorCode),
+                type: 'error',
+              });
             }
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.approve.error', type: 'error' });
@@ -293,6 +298,11 @@ function InvoiceDetailsContainer({
                     values,
                   });
                 });
+            } else {
+              showCallout({
+                messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error'),
+                type: 'error',
+              });
             }
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.pay.error', type: 'error' });
@@ -328,6 +338,11 @@ function InvoiceDetailsContainer({
                     values,
                   });
                 });
+            } else {
+              showCallout({
+                messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error'),
+                type: 'error',
+              });
             }
           } catch (e) {
             showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.error', type: 'error' });

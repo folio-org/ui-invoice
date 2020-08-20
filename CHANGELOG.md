@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Prevent paying with Funds that have insufficient amounts to cover distribution. Refs UINV-83
 * Add validation to voucher number prefix on UI. Refs UINV-70
 * Display warning when POL is Fully paid. Refs UINV-173
 * Approve status can be selected during invoice create/edit. Refs UINV-174
