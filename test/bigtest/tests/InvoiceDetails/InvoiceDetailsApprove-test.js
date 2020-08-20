@@ -1,7 +1,10 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
-import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+import {
+  CalloutInteractor,
+  ConfirmationInteractor,
+} from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 import { INVOICE_API, INVOICE_STATUS } from '../../../../src/common/constants';
 
@@ -32,6 +35,7 @@ describe('Invoice details - approve action', () => {
 
   const invoiceDetails = new InvoiceDetails();
   const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
+  const callout = new CalloutInteractor();
 
   const testAvailabilityOptions = [
     [INVOICE_STATUS.open, true, true],
@@ -57,7 +61,7 @@ describe('Invoice details - approve action', () => {
         await invoiceDetails.whenLoaded();
       });
 
-      it(`should ${isPresent ? '' : 'not'} be preent`, () => {
+      it(`should ${isPresent ? '' : 'not'} be present`, () => {
         expect(invoiceDetails.actions.buttonApproveInvoice.isPresent).to.equal(isPresent);
       });
     });
@@ -116,6 +120,33 @@ describe('Invoice details - approve action', () => {
 
     it('should close Confirmation Modal and open Error modal', () => {
       expect(approveConfirmation.isPresent).to.be.false;
+    });
+  });
+
+  describe('fundCannotBePaid error is visible', () => {
+    beforeEach(async function () {
+      const invoice = createInvoice(this.server, INVOICE_STATUS.review, true);
+
+      const INVOICE_APPROVE_RESPONSE = {
+        'errors': [{
+          'message': '',
+          'code': APPROVE_ERROR_CODES.fundCannotBePaid,
+          'parameters': [],
+          'id': invoice.id,
+        }],
+        'total_records': 1,
+      };
+
+      this.server.put(`${INVOICE_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
+
+      this.visit(`/invoice/view/${invoice.id}`);
+      await invoiceDetails.whenLoaded();
+      await invoiceDetails.actions.buttonApproveInvoice.click();
+      await approveConfirmation.confirm();
+    });
+
+    it('displays error toast', () => {
+      expect(callout.list(0).message).to.equal('One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget');
     });
   });
 });

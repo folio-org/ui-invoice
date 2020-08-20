@@ -209,6 +209,7 @@ const InvoiceForm = ({
                         <AcqUnitsField
                           name="acqUnitIds"
                           perm={isEditMode ? MANAGE_UNITS_PERM : CREATE_UNITS_PERM}
+                          id="invoice-acq-units"
                           isEdit={isEditMode}
                           preselectedUnits={initialValues.acqUnitIds}
                         />

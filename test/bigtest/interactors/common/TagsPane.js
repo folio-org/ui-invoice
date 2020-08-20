@@ -4,7 +4,7 @@ import {
 } from '@bigtest/interactor';
 
 export default interactor(class TagsPane {
-  static defaultScope = '#input-tag';
+  static defaultScope = '#input-tag-input';
 
   isLoaded = isPresent('[class*=multiSelectContainer---]');
 
