@@ -113,6 +113,8 @@
         "subPermissions": [
           "batch-groups.all",
           "batch-voucher.batch-voucher-exports.collection.get",
+          "batch-voucher.batch-voucher-exports.item.post",
+          "batch-voucher.batch-voucher-exports.upload.item.post",
           "batch-voucher.export-configurations.all",
           "configuration.all",
           "settings.enabled",
