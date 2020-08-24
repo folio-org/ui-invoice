@@ -287,9 +287,9 @@
     "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded",
     "invoice.actions.approve.error.accountingCodeNotPresent": "La facture ne peut pas être approuvée (payée), car le fournisseur identifié doit avoir un code comptable pour que cette facture soit exportée vers la comptabilité",
     "invoice.actions.addLine.confirmLabel": "Confirmer",
-    "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency identified on the invoice.",
+    "invoice.actions.addLine.currencyMessage": "Vous ajoutez une ou plusieurs lignes de commande qui sont dans une devise différente de celle identifiée sur cette facture. Si vous souhaitez toujours les ajouter, cliquez sur Confirmer. Remarque: le coût sera enregistré dans la devise identifiée sur la facture.",
     "invoice.actions.addLine.heading": "Confirmation",
-    "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
+    "invoice.actions.addLine.vendorMessage": "Vous ajoutez une ou plusieurs lignes de commande qui font référence à un fournisseur différent de celui identifié sur cette facture. Si vous souhaitez toujours les ajouter, cliquez sur Confirmer. Remarque: Les paiements seront associés au fournisseur identifié sur la facture.",
     "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data",
     "invoice.details.batchVoucherExport.title": "Voucher export details",
     "invoice.details.batchVoucherExport.batchGroup": "Groupe de lot",
@@ -300,6 +300,6 @@
     "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created",
     "invoice.details.hasFullyPaidPOLine": "Le statut de la ligne de commande est entièrement payé",
     "invoice.actions.pay.error.inactiveExpenseClass": "La facture ne peut pas être <b> payée </b> car <b> {expenseClass} </b> est inactif.",
-    "invoice.actions.approveAndPay.error.inactiveExpenseClass": "Invoice can not be <b>Approved and Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
+    "invoice.actions.approveAndPay.error.inactiveExpenseClass": "La facture ne peut pas être <b> approuvée et payée </b> car la classe de dépenses <b> {expenseClass} </b> est inactive.",
     "settings.voucherNumber.prefixValidation": "Le préfixe n'est pas valide"
 }
