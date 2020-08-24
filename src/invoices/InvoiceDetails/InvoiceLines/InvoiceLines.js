@@ -54,12 +54,15 @@ const InvoiceLines = ({
       return (
         <>
           {!poLineIsFullyPaid ? null : (
-            <Icon
-              data-test-line-is-fully-paid-icon
-              icon="exclamation-circle"
-              size="medium"
-              status="warn"
-            />
+            <>
+              <Icon
+                data-test-line-is-fully-paid-icon
+                icon="exclamation-circle"
+                size="medium"
+                status="warn"
+              />
+              &nbsp;
+            </>
           )}
           {description}
         </>
