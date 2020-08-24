@@ -151,6 +151,7 @@ function InvoiceFormContainer({
         filledVendorId={invoiceFormValues?.vendorId}
         filledCurrency={invoiceFormValues?.currency}
         batchGroups={batchGroups}
+        systemCurrency={stripes.currency}
       />
       {
         isNotUniqueOpen && (

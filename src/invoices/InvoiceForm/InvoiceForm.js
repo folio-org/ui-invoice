@@ -65,6 +65,7 @@ import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 import validate from './validate';
 import invoiceCss from '../Invoice.css';
 import FieldBatchGroup from './FieldBatchGroup';
+import CurrentExchangeRate from './CurrentExchangeRate';
 
 const CREATE_UNITS_PERM = 'invoice.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
@@ -83,8 +84,10 @@ const InvoiceForm = ({
   parentResources,
   pristine,
   submitting,
+  systemCurrency,
 }) => {
   const [selectedVendor, setSelectedVendor] = useState();
+  const [isExchangeRateVisible, setExchangeRateVisible] = useState(Boolean(initialValues.exchangeRate));
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
       setSelectedVendor(vendor);
@@ -130,6 +133,22 @@ const InvoiceForm = ({
   const statusOptions = isPayable(initialValues.status) || isStatusPaid || isCancelled(initialValues.status)
     ? INVOICE_STATUSES_OPTIONS
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
+  const isCurrentExchangeRateVisible = filledCurrency !== systemCurrency;
+
+  const resetExchangeRate = useCallback(() => dispatch(change('exchangeRate', null)), [dispatch, change]);
+
+  const showExchangeRate = useCallback(
+    ({ target: { checked } }) => {
+      setExchangeRateVisible(checked);
+
+      return checked ? undefined : resetExchangeRate();
+    },
+    [resetExchangeRate],
+  );
+
+  const onChangeCurrency = useCallback(
+    (e, value) => value === systemCurrency && resetExchangeRate(), [resetExchangeRate, systemCurrency],
+  );
 
   return (
     <form style={{ height: '100vh' }}>
@@ -359,6 +378,15 @@ const InvoiceForm = ({
                           type="text"
                         />
                       </Col>
+                      <Col data-test-col-payment-method xs={3}>
+                        <FieldSelect
+                          dataOptions={PAYMENT_METHOD_OPTIONS}
+                          id="invoice-payment-method"
+                          label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
+                          name="paymentMethod"
+                          required
+                        />
+                      </Col>
                       <Col data-test-col-chk-subscription-overlap xs={3}>
                         <Field
                           component={Checkbox}
@@ -369,25 +397,6 @@ const InvoiceForm = ({
                           vertical
                         />
                       </Col>
-                      <Col data-test-col-currency xs={3}>
-                        <FieldSelection
-                          dataOptions={currenciesOptions}
-                          labelId="ui-invoice.invoice.currency"
-                          name="currency"
-                          disabled={isEditPostApproval}
-                          required
-                          validate={validateRequired}
-                        />
-                      </Col>
-                      <Col data-test-col-payment-method xs={3}>
-                        <FieldSelect
-                          dataOptions={PAYMENT_METHOD_OPTIONS}
-                          id="invoice-payment-method"
-                          label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
-                          name="paymentMethod"
-                          required
-                        />
-                      </Col>
                       <Col data-test-col-export-to-accounting xs={3}>
                         <Field
                           component={Checkbox}
@@ -395,8 +404,53 @@ const InvoiceForm = ({
                           name="exportToAccounting"
                           disabled={isEditPostApproval}
                           type="checkbox"
+                          vertical
                         />
                       </Col>
+                      <Col data-test-col-currency xs={3}>
+                        <FieldSelection
+                          dataOptions={currenciesOptions}
+                          disabled={isEditPostApproval}
+                          id="invoice-currency"
+                          labelId="ui-invoice.invoice.currency"
+                          name="currency"
+                          onChange={onChangeCurrency}
+                          required
+                          validate={validateRequired}
+                        />
+                      </Col>
+                      {isCurrentExchangeRateVisible && (
+                        <>
+                          <Col data-test-col-current-exchange-rate xs={3}>
+                            <CurrentExchangeRate
+                              label={<FormattedMessage id="ui-invoice.invoice.currentExchangeRate" />}
+                              exchangeFrom={filledCurrency}
+                              exchangeTo={systemCurrency}
+                            />
+                          </Col>
+                          <Col data-test-col-use-set-exchange-rate xs={3}>
+                            <Checkbox
+                              checked={isExchangeRateVisible}
+                              disabled={isEditPostApproval}
+                              id="use-set-exhange-rate"
+                              label={<FormattedMessage id="ui-invoice.invoice.useSetExchangeRate" />}
+                              onChange={showExchangeRate}
+                              vertical
+                            />
+                          </Col>
+                          {isExchangeRateVisible && (
+                            <Col data-test-col-set-exchange-rate xs={3}>
+                              <Field
+                                component={TextField}
+                                label={<FormattedMessage id="ui-invoice.invoice.setExchangeRate" />}
+                                id="exchange-rate"
+                                name="exchangeRate"
+                                type="number"
+                              />
+                            </Col>
+                          )}
+                        </>
+                      )}
                     </Row>
                   </Accordion>
                   {/* <Accordion
@@ -459,6 +513,7 @@ InvoiceForm.propTypes = {
   filledVendorId: PropTypes.string,
   filledCurrency: PropTypes.string.isRequired,
   batchGroups: PropTypes.arrayOf(PropTypes.object),
+  systemCurrency: PropTypes.string.isRequired,
 };
 
 export default stripesForm({
