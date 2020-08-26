@@ -1,7 +1,7 @@
 # Change history for ui-invoice
 
 ## (IN PROGRESS)
-
+* Fix Adjustment settings are not in alpha order. Refs UINV-177, UINV-178
 * Add "Export to accounting" toggle and logic to organization/invoice record. Refs UIORGS-186
 * Prevent paying with Funds that have insufficient amounts to cover distribution. Refs UINV-83
 * Add validation to voucher number prefix on UI. Refs UINV-70

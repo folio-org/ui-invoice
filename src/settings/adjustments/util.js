@@ -1,6 +1,7 @@
-// eslint-disable-next-line import/prefer-default-export
-export const getSettingsAdjustmentsList = (configs) => (
-  configs.map(({ id, metadata, value = {} }) => {
+import orderBy from 'lodash/orderBy';
+
+export const getSettingsAdjustmentsList = (configs) => {
+  return orderBy(configs.map(({ id, metadata, value = {} }) => {
     let adjustment = value || {};
 
     try {
@@ -15,4 +16,5 @@ export const getSettingsAdjustmentsList = (configs) => (
       title: adjustment.description,
       adjustment,
     };
-  }));
+  }), ({ title }) => title);
+};
