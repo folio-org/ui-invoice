@@ -93,9 +93,11 @@ const InvoiceForm = ({
       const hasAnyAccountingCode = vendor.accounts?.some(({ appSystemNo }) => Boolean(appSystemNo));
       const paymentMethod = vendor.paymentMethod;
       const accountingCode = hasAnyAccountingCode ? null : erpCode;
+      const exportToAccounting = Boolean(vendor.exportToAccounting);
 
       dispatch(change('accountingCode', accountingCode || ''));
       dispatch(change('paymentMethod', paymentMethod || ''));
+      dispatch(change('exportToAccounting', exportToAccounting));
     }
   }, [change, dispatch, selectedVendor]);
 
