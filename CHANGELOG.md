@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Add "Export to accounting" toggle and logic to organization/invoice record. Refs UIORGS-186
 * Prevent paying with Funds that have insufficient amounts to cover distribution. Refs UINV-83
 * Add validation to voucher number prefix on UI. Refs UINV-70
 * Display warning when POL is Fully paid. Refs UINV-173
