@@ -16,5 +16,5 @@ export const getSettingsAdjustmentsList = (configs) => {
       title: adjustment.description,
       adjustment,
     };
-  }), ({ title }) => title);
+  }), ({ title }) => title?.toLowerCase());
 };
