@@ -98,7 +98,6 @@
     "invoice.invoiceHasBeenDeleted": "تم حذف الفاتورة",
     "invoice.delete.confirmLabel": "حذف",
     "invoice.delete.heading": "حف {vendorInvoiceNo}؟",
-    "invoice.delete.message": "حذف الفاتورة؟",
     "invoice.dateCreated": "تاريخ الإنشاء",
     "links": "الروابط",
     "search.voucherNumber": "رقم القسيمة",
@@ -301,5 +300,8 @@
     "invoice.details.hasFullyPaidPOLine": "حالة سطر أمر الشراء هي مدفوع بالكامل",
     "invoice.actions.pay.error.inactiveExpenseClass": "لا يمكن<b>دفع</b> الفاتورة لأن <b>{expenseClass}</b> غير نشط.",
     "invoice.actions.approveAndPay.error.inactiveExpenseClass": "لا يمكن <b>قبول ودفع</b> الفاتورة لأن <b>{expenseClass}</b> غير نشط.",
-    "settings.voucherNumber.prefixValidation": "البادئة غير صالحة"
+    "settings.voucherNumber.prefixValidation": "البادئة غير صالحة",
+    "invoice.currentExchangeRate": "Current exchange rate",
+    "invoice.useSetExchangeRate": "Use set exchange rate",
+    "invoice.setExchangeRate": "Set exchange rate"
 }
