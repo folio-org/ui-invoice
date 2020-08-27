@@ -98,7 +98,6 @@
     "invoice.invoiceHasBeenDeleted": "發票已被删除",
     "invoice.delete.confirmLabel": "删除",
     "invoice.delete.heading": "删除 {vendorInvoiceNo} ？",
-    "invoice.delete.message": "删除發票 ？",
     "invoice.dateCreated": "建立日期",
     "links": "链接",
     "search.voucherNumber": "凭证号",
@@ -301,5 +300,8 @@
     "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid",
     "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
     "invoice.actions.approveAndPay.error.inactiveExpenseClass": "Invoice can not be <b>Approved and Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
-    "settings.voucherNumber.prefixValidation": "Prefix is not valid"
+    "settings.voucherNumber.prefixValidation": "Prefix is not valid",
+    "invoice.currentExchangeRate": "Current exchange rate",
+    "invoice.useSetExchangeRate": "Use set exchange rate",
+    "invoice.setExchangeRate": "Set exchange rate"
 }

@@ -98,7 +98,6 @@
     "invoice.invoiceHasBeenDeleted": "La factura ha sido eliminada",
     "invoice.delete.confirmLabel": "Eliminar",
     "invoice.delete.heading": "Eliminar {vendorInvoiceNo}?",
-    "invoice.delete.message": "Eliminar factura?",
     "invoice.dateCreated": "Fecha de creación",
     "links": "Enlaces",
     "search.voucherNumber": "Número de vale",
@@ -301,5 +300,8 @@
     "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid",
     "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
     "invoice.actions.approveAndPay.error.inactiveExpenseClass": "Invoice can not be <b>Approved and Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
-    "settings.voucherNumber.prefixValidation": "Prefix is not valid"
+    "settings.voucherNumber.prefixValidation": "Prefix is not valid",
+    "invoice.currentExchangeRate": "Current exchange rate",
+    "invoice.useSetExchangeRate": "Use set exchange rate",
+    "invoice.setExchangeRate": "Set exchange rate"
 }
