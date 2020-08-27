@@ -182,7 +182,9 @@
   "invoice.invoiceVendorInformation": "Invoice vendor information",
   "invoice.delete.confirmLabel": "Delete",
   "invoice.delete.heading": "Delete {vendorInvoiceNo}?",
-  "invoice.delete.message": "Delete invoice?",
+  "invoice.currentExchangeRate": "Current exchange rate",
+  "invoice.useSetExchangeRate": "Use set exchange rate",
+  "invoice.setExchangeRate": "Set exchange rate",
 
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",

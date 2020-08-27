@@ -8,6 +8,7 @@ import {
 } from '@bigtest/interactor';
 
 import {
+  CheckboxInteractor,
   TextFieldInteractor,
   OptionListInteractor,
 } from '@folio/stripes-acq-components/test/bigtest/interactors';
@@ -38,6 +39,10 @@ import FormFooterInteractor from './common/FormFooter';
   });
 }
 
+@interactor class CurrencyInteractor {
+  options = new OptionListInteractor('#sl-invoice-currency');
+}
+
 export default interactor(class InvoiceForm {
   static defaultScope = '#pane-invoice-form';
   isLoaded = isPresent('#invoiceForm-information');
@@ -53,6 +58,10 @@ export default interactor(class InvoiceForm {
   documentsAndLinks = new DocumentsInteractor();
   formFooter = new FormFooterInteractor();
   adjustments = isPresent('#adjustments');
+  currency = new CurrencyInteractor();
+  currentExchangeRate = isPresent('[data-test-col-current-exchange-rate]');
+  exchangeRate = new Interactor('input[name="exchangeRate"]');
+  useSetExchangeRate = new CheckboxInteractor('#use-set-exhange-rate');
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
