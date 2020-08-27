@@ -21,7 +21,10 @@ const CurrentExchangeRate = ({ label, exchangeFrom, exchangeTo, mutator }) => {
       setExchangeRate();
 
       mutator.exchangeRate.GET({
-        path: `${EXCHANGE_RATE_API}?from=${exchangeFrom}&to=${exchangeTo}`,
+        params: {
+          from: exchangeFrom,
+          to: exchangeTo,
+        },
       })
         .then(setExchangeRate)
         .catch(() => setExchangeRate({}));
@@ -55,6 +58,7 @@ CurrentExchangeRate.manifest = Object.freeze({
     fetch: false,
     throwErrors: false,
     type: 'okapi',
+    path: EXCHANGE_RATE_API,
   },
 });
 
