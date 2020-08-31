@@ -51,6 +51,12 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}>
+            <FormattedMessage id={getInvoiceStatusLabel({ status })} />
+          </KeyValue>
+        </Col>
+
+        <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.paymentDue" />}
           >
@@ -61,20 +67,6 @@ const Information = ({
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.terms" />}>
             {paymentTerms}
-          </KeyValue>
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoice.details.information.source" />}
-            value={sourceLabels[source]}
-          />
-
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}>
-            <FormattedMessage id={getInvoiceStatusLabel({ status })} />
           </KeyValue>
         </Col>
 
@@ -97,6 +89,28 @@ const Information = ({
           <AcqUnitsView units={acqUnits} />
         </Col>
 
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.source" />}
+            value={sourceLabels[source]}
+          />
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={6}>
+          <BillTo billToId={billTo} />
+        </Col>
+
+        <Col xs={3}>
+          <BatchGroupValue
+            id={batchGroupId}
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.batchGroup" />}
+          />
+        </Col>
+      </Row>
+
+      <Row>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.totalUnits" />}
@@ -129,17 +143,6 @@ const Information = ({
               currency={currency}
             />
           </KeyValue>
-        </Col>
-
-        <Col xs={6}>
-          <BillTo billToId={billTo} />
-        </Col>
-
-        <Col xs={3}>
-          <BatchGroupValue
-            id={batchGroupId}
-            label={<FormattedMessage id="ui-invoice.invoice.details.information.batchGroup" />}
-          />
         </Col>
       </Row>
     </>

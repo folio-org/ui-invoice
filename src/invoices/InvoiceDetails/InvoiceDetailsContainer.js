@@ -396,6 +396,7 @@ function InvoiceDetailsContainer({
       totalInvoiceLines={invoiceLines.totalRecords}
       batchVoucherExport={batchVoucherExport}
       exportFormat={exportFormat}
+      vendorName={vendor.name}
     />
   );
 }
