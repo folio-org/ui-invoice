@@ -5,9 +5,11 @@ import PropTypes from 'prop-types';
 import {
   Col,
   Row,
-  MultiColumnList,
 } from '@folio/stripes/components';
-import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
+import {
+  AmountWithCurrencyField,
+  FrontendSortingMCL,
+} from '@folio/stripes-acq-components';
 
 import {
   ADJUSTMENT_PRORATE_LABELS,
@@ -15,6 +17,7 @@ import {
   ADJUSTMENT_TYPE_VALUES,
 } from '../../common/constants';
 
+const sortedColumn = 'description';
 const visibleColumns = ['description', 'value', 'prorate', 'relationToTotal'];
 const columnMapping = {
   description: <FormattedMessage id="ui-invoice.adjustment.description" />,
@@ -22,6 +25,8 @@ const columnMapping = {
   prorate: <FormattedMessage id="ui-invoice.settings.adjustments.prorate" />,
   relationToTotal: <FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />,
 };
+
+const SORTERS = { description: ({ description }) => description?.toLowerCase() };
 
 const AdjustmentsDetails = ({ adjustments, currency }) => {
   const resultsFormatter = {
@@ -42,12 +47,13 @@ const AdjustmentsDetails = ({ adjustments, currency }) => {
   return (
     <Row>
       <Col xs={12}>
-        <MultiColumnList
+        <FrontendSortingMCL
           columnMapping={columnMapping}
           contentData={adjustments}
           formatter={resultsFormatter}
           id="invoice-lines-adjustments-list"
-          interactive={false}
+          sortedColumn={sortedColumn}
+          sorters={SORTERS}
           visibleColumns={visibleColumns}
         />
       </Col>
@@ -58,10 +64,6 @@ const AdjustmentsDetails = ({ adjustments, currency }) => {
 AdjustmentsDetails.propTypes = {
   adjustments: PropTypes.arrayOf(PropTypes.object),
   currency: PropTypes.string,
-};
-
-AdjustmentsDetails.defaultProps = {
-  adjustments: [],
 };
 
 export default AdjustmentsDetails;
