@@ -146,7 +146,7 @@ class InvoiceLineForm extends Component {
                     >
                       {metadata && <ViewMetaData metadata={metadata} />}
                       <Row>
-                        <Col data-test-col-invoice-line-description xs={3}>
+                        <Col data-test-col-invoice-line-description xs={12}>
                           <Field
                             component={TextField}
                             label={<FormattedMessage id="ui-invoice.invoiceLine.description" />}
@@ -168,6 +168,14 @@ class InvoiceLineForm extends Component {
                             type="text"
                           />
                         </Col>
+                        <Col data-test-col-invoice-line-vendor-ref-no xs={3}>
+                          <Field
+                            component={TextField}
+                            id="vendorRefNo"
+                            label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
+                            name="vendorRefNo"
+                          />
+                        </Col>
                         <Col data-test-col-invoice-line-status xs={3}>
                           <Field
                             component={TextField}
@@ -178,6 +186,9 @@ class InvoiceLineForm extends Component {
                             required
                           />
                         </Col>
+                      </Row>
+
+                      <Row>
                         <Col data-test-col-invoice-line-subscription-info xs={3}>
                           <Field
                             component={TextField}
@@ -199,6 +210,33 @@ class InvoiceLineForm extends Component {
                             disabled={isEditPostApproval}
                             labelId="ui-invoice.invoiceLine.subscriptionEnd"
                             name="subscriptionEnd"
+                          />
+                        </Col>
+                        <Col data-test-col-invoice-line-comment xs={3}>
+                          <Field
+                            component={TextField}
+                            id="comment"
+                            label={<FormattedMessage id="ui-invoice.invoiceLine.comment" />}
+                            name="comment"
+                          />
+                        </Col>
+                        <Col data-test-col-invoice-line-account-number xs={3}>
+                          <Field
+                            component={TextField}
+                            id="accountingCode"
+                            label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
+                            name="accountingCode"
+                            disabled
+                          />
+                        </Col>
+                        <Col data-test-col-invoice-line-accounting-code xs={3}>
+                          <FieldSelectionFinal
+                            dataOptions={getAccountNumberOptions(accountNumbers)}
+                            disabled={isDisabledToEditAccountNumber}
+                            id="invoice-line-account-number"
+                            labelId="ui-invoice.invoiceLine.accountNumber"
+                            name="accountNumber"
+                            onChange={this.changeAccountNumber}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-quantity xs={3}>
@@ -223,41 +261,6 @@ class InvoiceLineForm extends Component {
                             type="number"
                             parse={parseNumberFieldValue}
                             validate={validateRequiredNumber}
-                          />
-                        </Col>
-                        <Col data-test-col-invoice-line-vendor-ref-no xs={3}>
-                          <Field
-                            component={TextField}
-                            id="vendorRefNo"
-                            label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
-                            name="vendorRefNo"
-                          />
-                        </Col>
-                        <Col data-test-col-invoice-line-account-number xs={3}>
-                          <Field
-                            component={TextField}
-                            id="accountingCode"
-                            label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
-                            name="accountingCode"
-                            disabled
-                          />
-                        </Col>
-                        <Col data-test-col-invoice-line-accounting-code xs={3}>
-                          <FieldSelectionFinal
-                            dataOptions={getAccountNumberOptions(accountNumbers)}
-                            disabled={isDisabledToEditAccountNumber}
-                            id="invoice-line-account-number"
-                            labelId="ui-invoice.invoiceLine.accountNumber"
-                            name="accountNumber"
-                            onChange={this.changeAccountNumber}
-                          />
-                        </Col>
-                        <Col data-test-col-invoice-line-comment xs={3}>
-                          <Field
-                            component={TextField}
-                            id="comment"
-                            label={<FormattedMessage id="ui-invoice.invoiceLine.comment" />}
-                            name="comment"
                           />
                         </Col>
                         <Col data-test-col-release-encumbrance xs={3}>

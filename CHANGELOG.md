@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Invoice line record ux update. Refs UINV-183
 * Update fund distribution UX. Refs UIF-245
 * Invoice record UX updates. Refs UINV-182
 * Add exchange rate to invoice. Refs UINV-115

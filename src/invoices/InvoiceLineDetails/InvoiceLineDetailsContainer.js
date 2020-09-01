@@ -26,7 +26,7 @@ const InvoiceLineDetailsContainer = ({
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const mutator = useMemo(() => originMutator, []);
-  const [polNumber, setPolNumber] = useState('');
+  const [poLine, setPoLine] = useState();
   const [invoice, setInvoice] = useState({});
   const [invoiceLine, setInvoiceLine] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -42,10 +42,7 @@ const InvoiceLineDetailsContainer = ({
 
           return line.poLineId && mutator.poLine.GET({ path: `${PO_LINES_API}/${line.poLineId}` });
         })
-        .then(
-          poLine => setPolNumber(poLine?.poLineNumber || ''),
-          () => setPolNumber(''),
-        );
+        .then(setPoLine, () => setPoLine({}));
 
       return Promise.all([invoicePromies, invoiceLinePromise]);
     },
@@ -123,7 +120,7 @@ const InvoiceLineDetailsContainer = ({
         goToEditInvoiceLine={goToEditInvoiceLine}
         invoiceStatus={invoice.status}
         invoiceLine={invoiceLine}
-        poLineNumber={polNumber}
+        poLine={poLine}
         tagsToggle={setTagsPaneOpened}
       />
       {isTagsPaneOpened && (
