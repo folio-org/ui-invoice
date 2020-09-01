@@ -59,6 +59,7 @@ function InvoiceDetails({
   totalInvoiceLines,
   batchVoucherExport,
   exportFormat,
+  vendorName,
 }) {
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const [isApproveConfirmationOpen, toggleApproveConfirmation] = useModalToggle();
@@ -154,6 +155,7 @@ function InvoiceDetails({
         dismissible
         onClose={onClose}
         paneTitle={paneTitle}
+        paneSub={vendorName}
         actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
@@ -346,6 +348,7 @@ InvoiceDetails.propTypes = {
   totalInvoiceLines: PropTypes.number.isRequired,
   batchVoucherExport: PropTypes.object,
   exportFormat: PropTypes.string,
+  vendorName: PropTypes.string,
 };
 
 InvoiceDetails.defaultProps = {

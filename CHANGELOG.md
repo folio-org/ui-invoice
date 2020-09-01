@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Invoice record UX updates. Refs UINV-182
 * Add exchange rate to invoice. Refs UINV-115
 * Fix Adjustment settings are not in alpha order. Refs UINV-177, UINV-178
 * Add "Export to accounting" toggle and logic to organization/invoice record. Refs UIORGS-186

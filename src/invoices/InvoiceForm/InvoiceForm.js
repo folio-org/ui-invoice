@@ -160,6 +160,7 @@ const InvoiceForm = ({
           id="pane-invoice-form"
           onClose={closeForm}
           paneTitle={paneTitle}
+          paneSub={initialVendor?.name}
         >
           <Row>
             <Col
@@ -189,6 +190,17 @@ const InvoiceForm = ({
                           validate={validateRequired}
                         />
                       </Col>
+                      <Col data-test-col-status xs={3}>
+                        <FieldSelection
+                          dataOptions={statusOptions}
+                          disabled={isEditPostApproval}
+                          id="invoice-status"
+                          labelId="ui-invoice.invoice.details.information.status"
+                          name="status"
+                          required
+                          validate={validateRequired}
+                        />
+                      </Col>
                       <Col data-test-col-payment-due xs={3}>
                         <FieldDatepicker
                           labelId="ui-invoice.invoice.details.information.paymentDue"
@@ -205,17 +217,9 @@ const InvoiceForm = ({
                           type="text"
                         />
                       </Col>
-                      <Col data-test-col-status xs={3}>
-                        <FieldSelection
-                          dataOptions={statusOptions}
-                          disabled={isEditPostApproval}
-                          id="invoice-status"
-                          labelId="ui-invoice.invoice.details.information.status"
-                          name="status"
-                          required
-                          validate={validateRequired}
-                        />
-                      </Col>
+                    </Row>
+
+                    <Row>
                       <Col data-test-col-approval-date xs={3}>
                         <FieldDatepicker
                           labelId="ui-invoice.invoice.approvalDate"
@@ -235,6 +239,44 @@ const InvoiceForm = ({
                           preselectedUnits={initialValues.acqUnitIds}
                         />
                       </Col>
+                    </Row>
+
+                    <Row>
+                      <Col data-test-col-bill-to-name xs={3}>
+                        <FieldSelection
+                          dataOptions={getAddressOptions(addresses)}
+                          labelId="ui-invoice.invoice.billToName"
+                          name="billTo"
+                        />
+                      </Col>
+                      <Col
+                        className={invoiceCss.addressWrapper}
+                        xs={3}
+                      >
+                        <KeyValue
+                          label={<FormattedMessage id="ui-invoice.invoice.billToAddress" />}
+                          value={addressBillTo}
+                        />
+                      </Col>
+                      <Col data-test-col-batch-group xs={3}>
+                        <FieldBatchGroup
+                          batchGroups={batchGroups}
+                          isEditPostApproval={isEditPostApproval}
+                        />
+                      </Col>
+                      <Col data-test-col-lock-total xs={3}>
+                        <Field
+                          component={Checkbox}
+                          disabled={isEditPostApproval}
+                          label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
+                          name="lockTotal"
+                          type="checkbox"
+                          vertical
+                        />
+                      </Col>
+                    </Row>
+
+                    <Row>
                       <Col data-test-col-sub-total xs={3}>
                         <Field
                           component={TextField}
@@ -268,22 +310,9 @@ const InvoiceForm = ({
                           type="text"
                         />
                       </Col>
-                      <Col data-test-col-bill-to-name xs={3}>
-                        <FieldSelection
-                          dataOptions={getAddressOptions(addresses)}
-                          labelId="ui-invoice.invoice.billToName"
-                          name="billTo"
-                        />
-                      </Col>
-                      <Col
-                        className={invoiceCss.addressWrapper}
-                        xs={3}
-                      >
-                        <KeyValue
-                          label={<FormattedMessage id="ui-invoice.invoice.billToAddress" />}
-                          value={addressBillTo}
-                        />
-                      </Col>
+                    </Row>
+
+                    <Row>
                       <Col data-test-col-note xs={3}>
                         <Field
                           component={TextArea}
@@ -291,21 +320,6 @@ const InvoiceForm = ({
                           id="note"
                           name="note"
                           type="text"
-                        />
-                      </Col>
-                      <Col data-test-col-lock-total xs={3}>
-                        <Field
-                          component={Checkbox}
-                          label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
-                          name="lockTotal"
-                          type="checkbox"
-                          vertical
-                        />
-                      </Col>
-                      <Col data-test-col-batch-group xs={3}>
-                        <FieldBatchGroup
-                          batchGroups={batchGroups}
-                          isEditPostApproval={isEditPostApproval}
                         />
                       </Col>
                     </Row>
