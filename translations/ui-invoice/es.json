@@ -301,7 +301,7 @@
     "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
     "invoice.actions.approveAndPay.error.inactiveExpenseClass": "Invoice can not be <b>Approved and Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
     "settings.voucherNumber.prefixValidation": "Prefix is not valid",
-    "invoice.currentExchangeRate": "Current exchange rate",
-    "invoice.useSetExchangeRate": "Use set exchange rate",
-    "invoice.setExchangeRate": "Set exchange rate"
+    "invoice.currentExchangeRate": "Tipo de cambio actual",
+    "invoice.useSetExchangeRate": "Usar tipo de cambio establecido",
+    "invoice.setExchangeRate": "Establecer tipo de cambio"
 }
