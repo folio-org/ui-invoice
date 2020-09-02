@@ -16,7 +16,7 @@ const InvoiceDocumentFields = ({ fields }) => (
   <>
     {
       fields.map((elem, index) => {
-        const invoiceDocument = fields.get(index);
+        const invoiceDocument = fields.value[index];
         const contentClassName = `${css.invoiceDocumentFieldContent} ${
           index % 2 ?
             css.invoiceDocumentFieldContentOdd :

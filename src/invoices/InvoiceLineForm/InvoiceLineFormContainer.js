@@ -25,7 +25,6 @@ function InvoiceLineFormContainer({
   mutator,
   resources,
   showCallout,
-  stripes,
 }) {
   const [invoiceLine, setInvoiceLine] = useState();
   const [invoice, setInvoice] = useState();
@@ -111,7 +110,6 @@ function InvoiceLineFormContainer({
   return (hasLoaded
     ? (
       <InvoiceLineForm
-        stripes={stripes}
         initialValues={initialValues}
         onSubmit={saveInvoiceLine}
         onCancel={onClose}
@@ -152,7 +150,6 @@ InvoiceLineFormContainer.manifest = Object.freeze({
 InvoiceLineFormContainer.propTypes = {
   onClose: PropTypes.func.isRequired,
   resources: PropTypes.object.isRequired,
-  stripes: PropTypes.object.isRequired,
   showCallout: PropTypes.func.isRequired,
   match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,

@@ -1,15 +1,15 @@
-import { validateFundDistribution } from '@folio/stripes-acq-components';
+import { validateFundDistributionFinal } from '@folio/stripes-acq-components';
 
 import { calculateTotalAmount } from '../../common/utils';
 
-function validate(values, { stripes }) {
-  const errors = {};
-  const totalAmount = calculateTotalAmount(values, stripes.currency);
-  const fundDistributionErrors = validateFundDistribution(values.fundDistributions, totalAmount, stripes.currency);
+function validate(currency, fundDistribution, formValues) {
+  if (fundDistribution) {
+    const totalAmount = calculateTotalAmount(formValues, currency);
 
-  if (fundDistributionErrors) errors.fundDistributions = fundDistributionErrors;
+    return validateFundDistributionFinal(fundDistribution, totalAmount, currency);
+  }
 
-  return errors;
+  return undefined;
 }
 
 export default validate;

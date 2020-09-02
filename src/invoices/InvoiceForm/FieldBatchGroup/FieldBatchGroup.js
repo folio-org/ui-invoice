@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import {
-  FieldSelection,
+  FieldSelectionFinal,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -17,7 +17,7 @@ const FieldBatchGroup = ({ batchGroups, isEditPostApproval }) => {
   const isDisabled = isEditPostApproval || batchGroups.length === 1;
 
   return (
-    <FieldSelection
+    <FieldSelectionFinal
       dataOptions={batchGroupsOptions}
       disabled={isDisabled}
       id="invoice-batch-groups"
