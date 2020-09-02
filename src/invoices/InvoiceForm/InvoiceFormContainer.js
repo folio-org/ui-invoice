@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
-import {
-  getFormValues,
-} from 'redux-form';
 
 import {
   ConfirmationModal,
