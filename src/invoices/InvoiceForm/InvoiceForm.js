@@ -264,16 +264,6 @@ const InvoiceForm = ({
                           isEditPostApproval={isEditPostApproval}
                         />
                       </Col>
-                      <Col data-test-col-lock-total xs={3}>
-                        <Field
-                          component={Checkbox}
-                          disabled={isEditPostApproval}
-                          label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
-                          name="lockTotal"
-                          type="checkbox"
-                          vertical
-                        />
-                      </Col>
                     </Row>
 
                     <Row>
@@ -308,6 +298,16 @@ const InvoiceForm = ({
                           disabled
                           required
                           type="text"
+                        />
+                      </Col>
+                      <Col data-test-col-lock-total xs={3}>
+                        <Field
+                          component={Checkbox}
+                          disabled={isEditPostApproval}
+                          label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
+                          name="lockTotal"
+                          type="checkbox"
+                          vertical
                         />
                       </Col>
                     </Row>
