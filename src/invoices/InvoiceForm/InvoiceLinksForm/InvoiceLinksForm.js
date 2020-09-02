@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 
 import {
   Col,
@@ -19,7 +17,7 @@ const addLinkLabel = <FormattedMessage id="ui-invoice.invoice.link.add" />;
 const InvoiceLinksForm = () => {
   const renderLink = useCallback(
     (elem, index, fields) => {
-      const isDisabled = Boolean(fields.get(index).id);
+      const isDisabled = Boolean(fields.value[index].id);
 
       return (
         <Row data-test-invoice-form-link>

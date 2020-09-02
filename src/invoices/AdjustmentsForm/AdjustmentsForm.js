@@ -1,9 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import {
-  Field,
-  FieldArray,
-} from 'redux-form';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 import PropTypes from 'prop-types';
 import { find } from 'lodash';
 
@@ -22,8 +20,8 @@ import {
 } from '@folio/stripes/components';
 import {
   CurrencySymbol,
-  FieldSelect,
-  FundDistributionFields,
+  FieldSelectFinal,
+  FundDistributionFieldsFinal,
   parseNumberFieldValue,
   validateRequired,
 } from '@folio/stripes-acq-components';
@@ -44,12 +42,13 @@ import {
   getAdjustmentPresetOptions,
 } from '../../common/utils';
 import { getAdjustmentFromPreset } from '../utils';
+import validateFundDistribution from '../validateFundDistribution';
 
 const AdjustmentsForm = ({
   adjustmentsPresets,
   currency,
   disabled,
-  formName,
+  change,
   invoiceSubTotal,
   isLineAdjustments,
   stripes,
@@ -97,7 +96,7 @@ const AdjustmentsForm = ({
     const onRemove = () => {
       fields.remove(index);
     };
-    const adjustment = fields.get(index);
+    const adjustment = fields.value[index];
     const showFundDistribution = !isLineAdjustments
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
       && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
@@ -170,7 +169,7 @@ const AdjustmentsForm = ({
           {
             !isLineAdjustments && (
               <Col xs>
-                <FieldSelect
+                <FieldSelectFinal
                   label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
                   name={`${elem}.prorate`}
                   dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
@@ -185,7 +184,7 @@ const AdjustmentsForm = ({
             data-test-adjustment-relation-to-total
             xs
           >
-            <FieldSelect
+            <FieldSelectFinal
               label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
               name={`${elem}.relationToTotal`}
               dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
@@ -208,13 +207,14 @@ const AdjustmentsForm = ({
           </Col>
         </Row>
         {showFundDistribution && (
-          <FundDistributionFields
+          <FundDistributionFieldsFinal
+            change={change}
             currency={currency}
             disabled={disabled}
-            formName={formName}
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
             totalAmount={adjustmentAmount}
+            validate={validateFundDistribution}
           />
         )}
       </Card>
@@ -255,9 +255,9 @@ const AdjustmentsForm = ({
 
 AdjustmentsForm.propTypes = {
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
+  change: PropTypes.func.isRequired,
   currency: PropTypes.string,
   disabled: PropTypes.bool,
-  formName: PropTypes.string.isRequired,
   isLineAdjustments: PropTypes.bool,
   invoiceSubTotal: PropTypes.number,
   stripes: stripesShape,

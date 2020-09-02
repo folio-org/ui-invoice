@@ -1,9 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  Field,
-} from 'redux-form';
+import { Field } from 'react-final-form';
 
 import {
   find,
@@ -25,13 +23,13 @@ import {
   TextArea,
   TextField,
 } from '@folio/stripes/components';
-import stripesForm from '@folio/stripes/form';
+import stripesForm from '@folio/stripes/final-form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AcqUnitsField,
-  FieldDatepicker,
-  FieldSelect,
-  FieldSelection,
+  FieldDatepickerFinal,
+  FieldSelectFinal,
+  FieldSelectionFinal,
   FormFooter,
   PAYMENT_METHOD_OPTIONS,
   validateRequired,
@@ -56,13 +54,11 @@ import {
   ApprovedBy,
 } from '../../common/components';
 import {
-  INVOICE_FORM,
   SECTIONS_INVOICE_FORM as SECTIONS,
 } from '../constants';
 import AdjustmentsForm from '../AdjustmentsForm';
 import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
-import validate from './validate';
 import invoiceCss from '../Invoice.css';
 import FieldBatchGroup from './FieldBatchGroup';
 import CurrentExchangeRate from './CurrentExchangeRate';
@@ -72,11 +68,7 @@ const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
 
 const InvoiceForm = ({
   batchGroups,
-  change,
-  dispatch,
-  filledBillTo,
-  filledCurrency,
-  filledVendorId,
+  form: { change, mutators: { push } },
   handleSubmit,
   initialValues,
   initialVendor,
@@ -85,7 +77,11 @@ const InvoiceForm = ({
   pristine,
   submitting,
   systemCurrency,
+  values,
 }) => {
+  const filledBillTo = values?.billTo;
+  const filledVendorId = values?.vendorId;
+  const filledCurrency = values?.currency;
   const [selectedVendor, setSelectedVendor] = useState();
   const [isExchangeRateVisible, setExchangeRateVisible] = useState(Boolean(initialValues.exchangeRate));
   const selectVendor = useCallback((vendor) => {
@@ -98,11 +94,11 @@ const InvoiceForm = ({
       const accountingCode = hasAnyAccountingCode ? null : erpCode;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
 
-      dispatch(change('accountingCode', accountingCode || ''));
-      dispatch(change('paymentMethod', paymentMethod || ''));
-      dispatch(change('exportToAccounting', exportToAccounting));
+      change('accountingCode', accountingCode || null);
+      change('paymentMethod', paymentMethod || null);
+      change('exportToAccounting', exportToAccounting);
     }
-  }, [change, dispatch, selectedVendor]);
+  }, [change, selectedVendor]);
 
   const currenciesOptions = useCurrencyOptions();
   const vendorInvoiceNo = get(initialValues, 'vendorInvoiceNo', '');
@@ -135,7 +131,7 @@ const InvoiceForm = ({
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
   const isCurrentExchangeRateVisible = filledCurrency !== systemCurrency;
 
-  const resetExchangeRate = useCallback(() => dispatch(change('exchangeRate', null)), [dispatch, change]);
+  const resetExchangeRate = useCallback(() => change('exchangeRate', null), [change]);
 
   const showExchangeRate = useCallback(
     ({ target: { checked } }) => {
@@ -146,9 +142,12 @@ const InvoiceForm = ({
     [resetExchangeRate],
   );
 
-  const onChangeCurrency = useCallback(
-    (e, value) => value === systemCurrency && resetExchangeRate(), [resetExchangeRate, systemCurrency],
-  );
+  const onChangeCurrency = useCallback((value) => {
+    change('currency', value);
+    if (value === systemCurrency) {
+      resetExchangeRate();
+    }
+  }, [change, resetExchangeRate, systemCurrency]);
 
   return (
     <form style={{ height: '100vh' }}>
@@ -182,7 +181,7 @@ const InvoiceForm = ({
                     {metadata && <ViewMetaData metadata={metadata} />}
                     <Row>
                       <Col data-test-col-invoice-date xs={3}>
-                        <FieldDatepicker
+                        <FieldDatepickerFinal
                           labelId="ui-invoice.invoice.details.information.invoiceDate"
                           name="invoiceDate"
                           disabled={isEditPostApproval}
@@ -191,7 +190,7 @@ const InvoiceForm = ({
                         />
                       </Col>
                       <Col data-test-col-status xs={3}>
-                        <FieldSelection
+                        <FieldSelectionFinal
                           dataOptions={statusOptions}
                           disabled={isEditPostApproval}
                           id="invoice-status"
@@ -202,7 +201,7 @@ const InvoiceForm = ({
                         />
                       </Col>
                       <Col data-test-col-payment-due xs={3}>
-                        <FieldDatepicker
+                        <FieldDatepickerFinal
                           labelId="ui-invoice.invoice.details.information.paymentDue"
                           name="paymentDue"
                         />
@@ -221,7 +220,7 @@ const InvoiceForm = ({
 
                     <Row>
                       <Col data-test-col-approval-date xs={3}>
-                        <FieldDatepicker
+                        <FieldDatepickerFinal
                           labelId="ui-invoice.invoice.approvalDate"
                           name="approvalDate"
                           disabled
@@ -236,6 +235,7 @@ const InvoiceForm = ({
                           perm={isEditMode ? MANAGE_UNITS_PERM : CREATE_UNITS_PERM}
                           id="invoice-acq-units"
                           isEdit={isEditMode}
+                          isFinal
                           preselectedUnits={initialValues.acqUnitIds}
                         />
                       </Col>
@@ -243,7 +243,7 @@ const InvoiceForm = ({
 
                     <Row>
                       <Col data-test-col-bill-to-name xs={3}>
-                        <FieldSelection
+                        <FieldSelectionFinal
                           dataOptions={getAddressOptions(addresses)}
                           labelId="ui-invoice.invoice.billToName"
                           name="billTo"
@@ -332,7 +332,7 @@ const InvoiceForm = ({
                       adjustmentsPresets={adjustmentsPresets}
                       currency={filledCurrency}
                       disabled={isEditPostApproval}
-                      formName={INVOICE_FORM}
+                      change={change}
                       invoiceSubTotal={initialValues.subTotal}
                     />
                   </Accordion>
@@ -355,7 +355,6 @@ const InvoiceForm = ({
 
                       <Col xs={6}>
                         <FieldOrganization
-                          dispatch={dispatch}
                           change={change}
                           disabled={isEditPostApproval}
                           id={filledVendorId}
@@ -367,7 +366,7 @@ const InvoiceForm = ({
                       </Col>
 
                       <Col data-test-col-accounting-code xs={3}>
-                        <FieldSelection
+                        <FieldSelectionFinal
                           dataOptions={accountingCodeOptions}
                           disabled={isEditPostApproval || !vendor}
                           labelId="ui-invoice.invoice.accountingCode"
@@ -393,7 +392,7 @@ const InvoiceForm = ({
                         />
                       </Col>
                       <Col data-test-col-payment-method xs={3}>
-                        <FieldSelect
+                        <FieldSelectFinal
                           dataOptions={PAYMENT_METHOD_OPTIONS}
                           id="invoice-payment-method"
                           label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
@@ -422,7 +421,7 @@ const InvoiceForm = ({
                         />
                       </Col>
                       <Col data-test-col-currency xs={3}>
-                        <FieldSelection
+                        <FieldSelectionFinal
                           dataOptions={currenciesOptions}
                           disabled={isEditPostApproval}
                           id="invoice-currency"
@@ -498,7 +497,7 @@ const InvoiceForm = ({
                     <Row>
                       <Col xs={12}>
                         <InvoiceDocumentsForm
-                          dispatch={dispatch}
+                          push={push}
                         />
                       </Col>
                     </Row>
@@ -514,8 +513,6 @@ const InvoiceForm = ({
 };
 
 InvoiceForm.propTypes = {
-  change: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
   initialValues: PropTypes.object.isRequired,
   initialVendor: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
@@ -523,16 +520,15 @@ InvoiceForm.propTypes = {
   parentResources: PropTypes.object.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
-  filledBillTo: PropTypes.string,
-  filledVendorId: PropTypes.string,
-  filledCurrency: PropTypes.string.isRequired,
   batchGroups: PropTypes.arrayOf(PropTypes.object),
   systemCurrency: PropTypes.string.isRequired,
+  values: PropTypes.object.isRequired,
+  form: PropTypes.object.isRequired,
 };
 
 export default stripesForm({
-  form: INVOICE_FORM,
   navigationCheck: true,
   enableReinitialize: true,
-  validate,
+  keepDirtyOnReinitialize: true,
+  subscription: { values: true },
 })(InvoiceForm);

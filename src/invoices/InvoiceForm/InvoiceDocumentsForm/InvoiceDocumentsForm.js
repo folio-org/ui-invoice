@@ -1,9 +1,6 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import {
-  FieldArray,
-  arrayPush,
-} from 'redux-form';
+import { FieldArray } from 'react-final-form-arrays';
 import { FormattedMessage } from 'react-intl';
 
 import {
@@ -21,7 +18,7 @@ import InvoiceDocumentFields from './InvoiceDocumentFields';
 const MAX_SIZE_MB = 5;
 const MAX_SIZE = MAX_SIZE_MB * (10 ** 6);
 
-const InvoiceDocumentsForm = ({ dispatch }) => {
+const InvoiceDocumentsForm = ({ push }) => {
   const showCallout = useShowCallout();
 
   const selectFile = useCallback(
@@ -39,15 +36,15 @@ const InvoiceDocumentsForm = ({ dispatch }) => {
       const reader = new FileReader();
 
       reader.onload = (event) => {
-        dispatch(arrayPush('invoiceForm', 'documents', {
+        push('documents', {
           name: file.name,
           data: event.target.result,
-        }));
+        });
       };
 
       reader.readAsDataURL(file);
     },
-    [dispatch, showCallout],
+    [push, showCallout],
   );
 
   return (
@@ -73,7 +70,7 @@ const InvoiceDocumentsForm = ({ dispatch }) => {
 };
 
 InvoiceDocumentsForm.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  push: PropTypes.func.isRequired,
 };
 
 export default InvoiceDocumentsForm;

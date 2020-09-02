@@ -35,7 +35,6 @@ import { LoadingPane } from '../../common/components';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
-import { INVOICE_FORM } from '../constants';
 import InvoiceForm from './InvoiceForm';
 import {
   saveInvoice,
@@ -119,7 +118,6 @@ function InvoiceFormContainer({
       batchGroupId,
     };
 
-  const invoiceFormValues = getFormValues(INVOICE_FORM)(stripes.store.getState()) || invoice;
   const invoiceVendor = isCreate ? undefined : get(resources, ['invoiceFormVendor', 'records', 0]);
   const initialValues = {
     ...invoice,
@@ -147,9 +145,6 @@ function InvoiceFormContainer({
         parentResources={resources}
         onSubmit={saveInvoiceHandler}
         onCancel={onCancel}
-        filledBillTo={invoiceFormValues?.billTo}
-        filledVendorId={invoiceFormValues?.vendorId}
-        filledCurrency={invoiceFormValues?.currency}
         batchGroups={batchGroups}
         systemCurrency={stripes.currency}
       />

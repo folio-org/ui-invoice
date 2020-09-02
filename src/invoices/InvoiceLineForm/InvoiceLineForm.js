@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import {
-  Field,
-  getFormValues,
-} from 'redux-form';
+import { Field } from 'react-final-form';
 
 import {
   find,
@@ -24,14 +21,13 @@ import {
   Row,
   TextField,
 } from '@folio/stripes/components';
-import { stripesShape } from '@folio/stripes/core';
-import stripesForm from '@folio/stripes/form';
+import stripesForm from '@folio/stripes/final-form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
-  FieldDatepicker,
-  FieldSelection,
+  FieldDatepickerFinal,
+  FieldSelectionFinal,
   FormFooter,
-  FundDistributionFields,
+  FundDistributionFieldsFinal,
   parseNumberFieldValue,
   validateRequired,
   validateRequiredNumber,
@@ -44,7 +40,6 @@ import {
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import {
-  INVOICE_LINE_FORM,
   SECTIONS_INVOICE_LINE_FORM as SECTIONS,
 } from '../constants';
 import validate from './validate';
@@ -53,12 +48,11 @@ class InvoiceLineForm extends Component {
   static propTypes = {
     initialValues: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    stripes: stripesShape.isRequired,
     onCancel: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired,
-    change: PropTypes.func.isRequired,
+    values: PropTypes.object.isRequired,
+    form: PropTypes.object.isRequired,
     invoice: PropTypes.object.isRequired,
     vendorCode: PropTypes.string,
     accounts: PropTypes.arrayOf(PropTypes.object),
@@ -70,16 +64,22 @@ class InvoiceLineForm extends Component {
     accounts: [],
   }
 
-  changeAccountNumber = (e, accountNo) => {
-    const { dispatch, change, vendorCode, accounts } = this.props;
+  changeAccountNumber = (accountNo) => {
+    const { form: { change }, vendorCode, accounts } = this.props;
     const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
 
     if (accountNo) {
-      dispatch(change('accountingCode', accountingCode));
+      change('accountingCode', accountingCode);
     } else {
-      dispatch(change('accountingCode', ''));
+      change('accountingCode', null);
     }
   };
+
+  validateFundDisribution = (fundDistribution, formValues) => {
+    const { invoice } = this.props;
+
+    return validate(invoice.currency, fundDistribution, formValues);
+  }
 
   render() {
     const {
@@ -90,10 +90,10 @@ class InvoiceLineForm extends Component {
       invoice,
       onCancel,
       pristine,
-      stripes,
+      form: { change },
       submitting,
+      values: formValues,
     } = this.props;
-    const formValues = getFormValues(INVOICE_LINE_FORM)(stripes.store.getState());
     const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
     const { accountNumber, poLineId, metadata } = initialValues;
     const totalAmount = calculateTotalAmount(formValues, invoice.currency);
@@ -188,14 +188,14 @@ class InvoiceLineForm extends Component {
                           />
                         </Col>
                         <Col data-test-col-invoice-line-subscription-start xs={3}>
-                          <FieldDatepicker
+                          <FieldDatepickerFinal
                             disabled={isEditPostApproval}
                             labelId="ui-invoice.invoiceLine.subscriptionStart"
                             name="subscriptionStart"
                           />
                         </Col>
                         <Col data-test-col-invoice-line-subscription-end xs={3}>
-                          <FieldDatepicker
+                          <FieldDatepickerFinal
                             disabled={isEditPostApproval}
                             labelId="ui-invoice.invoiceLine.subscriptionEnd"
                             name="subscriptionEnd"
@@ -243,7 +243,7 @@ class InvoiceLineForm extends Component {
                           />
                         </Col>
                         <Col data-test-col-invoice-line-accounting-code xs={3}>
-                          <FieldSelection
+                          <FieldSelectionFinal
                             dataOptions={getAccountNumberOptions(accountNumbers)}
                             disabled={isDisabledToEditAccountNumber}
                             id="invoice-line-account-number"
@@ -274,13 +274,14 @@ class InvoiceLineForm extends Component {
                       id={SECTIONS.fundDistribution}
                       label={<FormattedMessage id="ui-invoice.fundDistribution" />}
                     >
-                      <FundDistributionFields
+                      <FundDistributionFieldsFinal
                         currency={invoice.currency}
                         disabled={isDisabledEditFundDistribution}
-                        formName={INVOICE_LINE_FORM}
+                        change={change}
                         fundDistribution={fundDistributions}
                         name="fundDistributions"
                         totalAmount={totalAmount}
+                        validate={this.validateFundDisribution}
                       />
                     </Accordion>
                     <Accordion
@@ -291,7 +292,7 @@ class InvoiceLineForm extends Component {
                         adjustmentsPresets={adjustmentsPresets}
                         isLineAdjustments
                         disabled={isEditPostApproval}
-                        formName={INVOICE_LINE_FORM}
+                        change={change}
                       />
                     </Accordion>
                   </AccordionSet>
@@ -306,7 +307,8 @@ class InvoiceLineForm extends Component {
 }
 
 export default stripesForm({
-  form: INVOICE_LINE_FORM,
+  subscription: { values: true },
   navigationCheck: true,
-  validate,
+  enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
 })(InvoiceLineForm);
