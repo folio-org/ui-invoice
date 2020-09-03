@@ -41,7 +41,7 @@ const VoucherDetails = ({ voucher }) => (
         >
           <AmountWithCurrencyField
             amount={voucher.amount}
-            currency={voucher.invoiceCurrency}
+            currency={voucher.systemCurrency}
           />
         </KeyValue>
       </Col>
@@ -75,7 +75,7 @@ const VoucherDetails = ({ voucher }) => (
         >
           <AmountWithCurrencyField
             amount={voucher.disbursementAmount}
-            currency={voucher.invoiceCurrency}
+            currency={voucher.systemCurrency}
           />
         </KeyValue>
       </Col>

@@ -31,7 +31,7 @@ const VoucherInformation = ({ voucher, voucherLines = [] }) => {
     amount: line => (
       <AmountWithCurrencyField
         amount={line.totalAmount}
-        currency={voucher.invoiceCurrency}
+        currency={voucher.systemCurrency}
       />
     ),
   };
