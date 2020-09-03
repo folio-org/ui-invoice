@@ -40,11 +40,11 @@ class InvoiceLineDetails extends Component {
     invoiceStatus: PropTypes.string.isRequired,
     tagsToggle: PropTypes.func.isRequired,
     currency: PropTypes.string,
-    poLineNumber: PropTypes.string,
+    poLine: PropTypes.object,
   };
 
   static defaultProps = {
-    poLineNumber: '',
+    poLine: {},
   }
 
   constructor(props, context) {
@@ -84,7 +84,7 @@ class InvoiceLineDetails extends Component {
       currency,
       deleteInvoiceLine,
       invoiceLine,
-      poLineNumber,
+      poLine,
       tagsToggle,
     } = this.props;
     const { showConfirmDelete } = this.state;
@@ -133,7 +133,7 @@ class InvoiceLineDetails extends Component {
               <InvoiceLineInformation
                 currency={currency}
                 invoiceLine={invoiceLine}
-                poLineNumber={poLineNumber}
+                poLine={poLine}
               />
             </Accordion>
             <Accordion

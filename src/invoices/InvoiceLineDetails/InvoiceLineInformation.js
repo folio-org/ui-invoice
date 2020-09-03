@@ -7,6 +7,7 @@ import {
   Col,
   KeyValue,
   Row,
+  TextLink,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
@@ -16,18 +17,29 @@ import {
   formatDate,
 } from '../../common/utils';
 
-const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
+const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
   const metadata = invoiceLine.metadata;
 
   return (
     <>
       {metadata && <ViewMetaData metadata={metadata} />}
       <Row>
-        <Col xs={3}>
+        <Col xs={12}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.description" />}
             value={invoiceLine.description}
           />
+        </Col>
+        <Col xs={3}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}>
+            <TextLink
+              rel="noopener noreferrer"
+              target="_blank"
+              to={`/orders/lines/view/${poLine.id}`}
+            >
+              {poLine.poLineNumber}
+            </TextLink>
+          </KeyValue>
         </Col>
         <Col xs={3}>
           <KeyValue
@@ -36,15 +48,15 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
           />
         </Col>
         <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
+            value={invoiceLine.vendorRefNo}
+          />
+        </Col>
+        <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineStatus" />}>
             <FormattedMessage id={getInvoiceStatusLabel({ status: invoiceLine.invoiceLineStatus })} />
           </KeyValue>
-        </Col>
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}
-            value={poLineNumber}
-          />
         </Col>
         <Col xs={3}>
           <KeyValue
@@ -66,22 +78,8 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
         </Col>
         <Col xs={3}>
           <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.quantity" />}
-            value={invoiceLine.quantity}
-          />
-        </Col>
-        <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}>
-            <AmountWithCurrencyField
-              amount={invoiceLine.subTotal}
-              currency={currency}
-            />
-          </KeyValue>
-        </Col>
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
-            value={invoiceLine.vendorRefNo}
+            label={<FormattedMessage id="ui-invoice.invoiceLine.comment" />}
+            value={invoiceLine.comment}
           />
         </Col>
         <Col xs={3}>
@@ -98,9 +96,17 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
         </Col>
         <Col xs={3}>
           <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.comment" />}
-            value={invoiceLine.comment}
+            label={<FormattedMessage id="ui-invoice.invoiceLine.quantity" />}
+            value={invoiceLine.quantity}
           />
+        </Col>
+        <Col xs={3}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}>
+            <AmountWithCurrencyField
+              amount={invoiceLine.subTotal}
+              currency={currency}
+            />
+          </KeyValue>
         </Col>
         <Col xs={3}>
           <Checkbox
@@ -118,12 +124,12 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLineNumber }) => {
 InvoiceLineInformation.propTypes = {
   invoiceLine: PropTypes.object,
   currency: PropTypes.string,
-  poLineNumber: PropTypes.string,
+  poLine: PropTypes.object,
 };
 
 InvoiceLineInformation.defaultProps = {
   invoiceLine: {},
-  poLineNumber: '',
+  poLine: {},
 };
 
 export default InvoiceLineInformation;
