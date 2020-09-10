@@ -184,7 +184,9 @@
   "invoice.delete.heading": "Delete {vendorInvoiceNo}?",
   "invoice.currentExchangeRate": "Current exchange rate",
   "invoice.useSetExchangeRate": "Use set exchange rate",
+  "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
   "invoice.setExchangeRate": "Set exchange rate",
+  "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field",
 
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",

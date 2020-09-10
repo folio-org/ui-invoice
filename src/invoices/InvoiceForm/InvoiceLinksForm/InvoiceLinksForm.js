@@ -23,7 +23,8 @@ const addLinkLabel = <FormattedMessage id="ui-invoice.invoice.link.add" />;
 const InvoiceLinksForm = () => {
   const renderLink = useCallback(
     (elem, index, fields) => {
-      const isDisabled = Boolean(fields.value[index].id);
+      const { id, name, url } = fields.value[index];
+      const isDisabled = Boolean(id);
 
       return (
         <Row data-test-invoice-form-link>
@@ -35,7 +36,7 @@ const InvoiceLinksForm = () => {
               ? (
                 <KeyValue
                   label={linkNameLabel}
-                  value={fields.value[index].name}
+                  value={name}
                 />
               )
               : (
@@ -43,7 +44,6 @@ const InvoiceLinksForm = () => {
                   component={TextField}
                   label={linkNameLabel}
                   name={`${elem}.name`}
-                  disabled={isDisabled}
                   required
                   validate={validateRequired}
                 />
@@ -60,11 +60,11 @@ const InvoiceLinksForm = () => {
                   label={linkURLLabel}
                   value={(
                     <TextLink
-                      href={fields.value[index].url}
+                      href={url}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {fields.value[index].url}
+                      {url}
                     </TextLink>
                   )}
                 />
@@ -74,7 +74,6 @@ const InvoiceLinksForm = () => {
                   component={TextField}
                   label={linkURLLabel}
                   name={`${elem}.url`}
-                  disabled={isDisabled}
                   validate={validateURL}
                 />
               )

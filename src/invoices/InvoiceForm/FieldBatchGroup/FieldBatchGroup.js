@@ -7,35 +7,44 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { getBatchGroupsOptions } from '../../../common/utils';
+import BatchGroupValue from '../../InvoiceDetails/BatchGroupValue';
 
-const FieldBatchGroup = ({ batchGroups, isEditPostApproval }) => {
+const FieldBatchGroup = ({ batchGroups, isNonIteractive, batchGroupId }) => {
   const batchGroupsOptions = useMemo(() => {
     return getBatchGroupsOptions(batchGroups);
   }, [batchGroups]);
 
   const labelId = 'ui-invoice.invoice.details.information.batchGroup';
-  const isDisabled = isEditPostApproval || batchGroups.length === 1;
 
   return (
-    <FieldSelectionFinal
-      dataOptions={batchGroupsOptions}
-      disabled={isDisabled}
-      id="invoice-batch-groups"
-      labelId={labelId}
-      name="batchGroupId"
-      required
-      validate={validateRequired}
-    />
+    isNonIteractive || batchGroups.length === 1
+      ? (
+        <BatchGroupValue
+          id={batchGroupId}
+          label={labelId}
+        />
+      )
+      : (
+        <FieldSelectionFinal
+          dataOptions={batchGroupsOptions}
+          id="invoice-batch-groups"
+          labelId={labelId}
+          name="batchGroupId"
+          required
+          validate={validateRequired}
+        />
+      )
   );
 };
 
 FieldBatchGroup.propTypes = {
+  batchGroupId: PropTypes.string,
   batchGroups: PropTypes.arrayOf(PropTypes.object),
-  isEditPostApproval: PropTypes.bool,
+  isNonIteractive: PropTypes.bool,
 };
 
 FieldBatchGroup.defaultProps = {
-  isEditPostApproval: false,
+  isNonIteractive: false,
 };
 
 export default FieldBatchGroup;

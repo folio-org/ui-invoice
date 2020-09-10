@@ -5,10 +5,11 @@ import { FormattedMessage } from 'react-intl';
 import {
   Col,
   KeyValue,
-  NoValue,
   Row,
 } from '@folio/stripes/components';
 import { OrganizationValue } from '@folio/stripes-acq-components';
+
+import { AccountingCodeValue } from '../../../common/components';
 
 const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendorId }) => (
   <Row>
@@ -27,10 +28,7 @@ const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendorId }) => (
     </Col>
 
     <Col xs={3}>
-      <KeyValue
-        label={<FormattedMessage id="ui-invoice.invoice.details.vendor.accountingCode" />}
-        value={accountingCode || <NoValue />}
-      />
+      <AccountingCodeValue value={accountingCode} />
     </Col>
   </Row>
 );

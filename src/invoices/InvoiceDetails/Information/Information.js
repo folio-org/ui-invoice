@@ -5,22 +5,23 @@ import { FormattedMessage } from 'react-intl';
 import {
   Col,
   KeyValue,
-  NoValue,
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AcqUnitsView,
   AmountWithCurrencyField,
+  FolioFormattedDate,
   sourceLabels,
 } from '@folio/stripes-acq-components';
 
 import {
-  getInvoiceStatusLabel,
-  formatDate,
-} from '../../../common/utils';
+  ApprovedBy,
+  InvoiceDateValue,
+  StatusValue,
+  PaymentTermsValue,
+} from '../../../common/components';
 import BatchGroupValue from '../BatchGroupValue';
-import ApprovedBy from '../../../common/components/ApprovedBy';
 import BillTo from './BillTo';
 
 const Information = ({
@@ -46,36 +47,39 @@ const Information = ({
       {metadata && <ViewMetaData metadata={metadata} />}
       <Row>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.invoiceDate" />}>
-            {formatDate(invoiceDate)}
-          </KeyValue>
+          <InvoiceDateValue
+            labelId="ui-invoice.invoice.details.information.invoiceDate"
+            value={invoiceDate}
+          />
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}>
-            <FormattedMessage id={getInvoiceStatusLabel({ status })} />
-          </KeyValue>
+          <StatusValue
+            labelId="ui-invoice.invoice.details.information.status"
+            value={status}
+          />
         </Col>
 
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.paymentDue" />}
           >
-            {paymentDue ? formatDate(paymentDue) : <NoValue />}
+            <FolioFormattedDate value={paymentDue} />
           </KeyValue>
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.terms" />}>
-            {paymentTerms || <NoValue />}
-          </KeyValue>
+          <PaymentTermsValue
+            labelId="ui-invoice.invoice.details.information.terms"
+            value={paymentTerms}
+          />
         </Col>
 
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedDate" />}
           >
-            {approvalDate ? formatDate(approvalDate) : <NoValue />}
+            <FolioFormattedDate value={approvalDate} />
           </KeyValue>
         </Col>
 
@@ -120,9 +124,9 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
             <AmountWithCurrencyField
-              amount={total}
+              amount={subTotal}
               currency={currency}
             />
           </KeyValue>
@@ -138,9 +142,9 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
             <AmountWithCurrencyField
-              amount={subTotal}
+              amount={total}
               currency={currency}
             />
           </KeyValue>

@@ -9,6 +9,7 @@ import {
   KeyValue,
   Label,
   Loading,
+  NoValue,
 } from '@folio/stripes/components';
 
 import { EXCHANGE_RATE_API } from '../../../common/constants/api';
@@ -19,15 +20,16 @@ const CurrentExchangeRate = ({ label, exchangeFrom, exchangeTo, mutator }) => {
   useEffect(
     () => {
       setExchangeRate();
-
-      mutator.exchangeRate.GET({
-        params: {
-          from: exchangeFrom,
-          to: exchangeTo,
-        },
-      })
-        .then(setExchangeRate)
-        .catch(() => setExchangeRate({}));
+      if (exchangeFrom !== exchangeTo) {
+        mutator.exchangeRate.GET({
+          params: {
+            from: exchangeFrom,
+            to: exchangeTo,
+          },
+        })
+          .then(setExchangeRate)
+          .catch(() => setExchangeRate({}));
+      } else setExchangeRate({});
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [exchangeFrom, exchangeTo],
@@ -47,7 +49,7 @@ const CurrentExchangeRate = ({ label, exchangeFrom, exchangeTo, mutator }) => {
   return (
     <KeyValue
       label={label}
-      value={exchangeRate.exchangeRate}
+      value={exchangeRate.exchangeRate || <NoValue />}
     />
   );
 };

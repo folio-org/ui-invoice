@@ -10,7 +10,6 @@ import {
   TextField,
   Pane,
   Paneset,
-  KeyValue,
 } from '@folio/stripes/components';
 import {
   FieldDatepickerFinal,
@@ -19,6 +18,8 @@ import {
 import {
   AppIcon,
 } from '@folio/stripes/core';
+
+import { FieldVoucherNumber } from '../../../common/components';
 
 const VoucherEditForm = ({
   handleSubmit,
@@ -66,22 +67,12 @@ const VoucherEditForm = ({
       >
         <Row>
           <Col xs={3}>
-            {isAllowVoucherNumberEdit
-              ? (
-                <Field
-                  component={TextField}
-                  id="voucherNumber"
-                  label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
-                  name="voucherNumber"
-                />
-              )
-              : (
-                <KeyValue
-                  label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
-                  value={initialValues.voucherNumber}
-                />
-              )
-            }
+            <FieldVoucherNumber
+              id="voucherNumber"
+              name="voucherNumber"
+              isNonInteractive={isAllowVoucherNumberEdit}
+              value={initialValues.voucherNumber}
+            />
           </Col>
           <Col xs={3}>
             <Field

@@ -8,9 +8,12 @@ import {
   NoValue,
   Row,
 } from '@folio/stripes/components';
-import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
+import {
+  AmountWithCurrencyField,
+  FolioFormattedDate,
+} from '@folio/stripes-acq-components';
 
-import { formatDate } from '../../common/utils';
+import { VoucherNumberValue } from '../../common/components/VoucherNumber';
 
 const VoucherDetails = ({ voucher }) => (
   <>
@@ -23,8 +26,8 @@ const VoucherDetails = ({ voucher }) => (
       </Col>
 
       <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
+        <VoucherNumberValue
+          labelId="ui-invoice.invoice.details.voucher.voucherNumber"
           value={voucher.voucherNumber}
         />
       </Col>
@@ -32,7 +35,7 @@ const VoucherDetails = ({ voucher }) => (
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherDate" />}
-          value={voucher.voucherDate ? formatDate(voucher.voucherDate) : <NoValue />}
+          value={<FolioFormattedDate value={voucher.voucherDate} />}
         />
       </Col>
 
@@ -66,7 +69,7 @@ const VoucherDetails = ({ voucher }) => (
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
-          value={voucher.disbursementDate ? formatDate(voucher.disbursementDate) : <NoValue />}
+          value={<FolioFormattedDate value={voucher.disbursementDate} />}
         />
       </Col>
 

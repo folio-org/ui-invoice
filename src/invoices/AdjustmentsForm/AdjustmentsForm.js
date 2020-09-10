@@ -43,14 +43,18 @@ import {
 } from '../../common/utils';
 import { getAdjustmentFromPreset } from '../utils';
 import validateFundDistribution from '../validateFundDistribution';
+import AdjustmentsDetails from '../AdjustmentsDetails';
 
 const AdjustmentsForm = ({
   adjustmentsPresets,
+  change,
   currency,
   disabled,
-  change,
+  initialAdjustments,
+  initialCurrency,
   invoiceSubTotal,
   isLineAdjustments,
+  isNonInteractive,
   stripes,
 }) => {
   const [adjPreset, setAdjPreset] = useState();
@@ -222,34 +226,43 @@ const AdjustmentsForm = ({
   };
 
   return (
-    <Row>
-      <Col xs={12}>
-        <FormattedMessage id="ui-invoice.adjustment.presetAdjustment">
-          {translatedLabel => (
-            <Selection
-              dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
-              label={translatedLabel}
-              onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
-              disabled={disabled}
-            />
-          )}
-        </FormattedMessage>
-
-      </Col>
-      <Col xs={12}>
-        <FieldArray
-          addLabel={<FormattedMessage id="ui-invoice.button.addAdjustment" />}
-          canAdd={!disabled}
-          canRemove={!disabled}
-          component={RepeatableField}
-          id="adjustments"
-          name="adjustments"
-          onAdd={onAdd}
-          onRemove={false}
-          renderField={renderAdjustment}
+    isNonInteractive
+      ? (
+        <AdjustmentsDetails
+          adjustments={initialAdjustments}
+          currency={initialCurrency}
         />
-      </Col>
-    </Row>
+      )
+      : (
+        <Row>
+          <Col xs={12}>
+            <FormattedMessage id="ui-invoice.adjustment.presetAdjustment">
+              {translatedLabel => (
+                <Selection
+                  dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
+                  label={translatedLabel}
+                  onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
+                  disabled={disabled}
+                />
+              )}
+            </FormattedMessage>
+
+          </Col>
+          <Col xs={12}>
+            <FieldArray
+              addLabel={<FormattedMessage id="ui-invoice.button.addAdjustment" />}
+              canAdd={!disabled}
+              canRemove={!disabled}
+              component={RepeatableField}
+              id="adjustments"
+              name="adjustments"
+              onAdd={onAdd}
+              onRemove={false}
+              renderField={renderAdjustment}
+            />
+          </Col>
+        </Row>
+      )
   );
 };
 
@@ -261,6 +274,9 @@ AdjustmentsForm.propTypes = {
   isLineAdjustments: PropTypes.bool,
   invoiceSubTotal: PropTypes.number,
   stripes: stripesShape,
+  initialAdjustments: PropTypes.arrayOf(PropTypes.object),
+  initialCurrency: PropTypes.string,
+  isNonInteractive: PropTypes.bool,
 };
 
 AdjustmentsForm.defaultProps = {
@@ -268,6 +284,7 @@ AdjustmentsForm.defaultProps = {
   disabled: false,
   isLineAdjustments: false,
   invoiceSubTotal: 0,
+  isNonInteractive: false,
 };
 
 export default withStripes(AdjustmentsForm);
