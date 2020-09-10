@@ -16,11 +16,6 @@ export const VENDORS = {
   records: 'organizations',
 };
 
-export const vendorItem = {
-  ...baseManifest,
-  path: `${VENDORS_API}/!{vendorId}`,
-};
-
 export const VENDOR = {
   ...baseManifest,
   path: (queryParams, pathComponents, resourceData, logger, props) => {

@@ -4,9 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import { findIndex } from 'lodash';
 
 import {
-  Row,
   Headline,
   MultiColumnList,
+  NoValue,
+  Row,
 } from '@folio/stripes/components';
 import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
 
@@ -39,6 +40,7 @@ const VoucherLinesDetails = ({ voucherLines, currency }) => {
             currency={currency}
           />
         ),
+        group: () => <NoValue />,
       };
 
       return (

@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Update create/edit Invoice form inactive fields. Refs UINV-185
 * Voucher currency Not based on fiscal year. Refs UINV-184
 * Invoice line record ux update. Refs UINV-183
 * Update fund distribution UX. Refs UIF-245

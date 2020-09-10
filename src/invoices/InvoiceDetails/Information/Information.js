@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import {
   Col,
   KeyValue,
+  NoValue,
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
@@ -60,13 +61,13 @@ const Information = ({
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.paymentDue" />}
           >
-            {formatDate(paymentDue)}
+            {paymentDue ? formatDate(paymentDue) : <NoValue />}
           </KeyValue>
         </Col>
 
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.terms" />}>
-            {paymentTerms}
+            {paymentTerms || <NoValue />}
           </KeyValue>
         </Col>
 
@@ -74,7 +75,7 @@ const Information = ({
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedDate" />}
           >
-            {formatDate(approvalDate)}
+            {approvalDate ? formatDate(approvalDate) : <NoValue />}
           </KeyValue>
         </Col>
 
@@ -153,30 +154,22 @@ Information.propTypes = {
   adjustmentsTotal: PropTypes.number,
   approvalDate: PropTypes.string,
   approvedBy: PropTypes.string,
-  batchGroupId: PropTypes.string,
-  invoiceDate: PropTypes.string,
+  batchGroupId: PropTypes.string.isRequired,
+  invoiceDate: PropTypes.string.isRequired,
   paymentDue: PropTypes.string,
   paymentTerms: PropTypes.string,
   status: PropTypes.string.isRequired,
   subTotal: PropTypes.number,
   total: PropTypes.number,
-  source: PropTypes.string,
+  source: PropTypes.string.isRequired,
   metadata: PropTypes.object,
   billTo: PropTypes.string,
   invoiceTotalUnits: PropTypes.number,
   acqUnits: PropTypes.arrayOf(PropTypes.string),
-  currency: PropTypes.string,
+  currency: PropTypes.string.isRequired,
 };
 
 Information.defaultProps = {
-  adjustmentsTotal: 0,
-  approvalDate: '',
-  invoiceDate: '',
-  paymentDue: '',
-  paymentTerms: '',
-  subTotal: 0,
-  total: 0,
-  source: '',
   invoiceTotalUnits: 0,
   acqUnits: [],
 };

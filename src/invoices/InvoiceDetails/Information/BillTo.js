@@ -7,6 +7,7 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   Col,
   KeyValue,
+  NoValue,
   Row,
 } from '@folio/stripes/components';
 
@@ -27,7 +28,7 @@ const BillTo = ({ resources, billToId }) => {
       <Col xs={6}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.information.billToName" />}
-          value={billToId && billToValue.name}
+          value={billToId ? billToValue.name : <NoValue />}
         />
       </Col>
 
@@ -35,7 +36,7 @@ const BillTo = ({ resources, billToId }) => {
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.information.billToAddress" />}
         >
-          <div className={invocieCss.addressWrapper}>{billToId && billToValue.address}</div>
+          <div className={invocieCss.addressWrapper}>{billToId ? billToValue.address : <NoValue />}</div>
         </KeyValue>
       </Col>
     </Row>

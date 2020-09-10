@@ -14,19 +14,21 @@ import {
   AccordionStatus,
   Checkbox,
   Col,
-  useCurrencyOptions,
   ExpandAllButton,
   KeyValue,
+  NoValue,
   Pane,
   Paneset,
   Row,
   TextArea,
   TextField,
+  useCurrencyOptions,
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/final-form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AcqUnitsField,
+  AmountWithCurrencyField,
   FieldDatepickerFinal,
   FieldSelectFinal,
   FieldSelectionFinal,
@@ -34,6 +36,7 @@ import {
   PAYMENT_METHOD_OPTIONS,
   validateRequired,
   FieldOrganization,
+  OrganizationValue,
 } from '@folio/stripes-acq-components';
 
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
@@ -42,6 +45,7 @@ import {
   PRE_PAY_INVOICE_STATUSES_OPTIONS,
 } from '../../common/constants';
 import {
+  formatDate,
   getAccountingCodeOptions,
   getAddressOptions,
   IS_EDIT_POST_APPROVAL,
@@ -56,7 +60,9 @@ import {
 import {
   SECTIONS_INVOICE_FORM as SECTIONS,
 } from '../constants';
+import AdjustmentsDetails from '../AdjustmentsDetails';
 import AdjustmentsForm from '../AdjustmentsForm';
+import BatchGroupValue from '../InvoiceDetails/BatchGroupValue';
 import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 import invoiceCss from '../Invoice.css';
@@ -82,8 +88,29 @@ const InvoiceForm = ({
   const filledBillTo = values?.billTo;
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
+  const {
+    accountingCode,
+    acqUnitIds,
+    adjustments,
+    adjustmentsTotal,
+    approvalDate,
+    approvedBy,
+    batchGroupId,
+    currency,
+    exchangeRate,
+    folioInvoiceNo,
+    id,
+    invoiceDate,
+    metadata,
+    paymentTerms,
+    status,
+    subTotal,
+    total,
+    vendorId,
+    vendorInvoiceNo,
+  } = initialValues;
   const [selectedVendor, setSelectedVendor] = useState();
-  const [isExchangeRateVisible, setExchangeRateVisible] = useState(Boolean(initialValues.exchangeRate));
+  const [isExchangeRateVisible, setExchangeRateVisible] = useState(Boolean(exchangeRate));
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
       setSelectedVendor(vendor);
@@ -91,18 +118,17 @@ const InvoiceForm = ({
       const erpCode = vendor.erpCode;
       const hasAnyAccountingCode = vendor.accounts?.some(({ appSystemNo }) => Boolean(appSystemNo));
       const paymentMethod = vendor.paymentMethod;
-      const accountingCode = hasAnyAccountingCode ? null : erpCode;
+      const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
 
-      change('accountingCode', accountingCode || null);
+      change('accountingCode', vendorAccountingCode || null);
       change('paymentMethod', paymentMethod || null);
       change('exportToAccounting', exportToAccounting);
     }
   }, [change, selectedVendor]);
 
   const currenciesOptions = useCurrencyOptions();
-  const vendorInvoiceNo = get(initialValues, 'vendorInvoiceNo', '');
-  const paneTitle = initialValues.id
+  const paneTitle = id
     ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
     : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
   const paneFooter = (
@@ -117,16 +143,14 @@ const InvoiceForm = ({
   );
   const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
   const addressBillTo = get(find(addresses, { id: filledBillTo }), 'address', '');
-  const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.status);
-  const metadata = initialValues.metadata;
-  const approvedBy = get(initialValues, 'approvedBy');
-  const isEditMode = Boolean(initialValues.id);
-  const isStatusPaid = isPaid(initialValues.status);
+  const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, status);
+  const isEditMode = Boolean(id);
+  const isStatusPaid = isPaid(status);
   const vendor = selectedVendor || initialVendor;
   const accountingCodeOptions = getAccountingCodeOptions(vendor);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
-  const statusOptions = isPayable(initialValues.status) || isStatusPaid || isCancelled(initialValues.status)
+  const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
     ? INVOICE_STATUSES_OPTIONS
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
   const isCurrentExchangeRateVisible = filledCurrency !== systemCurrency;
@@ -181,24 +205,42 @@ const InvoiceForm = ({
                     {metadata && <ViewMetaData metadata={metadata} />}
                     <Row>
                       <Col data-test-col-invoice-date xs={3}>
-                        <FieldDatepickerFinal
-                          labelId="ui-invoice.invoice.details.information.invoiceDate"
-                          name="invoiceDate"
-                          disabled={isEditPostApproval}
-                          required
-                          validate={validateRequired}
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <KeyValue
+                              label={<FormattedMessage id="ui-invoice.invoice.details.information.invoiceDate" />}
+                              value={formatDate(invoiceDate)}
+                            />
+                          )
+                          : (
+                            <FieldDatepickerFinal
+                              labelId="ui-invoice.invoice.details.information.invoiceDate"
+                              name="invoiceDate"
+                              required
+                              validate={validateRequired}
+                            />
+                          )
+                        }
                       </Col>
                       <Col data-test-col-status xs={3}>
-                        <FieldSelectionFinal
-                          dataOptions={statusOptions}
-                          disabled={isEditPostApproval}
-                          id="invoice-status"
-                          labelId="ui-invoice.invoice.details.information.status"
-                          name="status"
-                          required
-                          validate={validateRequired}
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <KeyValue
+                              label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}
+                              value={status}
+                            />
+                          )
+                          : (
+                            <FieldSelectionFinal
+                              dataOptions={statusOptions}
+                              id="invoice-status"
+                              labelId="ui-invoice.invoice.details.information.status"
+                              name="status"
+                              required
+                              validate={validateRequired}
+                            />
+                          )
+                        }
                       </Col>
                       <Col data-test-col-payment-due xs={3}>
                         <FieldDatepickerFinal
@@ -207,23 +249,31 @@ const InvoiceForm = ({
                         />
                       </Col>
                       <Col data-test-col-payment-terms xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
-                          id="paymentTerms"
-                          name="paymentTerms"
-                          disabled={isEditPostApproval}
-                          type="text"
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <KeyValue
+                              label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
+                              value={paymentTerms || <NoValue />}
+                            />
+                          )
+                          : (
+                            <Field
+                              component={TextField}
+                              label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
+                              id="paymentTerms"
+                              name="paymentTerms"
+                              type="text"
+                            />
+                          )
+                        }
                       </Col>
                     </Row>
 
                     <Row>
                       <Col data-test-col-approval-date xs={3}>
-                        <FieldDatepickerFinal
-                          labelId="ui-invoice.invoice.approvalDate"
-                          name="approvalDate"
-                          disabled
+                        <KeyValue
+                          label={<FormattedMessage id="ui-invoice.invoice.approvalDate" />}
+                          value={approvalDate ? formatDate(approvalDate) : <NoValue />}
                         />
                       </Col>
                       <Col data-test-col-approved-by xs={3}>
@@ -236,7 +286,7 @@ const InvoiceForm = ({
                           id="invoice-acq-units"
                           isEdit={isEditMode}
                           isFinal
-                          preselectedUnits={initialValues.acqUnitIds}
+                          preselectedUnits={acqUnitIds}
                         />
                       </Col>
                     </Row>
@@ -255,50 +305,46 @@ const InvoiceForm = ({
                       >
                         <KeyValue
                           label={<FormattedMessage id="ui-invoice.invoice.billToAddress" />}
-                          value={addressBillTo}
+                          value={addressBillTo || <NoValue />}
                         />
                       </Col>
                       <Col data-test-col-batch-group xs={3}>
-                        <FieldBatchGroup
-                          batchGroups={batchGroups}
-                          isEditPostApproval={isEditPostApproval}
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <BatchGroupValue
+                              label={<FormattedMessage id="ui-invoice.invoice.details.information.batchGroup" />}
+                              id={batchGroupId}
+                            />
+                          )
+                          : <FieldBatchGroup batchGroups={batchGroups} />
+                        }
                       </Col>
                     </Row>
 
                     <Row>
                       <Col data-test-col-sub-total xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}
-                          id="subTotal"
-                          name="subTotal"
-                          disabled
-                          required
-                          type="text"
-                        />
+                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
+                          <AmountWithCurrencyField
+                            amount={subTotal}
+                            currency={filledCurrency}
+                          />
+                        </KeyValue>
                       </Col>
                       <Col data-test-col-adjustments-total xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}
-                          id="adjustmentsTotal"
-                          name="adjustmentsTotal"
-                          disabled
-                          required
-                          type="text"
-                        />
+                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}>
+                          <AmountWithCurrencyField
+                            amount={adjustmentsTotal}
+                            currency={filledCurrency}
+                          />
+                        </KeyValue>
                       </Col>
                       <Col data-test-col-total xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}
-                          id="total"
-                          name="total"
-                          disabled
-                          required
-                          type="text"
-                        />
+                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
+                          <AmountWithCurrencyField
+                            amount={total}
+                            currency={filledCurrency}
+                          />
+                        </KeyValue>
                       </Col>
                       <Col data-test-col-lock-total xs={3}>
                         <Field
@@ -328,13 +374,22 @@ const InvoiceForm = ({
                     id={SECTIONS.adjustments}
                     label={<FormattedMessage id="ui-invoice.adjustments" />}
                   >
-                    <AdjustmentsForm
-                      adjustmentsPresets={adjustmentsPresets}
-                      currency={filledCurrency}
-                      disabled={isEditPostApproval}
-                      change={change}
-                      invoiceSubTotal={initialValues.subTotal}
-                    />
+                    {isEditPostApproval
+                      ? (
+                        <AdjustmentsDetails
+                          adjustments={adjustments}
+                          currency={currency}
+                        />
+                      )
+                      : (
+                        <AdjustmentsForm
+                          adjustmentsPresets={adjustmentsPresets}
+                          currency={filledCurrency}
+                          change={change}
+                          invoiceSubTotal={subTotal}
+                        />
+                      )
+                    }
                   </Accordion>
                   <Accordion
                     id={SECTIONS.vendorDetails}
@@ -354,24 +409,43 @@ const InvoiceForm = ({
                       </Col>
 
                       <Col xs={6}>
-                        <FieldOrganization
-                          change={change}
-                          disabled={isEditPostApproval}
-                          id={filledVendorId}
-                          labelId="ui-invoice.invoice.vendorName"
-                          name="vendorId"
-                          onSelect={selectVendor}
-                          required
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <OrganizationValue
+                              label={<FormattedMessage id="ui-invoice.invoice.vendorName" />}
+                              id={vendorId}
+                            />
+                          )
+                          : (
+                            <FieldOrganization
+                              change={change}
+                              id={filledVendorId}
+                              labelId="ui-invoice.invoice.vendorName"
+                              name="vendorId"
+                              onSelect={selectVendor}
+                              required
+                            />
+                          )
+                        }
                       </Col>
 
                       <Col data-test-col-accounting-code xs={3}>
-                        <FieldSelectionFinal
-                          dataOptions={accountingCodeOptions}
-                          disabled={isEditPostApproval || !vendor}
-                          labelId="ui-invoice.invoice.accountingCode"
-                          name="accountingCode"
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <KeyValue
+                              label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
+                              value={accountingCode || <NoValue />}
+                            />
+                          )
+                          : (
+                            <FieldSelectionFinal
+                              dataOptions={accountingCodeOptions}
+                              disabled={isEditPostApproval || !vendor}
+                              labelId="ui-invoice.invoice.accountingCode"
+                              name="accountingCode"
+                            />
+                          )
+                        }
                       </Col>
                     </Row>
                   </Accordion>
@@ -381,14 +455,9 @@ const InvoiceForm = ({
                   >
                     <Row>
                       <Col data-test-col-folio-invoice-no xs={3}>
-                        <Field
-                          component={TextField}
+                        <KeyValue
                           label={<FormattedMessage id="ui-invoice.invoice.folioInvoiceNo" />}
-                          id="folioInvoiceNo"
-                          name="folioInvoiceNo"
-                          disabled
-                          required
-                          type="text"
+                          value={folioInvoiceNo || <NoValue />}
                         />
                       </Col>
                       <Col data-test-col-payment-method xs={3}>
@@ -421,16 +490,25 @@ const InvoiceForm = ({
                         />
                       </Col>
                       <Col data-test-col-currency xs={3}>
-                        <FieldSelectionFinal
-                          dataOptions={currenciesOptions}
-                          disabled={isEditPostApproval}
-                          id="invoice-currency"
-                          labelId="ui-invoice.invoice.currency"
-                          name="currency"
-                          onChange={onChangeCurrency}
-                          required
-                          validate={validateRequired}
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <KeyValue
+                              label={<FormattedMessage id="ui-invoice.invoice.currency" />}
+                              value={currency}
+                            />
+                          )
+                          : (
+                            <FieldSelectionFinal
+                              dataOptions={currenciesOptions}
+                              id="invoice-currency"
+                              labelId="ui-invoice.invoice.currency"
+                              name="currency"
+                              onChange={onChangeCurrency}
+                              required
+                              validate={validateRequired}
+                            />
+                          )
+                        }
                       </Col>
                       {isCurrentExchangeRateVisible && (
                         <>

@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
-import { KeyValue } from '@folio/stripes/components';
+import {
+  KeyValue,
+  NoValue,
+} from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 
 import { BASE_RESOURCE } from '../../resources/base';
@@ -13,7 +16,7 @@ import { getUserName } from '../../utils';
 const ApprovedBy = ({ approvedByUserId, resources }) => {
   const { failed, records } = resources.approvedByUser || {};
   const approvedByUser = failed ? null : get(records, '0');
-  const value = approvedByUserId ? getUserName(approvedByUser) : null;
+  const value = approvedByUserId ? getUserName(approvedByUser) : <NoValue />;
 
   return (
     <KeyValue
