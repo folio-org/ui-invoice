@@ -9,8 +9,6 @@ import {
 } from '@folio/stripes/components';
 import { OrganizationValue } from '@folio/stripes-acq-components';
 
-import { AccountingCodeValue } from '../../../common/components';
-
 const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendorId }) => (
   <Row>
     <Col xs={3}>
@@ -28,7 +26,10 @@ const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendorId }) => (
     </Col>
 
     <Col xs={3}>
-      <AccountingCodeValue value={accountingCode} />
+      <KeyValue
+        label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
+        value={accountingCode}
+      />
     </Col>
   </Row>
 );

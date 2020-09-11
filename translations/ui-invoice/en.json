@@ -223,7 +223,7 @@
   "invoice.details.lines.add": "Add",
   "invoice.details.lines.list.adjustments": "Adjustments",
   "invoice.details.lines.list.description": "Description",
-  "invoice.details.lines.list.fundDistribution": "Fund distribution",
+  "invoice.details.lines.list.fundCode": "Fund code",
   "invoice.details.lines.list.lineNumber": "#",
   "invoice.details.lines.list.polNumber": "POL number",
   "invoice.details.lines.list.quantity": "Quantity",

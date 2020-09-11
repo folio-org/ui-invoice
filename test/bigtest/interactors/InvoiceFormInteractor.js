@@ -6,6 +6,7 @@ import {
   value,
   collection,
   fillable,
+  clickable,
 } from '@bigtest/interactor';
 
 import {
@@ -63,6 +64,7 @@ export default interactor(class InvoiceForm {
   exchangeRate = new TextFieldInteractor('input[name="exchangeRate"]');
   exchangeRateReadOnly = attribute('input[name="exchangeRate"]', 'readonly');
   useSetExchangeRate = new CheckboxInteractor('#use-set-exhange-rate');
+  organizationLookupBtn = clickable('[data-test-plugin-find-organization]');
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);

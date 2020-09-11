@@ -1,6 +1,8 @@
+import React from 'react';
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { Button } from '@folio/stripes/components';
 import { FUND_DISTR_TYPE } from '@folio/stripes-acq-components';
 import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
@@ -15,7 +17,23 @@ import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 const TEST_VALUE_PAYMENT_TERMS = 'some test value';
 
 describe('Invoice edit', () => {
-  setupApplication();
+  setupApplication({
+    modules: [{
+      type: 'plugin',
+      name: '@folio/plugin-find-organization',
+      displayName: 'Find organization',
+      pluginType: 'find-organization',
+      /* eslint-disable-next-line react/prop-types */
+      module: ({ selectVendor }) => (
+        <Button
+          data-test-plugin-find-organization
+          onClick={() => selectVendor({ id: 'test_id', name: 'Test' })}
+        >
+          Organization lookup
+        </Button>
+      ),
+    }],
+  });
 
   const invoiceForm = new InvoiceFormInteractor();
 
@@ -87,6 +105,16 @@ describe('Invoice edit', () => {
         expect(invoiceForm.exchangeRate.value).to.be.equal('1');
         expect(invoiceForm.useSetExchangeRate.isChecked).to.be.true;
       });
+    });
+  });
+
+  describe('Select vendor from organization lookup', () => {
+    beforeEach(async function () {
+      await invoiceForm.organizationLookupBtn();
+    });
+
+    it('vendor is updated', () => {
+      expect(invoiceForm.vendorField.value).to.be.equal('Test');
     });
   });
 });
