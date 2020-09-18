@@ -11,15 +11,17 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AcqUnitsView,
   AmountWithCurrencyField,
+  FolioFormattedDate,
   sourceLabels,
 } from '@folio/stripes-acq-components';
 
 import {
-  getInvoiceStatusLabel,
-  formatDate,
-} from '../../../common/utils';
+  ApprovedBy,
+  InvoiceDateValue,
+  StatusValue,
+  PaymentTermsValue,
+} from '../../../common/components';
 import BatchGroupValue from '../BatchGroupValue';
-import ApprovedBy from '../../../common/components/ApprovedBy';
 import BillTo from './BillTo';
 
 const Information = ({
@@ -45,36 +47,39 @@ const Information = ({
       {metadata && <ViewMetaData metadata={metadata} />}
       <Row>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.invoiceDate" />}>
-            {formatDate(invoiceDate)}
-          </KeyValue>
+          <InvoiceDateValue
+            labelId="ui-invoice.invoice.details.information.invoiceDate"
+            value={invoiceDate}
+          />
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}>
-            <FormattedMessage id={getInvoiceStatusLabel({ status })} />
-          </KeyValue>
+          <StatusValue
+            labelId="ui-invoice.invoice.details.information.status"
+            value={status}
+          />
         </Col>
 
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.paymentDue" />}
           >
-            {formatDate(paymentDue)}
+            <FolioFormattedDate value={paymentDue} />
           </KeyValue>
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.terms" />}>
-            {paymentTerms}
-          </KeyValue>
+          <PaymentTermsValue
+            labelId="ui-invoice.invoice.details.information.terms"
+            value={paymentTerms}
+          />
         </Col>
 
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedDate" />}
           >
-            {formatDate(approvalDate)}
+            <FolioFormattedDate value={approvalDate} />
           </KeyValue>
         </Col>
 
@@ -119,9 +124,9 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
             <AmountWithCurrencyField
-              amount={total}
+              amount={subTotal}
               currency={currency}
             />
           </KeyValue>
@@ -137,9 +142,9 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
             <AmountWithCurrencyField
-              amount={subTotal}
+              amount={total}
               currency={currency}
             />
           </KeyValue>
@@ -153,30 +158,22 @@ Information.propTypes = {
   adjustmentsTotal: PropTypes.number,
   approvalDate: PropTypes.string,
   approvedBy: PropTypes.string,
-  batchGroupId: PropTypes.string,
-  invoiceDate: PropTypes.string,
+  batchGroupId: PropTypes.string.isRequired,
+  invoiceDate: PropTypes.string.isRequired,
   paymentDue: PropTypes.string,
   paymentTerms: PropTypes.string,
   status: PropTypes.string.isRequired,
   subTotal: PropTypes.number,
   total: PropTypes.number,
-  source: PropTypes.string,
+  source: PropTypes.string.isRequired,
   metadata: PropTypes.object,
   billTo: PropTypes.string,
   invoiceTotalUnits: PropTypes.number,
   acqUnits: PropTypes.arrayOf(PropTypes.string),
-  currency: PropTypes.string,
+  currency: PropTypes.string.isRequired,
 };
 
 Information.defaultProps = {
-  adjustmentsTotal: 0,
-  approvalDate: '',
-  invoiceDate: '',
-  paymentDue: '',
-  paymentTerms: '',
-  subTotal: 0,
-  total: 0,
-  source: '',
   invoiceTotalUnits: 0,
   acqUnits: [],
 };

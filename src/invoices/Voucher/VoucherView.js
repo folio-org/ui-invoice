@@ -37,7 +37,7 @@ const VoucherView = ({ voucher, voucherLines }) => (
       >
         <VoucherLinesDetails
           voucherLines={voucherLines}
-          currency={voucher.invoiceCurrency}
+          currency={voucher.systemCurrency}
         />
       </Accordion>
     </AccordionSet>

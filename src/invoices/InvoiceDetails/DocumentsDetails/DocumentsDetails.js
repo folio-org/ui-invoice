@@ -7,6 +7,7 @@ import {
   Row,
   Label,
   MultiColumnList,
+  TextLink,
 } from '@folio/stripes/components';
 
 import InvoiceDocument from '../../InvoiceDocument';
@@ -18,13 +19,13 @@ const linksColumnMapping = {
 };
 const linksFormatter = {
   url: l => (
-    <a
+    <TextLink
       href={l.url}
       target="_blank"
       rel="noopener noreferrer"
     >
       {l.url}
-    </a>
+    </TextLink>
   ),
 };
 

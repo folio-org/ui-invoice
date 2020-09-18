@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 import PropTypes from 'prop-types';
@@ -43,17 +46,22 @@ import {
 } from '../../common/utils';
 import { getAdjustmentFromPreset } from '../utils';
 import validateFundDistribution from '../validateFundDistribution';
+import AdjustmentsDetails from '../AdjustmentsDetails';
 
 const AdjustmentsForm = ({
   adjustmentsPresets,
+  change,
   currency,
   disabled,
-  change,
+  initialAdjustments,
+  initialCurrency,
   invoiceSubTotal,
   isLineAdjustments,
+  isNonInteractive,
   stripes,
 }) => {
   const [adjPreset, setAdjPreset] = useState();
+  const intl = useIntl();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
       ? getAdjustmentFromPreset(adjPreset.adjustment)
@@ -106,18 +114,14 @@ const AdjustmentsForm = ({
     return (
       <Card
         headerEnd={(
-          <FormattedMessage id="stripes-components.deleteThisItem">
-            {label => (
-              <IconButton
-                data-test-repeatable-field-remove-item-button
-                icon="trash"
-                onClick={onRemove}
-                size="medium"
-                disabled={disabled}
-                ariaLabel={label}
-              />
-            )}
-          </FormattedMessage>
+          <IconButton
+            data-test-repeatable-field-remove-item-button
+            icon="trash"
+            onClick={onRemove}
+            size="medium"
+            disabled={disabled}
+            ariaLabel={intl.formatMessage({ id: 'stripes-components.deleteThisItem' })}
+          />
         )}
         headerStart={(
           <FormattedMessage
@@ -222,34 +226,38 @@ const AdjustmentsForm = ({
   };
 
   return (
-    <Row>
-      <Col xs={12}>
-        <FormattedMessage id="ui-invoice.adjustment.presetAdjustment">
-          {translatedLabel => (
+    isNonInteractive
+      ? (
+        <AdjustmentsDetails
+          adjustments={initialAdjustments}
+          currency={initialCurrency}
+        />
+      )
+      : (
+        <Row>
+          <Col xs={12}>
             <Selection
               dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
-              label={translatedLabel}
+              label={intl.formatMessage({ id: 'ui-invoice.adjustment.presetAdjustment' })}
               onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
               disabled={disabled}
             />
-          )}
-        </FormattedMessage>
-
-      </Col>
-      <Col xs={12}>
-        <FieldArray
-          addLabel={<FormattedMessage id="ui-invoice.button.addAdjustment" />}
-          canAdd={!disabled}
-          canRemove={!disabled}
-          component={RepeatableField}
-          id="adjustments"
-          name="adjustments"
-          onAdd={onAdd}
-          onRemove={false}
-          renderField={renderAdjustment}
-        />
-      </Col>
-    </Row>
+          </Col>
+          <Col xs={12}>
+            <FieldArray
+              addLabel={<FormattedMessage id="ui-invoice.button.addAdjustment" />}
+              canAdd={!disabled}
+              canRemove={!disabled}
+              component={RepeatableField}
+              id="adjustments"
+              name="adjustments"
+              onAdd={onAdd}
+              onRemove={false}
+              renderField={renderAdjustment}
+            />
+          </Col>
+        </Row>
+      )
   );
 };
 
@@ -261,6 +269,9 @@ AdjustmentsForm.propTypes = {
   isLineAdjustments: PropTypes.bool,
   invoiceSubTotal: PropTypes.number,
   stripes: stripesShape,
+  initialAdjustments: PropTypes.arrayOf(PropTypes.object),
+  initialCurrency: PropTypes.string,
+  isNonInteractive: PropTypes.bool,
 };
 
 AdjustmentsForm.defaultProps = {
@@ -268,6 +279,7 @@ AdjustmentsForm.defaultProps = {
   disabled: false,
   isLineAdjustments: false,
   invoiceSubTotal: 0,
+  isNonInteractive: false,
 };
 
 export default withStripes(AdjustmentsForm);

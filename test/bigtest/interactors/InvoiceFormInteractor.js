@@ -1,4 +1,5 @@
 import {
+  attribute,
   interactor,
   Interactor,
   isPresent,
@@ -59,8 +60,8 @@ export default interactor(class InvoiceForm {
   formFooter = new FormFooterInteractor();
   adjustments = isPresent('#adjustments');
   currency = new CurrencyInteractor();
-  currentExchangeRate = isPresent('[data-test-col-current-exchange-rate]');
-  exchangeRate = new Interactor('input[name="exchangeRate"]');
+  exchangeRate = new TextFieldInteractor('input[name="exchangeRate"]');
+  exchangeRateReadOnly = attribute('input[name="exchangeRate"]', 'readonly');
   useSetExchangeRate = new CheckboxInteractor('#use-set-exhange-rate');
 
   whenLoaded() {

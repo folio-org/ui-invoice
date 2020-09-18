@@ -31,7 +31,9 @@ describe('Edit voucher information', () => {
   });
 
   it('Voucher edit form should be displayed', () => {
-    expect(editVoucherView.voucherNumberInput).to.be.true;
+    expect(editVoucherView.disbursementNumberInput.isPresent).to.be.true;
+    expect(editVoucherView.disbursementDateInput.isPresent).to.be.true;
+    expect(editVoucherView.disbursementAmountInput.isPresent).to.be.true;
   });
 
   describe('Fill and save voucher form', () => {

@@ -19,6 +19,8 @@ import {
   AppIcon,
 } from '@folio/stripes/core';
 
+import { FieldVoucherNumber } from '../../../common/components';
+
 const VoucherEditForm = ({
   handleSubmit,
   submitting,
@@ -65,12 +67,11 @@ const VoucherEditForm = ({
       >
         <Row>
           <Col xs={3}>
-            <Field
-              component={TextField}
+            <FieldVoucherNumber
               id="voucherNumber"
-              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
               name="voucherNumber"
-              disabled={!isAllowVoucherNumberEdit}
+              isNonInteractive={isAllowVoucherNumberEdit}
+              value={initialValues.voucherNumber}
             />
           </Col>
           <Col xs={3}>

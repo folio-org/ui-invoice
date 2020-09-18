@@ -52,10 +52,9 @@ describe('Invoice edit', () => {
     expect(invoiceForm.termsInputValue).to.be.equal(TEST_VALUE_PAYMENT_TERMS);
   });
 
-  it('exchange rate fields are not presented', () => {
-    expect(invoiceForm.currentExchangeRate).to.be.false;
-    expect(invoiceForm.exchangeRate.isPresent).to.be.false;
-    expect(invoiceForm.useSetExchangeRate.isPresent).to.be.false;
+  it('use set exchange rate is not checked and exhange rate is read only', () => {
+    expect(invoiceForm.exchangeRateReadOnly).to.be.equal('');
+    expect(invoiceForm.useSetExchangeRate.isChecked).to.be.false;
   });
 
   describe('Add data and save invoice', () => {
@@ -78,18 +77,15 @@ describe('Invoice edit', () => {
       await invoiceForm.currency.options.list(1).click();
     });
 
-    it('current exchange rate and use set exchange rate are visible', () => {
-      expect(invoiceForm.currentExchangeRate).to.be.true;
-      expect(invoiceForm.useSetExchangeRate.isPresent).to.be.true;
-    });
-
-    describe('Check use set exchange rate', () => {
+    describe('Check use set exchange rate and fill exchange rate', () => {
       beforeEach(async function () {
         await invoiceForm.useSetExchangeRate.clickAndBlur();
+        await invoiceForm.exchangeRate.fill('1');
       });
 
-      it('exchange rate field is visible', () => {
-        expect(invoiceForm.exchangeRate.isPresent).to.be.true;
+      it('use set exchange rate is checked and exchange rate is filled', () => {
+        expect(invoiceForm.exchangeRate.value).to.be.equal('1');
+        expect(invoiceForm.useSetExchangeRate.isChecked).to.be.true;
       });
     });
   });

@@ -9,6 +9,7 @@ import { withRouter } from 'react-router-dom';
 
 import {
   ConfirmationModal,
+  LoadingPane,
   Paneset,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
@@ -28,7 +29,6 @@ import {
   invoicesResource,
   VENDOR,
 } from '../../common/resources';
-import { LoadingPane } from '../../common/components';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';

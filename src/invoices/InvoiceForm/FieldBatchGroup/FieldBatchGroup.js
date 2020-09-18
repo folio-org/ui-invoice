@@ -8,34 +8,31 @@ import {
 
 import { getBatchGroupsOptions } from '../../../common/utils';
 
-const FieldBatchGroup = ({ batchGroups, isEditPostApproval }) => {
+const FieldBatchGroup = ({ batchGroups, isNonInteractive }) => {
   const batchGroupsOptions = useMemo(() => {
     return getBatchGroupsOptions(batchGroups);
   }, [batchGroups]);
 
-  const labelId = 'ui-invoice.invoice.details.information.batchGroup';
-  const isDisabled = isEditPostApproval || batchGroups.length === 1;
-
   return (
     <FieldSelectionFinal
       dataOptions={batchGroupsOptions}
-      disabled={isDisabled}
       id="invoice-batch-groups"
-      labelId={labelId}
+      labelId="ui-invoice.invoice.details.information.batchGroup"
       name="batchGroupId"
       required
       validate={validateRequired}
+      isNonInteractive={isNonInteractive || batchGroups.length === 1}
     />
   );
 };
 
 FieldBatchGroup.propTypes = {
   batchGroups: PropTypes.arrayOf(PropTypes.object),
-  isEditPostApproval: PropTypes.bool,
+  isNonInteractive: PropTypes.bool,
 };
 
 FieldBatchGroup.defaultProps = {
-  isEditPostApproval: false,
+  isNonInteractive: false,
 };
 
 export default FieldBatchGroup;

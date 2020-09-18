@@ -12,13 +12,13 @@ import {
   MenuSection,
   Pane,
   Row,
+  LoadingPane,
 } from '@folio/stripes/components';
 import {
   AppIcon,
   stripesConnect,
 } from '@folio/stripes/core';
 
-import { LoadingPane } from '../../common/components';
 import {
   invoiceResource,
   VOUCHER_BY_ID,
