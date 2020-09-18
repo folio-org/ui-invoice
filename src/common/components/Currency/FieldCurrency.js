@@ -20,7 +20,7 @@ const FieldCurrency = ({ isNonInteractive, value, name, required, id, onChange }
         <FieldSelectionFinal
           dataOptions={currenciesOptions}
           id={id}
-          labelId="ui-invoice.invoice.details.information.invoiceDate"
+          labelId="ui-invoice.invoice.currency"
           name={name}
           onChange={onChange}
           required={required}

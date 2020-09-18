@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
 import PropTypes from 'prop-types';
@@ -58,6 +61,7 @@ const AdjustmentsForm = ({
   stripes,
 }) => {
   const [adjPreset, setAdjPreset] = useState();
+  const intl = useIntl();
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
       ? getAdjustmentFromPreset(adjPreset.adjustment)
@@ -110,18 +114,14 @@ const AdjustmentsForm = ({
     return (
       <Card
         headerEnd={(
-          <FormattedMessage id="stripes-components.deleteThisItem">
-            {label => (
-              <IconButton
-                data-test-repeatable-field-remove-item-button
-                icon="trash"
-                onClick={onRemove}
-                size="medium"
-                disabled={disabled}
-                ariaLabel={label}
-              />
-            )}
-          </FormattedMessage>
+          <IconButton
+            data-test-repeatable-field-remove-item-button
+            icon="trash"
+            onClick={onRemove}
+            size="medium"
+            disabled={disabled}
+            ariaLabel={intl.formatMessage({ id: 'stripes-components.deleteThisItem' })}
+          />
         )}
         headerStart={(
           <FormattedMessage
@@ -236,17 +236,12 @@ const AdjustmentsForm = ({
       : (
         <Row>
           <Col xs={12}>
-            <FormattedMessage id="ui-invoice.adjustment.presetAdjustment">
-              {translatedLabel => (
-                <Selection
-                  dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
-                  label={translatedLabel}
-                  onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
-                  disabled={disabled}
-                />
-              )}
-            </FormattedMessage>
-
+            <Selection
+              dataOptions={getAdjustmentPresetOptions(adjustmentsPresets)}
+              label={intl.formatMessage({ id: 'ui-invoice.adjustment.presetAdjustment' })}
+              onChange={(id) => setAdjPreset(find(adjustmentsPresets, { id }))}
+              disabled={disabled}
+            />
           </Col>
           <Col xs={12}>
             <FieldArray

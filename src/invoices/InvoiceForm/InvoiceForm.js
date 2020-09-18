@@ -98,7 +98,6 @@ const InvoiceForm = ({
     adjustmentsTotal,
     approvalDate,
     approvedBy,
-    batchGroupId,
     currency,
     exchangeRate,
     folioInvoiceNo,
@@ -155,6 +154,10 @@ const InvoiceForm = ({
     ? INVOICE_STATUSES_OPTIONS
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
   const isSetUseExangeRateDisabled = isEditPostApproval || (filledCurrency === systemCurrency);
+  const tooltipTextExchangeRate = !isExchangeRateEnabled && !isEditPostApproval &&
+    <FormattedMessage id="ui-invoice.invoice.setExchangeRate.tooltip" />;
+  const tooltipTextUseSetExchangeRate = isSetUseExangeRateDisabled && !isEditPostApproval &&
+    <FormattedMessage id="ui-invoice.invoice.useSetExchangeRate.tooltip" />;
 
   const resetExchangeRate = useCallback(() => change('exchangeRate', null), [change]);
 
@@ -282,7 +285,6 @@ const InvoiceForm = ({
                         <FieldBatchGroup
                           batchGroups={batchGroups}
                           isNonInteractive={isEditPostApproval}
-                          batchGroupId={batchGroupId}
                         />
                       </Col>
                     </Row>
@@ -456,7 +458,7 @@ const InvoiceForm = ({
                           label={<FormattedMessage id="ui-invoice.invoice.useSetExchangeRate" />}
                           onChange={enableExchangeRate}
                           vertical
-                          tooltipText={isSetUseExangeRateDisabled && <FormattedMessage id="ui-invoice.invoice.useSetExchangeRate.tooltip" />}
+                          tooltipText={tooltipTextUseSetExchangeRate}
                         />
                       </Col>
                       <Col data-test-col-set-exchange-rate xs={3}>
@@ -468,7 +470,7 @@ const InvoiceForm = ({
                           name="exchangeRate"
                           type="number"
                           readOnly={!isExchangeRateEnabled}
-                          tooltipText={!isExchangeRateEnabled && <FormattedMessage id="ui-invoice.invoice.setExchangeRate.tooltip" />}
+                          tooltipText={tooltipTextExchangeRate}
                         />
                       </Col>
                     </Row>
