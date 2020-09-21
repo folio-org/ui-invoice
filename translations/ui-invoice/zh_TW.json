@@ -254,7 +254,7 @@
     "settings.batchGroupConfiguration.setTime": "Set time",
     "settings.batchGroupConfiguration.testConnection": "Test connection",
     "settings.batchGroupConfiguration.uploadLocation": "Upload location",
-    "settings.batchGroupConfiguration.username": "Username",
+    "settings.batchGroupConfiguration.username": "使用者名稱",
     "settings.batchGroupConfiguration.weekdays.Friday": "F",
     "settings.batchGroupConfiguration.weekdays.Monday": "M",
     "settings.batchGroupConfiguration.weekdays.Saturday": "S",
@@ -303,5 +303,7 @@
     "settings.voucherNumber.prefixValidation": "Prefix is not valid",
     "invoice.currentExchangeRate": "Current exchange rate",
     "invoice.useSetExchangeRate": "Use set exchange rate",
-    "invoice.setExchangeRate": "Set exchange rate"
+    "invoice.setExchangeRate": "Set exchange rate",
+    "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
+    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field"
 }
