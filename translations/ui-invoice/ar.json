@@ -1,5 +1,5 @@
 {
-    "meta.title": "الفاتورة",
+    "meta.title": "الفواتير",
     "invoice.details.paneTitle": "رقم فاتورة المورّد -{vendorInvoiceNo}",
     "invoice.status.approved": "مقبول",
     "invoice.status.open": "مفتوح",
@@ -103,7 +103,7 @@
     "search.voucherNumber": "رقم القسيمة",
     "search.vendorInvoiceNo": "رقم فاتورة المورّد",
     "search.poNumbers": "أرقام أوامر الشراء",
-    "search.keyword": "كلمة مفتاحية",
+    "search.keyword": "الكل",
     "invoice.details.information.acqUnits": "وحدات التزويد",
     "invoice.details.information.billToName": "إرسال الحساب إلى اسم",
     "invoice.details.information.billToAddress": "إرسال الحساب إلى عنوان",
@@ -303,5 +303,7 @@
     "settings.voucherNumber.prefixValidation": "البادئة غير صالحة",
     "invoice.currentExchangeRate": "سعر الصرف الحالي",
     "invoice.useSetExchangeRate": "استخدام سعر الصرف المحدد",
-    "invoice.setExchangeRate": "تعيين سعر الصرف"
+    "invoice.setExchangeRate": "تعيين سعر الصرف",
+    "invoice.useSetExchangeRate.tooltip": "اختر عملة أخرى للتفاعل مع هذا الحقل",
+    "invoice.setExchangeRate.tooltip": "تحقق من استخدام سعر الصرف المحدد للتفاعل مع هذا الحقل"
 }

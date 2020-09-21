@@ -303,5 +303,7 @@
     "settings.voucherNumber.prefixValidation": "前缀无效",
     "invoice.currentExchangeRate": "Current exchange rate",
     "invoice.useSetExchangeRate": "Use set exchange rate",
-    "invoice.setExchangeRate": "Set exchange rate"
+    "invoice.setExchangeRate": "Set exchange rate",
+    "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
+    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field"
 }

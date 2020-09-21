@@ -303,5 +303,7 @@
     "settings.voucherNumber.prefixValidation": "Le préfixe n'est pas valide",
     "invoice.currentExchangeRate": "Taux de change actuel",
     "invoice.useSetExchangeRate": "Utiliser le taux de change défini",
-    "invoice.setExchangeRate": "Définir le taux de change"
+    "invoice.setExchangeRate": "Définir le taux de change",
+    "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
+    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field"
 }
