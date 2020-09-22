@@ -304,6 +304,6 @@
     "invoice.currentExchangeRate": "Taxa de câmbio atual",
     "invoice.useSetExchangeRate": "Use a taxa de câmbio definida",
     "invoice.setExchangeRate": "Definir taxa de câmbio",
-    "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
-    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field"
+    "invoice.useSetExchangeRate.tooltip": "Escolha outra moeda para interagir com este campo",
+    "invoice.setExchangeRate.tooltip": "Marque usar definir taxa de câmbio para interagir com este campo"
 }
