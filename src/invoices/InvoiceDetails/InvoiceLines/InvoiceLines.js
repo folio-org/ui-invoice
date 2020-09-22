@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { findIndex } from 'lodash';
 
 import {
   Icon,
@@ -50,7 +49,7 @@ const InvoiceLines = ({
 }) => {
   const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
-    lineNumber: ({ id, poLineId }) => {
+    lineNumber: ({ poLineId, rowIndex }) => {
       const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
       return (
@@ -66,7 +65,7 @@ const InvoiceLines = ({
               &nbsp;
             </>
           )}
-          {findIndex(invoiceLinesItems, ['id', id]) + 1}
+          {rowIndex + 1}
         </>
       );
     },
