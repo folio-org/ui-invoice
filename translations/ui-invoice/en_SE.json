@@ -84,7 +84,6 @@
     "status.Open": "Open",
     "invoice.details.lines.add": "Add",
     "invoice.details.lines.list.description": "Title",
-    "invoice.details.lines.list.number": "Line number",
     "invoice.details.lines.list.quantity": "Quantity",
     "invoice.details.lines.list.total": "Total",
     "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
@@ -295,7 +294,7 @@
     "invoice.details.batchVoucherExport.fileName": "Batch file name",
     "invoice.details.batchVoucherExport.status": "Batch file status",
     "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
-    "invoice.actions.approve.error.inactiveExpenseClass": "Expense class is Inactive",
+    "invoice.actions.approve.error.inactiveExpenseClass": "Invoice can not be <b>Approved</b> because expense class <b>{expenseClass}</b> is inactive.",
     "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created",
     "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid",
     "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because <b>{expenseClass}</b> is inactive.",
@@ -305,5 +304,12 @@
     "invoice.useSetExchangeRate": "Use set exchange rate",
     "invoice.setExchangeRate": "Set exchange rate",
     "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
-    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field"
+    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field",
+    "settings.BatchVoucherExports.message": "Message",
+    "settings.BatchVoucherExports.message.uploaded": "Uploaded successfully to FTP location",
+    "invoice.details.lines.list.fundDistribution": "Fund distribution",
+    "invoice.details.lines.list.lineNumber": "#",
+    "invoice.details.lines.list.polNumber": "POL number",
+    "invoice.details.lines.list.subTotal": "Sub-total",
+    "invoice.details.lines.list.vendorRefNo": "Vendor ref number"
 }

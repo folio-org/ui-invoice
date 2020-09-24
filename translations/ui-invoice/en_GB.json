@@ -83,8 +83,7 @@
     "adjustments": "Adjustments",
     "status.Open": "Open",
     "invoice.details.lines.add": "Add",
-    "invoice.details.lines.list.description": "Title",
-    "invoice.details.lines.list.number": "Line number",
+    "invoice.details.lines.list.description": "Description",
     "invoice.details.lines.list.quantity": "Quantity",
     "invoice.details.lines.list.total": "Total",
     "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
@@ -305,5 +304,12 @@
     "invoice.useSetExchangeRate": "Use set exchange rate",
     "invoice.setExchangeRate": "Set exchange rate",
     "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
-    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field"
+    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field",
+    "settings.BatchVoucherExports.message": "Message",
+    "settings.BatchVoucherExports.message.uploaded": "Uploaded successfully to FTP location",
+    "invoice.details.lines.list.fundDistribution": "Fund distribution",
+    "invoice.details.lines.list.lineNumber": "#",
+    "invoice.details.lines.list.polNumber": "POL number",
+    "invoice.details.lines.list.subTotal": "Sub-total",
+    "invoice.details.lines.list.vendorRefNo": "Vendor ref number"
 }
