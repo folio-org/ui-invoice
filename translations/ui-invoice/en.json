@@ -131,12 +131,14 @@
   "settings.batchGroupConfiguration.weekdays.Wednesday": "W",
 
   "settings.BatchVoucherExports.date": "Date",
+  "settings.BatchVoucherExports.message": "Message",
   "settings.BatchVoucherExports.status": "Status",
   "settings.BatchVoucherExports.status.pending": "Pending",
   "settings.BatchVoucherExports.status.generated": "Generated",
   "settings.BatchVoucherExports.status.uploaded": "Uploaded",
   "settings.BatchVoucherExports.status.error": "Error",
   "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded",
+  "settings.BatchVoucherExports.message.uploaded": "Uploaded successfully to FTP location",
 
   "settings.voucherNumber.label": "Voucher number",
   "settings.voucherNumber.prefix": "Prefix",
