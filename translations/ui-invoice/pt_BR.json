@@ -84,7 +84,6 @@
     "status.Open": "Aberto",
     "invoice.details.lines.add": "Adicionar",
     "invoice.details.lines.list.description": "Título",
-    "invoice.details.lines.list.number": "Número da linha",
     "invoice.details.lines.list.quantity": "Quantidade",
     "invoice.details.lines.list.total": "Total",
     "find-po-line-plugin-unavailable": "O plugin de busca de linha de pedidos não está disponível",
@@ -305,5 +304,12 @@
     "invoice.useSetExchangeRate": "Use a taxa de câmbio definida",
     "invoice.setExchangeRate": "Definir taxa de câmbio",
     "invoice.useSetExchangeRate.tooltip": "Escolha outra moeda para interagir com este campo",
-    "invoice.setExchangeRate.tooltip": "Marque usar definir taxa de câmbio para interagir com este campo"
+    "invoice.setExchangeRate.tooltip": "Marque usar definir taxa de câmbio para interagir com este campo",
+    "settings.BatchVoucherExports.message": "Mensagem",
+    "settings.BatchVoucherExports.message.uploaded": "Uploaded successfully to FTP location",
+    "invoice.details.lines.list.fundDistribution": "Fund distribution",
+    "invoice.details.lines.list.lineNumber": "#",
+    "invoice.details.lines.list.polNumber": "POL number",
+    "invoice.details.lines.list.subTotal": "Sub-total",
+    "invoice.details.lines.list.vendorRefNo": "Vendor ref number"
 }

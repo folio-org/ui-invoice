@@ -84,7 +84,6 @@
     "status.Open": "Ouvert",
     "invoice.details.lines.add": "Ajouter",
     "invoice.details.lines.list.description": "Titre",
-    "invoice.details.lines.list.number": "Numéro de ligne",
     "invoice.details.lines.list.quantity": "Quantité",
     "invoice.details.lines.list.total": "Total:",
     "find-po-line-plugin-unavailable": "Le plugin de recherche de ligne de commande n'est pas disponible",
@@ -305,5 +304,12 @@
     "invoice.useSetExchangeRate": "Utiliser le taux de change défini",
     "invoice.setExchangeRate": "Définir le taux de change",
     "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
-    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field"
+    "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field",
+    "settings.BatchVoucherExports.message": "Message",
+    "settings.BatchVoucherExports.message.uploaded": "Uploaded successfully to FTP location",
+    "invoice.details.lines.list.fundDistribution": "Fund distribution",
+    "invoice.details.lines.list.lineNumber": "#",
+    "invoice.details.lines.list.polNumber": "POL number",
+    "invoice.details.lines.list.subTotal": "Sub-total",
+    "invoice.details.lines.list.vendorRefNo": "Vendor ref number"
 }
