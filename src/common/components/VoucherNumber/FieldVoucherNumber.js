@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
+import { FormattedMessage } from 'react-intl';
 
 import { TextField } from '@folio/stripes/components';
 
@@ -12,7 +13,7 @@ const FieldVoucherNumber = ({ isNonInteractive, value, name, id }) => (
     : (
       <Field
         component={TextField}
-        labelId="ui-invoice.invoice.details.voucher.voucherNumber"
+        label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
         id={id}
         name={name}
         type="text"

@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import {
   Icon,
   MultiColumnList,
+  NoValue,
 } from '@folio/stripes/components';
 import {
   acqRowFormatter,
@@ -14,14 +15,29 @@ import {
 
 import styles from './InvoiceLines.css';
 
-const visibleColumns = ['description', 'invoiceLineNumber', 'quantity', 'adjustmentsTotal', 'total', 'arrow'];
+const visibleColumns = [
+  'lineNumber',
+  'polNumber',
+  'description',
+  'fundDistribution',
+  'quantity',
+  'subTotal',
+  'adjustmentsTotal',
+  'total',
+  'vendorRefNo',
+  'arrow',
+];
 const columnMapping = {
   arrow: null,
   description: <FormattedMessage id="ui-invoice.invoice.details.lines.list.description" />,
-  invoiceLineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.number" />,
   quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
   adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
+  lineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.lineNumber" />,
+  polNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.polNumber" />,
+  fundDistribution: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundDistribution" />,
+  subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
+  vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNo" />,
 };
 const alignRowProps = { alignLastColToEnd: true };
 
@@ -33,22 +49,7 @@ const InvoiceLines = ({
 }) => {
   const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
-    adjustmentsTotal: ({ adjustmentsTotal }) => (
-      <AmountWithCurrencyField
-        amount={adjustmentsTotal}
-        currency={currency}
-      />
-    ),
-    // eslint-disable-next-line react/prop-types
-    total: ({ total }) => (
-      <AmountWithCurrencyField
-        amount={total}
-        currency={currency}
-      />
-    ),
-    arrow: () => <Icon icon="caret-right" />,
-    // eslint-disable-next-line react/prop-types
-    description: ({ description, poLineId }) => {
+    lineNumber: ({ poLineId, rowIndex }) => {
       const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
       return (
@@ -64,11 +65,36 @@ const InvoiceLines = ({
               &nbsp;
             </>
           )}
-          {description}
+          {rowIndex + 1}
         </>
       );
     },
-  }), [currency, orderlinesMap]);
+    // eslint-disable-next-line react/prop-types
+    adjustmentsTotal: ({ adjustmentsTotal }) => (
+      <AmountWithCurrencyField
+        amount={adjustmentsTotal}
+        currency={currency}
+      />
+    ),
+    // eslint-disable-next-line react/prop-types
+    total: ({ total }) => (
+      <AmountWithCurrencyField
+        amount={total}
+        currency={currency}
+      />
+    ),
+    // eslint-disable-next-line react/prop-types
+    subTotal: ({ subTotal }) => (
+      <AmountWithCurrencyField
+        amount={subTotal}
+        currency={currency}
+      />
+    ),
+    arrow: () => <Icon icon="caret-right" />,
+    polNumber: ({ poLineId }) => orderlinesMap?.[poLineId]?.poLineNumber || <NoValue />,
+    fundDistribution: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(',') || <NoValue />,
+    vendorRefNo: ({ vendorRefNo }) => vendorRefNo || <NoValue />,
+  }), [currency, orderlinesMap, invoiceLinesItems]);
 
   return (
     <>

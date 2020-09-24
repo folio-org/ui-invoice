@@ -221,11 +221,15 @@
 
   "invoice.details.lines.title": "Invoice lines",
   "invoice.details.lines.add": "Add",
-  "invoice.details.lines.list.description": "Title",
-  "invoice.details.lines.list.number": "Line number",
-  "invoice.details.lines.list.quantity": "Quantity",
   "invoice.details.lines.list.adjustments": "Adjustments",
+  "invoice.details.lines.list.description": "Description",
+  "invoice.details.lines.list.fundDistribution": "Fund distribution",
+  "invoice.details.lines.list.lineNumber": "#",
+  "invoice.details.lines.list.polNumber": "POL number",
+  "invoice.details.lines.list.quantity": "Quantity",
+  "invoice.details.lines.list.subTotal": "Sub-total",
   "invoice.details.lines.list.total": "Total",
+  "invoice.details.lines.list.vendorRefNo": "Vendor ref number",
 
   "invoice.details.vendor.title": "Vendor details",
   "invoice.details.vendor.vendorInvoiceNo": "Vendor invoice number",
