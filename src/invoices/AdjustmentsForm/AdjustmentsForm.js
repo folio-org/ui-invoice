@@ -45,7 +45,6 @@ import {
   getAdjustmentPresetOptions,
 } from '../../common/utils';
 import { getAdjustmentFromPreset } from '../utils';
-import validateFundDistribution from '../validateFundDistribution';
 import AdjustmentsDetails from '../AdjustmentsDetails';
 
 const AdjustmentsForm = ({
@@ -218,7 +217,6 @@ const AdjustmentsForm = ({
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
             totalAmount={adjustmentAmount}
-            validate={validateFundDistribution}
           />
         )}
       </Card>
