@@ -20,6 +20,7 @@ import {
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
+import { INVOICE_STATUS } from '../../common/constants';
 import {
   batchGroupsResource,
   CONFIG_ADJUSTMENTS,
@@ -113,6 +114,7 @@ function InvoiceFormContainer({
       source: sourceValues.user,
       adjustments: alwaysShowAdjustments,
       batchGroupId,
+      status: INVOICE_STATUS.open,
     };
 
   const invoiceVendor = isCreate ? undefined : get(resources, ['invoiceFormVendor', 'records', 0]);

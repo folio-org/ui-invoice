@@ -42,7 +42,6 @@ import AdjustmentsForm from '../AdjustmentsForm';
 import {
   SECTIONS_INVOICE_LINE_FORM as SECTIONS,
 } from '../constants';
-import validate from './validate';
 
 class InvoiceLineForm extends Component {
   static propTypes = {
@@ -74,12 +73,6 @@ class InvoiceLineForm extends Component {
       change('accountingCode', null);
     }
   };
-
-  validateFundDisribution = (fundDistribution, formValues) => {
-    const { invoice } = this.props;
-
-    return validate(invoice.currency, fundDistribution, formValues);
-  }
 
   render() {
     const {
@@ -284,7 +277,6 @@ class InvoiceLineForm extends Component {
                         fundDistribution={fundDistributions}
                         name="fundDistributions"
                         totalAmount={totalAmount}
-                        validate={this.validateFundDisribution}
                       />
                     </Accordion>
                     <Accordion

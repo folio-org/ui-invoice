@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Remove validation, add default Open status. Refs UIF-253
 * Display batch voucher error message beside "Status". Refs UINV-188
 * Update invoice view pane. Refs UINV-187
 * Update create/edit Invoice form inactive fields. Refs UINV-185
