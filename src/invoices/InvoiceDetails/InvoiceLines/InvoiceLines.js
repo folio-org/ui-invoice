@@ -19,7 +19,7 @@ const visibleColumns = [
   'lineNumber',
   'polNumber',
   'description',
-  'fundDistribution',
+  'fundCode',
   'quantity',
   'subTotal',
   'adjustmentsTotal',
@@ -35,7 +35,7 @@ const columnMapping = {
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
   lineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.lineNumber" />,
   polNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.polNumber" />,
-  fundDistribution: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundDistribution" />,
+  fundCode: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundCode" />,
   subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
   vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNo" />,
 };
@@ -92,7 +92,7 @@ const InvoiceLines = ({
     ),
     arrow: () => <Icon icon="caret-right" />,
     polNumber: ({ poLineId }) => orderlinesMap?.[poLineId]?.poLineNumber || <NoValue />,
-    fundDistribution: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(',') || <NoValue />,
+    fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
     vendorRefNo: ({ vendorRefNo }) => vendorRefNo || <NoValue />,
   }), [currency, orderlinesMap, invoiceLinesItems]);
 

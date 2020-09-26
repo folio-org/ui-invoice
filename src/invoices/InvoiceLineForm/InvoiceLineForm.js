@@ -16,23 +16,28 @@ import {
   Checkbox,
   Col,
   ExpandAllButton,
+  KeyValue,
   Pane,
   Paneset,
   Row,
-  TextField,
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/final-form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
+  AmountWithCurrencyField,
   FieldDatepickerFinal,
   FieldSelectionFinal,
   FormFooter,
   FundDistributionFieldsFinal,
   parseNumberFieldValue,
+  TextField,
   validateRequired,
   validateRequiredNumber,
 } from '@folio/stripes-acq-components';
 
+import {
+  StatusValue,
+} from '../../common/components';
 import {
   calculateTotalAmount,
   getAccountNumberOptions,
@@ -69,8 +74,10 @@ class InvoiceLineForm extends Component {
 
     if (accountNo) {
       change('accountingCode', accountingCode);
+      change('accountNumber', accountNo);
     } else {
       change('accountingCode', null);
+      change('accountNumber', null);
     }
   };
 
@@ -87,14 +94,21 @@ class InvoiceLineForm extends Component {
       submitting,
       values: formValues,
     } = this.props;
-    const invoiceLineNumber = get(initialValues, 'invoiceLineNumber', '');
-    const { accountNumber, poLineId, metadata } = initialValues;
+    const {
+      accountNumber,
+      adjustments,
+      id,
+      invoiceLineNumber,
+      invoiceLineStatus,
+      metadata,
+      poLineId,
+      subTotal,
+    } = initialValues;
     const totalAmount = calculateTotalAmount(formValues, invoice.currency);
-    const isEditPostApproval = IS_EDIT_POST_APPROVAL(initialValues.id, initialValues.invoiceLineStatus);
+    const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, invoiceLineStatus);
     const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
-    const isDisabledEditFundDistribution = IS_EDIT_POST_APPROVAL(invoice.id, invoice.status);
 
-    const paneTitle = initialValues.id
+    const paneTitle = id
       ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
       : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
     const paneFooter = (
@@ -108,7 +122,6 @@ class InvoiceLineForm extends Component {
       />
     );
     const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
-    const fundDistributions = get(formValues, 'fundDistributions');
 
     return (
       <form
@@ -151,14 +164,9 @@ class InvoiceLineForm extends Component {
                           />
                         </Col>
                         <Col data-test-col-invoice-line-number xs={3}>
-                          <Field
-                            component={TextField}
-                            id="invoiceLineNumber"
+                          <KeyValue
                             label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineNumber" />}
-                            name="invoiceLineNumber"
-                            disabled
-                            required
-                            type="text"
+                            value={invoiceLineNumber}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-vendor-ref-no xs={3}>
@@ -170,14 +178,7 @@ class InvoiceLineForm extends Component {
                           />
                         </Col>
                         <Col data-test-col-invoice-line-status xs={3}>
-                          <Field
-                            component={TextField}
-                            id="invoiceLineStatus"
-                            label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineStatus" />}
-                            name="invoiceLineStatus"
-                            disabled
-                            required
-                          />
+                          <StatusValue value={invoiceLineStatus} />
                         </Col>
                       </Row>
 
@@ -185,24 +186,25 @@ class InvoiceLineForm extends Component {
                         <Col data-test-col-invoice-line-subscription-info xs={3}>
                           <Field
                             component={TextField}
-                            disabled={isEditPostApproval}
-                            id="subscriptionInfo"
                             label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionInfo" />}
+                            id="subscriptionInfo"
                             name="subscriptionInfo"
+                            isNonInteractive={isEditPostApproval}
+                            type="text"
                           />
                         </Col>
                         <Col data-test-col-invoice-line-subscription-start xs={3}>
                           <FieldDatepickerFinal
-                            disabled={isEditPostApproval}
                             labelId="ui-invoice.invoiceLine.subscriptionStart"
                             name="subscriptionStart"
+                            isNonInteractive={isEditPostApproval}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-subscription-end xs={3}>
                           <FieldDatepickerFinal
-                            disabled={isEditPostApproval}
                             labelId="ui-invoice.invoiceLine.subscriptionEnd"
                             name="subscriptionEnd"
+                            isNonInteractive={isEditPostApproval}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-comment xs={3}>
@@ -214,29 +216,26 @@ class InvoiceLineForm extends Component {
                           />
                         </Col>
                         <Col data-test-col-invoice-line-account-number xs={3}>
-                          <Field
-                            component={TextField}
-                            id="accountingCode"
+                          <KeyValue
                             label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
-                            name="accountingCode"
-                            disabled
+                            value={formValues.accountingCode}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-accounting-code xs={3}>
                           <FieldSelectionFinal
                             dataOptions={getAccountNumberOptions(accountNumbers)}
-                            disabled={isDisabledToEditAccountNumber}
                             id="invoice-line-account-number"
                             labelId="ui-invoice.invoiceLine.accountNumber"
                             name="accountNumber"
                             onChange={this.changeAccountNumber}
+                            isNonInteractive={isDisabledToEditAccountNumber}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-quantity xs={3}>
                           <Field
                             component={TextField}
-                            disabled={isEditPostApproval}
                             id="quantity"
+                            isNonInteractive={isEditPostApproval}
                             label={<FormattedMessage id="ui-invoice.invoiceLine.quantity" />}
                             name="quantity"
                             required
@@ -245,16 +244,28 @@ class InvoiceLineForm extends Component {
                           />
                         </Col>
                         <Col data-test-col-invoice-line-sub-total xs={3}>
-                          <Field
-                            component={TextField}
-                            id="subTotal"
-                            label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}
-                            name="subTotal"
-                            required
-                            type="number"
-                            parse={parseNumberFieldValue}
-                            validate={validateRequiredNumber}
-                          />
+                          {isEditPostApproval
+                            ? (
+                              <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}>
+                                <AmountWithCurrencyField
+                                  amount={subTotal}
+                                  currency={invoice.currency}
+                                />
+                              </KeyValue>
+                            )
+                            : (
+                              <Field
+                                component={TextField}
+                                id="subTotal"
+                                label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}
+                                name="subTotal"
+                                required
+                                type="number"
+                                parse={parseNumberFieldValue}
+                                validate={validateRequiredNumber}
+                              />
+                            )
+                          }
                         </Col>
                         <Col data-test-col-release-encumbrance xs={3}>
                           <Field
@@ -271,10 +282,10 @@ class InvoiceLineForm extends Component {
                       label={<FormattedMessage id="ui-invoice.fundDistribution" />}
                     >
                       <FundDistributionFieldsFinal
-                        currency={invoice.currency}
-                        disabled={isDisabledEditFundDistribution}
                         change={change}
-                        fundDistribution={fundDistributions}
+                        currency={invoice.currency}
+                        disabled={isEditPostApproval}
+                        fundDistribution={formValues.fundDistributions}
                         name="fundDistributions"
                         totalAmount={totalAmount}
                       />
@@ -285,9 +296,11 @@ class InvoiceLineForm extends Component {
                     >
                       <AdjustmentsForm
                         adjustmentsPresets={adjustmentsPresets}
-                        isLineAdjustments
-                        disabled={isEditPostApproval}
                         change={change}
+                        initialAdjustments={adjustments}
+                        initialCurrency={invoice.currency}
+                        isLineAdjustments
+                        isNonInteractive={isEditPostApproval}
                       />
                     </Accordion>
                   </AccordionSet>

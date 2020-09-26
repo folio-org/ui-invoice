@@ -16,12 +16,10 @@ import {
   Col,
   ExpandAllButton,
   KeyValue,
-  NoValue,
   Pane,
   Paneset,
   Row,
   TextArea,
-  TextField,
 } from '@folio/stripes/components';
 import stripesForm from '@folio/stripes/final-form';
 import { ViewMetaData } from '@folio/stripes/smart-components';
@@ -35,6 +33,7 @@ import {
   FolioFormattedDate,
   FormFooter,
   PAYMENT_METHOD_OPTIONS,
+  TextField,
   TooltippedControl,
   validateRequired,
 } from '@folio/stripes-acq-components';
@@ -55,12 +54,7 @@ import {
 } from '../../common/utils';
 import {
   ApprovedBy,
-  BillToValue,
-  FieldAccountingCode,
   FieldCurrency,
-  FieldInvoiceDate,
-  FieldPaymentTerms,
-  FieldStatus,
 } from '../../common/components';
 import {
   SECTIONS_INVOICE_FORM as SECTIONS,
@@ -92,7 +86,6 @@ const InvoiceForm = ({
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
   const {
-    accountingCode,
     acqUnitIds,
     adjustments,
     adjustmentsTotal,
@@ -102,9 +95,7 @@ const InvoiceForm = ({
     exchangeRate,
     folioInvoiceNo,
     id,
-    invoiceDate,
     metadata,
-    paymentTerms,
     status,
     subTotal,
     total,
@@ -209,21 +200,22 @@ const InvoiceForm = ({
                     {metadata && <ViewMetaData metadata={metadata} />}
                     <Row>
                       <Col data-test-col-invoice-date xs={3}>
-                        <FieldInvoiceDate
+                        <FieldDatepickerFinal
                           isNonInteractive={isEditPostApproval}
+                          labelId="ui-invoice.invoice.details.information.invoiceDate"
                           name="invoiceDate"
-                          required
-                          value={invoiceDate}
+                          validate={validateRequired}
                         />
                       </Col>
                       <Col data-test-col-status xs={3}>
-                        <FieldStatus
+                        <FieldSelectionFinal
+                          dataOptions={statusOptions}
                           id="invoice-status"
                           isNonInteractive={isEditPostApproval}
+                          labelId="ui-invoice.invoice.details.information.status"
                           name="status"
                           required
-                          statusOptions={statusOptions}
-                          value={status}
+                          validate={validateRequired}
                         />
                       </Col>
                       <Col data-test-col-payment-due xs={3}>
@@ -233,11 +225,13 @@ const InvoiceForm = ({
                         />
                       </Col>
                       <Col data-test-col-payment-terms xs={3}>
-                        <FieldPaymentTerms
+                        <Field
+                          component={TextField}
                           id="paymentTerms"
-                          name="paymentTerms"
                           isNonInteractive={isEditPostApproval}
-                          value={paymentTerms}
+                          label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
+                          name="paymentTerms"
+                          type="text"
                         />
                       </Col>
                     </Row>
@@ -276,8 +270,8 @@ const InvoiceForm = ({
                         className={invoiceCss.addressWrapper}
                         xs={3}
                       >
-                        <BillToValue
-                          labelId="ui-invoice.invoice.billToAddress"
+                        <KeyValue
+                          label={<FormattedMessage id="ui-invoice.invoice.billToName" />}
                           value={addressBillTo}
                         />
                       </Col>
@@ -382,12 +376,12 @@ const InvoiceForm = ({
                       </Col>
 
                       <Col data-test-col-accounting-code xs={3}>
-                        <FieldAccountingCode
-                          accountingCodeOptions={accountingCodeOptions}
+                        <FieldSelectionFinal
+                          dataOptions={accountingCodeOptions}
                           isNonInteractive={isEditPostApproval}
+                          labelId="ui-invoice.invoice.accountingCode"
                           name="accountingCode"
                           readOnly={!vendor}
-                          value={accountingCode}
                         />
                       </Col>
                     </Row>
@@ -400,7 +394,7 @@ const InvoiceForm = ({
                       <Col data-test-col-folio-invoice-no xs={3}>
                         <KeyValue
                           label={<FormattedMessage id="ui-invoice.invoice.folioInvoiceNo" />}
-                          value={folioInvoiceNo || <NoValue />}
+                          value={folioInvoiceNo}
                         />
                       </Col>
                       <Col data-test-col-payment-method xs={3}>

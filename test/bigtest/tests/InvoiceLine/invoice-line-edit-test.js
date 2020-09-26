@@ -34,8 +34,6 @@ describe('Invoice line edit', () => {
     });
     const invoiceLine = this.server.create('invoiceline', {
       invoiceId: invoice.id,
-      accountNumber: ACCOUNT_NUMBER,
-      accountingCode: ACCOUNTING_CODE,
       fundDistributions: [{
         fundId: fund.id,
         value: 100,

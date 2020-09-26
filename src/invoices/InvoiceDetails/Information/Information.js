@@ -17,9 +17,7 @@ import {
 
 import {
   ApprovedBy,
-  InvoiceDateValue,
   StatusValue,
-  PaymentTermsValue,
 } from '../../../common/components';
 import BatchGroupValue from '../BatchGroupValue';
 import BillTo from './BillTo';
@@ -47,30 +45,26 @@ const Information = ({
       {metadata && <ViewMetaData metadata={metadata} />}
       <Row>
         <Col xs={3}>
-          <InvoiceDateValue
-            labelId="ui-invoice.invoice.details.information.invoiceDate"
-            value={invoiceDate}
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.invoiceDate" />}
+            value={<FolioFormattedDate value={invoiceDate} />}
           />
         </Col>
 
         <Col xs={3}>
-          <StatusValue
-            labelId="ui-invoice.invoice.details.information.status"
-            value={status}
-          />
+          <StatusValue value={status} />
         </Col>
 
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.paymentDue" />}
-          >
-            <FolioFormattedDate value={paymentDue} />
-          </KeyValue>
+            value={<FolioFormattedDate value={paymentDue} />}
+          />
         </Col>
 
         <Col xs={3}>
-          <PaymentTermsValue
-            labelId="ui-invoice.invoice.details.information.terms"
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
             value={paymentTerms}
           />
         </Col>
@@ -78,9 +72,8 @@ const Information = ({
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedDate" />}
-          >
-            <FolioFormattedDate value={approvalDate} />
-          </KeyValue>
+            value={<FolioFormattedDate value={approvalDate} />}
+          />
         </Col>
 
         <Col

@@ -6,16 +6,15 @@ import {
   Checkbox,
   Col,
   KeyValue,
+  NoValue,
   Row,
   TextLink,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
-import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
-
 import {
-  getInvoiceStatusLabel,
-  formatDate,
-} from '../../common/utils';
+  AmountWithCurrencyField,
+  FolioFormattedDate,
+} from '@folio/stripes-acq-components';
 
 const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
   const metadata = invoiceLine.metadata;
@@ -32,13 +31,18 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
         </Col>
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}>
-            <TextLink
-              rel="noopener noreferrer"
-              target="_blank"
-              to={`/orders/lines/view/${poLine.id}`}
-            >
-              {poLine.poLineNumber}
-            </TextLink>
+            {poLine.id
+              ? (
+                <TextLink
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  to={`/orders/lines/view/${poLine.id}`}
+                >
+                  {poLine.poLineNumber}
+                </TextLink>
+              )
+              : <NoValue />
+            }
           </KeyValue>
         </Col>
         <Col xs={3}>
@@ -54,9 +58,10 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
           />
         </Col>
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineStatus" />}>
-            <FormattedMessage id={getInvoiceStatusLabel({ status: invoiceLine.invoiceLineStatus })} />
-          </KeyValue>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}
+            value={invoiceLine.invoiceLineStatus}
+          />
         </Col>
         <Col xs={3}>
           <KeyValue
@@ -67,13 +72,13 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionStart" />}
-            value={formatDate(invoiceLine.subscriptionStart)}
+            value={<FolioFormattedDate value={invoiceLine.subscriptionStart} />}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionEnd" />}
-            value={formatDate(invoiceLine.subscriptionEnd)}
+            value={<FolioFormattedDate value={invoiceLine.subscriptionEnd} />}
           />
         </Col>
         <Col xs={3}>
@@ -90,7 +95,7 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
         </Col>
         <Col xs={3}>
           <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.accountingCode" />}
+            label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
             value={invoiceLine.accountingCode}
           />
         </Col>

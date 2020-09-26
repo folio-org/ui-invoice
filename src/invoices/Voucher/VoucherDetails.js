@@ -5,15 +5,12 @@ import { FormattedMessage } from 'react-intl';
 import {
   Col,
   KeyValue,
-  NoValue,
   Row,
 } from '@folio/stripes/components';
 import {
   AmountWithCurrencyField,
   FolioFormattedDate,
 } from '@folio/stripes-acq-components';
-
-import { VoucherNumberValue } from '../../common/components/VoucherNumber';
 
 const VoucherDetails = ({ voucher }) => (
   <>
@@ -26,8 +23,8 @@ const VoucherDetails = ({ voucher }) => (
       </Col>
 
       <Col xs={3}>
-        <VoucherNumberValue
-          labelId="ui-invoice.invoice.details.voucher.voucherNumber"
+        <KeyValue
+          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
           value={voucher.voucherNumber}
         />
       </Col>
@@ -55,14 +52,14 @@ const VoucherDetails = ({ voucher }) => (
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.exchangeRate" />}
-          value={voucher.exchangeRate ?? <NoValue />}
+          value={voucher.exchangeRate}
         />
       </Col>
 
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
-          value={voucher.disbursementNumber || <NoValue />}
+          value={voucher.disbursementNumber}
         />
       </Col>
 
@@ -89,7 +86,7 @@ const VoucherDetails = ({ voucher }) => (
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountingCode" />}
-          value={voucher.accountingCode || <NoValue />}
+          value={voucher.accountingCode}
         />
       </Col>
     </Row>

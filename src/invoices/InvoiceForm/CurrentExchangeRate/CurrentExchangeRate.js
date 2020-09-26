@@ -9,7 +9,6 @@ import {
   KeyValue,
   Label,
   Loading,
-  NoValue,
 } from '@folio/stripes/components';
 
 import { EXCHANGE_RATE_API } from '../../../common/constants/api';
@@ -49,7 +48,7 @@ const CurrentExchangeRate = ({ label, exchangeFrom, exchangeTo, mutator }) => {
   return (
     <KeyValue
       label={label}
-      value={exchangeRate.exchangeRate || <NoValue />}
+      value={exchangeRate.exchangeRate}
     />
   );
 };
