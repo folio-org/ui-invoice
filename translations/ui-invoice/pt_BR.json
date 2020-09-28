@@ -83,7 +83,7 @@
     "adjustments": "Ajustes",
     "status.Open": "Aberto",
     "invoice.details.lines.add": "Adicionar",
-    "invoice.details.lines.list.description": "Título",
+    "invoice.details.lines.list.description": "Descrição",
     "invoice.details.lines.list.quantity": "Quantidade",
     "invoice.details.lines.list.total": "Total",
     "find-po-line-plugin-unavailable": "O plugin de busca de linha de pedidos não está disponível",
@@ -306,10 +306,10 @@
     "invoice.useSetExchangeRate.tooltip": "Escolha outra moeda para interagir com este campo",
     "invoice.setExchangeRate.tooltip": "Marque usar definir taxa de câmbio para interagir com este campo",
     "settings.BatchVoucherExports.message": "Mensagem",
-    "settings.BatchVoucherExports.message.uploaded": "Uploaded successfully to FTP location",
-    "invoice.details.lines.list.fundDistribution": "Fund distribution",
-    "invoice.details.lines.list.lineNumber": "#",
-    "invoice.details.lines.list.polNumber": "POL number",
-    "invoice.details.lines.list.subTotal": "Sub-total",
-    "invoice.details.lines.list.vendorRefNo": "Vendor ref number"
+    "settings.BatchVoucherExports.message.uploaded": "Carregado com sucesso para endereço FTP",
+    "invoice.details.lines.list.lineNumber": "Núm.",
+    "invoice.details.lines.list.polNumber": "Número da Linha do pedido",
+    "invoice.details.lines.list.subTotal": "Subtotal",
+    "invoice.details.lines.list.vendorRefNo": "Número de referência do fornecedor",
+    "invoice.details.lines.list.fundCode": "Código do fundo"
 }
