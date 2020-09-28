@@ -204,6 +204,7 @@ const InvoiceForm = ({
                           isNonInteractive={isEditPostApproval}
                           labelId="ui-invoice.invoice.details.information.invoiceDate"
                           name="invoiceDate"
+                          required
                           validate={validateRequired}
                         />
                       </Col>
