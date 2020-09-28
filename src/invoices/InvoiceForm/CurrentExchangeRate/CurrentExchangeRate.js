@@ -13,12 +13,22 @@ import {
 
 import { EXCHANGE_RATE_API } from '../../../common/constants/api';
 
-const CurrentExchangeRate = ({ label, exchangeFrom, exchangeTo, mutator }) => {
+const CurrentExchangeRate = ({
+  label,
+  exchangeFrom,
+  exchangeTo,
+  mutator,
+  setExchangeRateRequired,
+  setExchangeRateEnabled,
+}) => {
   const [exchangeRate, setExchangeRate] = useState();
 
   useEffect(
     () => {
       setExchangeRate();
+      setExchangeRateRequired(false);
+      setExchangeRateEnabled(false);
+
       if (exchangeFrom !== exchangeTo) {
         mutator.exchangeRate.GET({
           params: {
@@ -27,11 +37,15 @@ const CurrentExchangeRate = ({ label, exchangeFrom, exchangeTo, mutator }) => {
           },
         })
           .then(setExchangeRate)
-          .catch(() => setExchangeRate({}));
+          .catch(() => {
+            setExchangeRate({});
+            setExchangeRateRequired(true);
+            setExchangeRateEnabled(true);
+          });
       } else setExchangeRate({});
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [exchangeFrom, exchangeTo],
+    [exchangeFrom, exchangeTo, setExchangeRateRequired, setExchangeRateEnabled],
   );
 
   if (!exchangeRate) {
@@ -47,6 +61,7 @@ const CurrentExchangeRate = ({ label, exchangeFrom, exchangeTo, mutator }) => {
 
   return (
     <KeyValue
+      data-testid="current-exchange-rate"
       label={label}
       value={exchangeRate.exchangeRate}
     />
@@ -68,6 +83,8 @@ CurrentExchangeRate.propTypes = {
   exchangeTo: PropTypes.string.isRequired,
   label: PropTypes.node.isRequired,
   mutator: PropTypes.object.isRequired,
+  setExchangeRateRequired: PropTypes.func.isRequired,
+  setExchangeRateEnabled: PropTypes.func.isRequired,
 };
 
 export default stripesConnect(CurrentExchangeRate);

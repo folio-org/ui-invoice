@@ -103,6 +103,7 @@ const InvoiceForm = ({
   } = initialValues;
   const [selectedVendor, setSelectedVendor] = useState();
   const [isExchangeRateEnabled, setExchangeRateEnabled] = useState(Boolean(exchangeRate));
+  const [isExchangeRateRequired, setExchangeRateRequired] = useState(false);
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
       setSelectedVendor(vendor);
@@ -144,7 +145,8 @@ const InvoiceForm = ({
   const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
     ? INVOICE_STATUSES_OPTIONS
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
-  const isSetUseExangeRateDisabled = isEditPostApproval || (filledCurrency === systemCurrency);
+  const isSetUseExangeRateDisabled = isEditPostApproval ||
+    (filledCurrency === systemCurrency) || isExchangeRateRequired;
   const tooltipTextExchangeRate = !isExchangeRateEnabled && !isEditPostApproval &&
     <FormattedMessage id="ui-invoice.invoice.setExchangeRate.tooltip" />;
   const tooltipTextUseSetExchangeRate = isSetUseExangeRateDisabled && !isEditPostApproval &&
@@ -163,10 +165,8 @@ const InvoiceForm = ({
 
   const onChangeCurrency = useCallback((value) => {
     change('currency', value);
-    if (value === systemCurrency) {
-      resetExchangeRate();
-    }
-  }, [change, resetExchangeRate, systemCurrency]);
+    resetExchangeRate();
+  }, [change, resetExchangeRate]);
 
   return (
     <form style={{ height: '100vh' }}>
@@ -442,6 +442,8 @@ const InvoiceForm = ({
                           label={<FormattedMessage id="ui-invoice.invoice.currentExchangeRate" />}
                           exchangeFrom={filledCurrency}
                           exchangeTo={systemCurrency}
+                          setExchangeRateEnabled={setExchangeRateEnabled}
+                          setExchangeRateRequired={setExchangeRateRequired}
                         />
                       </Col>
                       <Col data-test-col-use-set-exchange-rate xs={3}>
@@ -466,6 +468,9 @@ const InvoiceForm = ({
                           type="number"
                           readOnly={!isExchangeRateEnabled}
                           tooltipText={tooltipTextExchangeRate}
+                          required={isExchangeRateRequired}
+                          validate={isExchangeRateRequired ? validateRequired : undefined}
+                          key={isExchangeRateRequired ? 1 : 0}
                         />
                       </Col>
                     </Row>

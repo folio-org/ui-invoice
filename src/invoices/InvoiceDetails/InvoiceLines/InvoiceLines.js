@@ -94,7 +94,7 @@ const InvoiceLines = ({
     polNumber: ({ poLineId }) => orderlinesMap?.[poLineId]?.poLineNumber || <NoValue />,
     fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
     vendorRefNo: ({ vendorRefNo }) => vendorRefNo || <NoValue />,
-  }), [currency, orderlinesMap, invoiceLinesItems]);
+  }), [currency, orderlinesMap]);
 
   return (
     <>
