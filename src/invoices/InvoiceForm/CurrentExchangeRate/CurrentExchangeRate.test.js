@@ -34,8 +34,6 @@ describe('CurrentExchangeRate component', () => {
     };
   });
 
-  afterEach(cleanup);
-
   it('should display hyphen', () => {
     renderCurrentExchangeRate('USD', 'USD', mutator);
     const currentExchangeRateValue = screen.getByTestId('current-exchange-rate').querySelector('[data-test-kv-value]');
