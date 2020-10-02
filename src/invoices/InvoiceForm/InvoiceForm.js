@@ -460,8 +460,7 @@ const InvoiceForm = ({
                       </Col>
                       <Col data-test-col-set-exchange-rate xs={3}>
                         <Field
-                          component={TooltippedControl}
-                          controlComponent={TextField}
+                          component={TextField}
                           label={<FormattedMessage id="ui-invoice.invoice.setExchangeRate" />}
                           id="exchange-rate"
                           name="exchangeRate"
@@ -471,6 +470,7 @@ const InvoiceForm = ({
                           required={isExchangeRateRequired}
                           validate={isExchangeRateRequired ? validateRequired : undefined}
                           key={isExchangeRateRequired ? 1 : 0}
+                          isNonInteractive={isStatusPaid}
                         />
                       </Col>
                     </Row>
