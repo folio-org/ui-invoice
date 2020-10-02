@@ -36,10 +36,7 @@ const CurrentExchangeRate = ({
             to: exchangeTo,
           },
         })
-          .then(exchangeRateResp => {
-            setExchangeRate(exchangeRateResp);
-            setExchangeRateEnabled(true);
-          })
+          .then(setExchangeRate)
           .catch(() => {
             setExchangeRate({});
             setExchangeRateRequired(true);

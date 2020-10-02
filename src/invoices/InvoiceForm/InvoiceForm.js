@@ -145,7 +145,7 @@ const InvoiceForm = ({
   const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
     ? INVOICE_STATUSES_OPTIONS
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
-  const isSetUseExangeRateDisabled = isEditPostApproval ||
+  const isSetUseExangeRateDisabled = isStatusPaid ||
     (filledCurrency === systemCurrency) || isExchangeRateRequired;
   const tooltipTextExchangeRate = !isExchangeRateEnabled && !isEditPostApproval &&
     <FormattedMessage id="ui-invoice.invoice.setExchangeRate.tooltip" />;
