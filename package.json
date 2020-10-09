@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -100,7 +100,6 @@
       "configuration": "2.0",
       "contributor-name-types": "1.2",
       "finance.exchange-rate": "1.0",
-      "finance.expense-classes": "1.0",
       "finance.funds": "1.0",
       "identifier-types": "1.2",
       "invoice": "5.0",
@@ -110,6 +109,9 @@
       "users": "15.1",
       "voucher-number": "1.0",
       "voucher": "2.1"
+    },
+    "optionalOkapiInterfaces": {
+      "finance.expense-classes": "1.0"
     },
     "icons": [
       {
