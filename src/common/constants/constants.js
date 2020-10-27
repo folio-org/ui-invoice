@@ -117,3 +117,14 @@ export const CONTENT_TYPES = {
   octet: 'application/octet-stream',
   xml: 'application/xml',
 };
+
+export const ERROR_CODES = {
+  accountingCodeNotPresent: 'accountingCodeNotPresent',
+  voucherNumberPrefixNotAlpha: 'voucherNumberPrefixNotAlpha',
+  fundDistributionsNotPresent: 'fundDistributionsNotPresent',
+  poLineUpdateFailure: 'poLineUpdateFailure',
+  fundCannotBePaid: 'fundCannotBePaid',
+  transactionCreationFailure: 'transactionCreationFailure',
+  inactiveExpenseClass: 'inactiveExpenseClass',
+  budgetExpenseClassNotFound: 'budgetExpenseClassNotFound',
+};

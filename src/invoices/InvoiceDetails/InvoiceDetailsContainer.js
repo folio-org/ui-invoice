@@ -8,14 +8,12 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   baseManifest,
   batchFetch,
-  EXPENSE_CLASSES_API,
   LIMIT_MAX,
   orderLinesResource,
   useShowCallout,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 
-import { getActionErrorMessage } from '../../common/utils';
 import {
   batchVoucherExportsResource,
   configApprovals,
@@ -28,7 +26,10 @@ import {
   INVOICE_STATUS,
 } from '../../common/constants';
 import InvoiceDetails from './InvoiceDetails';
-import { createInvoiceLineFromPOL } from './utils';
+import {
+  createInvoiceLineFromPOL,
+  showUpdateInvoiceError,
+} from './utils';
 
 function InvoiceDetailsContainer({
   match: { url },
@@ -242,29 +243,9 @@ function InvoiceDetailsContainer({
           refreshList();
 
           return fetchInvoiceData();
-        }, async (response) => {
-          try {
-            const { errors } = await response.json();
-            const errorCode = get(errors, [0, 'code']);
-            const expenseClassId = errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
-
-            if (expenseClassId) {
-              mutator.expenseClass.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` })
-                .then(({ name }) => {
-                  const values = { expenseClass: name };
-
-                  showCallout({ messageId: getActionErrorMessage(errorCode), type: 'error', values });
-                });
-            } else {
-              showCallout({
-                messageId: getActionErrorMessage(errorCode),
-                type: 'error',
-              });
-            }
-          } catch (e) {
-            showCallout({ messageId: 'ui-invoice.invoice.actions.approve.error', type: 'error' });
-          }
-        })
+        }, response => (
+          showUpdateInvoiceError(response, showCallout, 'approve', 'ui-invoice.invoice.actions.approve.error', mutator.expenseClass)
+        ))
         .finally(setIsLoading);
     },
     [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
@@ -281,33 +262,7 @@ function InvoiceDetailsContainer({
           refreshList();
 
           return fetchInvoiceData();
-        }, async (response) => {
-          try {
-            const { errors } = await response.json();
-            const errorCode = get(errors, [0, 'code']);
-            const expenseClassId = errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
-
-            if (expenseClassId) {
-              mutator.expenseClass.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` })
-                .then(({ name }) => {
-                  const values = { expenseClass: name };
-
-                  showCallout({
-                    messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error', 'pay'),
-                    type: 'error',
-                    values,
-                  });
-                });
-            } else {
-              showCallout({
-                messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.pay.error'),
-                type: 'error',
-              });
-            }
-          } catch (e) {
-            showCallout({ messageId: 'ui-invoice.invoice.actions.pay.error', type: 'error' });
-          }
-        })
+        }, response => showUpdateInvoiceError(response, showCallout, 'pay', 'ui-invoice.invoice.actions.pay.error', mutator.expenseClass))
         .finally(setIsLoading);
     },
     [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
@@ -321,32 +276,9 @@ function InvoiceDetailsContainer({
         .then(invoiceResponse => {
           return mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })
-        .catch(async (response) => {
-          try {
-            const { errors } = await response.json();
-            const errorCode = get(errors, [0, 'code']);
-            const expenseClassId = errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
+        .catch(response => {
+          showUpdateInvoiceError(response, showCallout, 'approveAndPay', 'ui-invoice.invoice.actions.approveAndPay.error', mutator.expenseClass);
 
-            if (expenseClassId) {
-              mutator.expenseClass.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` })
-                .then(({ name }) => {
-                  const values = { expenseClass: name };
-
-                  showCallout({
-                    messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error', 'approveAndPay'),
-                    type: 'error',
-                    values,
-                  });
-                });
-            } else {
-              showCallout({
-                messageId: getActionErrorMessage(errorCode, 'ui-invoice.invoice.actions.approveAndPay.error'),
-                type: 'error',
-              });
-            }
-          } catch (e) {
-            showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.error', type: 'error' });
-          }
           throw new Error('approveAndPay error');
         })
         .then(() => {

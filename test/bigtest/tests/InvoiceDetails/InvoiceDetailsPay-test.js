@@ -7,12 +7,12 @@ import {
   ConfirmationInteractor,
 } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
-import { APPROVE_ERROR_CODES } from '../../../../src/common/utils';
 import {
   CONFIG_MODULE_INVOICE,
   CONFIG_NAME_APPROVALS,
   INVOICE_API,
   INVOICE_STATUS,
+  ERROR_CODES,
 } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
@@ -128,7 +128,7 @@ describe('Invoice details - pay action', () => {
       const ERROR_RESPONSE = {
         'errors': [{
           'message': '',
-          'code': APPROVE_ERROR_CODES.fundCannotBePaid,
+          'code': ERROR_CODES.fundCannotBePaid,
           'parameters': [],
           'id': invoice.id,
         }],
@@ -163,7 +163,7 @@ describe('Invoice details - pay action', () => {
       const ERROR_RESPONSE = {
         'errors': [{
           'message': '',
-          'code': APPROVE_ERROR_CODES.fundCannotBePaid,
+          'code': ERROR_CODES.fundCannotBePaid,
           'parameters': [],
           'id': invoice.id,
         }],

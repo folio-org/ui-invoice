@@ -6,11 +6,10 @@ import {
   ConfirmationInteractor,
 } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
-import { INVOICE_API, INVOICE_STATUS } from '../../../../src/common/constants';
+import { INVOICE_API, INVOICE_STATUS, ERROR_CODES } from '../../../../src/common/constants';
 
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
-import { APPROVE_ERROR_CODES } from '../../../../src/common/utils';
 
 const createInvoice = (server, status, withLines = true) => {
   const batchGroup = server.create('batchgroup');
@@ -103,7 +102,7 @@ describe('Invoice details - approve action', () => {
       const INVOICE_APPROVE_RESPONSE = {
         'errors': [{
           'message': 'Voucher number prefix must contains only Unicode letters',
-          'code': APPROVE_ERROR_CODES.voucherNumberPrefixNotAlpha,
+          'code': ERROR_CODES.voucherNumberPrefixNotAlpha,
           'parameters': [],
           'id': invoice.id,
         }],
@@ -130,7 +129,7 @@ describe('Invoice details - approve action', () => {
       const INVOICE_APPROVE_RESPONSE = {
         'errors': [{
           'message': '',
-          'code': APPROVE_ERROR_CODES.fundCannotBePaid,
+          'code': ERROR_CODES.fundCannotBePaid,
           'parameters': [],
           'id': invoice.id,
         }],
@@ -147,6 +146,34 @@ describe('Invoice details - approve action', () => {
 
     it('displays error toast', () => {
       expect(callout.list(0).message).to.equal('One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget');
+    });
+  });
+
+  describe('budgetExpenseClassNotFound error is visible', () => {
+    beforeEach(async function () {
+      const invoice = createInvoice(this.server, INVOICE_STATUS.review, true);
+
+      const INVOICE_APPROVE_RESPONSE = {
+        'errors': [{
+          'message': '',
+          'code': ERROR_CODES.budgetExpenseClassNotFound,
+          'parameters': [{ key: 'fundCode', value: 'FUND_CODE' }, { key: 'expenseClassName', value: 'Test' }],
+          'id': invoice.id,
+        }],
+        'total_records': 1,
+      };
+
+      this.server.put(`${INVOICE_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
+
+      this.visit(`/invoice/view/${invoice.id}`);
+      await invoiceDetails.whenLoaded();
+      await invoiceDetails.actions.buttonApproveInvoice.click();
+      await approveConfirmation.confirm();
+    });
+
+    it('displays error toast', () => {
+      expect(callout.list(0).message).to.include('Test');
+      expect(callout.list(0).message).to.include('FUND_CODE');
     });
   });
 });
