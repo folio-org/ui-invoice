@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Can not see invoice note in the view pane. Refs UINV-200.
 * Error message: Budget Expense Class not found. Refs UINV-198.
 
 ## [2.2.1]https://github.com/folio-org/ui-invoice/tree/v2.2.1) (2020-10-09)
