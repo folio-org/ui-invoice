@@ -39,6 +39,7 @@ const Information = ({
   invoiceTotalUnits,
   acqUnits,
   currency,
+  note,
 }) => {
   return (
     <>
@@ -96,6 +97,13 @@ const Information = ({
       </Row>
 
       <Row>
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.note" />}
+            value={note}
+          />
+        </Col>
+
         <Col xs={6}>
           <BillTo billToId={billTo} />
         </Col>
@@ -164,6 +172,7 @@ Information.propTypes = {
   invoiceTotalUnits: PropTypes.number,
   acqUnits: PropTypes.arrayOf(PropTypes.string),
   currency: PropTypes.string.isRequired,
+  note: PropTypes.string,
 };
 
 Information.defaultProps = {
