@@ -218,7 +218,6 @@
   "invoice.details.information.billToName": "Bill to name",
   "invoice.details.information.billToAddress": "Bill to address",
   "invoice.details.information.batchGroup": "Batch group",
-  "invoice.details.information.note": "Note",
 
   "invoice.details.lines.title": "Invoice lines",
   "invoice.details.lines.add": "Add",
