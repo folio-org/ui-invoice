@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Invoice date filters are off set by timezone somehow. Refs UINV-202.
 * Can not see invoice note in the view pane. Refs UINV-200.
 * Error message: Budget Expense Class not found. Refs UINV-198.
 
