@@ -34,7 +34,7 @@ export const invoiceDocumentsResource = {
   ...baseManifest,
   path: `${INVOICE_API}/:{id}${INVOICE_DOCUMENTS_API}`,
   records: 'documents',
-  shouldRefresh: false,
+  shouldRefresh: () => false,
 };
 
 export const invoiceDocumentFromPropsResource = {
