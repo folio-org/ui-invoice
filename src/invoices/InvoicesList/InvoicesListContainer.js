@@ -10,6 +10,7 @@ import queryString from 'query-string';
 import { stripesConnect } from '@folio/stripes/core';
 import {
   buildDateRangeQuery,
+  buildDateTimeRangeQuery,
   makeQueryBuilder,
   useList,
 } from '@folio/stripes-acq-components';
@@ -39,10 +40,10 @@ const buildInvoicesQuery = makeQueryBuilder(
   },
   'sortby name/sort.ascending',
   {
-    [FILTERS.DATE_CREATED]: buildDateRangeQuery.bind(null, [FILTERS.DATE_CREATED]),
+    [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, [FILTERS.DATE_CREATED]),
     [FILTERS.INVOICE_DATE]: buildDateRangeQuery.bind(null, [FILTERS.INVOICE_DATE]),
     [FILTERS.PAYMENT_DUE]: buildDateRangeQuery.bind(null, [FILTERS.PAYMENT_DUE]),
-    [FILTERS.APPROVAL_DATE]: buildDateRangeQuery.bind(null, [FILTERS.APPROVAL_DATE]),
+    [FILTERS.APPROVAL_DATE]: buildDateTimeRangeQuery.bind(null, [FILTERS.APPROVAL_DATE]),
     [FILTERS.TAGS]: (filterValue) => {
       const value = Array.isArray(filterValue) ? filterValue.join('" or "') : filterValue;
 
