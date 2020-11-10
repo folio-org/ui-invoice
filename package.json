@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -46,7 +46,7 @@
     "faker": "^5.1.0",
     "jest": "^26.4.2",
     "jest-css-modules": "^2.1.0",
-    "jest-junit": "^11.1.0",
+    "jest-junit": "^12.0.0",
     "miragejs": "^0.1.32",
     "moment": "^2.24.0",
     "react": "^16.5.1",
@@ -58,7 +58,7 @@
     "sinon": "^7.0.0"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^2.2.0",
+    "@folio/stripes-acq-components": "^2.2.2",
     "file-saver": "^2.0.0",
     "final-form-arrays": "^3.0.1",
     "final-form": "^4.18.2",
@@ -94,12 +94,13 @@
     "okapiInterfaces": {
       "acquisitions-units": "1.1",
       "batch-group": "1.0",
-      "batch-voucher.batch-vouchers": "2.0",
       "batch-voucher.batch-voucher-exports": "1.0",
+      "batch-voucher.batch-vouchers": "2.0",
       "batch-voucher.export-configurations": "1.0",
       "configuration": "2.0",
       "contributor-name-types": "1.2",
       "finance.exchange-rate": "1.0",
+      "finance.expense-classes": "1.0",
       "finance.funds": "1.0",
       "identifier-types": "1.2",
       "invoice": "5.0",
@@ -109,9 +110,6 @@
       "users": "15.1",
       "voucher-number": "1.0",
       "voucher": "2.1"
-    },
-    "optionalOkapiInterfaces": {
-      "finance.expense-classes": "1.0"
     },
     "icons": [
       {
