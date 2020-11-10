@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2020-11-10)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.1...v2.2.2)
+
 * Invoice date filters are off set by timezone somehow. Refs UINV-202.
 * Can not see invoice note in the view pane. Refs UINV-200.
 * Error message: Budget Expense Class not found. Refs UINV-198.
