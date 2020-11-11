@@ -1,5 +1,5 @@
 {
-    "meta.title": "Invoices",
+    "meta.title": "인보이스",
     "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
     "invoice.status.approved": "Approved",
     "invoice.status.open": "Open",
@@ -134,7 +134,7 @@
     "settings.adjustments.remove.error": "The adjustment was not deleted",
     "settings.adjustments.title.new": "New adjustment",
     "settings.adjustments.label": "Adjustments",
-    "settings.paneTitle": "Invoices",
+    "settings.paneTitle": "인보이스",
     "adjustment.type.sign.percent": "%",
     "adjustment.type.sign.amount": "$",
     "adjustment.presetAdjustment": "Preset adjustment",
