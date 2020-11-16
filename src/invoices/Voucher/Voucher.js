@@ -6,6 +6,12 @@ import {
 } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { PermissionedRoute } from '@folio/stripes-acq-components';
+
+import {
+  RETURN_LINK,
+  RETURN_LINK_LABEL_ID,
+} from '../../common/constants';
 import VoucherViewLayer from './VoucherViewLayer';
 import { VoucherEditContainer } from './VoucherEditForm';
 
@@ -16,11 +22,15 @@ const Voucher = ({ match: { path } }) => (
       path={`${path}:voucherId/view`}
       component={VoucherViewLayer}
     />
-    <Route
+    <PermissionedRoute
       exact
       path={`${path}:voucherId/edit`}
-      component={VoucherEditContainer}
-    />
+      perm="ui-invoice.invoice.edit"
+      returnLink={RETURN_LINK}
+      returnLinkLabelId={RETURN_LINK_LABEL_ID}
+    >
+      <VoucherEditContainer />
+    </PermissionedRoute>
   </Switch>
 );
 

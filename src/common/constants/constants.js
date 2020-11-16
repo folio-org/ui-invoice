@@ -128,3 +128,6 @@ export const ERROR_CODES = {
   inactiveExpenseClass: 'inactiveExpenseClass',
   budgetExpenseClassNotFound: 'budgetExpenseClassNotFound',
 };
+
+export const RETURN_LINK = '/invoice';
+export const RETURN_LINK_LABEL_ID = 'ui-invoice.meta.title';

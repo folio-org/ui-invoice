@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Update invoice CRUD permissions. UINV-199.
+
 ## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2020-11-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.1...v2.2.2)
 
