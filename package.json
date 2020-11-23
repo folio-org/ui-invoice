@@ -105,7 +105,9 @@
       "finance.funds": "1.0",
       "identifier-types": "1.2",
       "invoice": "5.0",
+      "material-types": "2.2",
       "order-lines": "1.0",
+      "orders": "10.0",
       "organizations.organizations": "1.0",
       "tags": "1.0",
       "users": "15.1",
@@ -126,78 +128,91 @@
       {
         "permissionName": "module.invoice.enabled",
         "displayName": "UI: invoice module is enabled",
-        "visible": true
+        "visible": false
       },
       {
         "permissionName": "settings.invoice.enabled",
         "displayName": "Settings (Invoice): Can view and edit settings",
         "subPermissions": [
-          "batch-groups.all",
-          "batch-voucher.batch-voucher-exports.collection.get",
-          "batch-voucher.batch-voucher-exports.item.post",
-          "batch-voucher.batch-voucher-exports.upload.item.post",
-          "batch-voucher.export-configurations.all",
-          "configuration.all",
-          "settings.enabled",
-          "ui-invoice.third-party-services"
+          "settings.enabled"
         ],
-        "visible": true
+        "visible": false
       },
       {
-        "permissionName": "ui-invoice.third-party-services",
-        "displayName": "Invoice: Permissions required to call services apart from mod-invoice",
-        "description": "",
+        "permissionName": "ui-invoice.invoice.view",
+        "displayName": "Invoice: Can view Invoices and Invoice lines",
+        "visible": true,
         "subPermissions": [
-          "acquisitions-units.memberships.collection.get",
+          "module.invoice.enabled",
           "acquisitions-units.units.collection.get",
+          "batch-groups.item.get",
+          "batch-voucher.batch-voucher-exports.collection.get",
+          "batch-voucher.export-configurations.collection.get",
           "configuration.entries.collection.get",
-          "finance.exchange-rate.item.get",
           "finance.funds.collection.get",
           "finance.funds.expense-classes.collection.get",
           "finance.transactions.collection.get",
-          "inventory-storage.contributor-name-types.collection.get",
-          "inventory-storage.identifier-types.collection.get",
+          "invoice.invoice-lines.collection.get",
+          "invoice.invoice-lines.item.get",
+          "invoice.invoices.collection.get",
+          "invoice.invoices.documents.collection.get",
+          "invoice.invoices.documents.item.get",
+          "invoice.invoices.item.get",
           "orders.po-lines.collection.get",
           "orders.po-lines.item.get",
           "organizations.organizations.collection.get",
           "organizations.organizations.item.get",
           "tags.collection.get",
-          "tags.item.post",
           "users.collection.get",
-          "users.item.get"
+          "users.item.get",
+          "voucher.voucher-lines.collection.get",
+          "voucher.vouchers.collection.get",
+          "voucher.vouchers.item.get"
         ]
       },
       {
-        "permissionName": "ui-invoice.all",
-        "displayName": "Invoice: all permissions for Create, View, Edit and Delete invoice",
+        "permissionName": "ui-invoice.invoice.edit",
+        "displayName": "Invoice: Can view and edit Invoices and Invoice lines",
         "visible": true,
-        "description": "",
         "subPermissions": [
-          "ui-invoice.third-party-services",
-          "invoice.invoices.collection.get",
-          "invoice.invoices.item.get",
-          "invoice.invoices.item.post",
-          "invoice.invoices.item.put",
-          "invoice.invoices.item.delete",
-          "invoice.invoice-lines.collection.get",
-          "invoice.invoice-lines.item.get",
-          "invoice.invoice-lines.item.post",
+          "ui-invoice.invoice.view",
+          "acquisitions-units.memberships.collection.get",
+          "batch-groups.collection.get",
+          "finance.exchange-rate.item.get",
           "invoice.invoice-lines.item.put",
+          "invoice.invoices.documents.item.post",
+          "invoice.invoices.item.put",
+          "tags.item.post",
+          "voucher.vouchers.item.put"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.invoice.create",
+        "displayName": "Invoice: Can view, edit and create new Invoices and Invoice lines",
+        "visible": true,
+        "subPermissions": [
+          "ui-invoice.invoice.edit",
+          "inventory-storage.contributor-name-types.collection.get",
+          "inventory-storage.identifier-types.collection.get",
+          "inventory-storage.material-types.collection.get",
+          "invoice.invoice-lines.item.post",
+          "invoice.invoices.item.post",
+          "orders.collection.get"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.invoice.delete",
+        "displayName": "Invoice: Can view, edit and delete Invoices and Invoice lines",
+        "visible": true,
+        "subPermissions": [
+          "ui-invoice.invoice.edit",
           "invoice.invoice-lines.item.delete",
-          "invoice.invoice-number.item.get",
-          "invoice.invoice-number.item.post",
-          "voucher-number.start.post",
-          "voucher-number.start.get",
-          "voucher.all",
-          "invoice.invoices.documents.all",
-          "batch-voucher.export-configurations.all",
-          "batch-groups.all",
-          "batch-voucher.batch-voucher-exports.collection.get"
+          "invoice.invoices.item.delete"
         ]
       },
       {
         "permissionName": "ui-invoice.approve",
-        "displayName": "Invoice: Approve invoice",
+        "displayName": "Invoice: Approve invoices",
         "visible": true,
         "description": "",
         "subPermissions": [
@@ -206,11 +221,29 @@
       },
       {
         "permissionName": "ui-invoice.pay",
-        "displayName": "Invoice: Pay invoice",
+        "displayName": "Invoice: Pay invoices",
         "visible": true,
         "description": "",
         "subPermissions": [
           "invoice.item.pay"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.settings.all",
+        "displayName": "Settings (Invoices): Can view and edit settings",
+        "visible": true,
+        "subPermissions": [
+          "settings.invoice.enabled",
+          "batch-groups.all",
+          "batch-voucher.batch-voucher-exports.collection.get",
+          "batch-voucher.batch-voucher-exports.item.get",
+          "batch-voucher.batch-voucher-exports.item.post",
+          "batch-voucher.batch-voucher-exports.upload.item.post",
+          "batch-voucher.batch-vouchers.item.get",
+          "batch-voucher.export-configurations.all",
+          "configuration.all",
+          "voucher-number.start.get",
+          "voucher-number.start.post"
         ]
       },
       {

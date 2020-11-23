@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
+import { withRouter } from 'react-router-dom';
 
 import {
   LoadingView,
@@ -117,4 +118,4 @@ VoucherEditContainer.propTypes = {
   location: ReactRouterPropTypes.location,
 };
 
-export default stripesConnect(VoucherEditContainer);
+export default withRouter(stripesConnect(VoucherEditContainer));

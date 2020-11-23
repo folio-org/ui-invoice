@@ -350,5 +350,14 @@
 
   "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
 
-  "permission.batchVoucher.download": "Invoice: Download batch file from invoice record"
+  "permission.acq.unit.assignment.assign": "Invoice: Assign acquisitions units to new record",
+  "permission.acq.unit.assignment.manage": "Invoice: Manage acquisition units",
+  "permission.approve": "Invoice: Approve invoices",
+  "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
+  "permission.invoice.create": "Invoice: Can view, edit and create new Invoices and Invoice lines",
+  "permission.invoice.delete": "Invoice: Can view, edit and delete Invoices and Invoice lines",
+  "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",
+  "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
+  "permission.pay": "Invoice: Pay invoices",
+  "permission.settings.all": "Settings (Invoices): Can view and edit settings"
 }

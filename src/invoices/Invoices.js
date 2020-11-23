@@ -4,6 +4,12 @@ import {
   Route,
 } from 'react-router-dom';
 
+import { PermissionedRoute } from '@folio/stripes-acq-components';
+
+import {
+  RETURN_LINK,
+  RETURN_LINK_LABEL_ID,
+} from '../common/constants';
 import { InvoicesListContainer } from './InvoicesList';
 import { CreateInvoice } from './CreateInvoice';
 import { EditInvoice } from './EditInvoice';
@@ -14,22 +20,38 @@ import { Voucher } from './Voucher';
 const Invoices = () => {
   return (
     <Switch>
-      <Route
+      <PermissionedRoute
         path="/invoice/edit/:id"
-        component={EditInvoice}
-      />
-      <Route
+        perm="ui-invoice.invoice.edit"
+        returnLink={RETURN_LINK}
+        returnLinkLabelId={RETURN_LINK_LABEL_ID}
+      >
+        <EditInvoice />
+      </PermissionedRoute>
+      <PermissionedRoute
         path="/invoice/create"
-        component={CreateInvoice}
-      />
-      <Route
+        perm="ui-invoice.invoice.edit"
+        returnLink={RETURN_LINK}
+        returnLinkLabelId={RETURN_LINK_LABEL_ID}
+      >
+        <CreateInvoice />
+      </PermissionedRoute>
+      <PermissionedRoute
         path="/invoice/view/:id/line/:lineId/edit"
-        component={EditInvoiceLine}
-      />
-      <Route
+        perm="ui-invoice.invoice.edit"
+        returnLink={RETURN_LINK}
+        returnLinkLabelId={RETURN_LINK_LABEL_ID}
+      >
+        <EditInvoiceLine />
+      </PermissionedRoute>
+      <PermissionedRoute
         path="/invoice/view/:id/line/create"
-        component={CreateInvoiceLine}
-      />
+        perm="ui-invoice.invoice.edit"
+        returnLink={RETURN_LINK}
+        returnLinkLabelId={RETURN_LINK_LABEL_ID}
+      >
+        <CreateInvoiceLine />
+      </PermissionedRoute>
       <Route
         path="/invoice/view/:id/voucher/"
         component={Voucher}

@@ -16,6 +16,7 @@ import {
 } from '@folio/stripes/components';
 import {
   AppIcon,
+  IfPermission,
   stripesConnect,
 } from '@folio/stripes/core';
 
@@ -53,15 +54,17 @@ const VoucherViewLayer = ({ match: { params }, history, location, resources }) =
 
     return (
       <MenuSection id="voucher-actions">
-        <Button
-          buttonStyle="dropdownItem"
-          data-test-edit-voucher-button
-          to={path}
-        >
-          <Icon size="small" icon="edit">
-            <FormattedMessage id="ui-invoice.button.edit" />
-          </Icon>
-        </Button>
+        <IfPermission perm="voucher.vouchers.item.put">
+          <Button
+            buttonStyle="dropdownItem"
+            data-test-edit-voucher-button
+            to={path}
+          >
+            <Icon size="small" icon="edit">
+              <FormattedMessage id="ui-invoice.button.edit" />
+            </Icon>
+          </Button>
+        </IfPermission>
       </MenuSection>
     );
   // eslint-disable-next-line react-hooks/exhaustive-deps
