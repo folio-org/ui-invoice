@@ -313,5 +313,14 @@
     "invoice.details.lines.list.vendorRefNo": "رقم المورّد المرجعي",
     "invoice.details.lines.list.fundCode": "رمز التمويل",
     "invoice.actions.approve.error.budgetExpenseClassNotFound": "لم يتم العثور على فئة مصروفات <b>{expenseClassName}</b> في تمويل <b>{fundCode}</b>",
-    "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "لم يتم العثور على فئة مصروفات <b>{expenseClassName}</b> في تمويل <b>{fundCode}</b>"
+    "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "لم يتم العثور على فئة مصروفات <b>{expenseClassName}</b> في تمويل <b>{fundCode}</b>",
+    "permission.acq.unit.assignment.assign": "الفاتورة: عيّن وحدات التزويد إلى تسجيلة جديدة",
+    "permission.acq.unit.assignment.manage": "الفاتورة: أدر وحدات التزويد",
+    "permission.approve": "الفاتورة: اقبل الفواتير",
+    "permission.invoice.create": "الفاتورة: إمكانية عرض، وتحرير، وإنشاء فواتير وسطور فواتير جديدة",
+    "permission.invoice.delete": "الفاتورة: إمكانية عرض، وتحرير، وحذف الفواتير وسطور الفواتير",
+    "permission.invoice.edit": "الفاتورة: إمكانية عرض، وتحرير الفواتير وسطور الفواتير",
+    "permission.invoice.view": "الفاتورة: إمكانية عرض الفواتير وسطور الفواتير",
+    "permission.pay": "الفاتورة: ادفع الفواتير",
+    "permission.settings.all": "الإعدادات (الفواتير): إمكانية عرض وتحرير الإعدادات"
 }

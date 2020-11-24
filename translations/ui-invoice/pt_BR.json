@@ -313,5 +313,14 @@
     "invoice.details.lines.list.vendorRefNo": "Número de referência do fornecedor",
     "invoice.details.lines.list.fundCode": "Código do fundo",
     "invoice.actions.approve.error.budgetExpenseClassNotFound": "Classe de despesa <b>{expenseClassName}</b> não encontrada no Fundo <b>{fundCode}</b>",
-    "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "Classe de despesa <b>{expenseClassName}</b> não encontrada no Fundo <b>{fundCode}</b>"
+    "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "Classe de despesa <b>{expenseClassName}</b> não encontrada no Fundo <b>{fundCode}</b>",
+    "permission.acq.unit.assignment.assign": "Fatura: Atribuir unidades de aquisição para novo registro",
+    "permission.acq.unit.assignment.manage": "Fatura: Gerenciar unidades de aquisição",
+    "permission.approve": "Fatura: Aprovar faturas",
+    "permission.invoice.create": "Fatura: Pode visualizar, editar e criar novas faturas e linhas de fatura",
+    "permission.invoice.delete": "Fatura: Pode visualizar, editar e excluir faturas e linhas de fatura",
+    "permission.invoice.edit": "Fatura: Pode visualizar e editar faturas e linhas de fatura",
+    "permission.invoice.view": "Fatura: Pode visualizar faturas e linhas de fatura",
+    "permission.pay": "Fatura: Pagar faturas",
+    "permission.settings.all": "Configurações (Faturas): Pode visualizar e editar as configurações"
 }

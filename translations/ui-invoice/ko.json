@@ -313,5 +313,14 @@
     "invoice.details.lines.list.vendorRefNo": "Vendor ref number",
     "invoice.details.lines.list.fundCode": "Fund code",
     "invoice.actions.approve.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> expense class not found on <b>{fundCode}</b> Fund",
-    "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> expense class not found on <b>{fundCode}</b> Fund"
+    "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> expense class not found on <b>{fundCode}</b> Fund",
+    "permission.acq.unit.assignment.assign": "Invoice: Assign acquisitions units to new record",
+    "permission.acq.unit.assignment.manage": "Invoice: Manage acquisition units",
+    "permission.approve": "Invoice: Approve invoices",
+    "permission.invoice.create": "Invoice: Can view, edit and create new Invoices and Invoice lines",
+    "permission.invoice.delete": "Invoice: Can view, edit and delete Invoices and Invoice lines",
+    "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",
+    "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
+    "permission.pay": "Invoice: Pay invoices",
+    "permission.settings.all": "Settings (Invoices): Can view and edit settings"
 }
