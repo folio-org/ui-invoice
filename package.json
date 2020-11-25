@@ -104,7 +104,7 @@
       "finance.expense-classes": "1.0",
       "finance.funds": "1.0",
       "identifier-types": "1.2",
-      "invoice": "5.0",
+      "invoice": "5.0 6.0",
       "material-types": "2.2",
       "order-lines": "1.0",
       "orders": "10.0",
