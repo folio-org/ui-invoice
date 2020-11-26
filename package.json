@@ -220,7 +220,7 @@
         "description": "",
         "visible": true,
         "subPermissions": [
-          "invoice.acquisitions-units-assignments.assign"
+          "invoices.acquisitions-units-assignments.assign"
         ]
       },
       {
@@ -229,7 +229,7 @@
         "description": "",
         "visible": true,
         "subPermissions": [
-          "invoice.acquisitions-units-assignments.manage"
+          "invoices.acquisitions-units-assignments.manage"
         ]
       },
       {
