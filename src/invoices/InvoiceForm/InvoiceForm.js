@@ -66,8 +66,8 @@ import invoiceCss from '../Invoice.css';
 import FieldBatchGroup from './FieldBatchGroup';
 import CurrentExchangeRate from './CurrentExchangeRate';
 
-const CREATE_UNITS_PERM = 'invoice.acquisitions-units-assignments.assign';
-const MANAGE_UNITS_PERM = 'invoice.acquisitions-units-assignments.manage';
+const CREATE_UNITS_PERM = 'invoices.acquisitions-units-assignments.assign';
+const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
 
 const InvoiceForm = ({
   batchGroups,
