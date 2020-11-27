@@ -46,6 +46,7 @@ describe('Invoice edit', () => {
     const invoice = this.server.create('invoice', {
       paymentTerms: TEST_VALUE_PAYMENT_TERMS,
       vendorId: vendor.id,
+      lockTotal: 100,
       adjustments: [{
         description: 'test',
         value: 75,
@@ -73,6 +74,10 @@ describe('Invoice edit', () => {
   it('use set exchange rate is not checked and exhange rate is read only', () => {
     expect(invoiceForm.exchangeRateReadOnly).to.be.equal('');
     expect(invoiceForm.useSetExchangeRate.isChecked).to.be.false;
+  });
+
+  it('lock total is checked', () => {
+    expect(invoiceForm.lockTotal.isChecked).to.be.true;
   });
 
   describe('Add data and save invoice', () => {
@@ -115,6 +120,16 @@ describe('Invoice edit', () => {
 
     it('vendor is updated', () => {
       expect(invoiceForm.vendorField.value).to.be.equal('Test');
+    });
+  });
+
+  describe('Uncheck lock total', () => {
+    beforeEach(async function () {
+      await invoiceForm.lockTotal.clickAndBlur();
+    });
+
+    it('should reset manual amount', () => {
+      expect(invoiceForm.manualAmount.value).to.be.equal('');
     });
   });
 });

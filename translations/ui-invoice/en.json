@@ -189,6 +189,8 @@
   "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
   "invoice.setExchangeRate": "Set exchange rate",
   "invoice.setExchangeRate.tooltip": "Check use set exchange rate to interact with this field",
+  "invoice.manualAmount": "Manual amount",
+  "invoice.manualAmount.tooltip": "Check Lock total to interact with this field",
 
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",

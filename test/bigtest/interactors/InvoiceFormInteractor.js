@@ -65,6 +65,8 @@ export default interactor(class InvoiceForm {
   exchangeRateReadOnly = attribute('input[name="exchangeRate"]', 'readonly');
   useSetExchangeRate = new CheckboxInteractor('#use-set-exhange-rate');
   organizationLookupBtn = clickable('[data-test-plugin-find-organization]');
+  lockTotal = new CheckboxInteractor('#lock-total');
+  manualAmount = new TextFieldInteractor('input[name="lockTotal"]');
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.isLoaded);
