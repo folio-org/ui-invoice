@@ -353,7 +353,6 @@ const InvoiceForm = ({
                               component={TextField}
                               data-testid="manual-amount"
                               id="manual-amount"
-                              isNonInteractive={isEditPostApproval}
                               key={isManualAmountEnabled ? 1 : 0}
                               label={<FormattedMessage id="ui-invoice.invoice.manualAmount" />}
                               name="lockTotal"

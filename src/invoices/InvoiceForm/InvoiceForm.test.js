@@ -46,28 +46,35 @@ const renderInvoiceForm = (
 ));
 
 describe('InvoiceForm component', () => {
-  it('Than it should display title', () => {
+  it('should display title', () => {
     const { getByText } = renderInvoiceForm();
 
     expect(getByText('ui-invoice.invoice.paneTitle.create')).toBeDefined();
   });
 
-  it('Than it should display pane footer', () => {
+  it('should display pane footer', () => {
     const { getByText } = renderInvoiceForm();
 
     expect(getByText('stripes-acq-components.FormFooter.cancel')).toBeDefined();
     expect(getByText('ui-invoice.saveAndClose')).toBeDefined();
   });
 
-  it('Than lock total should be unchecked and manual amount is read only', () => {
+  it('should uncheck lock-total initially', () => {
     const { getByTestId } = renderInvoiceForm();
 
     expect(getByTestId('lock-total').checked).toEqual(false);
-    expect(getByTestId('manual-amount')).toHaveAttribute('readonly');
+  });
+
+  describe('When lock total is unchecked', () => {
+    it('then manual amout is readonly', async () => {
+      const { getByTestId } = renderInvoiceForm();
+
+      expect(getByTestId('manual-amount')).toHaveAttribute('readonly');
+    });
   });
 
   describe('When lock total is checked', () => {
-    it('Than manual amout field should become editable', async () => {
+    it('then manual amout field should become editable', async () => {
       let getByTestId;
 
       await act(async () => {
@@ -83,7 +90,6 @@ describe('InvoiceForm component', () => {
         cancelable: true,
       }));
 
-      expect(getByTestId('lock-total').checked).toEqual(true);
       expect(getByTestId('manual-amount')).not.toHaveAttribute('readonly');
     });
   });
