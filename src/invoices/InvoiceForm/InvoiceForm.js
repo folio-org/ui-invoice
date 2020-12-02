@@ -106,7 +106,7 @@ const InvoiceForm = ({
   const [selectedVendor, setSelectedVendor] = useState();
   const [isExchangeRateEnabled, setExchangeRateEnabled] = useState(Boolean(exchangeRate));
   const [isExchangeRateRequired, setExchangeRateRequired] = useState(false);
-  const [isManualAmountEnabled, setManualAmountEnabled] = useState(isNumber(lockTotal));
+  const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
       setSelectedVendor(vendor);
@@ -154,8 +154,8 @@ const InvoiceForm = ({
     <FormattedMessage id="ui-invoice.invoice.setExchangeRate.tooltip" />;
   const tooltipTextUseSetExchangeRate = isSetUseExangeRateDisabled && !isEditPostApproval &&
     <FormattedMessage id="ui-invoice.invoice.useSetExchangeRate.tooltip" />;
-  const tooltipTextManualAmount = !isManualAmountEnabled &&
-    <FormattedMessage id="ui-invoice.invoice.manualAmount.tooltip" />;
+  const tooltipTextLockTotalAmount = !isLockTotalAmountEnabled &&
+    <FormattedMessage id="ui-invoice.invoice.lockTotalAmount.tooltip" />;
 
   const resetExchangeRate = useCallback(() => change('exchangeRate', null), [change]);
 
@@ -173,14 +173,14 @@ const InvoiceForm = ({
     resetExchangeRate();
   }, [change, resetExchangeRate]);
 
-  const resetManualAmount = useCallback(() => change('lockTotal', null), [change]);
+  const resetLockTotalAmount = useCallback(() => change('lockTotal', null), [change]);
 
-  const enableManualAmount = useCallback(
+  const enableLockTotalAmount = useCallback(
     ({ target: { checked } }) => {
-      setManualAmountEnabled(checked);
+      setLockTotalAmountEnabled(checked);
 
-      return checked ? undefined : resetManualAmount();
-    }, [resetManualAmount],
+      return checked ? undefined : resetLockTotalAmount();
+    }, [resetLockTotalAmount],
   );
 
   return (
@@ -329,19 +329,19 @@ const InvoiceForm = ({
                     <Row>
                       <Col data-test-col-lock-total xs={3}>
                         <Checkbox
-                          checked={isManualAmountEnabled}
+                          checked={isLockTotalAmountEnabled}
                           data-testid="lock-total"
                           disabled={isEditPostApproval}
                           id="lock-total"
                           label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
-                          onChange={enableManualAmount}
+                          onChange={enableLockTotalAmount}
                           vertical
                         />
                       </Col>
-                      <Col data-test-col-manual-amount xs={3}>
+                      <Col data-test-col-lock-total-amount xs={3}>
                         {isEditPostApproval
                           ? (
-                            <KeyValue label={<FormattedMessage id="ui-invoice.invoice.manualAmount" />}>
+                            <KeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>
                               <AmountWithCurrencyField
                                 amount={lockTotal}
                                 currency={currency}
@@ -351,16 +351,16 @@ const InvoiceForm = ({
                           : (
                             <Field
                               component={TextField}
-                              data-testid="manual-amount"
-                              id="manual-amount"
-                              key={isManualAmountEnabled ? 1 : 0}
-                              label={<FormattedMessage id="ui-invoice.invoice.manualAmount" />}
+                              data-testid="lock-total-amount"
+                              id="lock-total-amount"
+                              key={isLockTotalAmountEnabled ? 1 : 0}
+                              label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}
                               name="lockTotal"
-                              readOnly={!isManualAmountEnabled}
-                              required={isManualAmountEnabled}
-                              tooltipText={tooltipTextManualAmount}
+                              readOnly={!isLockTotalAmountEnabled}
+                              required={isLockTotalAmountEnabled}
+                              tooltipText={tooltipTextLockTotalAmount}
                               type="number"
-                              validate={isManualAmountEnabled ? validateRequired : undefined}
+                              validate={isLockTotalAmountEnabled ? validateRequired : undefined}
                             />
                           )
                         }

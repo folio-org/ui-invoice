@@ -66,15 +66,15 @@ describe('InvoiceForm component', () => {
   });
 
   describe('When lock total is unchecked', () => {
-    it('then manual amout is readonly', async () => {
+    it('then lock total amount is readonly', () => {
       const { getByTestId } = renderInvoiceForm();
 
-      expect(getByTestId('manual-amount')).toHaveAttribute('readonly');
+      expect(getByTestId('lock-total-amount')).toHaveAttribute('readonly');
     });
   });
 
   describe('When lock total is checked', () => {
-    it('then manual amout field should become editable', async () => {
+    it('then lock total amount field should become editable', async () => {
       let getByTestId;
 
       await act(async () => {
@@ -90,7 +90,7 @@ describe('InvoiceForm component', () => {
         cancelable: true,
       }));
 
-      expect(getByTestId('manual-amount')).not.toHaveAttribute('readonly');
+      expect(getByTestId('lock-total-amount')).not.toHaveAttribute('readonly');
     });
   });
 });

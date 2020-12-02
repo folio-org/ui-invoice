@@ -129,7 +129,7 @@ describe('Invoice edit', () => {
     });
 
     it('should reset manual amount', () => {
-      expect(invoiceForm.manualAmount.value).to.be.equal('');
+      expect(invoiceForm.lockTotalAmount.value).to.be.equal('');
     });
   });
 });
