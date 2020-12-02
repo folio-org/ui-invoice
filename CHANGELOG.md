@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Implement "Lock total" create and edit invoice form logic. Refs UINV-191.
 * Update invoice CRUD permissions. UINV-199.
 
 ## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2020-11-10)

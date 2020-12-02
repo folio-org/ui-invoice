@@ -6,6 +6,7 @@ import { Field } from 'react-final-form';
 import {
   find,
   get,
+  isNumber,
 } from 'lodash';
 
 import {
@@ -95,6 +96,7 @@ const InvoiceForm = ({
     exchangeRate,
     folioInvoiceNo,
     id,
+    lockTotal,
     metadata,
     status,
     subTotal,
@@ -104,6 +106,7 @@ const InvoiceForm = ({
   const [selectedVendor, setSelectedVendor] = useState();
   const [isExchangeRateEnabled, setExchangeRateEnabled] = useState(Boolean(exchangeRate));
   const [isExchangeRateRequired, setExchangeRateRequired] = useState(false);
+  const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
       setSelectedVendor(vendor);
@@ -151,6 +154,8 @@ const InvoiceForm = ({
     <FormattedMessage id="ui-invoice.invoice.setExchangeRate.tooltip" />;
   const tooltipTextUseSetExchangeRate = isSetUseExangeRateDisabled && !isEditPostApproval &&
     <FormattedMessage id="ui-invoice.invoice.useSetExchangeRate.tooltip" />;
+  const tooltipTextLockTotalAmount = !isLockTotalAmountEnabled &&
+    <FormattedMessage id="ui-invoice.invoice.lockTotalAmount.tooltip" />;
 
   const resetExchangeRate = useCallback(() => change('exchangeRate', null), [change]);
 
@@ -167,6 +172,16 @@ const InvoiceForm = ({
     change('currency', value);
     resetExchangeRate();
   }, [change, resetExchangeRate]);
+
+  const resetLockTotalAmount = useCallback(() => change('lockTotal', null), [change]);
+
+  const enableLockTotalAmount = useCallback(
+    ({ target: { checked } }) => {
+      setLockTotalAmountEnabled(checked);
+
+      return checked ? undefined : resetLockTotalAmount();
+    }, [resetLockTotalAmount],
+  );
 
   return (
     <form style={{ height: '100vh' }}>
@@ -309,19 +324,47 @@ const InvoiceForm = ({
                           />
                         </KeyValue>
                       </Col>
-                      <Col data-test-col-lock-total xs={3}>
-                        <Field
-                          component={Checkbox}
-                          disabled={isEditPostApproval}
-                          label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
-                          name="lockTotal"
-                          type="checkbox"
-                          vertical
-                        />
-                      </Col>
                     </Row>
 
                     <Row>
+                      <Col data-test-col-lock-total xs={3}>
+                        <Checkbox
+                          checked={isLockTotalAmountEnabled}
+                          data-testid="lock-total"
+                          disabled={isEditPostApproval}
+                          id="lock-total"
+                          label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
+                          onChange={enableLockTotalAmount}
+                          vertical
+                        />
+                      </Col>
+                      <Col data-test-col-lock-total-amount xs={3}>
+                        {isEditPostApproval
+                          ? (
+                            <KeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>
+                              <AmountWithCurrencyField
+                                amount={lockTotal}
+                                currency={currency}
+                              />
+                            </KeyValue>
+                          )
+                          : (
+                            <Field
+                              component={TextField}
+                              data-testid="lock-total-amount"
+                              id="lock-total-amount"
+                              key={isLockTotalAmountEnabled ? 1 : 0}
+                              label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}
+                              name="lockTotal"
+                              readOnly={!isLockTotalAmountEnabled}
+                              required={isLockTotalAmountEnabled}
+                              tooltipText={tooltipTextLockTotalAmount}
+                              type="number"
+                              validate={isLockTotalAmountEnabled ? validateRequired : undefined}
+                            />
+                          )
+                        }
+                      </Col>
                       <Col data-test-col-note xs={3}>
                         <Field
                           component={TextArea}
