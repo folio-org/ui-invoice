@@ -127,6 +127,7 @@ export const ERROR_CODES = {
   transactionCreationFailure: 'transactionCreationFailure',
   inactiveExpenseClass: 'inactiveExpenseClass',
   budgetExpenseClassNotFound: 'budgetExpenseClassNotFound',
+  lockCalculatedTotalsMismatch: 'lockCalculatedTotalsMismatch',
 };
 
 export const RETURN_LINK = '/invoice';
