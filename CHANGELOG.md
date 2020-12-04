@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Lock total must equal Calculated total to approve invoice. Refs UINV-190.
 * Implement "Lock total" create and edit invoice form logic. Refs UINV-191.
 * Update invoice CRUD permissions. UINV-199.
 
