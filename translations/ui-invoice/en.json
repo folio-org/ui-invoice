@@ -214,7 +214,7 @@
   "invoice.details.information.approvedBy": "Approved by",
   "invoice.details.information.acqUnits": "Acquisitions units",
   "invoice.details.information.totalUnits": "Total units",
-  "invoice.details.information.totalAmount": "Total amount",
+  "invoice.details.information.calculatedTotalAmount": "Calculated total amount",
   "invoice.details.information.adjustment": "Total adjustments",
   "invoice.details.information.subTotal": "Sub-total",
   "invoice.details.information.billToName": "Bill to name",

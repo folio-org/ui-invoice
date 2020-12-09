@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { isNumber } from 'lodash';
 
 import {
   Col,
@@ -40,7 +41,10 @@ const Information = ({
   acqUnits,
   currency,
   note,
+  lockTotal,
 }) => {
+  const isLockTotal = isNumber(lockTotal);
+
   return (
     <>
       {metadata && <ViewMetaData metadata={metadata} />}
@@ -143,13 +147,26 @@ const Information = ({
         </Col>
 
         <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalAmount" />}>
             <AmountWithCurrencyField
               amount={total}
               currency={currency}
             />
           </KeyValue>
         </Col>
+      </Row>
+
+      <Row>
+        {isLockTotal && (
+          <Col xs={3} data-testid="lock-total-amount">
+            <KeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>
+              <AmountWithCurrencyField
+                amount={lockTotal}
+                currency={currency}
+              />
+            </KeyValue>
+          </Col>
+        )}
       </Row>
     </>
   );
@@ -173,6 +190,7 @@ Information.propTypes = {
   acqUnits: PropTypes.arrayOf(PropTypes.string),
   currency: PropTypes.string.isRequired,
   note: PropTypes.string,
+  lockTotal: PropTypes.number,
 };
 
 Information.defaultProps = {

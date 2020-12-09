@@ -195,6 +195,7 @@ function InvoiceDetails({
                 acqUnits={invoice.acqUnitIds}
                 currency={invoice.currency}
                 note={invoice.note}
+                lockTotal={invoice.lockTotal}
               />
             </Accordion>
             <Accordion
