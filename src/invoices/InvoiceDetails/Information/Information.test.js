@@ -54,9 +54,9 @@ describe('Information component', () => {
   });
 
   it('should display lock total amount', () => {
-    const { queryByTestId, getByText } = renderInformation({ ...invoiceInformation, lockTotal: 10 });
+    const { getByText } = renderInformation({ ...invoiceInformation, lockTotal: 10 });
 
-    expect(queryByTestId('lock-total-amount')).not.toEqual(null);
+    expect(getByText('$10.00')).toBeDefined();
     expect(getByText('ui-invoice.invoice.lockTotalAmount')).toBeDefined();
   });
 });
