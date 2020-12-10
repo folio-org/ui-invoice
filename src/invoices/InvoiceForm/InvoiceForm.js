@@ -317,7 +317,7 @@ const InvoiceForm = ({
                         </KeyValue>
                       </Col>
                       <Col data-test-col-total xs={3}>
-                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.totalAmount" />}>
+                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalAmount" />}>
                           <AmountWithCurrencyField
                             amount={total}
                             currency={filledCurrency}
