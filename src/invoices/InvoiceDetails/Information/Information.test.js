@@ -1,13 +1,10 @@
 import React from 'react';
+import { IntlProvider } from 'react-intl';
 import { render } from '@testing-library/react';
 
 import '@folio/stripes-acq-components/test/jest/__mock__';
 
 import Information from './Information';
-
-jest.mock('../../../common/components/Status/StatusValue', () => {
-  return () => <span>StatusValue</span>;
-});
 
 jest.mock('../BatchGroupValue', () => {
   return () => <span>BatchGroupValue</span>;
@@ -29,37 +26,31 @@ const renderInformation = ({
   currency,
   lockTotal,
 }) => (render(
-  <Information
-    batchGroupId={batchGroupId}
-    invoiceDate={invoiceDate}
-    status={status}
-    source={source}
-    currency={currency}
-    lockTotal={lockTotal}
-  />,
+  <IntlProvider locale="en">
+    <Information
+      batchGroupId={batchGroupId}
+      invoiceDate={invoiceDate}
+      status={status}
+      source={source}
+      currency={currency}
+      lockTotal={lockTotal}
+    />
+  </IntlProvider>,
 ));
 
 describe('Information component', () => {
-  it('should display invoice information labels', () => {
+  it('should display invoice information', () => {
     const { getByText } = renderInformation(invoiceInformation);
 
-    expect(getByText('ui-invoice.invoice.details.information.invoiceDate')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.paymentDue')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.paymentTerms')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.approvedDate')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.source')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.note')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.totalUnits')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.subTotal')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.adjustment')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.calculatedTotalAmount')).toBeDefined();
-    expect(getByText('ui-invoice.invoice.details.information.subTotal')).toBeDefined();
+    expect(getByText('stripes-acq-components.sources.user')).toBeDefined();
+    expect(getByText('ui-invoice.invoice.status.open')).toBeDefined();
+    expect(getByText('2020-12-09')).toBeDefined();
   });
 
   it('should not display lock total amount', () => {
     const { queryByTestId } = renderInformation(invoiceInformation);
 
-    expect(queryByTestId('loca-total-amount')).toEqual(null);
+    expect(queryByTestId('lock-total-amount')).toEqual(null);
   });
 
   it('should display lock total amount', () => {
