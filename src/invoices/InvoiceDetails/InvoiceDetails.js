@@ -39,6 +39,7 @@ import VendorDetails from './VendorDetails';
 import VoucherInformationContainer from './VoucherInformation';
 import DocumentsDetails from './DocumentsDetails';
 import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
+import ApproveConfirmationModal from './ApproveConfirmationModal';
 import styles from './InvoiceDetails.css';
 
 function InvoiceDetails({
@@ -275,16 +276,13 @@ function InvoiceDetails({
         )}
         {
           isApproveConfirmationOpen && (
-            <ConfirmationModal
-              id="approve-invoice-confirmation"
-              heading={<FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.heading" />}
-              message={<FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.message" />}
+            <ApproveConfirmationModal
               onCancel={toggleApproveConfirmation}
               onConfirm={() => {
                 toggleApproveConfirmation();
                 approveInvoice();
               }}
-              open
+              invoice={invoice}
             />
           )
         }

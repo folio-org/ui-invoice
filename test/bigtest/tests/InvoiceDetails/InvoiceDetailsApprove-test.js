@@ -3,13 +3,13 @@ import { expect } from 'chai';
 
 import {
   CalloutInteractor,
-  ConfirmationInteractor,
 } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 import { INVOICE_API, INVOICE_STATUS, ERROR_CODES } from '../../../../src/common/constants';
 
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
+import ApproveInvoiceModalInteractor from '../../interactors/ApproveInvoiceModalInteractor';
 
 const createInvoice = (server, status, withLines = true) => {
   const batchGroup = server.create('batchgroup');
@@ -33,7 +33,7 @@ describe('Invoice details - approve action', () => {
   setupApplication();
 
   const invoiceDetails = new InvoiceDetails();
-  const approveConfirmation = new ConfirmationInteractor('#approve-invoice-confirmation');
+  const approveConfirmation = new ApproveInvoiceModalInteractor();
   const callout = new CalloutInteractor();
 
   const testAvailabilityOptions = [
@@ -87,6 +87,7 @@ describe('Invoice details - approve action', () => {
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
       await invoiceDetails.actions.buttonApproveInvoice.click();
+      await approveConfirmation.whenLoaded();
       await approveConfirmation.confirm();
     });
 
@@ -114,6 +115,7 @@ describe('Invoice details - approve action', () => {
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
       await invoiceDetails.actions.buttonApproveInvoice.click();
+      await approveConfirmation.whenLoaded();
       await approveConfirmation.confirm();
     });
 
@@ -141,6 +143,7 @@ describe('Invoice details - approve action', () => {
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
       await invoiceDetails.actions.buttonApproveInvoice.click();
+      await approveConfirmation.whenLoaded();
       await approveConfirmation.confirm();
     });
 
@@ -168,6 +171,7 @@ describe('Invoice details - approve action', () => {
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
       await invoiceDetails.actions.buttonApproveInvoice.click();
+      await approveConfirmation.whenLoaded();
       await approveConfirmation.confirm();
     });
 

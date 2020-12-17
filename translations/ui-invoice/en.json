@@ -22,6 +22,8 @@
   "button.runManualExport": "Run manual export",
   "button.save": "Save",
   "button.continue": "Continue",
+  "button.cancel": "Cancel",
+  "button.submit": "Submit",
 
   "showTags": "Show tags",
   "addTagFor": "Add tag for: {filterValue}",
@@ -184,6 +186,7 @@
   "invoice.invoiceVendorInformation": "Invoice vendor information",
   "invoice.delete.confirmLabel": "Delete",
   "invoice.delete.heading": "Delete {vendorInvoiceNo}?",
+  "invoice.delete.message": "Are you sure you want to delete invoice?",
   "invoice.currentExchangeRate": "Current exchange rate",
   "invoice.useSetExchangeRate": "Use set exchange rate",
   "invoice.useSetExchangeRate.tooltip": "Choose another currency to interact with this field",
@@ -259,6 +262,9 @@
   "invoice.details.voucher.voucherNumber": "Voucher number",
   "invoice.details.voucher.save.success": "Voucher has been successfully saved",
   "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid",
+
+  "invoice.duplicateInvoice.amount": "Amount",
+  "invoice.duplicateInvoice.title": "Possible duplicate invoice",
 
   "invoice.links.title": "Links",
   "invoice.link.name": "Link name",

@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Show the possible duplicate modal at point of invoice approval. Refs UINV-192.
 * Display lock total on invoice view when there is one. Refs UINV-208.
 * Lock total must equal Calculated total to approve invoice. Refs UINV-190.
 * Implement "Lock total" create and edit invoice form logic. Refs UINV-191.
