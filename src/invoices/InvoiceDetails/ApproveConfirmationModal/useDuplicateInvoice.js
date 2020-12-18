@@ -24,14 +24,14 @@ const useDuplicateInvoice = (mutator, invoice) => {
       },
     })
       .then(invoiceResp => {
-        setInvoices(invoiceResp);
         const vendorIds = [...new Set(invoiceResp.map(inv => inv.vendorId))];
+        const vendorPromise = batchFetch(mutator.vendors, vendorIds).catch(() => setInvoices(invoiceResp));
 
-        return batchFetch(mutator.vendors, vendorIds);
+        return Promise.all([vendorPromise, invoiceResp]);
       })
-      .then(vendorResp => (
-        setInvoices(prev => (
-          prev?.map(inv => ({
+      .then(([vendorResp, invoiceResp]) => (
+        vendorResp && setInvoices(() => (
+          invoiceResp.map(inv => ({
             ...inv,
             vendor: vendorResp.find(v => v.id === inv.vendorId),
           }))
