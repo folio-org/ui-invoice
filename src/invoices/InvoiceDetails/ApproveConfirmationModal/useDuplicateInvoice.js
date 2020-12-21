@@ -49,6 +49,7 @@ const useDuplicateInvoice = (mutator, invoice) => {
 
   useEffect(
     () => {
+      setInvoices();
       getAll(mutator, invoice)
         .then(setInvoices)
         .catch(({ message }) => showCallout({ messageId: message, type: 'error' }));
