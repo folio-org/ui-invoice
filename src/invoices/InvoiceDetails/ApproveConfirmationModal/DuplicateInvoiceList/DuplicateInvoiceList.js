@@ -29,30 +29,29 @@ const columnMapping = {
   amount: <FormattedMessage id="ui-invoice.invoice.duplicateInvoice.amount" />,
 };
 
-const DuplicateInvoiceList = ({ invoices }) => {
-  const resultsFormatter = {
-    vendorInvoiceNo: invoice => (
-      <Link
-        data-test-link-to-invoice
-        to={`/invoice/view/${invoice.id}`}
-      >
-        {invoice.vendorInvoiceNo}
-      </Link>
-    ),
-    invoiceDate: invoice => <FolioFormattedDate value={invoice.invoiceDate} />,
-    vendorName: invoice => invoice.vendor?.name,
-    status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
-    amount: invoice => (
-      <AmountWithCurrencyField
-        currency={invoice.currency}
-        amount={invoice.total}
-      />
-    ),
-  };
+const resultsFormatter = {
+  vendorInvoiceNo: invoice => (
+    <Link
+      data-test-link-to-invoice
+      to={`/invoice/view/${invoice.id}`}
+    >
+      {invoice.vendorInvoiceNo}
+    </Link>
+  ),
+  invoiceDate: invoice => <FolioFormattedDate value={invoice.invoiceDate} />,
+  vendorName: invoice => invoice.vendor?.name,
+  status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
+  amount: invoice => (
+    <AmountWithCurrencyField
+      currency={invoice.currency}
+      amount={invoice.total}
+    />
+  ),
+};
 
+const DuplicateInvoiceList = ({ invoices }) => {
   return (
     <>
-      <hr />
       <Headline>
         <FormattedMessage id="ui-invoice.invoice.duplicateInvoice.title" />
       </Headline>

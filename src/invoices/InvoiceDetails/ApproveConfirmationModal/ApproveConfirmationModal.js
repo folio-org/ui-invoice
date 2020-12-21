@@ -55,7 +55,15 @@ const ApproveConfirmationModal = ({
     >
       <FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.message" />
 
-      {duplicateInvoices?.length ? <DuplicateInvoiceList invoices={duplicateInvoices} /> : null}
+      {duplicateInvoices?.length
+        ? (
+          <>
+            <hr />
+            <DuplicateInvoiceList invoices={duplicateInvoices} />
+          </>
+        )
+        : null
+      }
     </Modal>
   );
 };
