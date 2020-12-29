@@ -185,8 +185,7 @@ const BatchGroupConfigurationForm = ({
             name="username"
             component={TextField}
             fullWidth
-            required={Boolean(initialValues.username)}
-            validate={initialValues.username ? validateRequired : undefined}
+            parse={v => v}
           />
         </Col>
 

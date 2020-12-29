@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Make username not required. Refs UINV-210.
 * Add personal data disclosure form. Refs UINV-212.
 * Show the possible duplicate modal at point of invoice approval. Refs UINV-192.
 * Display lock total on invoice view when there is one. Refs UINV-208.
