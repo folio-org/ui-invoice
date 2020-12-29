@@ -52,7 +52,6 @@ const BatchGroupConfigurationForm = ({
   testConnection,
 }) => {
   const formValues = get(form.getState(), 'values', {});
-  const initialValues = get(form.getState(), 'initialValues', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
   const [isManualExportConfirmation, toggleManualExportConfirmation] = useModalToggle();
   const selectedBatchGroupName = batchGroups.find(({ id }) => id === selectedBatchGroupId)?.name;
