@@ -25,7 +25,6 @@
     "invoice.details.information.approvedDate": "Approved date",
     "invoice.details.information.approvedBy": "Approved by",
     "invoice.details.information.totalUnits": "Total units",
-    "invoice.details.information.totalAmount": "Total amount",
     "invoice.details.information.subTotal": "Sub-total",
     "button.delete": "Delete",
     "button.edit": "Edit",
@@ -154,7 +153,7 @@
     "invoice.details.voucher.voucherDate": "Voucher date",
     "invoice.details.voucher.voucherLines": "Voucher lines",
     "invoice.details.voucher.voucherNumber": "Voucher number",
-    "showTags": "Show tags",
+    "showTags": "Pokaż etykiety",
     "button.remove": "Remove",
     "invoice.link.name": "Link name",
     "invoice.link.url": "External URL",
@@ -322,5 +321,14 @@
     "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",
     "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
     "permission.pay": "Invoice: Pay invoices",
-    "permission.settings.all": "Settings (Invoices): Can view and edit settings"
+    "permission.settings.all": "Settings (Invoices): Can view and edit settings",
+    "invoice.lockTotalAmount": "Lock total amount",
+    "invoice.lockTotalAmount.tooltip": "Check Lock total to interact with this field",
+    "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "Invoice cannot be approved. The Lock total amount of the invoice does not match the Calculated total amount of its invoice lines and adjustments.",
+    "invoice.details.information.calculatedTotalAmount": "Calculated total amount",
+    "button.cancel": "Cancel",
+    "button.submit": "Submit",
+    "invoice.delete.message": "Are you sure you want to delete invoice?",
+    "invoice.duplicateInvoice.amount": "Amount",
+    "invoice.duplicateInvoice.title": "Possible duplicate invoice"
 }
