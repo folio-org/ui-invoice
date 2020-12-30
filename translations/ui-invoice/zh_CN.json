@@ -330,5 +330,7 @@
     "button.submit": "提交",
     "invoice.delete.message": "确定删除发票？",
     "invoice.duplicateInvoice.amount": "金额",
-    "invoice.duplicateInvoice.title": "可能重复的发票"
+    "invoice.duplicateInvoice.title": "可能重复的发票",
+    "invoice.details.information.totalAmount": "",
+    "invoice.details.lines.list.number": ""
 }
