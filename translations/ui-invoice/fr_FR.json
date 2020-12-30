@@ -25,7 +25,6 @@
     "invoice.details.information.approvedDate": "Date d'approbation",
     "invoice.details.information.approvedBy": "Approuvé par",
     "invoice.details.information.totalUnits": "Total des unités",
-    "invoice.details.information.totalAmount": "Montant total",
     "invoice.details.information.subTotal": "Sous-total",
     "button.delete": "Supprimer",
     "button.edit": "Modifier",
@@ -322,5 +321,14 @@
     "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",
     "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
     "permission.pay": "Invoice: Pay invoices",
-    "permission.settings.all": "Settings (Invoices): Can view and edit settings"
+    "permission.settings.all": "Settings (Invoices): Can view and edit settings",
+    "invoice.lockTotalAmount": "Verrouiller le montant total",
+    "invoice.lockTotalAmount.tooltip": "Check Lock total to interact with this field",
+    "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "Invoice cannot be approved. The Lock total amount of the invoice does not match the Calculated total amount of its invoice lines and adjustments.",
+    "invoice.details.information.calculatedTotalAmount": "Calculated total amount",
+    "button.cancel": "Annuler",
+    "button.submit": "Soumettre",
+    "invoice.delete.message": "Êtes-vous sûr de vouloir supprimer la facture?",
+    "invoice.duplicateInvoice.amount": "Montant",
+    "invoice.duplicateInvoice.title": "Facture en double possible"
 }
