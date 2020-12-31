@@ -330,5 +330,7 @@
     "button.submit": "Submit",
     "invoice.delete.message": "Are you sure you want to delete invoice?",
     "invoice.duplicateInvoice.amount": "Amount",
-    "invoice.duplicateInvoice.title": "Possible duplicate invoice"
+    "invoice.duplicateInvoice.title": "Possible duplicate invoice",
+    "invoice.details.information.totalAmount": "",
+    "invoice.details.lines.list.number": ""
 }

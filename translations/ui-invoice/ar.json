@@ -330,5 +330,7 @@
     "button.submit": "تقديم",
     "invoice.delete.message": "هل أنت متأكد من أنك تريد حذف الفاتورة؟",
     "invoice.duplicateInvoice.amount": "المبلغ",
-    "invoice.duplicateInvoice.title": "فاتورة مكررة محتملة"
+    "invoice.duplicateInvoice.title": "فاتورة مكررة محتملة",
+    "invoice.details.information.totalAmount": "",
+    "invoice.details.lines.list.number": ""
 }
