@@ -330,7 +330,5 @@
     "button.submit": "Enviar",
     "invoice.delete.message": "Tem certeza de que deseja excluir a fatura?",
     "invoice.duplicateInvoice.amount": "Montante",
-    "invoice.duplicateInvoice.title": "Possível fatura duplicada",
-    "invoice.details.information.totalAmount": "",
-    "invoice.details.lines.list.number": ""
+    "invoice.duplicateInvoice.title": "Possível fatura duplicada"
 }

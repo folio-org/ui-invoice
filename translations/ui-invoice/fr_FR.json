@@ -330,7 +330,5 @@
     "button.submit": "Soumettre",
     "invoice.delete.message": "Êtes-vous sûr de vouloir supprimer la facture?",
     "invoice.duplicateInvoice.amount": "Montant",
-    "invoice.duplicateInvoice.title": "Facture en double possible",
-    "invoice.details.information.totalAmount": "",
-    "invoice.details.lines.list.number": ""
+    "invoice.duplicateInvoice.title": "Facture en double possible"
 }

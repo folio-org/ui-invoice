@@ -330,7 +330,5 @@
     "button.submit": "Submit",
     "invoice.delete.message": "Eliminar factura?",
     "invoice.duplicateInvoice.amount": "Amount",
-    "invoice.duplicateInvoice.title": "Possible duplicate invoice",
-    "invoice.details.information.totalAmount": "Importe total",
-    "invoice.details.lines.list.number": "Número de línea"
+    "invoice.duplicateInvoice.title": "Possible duplicate invoice"
 }
