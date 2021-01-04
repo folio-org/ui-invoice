@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Fix accounting code select list always default on first selection. UINV-169.
 * Make username not required. Refs UINV-210.
 * Add personal data disclosure form. Refs UINV-212.
 * Show the possible duplicate modal at point of invoice approval. Refs UINV-192.
