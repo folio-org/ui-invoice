@@ -325,7 +325,7 @@
     "invoice.lockTotalAmount": "Verrouiller le montant total",
     "invoice.lockTotalAmount.tooltip": "Check Lock total to interact with this field",
     "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "Invoice cannot be approved. The Lock total amount of the invoice does not match the Calculated total amount of its invoice lines and adjustments.",
-    "invoice.details.information.calculatedTotalAmount": "Calculated total amount",
+    "invoice.details.information.calculatedTotalAmount": "Montant total calculé",
     "button.cancel": "Annuler",
     "button.submit": "Soumettre",
     "invoice.delete.message": "Êtes-vous sûr de vouloir supprimer la facture?",
