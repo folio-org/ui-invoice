@@ -72,7 +72,7 @@ const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
 
 const InvoiceForm = ({
   batchGroups,
-  form: { change, mutators: { push } },
+  form: { batch, change, mutators: { push } },
   handleSubmit,
   initialValues,
   initialVendor,
@@ -182,6 +182,17 @@ const InvoiceForm = ({
       return checked ? undefined : resetLockTotalAmount();
     }, [resetLockTotalAmount],
   );
+
+  const onChangeAccNumber = useCallback(accNumber => {
+    const accCode = accNumber
+      ? vendor.accounts?.find(({ accountNo }) => accountNo === accNumber)?.appSystemNo
+      : vendor.erpCode;
+
+    batch(() => {
+      change('accountingCode', accCode || null);
+      change('accountNo', accNumber || null);
+    });
+  }, [vendor.accounts, vendor.erpCode]);
 
   return (
     <form style={{ height: '100vh' }}>
@@ -424,8 +435,9 @@ const InvoiceForm = ({
                           dataOptions={accountingCodeOptions}
                           isNonInteractive={isEditPostApproval}
                           labelId="ui-invoice.invoice.accountingCode"
-                          name="accountingCode"
-                          readOnly={!vendor}
+                          name="accountNo"
+                          onChange={onChangeAccNumber}
+                          readOnly={!vendor?.id}
                         />
                       </Col>
                     </Row>
@@ -576,6 +588,10 @@ InvoiceForm.propTypes = {
   systemCurrency: PropTypes.string.isRequired,
   values: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
+};
+
+InvoiceForm.defaultProps = {
+  initialVendor: {},
 };
 
 export default stripesForm({
