@@ -1,8 +1,11 @@
 # Change history for ui-invoice
 
-## (IN PROGRESS)
+## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2021-01-15)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.1...v2.2.2)
 
-## [2.2.0]https://github.com/folio-org/ui-invoice/tree/v2.2.1) (2020-10-09)
+*Cannot save invoice if assigned an acquisition unit. Refs UINV-217
+
+## [2.2.1]https://github.com/folio-org/ui-invoice/tree/v2.2.1) (2020-10-09)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.1.3...v2.2.1)
 
 * Update create/edit record form inactive fields - Invoice line. Refs UINV-186
