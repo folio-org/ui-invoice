@@ -11,6 +11,11 @@
 * Implement "Lock total" create and edit invoice form logic. Refs UINV-191.
 * Update invoice CRUD permissions. UINV-199.
 
+## [2.2.3]https://github.com/folio-org/ui-invoice/tree/v2.2.3) (2021-01-15)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.2...v2.2.3)
+
+* Cannot save invoice if assigned an acquisition unit. Refs UINV-217
+
 ## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2020-11-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.1...v2.2.2)
 
