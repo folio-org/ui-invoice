@@ -8,8 +8,9 @@ import InvoiceDetails from '../../interactors/InvoiceDetails';
 const ACCOUNT_NUMBER = 'some-number';
 const ACCOUNTING_CODE = 'some-code';
 
-describe('Invoice line create', () => {
+describe('Invoice line create', function () {
   setupApplication();
+  this.timeout(15000);
 
   const invoiceLineForm = new InvoiceLineFormInteractor();
   const invoiceDetails = new InvoiceDetails();
