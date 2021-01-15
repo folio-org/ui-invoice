@@ -1,9 +1,16 @@
 # Change history for ui-invoice
 
-## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2021-01-15)
+## [2.2.3]https://github.com/folio-org/ui-invoice/tree/v2.2.3) (2021-01-15)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.2...v2.2.3)
+
+* Cannot save invoice if assigned an acquisition unit. Refs UINV-217
+
+## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2020-11-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.1...v2.2.2)
 
-*Cannot save invoice if assigned an acquisition unit. Refs UINV-217
+* Invoice date filters are off set by timezone somehow. Refs UINV-202.
+* Can not see invoice note in the view pane. Refs UINV-200.
+* Error message: Budget Expense Class not found. Refs UINV-198.
 
 ## [2.2.1]https://github.com/folio-org/ui-invoice/tree/v2.2.1) (2020-10-09)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.1.3...v2.2.1)
