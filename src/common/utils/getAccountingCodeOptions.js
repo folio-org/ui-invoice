@@ -9,7 +9,7 @@ export const getAccountingCodeOptions = (vendor) => {
   }));
   const erpCode = get(vendor, 'erpCode');
   const defaultOption = erpCode
-    ? [{ label: `Default (${erpCode})`, value: erpCode }]
+    ? [{ label: `Default (${erpCode})`, value: null }]
     : [];
 
   return [

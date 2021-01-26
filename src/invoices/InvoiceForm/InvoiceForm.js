@@ -431,14 +431,23 @@ const InvoiceForm = ({
                       </Col>
 
                       <Col data-test-col-accounting-code xs={3}>
-                        <FieldSelectionFinal
-                          dataOptions={accountingCodeOptions}
-                          isNonInteractive={isEditPostApproval}
-                          labelId="ui-invoice.invoice.accountingCode"
-                          name="accountNo"
-                          onChange={onChangeAccNumber}
-                          readOnly={!vendor?.id}
-                        />
+                        {isEditPostApproval
+                          ? (
+                            <KeyValue
+                              label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
+                              value={values?.accountingCode}
+                            />
+                          )
+                          : (
+                            <FieldSelectionFinal
+                              dataOptions={accountingCodeOptions}
+                              labelId="ui-invoice.invoice.accountingCode"
+                              name="accountNo"
+                              onChange={onChangeAccNumber}
+                              readOnly={!vendor?.id}
+                            />
+                          )
+                        }
                       </Col>
                     </Row>
                   </Accordion>
