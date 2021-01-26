@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Fix Invoice will not approve when "Export to accounting" is true. UINV-220.
 * Fix accounting code select list always default on first selection. UINV-169.
 * Make username not required. Refs UINV-210.
 * Add personal data disclosure form. Refs UINV-212.
