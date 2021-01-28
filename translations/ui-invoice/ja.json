@@ -82,7 +82,7 @@
     "adjustments": "Adjustments",
     "status.Open": "Open",
     "invoice.details.lines.add": "追加",
-    "invoice.details.lines.list.description": "タイトル",
+    "invoice.details.lines.list.description": "説明",
     "invoice.details.lines.list.quantity": "Quantity",
     "invoice.details.lines.list.total": "合計",
     "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
