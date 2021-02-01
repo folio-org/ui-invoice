@@ -3,7 +3,6 @@ export const BATCH_GROUPS_API = 'batch-groups';
 export const BATCH_VOUCHERS_API = 'batch-voucher/batch-vouchers';
 export const BATCH_VOUCHER_EXPORTS_API = 'batch-voucher/batch-voucher-exports';
 export const CONFIG_API = 'configurations/entries';
-export const EXCHANGE_RATE_API = 'finance/exchange-rate';
 export const EXPORT_CONFIGURATIONS_API = 'batch-voucher/export-configurations';
 export const INVOICE_API = 'invoice/invoices';
 export const INVOICE_DOCUMENTS_API = '/documents';

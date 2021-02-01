@@ -27,6 +27,7 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AcqUnitsField,
   AmountWithCurrencyField,
+  CurrencyExchangeRateFields,
   FieldDatepickerFinal,
   FieldOrganization,
   FieldSelectFinal,
@@ -35,7 +36,6 @@ import {
   FormFooter,
   PAYMENT_METHOD_OPTIONS,
   TextField,
-  TooltippedControl,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -53,10 +53,7 @@ import {
   isPayable,
   parseAddressConfigs,
 } from '../../common/utils';
-import {
-  ApprovedBy,
-  FieldCurrency,
-} from '../../common/components';
+import { ApprovedBy } from '../../common/components';
 import {
   SECTIONS_INVOICE_FORM as SECTIONS,
 } from '../constants';
@@ -65,7 +62,6 @@ import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 import invoiceCss from '../Invoice.css';
 import FieldBatchGroup from './FieldBatchGroup';
-import CurrentExchangeRate from './CurrentExchangeRate';
 
 const CREATE_UNITS_PERM = 'invoices.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
@@ -80,7 +76,6 @@ const InvoiceForm = ({
   parentResources,
   pristine,
   submitting,
-  systemCurrency,
   values,
 }) => {
   const filledBillTo = values?.billTo;
@@ -104,8 +99,6 @@ const InvoiceForm = ({
     vendorInvoiceNo,
   } = initialValues;
   const [selectedVendor, setSelectedVendor] = useState();
-  const [isExchangeRateEnabled, setExchangeRateEnabled] = useState(Boolean(exchangeRate));
-  const [isExchangeRateRequired, setExchangeRateRequired] = useState(false);
   const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
@@ -148,30 +141,8 @@ const InvoiceForm = ({
   const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
     ? INVOICE_STATUSES_OPTIONS
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
-  const isSetUseExangeRateDisabled = isStatusPaid ||
-    (filledCurrency === systemCurrency) || isExchangeRateRequired;
-  const tooltipTextExchangeRate = !isExchangeRateEnabled && !isEditPostApproval &&
-    <FormattedMessage id="ui-invoice.invoice.setExchangeRate.tooltip" />;
-  const tooltipTextUseSetExchangeRate = isSetUseExangeRateDisabled && !isEditPostApproval &&
-    <FormattedMessage id="ui-invoice.invoice.useSetExchangeRate.tooltip" />;
   const tooltipTextLockTotalAmount = !isLockTotalAmountEnabled &&
     <FormattedMessage id="ui-invoice.invoice.lockTotalAmount.tooltip" />;
-
-  const resetExchangeRate = useCallback(() => change('exchangeRate', null), [change]);
-
-  const enableExchangeRate = useCallback(
-    ({ target: { checked } }) => {
-      setExchangeRateEnabled(checked);
-
-      return checked ? undefined : resetExchangeRate();
-    },
-    [resetExchangeRate],
-  );
-
-  const onChangeCurrency = useCallback((value) => {
-    change('currency', value);
-    resetExchangeRate();
-  }, [change, resetExchangeRate]);
 
   const resetLockTotalAmount = useCallback(() => change('lockTotal', null), [change]);
 
@@ -491,53 +462,15 @@ const InvoiceForm = ({
                           vertical
                         />
                       </Col>
-                      <Col data-test-col-currency xs={3}>
-                        <FieldCurrency
-                          id="invoice-currency"
-                          name="currency"
-                          onChange={onChangeCurrency}
-                          required
-                          isNonInteractive={isEditPostApproval}
-                          value={currency}
-                        />
-                      </Col>
-                      <Col data-test-col-current-exchange-rate xs={3}>
-                        <CurrentExchangeRate
-                          label={<FormattedMessage id="ui-invoice.invoice.currentExchangeRate" />}
-                          exchangeFrom={filledCurrency}
-                          exchangeTo={systemCurrency}
-                          setExchangeRateEnabled={setExchangeRateEnabled}
-                          setExchangeRateRequired={setExchangeRateRequired}
-                        />
-                      </Col>
-                      <Col data-test-col-use-set-exchange-rate xs={3}>
-                        <TooltippedControl
-                          controlComponent={Checkbox}
-                          checked={isExchangeRateEnabled}
-                          readOnly={isSetUseExangeRateDisabled}
-                          id="use-set-exhange-rate"
-                          label={<FormattedMessage id="ui-invoice.invoice.useSetExchangeRate" />}
-                          onChange={enableExchangeRate}
-                          vertical
-                          tooltipText={tooltipTextUseSetExchangeRate}
-                        />
-                      </Col>
-                      <Col data-test-col-set-exchange-rate xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.setExchangeRate" />}
-                          id="exchange-rate"
-                          name="exchangeRate"
-                          type="number"
-                          readOnly={!isExchangeRateEnabled}
-                          tooltipText={tooltipTextExchangeRate}
-                          required={isExchangeRateRequired}
-                          validate={isExchangeRateRequired ? validateRequired : undefined}
-                          key={isExchangeRateRequired ? 1 : 0}
-                          isNonInteractive={isStatusPaid}
-                        />
-                      </Col>
                     </Row>
+                    <CurrencyExchangeRateFields
+                      exchangeRate={exchangeRate}
+                      initialCurrency={currency}
+                      isNonInteractive={isEditPostApproval}
+                      isTooltipTextExchangeRate={!isEditPostApproval}
+                      isUseExangeRateDisabled={isEditPostApproval}
+                      isSetExchangeRateNonIntaractive={isStatusPaid}
+                    />
                   </Accordion>
                   {/* <Accordion
                     id={SECTIONS.voucher}
@@ -594,7 +527,6 @@ InvoiceForm.propTypes = {
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   batchGroups: PropTypes.arrayOf(PropTypes.object),
-  systemCurrency: PropTypes.string.isRequired,
   values: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
 };
