@@ -11,10 +11,6 @@ jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
 });
 
-jest.mock('@folio/stripes-acq-components/lib/CurrencyExchangeRateFields/CurrencyExchangeRateFields', () => {
-  return () => <span>CurrencyExchangeRateFields</span>;
-});
-
 jest.mock('@folio/stripes-acq-components/lib/AcqUnits/AcqUnitsField', () => {
   return () => <span>AcqUnitsField</span>;
 });
