@@ -6,18 +6,24 @@ import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 import {
-  ConfirmationModal,
+  Button,
   LoadingPane,
+  Modal,
+  ModalFooter,
   Paneset,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 import {
+  baseManifest,
+  DATE_FORMAT,
   LIMIT_MAX,
   sourceValues,
   useModalToggle,
   useShowCallout,
+  VENDORS_API,
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_STATUS } from '../../common/constants';
@@ -30,6 +36,7 @@ import {
   invoicesResource,
   VENDOR,
 } from '../../common/resources';
+import DuplicateInvoiceList from '../../common/components/DuplicateInvoiceList';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
@@ -48,6 +55,7 @@ function InvoiceFormContainer({
   stripes,
 }) {
   const [batchGroups, setBatchGroups] = useState();
+  const [duplicateInvoices, setDuplicateInvoices] = useState();
 
   useEffect(() => {
     setBatchGroups();
@@ -73,17 +81,24 @@ function InvoiceFormContainer({
 
     if (!forceSaveValues) {
       const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
+      const date = id ? moment.utc(invoiceDate).format(DATE_FORMAT) : invoiceDate;
       const params = {
         limit: `${LIMIT_MAX}`,
-        query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${invoiceDate}*" AND vendorId=="${vendorId}"`,
+        query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${date}*" AND vendorId=="${vendorId}"`,
       };
+      const duplicateInvoicePromise = mutator.invoiceFormInvoices.GET({ params });
+      const vendorPromise = mutator.duplicateInvoiceVendor.GET({ path: `${VENDORS_API}/${vendorId}` });
 
-      validationRequest = mutator.invoiceFormInvoices.GET({ params })
+      validationRequest = Promise.all([duplicateInvoicePromise, vendorPromise])
         // eslint-disable-next-line consistent-return
-        .then(existingInvoices => {
+        .then(([existingInvoices, vendor]) => {
           if (existingInvoices.length) {
             toggleNotUnique();
             setForceSaveValues(formValues);
+
+            const duplicates = existingInvoices.map(i => ({ ...i, vendor }));
+
+            setDuplicateInvoices(duplicates);
 
             return Promise.reject();
           }
@@ -124,6 +139,30 @@ function InvoiceFormContainer({
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
   };
 
+  const modalFooter = (
+    <ModalFooter>
+      <Button
+        data-test-confirm-button
+        buttonStyle="primary"
+        marginBottom0
+        onClick={() => saveInvoiceHandler(forceSaveValues)}
+      >
+        <FormattedMessage id="ui-invoice.button.submit" />
+      </Button>
+
+      <Button
+        data-test-cancel-button
+        marginBottom0
+        onClick={() => {
+          toggleNotUnique();
+          setForceSaveValues(null);
+        }}
+      >
+        <FormattedMessage id="ui-invoice.button.cancel" />
+      </Button>
+    </ModalFooter>
+  );
+
   const hasLoaded = (!id && batchGroups) || (
     get(resources, 'invoice.hasLoaded') && get(resources, 'invoiceFormVendor.hasLoaded') && batchGroups
   );
@@ -148,17 +187,16 @@ function InvoiceFormContainer({
       />
       {
         isNotUniqueOpen && (
-          <ConfirmationModal
+          <Modal
+            footer={modalFooter}
             id="invoice-is-not-unique-confirmation"
-            heading={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.heading" />}
-            message={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.message" />}
-            onCancel={() => {
-              toggleNotUnique();
-              setForceSaveValues(null);
-            }}
-            onConfirm={() => saveInvoiceHandler(forceSaveValues)}
+            label={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.heading" />}
             open
-          />
+          >
+            <FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.message" />
+            <hr />
+            <DuplicateInvoiceList invoices={duplicateInvoices} />
+          </Modal>
         )
       }
     </>
@@ -169,6 +207,11 @@ InvoiceFormContainer.manifest = Object.freeze({
   invoice: invoiceResource,
   invoiceFormDocuments: {
     ...invoiceDocumentsResource,
+    accumulate: true,
+  },
+  duplicateInvoiceVendor: {
+    ...baseManifest,
+    fetch: false,
     accumulate: true,
   },
   invoiceFormInvoices: {

@@ -308,7 +308,7 @@
   "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data",
 
   "invoice.isNotUnique.confirmation.heading": "Save invoice",
-  "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+  "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice",
 
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
