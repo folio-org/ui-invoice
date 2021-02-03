@@ -11,10 +11,6 @@ jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
 });
 
-jest.mock('./CurrentExchangeRate', () => {
-  return () => <span>CurrentExchangeRate</span>;
-});
-
 jest.mock('@folio/stripes-acq-components/lib/AcqUnits/AcqUnitsField', () => {
   return () => <span>AcqUnitsField</span>;
 });
@@ -22,7 +18,6 @@ jest.mock('@folio/stripes-acq-components/lib/AcqUnits/AcqUnitsField', () => {
 const renderInvoiceForm = (
   initialValues = {},
   batchGroups = [],
-  systemCurrency = 'USD',
   parentResources = {},
 ) => (render(
   <MemoryRouter>
@@ -35,7 +30,6 @@ const renderInvoiceForm = (
           onSubmit={jest.fn}
           onCancel={jest.fn}
           initialValues={initialValues}
-          systemCurrency={systemCurrency}
           pristine={false}
           submitting={false}
           parentResources={parentResources}

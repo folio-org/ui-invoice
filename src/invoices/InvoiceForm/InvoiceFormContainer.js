@@ -145,7 +145,6 @@ function InvoiceFormContainer({
         onSubmit={saveInvoiceHandler}
         onCancel={onCancel}
         batchGroups={batchGroups}
-        systemCurrency={stripes.currency}
       />
       {
         isNotUniqueOpen && (

@@ -42,7 +42,7 @@ import FormFooterInteractor from './common/FormFooter';
 }
 
 @interactor class CurrencyInteractor {
-  options = new OptionListInteractor('#sl-invoice-currency');
+  options = new OptionListInteractor('#sl-currency');
 }
 
 export default interactor(class InvoiceForm {

@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Use `CurrencyExchangeRateFields` component from stripes-acq-components. Refs UIOR-610.
 * Fix Invoice will not approve when "Export to accounting" is true. UINV-220.
 * Fix accounting code select list always default on first selection. UINV-169.
 * Make username not required. Refs UINV-210.
