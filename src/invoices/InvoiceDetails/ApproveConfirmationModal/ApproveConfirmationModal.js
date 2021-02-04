@@ -9,12 +9,12 @@ import {
   ModalFooter,
 } from '@folio/stripes/components';
 
+import DuplicateInvoiceList from '../../../common/components/DuplicateInvoiceList';
 import {
   invoicesResource,
   VENDORS,
 } from '../../../common/resources';
 import useDuplicateInvoice from './useDuplicateInvoice';
-import DuplicateInvoiceList from './DuplicateInvoiceList/DuplicateInvoiceList';
 
 const ApproveConfirmationModal = ({
   onCancel,

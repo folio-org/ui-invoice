@@ -12,7 +12,7 @@ import {
   FolioFormattedDate,
 } from '@folio/stripes-acq-components';
 
-import { getInvoiceStatusLabel } from '../../../../common/utils';
+import { getInvoiceStatusLabel } from '../../utils';
 
 const visibleColumns = [
   'vendorInvoiceNo',

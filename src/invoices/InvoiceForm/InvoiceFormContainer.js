@@ -1,23 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import {
-  FormattedMessage,
-} from 'react-intl';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { withRouter } from 'react-router-dom';
+import moment from 'moment';
 
 import {
-  ConfirmationModal,
   LoadingPane,
   Paneset,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
 import {
+  baseManifest,
+  DATE_FORMAT,
   LIMIT_MAX,
   sourceValues,
   useModalToggle,
   useShowCallout,
+  VENDORS_API,
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_STATUS } from '../../common/constants';
@@ -38,6 +38,7 @@ import {
   saveInvoice,
   getAlwaysShownAdjustmentsList,
 } from './utils';
+import DuplicateInvoiceModal from './DuplicateInvoiceModal/DuplicateInvoiceModal';
 
 function InvoiceFormContainer({
   match,
@@ -48,6 +49,7 @@ function InvoiceFormContainer({
   stripes,
 }) {
   const [batchGroups, setBatchGroups] = useState();
+  const [duplicateInvoices, setDuplicateInvoices] = useState();
 
   useEffect(() => {
     setBatchGroups();
@@ -73,17 +75,24 @@ function InvoiceFormContainer({
 
     if (!forceSaveValues) {
       const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
+      const date = moment.utc(invoiceDate).format(DATE_FORMAT);
       const params = {
         limit: `${LIMIT_MAX}`,
-        query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${invoiceDate}*" AND vendorId=="${vendorId}"`,
+        query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${date}*" AND vendorId=="${vendorId}"`,
       };
+      const duplicateInvoicePromise = mutator.invoiceFormInvoices.GET({ params });
+      const vendorPromise = mutator.duplicateInvoiceVendor.GET({ path: `${VENDORS_API}/${vendorId}` });
 
-      validationRequest = mutator.invoiceFormInvoices.GET({ params })
+      validationRequest = Promise.all([duplicateInvoicePromise, vendorPromise])
         // eslint-disable-next-line consistent-return
-        .then(existingInvoices => {
+        .then(([existingInvoices, vendor]) => {
           if (existingInvoices.length) {
             toggleNotUnique();
             setForceSaveValues(formValues);
+
+            const duplicates = existingInvoices.map(i => ({ ...i, vendor }));
+
+            setDuplicateInvoices(duplicates);
 
             return Promise.reject();
           }
@@ -148,16 +157,13 @@ function InvoiceFormContainer({
       />
       {
         isNotUniqueOpen && (
-          <ConfirmationModal
-            id="invoice-is-not-unique-confirmation"
-            heading={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.heading" />}
-            message={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.message" />}
+          <DuplicateInvoiceModal
+            duplicateInvoices={duplicateInvoices}
+            onSubmit={() => saveInvoiceHandler(forceSaveValues)}
             onCancel={() => {
               toggleNotUnique();
               setForceSaveValues(null);
             }}
-            onConfirm={() => saveInvoiceHandler(forceSaveValues)}
-            open
           />
         )
       }
@@ -169,6 +175,11 @@ InvoiceFormContainer.manifest = Object.freeze({
   invoice: invoiceResource,
   invoiceFormDocuments: {
     ...invoiceDocumentsResource,
+    accumulate: true,
+  },
+  duplicateInvoiceVendor: {
+    ...baseManifest,
+    fetch: false,
     accumulate: true,
   },
   invoiceFormInvoices: {
