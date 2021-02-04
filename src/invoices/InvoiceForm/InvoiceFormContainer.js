@@ -1,7 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import {
-  FormattedMessage,
-} from 'react-intl';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -9,10 +6,7 @@ import { withRouter } from 'react-router-dom';
 import moment from 'moment';
 
 import {
-  Button,
   LoadingPane,
-  Modal,
-  ModalFooter,
   Paneset,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
@@ -36,7 +30,6 @@ import {
   invoicesResource,
   VENDOR,
 } from '../../common/resources';
-import DuplicateInvoiceList from '../../common/components/DuplicateInvoiceList';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
@@ -45,6 +38,7 @@ import {
   saveInvoice,
   getAlwaysShownAdjustmentsList,
 } from './utils';
+import DuplicateInvoiceModal from './DuplicateInvoiceModal/DuplicateInvoiceModal';
 
 function InvoiceFormContainer({
   match,
@@ -81,7 +75,7 @@ function InvoiceFormContainer({
 
     if (!forceSaveValues) {
       const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
-      const date = id ? moment.utc(invoiceDate).format(DATE_FORMAT) : invoiceDate;
+      const date = moment.utc(invoiceDate).format(DATE_FORMAT);
       const params = {
         limit: `${LIMIT_MAX}`,
         query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${date}*" AND vendorId=="${vendorId}"`,
@@ -139,30 +133,6 @@ function InvoiceFormContainer({
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
   };
 
-  const modalFooter = (
-    <ModalFooter>
-      <Button
-        data-test-confirm-button
-        buttonStyle="primary"
-        marginBottom0
-        onClick={() => saveInvoiceHandler(forceSaveValues)}
-      >
-        <FormattedMessage id="ui-invoice.button.submit" />
-      </Button>
-
-      <Button
-        data-test-cancel-button
-        marginBottom0
-        onClick={() => {
-          toggleNotUnique();
-          setForceSaveValues(null);
-        }}
-      >
-        <FormattedMessage id="ui-invoice.button.cancel" />
-      </Button>
-    </ModalFooter>
-  );
-
   const hasLoaded = (!id && batchGroups) || (
     get(resources, 'invoice.hasLoaded') && get(resources, 'invoiceFormVendor.hasLoaded') && batchGroups
   );
@@ -187,16 +157,14 @@ function InvoiceFormContainer({
       />
       {
         isNotUniqueOpen && (
-          <Modal
-            footer={modalFooter}
-            id="invoice-is-not-unique-confirmation"
-            label={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.heading" />}
-            open
-          >
-            <FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.message" />
-            <hr />
-            <DuplicateInvoiceList invoices={duplicateInvoices} />
-          </Modal>
+          <DuplicateInvoiceModal
+            duplicateInvoices={duplicateInvoices}
+            onSubmit={() => saveInvoiceHandler(forceSaveValues)}
+            onCancel={() => {
+              toggleNotUnique();
+              setForceSaveValues(null);
+            }}
+          />
         )
       }
     </>
