@@ -32,7 +32,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
     poLineId: poLine.id,
     comment: poLine.poLineDescription,
     fundDistributions: poLine.fundDistribution,
-    vendorRefNo: get(poLine, 'vendorDetail.refNumber'),
+    referenceNumbers: poLine?.vendorDetail?.referenceNumbers,
     subscriptionStart: get(poLine, 'details.subscriptionFrom'),
     subscriptionEnd: get(poLine, 'details.subscriptionTo'),
     quantity: quantityElectronic + quantityPhysical,
