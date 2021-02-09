@@ -14,6 +14,7 @@ import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
   AmountWithCurrencyField,
   FolioFormattedDate,
+  VendorReferenceNumbersDetails,
 } from '@folio/stripes-acq-components';
 
 const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
@@ -49,12 +50,6 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineNumber" />}
             value={invoiceLine.invoiceLineNumber}
-          />
-        </Col>
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
-            value={invoiceLine.vendorRefNo}
           />
         </Col>
         <Col xs={3}>
@@ -120,6 +115,13 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
             label={<FormattedMessage id="ui-invoice.invoiceLine.releaseEncumbrance" />}
             type="checkbox"
           />
+        </Col>
+        <Col xs={12}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoiceLine.referenceNumbers" />}
+          >
+            <VendorReferenceNumbersDetails referenceNumbers={invoiceLine.referenceNumbers} />
+          </KeyValue>
         </Col>
       </Row>
     </>

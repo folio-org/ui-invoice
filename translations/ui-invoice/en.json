@@ -47,7 +47,7 @@
   "invoiceLine.subscriptionEnd": "Subscription end date",
   "invoiceLine.quantity": "Quantity",
   "invoiceLine.value": "Value",
-  "invoiceLine.vendorRefNo": "Vendor ref no",
+  "invoiceLine.referenceNumbers": "Vendor reference numbers",
   "invoiceLine.accountNumber": "Account number",
   "invoiceLine.accountingCode": "Accounting code",
   "invoiceLine.comment": "Comment",

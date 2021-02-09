@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Make invoice line 'vendor reference number' and type repeatable, paired fields and populate from POL. Refs UINV-165.
 * Show the possible duplicate modal on invoice edit. Refs UINV-209.
 * Use `CurrencyExchangeRateFields` component from stripes-acq-components. Refs UIOR-610.
 * Fix Invoice will not approve when "Export to accounting" is true. UINV-220.

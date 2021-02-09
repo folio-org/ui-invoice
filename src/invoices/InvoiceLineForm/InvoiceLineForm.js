@@ -33,6 +33,7 @@ import {
   TextField,
   validateRequired,
   validateRequiredNumber,
+  VendorReferenceNumbersFields,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -169,16 +170,11 @@ class InvoiceLineForm extends Component {
                             value={invoiceLineNumber}
                           />
                         </Col>
-                        <Col data-test-col-invoice-line-vendor-ref-no xs={3}>
-                          <Field
-                            component={TextField}
-                            id="vendorRefNo"
-                            label={<FormattedMessage id="ui-invoice.invoiceLine.vendorRefNo" />}
-                            name="vendorRefNo"
-                          />
-                        </Col>
                         <Col data-test-col-invoice-line-status xs={3}>
                           <StatusValue value={invoiceLineStatus} />
+                        </Col>
+                        <Col data-test-col-invoice-line-vendor-ref-no xs={12}>
+                          <VendorReferenceNumbersFields />
                         </Col>
                       </Row>
 
