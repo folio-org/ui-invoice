@@ -68,7 +68,6 @@
     "invoiceLine.subscriptionStart": "訂閱開始日期",
     "invoiceLine.subscriptionEnd": "訂閱結束日期",
     "invoiceLine.quantity": "數量",
-    "invoiceLine.vendorRefNo": "代理商參考號碼",
     "invoiceLine.accountNumber": "帳號",
     "invoiceLine.accountingCode": "帳號代碼",
     "invoiceLine.comment": "留言",
@@ -204,7 +203,7 @@
     "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
     "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice",
     "invoiceLine.poLineNumber": "PO line number",
     "invoice.actions.pay.error": "Invoice was not paid",
     "invoiceLine.adminData": "Invoice line admin data",
@@ -325,5 +324,6 @@
     "button.submit": "Submit",
     "invoice.delete.message": "Are you sure you want to delete invoice?",
     "invoice.duplicateInvoice.amount": "Amount",
-    "invoice.duplicateInvoice.title": "Possible duplicate invoice"
+    "invoice.duplicateInvoice.title": "Possible duplicate invoice",
+    "invoiceLine.referenceNumbers": "Vendor reference numbers"
 }

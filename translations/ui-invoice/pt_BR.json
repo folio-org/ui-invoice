@@ -68,7 +68,6 @@
     "invoiceLine.subscriptionStart": "Data de início da assinatura",
     "invoiceLine.subscriptionEnd": "Data de término da assinatura",
     "invoiceLine.quantity": "Quantidade",
-    "invoiceLine.vendorRefNo": "Número de referência do fornecedor",
     "invoiceLine.accountNumber": "Número da conta",
     "invoiceLine.accountingCode": "Código contábil",
     "invoiceLine.comment": "Comentário",
@@ -325,5 +324,6 @@
     "button.submit": "Enviar",
     "invoice.delete.message": "Tem certeza de que deseja excluir a fatura?",
     "invoice.duplicateInvoice.amount": "Montante",
-    "invoice.duplicateInvoice.title": "Possível fatura duplicada"
+    "invoice.duplicateInvoice.title": "Possível fatura duplicada",
+    "invoiceLine.referenceNumbers": "Vendor reference numbers"
 }

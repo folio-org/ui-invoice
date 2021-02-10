@@ -68,7 +68,6 @@
     "invoiceLine.subscriptionStart": "Date de début de l'abonnement",
     "invoiceLine.subscriptionEnd": "Date de fin de l'abonnement",
     "invoiceLine.quantity": "Quantité",
-    "invoiceLine.vendorRefNo": "N° du fournisseur",
     "invoiceLine.accountNumber": "Numéro de compte",
     "invoiceLine.accountingCode": "Code comptable",
     "invoiceLine.comment": "Commentaire",
@@ -325,5 +324,6 @@
     "button.submit": "Soumettre",
     "invoice.delete.message": "Êtes-vous sûr de vouloir supprimer la facture?",
     "invoice.duplicateInvoice.amount": "Montant",
-    "invoice.duplicateInvoice.title": "Facture en double possible"
+    "invoice.duplicateInvoice.title": "Facture en double possible",
+    "invoiceLine.referenceNumbers": "Vendor reference numbers"
 }
