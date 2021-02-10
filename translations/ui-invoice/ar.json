@@ -68,7 +68,6 @@
     "invoiceLine.subscriptionStart": "تاريخ بدء الاشتراك",
     "invoiceLine.subscriptionEnd": "تاريخ إنتهاء الاشتراك",
     "invoiceLine.quantity": "الكمية",
-    "invoiceLine.vendorRefNo": "رقم المورّد المرجعي",
     "invoiceLine.accountNumber": "رقم الحساب",
     "invoiceLine.accountingCode": "رمز المحاسبة",
     "invoiceLine.comment": "تعليق",
@@ -204,7 +203,7 @@
     "invoice.actions.approveAndPay.confirmation.heading": "قبول وسداد الفاتورة",
     "invoice.actions.approveAndPay.confirmation.message": "هل أنت متأكد من أنك تريد قبول الفاتورة وسدادها؟",
     "invoice.isNotUnique.confirmation.heading": "حفظ الفاتورة",
-    "invoice.isNotUnique.confirmation.message": "يبدو أن هذا رقم فاتورة مكرر",
+    "invoice.isNotUnique.confirmation.message": "يبدو أن هذه فاتورة مكررة",
     "invoiceLine.poLineNumber": "رقم سطر أمر الشراء",
     "invoice.actions.pay.error": "لم يتم سداد الفاتورة",
     "invoiceLine.adminData": "بيانات إدارة سطر الفاتورة",
@@ -325,5 +324,6 @@
     "button.submit": "تقديم",
     "invoice.delete.message": "هل أنت متأكد من أنك تريد حذف الفاتورة؟",
     "invoice.duplicateInvoice.amount": "المبلغ",
-    "invoice.duplicateInvoice.title": "فاتورة مكررة محتملة"
+    "invoice.duplicateInvoice.title": "فاتورة مكررة محتملة",
+    "invoiceLine.referenceNumbers": "أرقام المورّدين المرجعية"
 }

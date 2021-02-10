@@ -68,7 +68,6 @@
     "invoiceLine.subscriptionStart": "订阅开始日期",
     "invoiceLine.subscriptionEnd": "订阅结束日期",
     "invoiceLine.quantity": "数量",
-    "invoiceLine.vendorRefNo": "供应商参考号",
     "invoiceLine.accountNumber": "帐号",
     "invoiceLine.accountingCode": "账户代码",
     "invoiceLine.comment": "备注",
@@ -325,5 +324,6 @@
     "button.submit": "提交",
     "invoice.delete.message": "确定删除发票？",
     "invoice.duplicateInvoice.amount": "金额",
-    "invoice.duplicateInvoice.title": "可能重复的发票"
+    "invoice.duplicateInvoice.title": "可能重复的发票",
+    "invoiceLine.referenceNumbers": "Vendor reference numbers"
 }

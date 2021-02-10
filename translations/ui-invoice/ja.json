@@ -68,7 +68,6 @@
     "invoiceLine.subscriptionStart": "サブスクリプション開始日",
     "invoiceLine.subscriptionEnd": "サブスクリプション終了日",
     "invoiceLine.quantity": "Quantity",
-    "invoiceLine.vendorRefNo": "Vendor ref no",
     "invoiceLine.accountNumber": "Account number",
     "invoiceLine.accountingCode": "会計コード",
     "invoiceLine.comment": "Comment",
@@ -204,7 +203,7 @@
     "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
     "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
     "invoice.isNotUnique.confirmation.heading": "Save invoice",
-    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice number",
+    "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice",
     "invoiceLine.poLineNumber": "PO line number",
     "invoice.actions.pay.error": "Invoice was not paid",
     "invoiceLine.adminData": "Invoice line admin data",
@@ -325,5 +324,6 @@
     "button.submit": "Submit",
     "invoice.delete.message": "Are you sure you want to delete invoice?",
     "invoice.duplicateInvoice.amount": "Amount",
-    "invoice.duplicateInvoice.title": "Possible duplicate invoice"
+    "invoice.duplicateInvoice.title": "Possible duplicate invoice",
+    "invoiceLine.referenceNumbers": "Vendor reference numbers"
 }

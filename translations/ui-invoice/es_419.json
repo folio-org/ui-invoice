@@ -68,7 +68,6 @@
     "invoiceLine.subscriptionStart": "Subscription start date",
     "invoiceLine.subscriptionEnd": "Subscription end date",
     "invoiceLine.quantity": "Quantity",
-    "invoiceLine.vendorRefNo": "Vendor ref no",
     "invoiceLine.accountNumber": "Account number",
     "invoiceLine.accountingCode": "Accounting code",
     "invoiceLine.comment": "Comment",
@@ -325,5 +324,6 @@
     "button.submit": "Submit",
     "invoice.delete.message": "Are you sure you want to delete invoice?",
     "invoice.duplicateInvoice.amount": "Amount",
-    "invoice.duplicateInvoice.title": "Possible duplicate invoice"
+    "invoice.duplicateInvoice.title": "Possible duplicate invoice",
+    "invoiceLine.referenceNumbers": "Vendor reference numbers"
 }
