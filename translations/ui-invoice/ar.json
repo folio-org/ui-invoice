@@ -318,7 +318,7 @@
     "permission.settings.all": "الإعدادات (الفواتير): إمكانية عرض وتحرير الإعدادات",
     "invoice.lockTotalAmount": "قفل المبلغ الإجمالي",
     "invoice.lockTotalAmount.tooltip": "تحقق من قفل المبلغ الإجمالي للتفاعل مع هذا الحقل",
-    "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "لا يمكن الموافقة على الفاتورة. إجمالي مبلغ الفاتورة لا يطابق إجمالي المبلغ المحسوب لسطور الفاتورة وتعديلاتها",
+    "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "لا يمكن الموافقة على الفاتورة. إجمالي مبلغ الفاتورة لا يطابق إجمالي المبلغ المحسوب لسطور الفاتورة وتعديلاتها.",
     "invoice.details.information.calculatedTotalAmount": "المبلغ الإجمالي المحسوب",
     "button.cancel": "إلغاء",
     "button.submit": "تقديم",
