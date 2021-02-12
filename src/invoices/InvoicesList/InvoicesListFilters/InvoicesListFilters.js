@@ -126,6 +126,14 @@ const InvoicesListFilters = ({
         name={FILTERS.EXPORT_TO_ACCOUNTING}
         onChange={adaptedApplyFilters}
       />
+      <AcqDateRangeFilter
+        id={FILTERS.PAYMENT_DATE}
+        activeFilters={activeFilters[FILTERS.PAYMENT_DATE]}
+        disabled={disabled}
+        labelId="ui-invoice.invoice.paymentDate"
+        name={FILTERS.PAYMENT_DATE}
+        onChange={adaptedApplyFilters}
+      />
     </AccordionSet>
   );
 };

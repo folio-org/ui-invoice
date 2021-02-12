@@ -157,6 +157,7 @@
   "settings.runManualExport.success": "Vouchers have been successfully exported",
   "settings.runManualExport.error": "Vouchers were not exported",
 
+  "invoice.paymentDate": "Payment date",
   "invoice.dateCreated": "Date created",
   "invoice.editLayer": "Edit invoice",
   "invoice.approvedBy": "Approved by",

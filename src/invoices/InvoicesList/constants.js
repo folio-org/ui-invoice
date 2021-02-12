@@ -5,6 +5,7 @@ export const FILTERS = {
   VENDOR: 'vendorId',
   DATE_CREATED: 'metadata.createdDate',
   INVOICE_DATE: 'invoiceDate',
+  PAYMENT_DATE: 'paymentDate',
   PAYMENT_DUE: 'paymentDue',
   APPROVAL_DATE: 'approvalDate',
   SOURCE: 'source',

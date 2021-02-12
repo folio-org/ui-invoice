@@ -31,6 +31,7 @@ const Information = ({
   invoiceDate,
   paymentDue,
   metadata,
+  paymentDate,
   paymentTerms,
   source,
   status,
@@ -154,6 +155,12 @@ const Information = ({
             />
           </KeyValue>
         </Col>
+
+        <Col xs={3}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.paymentDate" />}>
+            <FolioFormattedDate value={paymentDate} />
+          </KeyValue>
+        </Col>
       </Row>
 
       <Row>
@@ -191,6 +198,7 @@ Information.propTypes = {
   currency: PropTypes.string.isRequired,
   note: PropTypes.string,
   lockTotal: PropTypes.number,
+  paymentDate: PropTypes.string,
 };
 
 Information.defaultProps = {
