@@ -184,6 +184,7 @@ function InvoiceDetails({
                 approvedBy={invoice.approvedBy}
                 batchGroupId={invoice.batchGroupId}
                 invoiceDate={invoice.invoiceDate}
+                paymentDate={invoice.paymentDate}
                 paymentDue={invoice.paymentDue}
                 paymentTerms={invoice.paymentTerms}
                 status={invoice.status}
