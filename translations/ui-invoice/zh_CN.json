@@ -325,5 +325,6 @@
     "invoice.delete.message": "确定删除发票？",
     "invoice.duplicateInvoice.amount": "金额",
     "invoice.duplicateInvoice.title": "可能重复的发票",
-    "invoiceLine.referenceNumbers": "Vendor reference numbers"
+    "invoiceLine.referenceNumbers": "Vendor reference numbers",
+    "invoice.paymentDate": "Payment date"
 }

@@ -325,5 +325,6 @@
     "invoice.delete.message": "Are you sure you want to delete invoice?",
     "invoice.duplicateInvoice.amount": "Beløb",
     "invoice.duplicateInvoice.title": "Possible duplicate invoice",
-    "invoiceLine.referenceNumbers": "Vendor reference numbers"
+    "invoiceLine.referenceNumbers": "Vendor reference numbers",
+    "invoice.paymentDate": "Betalingsdato"
 }

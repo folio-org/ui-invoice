@@ -325,5 +325,6 @@
     "invoice.delete.message": "هل أنت متأكد من أنك تريد حذف الفاتورة؟",
     "invoice.duplicateInvoice.amount": "المبلغ",
     "invoice.duplicateInvoice.title": "فاتورة مكررة محتملة",
-    "invoiceLine.referenceNumbers": "أرقام المورّدين المرجعية"
+    "invoiceLine.referenceNumbers": "أرقام المورّدين المرجعية",
+    "invoice.paymentDate": "تاريخ السداد"
 }
