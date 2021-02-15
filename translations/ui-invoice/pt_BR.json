@@ -325,5 +325,6 @@
     "invoice.delete.message": "Tem certeza de que deseja excluir a fatura?",
     "invoice.duplicateInvoice.amount": "Montante",
     "invoice.duplicateInvoice.title": "Possível fatura duplicada",
-    "invoiceLine.referenceNumbers": "Vendor reference numbers"
+    "invoiceLine.referenceNumbers": "Vendor reference numbers",
+    "invoice.paymentDate": "Payment date"
 }

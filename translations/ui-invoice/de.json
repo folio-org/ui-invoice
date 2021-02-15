@@ -325,5 +325,6 @@
     "invoice.delete.message": "Rechnung wirklich löschen?",
     "invoice.duplicateInvoice.amount": "Betrag",
     "invoice.duplicateInvoice.title": "Möglicherweise doppelte Rechnung",
-    "invoiceLine.referenceNumbers": "Vendor reference numbers"
+    "invoiceLine.referenceNumbers": "Vendor reference numbers",
+    "invoice.paymentDate": "Payment date"
 }

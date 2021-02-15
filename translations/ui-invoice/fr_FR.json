@@ -325,5 +325,6 @@
     "invoice.delete.message": "Êtes-vous sûr de vouloir supprimer la facture?",
     "invoice.duplicateInvoice.amount": "Montant",
     "invoice.duplicateInvoice.title": "Facture en double possible",
-    "invoiceLine.referenceNumbers": "Vendor reference numbers"
+    "invoiceLine.referenceNumbers": "Vendor reference numbers",
+    "invoice.paymentDate": "Payment date"
 }
