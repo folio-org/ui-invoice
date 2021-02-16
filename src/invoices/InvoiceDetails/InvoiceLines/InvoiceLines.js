@@ -37,7 +37,7 @@ const columnMapping = {
   polNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.polNumber" />,
   fundCode: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundCode" />,
   subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
-  vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNo" />,
+  vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNumber" />,
 };
 const alignRowProps = { alignLastColToEnd: true };
 
@@ -93,7 +93,9 @@ const InvoiceLines = ({
     arrow: () => <Icon icon="caret-right" />,
     polNumber: ({ poLineId }) => orderlinesMap?.[poLineId]?.poLineNumber || <NoValue />,
     fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
-    vendorRefNo: ({ vendorRefNo }) => vendorRefNo || <NoValue />,
+    vendorRefNo: line => (
+      line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
+    ),
   }), [currency, orderlinesMap]);
 
   return (
