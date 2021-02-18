@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Add Extended Info accordion to Invoice View screen. Refs UINV-222.
 * Update view for Vendor reference number on invoice lines list. UINV-225.
 * Display and filter paymentDate in Invoice module. Refs UINV-224.
 * Make invoice line 'vendor reference number' and type repeatable, paired fields and populate from POL. Refs UINV-165.

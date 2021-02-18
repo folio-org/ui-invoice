@@ -40,7 +40,13 @@ import VoucherInformationContainer from './VoucherInformation';
 import DocumentsDetails from './DocumentsDetails';
 import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
 import ApproveConfirmationModal from './ApproveConfirmationModal';
+import ExtendedInformation from './ExtendedInformation';
 import styles from './InvoiceDetails.css';
+
+const initalAccordionsStatus = {
+  [SECTIONS.documents]: false,
+  [SECTIONS.extendedInformation]: false,
+};
 
 function InvoiceDetails({
   addLines,
@@ -173,7 +179,7 @@ function InvoiceDetails({
               <ExpandAllButton />
             </Col>
           </Row>
-          <AccordionSet initialStatus={{ [SECTIONS.documents]: false }}>
+          <AccordionSet initialStatus={initalAccordionsStatus}>
             <Accordion
               label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
               id={SECTIONS.information}
@@ -242,6 +248,19 @@ function InvoiceDetails({
                 vendorInvoiceNo={vendorInvoiceNo}
                 vendorId={invoice.vendorId}
                 accountingCode={invoice.accountingCode}
+              />
+            </Accordion>
+            <Accordion
+              label={<FormattedMessage id="ui-invoice.extendedInformation" />}
+              id={SECTIONS.extendedInformation}
+            >
+              <ExtendedInformation
+                folioInvoiceNo={invoice.folioInvoiceNo}
+                paymentMethod={invoice.paymentMethod}
+                chkSubscriptionOverlap={invoice.chkSubscriptionOverlap}
+                exportToAccounting={invoice.exportToAccounting}
+                currency={invoice.currency}
+                exchangeRate={invoice.exchangeRate}
               />
             </Accordion>
             {showVoucherInformation && batchVoucherExport && (
