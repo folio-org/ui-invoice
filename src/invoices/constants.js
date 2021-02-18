@@ -10,6 +10,7 @@ export const SECTIONS_INVOICE = {
   adjustments: 'invoiceAdjustments',
   fundDistribution: 'invoiceFundDistribution',
   batchVoucherExport: 'batchVoucherExport',
+  extendedInformation: 'extendedInformation',
 };
 
 export const SECTIONS_INVOICE_FORM = {
