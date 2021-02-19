@@ -128,6 +128,7 @@ export const ERROR_CODES = {
   inactiveExpenseClass: 'inactiveExpenseClass',
   budgetExpenseClassNotFound: 'budgetExpenseClassNotFound',
   lockCalculatedTotalsMismatch: 'lockCalculatedTotalsMismatch',
+  organizationNotAVendor: 'organizationNotAVendor',
 };
 
 export const RETURN_LINK = '/invoice';
