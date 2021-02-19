@@ -303,7 +303,6 @@
     "invoice.details.lines.list.lineNumber": "＃",
     "invoice.details.lines.list.polNumber": "订单行号",
     "invoice.details.lines.list.subTotal": "小计",
-    "invoice.details.lines.list.vendorRefNo": "供应商参考号",
     "invoice.details.lines.list.fundCode": "经费代码",
     "invoice.actions.approve.error.budgetExpenseClassNotFound": "在<b> {fundCode} </b>经费中找不到<b> {expenseClassName} </b>费用类别",
     "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "在<b> {fundCode} </b>经费中找不到<b> {expenseClassName} </b>费用类别",
@@ -326,5 +325,7 @@
     "invoice.duplicateInvoice.amount": "金额",
     "invoice.duplicateInvoice.title": "可能重复的发票",
     "invoiceLine.referenceNumbers": "Vendor reference numbers",
-    "invoice.paymentDate": "Payment date"
+    "invoice.paymentDate": "Payment date",
+    "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
+    "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization."
 }
