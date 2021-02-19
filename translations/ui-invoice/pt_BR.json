@@ -303,7 +303,6 @@
     "invoice.details.lines.list.lineNumber": "Núm.",
     "invoice.details.lines.list.polNumber": "Número da Linha do pedido",
     "invoice.details.lines.list.subTotal": "Subtotal",
-    "invoice.details.lines.list.vendorRefNo": "Número de referência do fornecedor",
     "invoice.details.lines.list.fundCode": "Código do fundo",
     "invoice.actions.approve.error.budgetExpenseClassNotFound": "Classe de despesa <b>{expenseClassName}</b> não encontrada no Fundo <b>{fundCode}</b>",
     "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "Classe de despesa <b>{expenseClassName}</b> não encontrada no Fundo <b>{fundCode}</b>",
@@ -326,5 +325,7 @@
     "invoice.duplicateInvoice.amount": "Montante",
     "invoice.duplicateInvoice.title": "Possível fatura duplicada",
     "invoiceLine.referenceNumbers": "Vendor reference numbers",
-    "invoice.paymentDate": "Payment date"
+    "invoice.paymentDate": "Payment date",
+    "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
+    "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization."
 }
