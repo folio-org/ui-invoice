@@ -16,7 +16,7 @@ import { SECTIONS_VOUCHER } from '../constants';
 import VoucherDetails from './VoucherDetails';
 import VoucherLinesDetails from './VoucherLinesDetails';
 
-const VoucherView = ({ voucher, voucherLines }) => (
+const VoucherView = ({ voucher, voucherLines, enclosureNeeded }) => (
   <AccordionStatus>
     <Row end="xs">
       <Col xs={12}>
@@ -29,7 +29,10 @@ const VoucherView = ({ voucher, voucherLines }) => (
         id={SECTIONS_VOUCHER.voucher}
       >
         {voucher.metadata && <ViewMetaData metadata={voucher.metadata} />}
-        <VoucherDetails voucher={voucher} />
+        <VoucherDetails
+          voucher={voucher}
+          enclosureNeeded={enclosureNeeded}
+        />
       </Accordion>
       <Accordion
         label={<FormattedMessage id="ui-invoice.voucher.voucherLinesTitle" />}
@@ -47,10 +50,12 @@ const VoucherView = ({ voucher, voucherLines }) => (
 VoucherView.propTypes = {
   voucher: PropTypes.object.isRequired,
   voucherLines: PropTypes.arrayOf(PropTypes.object),
+  enclosureNeeded: PropTypes.bool,
 };
 
 VoucherView.defaultProps = {
   voucherLines: [],
+  enclosureNeeded: false,
 };
 
 export default VoucherView;

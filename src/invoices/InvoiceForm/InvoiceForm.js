@@ -462,6 +462,16 @@ const InvoiceForm = ({
                           vertical
                         />
                       </Col>
+                      <Col data-test-col-enclosure-needed xs={3}>
+                        <Field
+                          component={Checkbox}
+                          label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
+                          name="enclosureNeeded"
+                          disabled={isEditPostApproval}
+                          type="checkbox"
+                          vertical
+                        />
+                      </Col>
                     </Row>
                     <CurrencyExchangeRateFields
                       exchangeRate={exchangeRate}

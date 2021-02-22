@@ -261,6 +261,7 @@ function InvoiceDetails({
                 exportToAccounting={invoice.exportToAccounting}
                 currency={invoice.currency}
                 exchangeRate={invoice.exchangeRate}
+                enclosureNeeded={invoice.enclosureNeeded}
               />
             </Accordion>
             {showVoucherInformation && batchVoucherExport && (
@@ -274,7 +275,12 @@ function InvoiceDetails({
                 />
               </Accordion>
             )}
-            {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
+            {showVoucherInformation && (
+              <VoucherInformationContainer
+                invoiceId={invoice.id}
+                enclosureNeeded={invoice.enclosureNeeded}
+              />
+            )}
             <Accordion
               label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
               id={SECTIONS.documents}

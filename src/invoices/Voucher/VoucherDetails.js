@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
+  Checkbox,
   Col,
   KeyValue,
   Row,
@@ -12,7 +13,7 @@ import {
   FolioFormattedDate,
 } from '@folio/stripes-acq-components';
 
-const VoucherDetails = ({ voucher }) => (
+const VoucherDetails = ({ voucher, enclosureNeeded }) => (
   <>
     <Row>
       <Col xs={3}>
@@ -89,12 +90,23 @@ const VoucherDetails = ({ voucher }) => (
           value={voucher.accountingCode}
         />
       </Col>
+
+      <Col xs={3}>
+        <Checkbox
+          checked={enclosureNeeded}
+          disabled
+          label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
+          type="checkbox"
+          vertical
+        />
+      </Col>
     </Row>
   </>
 );
 
 VoucherDetails.propTypes = {
   voucher: PropTypes.object.isRequired,
+  enclosureNeeded: PropTypes.bool,
 };
 
 export default VoucherDetails;

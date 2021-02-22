@@ -173,6 +173,7 @@
   "invoice.vendorName": "Vendor name",
   "invoice.accountingCode": "Accounting code",
   "invoice.exportToAccounting": "Export to accounting",
+  "invoice.enclosureNeeded": "Enclosure needed",
   "invoice.billToName": "Bill to name",
   "invoice.billToAddress": "Bill to address",
   "invoice.chkSubscriptionOverlap": "Check subscription overlap",
