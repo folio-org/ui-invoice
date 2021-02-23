@@ -13,7 +13,7 @@ import {
   FolioFormattedDate,
 } from '@folio/stripes-acq-components';
 
-const VoucherDetails = ({ voucher, enclosureNeeded }) => (
+const VoucherDetails = ({ voucher }) => (
   <>
     <Row>
       <Col xs={3}>
@@ -93,7 +93,7 @@ const VoucherDetails = ({ voucher, enclosureNeeded }) => (
 
       <Col xs={3}>
         <Checkbox
-          checked={enclosureNeeded}
+          checked={voucher.enclosureNeeded}
           disabled
           label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
           type="checkbox"
@@ -106,7 +106,6 @@ const VoucherDetails = ({ voucher, enclosureNeeded }) => (
 
 VoucherDetails.propTypes = {
   voucher: PropTypes.object.isRequired,
-  enclosureNeeded: PropTypes.bool,
 };
 
 export default VoucherDetails;

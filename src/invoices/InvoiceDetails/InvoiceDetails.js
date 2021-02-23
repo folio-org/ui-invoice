@@ -275,12 +275,7 @@ function InvoiceDetails({
                 />
               </Accordion>
             )}
-            {showVoucherInformation && (
-              <VoucherInformationContainer
-                invoiceId={invoice.id}
-                enclosureNeeded={invoice.enclosureNeeded}
-              />
-            )}
+            {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
             <Accordion
               label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
               id={SECTIONS.documents}

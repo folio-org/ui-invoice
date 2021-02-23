@@ -20,7 +20,7 @@ import {
 import { SECTIONS_INVOICE } from '../../constants';
 import VoucherInformation from './VoucherInformation';
 
-const VoucherInformationContainer = ({ invoiceId, mutator, resources, location, enclosureNeeded }) => {
+const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }) => {
   const voucher = get(resources, ['voucher', 'records', 0], {});
   const voucherLines = get(resources, ['voucherLines', 'records'], []);
   const isLoading = !get(resources, ['voucher', 'hasLoaded']);
@@ -76,8 +76,6 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources, location, 
       <VoucherInformation
         voucher={voucher}
         voucherLines={voucherLines}
-        enclosureNeeded={enclosureNeeded}
-
       />
     </Accordion>
   );
@@ -101,7 +99,6 @@ VoucherInformationContainer.propTypes = {
   }).isRequired,
   location: ReactRouterPropTypes.location.isRequired,
   resources: PropTypes.object.isRequired,
-  enclosureNeeded: PropTypes.bool,
 };
 
 export default withRouter(stripesConnect(VoucherInformationContainer));

@@ -20,7 +20,7 @@ const columnMapping = {
   amount: <FormattedMessage id="ui-invoice.invoice.details.voucher.amount" />,
 };
 
-const VoucherInformation = ({ voucher, voucherLines, enclosureNeeded }) => {
+const VoucherInformation = ({ voucher, voucherLines }) => {
   const groupedVoucherLines = groupByExternalAccNumber(voucherLines);
   const linesWithTotalAmount = Object.values(groupedVoucherLines).map(lines => ({
     totalAmount: getTotalAmount(lines),
@@ -38,10 +38,7 @@ const VoucherInformation = ({ voucher, voucherLines, enclosureNeeded }) => {
 
   return (
     <>
-      <VoucherDetails
-        voucher={voucher}
-        enclosureNeeded={enclosureNeeded}
-      />
+      <VoucherDetails voucher={voucher} />
 
       <Headline
         margin="none"
@@ -63,12 +60,10 @@ const VoucherInformation = ({ voucher, voucherLines, enclosureNeeded }) => {
 VoucherInformation.propTypes = {
   voucher: PropTypes.object.isRequired,
   voucherLines: PropTypes.arrayOf(PropTypes.object),
-  enclosureNeeded: PropTypes.bool,
 };
 
 VoucherInformation.defaultProps = {
   voucherLines: [],
-  enclosureNeeded: false,
 };
 
 export default VoucherInformation;

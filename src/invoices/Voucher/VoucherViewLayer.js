@@ -99,7 +99,6 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
             <VoucherView
               voucher={voucher}
               voucherLines={voucherLines}
-              enclosureNeeded={invoice.enclosureNeeded}
             />
           </Col>
         </Row>

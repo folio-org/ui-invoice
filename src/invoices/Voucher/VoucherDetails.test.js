@@ -7,15 +7,14 @@ const testVoucher = {
   accountingCode: '0206',
   status: 'Awaiting payment',
   voucherNumber: 1000,
+  enclosureNeeded: false,
 };
 
 const renderVoucherDetails = (
   voucher,
-  enclosureNeeded = false,
 ) => (render(
   <VoucherDetails
     voucher={voucher}
-    enclosureNeeded={enclosureNeeded}
   />,
 ));
 
