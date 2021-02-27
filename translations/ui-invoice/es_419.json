@@ -325,7 +325,7 @@
     "invoice.duplicateInvoice.amount": "Amount",
     "invoice.duplicateInvoice.title": "Possible duplicate invoice",
     "invoiceLine.referenceNumbers": "Vendor reference numbers",
-    "invoice.paymentDate": "Payment date",
+    "invoice.paymentDate": "Fecha de pago",
     "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
     "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization."
 }
