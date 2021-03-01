@@ -324,7 +324,7 @@
     "invoice.delete.message": "Tem certeza de que deseja excluir a fatura?",
     "invoice.duplicateInvoice.amount": "Montante",
     "invoice.duplicateInvoice.title": "Possível fatura duplicada",
-    "invoiceLine.referenceNumbers": "Vendor reference numbers",
+    "invoiceLine.referenceNumbers": "Números de referência do fornecedor",
     "invoice.paymentDate": "Payment date",
     "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
     "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization."
