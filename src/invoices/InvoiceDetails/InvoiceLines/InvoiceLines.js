@@ -49,7 +49,7 @@ const InvoiceLines = ({
 }) => {
   const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
-    lineNumber: ({ poLineId, rowIndex }) => {
+    lineNumber: ({ poLineId, invoiceLineNumber }) => {
       const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
       return (
@@ -65,7 +65,7 @@ const InvoiceLines = ({
               &nbsp;
             </>
           )}
-          {rowIndex + 1}
+          {invoiceLineNumber}
         </>
       );
     },
