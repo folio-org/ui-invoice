@@ -1,5 +1,10 @@
 # Change history for ui-invoice
 
+## [2.2.4]https://github.com/folio-org/ui-invoice/tree/v2.2.4) (2021-03-02)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.3...v2.2.4)
+
+* Acquisition unit field disabled on create form. Refs UINV-229
+
 ## [2.2.3]https://github.com/folio-org/ui-invoice/tree/v2.2.3) (2021-01-15)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.2...v2.2.3)
 
