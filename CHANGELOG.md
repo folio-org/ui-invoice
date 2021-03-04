@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Display Invoice line number and add sorting. Refs UINV-230.
 * Prevent approval of invoice when organization IS NOT a vendor. Refs UINV-215.
 * Delete invoice with attached document. Refs UINV-170.
 * Add Extended Info accordion to Invoice View screen. Refs UINV-222.
