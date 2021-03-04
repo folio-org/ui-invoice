@@ -4,19 +4,19 @@ import { FormattedMessage } from 'react-intl';
 
 import {
   Icon,
-  MultiColumnList,
   NoValue,
 } from '@folio/stripes/components';
 import {
-  acqRowFormatter,
   AmountWithCurrencyField,
   PAYMENT_STATUS,
+  FrontendSortingMCL,
 } from '@folio/stripes-acq-components';
 
 import styles from './InvoiceLines.css';
 
+const COLUMN_LINE_NUMBER = 'lineNumber';
 const visibleColumns = [
-  'lineNumber',
+  COLUMN_LINE_NUMBER,
   'polNumber',
   'description',
   'fundCode',
@@ -25,21 +25,22 @@ const visibleColumns = [
   'adjustmentsTotal',
   'total',
   'vendorRefNo',
-  'arrow',
 ];
 const columnMapping = {
-  arrow: null,
   description: <FormattedMessage id="ui-invoice.invoice.details.lines.list.description" />,
   quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
   adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
-  lineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.lineNumber" />,
+  [COLUMN_LINE_NUMBER]: <FormattedMessage id="ui-invoice.invoice.details.lines.list.lineNumber" />,
   polNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.polNumber" />,
   fundCode: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundCode" />,
   subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
   vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNumber" />,
 };
-const alignRowProps = { alignLastColToEnd: true };
+
+const sorters = {
+  [COLUMN_LINE_NUMBER]: ({ invoiceLineNumber }) => invoiceLineNumber,
+};
 
 const InvoiceLines = ({
   currency,
@@ -49,7 +50,7 @@ const InvoiceLines = ({
 }) => {
   const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
-    lineNumber: ({ poLineId, rowIndex }) => {
+    [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber }) => {
       const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
       return (
@@ -65,7 +66,7 @@ const InvoiceLines = ({
               &nbsp;
             </>
           )}
-          {rowIndex + 1}
+          {invoiceLineNumber}
         </>
       );
     },
@@ -90,7 +91,6 @@ const InvoiceLines = ({
         currency={currency}
       />
     ),
-    arrow: () => <Icon icon="caret-right" />,
     polNumber: ({ poLineId }) => orderlinesMap?.[poLineId]?.poLineNumber || <NoValue />,
     fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
     vendorRefNo: line => (
@@ -107,15 +107,16 @@ const InvoiceLines = ({
         />
       </div>
 
-      <MultiColumnList
+      <FrontendSortingMCL
         id="invoice-lines-list"
         contentData={invoiceLinesItems}
         visibleColumns={visibleColumns}
         columnMapping={columnMapping}
         onRowClick={openLineDetails}
         formatter={resultsFormatter}
-        rowFormatter={acqRowFormatter}
-        rowProps={alignRowProps}
+        hasArrow
+        sortedColumn={COLUMN_LINE_NUMBER}
+        sorters={sorters}
       />
     </>
   );
