@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Display "Enclosure needed" toggle on the invoice. Refs UINV-226.
 * Display Invoice line number and add sorting. Refs UINV-230.
 * Prevent approval of invoice when organization IS NOT a vendor. Refs UINV-215.
 * Delete invoice with attached document. Refs UINV-170.

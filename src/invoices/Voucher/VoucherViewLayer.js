@@ -1,8 +1,6 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 
 import {
   Button,
@@ -17,21 +15,13 @@ import {
 import {
   AppIcon,
   IfPermission,
-  stripesConnect,
 } from '@folio/stripes/core';
 
-import {
-  invoiceResource,
-  VOUCHER_BY_ID,
-  VOUCHER_LINES,
-} from '../../common/resources';
 import VoucherView from './VoucherView';
+import { useVoucher } from './useVoucher';
 
-const VoucherViewLayer = ({ match: { params }, history, location, resources }) => {
-  const voucher = get(resources, ['voucher', 'records', 0]);
-  const voucherLines = get(resources, ['voucherLines', 'records'], []);
-  const vendorInvoiceNo = get(resources, ['invoice', 'records', 0, 'vendorInvoiceNo']);
-  const isLoading = !get(resources, ['voucher', 'hasLoaded']);
+const VoucherViewLayer = ({ match: { params }, history, location }) => {
+  const { isLoading, voucher, voucherLines, invoice } = useVoucher(params.id, params.voucherId);
 
   const closeVoucher = useCallback(
     () => {
@@ -96,7 +86,7 @@ const VoucherViewLayer = ({ match: { params }, history, location, resources }) =
         paneTitle={
           <FormattedMessage
             id="ui-invoice.voucher.paneTitle"
-            values={{ vendorInvoiceNo }}
+            values={{ vendorInvoiceNo: invoice.vendorInvoiceNo }}
           />
         }
       >
@@ -117,22 +107,10 @@ const VoucherViewLayer = ({ match: { params }, history, location, resources }) =
   );
 };
 
-VoucherViewLayer.manifest = Object.freeze({
-  voucher: VOUCHER_BY_ID,
-  voucherLines: {
-    ...VOUCHER_LINES,
-    params: {
-      query: 'voucherId==:{voucherId}',
-    },
-  },
-  invoice: invoiceResource,
-});
-
 VoucherViewLayer.propTypes = {
   match: ReactRouterPropTypes.match,
   history: ReactRouterPropTypes.history,
   location: ReactRouterPropTypes.location,
-  resources: PropTypes.object.isRequired,
 };
 
-export default stripesConnect(VoucherViewLayer);
+export default VoucherViewLayer;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
+  Checkbox,
   Col,
   KeyValue,
   Row,
@@ -87,6 +88,16 @@ const VoucherDetails = ({ voucher }) => (
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountingCode" />}
           value={voucher.accountingCode}
+        />
+      </Col>
+
+      <Col xs={3}>
+        <Checkbox
+          checked={voucher.enclosureNeeded}
+          disabled
+          label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
+          type="checkbox"
+          vertical
         />
       </Col>
     </Row>

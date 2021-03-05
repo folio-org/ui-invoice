@@ -22,6 +22,7 @@ const ExtendedInformation = ({
   exportToAccounting,
   currency,
   exchangeRate,
+  enclosureNeeded,
 }) => {
   const stripes = useStripes();
   const isExchangeRateVisible = stripes.currency !== currency;
@@ -63,6 +64,16 @@ const ExtendedInformation = ({
       </Col>
 
       <Col xs={3}>
+        <Checkbox
+          checked={enclosureNeeded}
+          disabled
+          label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
+          type="checkbox"
+          vertical
+        />
+      </Col>
+
+      <Col xs={3}>
         <CurrencyValue value={currency} />
       </Col>
 
@@ -89,11 +100,13 @@ ExtendedInformation.propTypes = {
   exportToAccounting: PropTypes.bool,
   currency: PropTypes.string,
   exchangeRate: PropTypes.number,
+  enclosureNeeded: PropTypes.bool,
 };
 
 ExtendedInformation.defaultProps = {
   chkSubscriptionOverlap: false,
   exportToAccounting: false,
+  enclosureNeeded: false,
 };
 
 export default ExtendedInformation;

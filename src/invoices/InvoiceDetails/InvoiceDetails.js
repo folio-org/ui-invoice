@@ -261,6 +261,7 @@ function InvoiceDetails({
                 exportToAccounting={invoice.exportToAccounting}
                 currency={invoice.currency}
                 exchangeRate={invoice.exchangeRate}
+                enclosureNeeded={invoice.enclosureNeeded}
               />
             </Accordion>
             {showVoucherInformation && batchVoucherExport && (
