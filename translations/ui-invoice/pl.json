@@ -327,5 +327,6 @@
     "invoiceLine.referenceNumbers": "Numery referencyjne sprzedawców",
     "invoice.paymentDate": "Termin płatności",
     "invoice.details.lines.list.vendorRefNumber": "Numer referencyjny sprzedawcy",
-    "invoice.actions.approve.error.organizationNotAVendor": "Faktura nie może zostać zatwierdzona, ponieważ powiązany identyfikator sprzedawcy należy do organizacji niebędącej sprzedawcą."
+    "invoice.actions.approve.error.organizationNotAVendor": "Faktura nie może zostać zatwierdzona, ponieważ powiązany identyfikator sprzedawcy należy do organizacji niebędącej sprzedawcą.",
+    "invoice.enclosureNeeded": "Wymagany załącznik"
 }
