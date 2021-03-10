@@ -324,9 +324,9 @@
     "invoice.delete.message": "Rechnung wirklich löschen?",
     "invoice.duplicateInvoice.amount": "Betrag",
     "invoice.duplicateInvoice.title": "Möglicherweise doppelte Rechnung",
-    "invoiceLine.referenceNumbers": "Lieferanten-Referenznummer",
+    "invoiceLine.referenceNumbers": "Lieferanten-Referenznummern",
     "invoice.paymentDate": "Zahlungsdatum",
-    "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
-    "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
-    "invoice.enclosureNeeded": "Enclosure needed"
+    "invoice.details.lines.list.vendorRefNumber": "Lieferanten-Referenznummer",
+    "invoice.actions.approve.error.organizationNotAVendor": "Rechnung kann nicht freigegeben werden, da die verknüpfte Lieferanten-ID zu einer Organisation gehört, die kein Lieferant ist",
+    "invoice.enclosureNeeded": "Anlage benötigt"
 }
