@@ -18,12 +18,12 @@ export const useVoucher = (invoiceId, voucherId) => {
 
   const { isLoading: isVoucherLinesLoading, data } = useQuery(
     [VOUCHER_LINES_API, voucherId],
-    () => ky.get(`${VOUCHER_LINES_API}`, { query: `voucherId==${voucherId}` }).json(),
+    () => ky.get(`${VOUCHER_LINES_API}`, { searchParams: { query: `voucherId==${voucherId}` } }).json(),
   );
 
   const { isLoading: isInvoiceLoading, data: invoice = {} } = useQuery(
     [INVOICE_API, invoiceId],
-    () => ky.get(`${INVOICE_API}/${invoiceId}`, { query: `voucherId==${voucherId}` }).json(),
+    () => ky.get(`${INVOICE_API}/${invoiceId}`).json(),
   );
 
   return ({
