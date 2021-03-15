@@ -324,7 +324,7 @@
     "invoice.delete.message": "Voulez-vous vraiment supprimer cette facture et toutes ses lignes de facture? Cela supprimera également tous les documents joints.",
     "invoice.duplicateInvoice.amount": "Montant",
     "invoice.duplicateInvoice.title": "Facture en double possible",
-    "invoiceLine.referenceNumbers": "Vendor reference numbers",
+    "invoiceLine.referenceNumbers": "Numéros de référence du fournisseur",
     "invoice.paymentDate": "Date de paiement",
     "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
     "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
