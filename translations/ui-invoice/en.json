@@ -244,6 +244,7 @@
   "invoice.details.batchVoucherExport.status": "Batch file status",
 
   "invoice.details.voucher.accountingCode": "Accounting code",
+  "invoice.details.voucher.accountNo": "Account number",
   "invoice.details.voucher.amount": "Amount",
   "invoice.details.voucher.button": "View voucher",
   "invoice.details.voucher.disbursementAmount": "Disbursement amount",
@@ -251,6 +252,7 @@
   "invoice.details.voucher.disbursementNumber": "Disbursement number",
   "invoice.details.voucher.exchangeRate": "Exchange rate",
   "invoice.details.voucher.externalAccountNumber": "External account number",
+  "invoice.details.voucher.noAccount": "No account",
   "invoice.details.voucher.status": "Status",
   "invoice.details.voucher.title": "Voucher information",
   "invoice.details.voucher.total": "Total",
