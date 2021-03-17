@@ -15,7 +15,7 @@
     "save": "Sauvegarder",
     "invoice.paymentTerms": "Termes/Conditions",
     "invoice.paneTitle.edit": "Modifier le N°/Ref. de facture fournisseur - {vendorInvoiceNo}",
-    "invoice.paneTitle.create": "Créer facture fournisseur",
+    "invoice.paneTitle.create": "Créer une facture fournisseur",
     "invoice.details.information.title": "Informations sur la facture",
     "invoice.details.information.invoiceDate": "Date de facture",
     "invoice.details.information.paymentDue": "Paiement dû",
@@ -271,7 +271,7 @@
     "button.continue": "Continuer",
     "settings.actions.manualExport.heading": "Exécuter l'exportation manuelle",
     "settings.actions.manualExport.message": "All vouchers created since last export for the batch group {selectedBatchGroupName} will be exported and this process cannot be reversed",
-    "settings.runManualExport.success": "Vouchers have been successfully exported",
+    "settings.runManualExport.success": "Les bons ont été exportés avec succès",
     "settings.runManualExport.error": "Les bons n'ont pas été exportés",
     "invoice.details.information.batchGroup": "Batch group",
     "settings.batchGroupConfiguration.testConnection.success": "La connexion est valide",
@@ -328,5 +328,7 @@
     "invoice.paymentDate": "Date de paiement",
     "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
     "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
-    "invoice.enclosureNeeded": "Enclosure needed"
+    "invoice.enclosureNeeded": "Enclosure needed",
+    "invoice.details.voucher.accountNo": "Numéro de compte",
+    "invoice.details.voucher.noAccount": "Pas de compte"
 }

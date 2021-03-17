@@ -328,5 +328,7 @@
     "invoice.paymentDate": "Betalingsdato",
     "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
     "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
-    "invoice.enclosureNeeded": "Enclosure needed"
+    "invoice.enclosureNeeded": "Enclosure needed",
+    "invoice.details.voucher.accountNo": "Account number",
+    "invoice.details.voucher.noAccount": "No account"
 }
