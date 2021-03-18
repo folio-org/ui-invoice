@@ -252,7 +252,6 @@
   "invoice.details.voucher.disbursementNumber": "Disbursement number",
   "invoice.details.voucher.exchangeRate": "Exchange rate",
   "invoice.details.voucher.externalAccountNumber": "External account number",
-  "invoice.details.voucher.noAccount": "No account",
   "invoice.details.voucher.status": "Status",
   "invoice.details.voucher.title": "Voucher information",
   "invoice.details.voucher.total": "Total",
