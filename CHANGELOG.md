@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.3.0]https://github.com/folio-org/ui-invoice/tree/v2.3.0) (2021-03-18)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.4...v2.3.0)
+
 * Include account number from Invoice information in voucher. Refs UINV-227.
 * Display "Enclosure needed" toggle on the invoice. Refs UINV-226.
 * Display Invoice line number and add sorting. Refs UINV-230.
