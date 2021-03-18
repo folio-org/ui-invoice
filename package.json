@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "2.2.4",
+  "version": "2.3.0",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -46,8 +46,8 @@
     "eslint-plugin-jest": "^24.0.1",
     "eslint-plugin-testing-library": "3.8.0",
     "faker": "^5.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
-    "jest-css-modules": "^2.1.0",
     "jest-junit": "^12.0.0",
     "miragejs": "^0.1.32",
     "moment": "^2.24.0",
@@ -61,7 +61,7 @@
     "sinon": "^7.0.0"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^2.2.2",
+    "@folio/stripes-acq-components": "~2.3.0",
     "file-saver": "^2.0.0",
     "final-form-arrays": "^3.0.1",
     "final-form": "^4.18.2",
@@ -107,10 +107,10 @@
       "finance.expense-classes": "1.0",
       "finance.funds": "1.0",
       "identifier-types": "1.2",
-      "invoice": "6.0 7.0",
+      "invoice": "7.0",
       "material-types": "2.2",
-      "order-lines": "1.0 2.0",
-      "orders": "10.0 11.0",
+      "order-lines": "2.0",
+      "orders": "11.0",
       "organizations.organizations": "1.0",
       "tags": "1.0",
       "users": "15.1",
