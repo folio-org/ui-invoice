@@ -87,7 +87,7 @@ const VoucherDetails = ({ voucher }) => (
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountNo" />}
-          value={voucher.accountNo || <FormattedMessage id="ui-invoice.invoice.details.voucher.noAccount" />}
+          value={voucher.accountNo}
         />
       </Col>
 
