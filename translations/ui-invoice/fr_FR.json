@@ -36,7 +36,7 @@
     "extendedInformation": "Informations détaillées",
     "errors.invoiceHasNotBeenCreated": "La facture n'a pas été créée",
     "errors.invoiceHasNotBeenSaved": "La facture n'a pas été sauvegardée",
-    "invoice.note": "Commentaire",
+    "invoice.note": "Note",
     "invoice.acquisitionsUnit": "Unité d'acquisition",
     "invoice.paymentMethod": "Moyen de paiement",
     "invoice.approvalDate": "Date de validation",
@@ -71,7 +71,7 @@
     "invoiceLine.accountNumber": "Numéro de compte",
     "invoiceLine.accountingCode": "Code comptable",
     "invoiceLine.comment": "Commentaire",
-    "invoiceLine.releaseEncumbrance": "Libérer la provision/charge (encumbrance) (?)",
+    "invoiceLine.releaseEncumbrance": "Libérer l'engagement",
     "invoiceLine.subTotal": "Sous-total",
     "adjustment.type": "Sélectionner l'ajustement",
     "adjustment.description": "Description",
@@ -326,9 +326,8 @@
     "invoice.duplicateInvoice.title": "Facture en double possible",
     "invoiceLine.referenceNumbers": "Numéros de référence du fournisseur",
     "invoice.paymentDate": "Date de paiement",
-    "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
+    "invoice.details.lines.list.vendorRefNumber": "Numéro de référence du fournisseur",
     "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
     "invoice.enclosureNeeded": "Enclosure needed",
-    "invoice.details.voucher.accountNo": "Numéro de compte",
-    "invoice.details.voucher.noAccount": "Pas de compte"
+    "invoice.details.voucher.accountNo": "Numéro de compte"
 }

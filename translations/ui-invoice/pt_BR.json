@@ -329,6 +329,5 @@
     "invoice.details.lines.list.vendorRefNumber": "Número de referência do fornecedor",
     "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
     "invoice.enclosureNeeded": "Enclosure needed",
-    "invoice.details.voucher.accountNo": "Número da conta",
-    "invoice.details.voucher.noAccount": "Sem conta"
+    "invoice.details.voucher.accountNo": "Número da conta"
 }
