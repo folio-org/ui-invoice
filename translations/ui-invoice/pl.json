@@ -329,6 +329,5 @@
     "invoice.details.lines.list.vendorRefNumber": "Numer referencyjny sprzedawcy",
     "invoice.actions.approve.error.organizationNotAVendor": "Faktura nie może zostać zatwierdzona, ponieważ powiązany identyfikator sprzedawcy należy do organizacji niebędącej sprzedawcą.",
     "invoice.enclosureNeeded": "Wymagany załącznik",
-    "invoice.details.voucher.accountNo": "Account number",
-    "invoice.details.voucher.noAccount": "No account"
+    "invoice.details.voucher.accountNo": "Account number"
 }

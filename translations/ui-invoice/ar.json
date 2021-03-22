@@ -329,6 +329,5 @@
     "invoice.details.lines.list.vendorRefNumber": "رقم المورّد المرجعي",
     "invoice.actions.approve.error.organizationNotAVendor": "لا يمكن قبول الفاتورة حيث أن معرف المورّد المرتبط بها ينتمي لمؤسسة غير موردة.",
     "invoice.enclosureNeeded": "التضمين مطلوب",
-    "invoice.details.voucher.accountNo": "رقم الحساب",
-    "invoice.details.voucher.noAccount": "لا يوجد حساب"
+    "invoice.details.voucher.accountNo": "رقم الحساب"
 }
