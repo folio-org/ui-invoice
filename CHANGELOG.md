@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Invoice lines are not in numerical order. Refs UINV-240.
+
 ## [2.3.0]https://github.com/folio-org/ui-invoice/tree/v2.3.0) (2021-03-18)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.4...v2.3.0)
 

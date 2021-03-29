@@ -39,7 +39,7 @@ const columnMapping = {
 };
 
 const sorters = {
-  [COLUMN_LINE_NUMBER]: ({ invoiceLineNumber }) => invoiceLineNumber,
+  [COLUMN_LINE_NUMBER]: ({ invoiceLineNumber }) => Number(invoiceLineNumber),
 };
 
 const InvoiceLines = ({
