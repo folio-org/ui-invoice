@@ -327,7 +327,7 @@
     "invoiceLine.referenceNumbers": "Números de referência do fornecedor",
     "invoice.paymentDate": "Data de pagamento",
     "invoice.details.lines.list.vendorRefNumber": "Número de referência do fornecedor",
-    "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
+    "invoice.actions.approve.error.organizationNotAVendor": "A fatura não pode ser aprovada porque o ID do fornecedor associado pertence a uma organização não fornecedora.",
     "invoice.enclosureNeeded": "Enclosure needed",
     "invoice.details.voucher.accountNo": "Número da conta"
 }
