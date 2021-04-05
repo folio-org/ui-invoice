@@ -24,6 +24,8 @@ const InvoiceActions = ({
   onDelete,
   onEdit,
   onPay,
+  onPrint,
+  onPrintTable,
 }) => {
   const isDeletable = !(isPayable(invoice.status) || isPaid(invoice.status));
 
@@ -97,6 +99,18 @@ const InvoiceActions = ({
           </IfPermission>
         )
       }
+      <Button
+        buttonStyle="dropdownItem"
+        onClick={onPrint}
+      >
+        Print voucher in blocks
+      </Button>
+      <Button
+        buttonStyle="dropdownItem"
+        onClick={onPrintTable}
+      >
+        Print voucher in table (2 table options for lines)
+      </Button>
     </MenuSection>
   );
 };
@@ -110,6 +124,8 @@ InvoiceActions.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onPay: PropTypes.func.isRequired,
+  onPrint: PropTypes.func.isRequired,
+  onPrintTable: PropTypes.func.isRequired,
 };
 
 InvoiceActions.defaultProps = {

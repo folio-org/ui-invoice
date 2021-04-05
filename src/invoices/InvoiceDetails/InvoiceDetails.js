@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
+import { useReactToPrint } from 'react-to-print';
 
 import {
   Accordion,
@@ -23,6 +24,9 @@ import {
   TagsPane,
 } from '@folio/stripes-acq-components';
 
+import { useVoucher } from '../Voucher/useVoucher';
+import PrintContent from '../InvoicePrint/PrintContent';
+import PrintContentTable from '../InvoicePrint/PrintContent/PrintContentTable';
 import {
   calculateAdjustmentAmount,
   IS_EDIT_POST_APPROVAL,
@@ -73,6 +77,15 @@ function InvoiceDetails({
   const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
   const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
+  const componentRef = useRef();
+  const componentTableRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+  const handlePrintTable = useReactToPrint({
+    content: () => componentTableRef.current,
+  });
+  // const { isLoading, voucher, voucherLines } = useVoucher(invoice.id, params.voucherId);
 
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
@@ -101,6 +114,14 @@ function InvoiceDetails({
           toggleApproveAndPayConfirmation();
         }}
         isApprovePayEnabled={isApprovePayEnabled}
+        onPrint={() => {
+          onToggle();
+          handlePrint();
+        }}
+        onPrintTable={() => {
+          onToggle();
+          handlePrintTable();
+        }}
       />
     );
   };
@@ -347,6 +368,16 @@ function InvoiceDetails({
           />
         )
       }
+      <PrintContent
+        ref={componentRef}
+        // voucher={voucher}
+        // voucherLines={voucherLines}
+      />
+      <PrintContentTable
+        ref={componentTableRef}
+        // voucher={voucher}
+        // voucherLines={voucherLines}
+      />
     </>
   );
 }

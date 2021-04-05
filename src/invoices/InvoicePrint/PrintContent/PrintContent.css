@@ -1,0 +1,47 @@
+.hiddenContent {
+  display: none;
+}
+
+.hiddenContent > div:first-child {
+  height: 100%;
+  width: 1000px;
+  /* margin: 30px; */
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media print {
+  @page {
+    size: A4;
+    /* margin: 0; */
+    margin: 30px;
+  }
+
+  .row > div {
+    display: inline-block;
+    border-bottom: solid 1px #ccc;
+    margin: 0.1cm;
+    font-size: 1rem;
+  }
+  .row {
+    display: block;
+    border: solid 2px black;
+    /* margin: 0.2cm 1cm; */
+    font-size: 0;
+    /* white-space: nowrap; */
+  }
+  .table {
+      /* transform: translate(8.5in, -100%) rotate(90deg); */
+      /* transform-origin: bottom left; */
+      display: block;
+      /* position: absolute; */
+  }
+}
+
+/* .lines, .lines th, .lines td {
+  border: 1px solid black;
+} */
