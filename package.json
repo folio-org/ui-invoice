@@ -184,6 +184,7 @@
           "finance.exchange-rate.item.get",
           "invoice.invoice-lines.item.put",
           "invoice.invoices.documents.item.post",
+          "invoice.invoices.documents.item.delete",
           "invoice.invoices.item.put",
           "tags.item.post",
           "voucher.vouchers.item.put"
