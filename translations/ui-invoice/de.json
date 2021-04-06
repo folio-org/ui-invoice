@@ -191,7 +191,7 @@
     "invoice.actions.pay.confirmation.message": "Rechnung wirklich bezahlen?",
     "invoice.actions.approve.error": "Rechnung wurde nicht freigegeben",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Präfix der Belegnummer darf nur Unicode-Zeichen enthalten",
-    "adjustment.headerLabel": "Zusatzkosten",
+    "adjustment.headerLabel": "Zusatzkosten {index}",
     "saveAndClose": "Speichern & schließen",
     "settings.general.label": "Allgemein",
     "settings.approvals.label": "Freigaben",
