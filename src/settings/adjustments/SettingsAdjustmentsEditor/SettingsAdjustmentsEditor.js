@@ -21,7 +21,9 @@ import {
 
 import {
   ADJUSTMENT_PRORATE_OPTIONS,
+  ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS,
+  ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_OPTIONS,
 } from '../../../common/constants';
 
@@ -33,6 +35,8 @@ class SettingsAdjustmentsEditor extends Component {
     submitting: PropTypes.bool.isRequired,
     title: PropTypes.node,
     metadata: PropTypes.object,
+    change: PropTypes.func,
+    formValues: PropTypes.object,
   };
 
   render() {
@@ -43,7 +47,25 @@ class SettingsAdjustmentsEditor extends Component {
       metadata,
       pristine,
       submitting,
+      change,
+      formValues,
     } = this.props;
+
+    // TODO: should be removed when no-prorated supports included in
+    const onProrateChange = e => {
+      const value = e.target.value;
+
+      if (
+        value === ADJUSTMENT_PRORATE_VALUES.notProrated
+        && formValues?.relationToTotal === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
+      ) change('relationToTotal', '');
+
+      change('prorate', value);
+    };
+    const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS.filter(({ value }) => (
+      formValues?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
+      || value !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
+    ));
 
     const formFooter = (
       <FormFooter
@@ -136,6 +158,7 @@ class SettingsAdjustmentsEditor extends Component {
                       dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
                       required
                       validate={validateRequired}
+                      onChange={onProrateChange}
                     />
                   </Col>
                   <Col
@@ -145,7 +168,7 @@ class SettingsAdjustmentsEditor extends Component {
                     <FieldSelect
                       label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
                       name="relationToTotal"
-                      dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
+                      dataOptions={relationOptions}
                       required
                       validate={validateRequired}
                     />
