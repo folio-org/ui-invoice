@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Display Vendor primary address in voucher view. Refs UINV-236.
 * Invoice lines are not in numerical order. Refs UINV-240.
 * Cannot delete attached file from invoice. Refs UINV-244.
 * Cannot approve invoice with a certain type of adjustment. Refs UINV-248.

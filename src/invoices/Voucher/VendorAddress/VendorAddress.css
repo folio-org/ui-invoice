@@ -1,0 +1,6 @@
+@import '@folio/stripes-components/lib/variables';
+
+.addressContent {
+  padding: 14px;
+  background-color: color(var(--bg) blend(var(--bg-hover) 20%));
+}
