@@ -255,7 +255,7 @@ function InvoiceDetailsContainer({
         ))
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, mutator.fund, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
   const payInvoice = useCallback(
@@ -279,7 +279,7 @@ function InvoiceDetailsContainer({
         ))
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, mutator.fund, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
   const approveAndPayInvoice = useCallback(
@@ -310,7 +310,7 @@ function InvoiceDetailsContainer({
         })
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, mutator.fund, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
   const updateInvoice = useCallback(

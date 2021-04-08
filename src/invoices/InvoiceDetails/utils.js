@@ -118,6 +118,11 @@ export const showUpdateInvoiceError = async (
               type: 'error',
               values: { fundCode: fund?.code },
             });
+          }, () => {
+            showCallout({
+              messageId: defaultErrorMessageId,
+              type: 'error',
+            });
           });
       } else {
         showCallout({
