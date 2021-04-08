@@ -110,6 +110,22 @@ const AdjustmentsForm = ({
 
     const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal, currency || stripes.currency);
 
+    // TODO: should be removed when no-prorated supports included in
+    const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS.filter(({ value }) => (
+      adjustment?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
+      || value !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
+    ));
+    const onProrateChange = e => {
+      const value = e.target.value;
+
+      if (
+        value === ADJUSTMENT_PRORATE_VALUES.notProrated
+        && adjustment?.relationToTotal === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
+      ) change(`${elem}.relationToTotal`, '');
+
+      change(`${elem}.prorate`, value);
+    };
+
     return (
       <Card
         headerEnd={(
@@ -179,6 +195,7 @@ const AdjustmentsForm = ({
                   required
                   validate={validateRequired}
                   disabled={disabled}
+                  onChange={onProrateChange}
                 />
               </Col>
             )
@@ -190,7 +207,7 @@ const AdjustmentsForm = ({
             <FieldSelectFinal
               label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
               name={`${elem}.relationToTotal`}
-              dataOptions={ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS}
+              dataOptions={relationOptions}
               required
               validate={validateRequired}
               disabled={disabled}
