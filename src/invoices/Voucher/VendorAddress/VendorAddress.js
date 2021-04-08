@@ -13,7 +13,7 @@ import { COUNTRY_LABEL_BY_CODE } from '@folio/stripes-acq-components';
 import { useVendor } from './useVendor';
 import css from './VendorAddress.css';
 
-const VendorAddress = ({ address, vendorId }) => {
+const VendorAddress = ({ address = {}, vendorId }) => {
   const { vendor, isLoading } = useVendor(vendorId);
 
   if (isLoading) return <Loading />;
@@ -75,10 +75,6 @@ const VendorAddress = ({ address, vendorId }) => {
 VendorAddress.propTypes = {
   vendorId: PropTypes.string.isRequired,
   address: PropTypes.object,
-};
-
-VendorAddress.defaultProps = {
-  address: {},
 };
 
 export default VendorAddress;
