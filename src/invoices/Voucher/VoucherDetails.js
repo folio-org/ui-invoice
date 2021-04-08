@@ -13,7 +13,9 @@ import {
   FolioFormattedDate,
 } from '@folio/stripes-acq-components';
 
-const VoucherDetails = ({ voucher }) => (
+import VendorAddress from './VendorAddress';
+
+const VoucherDetails = ({ voucher, withVendorAddress }) => (
   <>
     <Row>
       <Col xs={3}>
@@ -108,11 +110,23 @@ const VoucherDetails = ({ voucher }) => (
         />
       </Col>
     </Row>
+
+    {withVendorAddress && (
+      <VendorAddress
+        vendorId={voucher.vendorId}
+        address={voucher.vendorAddress}
+      />
+    )}
   </>
 );
 
 VoucherDetails.propTypes = {
   voucher: PropTypes.object.isRequired,
+  withVendorAddress: PropTypes.bool,
+};
+
+VoucherDetails.defaultProps = {
+  withVendorAddress: false,
 };
 
 export default VoucherDetails;

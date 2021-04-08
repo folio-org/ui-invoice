@@ -29,7 +29,10 @@ const VoucherView = ({ voucher, voucherLines }) => (
         id={SECTIONS_VOUCHER.voucher}
       >
         {voucher.metadata && <ViewMetaData metadata={voucher.metadata} />}
-        <VoucherDetails voucher={voucher} />
+        <VoucherDetails
+          voucher={voucher}
+          withVendorAddress
+        />
       </Accordion>
       <Accordion
         label={<FormattedMessage id="ui-invoice.voucher.voucherLinesTitle" />}
