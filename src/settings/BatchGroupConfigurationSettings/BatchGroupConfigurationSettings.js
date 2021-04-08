@@ -7,9 +7,10 @@ import React, {
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
+import moment from 'moment';
 
 import { LoadingPane } from '@folio/stripes/components';
-import { LIMIT_MAX, useShowCallout } from '@folio/stripes-acq-components';
+import { LIMIT_MAX, useShowCallout, DATE_FORMAT } from '@folio/stripes-acq-components';
 
 import {
   batchGroupsResource,
@@ -150,8 +151,9 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
 
   const runManualExport = useCallback(
     () => {
-      const start = batchVoucherExports[0]?.end ||
-        batchGroups.find(({ id }) => id === selectedBatchGroupId)?.metadata.createdDate;
+      const start = batchVoucherExports[0]?.end
+        || batchGroups.find(({ id }) => id === selectedBatchGroupId)?.metadata?.createdDate
+        || moment(0).tz('UTC').format(DATE_FORMAT);
 
       createManualVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId, start)
         .then(({ id }) => {
