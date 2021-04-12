@@ -1,6 +1,9 @@
 import { find, get } from 'lodash';
 
-import { EXPENSE_CLASSES_API } from '@folio/stripes-acq-components';
+import {
+  EXPENSE_CLASSES_API,
+  FUNDS_API,
+} from '@folio/stripes-acq-components';
 
 import {
   INVOICE_STATUS,
@@ -47,6 +50,7 @@ export const showUpdateInvoiceError = async (
   action,
   defaultErrorMessageId,
   expenseClassMutator,
+  fundMutator,
 ) => {
   let error;
 
@@ -93,6 +97,31 @@ export const showUpdateInvoiceError = async (
               messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
               type: 'error',
               values,
+            });
+          });
+      } else {
+        showCallout({
+          messageId: defaultErrorMessageId,
+          type: 'error',
+        });
+      }
+      break;
+    }
+    case ERROR_CODES.budgetNotFoundByFundId: {
+      const fundId = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'fund')?.value;
+
+      if (fundId) {
+        fundMutator.GET({ path: `${FUNDS_API}/${fundId}` })
+          .then(({ fund }) => {
+            showCallout({
+              messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
+              type: 'error',
+              values: { fundCode: fund?.code },
+            });
+          }, () => {
+            showCallout({
+              messageId: defaultErrorMessageId,
+              type: 'error',
             });
           });
       } else {

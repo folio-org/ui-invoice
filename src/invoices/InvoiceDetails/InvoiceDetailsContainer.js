@@ -244,7 +244,14 @@ function InvoiceDetailsContainer({
 
           return fetchInvoiceData();
         }, response => (
-          showUpdateInvoiceError(response, showCallout, 'approve', 'ui-invoice.invoice.actions.approve.error', mutator.expenseClass)
+          showUpdateInvoiceError(
+            response,
+            showCallout,
+            'approve',
+            'ui-invoice.invoice.actions.approve.error',
+            mutator.expenseClass,
+            mutator.fund,
+          )
         ))
         .finally(setIsLoading);
     },
@@ -262,7 +269,14 @@ function InvoiceDetailsContainer({
           refreshList();
 
           return fetchInvoiceData();
-        }, response => showUpdateInvoiceError(response, showCallout, 'pay', 'ui-invoice.invoice.actions.pay.error', mutator.expenseClass))
+        }, response => showUpdateInvoiceError(
+          response,
+          showCallout,
+          'pay',
+          'ui-invoice.invoice.actions.pay.error',
+          mutator.expenseClass,
+          mutator.fund,
+        ))
         .finally(setIsLoading);
     },
     [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
@@ -277,7 +291,14 @@ function InvoiceDetailsContainer({
           return mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })
         .catch(response => {
-          showUpdateInvoiceError(response, showCallout, 'approveAndPay', 'ui-invoice.invoice.actions.approveAndPay.error', mutator.expenseClass);
+          showUpdateInvoiceError(
+            response,
+            showCallout,
+            'approveAndPay',
+            'ui-invoice.invoice.actions.approveAndPay.error',
+            mutator.expenseClass,
+            mutator.fund,
+          );
 
           throw new Error('approveAndPay error');
         })
@@ -358,6 +379,11 @@ InvoiceDetailsContainer.manifest = Object.freeze({
   exportConfigs: exportConfigsResource,
   batchVoucherExport: batchVoucherExportsResource,
   expenseClass: {
+    ...baseManifest,
+    accumulate: true,
+    fetch: false,
+  },
+  fund: {
     ...baseManifest,
     accumulate: true,
     fetch: false,

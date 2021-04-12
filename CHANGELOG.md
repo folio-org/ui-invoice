@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Budget not found by FundID error message not displayed to user. Refs UINV-247.
 * Display Vendor primary address in voucher view. Refs UINV-236.
 * Invoice lines are not in numerical order. Refs UINV-240.
 * Cannot delete attached file from invoice. Refs UINV-244.

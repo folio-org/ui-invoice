@@ -220,6 +220,8 @@
         "visible": true,
         "description": "",
         "subPermissions": [
+          "finance.expense-classes.item.get",
+          "finance.funds.item.get",
           "invoice.item.approve"
         ]
       },
@@ -229,6 +231,8 @@
         "visible": true,
         "description": "",
         "subPermissions": [
+          "finance.expense-classes.item.get",
+          "finance.funds.item.get",
           "invoice.item.pay"
         ]
       },
