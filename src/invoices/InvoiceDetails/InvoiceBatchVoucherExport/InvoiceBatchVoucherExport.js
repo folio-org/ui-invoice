@@ -41,7 +41,7 @@ const InvoiceBatchVoucherExport = ({ batchVoucherExport, exportFormat }) => {
       <Col xs={4}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.batchVoucherExport.status" />}
-          value={<FormattedMessage id={BATCH_VOUCHER_EXPORT_STATUS_LABEL[batchVoucherExport.status]} />}
+          value={BATCH_VOUCHER_EXPORT_STATUS_LABEL[batchVoucherExport.status]}
         />
       </Col>
     </Row>
