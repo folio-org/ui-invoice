@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.3.1]https://github.com/folio-org/ui-invoice/tree/v2.3.1) (2021-04-14)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.0...v2.3.1)
+
 * Invoice details: Batch file status not displaying properly. Refs UINV-252.
 * Budget not found by FundID error message not displayed to user. Refs UINV-247.
 * Display Vendor primary address in voucher view. Refs UINV-236.
