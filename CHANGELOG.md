@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Permissions for Expense class filter (find-po-line-plugin). Refs UIOR-678.
+
 ## [2.3.1]https://github.com/folio-org/ui-invoice/tree/v2.3.1) (2021-04-14)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.0...v2.3.1)
 
