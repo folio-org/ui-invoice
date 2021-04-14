@@ -70,7 +70,7 @@ export const showUpdateInvoiceError = async (
     case ERROR_CODES.poLineUpdateFailure:
     case ERROR_CODES.fundCannotBePaid:
     case ERROR_CODES.transactionCreationFailure:
-    case ERROR_CODES.organizationNotAVendor:
+    case ERROR_CODES.organizationIsNotVendor:
     case ERROR_CODES.lockCalculatedTotalsMismatch: {
       showCallout({
         messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`,

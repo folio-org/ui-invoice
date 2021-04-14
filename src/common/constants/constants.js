@@ -128,7 +128,7 @@ export const ERROR_CODES = {
   inactiveExpenseClass: 'inactiveExpenseClass',
   budgetExpenseClassNotFound: 'budgetExpenseClassNotFound',
   lockCalculatedTotalsMismatch: 'lockCalculatedTotalsMismatch',
-  organizationNotAVendor: 'organizationNotAVendor',
+  organizationIsNotVendor: 'organizationIsNotVendor',
   budgetNotFoundByFundId: 'budgetNotFoundByFundId',
 };
 

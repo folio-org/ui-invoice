@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Update error code to prevent approval of invoice when organization is not a vendor. Refs UINV-215.
 * Permissions for Expense class filter (find-po-line-plugin). Refs UIOR-678.
 
 ## [2.3.1]https://github.com/folio-org/ui-invoice/tree/v2.3.1) (2021-04-14)
