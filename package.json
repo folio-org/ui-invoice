@@ -186,6 +186,8 @@
           "invoice.invoices.documents.item.post",
           "invoice.invoices.documents.item.delete",
           "invoice.invoices.item.put",
+          "orders.configuration.prefixes.collection.get",
+          "orders.configuration.suffixes.collection.get",
           "tags.item.post",
           "voucher.vouchers.item.put"
         ]
