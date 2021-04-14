@@ -182,6 +182,7 @@
           "acquisitions-units.memberships.collection.get",
           "batch-groups.collection.get",
           "finance.exchange-rate.item.get",
+          "finance.expense-classes.collection.get",
           "invoice.invoice-lines.item.put",
           "invoice.invoices.documents.item.post",
           "invoice.invoices.documents.item.delete",
