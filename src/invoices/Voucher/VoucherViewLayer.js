@@ -36,7 +36,9 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
     [params.id, location.search],
   );
 
-  const renderActionMenu = useCallback(() => {
+  const printVoucher = useCallback(() => { }, []);
+
+  const renderActionMenu = useCallback(({ onToggle }) => {
     const path = {
       pathname: `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`,
       search: location.search,
@@ -55,10 +57,20 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
             </Icon>
           </Button>
         </IfPermission>
+        <Button
+          buttonStyle="dropdownItem"
+          onClick={() => {
+            onToggle();
+            printVoucher();
+          }}
+        >
+          <Icon size="small" icon="print">
+            <FormattedMessage id="ui-invoice.voucher.print" />
+          </Icon>
+        </Button>
       </MenuSection>
     );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [location.search]);
+  }, [location.search, params.id, params.voucherId, printVoucher]);
 
   if (isLoading) {
     return (
