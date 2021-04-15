@@ -7,10 +7,8 @@ import {
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import {
-  Paneset,
-  MultiColumnList,
-} from '@folio/stripes/components';
+import { MultiColumnList } from '@folio/stripes/components';
+import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
   AmountWithCurrencyField,
   FiltersPane,
@@ -18,9 +16,9 @@ import {
   ResetButton,
   ResultsPane,
   SingleSearchForm,
+  useFiltersToogle,
   useLocationFilters,
   useLocationSorting,
-  useToggle,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -84,7 +82,7 @@ const InvoicesList = ({
     sortingDirection,
     changeSorting,
   ] = useLocationSorting(location, history, resetData, sortableFields);
-  const [isFiltersOpened, toggleFilters] = useToggle(true);
+  const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-invoice/filters');
 
   const renderLastMenu = useCallback(() => <InvoicesListLastMenu />, []);
 
@@ -107,9 +105,16 @@ const InvoicesList = ({
   );
 
   return (
-    <Paneset data-test-invoices-list>
+    <PersistedPaneset
+      appId="ui-receiving"
+      id="invoice-paneset"
+      data-test-invoices-list
+    >
       {isFiltersOpened && (
-        <FiltersPane toggleFilters={toggleFilters}>
+        <FiltersPane
+          id="invoice-filters-pane"
+          toggleFilters={toggleFilters}
+        >
           <SingleSearchForm
             applySearch={applySearch}
             changeSearch={changeSearch}
@@ -136,6 +141,7 @@ const InvoicesList = ({
       )}
 
       <ResultsPane
+        id="invoice-results-pane"
         title={resultsPaneTitle}
         count={invoicesCount}
         renderLastMenu={renderLastMenu}
@@ -179,7 +185,7 @@ const InvoicesList = ({
           />
         )}
       />
-    </Paneset>
+    </PersistedPaneset>
   );
 };
 
