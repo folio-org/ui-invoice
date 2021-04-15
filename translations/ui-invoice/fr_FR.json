@@ -287,7 +287,7 @@
     "invoice.actions.addLine.heading": "Confirmation",
     "invoice.actions.addLine.vendorMessage": "Vous ajoutez une ou plusieurs lignes de commande qui font référence à un fournisseur différent de celui identifié sur cette facture. Si vous souhaitez toujours les ajouter, cliquez sur Confirmer. Remarque: Les paiements seront associés au fournisseur identifié sur la facture.",
     "invoice.actions.addLine.vendorLoadError": "Échec du chargement des données du fournisseur",
-    "invoice.details.batchVoucherExport.title": "Voucher export details",
+    "invoice.details.batchVoucherExport.title": "Détails de l'exportation des bons d'achat",
     "invoice.details.batchVoucherExport.batchGroup": "Groupe de lot",
     "invoice.details.batchVoucherExport.fileName": "Nom du fichier batch",
     "invoice.details.batchVoucherExport.status": "Batch file status",

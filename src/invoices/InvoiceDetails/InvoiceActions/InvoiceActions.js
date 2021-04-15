@@ -24,6 +24,7 @@ const InvoiceActions = ({
   onDelete,
   onEdit,
   onPay,
+  onPrint,
 }) => {
   const isDeletable = !(isPayable(invoice.status) || isPaid(invoice.status));
 
@@ -97,6 +98,16 @@ const InvoiceActions = ({
           </IfPermission>
         )
       }
+      {onPrint && (
+        <Button
+          buttonStyle="dropdownItem"
+          onClick={onPrint}
+        >
+          <Icon size="small" icon="print">
+            <FormattedMessage id="ui-invoice.invoice.actions.print" />
+          </Icon>
+        </Button>
+      )}
     </MenuSection>
   );
 };
@@ -110,6 +121,7 @@ InvoiceActions.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onPay: PropTypes.func.isRequired,
+  onPrint: PropTypes.func,
 };
 
 InvoiceActions.defaultProps = {

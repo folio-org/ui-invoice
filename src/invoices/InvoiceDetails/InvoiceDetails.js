@@ -73,6 +73,7 @@ function InvoiceDetails({
   const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
   const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
+  const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
 
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
@@ -100,6 +101,9 @@ function InvoiceDetails({
           onToggle();
           toggleApproveAndPayConfirmation();
         }}
+        onPrint={!showVoucherInformation ? undefined : () => {
+          onToggle();
+        }}
         isApprovePayEnabled={isApprovePayEnabled}
       />
     );
@@ -116,7 +120,6 @@ function InvoiceDetails({
   );
 
   const vendorInvoiceNo = invoice.vendorInvoiceNo;
-  const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
   const tags = get(invoice, 'tags.tagList', []);
   const adjustments = get(invoice, 'adjustments', []);
   const fundDistributions = useMemo(
