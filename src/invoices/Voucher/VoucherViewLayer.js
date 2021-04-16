@@ -16,12 +16,15 @@ import {
   AppIcon,
   IfPermission,
 } from '@folio/stripes/core';
+import { useModalToggle } from '@folio/stripes-acq-components';
 
+import { PrintVoucherContainer } from '../PrintVoucher';
 import VoucherView from './VoucherView';
 import { useVoucher } from './useVoucher';
 
 const VoucherViewLayer = ({ match: { params }, history, location }) => {
   const { isLoading, voucher, voucherLines, invoice } = useVoucher(params.id, params.voucherId);
+  const [isPrintModalOpened, togglePrintModal] = useModalToggle();
 
   const closeVoucher = useCallback(
     () => {
@@ -35,8 +38,6 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [params.id, location.search],
   );
-
-  const printVoucher = useCallback(() => { }, []);
 
   const renderActionMenu = useCallback(({ onToggle }) => {
     const path = {
@@ -61,7 +62,7 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
           buttonStyle="dropdownItem"
           onClick={() => {
             onToggle();
-            printVoucher();
+            togglePrintModal();
           }}
         >
           <Icon size="small" icon="print">
@@ -70,7 +71,7 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
         </Button>
       </MenuSection>
     );
-  }, [location.search, params.id, params.voucherId, printVoucher]);
+  }, [location.search, params.id, params.voucherId, togglePrintModal]);
 
   if (isLoading) {
     return (
@@ -115,6 +116,12 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
           </Col>
         </Row>
       </Pane>
+      {isPrintModalOpened && (
+        <PrintVoucherContainer
+          closePrint={togglePrintModal}
+          invoice={invoice}
+        />
+      )}
     </Paneset>
   );
 };

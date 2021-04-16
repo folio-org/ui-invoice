@@ -22,8 +22,9 @@ const PrintVoucherContainer = ({ invoice, closePrint }) => {
   return (
     <>
       <ConfirmationModal
+        bodyTag="div"
         heading=""
-        message={isLoading ? Loading : 'Print voucher?'}
+        message={isLoading ? <Loading /> : 'Print voucher?'}
         onCancel={closePrint}
         onConfirm={handlePrint}
         open
