@@ -23,6 +23,7 @@ import {
   TagsPane,
 } from '@folio/stripes-acq-components';
 
+import { PrintVoucherContainer } from '../PrintVoucher';
 import {
   calculateAdjustmentAmount,
   IS_EDIT_POST_APPROVAL,
@@ -73,6 +74,7 @@ function InvoiceDetails({
   const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
   const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
+  const [isPrintModalOpened, togglePrintModal] = useModalToggle();
   const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
 
   // eslint-disable-next-line react/prop-types
@@ -103,6 +105,7 @@ function InvoiceDetails({
         }}
         onPrint={!showVoucherInformation ? undefined : () => {
           onToggle();
+          togglePrintModal();
         }}
         isApprovePayEnabled={isApprovePayEnabled}
       />
@@ -340,6 +343,12 @@ function InvoiceDetails({
             />
           )
         }
+        {isPrintModalOpened && (
+          <PrintVoucherContainer
+            closePrint={togglePrintModal}
+            invoice={invoice}
+          />
+        )}
       </Pane>
       {
         isTagsOpened && (
