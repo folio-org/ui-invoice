@@ -327,7 +327,13 @@ function InvoiceDetailsContainer({
   ), 0);
 
   if (isLoading || invoice?.id !== id) {
-    return <LoadingPane dismissible onClose={closePane} />;
+    return (
+      <LoadingPane
+        id="pane-invoiceDetails"
+        dismissible
+        onClose={closePane}
+      />
+    );
   }
 
   return (
