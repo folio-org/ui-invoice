@@ -1,9 +1,10 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useReactToPrint } from 'react-to-print';
+import { FormattedMessage } from 'react-intl';
 
 import {
-  ConfirmationModal,
+  Modal,
   Loading,
 } from '@folio/stripes/components';
 
@@ -19,16 +20,22 @@ const PrintVoucherContainer = ({ invoice, closePrint }) => {
 
   const { dataSource, isLoading } = usePrintData(invoice);
 
+  useEffect(() => {
+    if (isLoading === false) {
+      handlePrint();
+    }
+  }, [isLoading]);
+
   return (
     <>
-      <ConfirmationModal
-        bodyTag="div"
-        heading=""
-        message={isLoading ? <Loading /> : 'Print voucher?'}
-        onCancel={closePrint}
-        onConfirm={handlePrint}
-        open
-      />
+      <Modal
+        open={isLoading}
+        label={<FormattedMessage id="ui-invoice.voucher.print.isLoading" />}
+        scope="module"
+        size="small"
+      >
+        <Loading />
+      </Modal>
       <PrintContent
         ref={componentRef}
         dataSource={dataSource}
