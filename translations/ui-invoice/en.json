@@ -357,6 +357,7 @@
   "status.Open": "Open",
 
   "voucher.print": "Print",
+  "voucher.print.isLoading": "Print voucher data is loading",
   "voucher.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
   "voucher.paneSubTitle": "Voucher number - {voucherNumber}",
   "voucher.voucherTitle": "Voucher information",
