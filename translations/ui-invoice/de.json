@@ -329,5 +329,5 @@
     "invoice.details.lines.list.vendorRefNumber": "Lieferanten-Referenznummer",
     "invoice.actions.approve.error.organizationNotAVendor": "Rechnung kann nicht freigegeben werden, da die verknüpfte Lieferanten-ID zu einer Organisation gehört, die kein Lieferant ist",
     "invoice.enclosureNeeded": "Anlage benötigt",
-    "invoice.details.voucher.accountNo": "Account number"
+    "invoice.details.voucher.accountNo": "Kontonummer"
 }

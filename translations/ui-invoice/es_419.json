@@ -221,7 +221,7 @@
     "invoice.invoiceTags": "Etiquetas de factura",
     "invoice.invoiceVendorInformation": "Información del proveedor de la factura",
     "tag": "Etiqueta",
-    "errors.fileLimit": "El fichero excede el límite de tamaño",
+    "errors.fileLimit": "El archivo supera el límite de {size}MB",
     "settings.vouchers.label": "Recibos",
     "settings.batchGroups.label": "Grupo de lote",
     "settings.batchGroupConfiguration.label": "Configuración del grupo de lotes",
