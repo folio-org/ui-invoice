@@ -9,6 +9,7 @@ export const useVendor = (vendorId) => {
   const { isLoading, data: vendor = {} } = useQuery(
     [VENDORS_API, vendorId],
     () => ky.get(`${VENDORS_API}/${vendorId}`).json(),
+    { enabled: Boolean(vendorId) },
   );
 
   return ({
