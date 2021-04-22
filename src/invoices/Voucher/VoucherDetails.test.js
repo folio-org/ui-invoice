@@ -25,7 +25,7 @@ describe('VoucherDetails component', () => {
 
     expect(getByText(testVoucher.accountingCode)).toBeDefined();
     expect(getByText(testVoucher.voucherNumber)).toBeDefined();
-    expect(getByText(testVoucher.status)).toBeDefined();
+    expect(getByText('ui-invoice.voucher.status.awaitingPayment')).toBeDefined();
     expect(getByText('ui-invoice.invoice.enclosureNeeded')).toBeDefined();
     expect(getByText(testVoucher.accountNo)).toBeDefined();
   });
