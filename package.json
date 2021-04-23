@@ -86,6 +86,7 @@
     "react-router-dom": "^5.2.0"
   },
   "resolutions": {
+    "@rehooks/local-storage": "2.4.0",
     "babel-eslint/@babel/parser": "7.7.5"
   },
   "optionalDependencies": {
