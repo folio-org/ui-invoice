@@ -9,8 +9,10 @@ import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 import InvoiceLineFormInteractor from '../../interactors/InvoiceLineFormInteractor';
 
-describe('Invoice details', () => {
+describe('Invoice details', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceDetails = new InvoiceDetails();
   const invoiceLineForm = new InvoiceLineFormInteractor();

@@ -198,6 +198,9 @@
   "invoice.status.paid": "Paid",
   "invoice.status.cancelled": "Cancelled",
 
+  "voucher.status.awaitingPayment": "Awaiting payment",
+  "voucher.status.paid": "Paid",
+
   "invoice.list.vendorInvoiceNo": "Vendor invoice number",
   "invoice.list.vendor": "Vendor",
   "invoice.list.invoiceDate": "Invoice date",
@@ -236,6 +239,7 @@
   "invoice.details.vendor.title": "Vendor details",
   "invoice.details.vendor.vendorInvoiceNo": "Vendor invoice number",
   "invoice.details.vendor.name": "Vendor name",
+  "invoice.details.vendor.code": "Vendor code",
   "invoice.details.vendor.accountingCode": "Accounting code",
 
   "invoice.details.batchVoucherExport.title": "Voucher export details",
@@ -358,6 +362,10 @@
 
   "voucher.print": "Print",
   "voucher.print.isLoading": "Print voucher data is loading",
+  "voucher.print.voucher": "Voucher",
+  "voucher.print.voucherTotal": "Voucher total",
+  "voucher.print.invoiceTotal": "Invoice total",
+  "voucher.print.lineNumber": "Line #",
   "voucher.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
   "voucher.paneSubTitle": "Voucher number - {voucherNumber}",
   "voucher.voucherTitle": "Voucher information",

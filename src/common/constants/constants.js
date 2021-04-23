@@ -134,3 +134,13 @@ export const ERROR_CODES = {
 
 export const RETURN_LINK = '/invoice';
 export const RETURN_LINK_LABEL_ID = 'ui-invoice.meta.title';
+
+export const VOUCHER_STATUSES = {
+  awaitingPayment: 'Awaiting payment',
+  paid: 'Paid',
+};
+
+export const VOUCHER_STATUS_LABEL = {
+  [VOUCHER_STATUSES.awaitingPayment]: <FormattedMessage id="ui-invoice.voucher.status.awaitingPayment" />,
+  [VOUCHER_STATUSES.paid]: <FormattedMessage id="ui-invoice.voucher.status.paid" />,
+};

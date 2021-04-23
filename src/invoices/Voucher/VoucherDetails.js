@@ -13,6 +13,7 @@ import {
   FolioFormattedDate,
 } from '@folio/stripes-acq-components';
 
+import { VOUCHER_STATUS_LABEL } from '../../common/constants';
 import VendorAddress from './VendorAddress';
 
 const VoucherDetails = ({ voucher, withVendorAddress }) => (
@@ -21,7 +22,7 @@ const VoucherDetails = ({ voucher, withVendorAddress }) => (
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.status" />}
-          value={voucher.status}
+          value={VOUCHER_STATUS_LABEL[voucher.status] || voucher.status}
         />
       </Col>
 
