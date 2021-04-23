@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { useCallback, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
+import { useHistory } from 'react-router';
 
 import {
   find,
@@ -14,8 +15,12 @@ import {
   AccordionSet,
   AccordionStatus,
   Checkbox,
+  checkScope,
   Col,
+  collapseAllSections,
   ExpandAllButton,
+  expandAllSections,
+  HasCommand,
   KeyValue,
   Pane,
   Paneset,
@@ -49,28 +54,23 @@ import {
   SECTIONS_INVOICE_LINE_FORM as SECTIONS,
 } from '../constants';
 
-class InvoiceLineForm extends Component {
-  static propTypes = {
-    initialValues: PropTypes.object.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-    pristine: PropTypes.bool.isRequired,
-    submitting: PropTypes.bool.isRequired,
-    values: PropTypes.object.isRequired,
-    form: PropTypes.object.isRequired,
-    invoice: PropTypes.object.isRequired,
-    vendorCode: PropTypes.string,
-    accounts: PropTypes.arrayOf(PropTypes.object),
-    adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
-  }
+const InvoiceLineForm = ({
+  initialValues,
+  handleSubmit,
+  onCancel,
+  pristine,
+  submitting,
+  values: formValues,
+  form: { change },
+  invoice,
+  vendorCode,
+  accounts,
+  adjustmentsPresets,
+}) => {
+  const history = useHistory();
+  const accordionStatusRef = useRef();
 
-  static defaultProps = {
-    vendorCode: '',
-    accounts: [],
-  }
-
-  changeAccountNumber = (accountNo) => {
-    const { form: { change }, vendorCode, accounts } = this.props;
+  const changeAccountNumber = useCallback((accountNo) => {
     const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
 
     if (accountNo) {
@@ -80,54 +80,70 @@ class InvoiceLineForm extends Component {
       change('accountingCode', null);
       change('accountNumber', null);
     }
-  };
+  }, [accounts, vendorCode]);
 
-  render() {
-    const {
-      accounts,
-      adjustmentsPresets,
-      handleSubmit,
-      initialValues,
-      invoice,
-      onCancel,
-      pristine,
-      form: { change },
-      submitting,
-      values: formValues,
-    } = this.props;
-    const {
-      accountNumber,
-      adjustments,
-      id,
-      invoiceLineNumber,
-      invoiceLineStatus,
-      metadata,
-      poLineId,
-      subTotal,
-    } = initialValues;
-    const totalAmount = calculateTotalAmount(formValues, invoice.currency);
-    const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, invoiceLineStatus);
-    const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
+  const {
+    accountNumber,
+    adjustments,
+    id,
+    invoiceLineNumber,
+    invoiceLineStatus,
+    metadata,
+    poLineId,
+    subTotal,
+  } = initialValues;
+  const totalAmount = calculateTotalAmount(formValues, invoice.currency);
+  const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, invoiceLineStatus);
+  const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
 
-    const paneTitle = id
-      ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
-      : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
-    const paneFooter = (
-      <FormFooter
-        id="clickable-save"
-        label={<FormattedMessage id="ui-invoice.saveAndClose" />}
-        pristine={pristine}
-        submitting={submitting}
-        handleSubmit={handleSubmit}
-        onCancel={onCancel}
-      />
-    );
-    const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
+  const shortcuts = [
+    {
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: onCancel,
+    },
+    {
+      name: 'save',
+      handler: handleSubmit,
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'search',
+      handler: () => history.push('/invoice'),
+    },
+  ];
 
-    return (
-      <form
-        id="invoice-line-form"
-        style={{ height: '100vh' }}
+  const paneTitle = id
+    ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
+    : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
+  const paneFooter = (
+    <FormFooter
+      id="clickable-save"
+      label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+      pristine={pristine}
+      submitting={submitting}
+      handleSubmit={handleSubmit}
+      onCancel={onCancel}
+    />
+  );
+  const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
+
+  return (
+    <form
+      id="invoice-line-form"
+      style={{ height: '100vh' }}
+    >
+      <HasCommand
+        commands={shortcuts}
+        isWithinScope={checkScope}
+        scope={document.body}
       >
         <Paneset>
           <Pane
@@ -140,7 +156,7 @@ class InvoiceLineForm extends Component {
           >
             <Row>
               <Col xs={12} md={8} mdOffset={2}>
-                <AccordionStatus>
+                <AccordionStatus ref={accordionStatusRef}>
                   <Row end="xs">
                     <Col xs={12}>
                       <ExpandAllButton />
@@ -223,7 +239,7 @@ class InvoiceLineForm extends Component {
                             id="invoice-line-account-number"
                             labelId="ui-invoice.invoiceLine.accountNumber"
                             name="accountNumber"
-                            onChange={this.changeAccountNumber}
+                            onChange={changeAccountNumber}
                             isNonInteractive={isDisabledToEditAccountNumber}
                           />
                         </Col>
@@ -305,10 +321,29 @@ class InvoiceLineForm extends Component {
             </Row>
           </Pane>
         </Paneset>
-      </form>
-    );
-  }
-}
+      </HasCommand>
+    </form>
+  );
+};
+
+InvoiceLineForm.propTypes = {
+  initialValues: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  submitting: PropTypes.bool.isRequired,
+  values: PropTypes.object.isRequired,
+  form: PropTypes.object.isRequired,
+  invoice: PropTypes.object.isRequired,
+  vendorCode: PropTypes.string,
+  accounts: PropTypes.arrayOf(PropTypes.object),
+  adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
+};
+
+InvoiceLineForm.defaultProps = {
+  vendorCode: '',
+  accounts: [],
+};
 
 export default stripesForm({
   subscription: { values: true },
