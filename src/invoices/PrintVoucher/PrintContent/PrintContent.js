@@ -13,7 +13,6 @@ const PrintContent = forwardRef(({ dataSource }, ref) => {
         {dataSource && (
           <div
             key={dataSource.id}
-            style={{ pageBreakAfter: 'always' }}
           >
             <ComponentToPrint
               dataSource={dataSource}
