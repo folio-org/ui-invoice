@@ -1,10 +1,10 @@
 .hiddenContent {
   display: none;
-}
 
-@media print {
-  @page {
-    size: A4;
-    margin: 30px;
+  @media print {
+    @page {
+      size: A4;
+      margin: 30px;
+    }
   }
 }
