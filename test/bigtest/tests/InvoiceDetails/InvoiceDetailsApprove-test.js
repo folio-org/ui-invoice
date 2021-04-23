@@ -29,9 +29,10 @@ const createInvoice = (server, status, withLines = true) => {
   return invoice;
 };
 
-describe('Invoice details - approve action', () => {
+describe('Invoice details - approve action', function () {
   setupApplication();
 
+  this.timeout(10000);
   const invoiceDetails = new InvoiceDetails();
   const approveConfirmation = new ApproveInvoiceModalInteractor();
   const callout = new CalloutInteractor();
