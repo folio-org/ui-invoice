@@ -2,13 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'react-final-form';
+import { useHistory } from 'react-router';
 
 import stripesFinalForm from '@folio/stripes/final-form';
 import {
-  Row,
+  checkScope,
   Col,
+  HasCommand,
   Pane,
   Paneset,
+  Row,
 } from '@folio/stripes/components';
 import {
   FieldDatepickerFinal,
@@ -28,6 +31,7 @@ const VoucherEditForm = ({
   vendorInvoiceNo,
   isAllowVoucherNumberEdit,
 }) => {
+  const history = useHistory();
   const paneFooter = (
     <FormFooter
       id="save-voucher-button"
@@ -39,66 +43,88 @@ const VoucherEditForm = ({
     />
   );
 
+  const shortcuts = [
+    {
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: onCancel,
+    },
+    {
+      name: 'save',
+      handler: handleSubmit,
+    },
+    {
+      name: 'search',
+      handler: () => history.push('/invoice'),
+    },
+  ];
+
   return (
-    <Paneset
-      data-test-edit-voucher-form
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
     >
-      <Pane
-        appIcon={<AppIcon app="invoice" size="small" />}
-        defaultWidth="fill"
-        dismissible
-        id="pane-edit-voucher"
-        footer={paneFooter}
-        onClose={onCancel}
-        paneSub={
-          <FormattedMessage
-            id="ui-invoice.voucher.paneSubTitle"
-            values={{ voucherNumber: initialValues.voucherNumber }}
-          />
-        }
-        paneTitle={
-          <FormattedMessage
-            id="ui-invoice.voucher.paneTitle"
-            values={{ vendorInvoiceNo }}
-          />
-        }
+      <Paneset
+        data-test-edit-voucher-form
       >
-        <Row>
-          <Col xs={3}>
-            <Field
-              component={TextField}
-              id="voucherNumber"
-              isNonInteractive={!isAllowVoucherNumberEdit}
-              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
-              name="voucherNumber"
-              type="text"
+        <Pane
+          appIcon={<AppIcon app="invoice" size="small" />}
+          defaultWidth="fill"
+          dismissible
+          id="pane-edit-voucher"
+          footer={paneFooter}
+          onClose={onCancel}
+          paneSub={
+            <FormattedMessage
+              id="ui-invoice.voucher.paneSubTitle"
+              values={{ voucherNumber: initialValues.voucherNumber }}
             />
-          </Col>
-          <Col xs={3}>
-            <Field
-              component={TextField}
-              id="disbursementNumber"
-              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
-              name="disbursementNumber"
+          }
+          paneTitle={
+            <FormattedMessage
+              id="ui-invoice.voucher.paneTitle"
+              values={{ vendorInvoiceNo }}
             />
-          </Col>
-          <Col xs={3}>
-            <FieldDatepickerFinal
-              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
-              name="disbursementDate"
-            />
-          </Col>
-          <Col xs={3}>
-            <Field
-              component={TextField}
-              id="disbursementAmount"
-              label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
-              name="disbursementAmount"
-            />
-          </Col>
-        </Row>
-      </Pane>
-    </Paneset>
+          }
+        >
+          <Row>
+            <Col xs={3}>
+              <Field
+                component={TextField}
+                id="voucherNumber"
+                isNonInteractive={!isAllowVoucherNumberEdit}
+                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
+                name="voucherNumber"
+                type="text"
+              />
+            </Col>
+            <Col xs={3}>
+              <Field
+                component={TextField}
+                id="disbursementNumber"
+                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
+                name="disbursementNumber"
+              />
+            </Col>
+            <Col xs={3}>
+              <FieldDatepickerFinal
+                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
+                name="disbursementDate"
+              />
+            </Col>
+            <Col xs={3}>
+              <Field
+                component={TextField}
+                id="disbursementAmount"
+                label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
+                name="disbursementAmount"
+              />
+            </Col>
+          </Row>
+        </Pane>
+      </Paneset>
+    </HasCommand>
   );
 };
 
