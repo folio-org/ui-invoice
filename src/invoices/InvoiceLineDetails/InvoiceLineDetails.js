@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
@@ -7,17 +7,22 @@ import {
   Accordion,
   AccordionSet,
   AccordionStatus,
+  checkScope,
   Col,
+  collapseAllSections,
   ConfirmationModal,
   ExpandAllButton,
+  expandAllSections,
+  HasCommand,
   Pane,
-  Row,
   PaneMenu,
+  Row,
 } from '@folio/stripes/components';
 
 import {
   FundDistributionView,
   TagsBadge,
+  useModalToggle,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -31,32 +36,21 @@ import {
 } from '../constants';
 import AdjustmentsDetails from '../AdjustmentsDetails';
 
-class InvoiceLineDetails extends Component {
-  static propTypes = {
-    closeInvoiceLine: PropTypes.func.isRequired,
-    deleteInvoiceLine: PropTypes.func.isRequired,
-    goToEditInvoiceLine: PropTypes.func.isRequired,
-    invoiceLine: PropTypes.object.isRequired,
-    invoiceStatus: PropTypes.string.isRequired,
-    tagsToggle: PropTypes.func.isRequired,
-    currency: PropTypes.string,
-    poLine: PropTypes.object,
-  };
+const InvoiceLineDetails = ({
+  closeInvoiceLine,
+  deleteInvoiceLine,
+  goToEditInvoiceLine,
+  invoiceLine,
+  invoiceStatus,
+  tagsToggle,
+  currency,
+  poLine,
+}) => {
+  const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
+  const accordionStatusRef = useRef();
 
-  static defaultProps = {
-    poLine: {},
-  }
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      showConfirmDelete: false,
-    };
-  }
-
-  renderActionMenu = ({ onToggle }) => {
-    const { goToEditInvoiceLine, invoiceStatus } = this.props;
+  // eslint-disable-next-line react/prop-types
+  const renderActionMenu = ({ onToggle }) => {
     const isDeletable = !(isPayable(invoiceStatus) || isPaid(invoiceStatus));
 
     return (
@@ -67,59 +61,65 @@ class InvoiceLineDetails extends Component {
         }}
         onDelete={() => {
           onToggle();
-          this.mountDeleteLineConfirm();
+          toggleDeleteConfirmation();
         }}
         isDeletable={isDeletable}
       />
     );
-  }
+  };
 
-  mountDeleteLineConfirm = () => this.setState({ showConfirmDelete: true });
+  const { invoiceLineNumber, adjustments } = invoiceLine;
+  const tags = get(invoiceLine, ['tags', 'tagList'], []);
+  const fundDistributions = get(invoiceLine, 'fundDistributions');
+  const total = get(invoiceLine, 'total', 0);
 
-  unmountDeleteConfirm = () => this.setState({ showConfirmDelete: false });
+  const paneTitle = (
+    <FormattedMessage
+      id="ui-invoice.invoiceLine.paneTitle.view"
+      values={{ invoiceLineNumber }}
+    />
+  );
 
-  render() {
-    const {
-      closeInvoiceLine,
-      currency,
-      deleteInvoiceLine,
-      invoiceLine,
-      poLine,
-      tagsToggle,
-    } = this.props;
-    const { showConfirmDelete } = this.state;
-    const { invoiceLineNumber, adjustments } = invoiceLine;
-    const tags = get(invoiceLine, ['tags', 'tagList'], []);
-    const fundDistributions = get(invoiceLine, 'fundDistributions');
-    const total = get(invoiceLine, 'total', 0);
-
-    const paneTitle = (
-      <FormattedMessage
-        id="ui-invoice.invoiceLine.paneTitle.view"
-        values={{ invoiceLineNumber }}
+  const lastMenu = (
+    <PaneMenu>
+      <TagsBadge
+        tagsToggle={tagsToggle}
+        tagsQuantity={tags.length}
       />
-    );
+    </PaneMenu>
+  );
 
-    const lastMenu = (
-      <PaneMenu>
-        <TagsBadge
-          tagsToggle={tagsToggle}
-          tagsQuantity={tags.length}
-        />
-      </PaneMenu>
-    );
+  const shortcuts = [
+    {
+      name: 'edit',
+      handler: goToEditInvoiceLine,
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+  ];
 
-    return (
+  return (
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
+    >
       <Pane
         id="pane-invoiceLineDetails"
         defaultWidth="fill"
         dismissible
         onClose={closeInvoiceLine}
         paneTitle={paneTitle}
-        actionMenu={this.renderActionMenu}
+        actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
-        <AccordionStatus>
+        <AccordionStatus ref={accordionStatusRef}>
           <Row end="xs">
             <Col xs={12}>
               <ExpandAllButton />
@@ -163,14 +163,29 @@ class InvoiceLineDetails extends Component {
             confirmLabel={<FormattedMessage id="ui-invoice.invoiceLine.delete.confirmLabel" />}
             heading={<FormattedMessage id="ui-invoice.invoiceLine.delete.heading" values={{ invoiceLineNumber }} />}
             message={<FormattedMessage id="ui-invoice.invoiceLine.delete.message" />}
-            onCancel={this.unmountDeleteConfirm}
+            onCancel={toggleDeleteConfirmation}
             onConfirm={deleteInvoiceLine}
             open
           />
         )}
       </Pane>
-    );
-  }
-}
+    </HasCommand>
+  );
+};
+
+InvoiceLineDetails.propTypes = {
+  closeInvoiceLine: PropTypes.func.isRequired,
+  deleteInvoiceLine: PropTypes.func.isRequired,
+  goToEditInvoiceLine: PropTypes.func.isRequired,
+  invoiceLine: PropTypes.object.isRequired,
+  invoiceStatus: PropTypes.string.isRequired,
+  tagsToggle: PropTypes.func.isRequired,
+  currency: PropTypes.string,
+  poLine: PropTypes.object,
+};
+
+InvoiceLineDetails.defaultProps = {
+  poLine: {},
+};
 
 export default InvoiceLineDetails;

@@ -1,7 +1,8 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
+import { useHistory } from 'react-router';
 
 import {
   find,
@@ -14,8 +15,12 @@ import {
   AccordionSet,
   AccordionStatus,
   Checkbox,
+  checkScope,
   Col,
+  collapseAllSections,
   ExpandAllButton,
+  expandAllSections,
+  HasCommand,
   KeyValue,
   Pane,
   Paneset,
@@ -78,6 +83,8 @@ const InvoiceForm = ({
   submitting,
   values,
 }) => {
+  const history = useHistory();
+  const accordionStatusRef = useRef();
   const filledBillTo = values?.billTo;
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
@@ -165,365 +172,395 @@ const InvoiceForm = ({
     });
   }, [vendor.accounts, vendor.erpCode]);
 
+  const shortcuts = [
+    {
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: () => closeForm(),
+    },
+    {
+      name: 'save',
+      handler: handleSubmit,
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'search',
+      handler: () => history.push('/invoice'),
+    },
+  ];
+
   return (
     <form style={{ height: '100vh' }}>
-      <Paneset>
-        <Pane
-          defaultWidth="100%"
-          dismissible
-          footer={paneFooter}
-          id="pane-invoice-form"
-          onClose={closeForm}
-          paneTitle={paneTitle}
-          paneSub={initialVendor?.name}
-        >
-          <Row>
-            <Col
-              xs={12}
-              md={8}
-              mdOffset={2}
-            >
-              <AccordionStatus>
-                <Row end="xs">
-                  <Col xs={12}>
-                    <ExpandAllButton />
-                  </Col>
-                </Row>
-                <AccordionSet initialStatus={{ [SECTIONS.voucher]: false }}>
-                  <Accordion
-                    id={SECTIONS.information}
-                    label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
-                  >
-                    {metadata && <ViewMetaData metadata={metadata} />}
-                    <Row>
-                      <Col data-test-col-invoice-date xs={3}>
-                        <FieldDatepickerFinal
-                          isNonInteractive={isEditPostApproval}
-                          labelId="ui-invoice.invoice.details.information.invoiceDate"
-                          name="invoiceDate"
-                          required
-                          validate={validateRequired}
-                        />
-                      </Col>
-                      <Col data-test-col-status xs={3}>
-                        <FieldSelectionFinal
-                          dataOptions={statusOptions}
-                          id="invoice-status"
-                          isNonInteractive={isEditPostApproval}
-                          labelId="ui-invoice.invoice.details.information.status"
-                          name="status"
-                          required
-                          validate={validateRequired}
-                        />
-                      </Col>
-                      <Col data-test-col-payment-due xs={3}>
-                        <FieldDatepickerFinal
-                          labelId="ui-invoice.invoice.details.information.paymentDue"
-                          name="paymentDue"
-                        />
-                      </Col>
-                      <Col data-test-col-payment-terms xs={3}>
-                        <Field
-                          component={TextField}
-                          id="paymentTerms"
-                          isNonInteractive={isEditPostApproval}
-                          label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
-                          name="paymentTerms"
-                          type="text"
-                        />
-                      </Col>
-                    </Row>
-
-                    <Row>
-                      <Col data-test-col-approval-date xs={3}>
-                        <KeyValue
-                          label={<FormattedMessage id="ui-invoice.invoice.approvalDate" />}
-                          value={<FolioFormattedDate value={approvalDate} />}
-                        />
-                      </Col>
-                      <Col data-test-col-approved-by xs={3}>
-                        <ApprovedBy approvedByUserId={approvedBy} />
-                      </Col>
-                      <Col data-test-col-acquisitions-unit xs={3}>
-                        <AcqUnitsField
-                          name="acqUnitIds"
-                          perm={isEditMode ? MANAGE_UNITS_PERM : CREATE_UNITS_PERM}
-                          id="invoice-acq-units"
-                          isEdit={isEditMode}
-                          isFinal
-                          preselectedUnits={acqUnitIds}
-                        />
-                      </Col>
-                    </Row>
-
-                    <Row>
-                      <Col data-test-col-bill-to-name xs={3}>
-                        <FieldSelectionFinal
-                          dataOptions={getAddressOptions(addresses)}
-                          labelId="ui-invoice.invoice.billToName"
-                          name="billTo"
-                        />
-                      </Col>
-                      <Col
-                        className={invoiceCss.addressWrapper}
-                        xs={3}
-                      >
-                        <KeyValue
-                          label={<FormattedMessage id="ui-invoice.invoice.billToName" />}
-                          value={addressBillTo}
-                        />
-                      </Col>
-                      <Col data-test-col-batch-group xs={3}>
-                        <FieldBatchGroup
-                          batchGroups={batchGroups}
-                          isNonInteractive={isEditPostApproval}
-                        />
-                      </Col>
-                    </Row>
-
-                    <Row>
-                      <Col data-test-col-sub-total xs={3}>
-                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
-                          <AmountWithCurrencyField
-                            amount={subTotal}
-                            currency={filledCurrency}
+      <HasCommand
+        commands={shortcuts}
+        isWithinScope={checkScope}
+        scope={document.body}
+      >
+        <Paneset>
+          <Pane
+            defaultWidth="100%"
+            dismissible
+            footer={paneFooter}
+            id="pane-invoice-form"
+            onClose={closeForm}
+            paneTitle={paneTitle}
+            paneSub={initialVendor?.name}
+          >
+            <Row>
+              <Col
+                xs={12}
+                md={8}
+                mdOffset={2}
+              >
+                <AccordionStatus ref={accordionStatusRef}>
+                  <Row end="xs">
+                    <Col xs={12}>
+                      <ExpandAllButton />
+                    </Col>
+                  </Row>
+                  <AccordionSet initialStatus={{ [SECTIONS.voucher]: false }}>
+                    <Accordion
+                      id={SECTIONS.information}
+                      label={<FormattedMessage id="ui-invoice.invoiceInformation" />}
+                    >
+                      {metadata && <ViewMetaData metadata={metadata} />}
+                      <Row>
+                        <Col data-test-col-invoice-date xs={3}>
+                          <FieldDatepickerFinal
+                            isNonInteractive={isEditPostApproval}
+                            labelId="ui-invoice.invoice.details.information.invoiceDate"
+                            name="invoiceDate"
+                            required
+                            validate={validateRequired}
                           />
-                        </KeyValue>
-                      </Col>
-                      <Col data-test-col-adjustments-total xs={3}>
-                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}>
-                          <AmountWithCurrencyField
-                            amount={adjustmentsTotal}
-                            currency={filledCurrency}
+                        </Col>
+                        <Col data-test-col-status xs={3}>
+                          <FieldSelectionFinal
+                            dataOptions={statusOptions}
+                            id="invoice-status"
+                            isNonInteractive={isEditPostApproval}
+                            labelId="ui-invoice.invoice.details.information.status"
+                            name="status"
+                            required
+                            validate={validateRequired}
                           />
-                        </KeyValue>
-                      </Col>
-                      <Col data-test-col-total xs={3}>
-                        <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalAmount" />}>
-                          <AmountWithCurrencyField
-                            amount={total}
-                            currency={filledCurrency}
+                        </Col>
+                        <Col data-test-col-payment-due xs={3}>
+                          <FieldDatepickerFinal
+                            labelId="ui-invoice.invoice.details.information.paymentDue"
+                            name="paymentDue"
                           />
-                        </KeyValue>
-                      </Col>
-                    </Row>
+                        </Col>
+                        <Col data-test-col-payment-terms xs={3}>
+                          <Field
+                            component={TextField}
+                            id="paymentTerms"
+                            isNonInteractive={isEditPostApproval}
+                            label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
+                            name="paymentTerms"
+                            type="text"
+                          />
+                        </Col>
+                      </Row>
 
-                    <Row>
-                      <Col data-test-col-lock-total xs={3}>
-                        <Checkbox
-                          checked={isLockTotalAmountEnabled}
-                          data-testid="lock-total"
-                          disabled={isEditPostApproval}
-                          id="lock-total"
-                          label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
-                          onChange={enableLockTotalAmount}
-                          vertical
-                        />
-                      </Col>
-                      <Col data-test-col-lock-total-amount xs={3}>
-                        {isEditPostApproval
-                          ? (
-                            <KeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>
-                              <AmountWithCurrencyField
-                                amount={lockTotal}
-                                currency={currency}
+                      <Row>
+                        <Col data-test-col-approval-date xs={3}>
+                          <KeyValue
+                            label={<FormattedMessage id="ui-invoice.invoice.approvalDate" />}
+                            value={<FolioFormattedDate value={approvalDate} />}
+                          />
+                        </Col>
+                        <Col data-test-col-approved-by xs={3}>
+                          <ApprovedBy approvedByUserId={approvedBy} />
+                        </Col>
+                        <Col data-test-col-acquisitions-unit xs={3}>
+                          <AcqUnitsField
+                            name="acqUnitIds"
+                            perm={isEditMode ? MANAGE_UNITS_PERM : CREATE_UNITS_PERM}
+                            id="invoice-acq-units"
+                            isEdit={isEditMode}
+                            isFinal
+                            preselectedUnits={acqUnitIds}
+                          />
+                        </Col>
+                      </Row>
+
+                      <Row>
+                        <Col data-test-col-bill-to-name xs={3}>
+                          <FieldSelectionFinal
+                            dataOptions={getAddressOptions(addresses)}
+                            labelId="ui-invoice.invoice.billToName"
+                            name="billTo"
+                          />
+                        </Col>
+                        <Col
+                          className={invoiceCss.addressWrapper}
+                          xs={3}
+                        >
+                          <KeyValue
+                            label={<FormattedMessage id="ui-invoice.invoice.billToName" />}
+                            value={addressBillTo}
+                          />
+                        </Col>
+                        <Col data-test-col-batch-group xs={3}>
+                          <FieldBatchGroup
+                            batchGroups={batchGroups}
+                            isNonInteractive={isEditPostApproval}
+                          />
+                        </Col>
+                      </Row>
+
+                      <Row>
+                        <Col data-test-col-sub-total xs={3}>
+                          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
+                            <AmountWithCurrencyField
+                              amount={subTotal}
+                              currency={filledCurrency}
+                            />
+                          </KeyValue>
+                        </Col>
+                        <Col data-test-col-adjustments-total xs={3}>
+                          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}>
+                            <AmountWithCurrencyField
+                              amount={adjustmentsTotal}
+                              currency={filledCurrency}
+                            />
+                          </KeyValue>
+                        </Col>
+                        <Col data-test-col-total xs={3}>
+                          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalAmount" />}>
+                            <AmountWithCurrencyField
+                              amount={total}
+                              currency={filledCurrency}
+                            />
+                          </KeyValue>
+                        </Col>
+                      </Row>
+
+                      <Row>
+                        <Col data-test-col-lock-total xs={3}>
+                          <Checkbox
+                            checked={isLockTotalAmountEnabled}
+                            data-testid="lock-total"
+                            disabled={isEditPostApproval}
+                            id="lock-total"
+                            label={<FormattedMessage id="ui-invoice.invoice.lockTotal" />}
+                            onChange={enableLockTotalAmount}
+                            vertical
+                          />
+                        </Col>
+                        <Col data-test-col-lock-total-amount xs={3}>
+                          {isEditPostApproval
+                            ? (
+                              <KeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>
+                                <AmountWithCurrencyField
+                                  amount={lockTotal}
+                                  currency={currency}
+                                />
+                              </KeyValue>
+                            )
+                            : (
+                              <Field
+                                component={TextField}
+                                data-testid="lock-total-amount"
+                                id="lock-total-amount"
+                                key={isLockTotalAmountEnabled ? 1 : 0}
+                                label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}
+                                name="lockTotal"
+                                readOnly={!isLockTotalAmountEnabled}
+                                required={isLockTotalAmountEnabled}
+                                tooltipText={tooltipTextLockTotalAmount}
+                                type="number"
+                                validate={isLockTotalAmountEnabled ? validateRequired : undefined}
                               />
-                            </KeyValue>
-                          )
-                          : (
-                            <Field
-                              component={TextField}
-                              data-testid="lock-total-amount"
-                              id="lock-total-amount"
-                              key={isLockTotalAmountEnabled ? 1 : 0}
-                              label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}
-                              name="lockTotal"
-                              readOnly={!isLockTotalAmountEnabled}
-                              required={isLockTotalAmountEnabled}
-                              tooltipText={tooltipTextLockTotalAmount}
-                              type="number"
-                              validate={isLockTotalAmountEnabled ? validateRequired : undefined}
-                            />
-                          )
-                        }
-                      </Col>
-                      <Col data-test-col-note xs={3}>
-                        <Field
-                          component={TextArea}
-                          label={<FormattedMessage id="ui-invoice.invoice.note" />}
-                          id="note"
-                          name="note"
-                          type="text"
-                        />
-                      </Col>
-                    </Row>
-                  </Accordion>
-                  <Accordion
-                    id={SECTIONS.adjustments}
-                    label={<FormattedMessage id="ui-invoice.adjustments" />}
-                  >
-                    <AdjustmentsForm
-                      adjustmentsPresets={adjustmentsPresets}
-                      currency={filledCurrency}
-                      change={change}
-                      invoiceSubTotal={subTotal}
-                      isNonInteractive={isEditPostApproval}
-                      initialCurrency={currency}
-                      initialAdjustments={adjustments}
-                    />
-                  </Accordion>
-                  <Accordion
-                    id={SECTIONS.vendorDetails}
-                    label={<FormattedMessage id="ui-invoice.vendorInformation" />}
-                  >
-                    <Row>
-                      <Col data-test-col-vendor-invoice-no xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.vendorInvoiceNo" />}
-                          id="vendorInvoiceNo"
-                          name="vendorInvoiceNo"
-                          required
-                          type="text"
-                          validate={validateRequired}
-                        />
-                      </Col>
+                            )
+                          }
+                        </Col>
+                        <Col data-test-col-note xs={3}>
+                          <Field
+                            component={TextArea}
+                            label={<FormattedMessage id="ui-invoice.invoice.note" />}
+                            id="note"
+                            name="note"
+                            type="text"
+                          />
+                        </Col>
+                      </Row>
+                    </Accordion>
+                    <Accordion
+                      id={SECTIONS.adjustments}
+                      label={<FormattedMessage id="ui-invoice.adjustments" />}
+                    >
+                      <AdjustmentsForm
+                        adjustmentsPresets={adjustmentsPresets}
+                        currency={filledCurrency}
+                        change={change}
+                        invoiceSubTotal={subTotal}
+                        isNonInteractive={isEditPostApproval}
+                        initialCurrency={currency}
+                        initialAdjustments={adjustments}
+                      />
+                    </Accordion>
+                    <Accordion
+                      id={SECTIONS.vendorDetails}
+                      label={<FormattedMessage id="ui-invoice.vendorInformation" />}
+                    >
+                      <Row>
+                        <Col data-test-col-vendor-invoice-no xs={3}>
+                          <Field
+                            component={TextField}
+                            label={<FormattedMessage id="ui-invoice.invoice.vendorInvoiceNo" />}
+                            id="vendorInvoiceNo"
+                            name="vendorInvoiceNo"
+                            required
+                            type="text"
+                            validate={validateRequired}
+                          />
+                        </Col>
 
-                      <Col xs={6}>
-                        <FieldOrganization
-                          change={change}
-                          id={filledVendorId}
-                          labelId="ui-invoice.invoice.vendorName"
-                          name="vendorId"
-                          onSelect={selectVendor}
-                          required
-                          isNonInteractive={isEditPostApproval}
-                        />
-                      </Col>
+                        <Col xs={6}>
+                          <FieldOrganization
+                            change={change}
+                            id={filledVendorId}
+                            labelId="ui-invoice.invoice.vendorName"
+                            name="vendorId"
+                            onSelect={selectVendor}
+                            required
+                            isNonInteractive={isEditPostApproval}
+                          />
+                        </Col>
 
-                      <Col data-test-col-accounting-code xs={3}>
-                        {isEditPostApproval
-                          ? (
-                            <KeyValue
-                              label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
-                              value={values?.accountingCode}
-                            />
-                          )
-                          : (
-                            <FieldSelectionFinal
-                              dataOptions={accountingCodeOptions}
-                              labelId="ui-invoice.invoice.accountingCode"
-                              name="accountNo"
-                              onChange={onChangeAccNumber}
-                              readOnly={!vendor?.id}
-                            />
-                          )
-                        }
-                      </Col>
-                    </Row>
-                  </Accordion>
-                  <Accordion
-                    id={SECTIONS.extendedInformation}
-                    label={<FormattedMessage id="ui-invoice.extendedInformation" />}
-                  >
-                    <Row>
-                      <Col data-test-col-folio-invoice-no xs={3}>
-                        <KeyValue
-                          label={<FormattedMessage id="ui-invoice.invoice.folioInvoiceNo" />}
-                          value={folioInvoiceNo}
-                        />
-                      </Col>
-                      <Col data-test-col-payment-method xs={3}>
-                        <FieldSelectFinal
-                          dataOptions={PAYMENT_METHOD_OPTIONS}
-                          id="invoice-payment-method"
-                          label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
-                          name="paymentMethod"
-                          required
-                        />
-                      </Col>
-                      <Col data-test-col-chk-subscription-overlap xs={3}>
-                        <Field
-                          component={Checkbox}
-                          label={<FormattedMessage id="ui-invoice.invoice.chkSubscriptionOverlap" />}
-                          name="chkSubscriptionOverlap"
-                          disabled={isEditPostApproval}
-                          type="checkbox"
-                          vertical
-                        />
-                      </Col>
-                      <Col data-test-col-export-to-accounting xs={3}>
-                        <Field
-                          component={Checkbox}
-                          label={<FormattedMessage id="ui-invoice.invoice.exportToAccounting" />}
-                          name="exportToAccounting"
-                          disabled={isEditPostApproval}
-                          type="checkbox"
-                          vertical
-                        />
-                      </Col>
-                      <Col data-test-col-enclosure-needed xs={3}>
-                        <Field
-                          component={Checkbox}
-                          label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
-                          name="enclosureNeeded"
-                          disabled={isEditPostApproval}
-                          type="checkbox"
-                          vertical
-                        />
-                      </Col>
-                    </Row>
-                    <CurrencyExchangeRateFields
-                      exchangeRate={exchangeRate}
-                      initialCurrency={currency}
-                      isNonInteractive={isEditPostApproval}
-                      isTooltipTextExchangeRate={!isEditPostApproval}
-                      isUseExangeRateDisabled={isEditPostApproval}
-                      isSetExchangeRateNonIntaractive={isStatusPaid}
-                    />
-                  </Accordion>
-                  {/* <Accordion
-                    id={SECTIONS.voucher}
-                    label={<FormattedMessage id="ui-invoice.voucherInformation" />}
-                  >
-                    <Row>
-                      <Col data-test-col-voucher-number xs={3}>
-                        <Field
-                          component={TextField}
-                          label={<FormattedMessage id="ui-invoice.invoice.voucherNumber" />}
-                          name="voucherNumber"
-                          disabled={isEditPostApproval}
-                          required
-                          type="text"
-                        // validate={validateRequired}
-                        />
-                      </Col>
-                    </Row>
-                  </Accordion> */}
-                  <Accordion
-                    id={SECTIONS.documents}
-                    label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
-                  >
-                    <Row>
-                      <Col xs={12}>
-                        <InvoiceLinksForm />
-                      </Col>
-                    </Row>
+                        <Col data-test-col-accounting-code xs={3}>
+                          {isEditPostApproval
+                            ? (
+                              <KeyValue
+                                label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
+                                value={values?.accountingCode}
+                              />
+                            )
+                            : (
+                              <FieldSelectionFinal
+                                dataOptions={accountingCodeOptions}
+                                labelId="ui-invoice.invoice.accountingCode"
+                                name="accountNo"
+                                onChange={onChangeAccNumber}
+                                readOnly={!vendor?.id}
+                              />
+                            )
+                          }
+                        </Col>
+                      </Row>
+                    </Accordion>
+                    <Accordion
+                      id={SECTIONS.extendedInformation}
+                      label={<FormattedMessage id="ui-invoice.extendedInformation" />}
+                    >
+                      <Row>
+                        <Col data-test-col-folio-invoice-no xs={3}>
+                          <KeyValue
+                            label={<FormattedMessage id="ui-invoice.invoice.folioInvoiceNo" />}
+                            value={folioInvoiceNo}
+                          />
+                        </Col>
+                        <Col data-test-col-payment-method xs={3}>
+                          <FieldSelectFinal
+                            dataOptions={PAYMENT_METHOD_OPTIONS}
+                            id="invoice-payment-method"
+                            label={<FormattedMessage id="ui-invoice.invoice.paymentMethod" />}
+                            name="paymentMethod"
+                            required
+                          />
+                        </Col>
+                        <Col data-test-col-chk-subscription-overlap xs={3}>
+                          <Field
+                            component={Checkbox}
+                            label={<FormattedMessage id="ui-invoice.invoice.chkSubscriptionOverlap" />}
+                            name="chkSubscriptionOverlap"
+                            disabled={isEditPostApproval}
+                            type="checkbox"
+                            vertical
+                          />
+                        </Col>
+                        <Col data-test-col-export-to-accounting xs={3}>
+                          <Field
+                            component={Checkbox}
+                            label={<FormattedMessage id="ui-invoice.invoice.exportToAccounting" />}
+                            name="exportToAccounting"
+                            disabled={isEditPostApproval}
+                            type="checkbox"
+                            vertical
+                          />
+                        </Col>
+                        <Col data-test-col-enclosure-needed xs={3}>
+                          <Field
+                            component={Checkbox}
+                            label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
+                            name="enclosureNeeded"
+                            disabled={isEditPostApproval}
+                            type="checkbox"
+                            vertical
+                          />
+                        </Col>
+                      </Row>
+                      <CurrencyExchangeRateFields
+                        exchangeRate={exchangeRate}
+                        initialCurrency={currency}
+                        isNonInteractive={isEditPostApproval}
+                        isTooltipTextExchangeRate={!isEditPostApproval}
+                        isUseExangeRateDisabled={isEditPostApproval}
+                        isSetExchangeRateNonIntaractive={isStatusPaid}
+                      />
+                    </Accordion>
+                    {/* <Accordion
+                      id={SECTIONS.voucher}
+                      label={<FormattedMessage id="ui-invoice.voucherInformation" />}
+                    >
+                      <Row>
+                        <Col data-test-col-voucher-number xs={3}>
+                          <Field
+                            component={TextField}
+                            label={<FormattedMessage id="ui-invoice.invoice.voucherNumber" />}
+                            name="voucherNumber"
+                            disabled={isEditPostApproval}
+                            required
+                            type="text"
+                          // validate={validateRequired}
+                          />
+                        </Col>
+                      </Row>
+                    </Accordion> */}
+                    <Accordion
+                      id={SECTIONS.documents}
+                      label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
+                    >
+                      <Row>
+                        <Col xs={12}>
+                          <InvoiceLinksForm />
+                        </Col>
+                      </Row>
 
-                    <Row>
-                      <Col xs={12}>
-                        <InvoiceDocumentsForm
-                          push={push}
-                        />
-                      </Col>
-                    </Row>
-                  </Accordion>
-                </AccordionSet>
-              </AccordionStatus>
-            </Col>
-          </Row>
-        </Pane>
-      </Paneset>
+                      <Row>
+                        <Col xs={12}>
+                          <InvoiceDocumentsForm
+                            push={push}
+                          />
+                        </Col>
+                      </Row>
+                    </Accordion>
+                  </AccordionSet>
+                </AccordionStatus>
+              </Col>
+            </Row>
+          </Pane>
+        </Paneset>
+      </HasCommand>
     </form>
   );
 };

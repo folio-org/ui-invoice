@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -16,8 +16,8 @@ import { SECTIONS_VOUCHER } from '../constants';
 import VoucherDetails from './VoucherDetails';
 import VoucherLinesDetails from './VoucherLinesDetails';
 
-const VoucherView = ({ voucher, voucherLines }) => (
-  <AccordionStatus>
+const VoucherView = forwardRef(({ voucher, voucherLines }, ref) => (
+  <AccordionStatus ref={ref}>
     <Row end="xs">
       <Col xs={12}>
         <ExpandAllButton />
@@ -45,7 +45,7 @@ const VoucherView = ({ voucher, voucherLines }) => (
       </Accordion>
     </AccordionSet>
   </AccordionStatus>
-);
+));
 
 VoucherView.propTypes = {
   voucher: PropTypes.object.isRequired,

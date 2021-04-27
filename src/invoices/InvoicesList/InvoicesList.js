@@ -7,7 +7,11 @@ import {
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import { MultiColumnList } from '@folio/stripes/components';
+import {
+  MultiColumnList,
+  checkScope,
+  HasCommand,
+} from '@folio/stripes/components';
 import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
   AmountWithCurrencyField,
@@ -95,6 +99,14 @@ const InvoicesList = ({
     },
     [history, location.search],
   );
+
+  const shortcuts = [
+    {
+      name: 'new',
+      handler: () => history.push('invoice/create'),
+    },
+  ];
+
   const resultsStatusMessage = (
     <NoResultsMessage
       isLoading={isLoading}
@@ -105,87 +117,93 @@ const InvoicesList = ({
   );
 
   return (
-    <PersistedPaneset
-      appId="ui-receiving"
-      id="invoice-paneset"
-      data-test-invoices-list
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
     >
-      {isFiltersOpened && (
-        <FiltersPane
-          id="invoice-filters-pane"
-          toggleFilters={toggleFilters}
-        >
-          <SingleSearchForm
-            applySearch={applySearch}
-            changeSearch={changeSearch}
-            searchQuery={searchQuery}
-            isLoading={isLoading}
-            ariaLabelId="ui-invoice.search"
-            searchableIndexes={searchableIndexes}
-            changeSearchIndex={changeIndex}
-            selectedIndex={searchIndex}
-          />
-
-          <ResetButton
-            id="reset-invoice-filters"
-            reset={resetFilters}
-            disabled={!location.search || isLoading}
-          />
-
-          <InvoicesListFilters
-            activeFilters={filters}
-            applyFilters={applyFilters}
-            disabled={isLoading}
-          />
-        </FiltersPane>
-      )}
-
-      <ResultsPane
-        id="invoice-results-pane"
-        title={resultsPaneTitle}
-        count={invoicesCount}
-        renderLastMenu={renderLastMenu}
-        toggleFiltersPane={toggleFilters}
-        filters={filters}
-        isFiltersOpened={isFiltersOpened}
+      <PersistedPaneset
+        appId="ui-receiving"
+        id="invoice-paneset"
+        data-test-invoices-list
       >
-        <MultiColumnList
-          id="invoices-list"
-          totalCount={invoicesCount}
-          contentData={invoices}
-          visibleColumns={visibleColumns}
-          columnMapping={columnMapping}
-          formatter={resultsFormatter}
-          loading={isLoading}
-          autosize
-          virtualize
-          onNeedMoreData={onNeedMoreData}
-          onRowClick={selecteInvoice}
-          sortOrder={sortingField}
-          sortDirection={sortingDirection}
-          onHeaderClick={changeSorting}
-          pagingType="click"
-          isEmptyMessage={resultsStatusMessage}
-          hasMargin
-        />
-      </ResultsPane>
+        {isFiltersOpened && (
+          <FiltersPane
+            id="invoice-filters-pane"
+            toggleFilters={toggleFilters}
+          >
+            <SingleSearchForm
+              applySearch={applySearch}
+              changeSearch={changeSearch}
+              searchQuery={searchQuery}
+              isLoading={isLoading}
+              ariaLabelId="ui-invoice.search"
+              searchableIndexes={searchableIndexes}
+              changeSearchIndex={changeIndex}
+              selectedIndex={searchIndex}
+            />
 
-      <Route
-        path="/invoice/view/:id/line/:lineId/view"
-        component={InvoiceLineDetailsContainer}
-      />
+            <ResetButton
+              id="reset-invoice-filters"
+              reset={resetFilters}
+              disabled={!location.search || isLoading}
+            />
 
-      <Route
-        path="/invoice/view/:id"
-        exact
-        render={props => (
-          <InvoiceDetailsContainer
-            {...props}
-            refreshList={refreshList}
-          />
+            <InvoicesListFilters
+              activeFilters={filters}
+              applyFilters={applyFilters}
+              disabled={isLoading}
+            />
+          </FiltersPane>
         )}
-      />
-    </PersistedPaneset>
+
+        <ResultsPane
+          id="invoice-results-pane"
+          title={resultsPaneTitle}
+          count={invoicesCount}
+          renderLastMenu={renderLastMenu}
+          toggleFiltersPane={toggleFilters}
+          filters={filters}
+          isFiltersOpened={isFiltersOpened}
+        >
+          <MultiColumnList
+            id="invoices-list"
+            totalCount={invoicesCount}
+            contentData={invoices}
+            visibleColumns={visibleColumns}
+            columnMapping={columnMapping}
+            formatter={resultsFormatter}
+            loading={isLoading}
+            autosize
+            virtualize
+            onNeedMoreData={onNeedMoreData}
+            onRowClick={selecteInvoice}
+            sortOrder={sortingField}
+            sortDirection={sortingDirection}
+            onHeaderClick={changeSorting}
+            pagingType="click"
+            isEmptyMessage={resultsStatusMessage}
+            hasMargin
+          />
+        </ResultsPane>
+
+        <Route
+          path="/invoice/view/:id/line/:lineId/view"
+          component={InvoiceLineDetailsContainer}
+        />
+
+        <Route
+          path="/invoice/view/:id"
+          exact
+          render={props => (
+            <InvoiceDetailsContainer
+              {...props}
+              refreshList={refreshList}
+            />
+          )}
+        />
+      </PersistedPaneset>
+    </HasCommand>
   );
 };
 

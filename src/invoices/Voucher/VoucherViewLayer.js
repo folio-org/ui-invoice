@@ -1,16 +1,20 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import {
   Button,
+  checkScope,
   Col,
+  collapseAllSections,
+  expandAllSections,
+  HasCommand,
   Icon,
-  Paneset,
+  LoadingPane,
   MenuSection,
   Pane,
+  Paneset,
   Row,
-  LoadingPane,
 } from '@folio/stripes/components';
 import {
   AppIcon,
@@ -25,6 +29,7 @@ import { useVoucher } from './useVoucher';
 const VoucherViewLayer = ({ match: { params }, history, location }) => {
   const { isLoading, voucher, voucherLines, invoice } = useVoucher(params.id, params.voucherId);
   const [isPrintModalOpened, togglePrintModal] = useModalToggle();
+  const accordionStatusRef = useRef();
 
   const closeVoucher = useCallback(
     () => {
@@ -39,19 +44,19 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
     [params.id, location.search],
   );
 
-  const renderActionMenu = useCallback(({ onToggle }) => {
-    const path = {
-      pathname: `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`,
-      search: location.search,
-    };
+  const voucherEditPath = {
+    pathname: `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`,
+    search: location.search,
+  };
 
+  const renderActionMenu = useCallback(({ onToggle }) => {
     return (
       <MenuSection id="voucher-actions">
         <IfPermission perm="voucher.vouchers.item.put">
           <Button
             buttonStyle="dropdownItem"
             data-test-edit-voucher-button
-            to={path}
+            to={voucherEditPath}
           >
             <Icon size="small" icon="edit">
               <FormattedMessage id="ui-invoice.button.edit" />
@@ -73,6 +78,25 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
     );
   }, [location.search, params.id, params.voucherId, togglePrintModal]);
 
+  const shortcuts = [
+    {
+      name: 'edit',
+      handler: () => history.push(voucherEditPath),
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'search',
+      handler: () => history.push('/invoice'),
+    },
+  ];
+
   if (isLoading) {
     return (
       <Paneset>
@@ -82,47 +106,54 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
   }
 
   return (
-    <Paneset>
-      <Pane
-        actionMenu={renderActionMenu}
-        appIcon={<AppIcon app="invoice" size="small" />}
-        defaultWidth="fill"
-        dismissible
-        id="pane-voucher"
-        onClose={closeVoucher}
-        paneSub={
-          <FormattedMessage
-            id="ui-invoice.voucher.paneSubTitle"
-            values={{ voucherNumber: voucher.voucherNumber }}
-          />
-        }
-        paneTitle={
-          <FormattedMessage
-            id="ui-invoice.voucher.paneTitle"
-            values={{ vendorInvoiceNo: invoice.vendorInvoiceNo }}
-          />
-        }
-      >
-        <Row>
-          <Col
-            xs={12}
-            md={8}
-            mdOffset={2}
-          >
-            <VoucherView
-              voucher={voucher}
-              voucherLines={voucherLines}
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
+    >
+      <Paneset>
+        <Pane
+          actionMenu={renderActionMenu}
+          appIcon={<AppIcon app="invoice" size="small" />}
+          defaultWidth="fill"
+          dismissible
+          id="pane-voucher"
+          onClose={closeVoucher}
+          paneSub={
+            <FormattedMessage
+              id="ui-invoice.voucher.paneSubTitle"
+              values={{ voucherNumber: voucher.voucherNumber }}
             />
-          </Col>
-        </Row>
-      </Pane>
-      {isPrintModalOpened && (
-        <PrintVoucherContainer
-          closePrint={togglePrintModal}
-          invoice={invoice}
-        />
-      )}
-    </Paneset>
+          }
+          paneTitle={
+            <FormattedMessage
+              id="ui-invoice.voucher.paneTitle"
+              values={{ vendorInvoiceNo: invoice.vendorInvoiceNo }}
+            />
+          }
+        >
+          <Row>
+            <Col
+              xs={12}
+              md={8}
+              mdOffset={2}
+            >
+              <VoucherView
+                ref={accordionStatusRef}
+                voucher={voucher}
+                voucherLines={voucherLines}
+              />
+            </Col>
+          </Row>
+        </Pane>
+        {isPrintModalOpened && (
+          <PrintVoucherContainer
+            closePrint={togglePrintModal}
+            invoice={invoice}
+          />
+        )}
+      </Paneset>
+    </HasCommand>
   );
 };
 

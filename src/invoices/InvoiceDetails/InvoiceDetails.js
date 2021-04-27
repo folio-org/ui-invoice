@@ -1,15 +1,20 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
+import { useHistory } from 'react-router';
 
 import {
   Accordion,
   AccordionSet,
   AccordionStatus,
+  checkScope,
   Col,
+  collapseAllSections,
   ConfirmationModal,
   ExpandAllButton,
+  expandAllSections,
+  HasCommand,
   MessageBanner,
   Pane,
   PaneMenu,
@@ -76,6 +81,27 @@ function InvoiceDetails({
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const [isPrintModalOpened, togglePrintModal] = useModalToggle();
   const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
+  const accordionStatusRef = useRef();
+  const history = useHistory();
+
+  const shortcuts = [
+    {
+      name: 'new',
+      handler: () => history.push('/invoice/create'),
+    },
+    {
+      name: 'edit',
+      handler: onEdit,
+    },
+    {
+      name: 'expandAllSections',
+      handler: (e) => expandAllSections(e, accordionStatusRef),
+    },
+    {
+      name: 'collapseAllSections',
+      handler: (e) => collapseAllSections(e, accordionStatusRef),
+    },
+  ];
 
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
@@ -161,7 +187,11 @@ function InvoiceDetails({
     Object.values(orderlinesMap).some(({ paymentStatus }) => paymentStatus === PAYMENT_STATUS.fullyPaid);
 
   return (
-    <>
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
+    >
       <Pane
         id="pane-invoiceDetails"
         defaultWidth="fill"
@@ -172,7 +202,7 @@ function InvoiceDetails({
         actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
-        <AccordionStatus>
+        <AccordionStatus ref={accordionStatusRef}>
           <Row end="xs">
             <Col xs={10}>
               {!hasPOLineIsFullyPaid ? null : (
@@ -359,7 +389,7 @@ function InvoiceDetails({
           />
         )
       }
-    </>
+    </HasCommand>
   );
 }
 
