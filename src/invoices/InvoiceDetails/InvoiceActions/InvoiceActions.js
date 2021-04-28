@@ -19,6 +19,8 @@ const InvoiceActions = ({
   invoice,
   invoiceLinesCount,
   isApprovePayEnabled,
+  isDeleteDisabled,
+  isEditDisabled,
   onApprove,
   onApproveAndPay,
   onDelete,
@@ -34,6 +36,7 @@ const InvoiceActions = ({
         <Button
           buttonStyle="dropdownItem"
           data-test-button-edit-invoice
+          disabled={isEditDisabled}
           onClick={onEdit}
         >
           <Icon size="small" icon="edit">
@@ -89,6 +92,7 @@ const InvoiceActions = ({
             <Button
               buttonStyle="dropdownItem"
               data-test-button-delete-invoice
+              disabled={isDeleteDisabled}
               onClick={onDelete}
             >
               <Icon size="small" icon="trash">
@@ -116,6 +120,8 @@ InvoiceActions.propTypes = {
   invoice: PropTypes.object.isRequired,
   invoiceLinesCount: PropTypes.number,
   isApprovePayEnabled: PropTypes.bool,
+  isDeleteDisabled: PropTypes.bool.isRequired,
+  isEditDisabled: PropTypes.bool.isRequired,
   onApprove: PropTypes.func.isRequired,
   onApproveAndPay: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
