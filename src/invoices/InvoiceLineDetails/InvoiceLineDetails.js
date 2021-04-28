@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
+import { useStripes } from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
@@ -48,6 +49,7 @@ const InvoiceLineDetails = ({
 }) => {
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const accordionStatusRef = useRef();
+  const stripes = useStripes();
 
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
@@ -92,7 +94,9 @@ const InvoiceLineDetails = ({
   const shortcuts = [
     {
       name: 'edit',
-      handler: goToEditInvoiceLine,
+      handler: () => {
+        if (stripes.hasPerm('ui-invoice.invoice.edit')) goToEditInvoiceLine();
+      },
     },
     {
       name: 'expandAllSections',
