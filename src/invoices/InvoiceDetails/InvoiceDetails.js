@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 import { useHistory } from 'react-router';
 
+import { useStripes } from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
@@ -87,15 +88,26 @@ function InvoiceDetails({
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
     invoice.id, invoice.acqUnitIds,
   );
+  const stripes = useStripes();
 
   const shortcuts = [
     {
       name: 'new',
-      handler: () => history.push('/invoice/create'),
+      handler: () => {
+        if (stripes.hasPerm('ui-invoice.invoice.create')) {
+          history.push('/invoice/create');
+        }
+      },
     },
     {
       name: 'edit',
-      handler: onEdit,
+      handler: () => {
+        if (
+          stripes.hasPerm('ui-invoice.invoice.edit') &&
+          !isRestrictionsLoading &&
+          !restrictions.protectUpdate
+        ) onEdit();
+      },
     },
     {
       name: 'expandAllSections',

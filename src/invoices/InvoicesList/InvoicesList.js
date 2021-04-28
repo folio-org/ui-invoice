@@ -7,6 +7,7 @@ import {
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 
+import { useStripes } from '@folio/stripes/core';
 import {
   MultiColumnList,
   checkScope,
@@ -87,6 +88,7 @@ const InvoicesList = ({
     changeSorting,
   ] = useLocationSorting(location, history, resetData, sortableFields);
   const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-invoice/filters');
+  const stripes = useStripes();
 
   const renderLastMenu = useCallback(() => <InvoicesListLastMenu />, []);
 
@@ -103,7 +105,11 @@ const InvoicesList = ({
   const shortcuts = [
     {
       name: 'new',
-      handler: () => history.push('invoice/create'),
+      handler: () => {
+        if (stripes.hasPerm('ui-invoice.invoice.create')) {
+          history.push('/invoice/create');
+        }
+      },
     },
   ];
 

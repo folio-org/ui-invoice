@@ -19,6 +19,7 @@ import {
 import {
   AppIcon,
   IfPermission,
+  useStripes,
 } from '@folio/stripes/core';
 import { useModalToggle } from '@folio/stripes-acq-components';
 
@@ -30,6 +31,7 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
   const { isLoading, voucher, voucherLines, invoice } = useVoucher(params.id, params.voucherId);
   const [isPrintModalOpened, togglePrintModal] = useModalToggle();
   const accordionStatusRef = useRef();
+  const stripes = useStripes();
 
   const closeVoucher = useCallback(
     () => {
@@ -81,7 +83,11 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
   const shortcuts = [
     {
       name: 'edit',
-      handler: () => history.push(voucherEditPath),
+      handler: () => {
+        if (stripes.hasPerm('ui-invoice.invoice.edit')) {
+          history.push(voucherEditPath);
+        }
+      },
     },
     {
       name: 'expandAllSections',
