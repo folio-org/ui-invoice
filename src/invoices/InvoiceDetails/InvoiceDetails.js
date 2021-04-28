@@ -26,6 +26,7 @@ import {
   useModalToggle,
   TagsBadge,
   TagsPane,
+  useAcqRestrictions,
 } from '@folio/stripes-acq-components';
 
 import { PrintVoucherContainer } from '../PrintVoucher';
@@ -83,6 +84,9 @@ function InvoiceDetails({
   const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
   const accordionStatusRef = useRef();
   const history = useHistory();
+  const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
+    invoice.id, invoice.acqUnitIds,
+  );
 
   const shortcuts = [
     {
@@ -134,6 +138,8 @@ function InvoiceDetails({
           togglePrintModal();
         }}
         isApprovePayEnabled={isApprovePayEnabled}
+        isEditDisabled={isRestrictionsLoading || restrictions.protectUpdate}
+        isDeleteDisabled={isRestrictionsLoading || restrictions.protectDelete}
       />
     );
   };
