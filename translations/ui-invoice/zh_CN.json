@@ -328,6 +328,6 @@
     "invoice.paymentDate": "付款日期",
     "invoice.details.lines.list.vendorRefNumber": "供应商参考号",
     "invoice.actions.approve.error.organizationNotAVendor": "由于关联的供应商ID属于非供应商组织，因此无法批准发票。",
-    "invoice.enclosureNeeded": "Enclosure needed",
+    "invoice.enclosureNeeded": "需要附件",
     "invoice.details.voucher.accountNo": "帐号"
 }
