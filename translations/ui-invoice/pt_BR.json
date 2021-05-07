@@ -321,7 +321,7 @@
     "invoice.details.information.calculatedTotalAmount": "Valor total calculado",
     "button.cancel": "Cancelar",
     "button.submit": "Enviar",
-    "invoice.delete.message": "Tem certeza de que deseja excluir a fatura?",
+    "invoice.delete.message": "Tem certeza de que deseja excluir esta fatura e todas as suas linhas de fatura? Isso também excluirá todos os documentos anexados.",
     "invoice.duplicateInvoice.amount": "Montante",
     "invoice.duplicateInvoice.title": "Possível fatura duplicada",
     "invoiceLine.referenceNumbers": "Números de referência do fornecedor",

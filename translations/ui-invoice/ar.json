@@ -321,7 +321,7 @@
     "invoice.details.information.calculatedTotalAmount": "المبلغ الإجمالي المحسوب",
     "button.cancel": "إلغاء",
     "button.submit": "تقديم",
-    "invoice.delete.message": "هل أنت متأكد من أنك تريد حذف الفاتورة؟",
+    "invoice.delete.message": "هل أنت متأكد من أنك تريد حذف الفاتورة وكل سطورها؟ سيؤدي ذلك أيضا إلى حذف أي مستندات مرفقة.",
     "invoice.duplicateInvoice.amount": "المبلغ",
     "invoice.duplicateInvoice.title": "فاتورة مكررة محتملة",
     "invoiceLine.referenceNumbers": "أرقام المورّدين المرجعية",
