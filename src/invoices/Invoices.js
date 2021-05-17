@@ -3,14 +3,23 @@ import {
   Switch,
   Route,
 } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
+import { AppContextMenu } from '@folio/stripes/core';
 import {
   checkScope,
   CommandList,
   defaultKeyboardShortcuts,
   HasCommand,
+  NavList,
+  NavListItem,
+  NavListSection,
 } from '@folio/stripes/components';
-import { PermissionedRoute } from '@folio/stripes-acq-components';
+import {
+  AcqKeyboardShortcutsModal,
+  PermissionedRoute,
+  useModalToggle,
+} from '@folio/stripes-acq-components';
 
 import {
   RETURN_LINK,
@@ -24,6 +33,7 @@ import { EditInvoiceLine } from './EditInvoiceLine';
 import { Voucher } from './Voucher';
 
 const Invoices = () => {
+  const [isOpen, toggleModal] = useModalToggle();
   const focusSearchField = () => {
     const el = document.getElementById('input-record-search');
 
@@ -37,59 +47,88 @@ const Invoices = () => {
       name: 'search',
       handler: focusSearchField,
     },
+    {
+      name: 'openShortcutModal',
+      shortcut: 'mod+alt+k',
+      handler: toggleModal,
+    },
   ];
 
   return (
-    <CommandList commands={defaultKeyboardShortcuts}>
-      <HasCommand
-        commands={shortcuts}
-        isWithinScope={checkScope}
-        scope={document.body}
-      >
-        <Switch>
-          <PermissionedRoute
-            path="/invoice/edit/:id"
-            perm="ui-invoice.invoice.edit"
-            returnLink={RETURN_LINK}
-            returnLinkLabelId={RETURN_LINK_LABEL_ID}
-          >
-            <EditInvoice />
-          </PermissionedRoute>
-          <PermissionedRoute
-            path="/invoice/create"
-            perm="ui-invoice.invoice.edit"
-            returnLink={RETURN_LINK}
-            returnLinkLabelId={RETURN_LINK_LABEL_ID}
-          >
-            <CreateInvoice />
-          </PermissionedRoute>
-          <PermissionedRoute
-            path="/invoice/view/:id/line/:lineId/edit"
-            perm="ui-invoice.invoice.edit"
-            returnLink={RETURN_LINK}
-            returnLinkLabelId={RETURN_LINK_LABEL_ID}
-          >
-            <EditInvoiceLine />
-          </PermissionedRoute>
-          <PermissionedRoute
-            path="/invoice/view/:id/line/create"
-            perm="ui-invoice.invoice.edit"
-            returnLink={RETURN_LINK}
-            returnLinkLabelId={RETURN_LINK_LABEL_ID}
-          >
-            <CreateInvoiceLine />
-          </PermissionedRoute>
-          <Route
-            path="/invoice/view/:id/voucher/"
-            component={Voucher}
-          />
-          <Route
-            path="/invoice"
-            component={InvoicesListContainer}
-          />
-        </Switch>
-      </HasCommand>
-    </CommandList>
+    <>
+      <CommandList commands={defaultKeyboardShortcuts}>
+        <HasCommand
+          commands={shortcuts}
+          isWithinScope={checkScope}
+          scope={document.body}
+        >
+          <AppContextMenu>
+            {handleToggle => (
+              <NavList>
+                <NavListSection>
+                  <NavListItem
+                    id="keyboard-shortcuts-item"
+                    onClick={() => {
+                      handleToggle();
+                      toggleModal();
+                    }}
+                  >
+                    <FormattedMessage id="stripes-acq-components.appMenu.keyboardShortcuts" />
+                  </NavListItem>
+                </NavListSection>
+              </NavList>
+            )}
+          </AppContextMenu>
+          <Switch>
+            <PermissionedRoute
+              path="/invoice/edit/:id"
+              perm="ui-invoice.invoice.edit"
+              returnLink={RETURN_LINK}
+              returnLinkLabelId={RETURN_LINK_LABEL_ID}
+            >
+              <EditInvoice />
+            </PermissionedRoute>
+            <PermissionedRoute
+              path="/invoice/create"
+              perm="ui-invoice.invoice.edit"
+              returnLink={RETURN_LINK}
+              returnLinkLabelId={RETURN_LINK_LABEL_ID}
+            >
+              <CreateInvoice />
+            </PermissionedRoute>
+            <PermissionedRoute
+              path="/invoice/view/:id/line/:lineId/edit"
+              perm="ui-invoice.invoice.edit"
+              returnLink={RETURN_LINK}
+              returnLinkLabelId={RETURN_LINK_LABEL_ID}
+            >
+              <EditInvoiceLine />
+            </PermissionedRoute>
+            <PermissionedRoute
+              path="/invoice/view/:id/line/create"
+              perm="ui-invoice.invoice.edit"
+              returnLink={RETURN_LINK}
+              returnLinkLabelId={RETURN_LINK_LABEL_ID}
+            >
+              <CreateInvoiceLine />
+            </PermissionedRoute>
+            <Route
+              path="/invoice/view/:id/voucher/"
+              component={Voucher}
+            />
+            <Route
+              path="/invoice"
+              component={InvoicesListContainer}
+            />
+          </Switch>
+        </HasCommand>
+      </CommandList>
+      {isOpen && (
+        <AcqKeyboardShortcutsModal
+          onClose={toggleModal}
+        />
+      )}
+    </>
   );
 };
 
