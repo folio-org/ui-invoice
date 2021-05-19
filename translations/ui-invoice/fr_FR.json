@@ -270,7 +270,7 @@
     "settings.BatchVoucherExports.status.error": "Erreur",
     "button.continue": "Continuer",
     "settings.actions.manualExport.heading": "Exécuter l'exportation manuelle",
-    "settings.actions.manualExport.message": "All vouchers created since last export for the batch group {selectedBatchGroupName} will be exported and this process cannot be reversed",
+    "settings.actions.manualExport.message": "Tous les bons créés depuis la dernière exportation pour le groupe de lots {selectedBatchGroupName} seront exportés et ce processus ne peut pas être annulé",
     "settings.runManualExport.success": "Les bons ont été exportés avec succès",
     "settings.runManualExport.error": "Les bons n'ont pas été exportés",
     "invoice.details.information.batchGroup": "Batch group",
@@ -280,7 +280,7 @@
     "errors.cantLoadInvoiceLine": "Erreur lors du chargement de la ligne de facturation",
     "errors.cantLoadInvoice": "Erreur lors du chargement de la facture",
     "errors.cantLoadVendor": "Erreur lors du chargement du fournisseur",
-    "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded",
+    "settings.BatchVoucherExports.download.error": "Les bons n'ont pas été téléchargés",
     "invoice.actions.approve.error.accountingCodeNotPresent": "La facture ne peut pas être approuvée (payée), car le fournisseur identifié doit avoir un code comptable pour que cette facture soit exportée vers la comptabilité",
     "invoice.actions.addLine.confirmLabel": "Confirmer",
     "invoice.actions.addLine.currencyMessage": "Vous ajoutez une ou plusieurs lignes de commande qui sont dans une devise différente de celle identifiée sur cette facture. Si vous souhaitez toujours les ajouter, cliquez sur Confirmer. Remarque: le coût sera enregistré dans la devise identifiée sur la facture.",
@@ -327,7 +327,7 @@
     "invoiceLine.referenceNumbers": "Numéros de référence du fournisseur",
     "invoice.paymentDate": "Date de paiement",
     "invoice.details.lines.list.vendorRefNumber": "Numéro de référence du fournisseur",
-    "invoice.actions.approve.error.organizationNotAVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
+    "invoice.actions.approve.error.organizationNotAVendor": "La facture ne peut pas être approuvée car l'ID de l'organisation ne correspond pas à un fournisseur",
     "invoice.enclosureNeeded": "Enclosure needed",
     "invoice.details.voucher.accountNo": "Numéro de compte"
 }
