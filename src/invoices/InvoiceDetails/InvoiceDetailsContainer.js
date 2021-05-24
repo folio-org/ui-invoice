@@ -25,6 +25,9 @@ import {
   INVOICE_API,
   INVOICE_STATUS,
 } from '../../common/constants';
+import {
+  useInvoiceMutation,
+} from '../../common/hooks';
 import InvoiceDetails from './InvoiceDetails';
 import {
   createInvoiceLineFromPOL,
@@ -50,6 +53,8 @@ function InvoiceDetailsContainer({
   const [isApprovePayEnabled, setIsApprovePayEnabled] = useState(false);
   const [batchVoucherExport, setBatchVoucherExport] = useState();
   const [exportFormat, setExportFormat] = useState();
+
+  const { mutateInvoice } = useInvoiceMutation();
 
   const fetchInvoiceData = useCallback(
     () => {
@@ -237,13 +242,13 @@ function InvoiceDetailsContainer({
       const approvedInvoice = { ...invoice, status: INVOICE_STATUS.approved };
 
       setIsLoading(true);
-      mutator.invoice.PUT(approvedInvoice)
+      mutateInvoice(approvedInvoice)
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' });
           refreshList();
 
           return fetchInvoiceData();
-        }, response => (
+        }, ({ response }) => (
           showUpdateInvoiceError(
             response,
             showCallout,
@@ -255,7 +260,7 @@ function InvoiceDetailsContainer({
         ))
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout],
   );
 
   const payInvoice = useCallback(
@@ -263,13 +268,13 @@ function InvoiceDetailsContainer({
       const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
 
       setIsLoading(true);
-      mutator.invoice.PUT(paidInvoice)
+      mutateInvoice(paidInvoice)
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
           refreshList();
 
           return fetchInvoiceData();
-        }, response => showUpdateInvoiceError(
+        }, ({ response }) => showUpdateInvoiceError(
           response,
           showCallout,
           'pay',
@@ -279,18 +284,18 @@ function InvoiceDetailsContainer({
         ))
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout],
   );
 
   const approveAndPayInvoice = useCallback(
     () => {
       setIsLoading(true);
-      mutator.invoice.PUT({ ...invoice, status: INVOICE_STATUS.approved })
+      mutateInvoice({ ...invoice, status: INVOICE_STATUS.approved })
         .then(() => mutator.invoice.GET())
         .then(invoiceResponse => {
-          return mutator.invoice.PUT({ ...invoiceResponse, status: INVOICE_STATUS.paid });
+          return mutateInvoice({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })
-        .catch(response => {
+        .catch(({ response }) => {
           showUpdateInvoiceError(
             response,
             showCallout,
@@ -310,7 +315,7 @@ function InvoiceDetailsContainer({
         })
         .finally(setIsLoading);
     },
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
+    [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
   const updateInvoice = useCallback(
