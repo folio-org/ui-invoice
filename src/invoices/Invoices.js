@@ -17,6 +17,7 @@ import {
 } from '@folio/stripes/components';
 import {
   AcqKeyboardShortcutsModal,
+  handleKeyCommand,
   PermissionedRoute,
   useModalToggle,
 } from '@folio/stripes-acq-components';
@@ -45,12 +46,12 @@ const Invoices = () => {
   const shortcuts = [
     {
       name: 'search',
-      handler: focusSearchField,
+      handler: handleKeyCommand(focusSearchField),
     },
     {
       name: 'openShortcutModal',
       shortcut: 'mod+alt+k',
-      handler: toggleModal,
+      handler: handleKeyCommand(toggleModal),
     },
   ];
 

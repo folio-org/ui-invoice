@@ -39,6 +39,7 @@ import {
   FieldSelectionFinal,
   FolioFormattedDate,
   FormFooter,
+  handleKeyCommand,
   PAYMENT_METHOD_OPTIONS,
   TextField,
   validateRequired,
@@ -176,11 +177,11 @@ const InvoiceForm = ({
     {
       name: 'cancel',
       shortcut: 'esc',
-      handler: () => closeForm(),
+      handler: handleKeyCommand(closeForm),
     },
     {
       name: 'save',
-      handler: handleSubmit,
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
     {
       name: 'expandAllSections',
@@ -192,7 +193,7 @@ const InvoiceForm = ({
     },
     {
       name: 'search',
-      handler: () => history.push('/invoice'),
+      handler: handleKeyCommand(() => history.push('/invoice')),
     },
   ];
 

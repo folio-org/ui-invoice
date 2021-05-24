@@ -23,6 +23,7 @@ import {
 } from '@folio/stripes/components';
 import {
   FundDistributionView,
+  handleKeyCommand,
   PAYMENT_STATUS,
   useModalToggle,
   TagsBadge,
@@ -93,21 +94,21 @@ function InvoiceDetails({
   const shortcuts = [
     {
       name: 'new',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (stripes.hasPerm('ui-invoice.invoice.create')) {
           history.push('/invoice/create');
         }
-      },
+      }),
     },
     {
       name: 'edit',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (
           stripes.hasPerm('ui-invoice.invoice.edit') &&
           !isRestrictionsLoading &&
           !restrictions.protectUpdate
         ) onEdit();
-      },
+      }),
     },
     {
       name: 'expandAllSections',

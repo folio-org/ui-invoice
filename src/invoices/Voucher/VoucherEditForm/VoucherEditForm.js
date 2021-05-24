@@ -16,6 +16,7 @@ import {
 import {
   FieldDatepickerFinal,
   FormFooter,
+  handleKeyCommand,
   TextField,
 } from '@folio/stripes-acq-components';
 import {
@@ -47,15 +48,15 @@ const VoucherEditForm = ({
     {
       name: 'cancel',
       shortcut: 'esc',
-      handler: onCancel,
+      handler: handleKeyCommand(onCancel),
     },
     {
       name: 'save',
-      handler: handleSubmit,
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
     {
       name: 'search',
-      handler: () => history.push('/invoice'),
+      handler: handleKeyCommand(() => history.push('/invoice')),
     },
   ];
 
