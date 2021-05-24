@@ -17,6 +17,7 @@ import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
   AmountWithCurrencyField,
   FiltersPane,
+  handleKeyCommand,
   NoResultsMessage,
   ResetButton,
   ResultsPane,
@@ -105,11 +106,11 @@ const InvoicesList = ({
   const shortcuts = [
     {
       name: 'new',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (stripes.hasPerm('ui-invoice.invoice.create')) {
           history.push('/invoice/create');
         }
-      },
+      }),
     },
   ];
 

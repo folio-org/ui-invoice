@@ -34,6 +34,7 @@ import {
   FieldSelectionFinal,
   FormFooter,
   FundDistributionFieldsFinal,
+  handleKeyCommand,
   parseNumberFieldValue,
   TextField,
   validateRequired,
@@ -100,11 +101,11 @@ const InvoiceLineForm = ({
     {
       name: 'cancel',
       shortcut: 'esc',
-      handler: onCancel,
+      handler: handleKeyCommand(onCancel),
     },
     {
       name: 'save',
-      handler: handleSubmit,
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
     },
     {
       name: 'expandAllSections',
@@ -116,7 +117,7 @@ const InvoiceLineForm = ({
     },
     {
       name: 'search',
-      handler: () => history.push('/invoice'),
+      handler: handleKeyCommand(() => history.push('/invoice')),
     },
   ];
 

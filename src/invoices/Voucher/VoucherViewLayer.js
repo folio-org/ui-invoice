@@ -21,7 +21,10 @@ import {
   IfPermission,
   useStripes,
 } from '@folio/stripes/core';
-import { useModalToggle } from '@folio/stripes-acq-components';
+import {
+  handleKeyCommand,
+  useModalToggle,
+} from '@folio/stripes-acq-components';
 
 import { PrintVoucherContainer } from '../PrintVoucher';
 import VoucherView from './VoucherView';
@@ -83,11 +86,11 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
   const shortcuts = [
     {
       name: 'edit',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (stripes.hasPerm('ui-invoice.invoice.edit')) {
           history.push(voucherEditPath);
         }
-      },
+      }),
     },
     {
       name: 'expandAllSections',
@@ -99,7 +102,7 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
     },
     {
       name: 'search',
-      handler: () => history.push('/invoice'),
+      handler: handleKeyCommand(() => history.push('/invoice')),
     },
   ];
 

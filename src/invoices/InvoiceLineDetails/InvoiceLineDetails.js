@@ -22,6 +22,7 @@ import {
 
 import {
   FundDistributionView,
+  handleKeyCommand,
   TagsBadge,
   useModalToggle,
 } from '@folio/stripes-acq-components';
@@ -94,9 +95,9 @@ const InvoiceLineDetails = ({
   const shortcuts = [
     {
       name: 'edit',
-      handler: () => {
+      handler: handleKeyCommand(() => {
         if (stripes.hasPerm('ui-invoice.invoice.edit')) goToEditInvoiceLine();
-      },
+      }),
     },
     {
       name: 'expandAllSections',
