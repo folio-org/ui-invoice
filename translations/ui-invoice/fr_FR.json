@@ -239,7 +239,7 @@
     "settings.batchGroupConfiguration.format.Application/xml": "XML",
     "settings.batchGroupConfiguration.format": "Format",
     "settings.batchGroupConfiguration.isUploadURIValid": "URI -  téléchargement non valide",
-    "settings.batchGroupConfiguration.on": "On",
+    "settings.batchGroupConfiguration.on": "Au/Sur",
     "settings.batchGroupConfiguration.password.hide": "Masquer les informations d'identification",
     "settings.batchGroupConfiguration.password.show": "Afficher les informations d'identification",
     "settings.batchGroupConfiguration.password": "Mot de passe",
