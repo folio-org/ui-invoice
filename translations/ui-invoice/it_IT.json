@@ -170,7 +170,7 @@
     "voucher.paneSubTitle": "Numero voucher - {voucherNumber}",
     "voucher.voucherTitle": "Informazioni voucher",
     "voucher.voucherLinesTitle": "Voucher lines",
-    "voucher.voucherLinesTitle.externalAccountNumber": "External account number: {externalAccountNumber}",
+    "voucher.voucherLinesTitle.externalAccountNumber": "Numero di conto esterno: {externalAccountNumber}",
     "voucher.voucherLines.lineNumber": "Line number",
     "voucher.voucherLines.group": "Categoria",
     "voucher.voucherLines.fundCode": "Codice fondo",
