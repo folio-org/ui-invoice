@@ -379,6 +379,7 @@
   "voucher.voucherLines.total": "Total: ",
 
   "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
+  "poLineLookup": "POL look-up",
 
   "permission.acq.unit.assignment.assign": "Invoice: Assign acquisitions units to new record",
   "permission.acq.unit.assignment.manage": "Invoice: Manage acquisition units",
