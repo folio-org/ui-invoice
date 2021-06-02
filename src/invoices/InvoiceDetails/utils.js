@@ -1,5 +1,3 @@
-import { find, get } from 'lodash';
-
 import {
   EXPENSE_CLASSES_API,
   FUNDS_API,
@@ -9,38 +7,17 @@ import {
   INVOICE_STATUS,
   ERROR_CODES,
 } from '../../common/constants';
+import {
+  convertToInvoiceLineFields,
+} from '../utils';
 
 // eslint-disable-next-line import/prefer-default-export
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
-  const quantityPhysical = get(poLine, 'cost.quantityPhysical', 0);
-  const quantityElectronic = get(poLine, 'cost.quantityElectronic', 0);
-  const accountNumber = get(poLine, 'vendorDetail.vendorAccount');
-  const optionalProps = {};
-
-  if (accountNumber) {
-    const accounts = get(vendor, 'accounts', []);
-    const account = find(accounts, { accountNo: accountNumber });
-    const accountingCode = get(account, 'appSystemNo') || get(vendor, 'erpCode');
-
-    optionalProps.accountNumber = accountNumber;
-    if (accountingCode) {
-      optionalProps.accountingCode = accountingCode;
-    }
-  }
-
   return {
     invoiceId,
-    invoiceLineStatus: INVOICE_STATUS.open,
-    description: poLine.titleOrPackage,
     poLineId: poLine.id,
-    comment: poLine.poLineDescription,
-    fundDistributions: poLine.fundDistribution,
-    referenceNumbers: poLine?.vendorDetail?.referenceNumbers,
-    subscriptionStart: get(poLine, 'details.subscriptionFrom'),
-    subscriptionEnd: get(poLine, 'details.subscriptionTo'),
-    quantity: quantityElectronic + quantityPhysical,
-    subTotal: poLine?.cost?.poLineEstimatedPrice || 0,
-    ...optionalProps,
+    invoiceLineStatus: INVOICE_STATUS.open,
+    ...convertToInvoiceLineFields(poLine, vendor),
   };
 };
 

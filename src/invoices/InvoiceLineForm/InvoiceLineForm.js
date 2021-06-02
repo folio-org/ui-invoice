@@ -50,10 +50,14 @@ import {
   getAccountNumberOptions,
   IS_EDIT_POST_APPROVAL,
 } from '../../common/utils';
+import {
+  convertToInvoiceLineFields,
+} from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import {
   SECTIONS_INVOICE_LINE_FORM as SECTIONS,
 } from '../constants';
+import { POLineField } from './POLineField';
 
 const InvoiceLineForm = ({
   initialValues,
@@ -62,7 +66,7 @@ const InvoiceLineForm = ({
   pristine,
   submitting,
   values: formValues,
-  form: { change },
+  form: { batch, change },
   invoice,
   vendorCode,
   accounts,
@@ -83,6 +87,23 @@ const InvoiceLineForm = ({
     }
   }, [accounts, vendorCode]);
 
+  const changeOrderLine = useCallback((orderLine) => {
+    batch(() => {
+      change('poLineId', orderLine?.id);
+
+      if (orderLine) {
+        const invoiceLineFields = convertToInvoiceLineFields(orderLine, {
+          accounts,
+          erpCode: vendorCode,
+        });
+
+        Object.keys(invoiceLineFields).forEach(field => {
+          change(field, invoiceLineFields[field]);
+        });
+      }
+    });
+  }, [batch, change, accounts, vendorCode]);
+
   const {
     accountNumber,
     adjustments,
@@ -95,7 +116,10 @@ const InvoiceLineForm = ({
   } = initialValues;
   const totalAmount = calculateTotalAmount(formValues, invoice.currency);
   const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, invoiceLineStatus);
-  const isDisabledToEditAccountNumber = Boolean(isEditPostApproval || (poLineId && accountNumber));
+  const isDisabledToEditAccountNumber = Boolean(
+    isEditPostApproval
+    || (poLineId && poLineId !== formValues.poLineId && accountNumber),
+  );
 
   const shortcuts = [
     {
@@ -179,6 +203,13 @@ const InvoiceLineForm = ({
                             required
                             type="text"
                             validate={validateRequired}
+                          />
+                        </Col>
+                        <Col xs={3}>
+                          <POLineField
+                            onSelect={changeOrderLine}
+                            isNonInteractive={isEditPostApproval}
+                            poLineId={formValues.poLineId}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-number xs={3}>

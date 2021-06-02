@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useMemo, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import { withRouter } from 'react-router-dom';
@@ -99,13 +99,15 @@ function InvoiceLineFormContainer({
   const vendorCode = get(vendor, 'erpCode', '');
   const accounts = get(vendor, 'accounts', []);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
-  const initialValues = lineId
-    ? invoiceLine
-    : {
-      invoiceId: id,
-      invoiceLineStatus: invoice?.status,
-      fundDistributions: [],
-    };
+  const initialValues = useMemo(() => {
+    return lineId
+      ? invoiceLine
+      : {
+        invoiceId: id,
+        invoiceLineStatus: invoice?.status,
+        fundDistributions: [],
+      };
+  }, [id, lineId, invoice, invoiceLine]);
 
   return (hasLoaded
     ? (
