@@ -26,11 +26,10 @@ const renderForm = (props) => (
 
 const FormCmpt = stripesFinalForm({})(renderForm);
 
-const renderComponent = (props = {}) => (render(
-  <MemoryRouter>
-    <FormCmpt onSubmit={() => { }} initialValues={{}} {...props} />
-  </MemoryRouter>,
-));
+const renderComponent = (props = {}) => render(
+  <FormCmpt onSubmit={() => { }} initialValues={{}} {...props} />,
+  { wrapper: MemoryRouter },
+);
 
 describe('POLineField', () => {
   beforeEach(() => {
