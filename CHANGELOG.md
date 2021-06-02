@@ -1,6 +1,9 @@
 # Change history for ui-invoice
 
 ## (IN PROGRESS)
+
+## [2.3.2]https://github.com/folio-org/ui-invoice/tree/v2.3.2) (2021-06-02)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.1...v2.3.2)
 * Invoice is only approved when user clicks 'approve and pay'. Refs UINV-262.
 
 ## [2.3.1]https://github.com/folio-org/ui-invoice/tree/v2.3.1) (2021-04-14)
