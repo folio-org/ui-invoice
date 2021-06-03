@@ -88,6 +88,8 @@ const InvoiceLineForm = ({
   }, [accounts, vendorCode]);
 
   const changeOrderLine = useCallback((orderLine) => {
+    const fieldsToIgnore = initialValues.poLineId ? ['quantity', 'subTotal'] : [];
+
     batch(() => {
       change('poLineId', orderLine?.id);
 
@@ -97,12 +99,15 @@ const InvoiceLineForm = ({
           erpCode: vendorCode,
         });
 
-        Object.keys(invoiceLineFields).forEach(field => {
-          change(field, invoiceLineFields[field]);
-        });
+        Object
+          .keys(invoiceLineFields)
+          .filter(field => !fieldsToIgnore.includes(field))
+          .forEach(field => {
+            change(field, invoiceLineFields[field]);
+          });
       }
     });
-  }, [batch, change, accounts, vendorCode]);
+  }, [batch, change, accounts, vendorCode, initialValues.poLineId]);
 
   const {
     accountNumber,
