@@ -96,15 +96,14 @@ const InvoiceLineForm = ({
           accounts,
           erpCode: vendorCode,
         });
+        const fieldsToIgnore = initialValues.poLineId ? ['quantity', 'subTotal'] : [];
 
-        if (initialValues.poLineId) {
-          delete invoiceLineFields.quantity;
-          delete invoiceLineFields.subTotal;
-        }
-
-        Object.keys(invoiceLineFields).forEach(field => {
-          change(field, invoiceLineFields[field]);
-        });
+        Object
+          .keys(invoiceLineFields)
+          .filter(field => !fieldsToIgnore.includes(field))
+          .forEach(field => {
+            change(field, invoiceLineFields[field]);
+          });
       }
     });
   }, [batch, change, accounts, vendorCode, initialValues.poLineId]);
