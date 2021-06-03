@@ -97,12 +97,17 @@ const InvoiceLineForm = ({
           erpCode: vendorCode,
         });
 
+        if (initialValues.poLineId) {
+          delete invoiceLineFields.quantity;
+          delete invoiceLineFields.subTotal;
+        }
+
         Object.keys(invoiceLineFields).forEach(field => {
           change(field, invoiceLineFields[field]);
         });
       }
     });
-  }, [batch, change, accounts, vendorCode]);
+  }, [batch, change, accounts, vendorCode, initialValues.poLineId]);
 
   const {
     accountNumber,
