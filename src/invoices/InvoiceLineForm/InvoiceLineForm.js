@@ -88,7 +88,9 @@ const InvoiceLineForm = ({
   }, [accounts, vendorCode]);
 
   const changeOrderLine = useCallback((orderLine) => {
-    const fieldsToIgnore = initialValues.poLineId ? ['quantity', 'subTotal'] : [];
+    const fieldsToUpdate = initialValues.id && invoice.source === 'EDI'
+      ? ['description', 'fundDistributions']
+      : undefined;
 
     batch(() => {
       change('poLineId', orderLine?.id);
@@ -99,15 +101,13 @@ const InvoiceLineForm = ({
           erpCode: vendorCode,
         });
 
-        Object
-          .keys(invoiceLineFields)
-          .filter(field => !fieldsToIgnore.includes(field))
+        (fieldsToUpdate || Object.keys(invoiceLineFields))
           .forEach(field => {
             change(field, invoiceLineFields[field]);
           });
       }
     });
-  }, [batch, change, accounts, vendorCode, initialValues.poLineId]);
+  }, [batch, change, accounts, vendorCode, invoice.source, initialValues.id]);
 
   const {
     accountNumber,
