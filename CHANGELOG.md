@@ -7,6 +7,7 @@
 * Implement Keyboard shortcuts modal. Refs UINV-257.
 * Compile Translation Files into AST Format. Refs UINV-251.
 * Allow user to link an invoice line to a PO line after the invoice line has been created. Refs UINV-193.
+* Update invoice field label to match PO field label. Refs UINV-259.
 
 ## [2.3.2]https://github.com/folio-org/ui-invoice/tree/v2.3.2) (2021-06-02)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.1...v2.3.2)

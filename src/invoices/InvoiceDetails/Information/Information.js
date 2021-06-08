@@ -109,7 +109,7 @@ const Information = ({
           />
         </Col>
 
-        <Col xs={6}>
+        <Col xs={3}>
           <BillTo billToId={billTo} />
         </Col>
 
@@ -119,6 +119,13 @@ const Information = ({
             label={<FormattedMessage id="ui-invoice.invoice.details.information.batchGroup" />}
           />
         </Col>
+
+        <Col xs={3}>
+          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.paymentDate" />}>
+            <FolioFormattedDate value={paymentDate} />
+          </KeyValue>
+        </Col>
+
       </Row>
 
       <Row>
@@ -153,12 +160,6 @@ const Information = ({
               amount={total}
               currency={currency}
             />
-          </KeyValue>
-        </Col>
-
-        <Col xs={3}>
-          <KeyValue label={<FormattedMessage id="ui-invoice.invoice.paymentDate" />}>
-            <FolioFormattedDate value={paymentDate} />
           </KeyValue>
         </Col>
       </Row>
