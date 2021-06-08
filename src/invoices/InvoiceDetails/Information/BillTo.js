@@ -5,10 +5,8 @@ import { get } from 'lodash';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
-  Col,
   KeyValue,
   NoValue,
-  Row,
 } from '@folio/stripes/components';
 
 import { parseAddressConfig } from '../../../common/utils';
@@ -24,22 +22,9 @@ const BillTo = ({ resources, billToId }) => {
   }
 
   return (
-    <Row>
-      <Col xs={6}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.billToName" />}
-          value={billToValue.name}
-        />
-      </Col>
-
-      <Col xs={6}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.information.billToAddress" />}
-        >
-          <div className={invocieCss.addressWrapper}>{billToId ? billToValue.address : <NoValue />}</div>
-        </KeyValue>
-      </Col>
-    </Row>
+    <KeyValue label={<FormattedMessage id="ui-invoice.invoice.billTo" />}>
+      <div className={invocieCss.addressWrapper}>{billToId ? billToValue.address : <NoValue />}</div>
+    </KeyValue>
   );
 };
 

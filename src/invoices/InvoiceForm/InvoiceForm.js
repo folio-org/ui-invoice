@@ -297,7 +297,7 @@ const InvoiceForm = ({
                         <Col data-test-col-bill-to-name xs={3}>
                           <FieldSelectionFinal
                             dataOptions={getAddressOptions(addresses)}
-                            labelId="ui-invoice.invoice.billToName"
+                            labelId="ui-invoice.invoice.billTo"
                             name="billTo"
                           />
                         </Col>
@@ -306,7 +306,7 @@ const InvoiceForm = ({
                           xs={3}
                         >
                           <KeyValue
-                            label={<FormattedMessage id="ui-invoice.invoice.billToName" />}
+                            label={<FormattedMessage id="ui-invoice.invoice.address" />}
                             value={addressBillTo}
                           />
                         </Col>
