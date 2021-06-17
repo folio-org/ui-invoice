@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.4.0]https://github.com/folio-org/ui-invoice/tree/v2.4.0) (2021-06-17)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.2...v2.4.0)
+
 * Update error code to prevent approval of invoice when organization is not a vendor. Refs UINV-215.
 * Permissions for Expense class filter (find-po-line-plugin). Refs UIOR-678.
 * Implement Keyboard shortcuts modal. Refs UINV-257.
@@ -9,6 +12,12 @@
 * Allow user to link an invoice line to a PO line after the invoice line has been created. Refs UINV-193.
 * Update invoice field label to match PO field label. Refs UINV-259.
 * eslint@"^7.9.0" causes peer-dep inconsistency. Refs UINV-260.
+* Resizable Panes - Persistence | Use PersistedPaneset smart component. Refs UINV-253.
+* Acquisition units no longer restrict edit create or delete actions from action menu. Refs UINV-238.
+* Invoice app | Apply baseline shortcut keys. Refs UINV-237.
+* Add Print action and icon to invoice actions menu. Refs UINV-232.
+* Create HTML template for Printing voucher. Refs UINV-233.
+* Print voucher from HTML template. Refs UINV-235.
 
 ## [2.3.2]https://github.com/folio-org/ui-invoice/tree/v2.3.2) (2021-06-02)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.1...v2.3.2)
