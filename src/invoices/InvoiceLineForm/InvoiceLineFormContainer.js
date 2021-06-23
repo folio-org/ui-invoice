@@ -82,7 +82,7 @@ function InvoiceLineFormContainer({
   const saveInvoiceLine = useCallback((values) => {
     const mutatorMethod = values.id ? 'PUT' : 'POST';
 
-    mutator.invoiceLine[mutatorMethod](values)
+    return mutator.invoiceLine[mutatorMethod](values)
       .then(() => {
         showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenSaved' });
         onClose();
