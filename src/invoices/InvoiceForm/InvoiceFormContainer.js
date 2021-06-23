@@ -99,7 +99,7 @@ function InvoiceFormContainer({
         });
     }
 
-    validationRequest
+    return validationRequest
       .then(() => saveInvoice(formValues, invoiceDocuments, mutator.invoiceFormInvoices, okapi))
       .then(savedRecord => {
         showToast({ messageId: 'ui-invoice.invoice.invoiceHasBeenSaved' });

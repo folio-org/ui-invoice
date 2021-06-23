@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Identical invoices/invoice lines are created after repeated clicking on the 'Save & close' button. Refs UINV-268.
+
 ## [2.4.0]https://github.com/folio-org/ui-invoice/tree/v2.4.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.2...v2.4.0)
 
