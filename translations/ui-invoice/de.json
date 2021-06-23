@@ -166,7 +166,7 @@
     "settings.voucherNumber.nextInSequence": "Nächste Nummer in Zählung",
     "settings.voucherNumber.reset": "Zählung zurücksetzen",
     "settings.voucherNumber.allowVoucherNumberEdit": "Bearbeiten der Belegnummer zulassen",
-    "voucher.paneTitle": "Rechnungsnummer des Lieferanten",
+    "voucher.paneTitle": "Rechnungsnummer des Lieferanten - {vendorInvoiceNo}",
     "voucher.paneSubTitle": "Belegnummer - {voucherNumber}",
     "voucher.voucherTitle": "Beleginformationen",
     "voucher.voucherLinesTitle": "Belegposten",
