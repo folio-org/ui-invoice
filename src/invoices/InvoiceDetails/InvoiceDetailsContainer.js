@@ -351,6 +351,7 @@ function InvoiceDetailsContainer({
       invoice={invoice}
       invoiceLines={invoiceLines.invoiceLines}
       invoiceTotalUnits={invoiceTotalUnits}
+      vendor={vendor}
       isApprovePayEnabled={isApprovePayEnabled}
       onClose={closePane}
       onEdit={onEdit}
@@ -360,7 +361,7 @@ function InvoiceDetailsContainer({
       totalInvoiceLines={invoiceLines.totalRecords}
       batchVoucherExport={batchVoucherExport}
       exportFormat={exportFormat}
-      vendorName={vendor.name}
+      refreshData={fetchInvoiceData}
     />
   );
 }

@@ -12,6 +12,7 @@ import {
   FrontendSortingMCL,
 } from '@folio/stripes-acq-components';
 
+import { InvoiceLinePOLineNumber } from './InvoiceLinePOLineNumber';
 import styles from './InvoiceLines.css';
 
 const COLUMN_LINE_NUMBER = 'lineNumber';
@@ -43,11 +44,15 @@ const sorters = {
 };
 
 const InvoiceLines = ({
-  currency,
+  invoice,
+  vendor,
   invoiceLinesItems,
   openLineDetails,
   orderlinesMap,
+  refreshData,
 }) => {
+  const currency = invoice.currency;
+
   const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
     [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber }) => {
@@ -91,12 +96,21 @@ const InvoiceLines = ({
         currency={currency}
       />
     ),
-    polNumber: ({ poLineId }) => orderlinesMap?.[poLineId]?.poLineNumber || <NoValue />,
+    // eslint-disable-next-line
+    polNumber: ({ rowIndex, ...invoiceLine }) => (
+      <InvoiceLinePOLineNumber
+        invoice={invoice}
+        vendor={vendor}
+        invoiceLine={invoiceLine}
+        poLineNumber={orderlinesMap?.[invoiceLine.poLineId]?.poLineNumber}
+        refreshData={refreshData}
+      />
+    ),
     fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
     vendorRefNo: line => (
       line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
     ),
-  }), [currency, orderlinesMap]);
+  }), [invoice, vendor, currency, orderlinesMap, refreshData]);
 
   return (
     <>
@@ -123,10 +137,12 @@ const InvoiceLines = ({
 };
 
 InvoiceLines.propTypes = {
-  currency: PropTypes.string.isRequired,
+  invoice: PropTypes.object.isRequired,
+  vendor: PropTypes.object.isRequired,
   invoiceLinesItems: PropTypes.arrayOf(PropTypes.object),
   openLineDetails: PropTypes.func.isRequired,
   orderlinesMap: PropTypes.object,
+  refreshData: PropTypes.func.isRequired,
 };
 
 InvoiceLines.defaultProps = {

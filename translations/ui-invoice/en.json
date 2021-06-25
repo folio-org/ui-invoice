@@ -59,6 +59,7 @@
   "invoiceLine.delete.message": "Delete invoice line?",
   "invoiceLine.total": "Total number of invoice lines: {total}",
   "invoiceLine.tags": "Invoice line tags",
+  "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}.",
 
   "adjustment": "Adjustment",
   "adjustment.headerLabel": "Adjustment {index}",

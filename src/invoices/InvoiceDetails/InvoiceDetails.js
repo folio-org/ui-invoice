@@ -66,6 +66,7 @@ function InvoiceDetails({
   invoice,
   invoiceLines,
   invoiceTotalUnits,
+  vendor,
   isApprovePayEnabled,
   onClose,
   onEdit,
@@ -75,7 +76,7 @@ function InvoiceDetails({
   totalInvoiceLines,
   batchVoucherExport,
   exportFormat,
-  vendorName,
+  refreshData,
 }) {
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const [isApproveConfirmationOpen, toggleApproveConfirmation] = useModalToggle();
@@ -167,6 +168,7 @@ function InvoiceDetails({
     />
   );
 
+  const vendorName = vendor?.name;
   const vendorInvoiceNo = invoice.vendorInvoiceNo;
   const tags = get(invoice, 'tags.tagList', []);
   const adjustments = get(invoice, 'adjustments', []);
@@ -272,9 +274,11 @@ function InvoiceDetails({
               }
             >
               <InvoiceLinesContainer
-                currency={invoice.currency}
+                invoice={invoice}
                 invoiceLines={invoiceLines}
+                vendor={vendor}
                 orderlinesMap={orderlinesMap}
+                refreshData={refreshData}
               />
             </Accordion>
             <Accordion
@@ -421,6 +425,7 @@ InvoiceDetails.propTypes = {
   invoice: PropTypes.object.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
   invoiceTotalUnits: PropTypes.number,
+  vendor: PropTypes.object,
   isApprovePayEnabled: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
@@ -430,7 +435,7 @@ InvoiceDetails.propTypes = {
   totalInvoiceLines: PropTypes.number.isRequired,
   batchVoucherExport: PropTypes.object,
   exportFormat: PropTypes.string,
-  vendorName: PropTypes.string,
+  refreshData: PropTypes.func.isRequired,
 };
 
 InvoiceDetails.defaultProps = {
