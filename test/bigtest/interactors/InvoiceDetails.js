@@ -30,7 +30,7 @@ import TagsAction from './common/TagsAction';
 @interactor class LinesSection {
   static defaultScope = `#${SECTIONS_INVOICE.lines}`;
   list = collection('#invoice-lines-list [class*=mclRow---]', {
-    click: clickable(),
+    click: clickable('[role="gridcell"]'),
   });
 
   addLineBtn = new Interactor('[data-test-plugin-find-po-line-button]');

@@ -6,14 +6,20 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import InvoiceLines from './InvoiceLines';
 
 const InvoiceLinesContainer = ({
-  currency,
   invoiceLines,
+  invoice,
+  vendor,
   history,
   location,
   orderlinesMap,
+  refreshData,
 }) => {
   const openLineDetails = useCallback(
     (e, invoiceLine) => {
+      if (e.target.attributes?.role?.value !== 'gridcell') {
+        return;
+      }
+
       const pathname = `/invoice/view/${invoiceLine.invoiceId}/line/${invoiceLine.id}/view`;
 
       history.push({
@@ -27,20 +33,24 @@ const InvoiceLinesContainer = ({
 
   return (
     <InvoiceLines
-      currency={currency}
+      invoice={invoice}
+      vendor={vendor}
       invoiceLinesItems={invoiceLines}
       openLineDetails={openLineDetails}
       orderlinesMap={orderlinesMap}
+      refreshData={refreshData}
     />
   );
 };
 
 InvoiceLinesContainer.propTypes = {
-  currency: PropTypes.string.isRequired,
+  invoice: PropTypes.object.isRequired,
+  vendor: PropTypes.object.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
   orderlinesMap: PropTypes.object,
+  refreshData: PropTypes.func.isRequired,
 };
 
 InvoiceLinesContainer.defaultProps = {
