@@ -12,8 +12,10 @@ import { ADJUSTMENT_RELATION_TO_TOTAL_VALUES } from '../../../../src/common/cons
 const ACCOUNT_NUMBER = 'some-number';
 const ACCOUNTING_CODE = 'some-code';
 
-describe('Invoice line edit', () => {
+describe('Invoice line edit', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceLineForm = new InvoiceLineFormInteractor();
   const invoiceDetails = new InvoiceDetailsInteractor();
@@ -74,6 +76,8 @@ describe('Invoice line edit', () => {
     describe('click on edited line', () => {
       beforeEach(async function () {
         await invoiceDetails.linesSection.list(0).click();
+
+        await invoiceLineDetails.whenLoaded();
       });
 
       it('displays added adjustments', () => {
