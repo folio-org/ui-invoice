@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -12,7 +12,8 @@ import {
   FrontendSortingMCL,
 } from '@folio/stripes-acq-components';
 
-import { InvoiceLinePOLineNumber } from './InvoiceLinePOLineNumber';
+import { InvoiceLineOrderLineNumber } from './InvoiceLineOrderLineNumber';
+import { InvoiceLineOrderLineLink } from './InvoiceLineOrderLineLink';
 import styles from './InvoiceLines.css';
 
 const COLUMN_LINE_NUMBER = 'lineNumber';
@@ -51,6 +52,8 @@ const InvoiceLines = ({
   orderlinesMap,
   refreshData,
 }) => {
+  const [invoiceLine, setInvoiceLine] = useState();
+
   const currency = invoice.currency;
 
   const resultsFormatter = useMemo(() => ({
@@ -98,19 +101,17 @@ const InvoiceLines = ({
     ),
     // eslint-disable-next-line
     polNumber: ({ rowIndex, ...invoiceLine }) => (
-      <InvoiceLinePOLineNumber
-        invoice={invoice}
-        vendor={vendor}
+      <InvoiceLineOrderLineNumber
         invoiceLine={invoiceLine}
         poLineNumber={orderlinesMap?.[invoiceLine.poLineId]?.poLineNumber}
-        refreshData={refreshData}
+        link={setInvoiceLine}
       />
     ),
     fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
     vendorRefNo: line => (
       line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
     ),
-  }), [invoice, vendor, currency, orderlinesMap, refreshData]);
+  }), [currency, orderlinesMap]);
 
   return (
     <>
@@ -131,6 +132,13 @@ const InvoiceLines = ({
         hasArrow
         sortedColumn={COLUMN_LINE_NUMBER}
         sorters={sorters}
+      />
+
+      <InvoiceLineOrderLineLink
+        invoice={invoice}
+        invoiceLine={invoiceLine}
+        vendor={vendor}
+        refreshData={refreshData}
       />
     </>
   );
