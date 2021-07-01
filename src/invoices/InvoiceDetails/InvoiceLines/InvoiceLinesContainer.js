@@ -16,10 +16,6 @@ const InvoiceLinesContainer = ({
 }) => {
   const openLineDetails = useCallback(
     (e, invoiceLine) => {
-      if (e.target.attributes?.role?.value !== 'gridcell') {
-        return;
-      }
-
       const pathname = `/invoice/view/${invoiceLine.invoiceId}/line/${invoiceLine.id}/view`;
 
       history.push({

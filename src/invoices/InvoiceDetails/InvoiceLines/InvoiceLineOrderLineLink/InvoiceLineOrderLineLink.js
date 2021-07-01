@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useIntl } from 'react-intl';
 
@@ -6,26 +6,27 @@ import {
   Pluggable,
 } from '@folio/stripes/core';
 import {
-  IconButton,
-  NoValue,
-} from '@folio/stripes/components';
-import {
+  useModalToggle,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import { useInvoiceLineMutation } from '../../../../common/hooks';
-import { IS_EDIT_POST_APPROVAL } from '../../../../common/utils';
 import { convertToInvoiceLineFields } from '../../../utils';
 
-export const InvoiceLinePOLineNumber = ({ invoice, vendor, invoiceLine, poLineNumber, refreshData }) => {
+export const InvoiceLineOrderLineLink = ({ invoice, invoiceLine, vendor, refreshData }) => {
   const intl = useIntl();
   const showCallout = useShowCallout();
+  const [isLinking, toggleIsLinking] = useModalToggle();
 
   const { mutateInvoiceLine } = useInvoiceLineMutation();
 
-  const isPostApproval = IS_EDIT_POST_APPROVAL(invoiceLine.id, invoiceLine.invoiceLineStatus);
+  useEffect(() => {
+    if (invoiceLine) {
+      toggleIsLinking();
+    }
+  }, [invoiceLine, toggleIsLinking]);
 
-  const selectOrderLine = async ([orderLine]) => {
+  const linkOrderLine = async ([orderLine]) => {
     const invoiceLineUpdates = invoice.source === 'EDI'
       ? {
         description: orderLine.titleOrPackage,
@@ -47,48 +48,28 @@ export const InvoiceLinePOLineNumber = ({ invoice, vendor, invoiceLine, poLineNu
     await refreshData();
   };
 
-  // eslint-disable-next-line react/prop-types
-  const renderTrigger = ({ onClick, buttonRef }) => {
-    const triggerPlugin = e => {
-      e.stopPropagation();
-
-      onClick();
-    };
-
-    return (
-      <>
-        {!isPostApproval && (
-          <IconButton
-            onClick={triggerPlugin}
-            icon="link"
-            size="medium"
-            ref={buttonRef}
-          />
-        )}
-
-        {poLineNumber || <NoValue />}
-      </>
-    );
+  const cancelLinkOrderLine = () => {
+    toggleIsLinking();
   };
 
-  return (
+  return isLinking && (
     <Pluggable
-      addLines={selectOrderLine}
+      addLines={linkOrderLine}
       aria-haspopup="true"
       dataKey="find-po-line"
       isSingleSelect
       type="find-po-line"
-      renderTrigger={renderTrigger}
+      trigerless
+      onClose={cancelLinkOrderLine}
     >
       {intl.formatMessage({ id: 'ui-invoice.find-po-line-plugin-unavailable' })}
     </Pluggable>
   );
 };
 
-InvoiceLinePOLineNumber.propTypes = {
+InvoiceLineOrderLineLink.propTypes = {
   invoice: PropTypes.object.isRequired,
   vendor: PropTypes.object.isRequired,
   invoiceLine: PropTypes.object.isRequired,
-  poLineNumber: PropTypes.string,
   refreshData: PropTypes.func.isRequired,
 };
