@@ -1,0 +1,15 @@
+export const invoice = {
+  accountingCode: 'G64758-74834',
+  adjustments: [],
+  batchGroupId: 'cd592659-77aa-4eb3-ac34-c9a4657bb20f',
+  chkSubscriptionOverlap: true,
+  currency: 'USD',
+  exportToAccounting: true,
+  id: '2e5067cd-2dc8-4d99-900d-b4518bb6407f',
+  invoiceDate: '2021-06-08',
+  paymentMethod: 'Credit Card',
+  source: 'EDI',
+  status: 'Open',
+  vendorId: '11fb627a-cdf1-11e8-a8d5-f2801f1b9fd1',
+  vendorInvoiceNo: 'edi',
+};
