@@ -6,7 +6,7 @@ import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { InvoiceLineFormContainer } from '../InvoiceLineForm';
 
-const EditInvoiceLine = ({ match, history, location }) => {
+export const EditInvoiceLine = ({ match, history, location }) => {
   const showCallout = useShowCallout();
 
   const invoiceId = match.params.id;

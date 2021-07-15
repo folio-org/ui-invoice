@@ -63,7 +63,7 @@ const resultsFormatter = {
   ),
 };
 
-const InvoicesList = ({
+export const InvoicesList = ({
   history,
   isLoading,
   location,

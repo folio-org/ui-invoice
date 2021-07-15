@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import { InvoiceFormContainer } from '../InvoiceForm';
 
-const CreateInvoice = ({ history, location }) => {
+export const CreateInvoice = ({ history, location }) => {
   const closeForm = useCallback(
     (id) => {
       history.push({
