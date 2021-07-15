@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApprovedBy should display no value when no approved 1`] = `
+<DocumentFragment>
+  <div
+    class="kvRoot"
+  >
+    <div
+      class="kvLabel"
+    >
+      ui-invoice.invoice.approvedBy
+    </div>
+    <div
+      class="kvValue"
+      data-test-kv-value="true"
+    >
+      <span
+        aria-label="stripes-components.noValue.noValueSet"
+        data-test-no-value="true"
+      >
+        -
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ApprovedBy should display user full name when approver defined 1`] = `
+<DocumentFragment>
+  <div
+    class="kvRoot"
+  >
+    <div
+      class="kvLabel"
+    >
+      ui-invoice.invoice.approvedBy
+    </div>
+    <div
+      class="kvValue"
+      data-test-kv-value="true"
+    >
+      getUserName util
+    </div>
+  </div>
+</DocumentFragment>
+`;

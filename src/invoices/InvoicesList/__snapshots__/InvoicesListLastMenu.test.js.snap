@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrganizationsListLastMenu should render correct structure 1`] = `
+<DocumentFragment>
+  <div
+    class="paneMenu"
+  >
+    <a
+      aria-label="stripes-smart-components.addNew"
+      class="button primary marginBottom0"
+      href="/invoice/create?search"
+      id="clickable-newInvoice"
+      role="button"
+    >
+      stripes-smart-components.new
+    </a>
+  </div>
+</DocumentFragment>
+`;

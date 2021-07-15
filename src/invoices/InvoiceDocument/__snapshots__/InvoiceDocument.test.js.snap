@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InvoiceDocument should display document name as a button when document can be dowloaded 1`] = `
+<DocumentFragment>
+  <button
+    class="invoiceDocumentButton"
+    type="button"
+  >
+    Invoice Document
+  </button>
+</DocumentFragment>
+`;
+
+exports[`InvoiceDocument should display document name as a text when document can not be downloaded 1`] = `
+<DocumentFragment>
+  <span>
+    Invoice Document
+  </span>
+</DocumentFragment>
+`;
