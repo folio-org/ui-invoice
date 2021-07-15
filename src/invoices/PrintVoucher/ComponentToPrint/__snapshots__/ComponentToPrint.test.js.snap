@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PrintVoucher -> ComponentToPrint should render correct structure 1`] = `
+<DocumentFragment>
+  <div
+    class="row"
+  >
+    <div
+      class="col-xs-6"
+    >
+      <label
+        class="label"
+      >
+        ui-invoice.voucher.print.voucher
+      </label>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.settings.batchGroups.labelSingular
+        </span>
+        : Amherst College (AC)
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.voucher.voucherDate
+        </span>
+        : 2019-12-06
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.voucher.voucherNumber
+        </span>
+        : 1023
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.voucher.status
+        </span>
+        : ui-invoice.voucher.status.paid
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.voucher.accountingCode
+        </span>
+        : 0206
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.vendor.name
+        </span>
+        : Amazon
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.vendor.code
+        </span>
+        : AMZ
+      </div>
+    </div>
+    <div
+      class="col-xs-6"
+    >
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.voucher.accountNo
+        </span>
+        : 
+        <span
+          aria-label="stripes-components.noValue.noValueSet"
+          data-test-no-value="true"
+        >
+          -
+        </span>
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.vendorInvoiceNo
+        </span>
+        : edi
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.information.invoiceDate
+        </span>
+        : 2021-06-08
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.voucher.print.invoiceTotal
+        </span>
+        : 
+        <span
+          aria-label="stripes-components.noValue.noValueSet"
+          data-test-no-value="true"
+        >
+          -
+        </span>
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.currency
+        </span>
+        : USD
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.invoice.details.voucher.exchangeRate
+        </span>
+        : 1
+      </div>
+      <div>
+        <span
+          class="label inlineLabel"
+        >
+          ui-invoice.voucher.print.voucherTotal
+        </span>
+        : $23.45
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      class="row"
+    >
+      <div
+        class="col-xs-12"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-invoice.voucher.print.lineNumber
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          >
+            1
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="voucherLineBlock row"
+    >
+      <div
+        class="col-xs-3"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-invoice.voucher.voucherLines.fundCode
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          />
+        </div>
+      </div>
+      <div
+        class="col-xs-3"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-invoice.voucher.voucherLines.externalAccountNumber
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          >
+            54321098
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xs-3"
+      >
+        <div
+          class="kvRoot"
+        >
+          <div
+            class="kvLabel"
+          >
+            ui-invoice.voucher.voucherLines.amount
+          </div>
+          <div
+            class="kvValue"
+            data-test-kv-value="true"
+          >
+            $23.45
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
