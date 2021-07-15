@@ -45,8 +45,6 @@ export const VoucherInformationContainer = ({ invoiceId, mutator, resources, loc
     mutator.voucher.GET().then(response => {
       const voucherId = get(response, '0.id');
 
-      console.log(response, voucherId)
-
       if (voucherId) {
         mutator.voucherLines.GET({
           params: {

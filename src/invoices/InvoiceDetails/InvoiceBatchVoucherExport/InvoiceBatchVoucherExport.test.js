@@ -9,6 +9,7 @@ jest.mock(
   '../../../settings/BatchGroupConfigurationSettings/ExportVoucherButton',
   () => jest.fn(() => 'ExportVoucherButton'),
 );
+jest.mock('../BatchGroupValue', () => jest.fn(() => 'BatchGroupValue'));
 
 const defaultProps = {
   batchVoucherExport,

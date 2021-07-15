@@ -12,7 +12,7 @@ import {
 
 import { batchGroupByPropResource } from '../../../common/resources';
 
-const BatchGroupValue = ({ id, label, mutator }) => {
+export const BatchGroupValue = ({ id, label, mutator }) => {
   const [batchGroup, setBatchGroup] = useState();
 
   useEffect(

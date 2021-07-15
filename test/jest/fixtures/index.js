@@ -1,4 +1,5 @@
 export * from './adjustment';
+export * from './batchGroup';
 export * from './batchVoucher';
 export * from './batchVoucherExport';
 export * from './batchVoucherLine';

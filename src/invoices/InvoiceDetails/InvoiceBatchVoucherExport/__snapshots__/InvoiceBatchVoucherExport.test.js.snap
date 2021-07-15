@@ -8,20 +8,7 @@ exports[`InvoiceBatchVoucherExport should render correct structure for invoice b
     <div
       class="col-xs-4"
     >
-      <div
-        class="spinner"
-        style="width: 30px; height: 15px;"
-      >
-        <div
-          class="bounce1"
-        />
-        <div
-          class="bounce2"
-        />
-        <div
-          class="bounce3"
-        />
-      </div>
+      BatchGroupValue
     </div>
     <div
       class="col-xs-4"

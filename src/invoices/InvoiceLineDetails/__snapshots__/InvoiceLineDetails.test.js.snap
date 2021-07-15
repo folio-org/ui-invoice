@@ -268,7 +268,9 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
                 data-test-accordion-wrapper="true"
                 id="accordion2"
                 role="region"
-              />
+              >
+                FundDistributionView
+              </div>
             </div>
           </section>
           <section

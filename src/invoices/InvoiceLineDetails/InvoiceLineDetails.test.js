@@ -19,12 +19,10 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
 }));
-// jest.mock('@folio/stripes-acq-components', () => ({
-//   ...jest.requireActual('@folio/stripes-acq-components'),
-//   FundDistributionView: jest.fn(() => 'FundDistributionView'),
-//   TagsPane: jest.fn(() => 'TagsPane'),
-//   useAcqRestrictions: jest.fn().mockReturnValue({ restrictions: {} }),
-// }));
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  FundDistributionView: jest.fn(() => 'FundDistributionView'),
+}));
 
 jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsDetails'));
 
