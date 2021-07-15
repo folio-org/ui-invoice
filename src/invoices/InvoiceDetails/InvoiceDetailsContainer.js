@@ -34,7 +34,7 @@ import {
   showUpdateInvoiceError,
 } from './utils';
 
-function InvoiceDetailsContainer({
+export function InvoiceDetailsContainer({
   match: { url },
   match: { params: { id } },
   history,
