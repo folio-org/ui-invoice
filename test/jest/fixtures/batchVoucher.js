@@ -1,5 +1,7 @@
 export const batchVoucher = {
   id: 'sdfd-sdsf34a-233dsa',
+  batchGroupId: 'batchGroupId',
+  vendorId: 'vendorId',
   accountingCode: '0206',
   amount: 23.45,
   disbursementNumber: 'EFT546789',
