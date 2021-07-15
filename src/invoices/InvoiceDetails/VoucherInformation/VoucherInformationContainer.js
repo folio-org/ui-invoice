@@ -20,7 +20,7 @@ import {
 import { SECTIONS_INVOICE } from '../../constants';
 import VoucherInformation from './VoucherInformation';
 
-const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }) => {
+export const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }) => {
   const voucher = get(resources, ['voucher', 'records', 0], {});
   const voucherLines = get(resources, ['voucherLines', 'records'], []);
   const isLoading = !get(resources, ['voucher', 'hasLoaded']);
@@ -44,6 +44,8 @@ const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }
     mutator.voucherLines.reset();
     mutator.voucher.GET().then(response => {
       const voucherId = get(response, '0.id');
+
+      console.log(response, voucherId)
 
       if (voucherId) {
         mutator.voucherLines.GET({
