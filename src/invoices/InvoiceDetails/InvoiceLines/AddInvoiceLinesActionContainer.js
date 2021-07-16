@@ -28,8 +28,6 @@ export const AddInvoiceLinesActionContainerComponent = ({
       try {
         const ordersResponse = await batchFetch(mutator.orders, ordersIds);
 
-        console.log(ordersResponse)
-
         vendorsIds = ordersResponse.map(({ vendor }) => vendor);
       } catch (e) {
         showCallout({ messageId: 'ui-invoice.invoice.actions.addLine.vendorLoadError', type: 'error' });
