@@ -18,7 +18,7 @@ import {
 import { PO_LINES_API } from '../../common/constants';
 import InvoiceLineDetails from './InvoiceLineDetails';
 
-const InvoiceLineDetailsContainer = ({
+export const InvoiceLineDetailsContainerComponent = ({
   history,
   location,
   match: { params },
@@ -134,7 +134,7 @@ const InvoiceLineDetailsContainer = ({
   );
 };
 
-InvoiceLineDetailsContainer.manifest = Object.freeze({
+InvoiceLineDetailsContainerComponent.manifest = Object.freeze({
   invoiceLine: {
     ...invoiceLineResource,
     accumulate: true,
@@ -153,11 +153,11 @@ InvoiceLineDetailsContainer.manifest = Object.freeze({
   },
 });
 
-InvoiceLineDetailsContainer.propTypes = {
+InvoiceLineDetailsContainerComponent.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
   mutator: PropTypes.object.isRequired,
 };
 
-export default stripesConnect(InvoiceLineDetailsContainer);
+export default stripesConnect(InvoiceLineDetailsContainerComponent);
