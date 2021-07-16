@@ -5,7 +5,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 
 import InvoiceLines from './InvoiceLines';
 
-const InvoiceLinesContainer = ({
+export const InvoiceLinesContainerComponent = ({
   invoiceLines,
   invoice,
   vendor,
@@ -39,7 +39,7 @@ const InvoiceLinesContainer = ({
   );
 };
 
-InvoiceLinesContainer.propTypes = {
+InvoiceLinesContainerComponent.propTypes = {
   invoice: PropTypes.object.isRequired,
   vendor: PropTypes.object.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
@@ -49,8 +49,8 @@ InvoiceLinesContainer.propTypes = {
   refreshData: PropTypes.func.isRequired,
 };
 
-InvoiceLinesContainer.defaultProps = {
+InvoiceLinesContainerComponent.defaultProps = {
   invoiceLines: [],
 };
 
-export default withRouter(InvoiceLinesContainer);
+export default withRouter(InvoiceLinesContainerComponent);

@@ -2,7 +2,7 @@ export const batchVoucherLine = {
   id: 'batchVoucherLineId',
   amount: 23.45,
   externalAccountNumber: '54321098',
-  fundCodes: [
+  fundDistributions: [
     'HIST',
     'LATHIST',
     'CANHIST',

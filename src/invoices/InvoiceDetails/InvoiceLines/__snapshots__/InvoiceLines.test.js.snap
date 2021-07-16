@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InvoiceLines should render correct structure 1`] = `
+<DocumentFragment>
+  <div
+    class="invoiceLinesTotal"
+  >
+    ui-invoice.invoiceLine.total
+  </div>
+  <div
+    aria-live="assertive"
+    aria-relevant="additions"
+    class="sr-only"
+    tabindex="-1"
+  />
+  <div
+    aria-rowcount="2"
+    class="mclContainer"
+    data-total-count="0"
+    id="invoice-lines-list"
+    role="grid"
+    style="position: relative; overflow: hidden; height: auto; width: 100%;"
+    tabindex="0"
+  >
+    <div
+      class="mclHeaderContainer"
+    >
+      <div
+        aria-rowindex="1"
+        class="mclHeaderRow"
+        role="row"
+        style="display: flex;"
+      >
+        <div
+          aria-sort="ascending"
+          class="mclHeader mclClickable mclSorted mclAscending"
+          id="list-column-linenumber"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          <div
+            class="mclHeaderOuter"
+            data-test-clickable-header="true"
+            id="clickable-list-column-linenumber"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="mclHeaderInner"
+            >
+              <div
+                style="max-width: calc(100%-15px);"
+              >
+                ui-invoice.invoice.details.lines.list.lineNumber
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-polnumber"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.polNumber
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-description"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.description
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-fundcode"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.fundCode
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-quantity"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.quantity
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-subtotal"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.subTotal
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-adjustmentstotal"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.adjustments
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-total"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.total
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-vendorrefno"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.vendorRefNumber
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-arrow"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        />
+      </div>
+    </div>
+    <div
+      class="mclScrollable"
+      style="position: static; width: 100%;"
+    >
+      <div
+        class="mclRowContainer"
+        role="rowgroup"
+        style="position: static;"
+      >
+        <div
+          aria-rowindex="2"
+          class="mclRowFormatterContainer"
+          data-row-index="row-0"
+          role="row"
+          style="position: static;"
+        >
+          <div
+            aria-label="[object Object]: null...[object Object]: null...[object Object]: EDI import invoice line...[object Object]: null...[object Object]: 20...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...null: null"
+            class="mclRow mclIsOdd mclIsInteractive alignLastColToEnd"
+            data-row-inner="0"
+            style="min-width: 0px;"
+            tabindex="0"
+          >
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            />
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              InvoiceLineOrderLineNumber
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              EDI import invoice line
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              20
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              $1,523.00
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              <span
+                data-testid="arrow-0"
+              >
+                Icon
+              </span>
+            </div>
+          </div>
+        </div>
+        <div
+          class="mclEndOfListContainer"
+          data-end-of-list="1"
+        >
+          <div
+            class="mclCenteredContainer"
+            style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+          >
+            <div
+              class="textCentered"
+              data-test-layout="true"
+            >
+              <div
+                class="mclEndOfList"
+                data-test-layout="true"
+              >
+                <span>
+                  Icon
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="textCentered noPaddingBottom"
+    data-test-layout="true"
+  >
+    <div
+      class="mclEndOfList"
+      data-test-layout="true"
+    >
+      <span>
+        Icon
+      </span>
+    </div>
+  </div>
+  InvoiceLineOrderLineLink
+</DocumentFragment>
+`;
