@@ -13,7 +13,9 @@ import {
 import { ordersResource } from '../../../common/resources';
 import AddInvoiceLinesAction from './AddInvoiceLinesAction';
 
-const AddInvoiceLinesActionContainer = ({ addLines, isDisabled, invoiceCurrency, invoiceVendorId, mutator }) => {
+export const AddInvoiceLinesActionContainerComponent = ({
+  addLines, isDisabled, invoiceCurrency, invoiceVendorId, mutator,
+}) => {
   const [isCurrencyConfirmation, toggleCurrencyConfirmation] = useModalToggle();
   const [isVendorConfirmation, toggleVendorConfirmation] = useModalToggle();
   const [poLines, setPoLines] = useState();
@@ -25,6 +27,8 @@ const AddInvoiceLinesActionContainer = ({ addLines, isDisabled, invoiceCurrency,
 
       try {
         const ordersResponse = await batchFetch(mutator.orders, ordersIds);
+
+        console.log(ordersResponse)
 
         vendorsIds = ordersResponse.map(({ vendor }) => vendor);
       } catch (e) {
@@ -113,11 +117,11 @@ const AddInvoiceLinesActionContainer = ({ addLines, isDisabled, invoiceCurrency,
   );
 };
 
-AddInvoiceLinesActionContainer.manifest = Object.freeze({
+AddInvoiceLinesActionContainerComponent.manifest = Object.freeze({
   orders: ordersResource,
 });
 
-AddInvoiceLinesActionContainer.propTypes = {
+AddInvoiceLinesActionContainerComponent.propTypes = {
   addLines: PropTypes.func.isRequired,
   invoiceCurrency: PropTypes.string.isRequired,
   invoiceVendorId: PropTypes.string.isRequired,
@@ -125,8 +129,8 @@ AddInvoiceLinesActionContainer.propTypes = {
   isDisabled: PropTypes.bool,
 };
 
-AddInvoiceLinesActionContainer.defaultProps = {
+AddInvoiceLinesActionContainerComponent.defaultProps = {
   isDisabled: false,
 };
 
-export default stripesConnect(AddInvoiceLinesActionContainer);
+export default stripesConnect(AddInvoiceLinesActionContainerComponent);
