@@ -137,7 +137,7 @@ describe('InvoiceLineDetailsContainer', () => {
 
       act(() => {
         InvoiceLineDetails.mock.calls[0][0].deleteInvoiceLine();
-      })
+      });
 
       expect(mutatorMock.invoiceLine.DELETE).toHaveBeenCalled();
     });
