@@ -8,7 +8,7 @@ import {
 
 import { invoice, history, location } from '../../../test/jest/fixtures';
 
-import { InvoicesList } from './InvoicesList';
+import { InvoicesListComponent } from './InvoicesList';
 
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
@@ -44,7 +44,7 @@ const defaultProps = {
   history: historyMock,
 };
 const renderInvoicesList = (props = defaultProps) => (render(
-  <InvoicesList {...props} />,
+  <InvoicesListComponent {...props} />,
   { wrapper: MemoryRouter },
 ));
 

@@ -63,7 +63,7 @@ const resultsFormatter = {
   ),
 };
 
-export const InvoicesList = ({
+export const InvoicesListComponent = ({
   history,
   isLoading,
   location,
@@ -214,7 +214,7 @@ export const InvoicesList = ({
   );
 };
 
-InvoicesList.propTypes = {
+InvoicesListComponent.propTypes = {
   onNeedMoreData: PropTypes.func.isRequired,
   resetData: PropTypes.func.isRequired,
   invoicesCount: PropTypes.number,
@@ -225,10 +225,10 @@ InvoicesList.propTypes = {
   refreshList: PropTypes.func.isRequired,
 };
 
-InvoicesList.defaultProps = {
+InvoicesListComponent.defaultProps = {
   invoicesCount: 0,
   isLoading: false,
   invoices: [],
 };
 
-export default withRouter(InvoicesList);
+export default withRouter(InvoicesListComponent);
