@@ -214,7 +214,8 @@ export function InvoiceDetailsContainer({
   const deleteInvoice = useCallback(
     () => {
       setIsLoading(true);
-      mutator.invoice.DELETE({ id }, { silent: true })
+
+      return mutator.invoice.DELETE({ id }, { silent: true })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.invoiceHasBeenDeleted' });
           refreshList();
@@ -242,7 +243,8 @@ export function InvoiceDetailsContainer({
       const approvedInvoice = { ...invoice, status: INVOICE_STATUS.approved };
 
       setIsLoading(true);
-      mutateInvoice(approvedInvoice)
+
+      return mutateInvoice(approvedInvoice)
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' });
           refreshList();
@@ -268,7 +270,8 @@ export function InvoiceDetailsContainer({
       const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
 
       setIsLoading(true);
-      mutateInvoice(paidInvoice)
+
+      return mutateInvoice(paidInvoice)
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
           refreshList();
@@ -290,7 +293,8 @@ export function InvoiceDetailsContainer({
   const approveAndPayInvoice = useCallback(
     () => {
       setIsLoading(true);
-      mutateInvoice({ ...invoice, status: INVOICE_STATUS.approved })
+
+      return mutateInvoice({ ...invoice, status: INVOICE_STATUS.approved })
         .then(() => mutator.invoice.GET())
         .then(invoiceResponse => {
           return mutateInvoice({ ...invoiceResponse, status: INVOICE_STATUS.paid });
