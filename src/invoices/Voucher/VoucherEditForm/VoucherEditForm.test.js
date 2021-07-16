@@ -1,6 +1,5 @@
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
-import { queryHelpers } from '@testing-library/dom';
+import { render, screen } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';

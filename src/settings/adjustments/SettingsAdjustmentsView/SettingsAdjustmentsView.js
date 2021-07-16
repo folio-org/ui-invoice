@@ -63,6 +63,7 @@ class SettingsAdjustmentsView extends Component {
           </Icon>
         </Button>
         <Button
+          data-testid="adjustment-delete"
           data-test-view-adjustment-action-delete
           buttonStyle="dropdownItem"
           onClick={() => {
