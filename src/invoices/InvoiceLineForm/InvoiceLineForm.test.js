@@ -10,7 +10,8 @@ import {
   collapseAllSections,
 } from '@folio/stripes/components';
 
-import InvoiceForm from './InvoiceForm';
+import { invoice, invoiceLine } from '../../../test/jest/fixtures';
+import InvoiceLineForm from './InvoiceLineForm';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -21,37 +22,24 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
 }));
-jest.mock('@folio/stripes-acq-components/lib/AcqUnits/AcqUnitsField', () => {
-  return () => <span>AcqUnitsField</span>;
-});
 jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
 });
+jest.mock('./POLineField', () => ({ POLineField: jest.fn(() => 'POLineField') }));
 
 const defaultProps = {
-  initialValues: {},
-  batchGroups: [],
-  parentResources: {},
+  initialValues: invoiceLine,
+  invoice,
   onCancel: jest.fn(),
+  onSubmit: jest.fn(),
+  vendorCode: 'edi',
 };
-const renderInvoiceForm = (props = defaultProps) => (render(
-  <MemoryRouter>
-    <Form
-      onSubmit={jest.fn()}
-      render={() => (
-        <InvoiceForm
-          form={{}}
-          onSubmit={jest.fn()}
-          pristine={false}
-          submitting={false}
-          {...props}
-        />
-      )}
-    />
-  </MemoryRouter>,
-));
+const renderInvoiceLineForm = (props = defaultProps) => render(
+  <InvoiceLineForm {...props} />,
+  { wrapper: MemoryRouter },
+);
 
-describe('InvoiceForm component', () => {
+describe('InvoiceLineForm component', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
   });
@@ -61,57 +49,9 @@ describe('InvoiceForm component', () => {
   });
 
   it('should render correct structure', () => {
-    const { asFragment } = renderInvoiceForm();
+    const { asFragment } = renderInvoiceLineForm();
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('should display title', () => {
-    const { getByText } = renderInvoiceForm();
-
-    expect(getByText('ui-invoice.invoice.paneTitle.create')).toBeDefined();
-  });
-
-  it('should display pane footer', () => {
-    const { getByText } = renderInvoiceForm();
-
-    expect(getByText('stripes-acq-components.FormFooter.cancel')).toBeDefined();
-    expect(getByText('ui-invoice.saveAndClose')).toBeDefined();
-  });
-
-  it('should uncheck lock-total initially', () => {
-    const { getByTestId } = renderInvoiceForm();
-
-    expect(getByTestId('lock-total').checked).toEqual(false);
-  });
-
-  describe('When lock total is unchecked', () => {
-    it('then lock total amount is readonly', () => {
-      const { getByTestId } = renderInvoiceForm();
-
-      expect(getByTestId('lock-total-amount')).toHaveAttribute('readonly');
-    });
-  });
-
-  describe('When lock total is checked', () => {
-    it('then lock total amount field should become editable', async () => {
-      let getByTestId;
-
-      await act(async () => {
-        const renderer = await renderInvoiceForm();
-
-        getByTestId = renderer.getByTestId;
-      });
-
-      const lockTotal = getByTestId('lock-total');
-
-      fireEvent(lockTotal, new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-      }));
-
-      expect(getByTestId('lock-total-amount')).not.toHaveAttribute('readonly');
-    });
   });
 
   describe('Shortcuts', () => {
@@ -122,7 +62,7 @@ describe('InvoiceForm component', () => {
     });
 
     it('should call expandAllSections when expandAllSections shortcut is called', async () => {
-      renderInvoiceForm();
+      renderInvoiceLineForm();
 
       act(() => {
         HasCommand.mock.calls[0][0].commands.find(c => c.name === 'expandAllSections').handler();
@@ -132,7 +72,7 @@ describe('InvoiceForm component', () => {
     });
 
     it('should call collapseAllSections when collapseAllSections shortcut is called', () => {
-      renderInvoiceForm();
+      renderInvoiceLineForm();
 
       act(() => {
         HasCommand.mock.calls[0][0].commands.find(c => c.name === 'collapseAllSections').handler();
@@ -148,7 +88,7 @@ describe('InvoiceForm component', () => {
         push: pushMock,
       });
 
-      renderInvoiceForm();
+      renderInvoiceLineForm();
       HasCommand.mock.calls[0][0].commands.find(c => c.name === 'search').handler();
 
       expect(pushMock).toHaveBeenCalledWith('/invoice');
@@ -157,7 +97,7 @@ describe('InvoiceForm component', () => {
     it('should navigate close form when cancel shortcut is called', () => {
       const onCancel = jest.fn();
 
-      renderInvoiceForm({ ...defaultProps, onCancel });
+      renderInvoiceLineForm({ ...defaultProps, onCancel });
       HasCommand.mock.calls[0][0].commands.find(c => c.name === 'cancel').handler();
 
       expect(onCancel).toHaveBeenCalled();

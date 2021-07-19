@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InvoiceForm component should render correct structure for invoice with batch voucher 1`] = `
+exports[`InvoiceForm component should render correct structure 1`] = `
 <DocumentFragment>
   <form
     style="height: 100vh;"
