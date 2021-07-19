@@ -1,7 +1,6 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { Form } from 'react-final-form';
-import { act, render, fireEvent } from '@testing-library/react';
+import { act, render } from '@testing-library/react';
 import { useHistory } from 'react-router';
 
 import {
