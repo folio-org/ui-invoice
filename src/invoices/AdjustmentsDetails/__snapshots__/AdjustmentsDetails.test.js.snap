@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AdjustmentsDetails should display adjustments table 1`] = `
+<DocumentFragment>
+  <div
+    class="row"
+  >
+    <div
+      class="col-xs-12"
+    >
+      <div
+        aria-live="assertive"
+        aria-relevant="additions"
+        class="sr-only"
+        tabindex="-1"
+      />
+      <div
+        aria-rowcount="3"
+        class="mclContainer"
+        data-total-count="0"
+        id="invoice-lines-adjustments-list"
+        role="grid"
+        style="position: relative; overflow: hidden; height: auto; width: 100%;"
+        tabindex="0"
+      >
+        <div
+          class="mclHeaderContainer"
+        >
+          <div
+            aria-rowindex="1"
+            class="mclHeaderRow"
+            role="row"
+            style="display: flex;"
+          >
+            <div
+              aria-sort="ascending"
+              class="mclHeader mclClickable mclSorted mclAscending"
+              id="list-column-description"
+              role="columnheader"
+              style="flex: 0 0 auto;"
+            >
+              <div
+                class="mclHeaderOuter"
+                data-test-clickable-header="true"
+                id="clickable-list-column-description"
+                role="button"
+                tabindex="0"
+              >
+                <div
+                  class="mclHeaderInner"
+                >
+                  <div
+                    style="max-width: calc(100%-15px);"
+                  >
+                    ui-invoice.adjustment.description
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-sort="none"
+              class="mclHeader"
+              id="list-column-value"
+              role="columnheader"
+              style="flex: 0 0 auto;"
+            >
+              ui-invoice.adjustment.amount
+            </div>
+            <div
+              aria-sort="none"
+              class="mclHeader"
+              id="list-column-prorate"
+              role="columnheader"
+              style="flex: 0 0 auto;"
+            >
+              ui-invoice.settings.adjustments.prorate
+            </div>
+            <div
+              aria-sort="none"
+              class="mclHeader"
+              id="list-column-relationtototal"
+              role="columnheader"
+              style="flex: 0 0 auto;"
+            >
+              ui-invoice.settings.adjustments.relationToTotal
+            </div>
+          </div>
+        </div>
+        <div
+          class="mclScrollable"
+          style="position: static; width: 100%;"
+        >
+          <div
+            class="mclRowContainer"
+            role="rowgroup"
+            style="position: static;"
+          >
+            <div
+              aria-rowindex="2"
+              class="mclRowFormatterContainer"
+              data-row-index="row-0"
+              role="row"
+              style="position: static;"
+            >
+              <div
+                aria-label="[object Object]: undefined...[object Object]: null...[object Object]: undefined...[object Object]: null"
+                class="mclRow mclIsOdd"
+                data-row-inner="0"
+                style="min-width: 0px;"
+                tabindex="0"
+              >
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                />
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  $25.50
+                </div>
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                />
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  ui-invoice.adjustments.relationToTotal.inAdditionTo
+                </div>
+              </div>
+            </div>
+            <div
+              aria-rowindex="3"
+              class="mclRowFormatterContainer"
+              data-row-index="row-1"
+              role="row"
+              style="position: static;"
+            >
+              <div
+                aria-label="[object Object]: undefined...[object Object]: 25.5%...[object Object]: undefined...[object Object]: null"
+                class="mclRow"
+                data-row-inner="1"
+                style="min-width: 0px;"
+                tabindex="0"
+              >
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                />
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  25.5%
+                </div>
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                />
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  ui-invoice.adjustments.relationToTotal.inAdditionTo
+                </div>
+              </div>
+            </div>
+            <div
+              class="mclEndOfListContainer"
+              data-end-of-list="2"
+            >
+              <div
+                class="mclCenteredContainer"
+                style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+              >
+                <div
+                  class="textCentered"
+                  data-test-layout="true"
+                >
+                  <div
+                    class="mclEndOfList"
+                    data-test-layout="true"
+                  >
+                    <span>
+                      Icon
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="textCentered noPaddingBottom"
+        data-test-layout="true"
+      >
+        <div
+          class="mclEndOfList"
+          data-test-layout="true"
+        >
+          <span>
+            Icon
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

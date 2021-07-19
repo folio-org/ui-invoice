@@ -19,7 +19,7 @@ import {
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
 import InvoiceLineForm from './InvoiceLineForm';
 
-function InvoiceLineFormContainer({
+export function InvoiceLineFormContainerComponent({
   match: { params: { id, lineId } },
   onClose,
   mutator,
@@ -130,7 +130,7 @@ function InvoiceLineFormContainer({
   );
 }
 
-InvoiceLineFormContainer.manifest = Object.freeze({
+InvoiceLineFormContainerComponent.manifest = Object.freeze({
   invoice: {
     ...invoiceResource,
     accumulate: true,
@@ -149,7 +149,7 @@ InvoiceLineFormContainer.manifest = Object.freeze({
   configAdjustments: CONFIG_ADJUSTMENTS,
 });
 
-InvoiceLineFormContainer.propTypes = {
+InvoiceLineFormContainerComponent.propTypes = {
   onClose: PropTypes.func.isRequired,
   resources: PropTypes.object.isRequired,
   showCallout: PropTypes.func.isRequired,
@@ -157,4 +157,4 @@ InvoiceLineFormContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
 };
 
-export default withRouter(stripesConnect(InvoiceLineFormContainer));
+export default withRouter(stripesConnect(InvoiceLineFormContainerComponent));

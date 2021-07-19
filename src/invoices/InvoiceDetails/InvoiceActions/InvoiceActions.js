@@ -35,6 +35,7 @@ const InvoiceActions = ({
       <IfPermission perm="invoice.invoices.item.put">
         <Button
           buttonStyle="dropdownItem"
+          data-testid="invoice-edit"
           data-test-button-edit-invoice
           disabled={isEditDisabled}
           onClick={onEdit}
@@ -48,6 +49,7 @@ const InvoiceActions = ({
         !isApprovePayEnabled && invoiceLinesCount > 0 && isPayable(invoice.status) && (
           <IfPermission perm="invoice.item.pay">
             <Button
+              data-testid="invoice-pay"
               data-test-invoice-action-pay
               buttonStyle="dropdownItem"
               onClick={onPay}
@@ -61,6 +63,7 @@ const InvoiceActions = ({
         !isApprovePayEnabled && invoiceLinesCount > 0 && !IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) && (
           <IfPermission perm="invoice.item.approve">
             <Button
+              data-testid="invoice-approve"
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApprove}
@@ -77,6 +80,7 @@ const InvoiceActions = ({
         && (
           <IfPermission perm="invoice.item.approve,invoice.item.pay">
             <Button
+              data-testid="invoice-approve-pay"
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApproveAndPay}
@@ -104,6 +108,7 @@ const InvoiceActions = ({
       }
       {onPrint && (
         <Button
+          data-testid="invoice-print"
           buttonStyle="dropdownItem"
           onClick={onPrint}
         >

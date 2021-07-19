@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
+import { get, noop } from 'lodash';
 import moment from 'moment';
 
 import { LoadingPane } from '@folio/stripes/components';
@@ -94,7 +94,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
     () => {
       setBatchVoucherExports([]);
       setRecordsOffset(0);
-      fetchBatchVoucherExports(selectedBatchGroupId, 0);
+      fetchBatchVoucherExports(selectedBatchGroupId, 0).catch(noop);
     },
     [selectedBatchGroupId, fetchBatchVoucherExports],
   );
@@ -155,7 +155,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
         || batchGroups.find(({ id }) => id === selectedBatchGroupId)?.metadata?.createdDate
         || moment(0).tz('UTC').format(DATE_FORMAT);
 
-      createManualVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId, start)
+      return createManualVoucherExport(mutator.batchVoucherExports, selectedBatchGroupId, start)
         .then(({ id }) => {
           refreshList();
 
@@ -193,7 +193,7 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
 
   const onSave = useCallback(
     (formValues) => {
-      saveExportConfig(formValues, mutator, credentials)
+      return saveExportConfig(formValues, mutator, credentials)
         .then(() => {
           fetchExportConfig(selectedBatchGroupId);
           showCallout({

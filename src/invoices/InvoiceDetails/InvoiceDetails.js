@@ -50,6 +50,7 @@ import DocumentsDetails from './DocumentsDetails';
 import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
 import ApproveConfirmationModal from './ApproveConfirmationModal';
 import ExtendedInformation from './ExtendedInformation';
+
 import styles from './InvoiceDetails.css';
 
 const initalAccordionsStatus = {

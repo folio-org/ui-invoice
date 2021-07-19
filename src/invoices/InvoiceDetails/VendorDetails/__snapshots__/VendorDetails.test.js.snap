@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VendorDetails should render correct structure for invoice vendor details 1`] = `
+<DocumentFragment>
+  <div
+    class="row"
+  >
+    <div
+      class="col-xs-3"
+    >
+      <div
+        class="kvRoot"
+      >
+        <div
+          class="kvLabel"
+        >
+          ui-invoice.invoice.details.vendor.vendorInvoiceNo
+        </div>
+        <div
+          class="kvValue"
+          data-test-kv-value="true"
+        >
+          edi
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-xs-3"
+    >
+      11fb627a-cdf1-11e8-a8d5-f2801f1b9fd1
+    </div>
+    <div
+      class="col-xs-3"
+    >
+      <div
+        class="kvRoot"
+      >
+        <div
+          class="kvLabel"
+        >
+          ui-invoice.invoice.accountingCode
+        </div>
+        <div
+          class="kvValue"
+          data-test-kv-value="true"
+        >
+          G64758-74834
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -5,7 +5,7 @@ import { getMoneyMultiplier } from '@folio/stripes-acq-components';
 import {
   ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
-} from '../constants';
+} from '../../constants';
 
 export const calculateAdjustmentAmount = (adjustment, invoiceSubTotal, currency) => {
   const multiplier = getMoneyMultiplier(currency);

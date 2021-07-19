@@ -21,7 +21,7 @@ import {
 } from '../../../common/resources';
 import VoucherEditForm from './VoucherEditForm';
 
-const VoucherEditContainer = ({
+export const VoucherEditContainerComponent = ({
   match: { params },
   mutator,
   history,
@@ -96,7 +96,7 @@ const VoucherEditContainer = ({
   );
 };
 
-VoucherEditContainer.manifest = Object.freeze({
+VoucherEditContainerComponent.manifest = Object.freeze({
   voucher: {
     ...VOUCHER_BY_ID,
     accumulate: true,
@@ -111,11 +111,11 @@ VoucherEditContainer.manifest = Object.freeze({
   },
 });
 
-VoucherEditContainer.propTypes = {
+VoucherEditContainerComponent.propTypes = {
   match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,
   history: ReactRouterPropTypes.history,
   location: ReactRouterPropTypes.location,
 };
 
-export default withRouter(stripesConnect(VoucherEditContainer));
+export default withRouter(stripesConnect(VoucherEditContainerComponent));

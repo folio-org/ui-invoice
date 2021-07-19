@@ -20,7 +20,7 @@ import {
 import { SECTIONS_INVOICE } from '../../constants';
 import VoucherInformation from './VoucherInformation';
 
-const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }) => {
+export const VoucherInformationContainer = ({ invoiceId, mutator, resources, location }) => {
   const voucher = get(resources, ['voucher', 'records', 0], {});
   const voucherLines = get(resources, ['voucherLines', 'records'], []);
   const isLoading = !get(resources, ['voucher', 'hasLoaded']);

@@ -40,7 +40,7 @@ import {
 } from './utils';
 import DuplicateInvoiceModal from './DuplicateInvoiceModal/DuplicateInvoiceModal';
 
-function InvoiceFormContainer({
+export function InvoiceFormContainerComponent({
   match,
   mutator,
   okapi,
@@ -171,7 +171,7 @@ function InvoiceFormContainer({
   );
 }
 
-InvoiceFormContainer.manifest = Object.freeze({
+InvoiceFormContainerComponent.manifest = Object.freeze({
   invoice: invoiceResource,
   invoiceFormDocuments: {
     ...invoiceDocumentsResource,
@@ -193,7 +193,7 @@ InvoiceFormContainer.manifest = Object.freeze({
   batchGroups: batchGroupsResource,
 });
 
-InvoiceFormContainer.propTypes = {
+InvoiceFormContainerComponent.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
   mutator: PropTypes.object.isRequired,
   okapi: PropTypes.object.isRequired,
@@ -202,4 +202,4 @@ InvoiceFormContainer.propTypes = {
   stripes: PropTypes.object.isRequired,
 };
 
-export default withRouter(stripesConnect(InvoiceFormContainer));
+export default withRouter(stripesConnect(InvoiceFormContainerComponent));

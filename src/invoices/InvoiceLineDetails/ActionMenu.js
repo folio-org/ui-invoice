@@ -13,6 +13,7 @@ const ActionMenu = ({ onDelete, onEdit, isDeletable }) => (
   <MenuSection id="invoice-line-details-actions">
     <IfPermission perm="invoice.invoice-lines.item.put">
       <Button
+        data-testid="invoice-line-edit"
         buttonStyle="dropdownItem"
         data-test-button-edit-invoice-line
         onClick={onEdit}
@@ -25,6 +26,7 @@ const ActionMenu = ({ onDelete, onEdit, isDeletable }) => (
     {isDeletable && (
       <IfPermission perm="invoice.invoice-lines.item.delete">
         <Button
+          data-testid="invoice-line-delete"
           buttonStyle="dropdownItem"
           data-test-button-delete-invoice-line
           onClick={onDelete}

@@ -29,7 +29,7 @@ import { FILTERS } from './constants';
 
 const RESULT_COUNT_INCREMENT = 30;
 
-const buildInvoicesQuery = makeQueryBuilder(
+export const buildInvoicesQuery = makeQueryBuilder(
   'cql.allRecords=1',
   (query, qindex) => {
     if (qindex) {
@@ -55,7 +55,7 @@ const buildInvoicesQuery = makeQueryBuilder(
 
 const resetData = () => {};
 
-const InvoicesListContainer = ({ mutator: originMutator, location }) => {
+export const InvoicesListContainerComponent = ({ mutator: originMutator, location }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const mutator = useMemo(() => originMutator, []);
   const [organizationsMap, setOrganizationsMap] = useState({});
@@ -118,7 +118,7 @@ const InvoicesListContainer = ({ mutator: originMutator, location }) => {
   );
 };
 
-InvoicesListContainer.manifest = Object.freeze({
+InvoicesListContainerComponent.manifest = Object.freeze({
   invoicesListInvoices: {
     ...invoicesResource,
     accumulate: true,
@@ -130,9 +130,9 @@ InvoicesListContainer.manifest = Object.freeze({
   },
 });
 
-InvoicesListContainer.propTypes = {
+InvoicesListContainerComponent.propTypes = {
   mutator: PropTypes.object.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
 };
 
-export default stripesConnect(InvoicesListContainer);
+export default stripesConnect(InvoicesListContainerComponent);

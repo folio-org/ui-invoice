@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VoucherInformation should render correct structure for invoice voucher info 1`] = `
+<DocumentFragment>
+  VoucherDetails
+  <div
+    class="headline size-large margin-none font-weight-bold"
+    data-test-headline="true"
+  >
+    ui-invoice.invoice.details.voucher.voucherLines
+  </div>
+  <div
+    aria-live="assertive"
+    aria-relevant="additions"
+    class="sr-only"
+    tabindex="-1"
+  />
+  <div
+    aria-rowcount="2"
+    class="mclContainer"
+    data-total-count="0"
+    role="grid"
+    style="position: relative; overflow: hidden; height: auto; width: 100%;"
+    tabindex="0"
+  >
+    <div
+      class="mclHeaderContainer"
+    >
+      <div
+        aria-rowindex="1"
+        class="mclHeaderRow"
+        role="row"
+        style="display: flex;"
+      >
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-externalaccountnumber"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.voucher.externalAccountNumber
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-amount"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.voucher.amount
+        </div>
+      </div>
+    </div>
+    <div
+      class="mclScrollable"
+      style="position: static; width: 100%;"
+    >
+      <div
+        class="mclRowContainer"
+        role="rowgroup"
+        style="position: static;"
+      >
+        <div
+          aria-rowindex="2"
+          class="mclRowFormatterContainer"
+          data-row-index="row-0"
+          role="row"
+          style="position: static;"
+        >
+          <div
+            aria-label="[object Object]: 54321098...[object Object]: null"
+            class="mclRow mclIsOdd mclIsInteractive"
+            data-row-inner="0"
+            style="min-width: 0px;"
+            tabindex="0"
+          >
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              54321098
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              $23.45
+            </div>
+          </div>
+        </div>
+        <div
+          class="mclEndOfListContainer"
+          data-end-of-list="1"
+        >
+          <div
+            class="mclCenteredContainer"
+            style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+          >
+            <div
+              class="textCentered"
+              data-test-layout="true"
+            >
+              <div
+                class="mclEndOfList"
+                data-test-layout="true"
+              >
+                <span>
+                  Icon
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

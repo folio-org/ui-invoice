@@ -13,7 +13,7 @@ import { BASE_RESOURCE } from '../../resources/base';
 import { USERS_API } from '../../constants/api';
 import { getUserName } from '../../utils';
 
-const ApprovedBy = ({ approvedByUserId, resources }) => {
+export const ApprovedBy = ({ approvedByUserId, resources }) => {
   const { failed, records } = resources.approvedByUser || {};
   const approvedByUser = failed ? null : get(records, '0');
   const value = approvedByUserId ? getUserName(approvedByUser) : <NoValue />;

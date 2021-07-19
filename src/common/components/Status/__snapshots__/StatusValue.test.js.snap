@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatusValue should display status value 1`] = `
+<DocumentFragment>
+  <div
+    class="kvRoot"
+  >
+    <div
+      class="kvLabel"
+    >
+      ui-invoice.invoice.details.information.status
+    </div>
+    <div
+      class="kvValue"
+      data-test-kv-value="true"
+    >
+      getInvoiceStatusLabel util
+    </div>
+  </div>
+</DocumentFragment>
+`;

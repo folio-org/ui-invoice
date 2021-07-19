@@ -9,7 +9,7 @@ import {
 } from '@folio/stripes/components';
 import { IfPermission } from '@folio/stripes/core';
 
-const InvoicesListLastMenu = ({ location }) => {
+export const InvoicesListLastMenuComponent = ({ location }) => {
   return (
     <IfPermission perm="invoice.invoices.item.post">
       <PaneMenu>
@@ -34,8 +34,8 @@ const InvoicesListLastMenu = ({ location }) => {
   );
 };
 
-InvoicesListLastMenu.propTypes = {
+InvoicesListLastMenuComponent.propTypes = {
   location: ReactRouterPropTypes.location.isRequired,
 };
 
-export default withRouter(InvoicesListLastMenu);
+export default withRouter(InvoicesListLastMenuComponent);

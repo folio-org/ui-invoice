@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DocumentsDetails should render invoice documents 1`] = `
+<DocumentFragment>
+  <div
+    class="row"
+  >
+    <div
+      class="col-xs-12"
+    >
+      <label
+        class="label"
+      >
+        ui-invoice.invoice.links.title
+      </label>
+      <div
+        class="mclEmptyMessage"
+        style="min-width: 200px;"
+        tabindex="0"
+      >
+        stripes-components.tableEmpty
+      </div>
+    </div>
+  </div>
+  <div
+    class="row"
+  >
+    <div
+      class="col-xs-12"
+    >
+      <label
+        class="label"
+      >
+        ui-invoice.invoice.documents.title
+      </label>
+      <div
+        aria-live="assertive"
+        aria-relevant="additions"
+        class="sr-only"
+        tabindex="-1"
+      />
+      <div
+        aria-rowcount="3"
+        class="mclContainer"
+        data-total-count="0"
+        role="grid"
+        style="position: relative; overflow: hidden; height: auto; width: 100%;"
+        tabindex="0"
+      >
+        <div
+          class="mclHeaderContainer"
+        >
+          <div
+            aria-rowindex="1"
+            class="mclHeaderRow"
+            role="row"
+            style="display: flex;"
+          >
+            <div
+              aria-sort="none"
+              class="mclHeader"
+              id="list-column-name"
+              role="columnheader"
+              style="flex: 0 0 auto;"
+            >
+              ui-invoice.invoice.documents.name
+            </div>
+          </div>
+        </div>
+        <div
+          class="mclScrollable"
+          style="position: static; width: 100%;"
+        >
+          <div
+            class="mclRowContainer"
+            role="rowgroup"
+            style="position: static;"
+          >
+            <div
+              aria-rowindex="2"
+              class="mclRowFormatterContainer"
+              data-row-index="row-0"
+              role="row"
+              style="position: static;"
+            >
+              <div
+                aria-label="[object Object]: null"
+                class="mclRow mclIsOdd"
+                data-row-inner="0"
+                style="min-width: 0px;"
+                tabindex="0"
+              >
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  <button
+                    class="invoiceDocumentButton"
+                    type="button"
+                  >
+                    ABA incoice
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              aria-rowindex="3"
+              class="mclRowFormatterContainer"
+              data-row-index="row-1"
+              role="row"
+              style="position: static;"
+            >
+              <div
+                aria-label="[object Object]: null"
+                class="mclRow"
+                data-row-inner="1"
+                style="min-width: 0px;"
+                tabindex="0"
+              >
+                <div
+                  class="mclCell  mclCellStyle"
+                  role="gridcell"
+                >
+                  <button
+                    class="invoiceDocumentButton"
+                    type="button"
+                  >
+                    ABA voucher
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="mclEndOfListContainer"
+              data-end-of-list="2"
+            >
+              <div
+                class="mclCenteredContainer"
+                style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+              >
+                <div
+                  class="textCentered"
+                  data-test-layout="true"
+                >
+                  <div
+                    class="mclEndOfList"
+                    data-test-layout="true"
+                  >
+                    <span>
+                      Icon
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

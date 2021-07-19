@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InvoiceBatchVoucherExport should render correct structure for invoice batch voucher export 1`] = `
+<DocumentFragment>
+  <div
+    class="row"
+  >
+    <div
+      class="col-xs-4"
+    >
+      BatchGroupValue
+    </div>
+    <div
+      class="col-xs-4"
+    >
+      <div
+        class="kvRoot"
+      >
+        <div
+          class="kvLabel"
+        >
+          ui-invoice.invoice.details.batchVoucherExport.fileName
+        </div>
+        <div
+          class="kvValue"
+          data-test-kv-value="true"
+        >
+          voucher naExportVoucherButton
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-xs-4"
+    >
+      <div
+        class="kvRoot"
+      >
+        <div
+          class="kvLabel"
+        >
+          ui-invoice.invoice.details.batchVoucherExport.status
+        </div>
+        <div
+          class="kvValue"
+          data-test-kv-value="true"
+        >
+          ui-invoice.settings.BatchVoucherExports.status.generated
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
