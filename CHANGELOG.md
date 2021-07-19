@@ -4,6 +4,7 @@
 
 * Identical invoices/invoice lines are created after repeated clicking on the 'Save & close' button. Refs UINV-268.
 * Allow user to link an invoice line to a PO line from the invoice view. Refs UINV-267.
+* ui-invoice: UI tests replacement with RTL/Jest. Refs FAT-38.
 
 ## [2.4.0]https://github.com/folio-org/ui-invoice/tree/v2.4.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.2...v2.4.0)
