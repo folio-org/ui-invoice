@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InvoiceDocumentsForm should render correct structure with defined adjustments 1`] = `
+<DocumentFragment>
+  <form>
+    <div
+      class="row"
+    >
+      <div
+        class="col-xs-4"
+      >
+        <label
+          class="label"
+        >
+          ui-invoice.invoice.documents.title
+        </label>
+        <div
+          class="row"
+          data-test-invoice-form-document="true"
+        >
+          <div
+            class="col-xs-12"
+          >
+            <div
+              class="invoiceDocumentField"
+            >
+              <div
+                class="invoiceDocumentFieldContent invoiceDocumentFieldContentEven"
+              >
+                <button
+                  class="invoiceDocumentButton"
+                  type="button"
+                >
+                  Invoice document
+                </button>
+              </div>
+              <button
+                aria-label="trash"
+                class="iconButton medium"
+                data-test-remove-document-button="true"
+                icon="trash"
+                type="button"
+              >
+                <span
+                  class="iconButtonInner mediumOffset"
+                  data-test-remove-document-button="true"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row"
+          data-test-invoice-form-document="true"
+        >
+          <div
+            class="col-xs-12"
+          >
+            <div
+              class="invoiceDocumentField"
+            >
+              <div
+                class="invoiceDocumentFieldContent invoiceDocumentFieldContentOdd"
+              >
+                <span>
+                  Document link
+                </span>
+              </div>
+              <button
+                aria-label="trash"
+                class="iconButton medium"
+                data-test-remove-document-button="true"
+                icon="trash"
+                type="button"
+              >
+                <span
+                  class="iconButtonInner mediumOffset"
+                  data-test-remove-document-button="true"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-xs-8"
+      >
+        <div
+          tabindex="0"
+        >
+          <div
+            class="fileUploader"
+          >
+            <input
+              autocomplete="off"
+              style="display: none;"
+              tabindex="-1"
+              type="file"
+            />
+            <div
+              class="fileUploaderTitle"
+            >
+              stripes-acq-components.fileUploader.dropFile
+            </div>
+            <button
+              class="button primary"
+              type="button"
+            >
+              <span
+                class="inner"
+              >
+                stripes-acq-components.fileUploader.selectFile
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div />
+</DocumentFragment>
+`;
