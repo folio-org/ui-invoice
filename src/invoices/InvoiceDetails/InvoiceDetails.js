@@ -177,6 +177,7 @@ function InvoiceDetails({
           acc.push({
             ...distr,
             adjustmentDescription: adjustment.description,
+            adjustmentId: adjustment.id,
             totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal, invoice.currency),
           });
         });
@@ -284,6 +285,7 @@ function InvoiceDetails({
               <FundDistributionView
                 currency={invoice.currency}
                 fundDistributions={fundDistributions}
+                groupBy="adjustmentId"
               />
             </Accordion>
             <Accordion

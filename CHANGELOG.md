@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Invoice level Fund Distribution not showing amount. Refs UINV-273.
+
 ## [2.4.1]https://github.com/folio-org/ui-invoice/tree/v2.4.1) (2021-07-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.0...v2.4.1)
 
