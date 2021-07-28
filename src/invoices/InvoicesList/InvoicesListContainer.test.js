@@ -92,7 +92,7 @@ describe('InvoicesListContainer', () => {
     });
 
     it('should build query when search by field is active', () => {
-      const expectedQuery = '(((accountingCode=Amazon*))) sortby name/sort.ascending';
+      const expectedQuery = '(((accountingCode="Amazon*"))) sortby name/sort.ascending';
 
       expect(buildInvoicesQuery(queryString.parse('?qindex=accountingCode&query=Amazon'))).toBe(expectedQuery);
     });

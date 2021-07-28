@@ -33,7 +33,7 @@ export const buildInvoicesQuery = makeQueryBuilder(
   'cql.allRecords=1',
   (query, qindex) => {
     if (qindex) {
-      return `(${qindex}=${query}*)`;
+      return `(${qindex}="${query}*")`;
     }
 
     return `(${getKeywordQuery(query)})`;
