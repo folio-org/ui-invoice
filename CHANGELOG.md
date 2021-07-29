@@ -4,6 +4,10 @@
 
 * Allow user to link an invoice line to a PO line from the invoice view. Refs UINV-267.
 * ui-invoice: UI tests replacement with RTL/Jest. Refs FAT-38.
+
+## [2.4.2]https://github.com/folio-org/ui-invoice/tree/v2.4.2) (2021-07-29)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.1...v2.4.2)
+
 * Invoice level Fund Distribution not showing amount. Refs UINV-273.
 * Search not working for some accounting codes. Refs UINV-275.
 
