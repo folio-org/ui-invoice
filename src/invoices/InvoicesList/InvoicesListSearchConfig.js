@@ -1,7 +1,7 @@
 const indexes = [
   'voucherNumber',
   'vendorInvoiceNo',
-  // 'poNumbers',  disabled in UINV-163, to enable in UINV-162
+  'poNumbers',
   'accountingCode',
 ];
 

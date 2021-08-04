@@ -86,7 +86,7 @@ describe('InvoicesListContainer', () => {
 
   describe('search query', () => {
     it('should build query when search is active', () => {
-      const expectedQuery = '(((voucherNumber="Amazon*" or vendorInvoiceNo="Amazon*" or accountingCode="Amazon*" or invoiceLines.description="Amazon*"))) sortby name/sort.ascending';
+      const expectedQuery = '(((voucherNumber="Amazon*" or vendorInvoiceNo="Amazon*" or poNumbers="Amazon*" or accountingCode="Amazon*" or invoiceLines.description="Amazon*"))) sortby name/sort.ascending';
 
       expect(buildInvoicesQuery(queryString.parse('?query=Amazon'))).toBe(expectedQuery);
     });
