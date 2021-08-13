@@ -16,7 +16,7 @@ import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 
 const TEST_VALUE_PAYMENT_TERMS = 'some test value';
 
-describe('Invoice edit', () => {
+describe('Invoice edit', function () {
   setupApplication({
     modules: [{
       type: 'plugin',
@@ -34,6 +34,8 @@ describe('Invoice edit', () => {
       ),
     }],
   });
+
+  this.timeout(10000);
 
   const invoiceForm = new InvoiceFormInteractor();
 

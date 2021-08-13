@@ -7,6 +7,8 @@ import SettingsVoucherNumberInteractor from '../../interactors/SettingsVoucherNu
 describe('Setting of Voucher Number', function () {
   setupApplication();
 
+  this.timeout(10000);
+
   const setting = new SettingsVoucherNumberInteractor();
 
   beforeEach(function () {

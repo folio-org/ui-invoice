@@ -7,8 +7,10 @@ import TagsPane from '../../interactors/InvoiceLineDetailsTags';
 
 const tags = ['tag1', 'tag2'];
 
-describe('Invoice details tags', () => {
+describe('Invoice details tags', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceDetails = new InvoiceDetails();
 

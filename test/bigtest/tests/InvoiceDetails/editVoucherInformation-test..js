@@ -5,8 +5,10 @@ import { INVOICE_STATUS } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import EditVoucherView from '../../interactors/VoucherEditInteractor';
 
-describe('Edit voucher information', () => {
+describe('Edit voucher information', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const editVoucherView = new EditVoucherView();
 

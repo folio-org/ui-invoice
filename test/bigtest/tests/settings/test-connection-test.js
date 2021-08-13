@@ -9,6 +9,8 @@ import BatchGroupConfigurationSettingsInteractor from '../../interactors/BatchGr
 describe('Test connection', function () {
   setupApplication();
 
+  this.timeout(10000);
+
   const page = new BatchGroupConfigurationSettingsInteractor();
 
   beforeEach(async function () {
