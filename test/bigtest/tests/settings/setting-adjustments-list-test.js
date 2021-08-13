@@ -13,6 +13,9 @@ import { adjustmentConfig } from '../InvoiceCreate/InvoiceCreate-test';
 
 describe('Adjustments list', function () {
   setupApplication();
+
+  this.timeout(10000);
+
   const setting = new SettingsAdjustmentsListInteractor();
   const details = new SettingAdjustmentDetailsInteractor();
   const form = new SettingAdjustmentFormInteractor();

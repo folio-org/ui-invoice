@@ -7,6 +7,9 @@ import SettingsAdjustmentsListInteractor from '../../interactors/SettingsAdjustm
 
 describe('Create new adjustment', function () {
   setupApplication();
+
+  this.timeout(10000);
+
   const setting = new SettingsAdjustmentFormInteractor();
   const settingList = new SettingsAdjustmentsListInteractor();
 

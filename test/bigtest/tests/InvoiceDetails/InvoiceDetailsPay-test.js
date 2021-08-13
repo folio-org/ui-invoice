@@ -35,8 +35,10 @@ const createInvoice = (server, status, withLines = true) => {
   return invoice;
 };
 
-describe('Invoice details - pay action', () => {
+describe('Invoice details - pay action', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceDetails = new InvoiceDetails();
   const payConfirmation = new ConfirmationInteractor('#pay-invoice-confirmation');

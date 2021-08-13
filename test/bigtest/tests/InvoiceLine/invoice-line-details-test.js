@@ -8,8 +8,10 @@ import InvoiceLineDetailsInteractor from '../../interactors/InvoiceLineDetailsIn
 import InvoiceLineFormInteractor from '../../interactors/InvoiceLineFormInteractor';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 
-describe('Invoice line details', () => {
+describe('Invoice line details', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceLineDetails = new InvoiceLineDetailsInteractor();
   const invoiceLineForm = new InvoiceLineFormInteractor();

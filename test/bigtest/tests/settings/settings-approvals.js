@@ -6,6 +6,9 @@ import SettingsApprovalsInteractor from '../../interactors/SettingsApprovalsInte
 
 describe('Setting of invoice approvals', function () {
   setupApplication();
+
+  this.timeout(10000);
+
   const setting = new SettingsApprovalsInteractor();
 
   beforeEach(function () {

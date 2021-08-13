@@ -6,8 +6,10 @@ import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 import VoucherView from '../../interactors/VoucherView';
 
-describe('Voucher information', () => {
+describe('Voucher information', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceDetails = new InvoiceDetails();
   const voucherView = new VoucherView();

@@ -9,6 +9,8 @@ import BatchGroupsSettingsInteractor from '../../interactors/BatchGroupsSettings
 describe('Batch groups settings', function () {
   setupApplication();
 
+  this.timeout(10000);
+
   const setting = new BatchGroupsSettingsInteractor();
   const deleteConfirmation = new ConfirmationInteractor('#delete-controlled-vocab-entry-confirmation');
 

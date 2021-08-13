@@ -9,6 +9,7 @@ import queryString from 'query-string';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
+  buildArrayFieldQuery,
   buildDateRangeQuery,
   buildDateTimeRangeQuery,
   makeQueryBuilder,
@@ -40,6 +41,7 @@ export const buildInvoicesQuery = makeQueryBuilder(
   },
   'sortby name/sort.ascending',
   {
+    [FILTERS.ACQUISITIONS_UNIT]: buildArrayFieldQuery.bind(null, [FILTERS.ACQUISITIONS_UNIT]),
     [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, [FILTERS.DATE_CREATED]),
     [FILTERS.INVOICE_DATE]: buildDateRangeQuery.bind(null, [FILTERS.INVOICE_DATE]),
     [FILTERS.PAYMENT_DUE]: buildDateRangeQuery.bind(null, [FILTERS.PAYMENT_DUE]),

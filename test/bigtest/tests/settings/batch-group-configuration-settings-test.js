@@ -14,6 +14,8 @@ const FTPvalidationMessage = 'Invalid upload URI';
 describe('Batch group configuration settings', function () {
   setupApplication();
 
+  this.timeout(10000);
+
   const setting = new BatchGroupConfigurationSettingsInteractor();
 
   beforeEach(async function () {

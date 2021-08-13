@@ -7,6 +7,8 @@ import { BatchGroupConfigurationSettingsInteractor } from '../../interactors';
 describe('Batch group manual voucher export', function () {
   setupApplication();
 
+  this.timeout(10000);
+
   const setting = new BatchGroupConfigurationSettingsInteractor();
 
   beforeEach(async function () {

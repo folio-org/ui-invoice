@@ -432,64 +432,152 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-5"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-5"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-5"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-5"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-5"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-6"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-6"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-6"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-6"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-6"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -554,64 +642,152 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-8"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-8"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-8"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-8"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-8"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-9"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-9"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-9"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-9"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-9"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -928,64 +1104,152 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-13"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-13"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-13"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-13"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-13"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-14"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-14"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-14"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-14"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-14"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -1501,64 +1765,152 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-17"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-17"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-17"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-17"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-17"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-18"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-18"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-18"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-18"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-18"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -2025,64 +2377,152 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-22"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-22"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-22"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-22"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-22"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-23"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-23"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-23"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-23"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-23"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -2494,7 +2934,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-26"
+                id="text-input-36"
                 spellcheck="false"
                 type="text"
                 value=""
@@ -2559,64 +2999,152 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-28"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-38"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-38"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-38"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-28"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-29"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-39"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-39"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-39"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-29"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -2681,64 +3209,152 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-31"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-41"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-41"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-41"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-31"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-32"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-42"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-42"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-42"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-32"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -3058,64 +3674,152 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-36"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-46"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-46"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-46"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-36"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-37"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-47"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-47"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-47"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-37"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -3671,64 +4375,152 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-40"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-50"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-50"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-50"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-40"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-41"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-51"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-51"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-51"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-41"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
@@ -4225,64 +5017,152 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           role="region"
         >
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-45"
-            >
-              stripes-smart-components.dateRange.from
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-55"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-55"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-55"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="startDate"
-                id="text-input-45"
-                name="startDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <div
-            class="textField"
+            class="container"
           >
-            <label
-              class="label"
-              for="text-input-46"
-            >
-              stripes-smart-components.dateRange.to
-            </label>
             <div
-              class="formControl inputGroup"
+              class="container"
+              data-test-datepicker-container="true"
             >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-56"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-56"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-expanded="false"
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-56"
+                        type="button"
+                      >
+                        <span
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
               <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-test-date-input="endDate"
-                id="text-input-46"
-                name="endDate"
-                placeholder="MM/DD/YYYY"
-                spellcheck="false"
+                data-test-datepicker-hidden-input="true"
+                hidden=""
                 type="text"
                 value=""
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
           <button
             class="button default marginBottom0"
