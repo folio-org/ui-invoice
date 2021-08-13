@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+## [2.4.3]https://github.com/folio-org/ui-invoice/tree/v2.4.3) (2021-08-13)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.2...v2.4.3)
 * Filter by Acquisition units in Invoice app is not worked. Refs UINV-286.
 
 ## [2.4.2]https://github.com/folio-org/ui-invoice/tree/v2.4.2) (2021-07-29)
