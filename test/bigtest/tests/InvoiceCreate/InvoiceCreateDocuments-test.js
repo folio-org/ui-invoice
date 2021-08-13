@@ -11,8 +11,10 @@ import setupApplication from '../../helpers/setup-application';
 import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 
-describe('Invoice create with documents', () => {
+describe('Invoice create with documents', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceForm = new InvoiceFormInteractor();
   const invoiceDetails = new InvoiceDetails();

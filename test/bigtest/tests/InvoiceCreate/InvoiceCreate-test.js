@@ -21,8 +21,10 @@ export const adjustmentConfig = JSON.stringify({
   defaultAmount: 100,
 });
 
-describe('Invoice create', () => {
+describe('Invoice create', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceForm = new InvoiceFormInteractor();
 

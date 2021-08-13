@@ -9,8 +9,10 @@ import { EXPORT_FORMAT } from '../../../../src/settings/BatchGroupConfigurationS
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 
-describe('Invoice batch voucher export details', () => {
+describe('Invoice batch voucher export details', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceDetails = new InvoiceDetails();
 

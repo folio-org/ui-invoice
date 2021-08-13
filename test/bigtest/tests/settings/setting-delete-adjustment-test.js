@@ -14,6 +14,9 @@ import { adjustmentConfig } from '../InvoiceCreate/InvoiceCreate-test';
 
 describe('Delete adjustment', function () {
   setupApplication();
+
+  this.timeout(10000);
+
   const setting = new SettingsAdjustmentsDetailsInteractor();
   const settingList = new SettingsAdjustmentsListInteractor();
 

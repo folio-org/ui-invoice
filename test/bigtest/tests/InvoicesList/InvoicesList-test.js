@@ -7,8 +7,10 @@ import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 
 const INVOICES_COUNT = 15;
 
-describe('Invoices list', () => {
+describe('Invoices list', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoicesList = new InvoicesListInteractor();
 

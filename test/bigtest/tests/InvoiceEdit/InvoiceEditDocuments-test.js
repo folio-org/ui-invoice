@@ -9,8 +9,10 @@ import InvoiceFormInteractor from '../../interactors/InvoiceFormInteractor';
 
 const TEST_VALUE_PAYMENT_TERMS = 'some test value';
 
-describe('Invoice edit documents', () => {
+describe('Invoice edit documents', function () {
   setupApplication();
+
+  this.timeout(10000);
 
   const invoiceForm = new InvoiceFormInteractor();
 

@@ -13,6 +13,8 @@ import BatchGroupConfigurationSettingsInteractor from '../../interactors/BatchGr
 describe('Batch voucher exports list', function () {
   setupApplication();
 
+  this.timeout(10000);
+
   const page = new BatchGroupConfigurationSettingsInteractor();
   let batchVoucherExport;
 

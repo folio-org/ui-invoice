@@ -36,6 +36,8 @@ describe('Add invoice line', function () {
     }],
   });
 
+  this.timeout(10000);
+
   const invoiceDetails = new InvoiceDetails();
   const vendorConfirmation = new ConfirmationInteractor('#invoice-line-vendor-confirmation');
   const currencyConfirmation = new ConfirmationInteractor('#invoice-line-currency-confirmation');
