@@ -48,6 +48,15 @@ export const showUpdateInvoiceError = async (
     case ERROR_CODES.fundCannotBePaid:
     case ERROR_CODES.transactionCreationFailure:
     case ERROR_CODES.organizationIsNotVendor:
+    case ERROR_CODES.adjustmentFundDistributionsNotPresent:
+    case ERROR_CODES.lineFundDistributionsSummaryMismatch:
+    case ERROR_CODES.adjustmentFundDistributionsSummaryMismatch:
+    case ERROR_CODES.fundsNotFound:
+    case ERROR_CODES.externalAccountNoIsMissing:
+    case ERROR_CODES.pendingPaymentError:
+    case ERROR_CODES.currentFYearNotFound:
+    case ERROR_CODES.expenseClassNotFound:
+    case ERROR_CODES.organizationIsNotExist:
     case ERROR_CODES.lockCalculatedTotalsMismatch: {
       showCallout({
         messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`,

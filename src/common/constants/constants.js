@@ -130,6 +130,15 @@ export const ERROR_CODES = {
   lockCalculatedTotalsMismatch: 'lockCalculatedTotalsMismatch',
   organizationIsNotVendor: 'organizationIsNotVendor',
   budgetNotFoundByFundId: 'budgetNotFoundByFundId',
+  adjustmentFundDistributionsNotPresent: 'adjustmentFundDistributionsNotPresent',
+  lineFundDistributionsSummaryMismatch: 'lineFundDistributionsSummaryMismatch',
+  adjustmentFundDistributionsSummaryMismatch: 'adjustmentFundDistributionsSummaryMismatch',
+  fundsNotFound: 'fundsNotFound',
+  externalAccountNoIsMissing: 'externalAccountNoIsMissing',
+  pendingPaymentError: 'pendingPaymentError',
+  currentFYearNotFound: 'currentFYearNotFound',
+  expenseClassNotFound: 'expenseClassNotFound',
+  organizationIsNotExist: 'organizationIsNotExist',
 };
 
 export const RETURN_LINK = '/invoice';
