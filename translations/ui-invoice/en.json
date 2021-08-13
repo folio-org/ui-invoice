@@ -305,7 +305,7 @@
   "invoice.actions.approve.error.pendingPaymentError": "Invoice cannot be approved because pending payment creation has failed",
   "invoice.actions.approve.error.currentFYearNotFound": "Invoice cannot be approved because current fiscal year not found for ledger",
   "invoice.actions.approve.error.expenseClassNotFound": "Expense class record is not found",
-  "invoice.actions.approve.error.organizationIsNotExist": "Invoice cannot be approved because organization is not exist",
+  "invoice.actions.approve.error.organizationIsNotExist": "Invoice cannot be approved because organization does not exist",
   "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
   "invoice.actions.pay.error.budgetNotFoundByFundId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
   "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> expense class not found on <b>{fundCode}</b> Fund",
