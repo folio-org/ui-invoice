@@ -297,7 +297,7 @@
   "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "Invoice cannot be approved. The Lock total amount of the invoice does not match the Calculated total amount of its invoice lines and adjustments.",
   "invoice.actions.approve.error.organizationIsNotVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
   "invoice.actions.approve.error.budgetNotFoundByFundId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
-  "invoice.actions.approve.error.adjustmentFundDistributionsNotPresent": "At least one fund distribution should present for every non-prorated adjustment",
+  "invoice.actions.approve.error.adjustmentFundDistributionsNotPresent": "At least one fund distribution should be present for every non-prorated adjustment",
   "invoice.actions.approve.error.lineFundDistributionsSummaryMismatch": "Fund distributions summary should be 100 % or equal to subtotal for every associated invoice lines",
   "invoice.actions.approve.error.adjustmentFundDistributionsSummaryMismatch": "Fund distributions summary should be 100 % or equal to subtotal for every non-prorated adjustment",
   "invoice.actions.approve.error.fundsNotFound": "Invoice cannot be approved because fund records are not found",
