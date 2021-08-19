@@ -7,6 +7,7 @@
 * ui-invoice: UI tests replacement with RTL/Jest. Refs FAT-38.
 * Search invoice by PO number. Refs UINV-162.
 * Filter by Acquisition units in Invoice app is not worked. Refs UINV-286.
+* global CSS styles force landscape printing in other modules. Refs UINV-288.
 
 ## [2.4.2]https://github.com/folio-org/ui-invoice/tree/v2.4.2) (2021-07-29)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.1...v2.4.2)
