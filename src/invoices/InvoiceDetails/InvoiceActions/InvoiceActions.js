@@ -27,8 +27,10 @@ const InvoiceActions = ({
   onEdit,
   onPay,
   onPrint,
+  onInvoiceCancel,
 }) => {
   const isDeletable = !(isPayable(invoice.status) || isPaid(invoice.status));
+  const isCancelable = isPayable(invoice.status) || isPaid(invoice.status);
 
   return (
     <MenuSection id="invoice-details-actions">
@@ -117,6 +119,19 @@ const InvoiceActions = ({
           </Icon>
         </Button>
       )}
+      {isCancelable && (
+        <IfPermission perm="invoice.invoices.item.put">
+          <Button
+            buttonStyle="dropdownItem"
+            data-test-button-cancel-invoice
+            onClick={onInvoiceCancel}
+          >
+            <Icon size="small" icon="times-circle">
+              <FormattedMessage id="ui-invoice.button.cancel" />
+            </Icon>
+          </Button>
+        </IfPermission>
+      )}
     </MenuSection>
   );
 };
@@ -132,6 +147,7 @@ InvoiceActions.propTypes = {
   onDelete: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onPay: PropTypes.func.isRequired,
+  onInvoiceCancel: PropTypes.func.isRequired,
   onPrint: PropTypes.func,
 };
 

@@ -245,6 +245,56 @@ describe('InvoiceDetailsContainer', () => {
       });
     });
 
+    describe('Cancel action', () => {
+      const mutateInvoice = jest.fn();
+
+      beforeEach(() => {
+        useInvoiceMutation.mockClear().mockReturnValue({ mutateInvoice });
+        mutateInvoice.mockClear().mockReturnValue(Promise.resolve());
+      });
+
+      it('should call mutateInvoice when cancelInvoice action is called', async () => {
+        renderInvoiceDetailsContainer();
+
+        await screen.findByText('InvoiceDetails');
+
+        await act(async () => {
+          await InvoiceDetails.mock.calls[0][0].cancelInvoice();
+        });
+
+        expect(mutateInvoice).toHaveBeenCalled();
+      });
+
+      it('should refresh list when invoice has been cancelled', async () => {
+        const refreshList = jest.fn();
+
+        renderInvoiceDetailsContainer({ ...defaultProps, refreshList });
+
+        await screen.findByText('InvoiceDetails');
+
+        await act(async () => {
+          await InvoiceDetails.mock.calls[0][0].cancelInvoice();
+        });
+
+        expect(refreshList).toHaveBeenCalled();
+      });
+
+      it('should not refresh list when invoice has not been cancelled', async () => {
+        const refreshList = jest.fn();
+
+        mutateInvoice.mockClear().mockImplementation(() => Promise.reject(new Error({ response: 'Cancellation error' })));
+        renderInvoiceDetailsContainer({ ...defaultProps, refreshList });
+
+        await screen.findByText('InvoiceDetails');
+
+        await act(async () => {
+          await InvoiceDetails.mock.calls[0][0].cancelInvoice();
+        });
+
+        expect(refreshList).not.toHaveBeenCalled();
+      });
+    });
+
     describe('Pay action', () => {
       const mutateInvoice = jest.fn();
 

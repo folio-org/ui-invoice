@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act, waitFor } from '@testing-library/react';
 import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
@@ -18,6 +18,7 @@ import { INVOICE_STATUS } from '../../common/constants';
 
 import InvoiceActions from './InvoiceActions';
 import ApproveConfirmationModal from './ApproveConfirmationModal';
+import CancellationModal from './CancellationModal';
 import InvoiceDetails from './InvoiceDetails';
 
 jest.mock('react-router', () => ({
@@ -52,6 +53,7 @@ jest.mock('./VoucherInformation', () => jest.fn().mockReturnValue('VoucherInform
 jest.mock('./DocumentsDetails', () => jest.fn().mockReturnValue('DocumentsDetails'));
 jest.mock('./InvoiceBatchVoucherExport', () => jest.fn().mockReturnValue('InvoiceBatchVoucherExport'));
 jest.mock('./ExtendedInformation', () => jest.fn().mockReturnValue('ExtendedInformation'));
+jest.mock('./CancellationModal', () => jest.fn().mockReturnValue('CancellationModal'));
 
 const defaultProps = {
   invoice,
@@ -60,6 +62,7 @@ const defaultProps = {
   approveInvoice: jest.fn(),
   createLine: jest.fn(),
   deleteInvoice: jest.fn(),
+  cancelInvoice: jest.fn(),
   onClose: jest.fn(),
   onEdit: jest.fn(),
   onUpdate: jest.fn(),
@@ -138,6 +141,31 @@ describe('InvoiceDetails', () => {
         });
 
         expect(onEdit).toHaveBeenCalled();
+      });
+    });
+
+    describe('Cancel', () => {
+      it('should open CancellationModal when cancel action is pressed in InvoiceActions', async () => {
+        renderInvoiceDetails({
+          ...defaultProps,
+          onInvoiceCancel: jest.fn(),
+        });
+
+        await waitFor(() => InvoiceActions.mock.calls[0][0].onInvoiceCancel());
+
+        expect(screen.getByText('CancellationModal')).toBeInTheDocument();
+      });
+
+      it('should ', async () => {
+        renderInvoiceDetails({
+          ...defaultProps,
+          onInvoiceCancel: jest.fn(),
+        });
+
+        await waitFor(() => InvoiceActions.mock.calls[0][0].onInvoiceCancel());
+        await waitFor(() => CancellationModal.mock.calls[0][0].onConfirm());
+
+        expect(defaultProps.cancelInvoice).toHaveBeenCalled();
       });
     });
 

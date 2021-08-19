@@ -238,6 +238,33 @@ export function InvoiceDetailsContainer({
     [history, id, location.search, mutator.invoice, refreshList, showCallout],
   );
 
+  const cancelInvoice = useCallback(
+    (cancellationNote) => {
+      const canceledInvoice = { ...invoice, status: INVOICE_STATUS.cancelled, cancellationNote };
+
+      setIsLoading(true);
+
+      return mutateInvoice(canceledInvoice)
+        .then(() => {
+          showCallout({ messageId: 'ui-invoice.invoice.actions.cancel.success' });
+          refreshList();
+
+          return fetchInvoiceData();
+        }, ({ response }) => (
+          showUpdateInvoiceError(
+            response,
+            showCallout,
+            'cancel',
+            'ui-invoice.invoice.actions.cancel.error',
+            mutator.expenseClass,
+            mutator.fund,
+          )
+        ))
+        .finally(setIsLoading);
+    },
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, mutateInvoice, refreshList, showCallout],
+  );
+
   const approveInvoice = useCallback(
     () => {
       const approvedInvoice = { ...invoice, status: INVOICE_STATUS.approved };
@@ -352,6 +379,7 @@ export function InvoiceDetailsContainer({
       approveInvoice={approveInvoice}
       createLine={createLine}
       deleteInvoice={deleteInvoice}
+      cancelInvoice={cancelInvoice}
       invoice={invoice}
       invoiceLines={invoiceLines.invoiceLines}
       invoiceTotalUnits={invoiceTotalUnits}
