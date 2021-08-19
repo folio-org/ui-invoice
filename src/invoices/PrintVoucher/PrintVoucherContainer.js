@@ -10,10 +10,12 @@ import {
 
 import usePrintData from './usePrintData';
 import PrintContent from './PrintContent';
+import { getPrintPageStyles } from './utils';
 
 const PrintVoucherContainer = ({ invoice, closePrint }) => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
+    pageStyle: getPrintPageStyles(),
     content: () => componentRef.current,
     onAfterPrint: closePrint,
   });
