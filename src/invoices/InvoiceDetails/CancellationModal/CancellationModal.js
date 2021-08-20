@@ -52,11 +52,13 @@ const CancellationModal = ({
       label={<FormattedMessage id="ui-invoice.invoice.actions.cancel.heading" />}
       open
     >
+      <Row className={styles.message}>
+        <Col xs={12}>
+          <FormattedMessage id="ui-invoice.invoice.actions.cancel.message" />
+        </Col>
+      </Row>
       <Row>
         <Col xs={12}>
-          <span className={styles.message}>
-            <FormattedMessage id="ui-invoice.invoice.actions.cancel.message" />
-          </span>
           <TextArea
             rows={5}
             label={<FormattedMessage id="ui-invoice.invoice.cancellationNote" />}
