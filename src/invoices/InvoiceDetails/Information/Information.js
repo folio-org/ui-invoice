@@ -22,6 +22,7 @@ import {
 } from '../../../common/components';
 import BatchGroupValue from '../BatchGroupValue';
 import BillTo from './BillTo';
+
 import { isCancelled } from '../../../common/utils';
 
 const Information = ({

@@ -404,5 +404,6 @@
   "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",
   "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
   "permission.pay": "Invoice: Pay invoices",
+  "permission.cancel": "Invoice: Cancel invoices",
   "permission.settings.all": "Settings (Invoices): Can view and edit settings"
 }

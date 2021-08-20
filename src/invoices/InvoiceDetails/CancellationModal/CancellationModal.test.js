@@ -1,6 +1,6 @@
 import React from 'react';
 import user from '@testing-library/user-event';
-import { render, waitFor } from '@testing-library/react';
+import { render, waitFor, screen } from '@testing-library/react';
 
 import CancellationModal from './CancellationModal';
 
@@ -41,17 +41,17 @@ describe('CancellationModal', () => {
   });
 
   it('should handle submit', async () => {
-    const { getByText } = renderCancellationModal();
+    renderCancellationModal();
 
-    await waitFor(() => user.click(getByText('ui-invoice.button.submit')));
+    await waitFor(() => user.click(screen.getByText('ui-invoice.button.submit')));
 
     expect(defaultProps.onConfirm).toHaveBeenCalled();
   });
 
   it('should handle action cancellation', async () => {
-    const { getByText } = renderCancellationModal();
+    renderCancellationModal();
 
-    await waitFor(() => user.click(getByText('ui-invoice.button.cancel')));
+    await waitFor(() => user.click(screen.getByText('ui-invoice.button.cancel')));
 
     expect(defaultProps.onCancel).toHaveBeenCalled();
   });

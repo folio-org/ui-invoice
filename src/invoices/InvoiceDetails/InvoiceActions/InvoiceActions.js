@@ -123,7 +123,6 @@ const InvoiceActions = ({
         <IfPermission perm="invoice.invoices.item.put">
           <Button
             buttonStyle="dropdownItem"
-            data-test-button-cancel-invoice
             onClick={onInvoiceCancel}
           >
             <Icon size="small" icon="times-circle">

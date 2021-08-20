@@ -11,6 +11,8 @@ import {
   Col,
 } from '@folio/stripes/components';
 
+import styles from './CancellationModal.css';
+
 const CancellationModal = ({
   onCancel,
   onConfirm,
@@ -27,7 +29,6 @@ const CancellationModal = ({
   const footer = (
     <ModalFooter>
       <Button
-        data-test-confirm-button
         buttonStyle="primary"
         marginBottom0
         onClick={() => onConfirm(cancellationNote)}
@@ -36,7 +37,6 @@ const CancellationModal = ({
       </Button>
 
       <Button
-        data-test-cancel-button
         marginBottom0
         onClick={onCancel}
       >
@@ -54,11 +54,9 @@ const CancellationModal = ({
     >
       <Row>
         <Col xs={12}>
-          <div
-            style={{ marginBottom: 12 }}
-          >
+          <span className={styles.message}>
             <FormattedMessage id="ui-invoice.invoice.actions.cancel.message" />
-          </div>
+          </span>
           <TextArea
             rows={5}
             label={<FormattedMessage id="ui-invoice.invoice.cancellationNote" />}
