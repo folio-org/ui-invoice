@@ -1092,6 +1092,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
               </div>
             </div>
           </section>
+          VoucherInformation
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
