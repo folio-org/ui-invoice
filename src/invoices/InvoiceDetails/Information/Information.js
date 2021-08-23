@@ -20,10 +20,9 @@ import {
   ApprovedBy,
   StatusValue,
 } from '../../../common/components';
+import { isCancelled } from '../../../common/utils';
 import BatchGroupValue from '../BatchGroupValue';
 import BillTo from './BillTo';
-
-import { isCancelled } from '../../../common/utils';
 
 const Information = ({
   adjustmentsTotal,
