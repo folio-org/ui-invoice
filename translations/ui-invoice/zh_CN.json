@@ -307,7 +307,7 @@
     "invoice.actions.approve.error.budgetExpenseClassNotFound": "在<b> {fundCode} </b>经费中找不到<b> {expenseClassName} </b>费用类别",
     "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "在<b> {fundCode} </b>经费中找不到<b> {expenseClassName} </b>费用类别",
     "permission.acq.unit.assignment.assign": "发票：将采购单元分配给新记录",
-    "permission.acq.unit.assignment.manage": "发票：管理采购单元",
+    "permission.acq.unit.assignment.manage": "发票：管理采购单位",
     "permission.approve": "发票：批准发票",
     "permission.invoice.create": "发票：可以查看、编辑和创建新的发票和发票行",
     "permission.invoice.delete": "发票：可以查看、编辑和删除发票和发票行",
