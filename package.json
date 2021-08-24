@@ -254,7 +254,10 @@
         "permissionName": "ui-invoice.cancel",
         "displayName": "Invoice: Cancel invoices",
         "visible": true,
-        "description": ""
+        "description": "",
+        "subPermissions": [
+          "invoice.invoices.item.put"
+        ]
       },
       {
         "permissionName": "ui-invoice.settings.all",
