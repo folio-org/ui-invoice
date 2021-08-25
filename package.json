@@ -256,7 +256,8 @@
         "visible": true,
         "description": "",
         "subPermissions": [
-          "invoice.invoices.item.put"
+          "invoice.invoices.item.put",
+          "invoice.cancel"
         ]
       },
       {
