@@ -20,6 +20,7 @@ import {
   ApprovedBy,
   StatusValue,
 } from '../../../common/components';
+import { isCancelled } from '../../../common/utils';
 import BatchGroupValue from '../BatchGroupValue';
 import BillTo from './BillTo';
 
@@ -43,6 +44,7 @@ const Information = ({
   currency,
   note,
   lockTotal,
+  cancellationNote,
 }) => {
   const isLockTotal = isNumber(lockTotal);
 
@@ -60,6 +62,15 @@ const Information = ({
         <Col xs={3}>
           <StatusValue value={status} />
         </Col>
+
+        {isCancelled(status) && (
+          <Col xs={3}>
+            <KeyValue
+              label={<FormattedMessage id="ui-invoice.invoice.cancellationNote" />}
+              value={cancellationNote}
+            />
+          </Col>
+        )}
 
         <Col xs={3}>
           <KeyValue
@@ -200,6 +211,7 @@ Information.propTypes = {
   note: PropTypes.string,
   lockTotal: PropTypes.number,
   paymentDate: PropTypes.string,
+  cancellationNote: PropTypes.string,
 };
 
 Information.defaultProps = {

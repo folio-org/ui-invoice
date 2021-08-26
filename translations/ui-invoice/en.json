@@ -177,6 +177,7 @@
   "invoice.enclosureNeeded": "Enclosure needed",
   "invoice.billTo": "Bill to",
   "invoice.address": "Address",
+  "invoice.cancellationNote": "Cancellation note",
   "invoice.chkSubscriptionOverlap": "Check subscription overlap",
   "invoice.invoiceAdminData": "Invoice admin data",
   "invoice.invoiceAdjustments": "Invoice adjustments",
@@ -335,6 +336,11 @@
   "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
   "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data",
 
+  "invoice.actions.cancel.success": "Invoice has been cancelled successfully",
+  "invoice.actions.cancel.error": "Invoice was not cancelled",
+  "invoice.actions.cancel.heading": "Cancel invoice",
+  "invoice.actions.cancel.message": "Are you sure you want to cancel this invoice? Any related transactions against funds will be voided.",
+
   "invoice.isNotUnique.confirmation.heading": "Save invoice",
   "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice",
 
@@ -398,5 +404,6 @@
   "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",
   "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
   "permission.pay": "Invoice: Pay invoices",
+  "permission.cancel": "Invoice: Cancel invoices",
   "permission.settings.all": "Settings (Invoices): Can view and edit settings"
 }

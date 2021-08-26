@@ -50,6 +50,7 @@ import DocumentsDetails from './DocumentsDetails';
 import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
 import ApproveConfirmationModal from './ApproveConfirmationModal';
 import ExtendedInformation from './ExtendedInformation';
+import CancellationModal from './CancellationModal';
 
 import styles from './InvoiceDetails.css';
 
@@ -64,6 +65,7 @@ function InvoiceDetails({
   approveInvoice,
   createLine,
   deleteInvoice,
+  cancelInvoice,
   invoice,
   invoiceLines,
   invoiceTotalUnits,
@@ -83,9 +85,14 @@ function InvoiceDetails({
   const [isApproveConfirmationOpen, toggleApproveConfirmation] = useModalToggle();
   const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
   const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
+  const [isCancellationModalOpen, toggleCancellationModal] = useModalToggle();
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const [isPrintModalOpened, togglePrintModal] = useModalToggle();
-  const showVoucherInformation = [INVOICE_STATUS.approved, INVOICE_STATUS.paid].includes(invoice.status);
+  const showVoucherInformation = [
+    INVOICE_STATUS.approved,
+    INVOICE_STATUS.paid,
+    INVOICE_STATUS.cancelled,
+  ].includes(invoice.status);
   const accordionStatusRef = useRef();
   const history = useHistory();
   const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
@@ -151,6 +158,10 @@ function InvoiceDetails({
         onPrint={!showVoucherInformation ? undefined : () => {
           onToggle();
           togglePrintModal();
+        }}
+        onInvoiceCancel={() => {
+          onToggle();
+          toggleCancellationModal();
         }}
         isApprovePayEnabled={isApprovePayEnabled}
         isEditDisabled={isRestrictionsLoading || restrictions.protectUpdate}
@@ -263,6 +274,7 @@ function InvoiceDetails({
                 currency={invoice.currency}
                 note={invoice.note}
                 lockTotal={invoice.lockTotal}
+                cancellationNote={invoice.cancellationNote}
               />
             </Accordion>
             <Accordion
@@ -370,6 +382,17 @@ function InvoiceDetails({
           )
         }
         {
+          isCancellationModalOpen && (
+            <CancellationModal
+              onCancel={toggleCancellationModal}
+              onConfirm={(cancellationNote) => {
+                toggleCancellationModal();
+                cancelInvoice(cancellationNote);
+              }}
+            />
+          )
+        }
+        {
           isPayConfirmationOpen && (
             <ConfirmationModal
               id="pay-invoice-confirmation"
@@ -425,6 +448,7 @@ InvoiceDetails.propTypes = {
   approveInvoice: PropTypes.func.isRequired,
   createLine: PropTypes.func.isRequired,
   deleteInvoice: PropTypes.func.isRequired,
+  cancelInvoice: PropTypes.func.isRequired,
   invoice: PropTypes.object.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
   invoiceTotalUnits: PropTypes.number,

@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* Add cancel invoice option to action menu. Refs UINV-175.
 * More informative UI error message for failed invoice approval. Refs UINV-280.
 * Allow user to link an invoice line to a PO line from the invoice view. Refs UINV-267.
 * ui-invoice: UI tests replacement with RTL/Jest. Refs FAT-38.
