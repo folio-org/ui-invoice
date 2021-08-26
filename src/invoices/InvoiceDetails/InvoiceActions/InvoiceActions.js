@@ -120,7 +120,7 @@ const InvoiceActions = ({
         </Button>
       )}
       {isCancelable && (
-        <IfPermission perm="invoice.cancel">
+        <IfPermission perm="invoice.item.cancel">
           <Button
             buttonStyle="dropdownItem"
             onClick={onInvoiceCancel}

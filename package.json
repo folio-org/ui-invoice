@@ -257,7 +257,7 @@
         "description": "",
         "subPermissions": [
           "invoice.invoices.item.put",
-          "invoice.cancel"
+          "invoice.item.cancel"
         ]
       },
       {
