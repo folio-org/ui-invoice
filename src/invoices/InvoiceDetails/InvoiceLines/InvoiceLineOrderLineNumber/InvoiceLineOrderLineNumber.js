@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FormattedMessage } from 'react-intl';
 
 import {
   IconButton,
   NoValue,
+  Tooltip,
 } from '@folio/stripes/components';
 
 import { IS_EDIT_POST_APPROVAL } from '../../../../common/utils';
@@ -20,11 +22,19 @@ export const InvoiceLineOrderLineNumber = ({ invoiceLine, poLineNumber, link }) 
   return (
     <>
       {!isPostApproval && (
-        <IconButton
-          onClick={onClick}
-          icon="link"
-          size="medium"
-        />
+        <Tooltip
+          text={<FormattedMessage id="ui-invoice.poLineLookup" />}
+        >
+          {({ ref, ariaIds }) => (
+            <IconButton
+              onClick={onClick}
+              icon="link"
+              size="medium"
+              ref={ref}
+              aria-labelledby={ariaIds.text}
+            />
+          )}
+        </Tooltip>
       )}
 
       {poLineNumber || <NoValue />}
