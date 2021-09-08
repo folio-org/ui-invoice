@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "2.4.3",
+  "version": "2.4.4",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
