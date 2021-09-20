@@ -1,15 +1,20 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { MemoryRouter, useHistory, useLocation } from 'react-router-dom';
 
 import {
   HasCommand,
 } from '@folio/stripes/components';
 
-import { invoice, history, location } from '../../../test/jest/fixtures';
+import { invoice, location } from '../../../test/jest/fixtures';
 
-import { InvoicesListComponent } from './InvoicesList';
+import InvoicesList from './InvoicesList';
 
+jest.mock('react-router', () => ({
+  ...jest.requireActual('react-router'),
+  useLocation: jest.fn(),
+  useHistory: jest.fn(),
+}));
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
   // eslint-disable-next-line react/prop-types
@@ -24,15 +29,13 @@ jest.mock('@folio/stripes-acq-components', () => {
     useFiltersToogle: jest.fn().mockReturnValue({ isFiltersOpened: true, toggleFilters: jest.fn() }),
     ResetButton: () => <span>ResetButton</span>,
     SingleSearchForm: () => <span>SingleSearchForm</span>,
+    useItemToView: () => ({}),
+    useLocationFilters: () => ([]),
   };
 });
 
 jest.mock('./InvoicesListFilters', () => jest.fn().mockReturnValue('InvoicesListFilters'));
 
-const historyMock = {
-  ...history,
-  push: jest.fn(),
-};
 const defaultProps = {
   onNeedMoreData: jest.fn(),
   resetData: jest.fn(),
@@ -40,15 +43,17 @@ const defaultProps = {
   invoicesCount: 1,
   invoices: [invoice],
   isLoading: false,
-  location,
-  history: historyMock,
 };
 const renderInvoicesList = (props = defaultProps) => (render(
-  <InvoicesListComponent {...props} />,
+  <InvoicesList {...props} />,
   { wrapper: MemoryRouter },
 ));
 
 describe('InvoicesList', () => {
+  beforeEach(() => {
+    useLocation.mockClear().mockReturnValue(location);
+  });
+
   describe('Filters section', () => {
     it('should display search control', () => {
       const { getByText } = renderInvoicesList();
@@ -75,12 +80,16 @@ describe('InvoicesList', () => {
     });
 
     it('should navigate to form when new shortcut is called', () => {
-      historyMock.push.mockClear();
+      const pushMock = jest.fn();
+
+      useHistory.mockClear().mockReturnValue({
+        push: pushMock,
+      });
 
       renderInvoicesList();
       HasCommand.mock.calls[0][0].commands.find(c => c.name === 'new').handler();
 
-      expect(historyMock.push).toHaveBeenCalledWith('/invoice/create');
+      expect(pushMock).toHaveBeenCalledWith('/invoice/create');
     });
   });
 });

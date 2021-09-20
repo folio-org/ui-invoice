@@ -2,9 +2,9 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   Route,
-  withRouter,
+  useHistory,
+  useLocation,
 } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { useStripes } from '@folio/stripes/core';
@@ -19,10 +19,12 @@ import {
   FiltersPane,
   handleKeyCommand,
   NoResultsMessage,
+  PrevNextPagination,
   ResetButton,
   ResultsPane,
   SingleSearchForm,
   useFiltersToogle,
+  useItemToView,
   useLocationFilters,
   useLocationSorting,
 } from '@folio/stripes-acq-components';
@@ -40,6 +42,7 @@ import InvoicesListLastMenu from './InvoicesListLastMenu';
 import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
+import { RESULT_COUNT_INCREMENT } from './constants';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
@@ -63,16 +66,17 @@ const resultsFormatter = {
   ),
 };
 
-export const InvoicesListComponent = ({
-  history,
+const InvoicesList = ({
   isLoading,
-  location,
   onNeedMoreData,
   resetData,
   invoices,
   invoicesCount,
+  pagination,
   refreshList,
 }) => {
+  const location = useLocation();
+  const history = useHistory();
   const [
     filters,
     searchQuery,
@@ -90,10 +94,11 @@ export const InvoicesListComponent = ({
   ] = useLocationSorting(location, history, resetData, sortableFields);
   const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-invoice/filters');
   const stripes = useStripes();
+  const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
 
   const renderLastMenu = useCallback(() => <InvoicesListLastMenu />, []);
 
-  const selecteInvoice = useCallback(
+  const selectInvoice = useCallback(
     (e, { id }) => {
       history.push({
         pathname: `/invoice/view/${id}`,
@@ -166,6 +171,7 @@ export const InvoicesListComponent = ({
 
         <ResultsPane
           id="invoice-results-pane"
+          autosize
           title={resultsPaneTitle}
           count={invoicesCount}
           renderLastMenu={renderLastMenu}
@@ -173,25 +179,41 @@ export const InvoicesListComponent = ({
           filters={filters}
           isFiltersOpened={isFiltersOpened}
         >
-          <MultiColumnList
-            id="invoices-list"
-            totalCount={invoicesCount}
-            contentData={invoices}
-            visibleColumns={visibleColumns}
-            columnMapping={columnMapping}
-            formatter={resultsFormatter}
-            loading={isLoading}
-            autosize
-            virtualize
-            onNeedMoreData={onNeedMoreData}
-            onRowClick={selecteInvoice}
-            sortOrder={sortingField}
-            sortDirection={sortingDirection}
-            onHeaderClick={changeSorting}
-            pagingType="click"
-            isEmptyMessage={resultsStatusMessage}
-            hasMargin
-          />
+          {({ height, width }) => (
+            <>
+              <MultiColumnList
+                id="invoices-list"
+                totalCount={invoicesCount}
+                contentData={invoices}
+                visibleColumns={visibleColumns}
+                columnMapping={columnMapping}
+                formatter={resultsFormatter}
+                loading={isLoading}
+                onNeedMoreData={onNeedMoreData}
+                onRowClick={selectInvoice}
+                sortOrder={sortingField}
+                sortDirection={sortingDirection}
+                onHeaderClick={changeSorting}
+                pagingType="none"
+                isEmptyMessage={resultsStatusMessage}
+                hasMargin
+                pageAmount={RESULT_COUNT_INCREMENT}
+                height={height - PrevNextPagination.HEIGHT}
+                width={width}
+                itemToView={itemToView}
+                onMarkPosition={setItemToView}
+                onResetMark={deleteItemToView}
+              />
+              {invoices.length > 0 && (
+                <PrevNextPagination
+                  {...pagination}
+                  totalCount={invoicesCount}
+                  disabled={isLoading}
+                  onChange={onNeedMoreData}
+                />
+              )}
+            </>
+          )}
         </ResultsPane>
 
         <Route
@@ -214,21 +236,20 @@ export const InvoicesListComponent = ({
   );
 };
 
-InvoicesListComponent.propTypes = {
+InvoicesList.propTypes = {
   onNeedMoreData: PropTypes.func.isRequired,
   resetData: PropTypes.func.isRequired,
   invoicesCount: PropTypes.number,
   isLoading: PropTypes.bool,
   invoices: PropTypes.arrayOf(PropTypes.object),
-  history: ReactRouterPropTypes.history.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
   refreshList: PropTypes.func.isRequired,
+  pagination: PropTypes.object,
 };
 
-InvoicesListComponent.defaultProps = {
+InvoicesList.defaultProps = {
   invoicesCount: 0,
   isLoading: false,
   invoices: [],
 };
 
-export default withRouter(InvoicesListComponent);
+export default InvoicesList;

@@ -21,7 +21,7 @@ describe('Invoices list', function () {
       id: invoice.vendorId,
     }));
 
-    this.visit('/invoice');
+    this.visit('/invoice?limit=30&offset=0&status=Open');
     await invoicesList.whenLoaded();
   });
 
