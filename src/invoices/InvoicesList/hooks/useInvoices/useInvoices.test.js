@@ -46,24 +46,6 @@ describe('useInvoices', () => {
       });
   });
 
-  it('should return an empty list if there no filters were passed in the query', async () => {
-    useLocation
-      .mockClear()
-      .mockReturnValue({ search: '' });
-
-    const { result, waitFor } = renderHook(() => useInvoices({
-      pagination: { limit: 5, offset: 0, timestamp: 42 },
-    }), { wrapper });
-
-    await waitFor(() => !result.current.isLoading);
-
-    expect(result.current).toEqual({
-      invoices: [],
-      invoicesCount: 0,
-      isFetching: false,
-    });
-  });
-
   it('should call fetchVendors to load invoice related vendors', async () => {
     useLocation
       .mockClear()
