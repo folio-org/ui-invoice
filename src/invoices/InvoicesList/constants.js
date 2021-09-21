@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/prefer-default-export
 export const FILTERS = {
   PAYMENT_METHOD: 'paymentMethod',
   STATUS: 'status',
@@ -13,3 +12,5 @@ export const FILTERS = {
   ACQUISITIONS_UNIT: 'acqUnitIds',
   TAGS: 'tags.tagList',
 };
+
+export const RESULT_COUNT_INCREMENT = 100;

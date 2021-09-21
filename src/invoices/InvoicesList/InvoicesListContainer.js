@@ -1,140 +1,68 @@
-import React, {
-  useCallback,
-  useMemo,
-  useState,
-} from 'react';
-import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
-import queryString from 'query-string';
-
+import React, { useCallback, useMemo } from 'react';
+import { PropTypes } from 'prop-types';
 import { stripesConnect } from '@folio/stripes/core';
-import {
-  buildArrayFieldQuery,
-  buildDateRangeQuery,
-  buildDateTimeRangeQuery,
-  makeQueryBuilder,
-  useList,
-} from '@folio/stripes-acq-components';
-
-import {
-  invoicesResource,
-  VENDORS,
-} from '../../common/resources';
+import { usePagination } from '@folio/stripes-acq-components';
+import { VENDORS } from '../../common/resources';
+import { useInvoices } from './hooks';
 
 import InvoicesList from './InvoicesList';
-import {
-  getKeywordQuery,
-} from './InvoicesListSearchConfig';
 import { fetchInvoiceOrganizations } from './utils';
-import { FILTERS } from './constants';
-
-const RESULT_COUNT_INCREMENT = 30;
-
-export const buildInvoicesQuery = makeQueryBuilder(
-  'cql.allRecords=1',
-  (query, qindex) => {
-    if (qindex) {
-      return `(${qindex}="${query}*")`;
-    }
-
-    return `(${getKeywordQuery(query)})`;
-  },
-  'sortby name/sort.ascending',
-  {
-    [FILTERS.ACQUISITIONS_UNIT]: buildArrayFieldQuery.bind(null, [FILTERS.ACQUISITIONS_UNIT]),
-    [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, [FILTERS.DATE_CREATED]),
-    [FILTERS.INVOICE_DATE]: buildDateRangeQuery.bind(null, [FILTERS.INVOICE_DATE]),
-    [FILTERS.PAYMENT_DUE]: buildDateRangeQuery.bind(null, [FILTERS.PAYMENT_DUE]),
-    [FILTERS.APPROVAL_DATE]: buildDateTimeRangeQuery.bind(null, [FILTERS.APPROVAL_DATE]),
-    [FILTERS.PAYMENT_DATE]: buildDateTimeRangeQuery.bind(null, [FILTERS.PAYMENT_DATE]),
-    [FILTERS.TAGS]: (filterValue) => {
-      const value = Array.isArray(filterValue) ? filterValue.join('" or "') : filterValue;
-
-      return `(${FILTERS.TAGS}=("${value}") or invoiceLines.tags.tagList=("${value}"))`;
-    },
-  },
-);
+import { RESULT_COUNT_INCREMENT } from './constants';
 
 const resetData = () => {};
 
-export const InvoicesListContainerComponent = ({ mutator: originMutator, location }) => {
+const InvoicesListContainer = ({ mutator: originMutator }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const mutator = useMemo(() => originMutator, []);
-  const [organizationsMap, setOrganizationsMap] = useState({});
+  const {
+    pagination,
+    changePage,
+    refreshPage,
+  } = usePagination({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
 
-  const loadInvoices = useCallback(offset => {
-    return mutator.invoicesListInvoices.GET({
-      params: {
-        limit: RESULT_COUNT_INCREMENT,
-        offset,
-        query: buildInvoicesQuery(queryString.parse(location.search)),
-      },
-    });
-  }, [location.search, mutator.invoicesListInvoices]);
-
-  const loadInvoicesCB = useCallback((setInvoices, invoicesResponse) => {
+  const fetchVendors = useCallback(fetchedInvoices => {
     const organizationsPromise = fetchInvoiceOrganizations(
-      mutator.invoicesListOrganizations, invoicesResponse.invoices, organizationsMap,
+      mutator.invoicesListOrganizations, fetchedInvoices, {},
     );
 
     return organizationsPromise
       .then(organizationsResponse => {
-        const newOrganizationsMap = {
-          ...organizationsMap,
-          ...organizationsResponse.reduce((acc, orgItem) => {
-            acc[orgItem.id] = orgItem;
+        return organizationsResponse.reduce((acc, orgItem) => {
+          acc[orgItem.id] = orgItem;
 
-            return acc;
-          }, {}),
-        };
-
-        setOrganizationsMap(newOrganizationsMap);
-
-        setInvoices((prev) => [
-          ...prev,
-          ...invoicesResponse.invoices.map(invoice => ({
-            ...invoice,
-            vendor: newOrganizationsMap[invoice.vendorId],
-          })),
-        ]);
+          return acc;
+        }, {});
       });
-  }, [mutator.invoicesListOrganizations, organizationsMap]);
+  }, [mutator.invoicesListOrganizations]);
 
   const {
-    records: invoices,
-    recordsCount: invoicesCount,
-    isLoading,
-    onNeedMoreData,
-    refreshList,
-  } = useList(true, loadInvoices, loadInvoicesCB, RESULT_COUNT_INCREMENT);
+    invoices,
+    invoicesCount,
+    isFetching,
+  } = useInvoices({ pagination, fetchVendors });
 
   return (
     <InvoicesList
-      onNeedMoreData={onNeedMoreData}
+      onNeedMoreData={changePage}
       resetData={resetData}
       invoicesCount={invoicesCount}
-      isLoading={isLoading}
+      isLoading={isFetching}
       invoices={invoices}
-      refreshList={refreshList}
+      pagination={pagination}
+      refreshList={refreshPage}
     />
   );
 };
 
-InvoicesListContainerComponent.manifest = Object.freeze({
-  invoicesListInvoices: {
-    ...invoicesResource,
-    accumulate: true,
-    records: null,
-  },
+InvoicesListContainer.manifest = Object.freeze({
   invoicesListOrganizations: {
     ...VENDORS,
     accumulate: true,
   },
 });
 
-InvoicesListContainerComponent.propTypes = {
+InvoicesListContainer.propTypes = {
   mutator: PropTypes.object.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
 };
 
-export default stripesConnect(InvoicesListContainerComponent);
+export default stripesConnect(InvoicesListContainer);
