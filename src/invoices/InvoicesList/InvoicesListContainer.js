@@ -1,13 +1,15 @@
 import React, { useCallback, useMemo } from 'react';
 import { PropTypes } from 'prop-types';
 import { stripesConnect } from '@folio/stripes/core';
-import { usePagination } from '@folio/stripes-acq-components';
+import {
+  RESULT_COUNT_INCREMENT,
+  usePagination,
+} from '@folio/stripes-acq-components';
 import { VENDORS } from '../../common/resources';
 import { useInvoices } from './hooks';
 
 import InvoicesList from './InvoicesList';
 import { fetchInvoiceOrganizations } from './utils';
-import { RESULT_COUNT_INCREMENT } from './constants';
 
 const resetData = () => {};
 

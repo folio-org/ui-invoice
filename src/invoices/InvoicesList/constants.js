@@ -12,5 +12,3 @@ export const FILTERS = {
   ACQUISITIONS_UNIT: 'acqUnitIds',
   TAGS: 'tags.tagList',
 };
-
-export const RESULT_COUNT_INCREMENT = 100;
