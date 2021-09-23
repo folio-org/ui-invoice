@@ -21,6 +21,7 @@ import {
   NoResultsMessage,
   PrevNextPagination,
   ResetButton,
+  RESULT_COUNT_INCREMENT,
   ResultsPane,
   SingleSearchForm,
   useFiltersToogle,
@@ -42,7 +43,6 @@ import InvoicesListLastMenu from './InvoicesListLastMenu';
 import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
-import { RESULT_COUNT_INCREMENT } from './constants';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
