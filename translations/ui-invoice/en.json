@@ -165,7 +165,6 @@
   "invoice.currency": "Currency",
   "invoice.folioInvoiceNo": "FOLIO invoice number",
   "invoice.note": "Note",
-  "invoice.acquisitionsUnit": "Acquisitions unit",
   "invoice.paymentMethod": "Payment method",
   "invoice.approvalDate": "Approval date",
   "invoice.lockTotal": "Lock total",

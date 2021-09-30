@@ -149,7 +149,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-information"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion2"
                         role="region"
@@ -833,7 +833,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-note="true"
                           >
                             <div
-                              class="inputGroup textArea"
+                              class="textArea inputGroup"
                             >
                               <label
                                 class="label"
@@ -906,7 +906,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-invoiceAdjustments"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion3"
                         role="region"
@@ -966,7 +966,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-vendorDetails"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion4"
                         role="region"
@@ -1180,7 +1180,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-extendedInformation"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion5"
                         role="region"
@@ -1720,7 +1720,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-documents"
-                        class="content expanded"
+                        class="content-region expanded"
                         data-test-accordion-wrapper="true"
                         id="accordion6"
                         role="region"

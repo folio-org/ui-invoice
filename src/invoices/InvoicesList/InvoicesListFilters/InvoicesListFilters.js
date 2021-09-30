@@ -75,7 +75,6 @@ const InvoicesListFilters = ({
         id={FILTERS.ACQUISITIONS_UNIT}
         activeFilters={activeFilters[FILTERS.ACQUISITIONS_UNIT]}
         disabled={disabled}
-        labelId="ui-invoice.invoice.acquisitionsUnit"
         name={FILTERS.ACQUISITIONS_UNIT}
         onChange={adaptedApplyFilters}
       />
