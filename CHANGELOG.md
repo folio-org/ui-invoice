@@ -11,6 +11,7 @@
 * Increment stripes to v7. Refs UINV-284.
 * Invoices - Implement MCL Next/Previous pagination. Refs UINV-293.
 * Filter label contains extra 's'. Refs UINV-302.
+* Settings (Invoice adjustments) | Apply baseline keyboard shortcuts. Refs UINV-304.
 
 ## [2.4.4]https://github.com/folio-org/ui-invoice/tree/v2.4.4) (2021-09-08)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.3...v2.4.4)

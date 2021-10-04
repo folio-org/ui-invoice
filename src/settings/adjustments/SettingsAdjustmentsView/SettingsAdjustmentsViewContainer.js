@@ -20,6 +20,8 @@ function SettingsAdjustmentsViewContainer({
   resources,
   rootPath,
   showSuccessDeleteMessage,
+  stripes,
+  history,
 }) {
   const sendCallout = useShowCallout();
   const deleteAdjustment = useCallback(async () => {
@@ -45,6 +47,8 @@ function SettingsAdjustmentsViewContainer({
       close={close}
       onDelete={deleteAdjustment}
       rootPath={rootPath}
+      stripes={stripes}
+      history={history}
     />
   );
 }
@@ -60,6 +64,8 @@ SettingsAdjustmentsViewContainer.propTypes = {
   rootPath: PropTypes.string.isRequired,
   showSuccessDeleteMessage: PropTypes.func.isRequired,
   resources: PropTypes.object,
+  stripes: PropTypes.object.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default stripesConnect(SettingsAdjustmentsViewContainer);

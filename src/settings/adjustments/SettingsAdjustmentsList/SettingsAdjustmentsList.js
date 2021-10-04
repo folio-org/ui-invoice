@@ -1,29 +1,27 @@
-import React, { Component } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { useHistory } from 'react-router';
 
+import {
+  IfPermission,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   Button,
   NavList,
   NavListItem,
   Pane,
+  HasCommand,
+  checkScope,
 } from '@folio/stripes/components';
+import { handleKeyCommand } from '@folio/stripes-acq-components';
 
-class SettingsAdjustmentsList extends Component {
-  static propTypes = {
-    label: PropTypes.object.isRequired,
-    adjustments: PropTypes.arrayOf(PropTypes.object),
-    rootPath: PropTypes.string.isRequired,
-  };
-
-  static defaultProps = {
-    adjustments: [],
-  };
-
-  render() {
-    const { label, rootPath, adjustments } = this.props;
-
-    const lastMenu = (
+const SettingsAdjustmentsList = ({ label, rootPath, adjustments = [] }) => {
+  const history = useHistory();
+  const stripes = useStripes();
+  const lastMenu = useMemo(() => (
+    <IfPermission perm="ui-invoice.settings.all">
       <Button
         data-test-new-adjustment-button
         to={`${rootPath}/create`}
@@ -32,9 +30,26 @@ class SettingsAdjustmentsList extends Component {
       >
         <FormattedMessage id="ui-invoice.button.new" />
       </Button>
-    );
+    </IfPermission>
+  ), [rootPath]);
 
-    return (
+  const shortcuts = [
+    {
+      name: 'new',
+      handler: handleKeyCommand(() => {
+        if (stripes.hasPerm('ui-invoice.settings.all')) {
+          history.push(`${rootPath}/create`);
+        }
+      }),
+    },
+  ];
+
+  return (
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
+    >
       <Pane
         id="setting-adjustments-pane"
         lastMenu={lastMenu}
@@ -53,8 +68,14 @@ class SettingsAdjustmentsList extends Component {
           ))}
         </NavList>
       </Pane>
-    );
-  }
-}
+    </HasCommand>
+  );
+};
+
+SettingsAdjustmentsList.propTypes = {
+  label: PropTypes.object.isRequired,
+  adjustments: PropTypes.arrayOf(PropTypes.object),
+  rootPath: PropTypes.string.isRequired,
+};
 
 export default SettingsAdjustmentsList;
