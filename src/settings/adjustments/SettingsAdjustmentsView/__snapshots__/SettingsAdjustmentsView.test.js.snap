@@ -11,321 +11,323 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
       role="dialog"
       tabindex="-1"
     >
-      <section
-        class="pane focusIndicator"
-        id="invoice-settings-adjustment-view"
-      >
-        <div
-          aria-labelledby="paneHeaderinvoice-settings-adjustment-view-pane-title"
-          class="paneHeader"
-          data-test-pane-header="true"
-          id="paneHeaderinvoice-settings-adjustment-view"
-          tabindex="-1"
+      <div>
+        <section
+          class="pane focusIndicator"
+          id="invoice-settings-adjustment-view"
         >
           <div
-            class="paneHeaderButtonsArea first"
+            aria-labelledby="paneHeaderinvoice-settings-adjustment-view-pane-title"
+            class="paneHeader"
+            data-test-pane-header="true"
+            id="paneHeaderinvoice-settings-adjustment-view"
+            tabindex="-1"
           >
             <div
-              class="paneMenu"
-            >
-              <button
-                aria-label="stripes-components.closeItem"
-                class="iconButton medium paneHeaderCloseIcon PaneHeaderIconButton paneHeaderIconButton"
-                data-test-pane-header-dismiss-button="true"
-                icon="times"
-                type="button"
-              >
-                <span
-                  class="iconButtonInner mediumOffset PaneHeaderIconButton__inner"
-                  data-test-pane-header-dismiss-button="true"
-                >
-                  <span>
-                    Icon
-                  </span>
-                </span>
-              </button>
-            </div>
-          </div>
-          <div
-            class="paneHeaderCenter"
-          >
-            <div
-              class="paneHeaderCenterInner"
-              id="paneHeaderinvoice-settings-adjustment-view-pane-title"
-            >
-              <h2
-                class="paneTitle"
-                data-test-pane-header-title="true"
-              >
-                <span
-                  class="paneTitleLabel"
-                >
-                  adjustment title
-                </span>
-              </h2>
-            </div>
-          </div>
-          <div
-            class="paneHeaderButtonsArea last"
-          >
-            <div
-              class="paneMenu"
+              class="paneHeaderButtonsArea first"
             >
               <div
-                class="dropdown"
-                data-pane-header-actions-dropdown="true"
+                class="paneMenu"
               >
                 <button
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                  class="button primary marginBottom0 actionMenuToggle"
-                  data-test-pane-header-actions-button="true"
+                  aria-label="stripes-components.closeItem"
+                  class="iconButton medium paneHeaderCloseIcon PaneHeaderIconButton paneHeaderIconButton"
+                  data-test-pane-header-dismiss-button="true"
+                  icon="times"
                   type="button"
                 >
                   <span
-                    class="inner"
+                    class="iconButtonInner mediumOffset PaneHeaderIconButton__inner"
+                    data-test-pane-header-dismiss-button="true"
                   >
                     <span>
                       Icon
                     </span>
                   </span>
                 </button>
-                <div
-                  style="display: none;"
+              </div>
+            </div>
+            <div
+              class="paneHeaderCenter"
+            >
+              <div
+                class="paneHeaderCenterInner"
+                id="paneHeaderinvoice-settings-adjustment-view-pane-title"
+              >
+                <h2
+                  class="paneTitle"
+                  data-test-pane-header-title="true"
                 >
+                  <span
+                    class="paneTitleLabel"
+                  >
+                    adjustment title
+                  </span>
+                </h2>
+              </div>
+            </div>
+            <div
+              class="paneHeaderButtonsArea last"
+            >
+              <div
+                class="paneMenu"
+              >
+                <div
+                  class="dropdown"
+                  data-pane-header-actions-dropdown="true"
+                >
+                  <button
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                    class="button primary marginBottom0 actionMenuToggle"
+                    data-test-pane-header-actions-button="true"
+                    type="button"
+                  >
+                    <span
+                      class="inner"
+                    >
+                      <span>
+                        Icon
+                      </span>
+                    </span>
+                  </button>
                   <div
-                    class="DropdownMenu"
-                    style="left: 0px; display: block;"
+                    style="display: none;"
                   >
                     <div
-                      data-test-view-adjustment-actions="true"
+                      class="DropdownMenu"
+                      style="left: 0px; display: block;"
                     >
-                      <a
-                        class="button dropdownItem"
-                        data-test-view-adjustment-action-edit="true"
-                        href="/path/undefined/edit"
-                        role="button"
+                      <div
+                        data-test-view-adjustment-actions="true"
                       >
-                        <span>
-                          Icon
-                        </span>
-                      </a>
-                      <button
-                        class="button dropdownItem"
-                        data-test-view-adjustment-action-delete="true"
-                        data-testid="adjustment-delete"
-                        type="button"
-                      >
-                        <span
-                          class="inner"
+                        <a
+                          class="button dropdownItem"
+                          data-test-view-adjustment-action-edit="true"
+                          href="/path/undefined/edit"
+                          role="button"
                         >
                           <span>
                             Icon
                           </span>
-                        </span>
-                      </button>
+                        </a>
+                        <button
+                          class="button dropdownItem"
+                          data-test-view-adjustment-action-delete="true"
+                          data-testid="adjustment-delete"
+                          type="button"
+                        >
+                          <span
+                            class="inner"
+                          >
+                            <span>
+                              Icon
+                            </span>
+                          </span>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="paneContent hasPadding"
-          id="invoice-settings-adjustment-view-content"
-          tabindex="-1"
-        >
           <div
-            class="row center-xs"
+            class="paneContent hasPadding"
+            id="invoice-settings-adjustment-view-content"
+            tabindex="-1"
           >
             <div
-              class="col-xs-12 col-md-8"
+              class="row center-xs"
             >
               <div
-                class="row start-xs"
+                class="col-xs-12 col-md-8"
               >
                 <div
-                  class="col-xs-12"
-                >
-                  <div>
-                    ViewMetaData
-                  </div>
-                </div>
-                <div
-                  class="col-xs-3"
-                  data-test-description="true"
+                  class="row start-xs"
                 >
                   <div
-                    class="kvRoot"
+                    class="col-xs-12"
+                  >
+                    <div>
+                      ViewMetaData
+                    </div>
+                  </div>
+                  <div
+                    class="col-xs-3"
+                    data-test-description="true"
                   >
                     <div
-                      class="kvLabel"
+                      class="kvRoot"
                     >
-                      ui-invoice.settings.adjustments.description
-                    </div>
-                    <div
-                      class="kvValue"
-                      data-test-kv-value="true"
-                    >
-                      <span
-                        aria-label="stripes-components.noValue.noValueSet"
-                        data-test-no-value="true"
+                      <div
+                        class="kvLabel"
                       >
-                        -
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-xs-3"
-                  data-test-type="true"
-                >
-                  <div
-                    class="kvRoot"
-                  >
-                    <div
-                      class="kvLabel"
-                    >
-                      ui-invoice.settings.adjustments.type
-                    </div>
-                    <div
-                      class="kvValue"
-                      data-test-kv-value="true"
-                    >
-                      Amount
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-xs-3"
-                  data-test-always-show="true"
-                >
-                  <div
-                    class="checkbox disabled"
-                    data-test-checkbox="true"
-                  >
-                    <label
-                      class="label label"
-                      for="checkbox-2"
-                    >
-                      <span
-                        class="inner disabledLabel"
+                        ui-invoice.settings.adjustments.description
+                      </div>
+                      <div
+                        class="kvValue"
+                        data-test-kv-value="true"
                       >
-                        <input
-                          aria-invalid="false"
-                          class="input"
-                          disabled=""
-                          id="checkbox-2"
-                          type="checkbox"
-                          value=""
-                        />
                         <span
-                          class="checkboxIcon"
+                          aria-label="stripes-components.noValue.noValueSet"
+                          data-test-no-value="true"
                         >
-                          <svg
-                            height="10"
-                            viewBox="0 0 14 14"
-                            width="10"
-                            xmlns="http://www.w3.org/2000/svg"
+                          -
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xs-3"
+                    data-test-type="true"
+                  >
+                    <div
+                      class="kvRoot"
+                    >
+                      <div
+                        class="kvLabel"
+                      >
+                        ui-invoice.settings.adjustments.type
+                      </div>
+                      <div
+                        class="kvValue"
+                        data-test-kv-value="true"
+                      >
+                        Amount
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xs-3"
+                    data-test-always-show="true"
+                  >
+                    <div
+                      class="checkbox disabled"
+                      data-test-checkbox="true"
+                    >
+                      <label
+                        class="label label"
+                        for="checkbox-2"
+                      >
+                        <span
+                          class="inner disabledLabel"
+                        >
+                          <input
+                            aria-invalid="false"
+                            class="input"
+                            disabled=""
+                            id="checkbox-2"
+                            type="checkbox"
+                            value=""
+                          />
+                          <span
+                            class="checkboxIcon"
                           >
-                            <path
-                              d="M10.395 4.617L5.63 9.383 3.605 7.358"
-                              fill="none"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-miterlimit="10"
-                              stroke-width="1.5"
-                            />
-                          </svg>
+                            <svg
+                              height="10"
+                              viewBox="0 0 14 14"
+                              width="10"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                                fill="none"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                                stroke-width="1.5"
+                              />
+                            </svg>
+                          </span>
+                          <span
+                            class="labelText"
+                          >
+                            ui-invoice.settings.adjustments.alwaysShow
+                          </span>
                         </span>
+                      </label>
+                      <div
+                        role="alert"
+                      />
+                    </div>
+                  </div>
+                  <div
+                    class="col-xs-3"
+                    data-test-default-amount="true"
+                  >
+                    <div
+                      class="kvRoot"
+                    >
+                      <div
+                        class="kvLabel"
+                      >
+                        ui-invoice.settings.adjustments.defaultAmount
+                      </div>
+                      <div
+                        class="kvValue"
+                        data-test-kv-value="true"
+                      >
                         <span
-                          class="labelText"
+                          aria-label="stripes-components.noValue.noValueSet"
+                          data-test-no-value="true"
                         >
-                          ui-invoice.settings.adjustments.alwaysShow
+                          -
                         </span>
-                      </span>
-                    </label>
-                    <div
-                      role="alert"
-                    />
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div
-                  class="col-xs-3"
-                  data-test-default-amount="true"
-                >
                   <div
-                    class="kvRoot"
+                    class="col-xs-3"
+                    data-test-prorate="true"
                   >
                     <div
-                      class="kvLabel"
+                      class="kvRoot"
                     >
-                      ui-invoice.settings.adjustments.defaultAmount
-                    </div>
-                    <div
-                      class="kvValue"
-                      data-test-kv-value="true"
-                    >
-                      <span
-                        aria-label="stripes-components.noValue.noValueSet"
-                        data-test-no-value="true"
+                      <div
+                        class="kvLabel"
                       >
-                        -
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="col-xs-3"
-                  data-test-prorate="true"
-                >
-                  <div
-                    class="kvRoot"
-                  >
-                    <div
-                      class="kvLabel"
-                    >
-                      ui-invoice.settings.adjustments.prorate
-                    </div>
-                    <div
-                      class="kvValue"
-                      data-test-kv-value="true"
-                    >
-                      <span
-                        aria-label="stripes-components.noValue.noValueSet"
-                        data-test-no-value="true"
+                        ui-invoice.settings.adjustments.prorate
+                      </div>
+                      <div
+                        class="kvValue"
+                        data-test-kv-value="true"
                       >
-                        -
-                      </span>
+                        <span
+                          aria-label="stripes-components.noValue.noValueSet"
+                          data-test-no-value="true"
+                        >
+                          -
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  class="col-xs-3"
-                  data-test-relation-to-total="true"
-                >
                   <div
-                    class="kvRoot"
+                    class="col-xs-3"
+                    data-test-relation-to-total="true"
                   >
                     <div
-                      class="kvLabel"
+                      class="kvRoot"
                     >
-                      ui-invoice.settings.adjustments.relationToTotal
-                    </div>
-                    <div
-                      class="kvValue"
-                      data-test-kv-value="true"
-                    >
-                      In addition to
+                      <div
+                        class="kvLabel"
+                      >
+                        ui-invoice.settings.adjustments.relationToTotal
+                      </div>
+                      <div
+                        class="kvValue"
+                        data-test-kv-value="true"
+                      >
+                        In addition to
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   </div>
   <div

@@ -2,67 +2,69 @@
 
 exports[`SettingsAdjustmentsList should render correct structure 1`] = `
 <DocumentFragment>
-  <section
-    class="pane focusIndicator"
-    id="setting-adjustments-pane"
-  >
-    <div
-      aria-labelledby="paneHeadersetting-adjustments-pane-pane-title"
-      class="paneHeader"
-      data-test-pane-header="true"
-      id="paneHeadersetting-adjustments-pane"
-      tabindex="-1"
+  <div>
+    <section
+      class="pane focusIndicator"
+      id="setting-adjustments-pane"
     >
       <div
-        class="paneHeaderCenter"
+        aria-labelledby="paneHeadersetting-adjustments-pane-pane-title"
+        class="paneHeader"
+        data-test-pane-header="true"
+        id="paneHeadersetting-adjustments-pane"
+        tabindex="-1"
       >
         <div
-          class="paneHeaderCenterInner"
-          id="paneHeadersetting-adjustments-pane-pane-title"
+          class="paneHeaderCenter"
         >
-          <h2
-            class="paneTitle"
-            data-test-pane-header-title="true"
+          <div
+            class="paneHeaderCenterInner"
+            id="paneHeadersetting-adjustments-pane-pane-title"
           >
-            <span
-              class="paneTitleLabel"
+            <h2
+              class="paneTitle"
+              data-test-pane-header-title="true"
             >
-              <span>
-                adjustments
+              <span
+                class="paneTitleLabel"
+              >
+                <span>
+                  adjustments
+                </span>
               </span>
-            </span>
-          </h2>
+            </h2>
+          </div>
+        </div>
+        <div
+          class="paneHeaderButtonsArea last"
+        >
+          <a
+            class="button primary paneHeaderNewButton marginBottom0"
+            data-test-new-adjustment-button="true"
+            href="/path/create"
+            role="button"
+          >
+            ui-invoice.button.new
+          </a>
         </div>
       </div>
       <div
-        class="paneHeaderButtonsArea last"
+        class="paneContent hasPadding"
+        id="setting-adjustments-pane-content"
+        tabindex="-1"
       >
-        <a
-          class="button primary paneHeaderNewButton marginBottom0"
-          data-test-new-adjustment-button="true"
-          href="/path/create"
-          role="button"
+        <nav
+          class="navListSectionControl"
+          data-test-nav-list="true"
         >
-          ui-invoice.button.new
-        </a>
+          <a
+            class="NavListItem"
+            data-test-nav-list-item="true"
+            href="/path/adjustmentId/view"
+          />
+        </nav>
       </div>
-    </div>
-    <div
-      class="paneContent hasPadding"
-      id="setting-adjustments-pane-content"
-      tabindex="-1"
-    >
-      <nav
-        class="navListSectionControl"
-        data-test-nav-list="true"
-      >
-        <a
-          class="NavListItem"
-          data-test-nav-list-item="true"
-          href="/path/adjustmentId/view"
-        />
-      </nav>
-    </div>
-  </section>
+    </section>
+  </div>
 </DocumentFragment>
 `;

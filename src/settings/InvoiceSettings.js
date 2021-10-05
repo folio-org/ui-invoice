@@ -2,6 +2,10 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { Settings } from '@folio/stripes/smart-components';
+import {
+  CommandList,
+  defaultKeyboardShortcuts,
+} from '@folio/stripes/components';
 
 import SettingsApprovals from './ApprovalSettings';
 import SettingsAdjustments from './adjustments';
@@ -50,11 +54,13 @@ export default class InvoiceSettings extends React.Component {
 
   render() {
     return (
-      <Settings
-        {...this.props}
-        sections={this.sections}
-        paneTitle={<FormattedMessage id="ui-invoice.settings.paneTitle" />}
-      />
+      <CommandList commands={defaultKeyboardShortcuts}>
+        <Settings
+          {...this.props}
+          sections={this.sections}
+          paneTitle={<FormattedMessage id="ui-invoice.settings.paneTitle" />}
+        />
+      </CommandList>
     );
   }
 }
