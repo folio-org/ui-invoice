@@ -2,7 +2,7 @@
 
 ## (IN PROGRESS)
 
-## [3.0.0]https://github.com/folio-org/ui-invoice/tree/v3.0.0) (2021-10-08)
+## [3.0.0](https://github.com/folio-org/ui-invoice/tree/v3.0.0) (2021-10-08)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.4...v3.0.0)
 
 * Add cancel invoice option to action menu. Refs UINV-175.
@@ -17,27 +17,27 @@
 * Filter label contains extra 's'. Refs UINV-302.
 * Settings (Invoice adjustments) | Apply baseline keyboard shortcuts. Refs UINV-304.
 
-## [2.4.4]https://github.com/folio-org/ui-invoice/tree/v2.4.4) (2021-09-08)
+## [2.4.4](https://github.com/folio-org/ui-invoice/tree/v2.4.4) (2021-09-08)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.3...v2.4.4)
 
 * global CSS styles force landscape printing in other modules. Refs UINV-298.
 
-## [2.4.3]https://github.com/folio-org/ui-invoice/tree/v2.4.3) (2021-08-13)
+## [2.4.3](https://github.com/folio-org/ui-invoice/tree/v2.4.3) (2021-08-13)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.2...v2.4.3)
 * Filter by Acquisition units in Invoice app is not worked. Refs UINV-286.
 
-## [2.4.2]https://github.com/folio-org/ui-invoice/tree/v2.4.2) (2021-07-29)
+## [2.4.2](https://github.com/folio-org/ui-invoice/tree/v2.4.2) (2021-07-29)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.1...v2.4.2)
 
 * Invoice level Fund Distribution not showing amount. Refs UINV-273.
 * Search not working for some accounting codes. Refs UINV-275.
 
-## [2.4.1]https://github.com/folio-org/ui-invoice/tree/v2.4.1) (2021-07-22)
+## [2.4.1](https://github.com/folio-org/ui-invoice/tree/v2.4.1) (2021-07-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.0...v2.4.1)
 
 * Identical invoices/invoice lines are created after repeated clicking on the 'Save & close' button. Refs UINV-268.
 
-## [2.4.0]https://github.com/folio-org/ui-invoice/tree/v2.4.0) (2021-06-17)
+## [2.4.0](https://github.com/folio-org/ui-invoice/tree/v2.4.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.2...v2.4.0)
 
 * Update error code to prevent approval of invoice when organization is not a vendor. Refs UINV-215.
@@ -54,11 +54,11 @@
 * Create HTML template for Printing voucher. Refs UINV-233.
 * Print voucher from HTML template. Refs UINV-235.
 
-## [2.3.2]https://github.com/folio-org/ui-invoice/tree/v2.3.2) (2021-06-02)
+## [2.3.2](https://github.com/folio-org/ui-invoice/tree/v2.3.2) (2021-06-02)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.1...v2.3.2)
 * Invoice is only approved when user clicks 'approve and pay'. Refs UINV-262.
 
-## [2.3.1]https://github.com/folio-org/ui-invoice/tree/v2.3.1) (2021-04-14)
+## [2.3.1](https://github.com/folio-org/ui-invoice/tree/v2.3.1) (2021-04-14)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.3.0...v2.3.1)
 
 * Invoice details: Batch file status not displaying properly. Refs UINV-252.
@@ -69,7 +69,7 @@
 * Cannot approve invoice with a certain type of adjustment. Refs UINV-248.
 * Manual Exporting of Invoice Fails. Refs UINV-241.
 
-## [2.3.0]https://github.com/folio-org/ui-invoice/tree/v2.3.0) (2021-03-18)
+## [2.3.0](https://github.com/folio-org/ui-invoice/tree/v2.3.0) (2021-03-18)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.4...v2.3.0)
 
 * Include account number from Invoice information in voucher. Refs UINV-227.
@@ -93,24 +93,24 @@
 * Implement "Lock total" create and edit invoice form logic. Refs UINV-191.
 * Update invoice CRUD permissions. UINV-199.
 
-## [2.2.4]https://github.com/folio-org/ui-invoice/tree/v2.2.4) (2021-03-02)
+## [2.2.4](https://github.com/folio-org/ui-invoice/tree/v2.2.4) (2021-03-02)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.3...v2.2.4)
 
 * Acquisition unit field disabled on create form. Refs UINV-229
 
-## [2.2.3]https://github.com/folio-org/ui-invoice/tree/v2.2.3) (2021-01-15)
+## [2.2.3](https://github.com/folio-org/ui-invoice/tree/v2.2.3) (2021-01-15)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.2...v2.2.3)
 
 * Cannot save invoice if assigned an acquisition unit. Refs UINV-217
 
-## [2.2.2]https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2020-11-10)
+## [2.2.2](https://github.com/folio-org/ui-invoice/tree/v2.2.2) (2020-11-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.2.1...v2.2.2)
 
 * Invoice date filters are off set by timezone somehow. Refs UINV-202.
 * Can not see invoice note in the view pane. Refs UINV-200.
 * Error message: Budget Expense Class not found. Refs UINV-198.
 
-## [2.2.1]https://github.com/folio-org/ui-invoice/tree/v2.2.1) (2020-10-09)
+## [2.2.1](https://github.com/folio-org/ui-invoice/tree/v2.2.1) (2020-10-09)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.1.3...v2.2.1)
 
 * Update create/edit record form inactive fields - Invoice line. Refs UINV-186
@@ -139,7 +139,7 @@
 ### Bug fixes
 * [UISACQCOMP-2](https://issues.folio.org/browse/UISACQCOMP-2) ACQ - CurrencySelect values are not translated
 
-## [2.1.3]https://github.com/folio-org/ui-invoice/tree/v2.1.3) (2020-07-01)
+## [2.1.3](https://github.com/folio-org/ui-invoice/tree/v2.1.3) (2020-07-01)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.1.2...v2.1.3)
 
 ### Stories
@@ -156,7 +156,7 @@
 
 * fixed tests;
 
-## [2.1.0]https://github.com/folio-org/ui-invoice/tree/v2.1.0) (2020-06-12)
+## [2.1.0](https://github.com/folio-org/ui-invoice/tree/v2.1.0) (2020-06-12)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.0.3...v2.1.0)
 
 ### Stories
@@ -180,19 +180,19 @@
 * [UINV-128](https://issues.folio.org/browse/UINV-128) Accessibility error: ID attribute value must be unique
 * [UINV-127](https://issues.folio.org/browse/UINV-127) Accessibility Error: Form elements must have labels
 
-## [2.0.3]https://github.com/folio-org/ui-invoice/tree/v2.0.3) (2020-04-24)
+## [2.0.3](https://github.com/folio-org/ui-invoice/tree/v2.0.3) (2020-04-24)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.0.2...v2.0.3)
 
 ### Bug fixes
 * [UINV-142](https://issues.folio.org/browse/UINV-142) user with invoice permissions can't CRUD invoice lines or add from POL
 
-## [2.0.2]https://github.com/folio-org/ui-invoice/tree/v2.0.2) (2020-03-27)
+## [2.0.2](https://github.com/folio-org/ui-invoice/tree/v2.0.2) (2020-03-27)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.0.0...v2.0.2)
 
 ### Bug fixes
 * some amount of minor bug fixes related to screen refreshes and translations
 
-## [2.0.0]https://github.com/folio-org/ui-invoice/tree/v2.0.0) (2020-03-13)
+## [2.0.0](https://github.com/folio-org/ui-invoice/tree/v2.0.0) (2020-03-13)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v1.2.1...v2.0.0)
 
 * bump the @folio/stripes peer to v3.0.0
