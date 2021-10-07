@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.0.0]https://github.com/folio-org/ui-invoice/tree/v3.0.0) (2021-10-08)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.4...v3.0.0)
+
 * Add cancel invoice option to action menu. Refs UINV-175.
 * More informative UI error message for failed invoice approval. Refs UINV-280.
 * Allow user to link an invoice line to a PO line from the invoice view. Refs UINV-267.
@@ -10,13 +13,14 @@
 * Add hover text to invoice link icon. Refs UINV-290.
 * Increment stripes to v7. Refs UINV-284.
 * Invoices - Implement MCL Next/Previous pagination. Refs UINV-293.
+* Invoices - Resume Scroll position after edit. Refs UINV-295.
 * Filter label contains extra 's'. Refs UINV-302.
 * Settings (Invoice adjustments) | Apply baseline keyboard shortcuts. Refs UINV-304.
 
 ## [2.4.4]https://github.com/folio-org/ui-invoice/tree/v2.4.4) (2021-09-08)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.3...v2.4.4)
 
-* global CSS styles force landscape printing in other modules. Refs UINV-288.
+* global CSS styles force landscape printing in other modules. Refs UINV-298.
 
 ## [2.4.3]https://github.com/folio-org/ui-invoice/tree/v2.4.3) (2021-08-13)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.2...v2.4.3)
