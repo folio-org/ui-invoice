@@ -6,6 +6,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
     class="pane focusIndicator"
     data-test-batch-group-configuration-settings="true"
     id="pane-batch-group-configuration"
+    tabindex="-1"
   >
     <div
       aria-labelledby="paneHeaderpane-batch-group-configuration-pane-title"
