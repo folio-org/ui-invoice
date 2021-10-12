@@ -8,8 +8,10 @@ import { get } from 'lodash';
 import stripesFinalForm from '@folio/stripes/final-form';
 import {
   Button,
+  checkScope,
   Col,
   ConfirmationModal,
+  HasCommand,
   Pane,
   Row,
   TextField,
@@ -17,6 +19,7 @@ import {
 } from '@folio/stripes/components';
 import {
   FieldSelectFinal as FieldSelect,
+  handleKeyCommand,
   useModalToggle,
   validateRequired,
 } from '@folio/stripes-acq-components';
@@ -74,163 +77,176 @@ const BatchGroupConfigurationForm = ({
     />
   );
 
+  const shortcuts = [
+    {
+      name: 'save',
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+    },
+  ];
+
   return (
-    <Pane
-      data-test-batch-group-configuration-settings
-      defaultWidth="fill"
-      footer={paneFooter}
-      id="pane-batch-group-configuration"
-      paneTitle={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.label" />}
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
     >
-      <Row>
-        <Col
-          data-test-col-batch-group-field
-          xs={4}
-        >
-          <BatchGroupsField
-            batchGroups={batchGroups}
-            selectBatchGroup={selectBatchGroup}
-            selectedBatchGroupId={selectedBatchGroupId}
-          />
-        </Col>
-      </Row>
+      <Pane
+        data-test-batch-group-configuration-settings
+        defaultWidth="fill"
+        footer={paneFooter}
+        id="pane-batch-group-configuration"
+        paneTitle={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.label" />}
+      >
+        <Row>
+          <Col
+            data-test-col-batch-group-field
+            xs={4}
+          >
+            <BatchGroupsField
+              batchGroups={batchGroups}
+              selectBatchGroup={selectBatchGroup}
+              selectedBatchGroupId={selectedBatchGroupId}
+            />
+          </Col>
+        </Row>
 
-      <Row>
-        <Col
-          data-test-col-schedule-export
-          xs={4}
-        >
-          <FieldSelect
-            dataOptions={SCHEDULE_EXPORT_OPTIONS}
-            label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.scheduleExport" />}
-            name="scheduleExport"
-          />
-          <OnChange name="scheduleExport">
-            {form.mutators.setScheduledExport}
-          </OnChange>
-        </Col>
-      </Row>
+        <Row>
+          <Col
+            data-test-col-schedule-export
+            xs={4}
+          >
+            <FieldSelect
+              dataOptions={SCHEDULE_EXPORT_OPTIONS}
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.scheduleExport" />}
+              name="scheduleExport"
+            />
+            <OnChange name="scheduleExport">
+              {form.mutators.setScheduledExport}
+            </OnChange>
+          </Col>
+        </Row>
 
-      {formValues.enableScheduledExport && (
-        <>
-          {scheduleExportWeekly && (
+        {formValues.enableScheduledExport && (
+          <>
+            {scheduleExportWeekly && (
+              <Row>
+                <Col
+                  data-test-col-weekdays
+                  xs={12}
+                >
+                  <WeekdaysField
+                    name="weekdays"
+                    weekdays={WEEKDAYS_OPTIONS}
+                  />
+                </Col>
+              </Row>
+            )}
+
             <Row>
               <Col
-                data-test-col-weekdays
-                xs={12}
+                data-test-col-time
+                xs={4}
               >
-                <WeekdaysField
-                  name="weekdays"
-                  weekdays={WEEKDAYS_OPTIONS}
+                <Field
+                  name="startTime"
+                  component={Timepicker}
+                  label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.setTime" />}
+                  parse={trimTime}
+                  required
+                  validate={validateRequired}
                 />
               </Col>
             </Row>
-          )}
+          </>
+        )}
 
-          <Row>
-            <Col
-              data-test-col-time
-              xs={4}
-            >
-              <Field
-                name="startTime"
-                component={Timepicker}
-                label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.setTime" />}
-                parse={trimTime}
-                required
-                validate={validateRequired}
-              />
-            </Col>
-          </Row>
-        </>
-      )}
-
-      <Row>
-        <Col
-          data-test-col-upload-location
-          xs={8}
-        >
-          <Field
-            component={TextField}
-            id="uploadURI"
-            label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.uploadLocation" />}
-            name="uploadURI"
-            type="text"
-            validate={validateUploadURI}
-          />
-        </Col>
-        <Col
-          data-test-col-format
-          xs={4}
-        >
-          <FieldSelect
-            dataOptions={EXPORT_FORMAT_OPTIONS}
-            label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.format" />}
-            name="format"
-            required
-            validate={validateRequired}
-          />
-        </Col>
-      </Row>
-
-      <Row bottom="xs">
-        <Col
-          data-test-col-username
-          xs={4}
-        >
-          <Field
-            id="username"
-            label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
-            name="username"
-            component={TextField}
-            fullWidth
-            parse={v => v}
-          />
-        </Col>
-
-        <TogglePassword name="password" />
-      </Row>
-
-      <Row>
-        <Col
-          data-test-col-test-connection
-          xs={4}
-        >
-          <Button
-            buttonStyle="primary"
-            bottomMargin0
-            data-test-connection-test-button
-            disabled={!(formValues.id && formValues.uploadURI && hasCredsSaved)}
-            onClick={testConnection}
+        <Row>
+          <Col
+            data-test-col-upload-location
+            xs={8}
           >
-            <FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.testConnection" />
-          </Button>
-        </Col>
-      </Row>
-      <BatchVoucherExportsList
-        batchVoucherExports={batchVoucherExports}
-        format={formValues.format}
-        onNeedMoreData={onNeedMoreData}
-        recordsCount={recordsCount}
-      />
-
-      {isManualExportConfirmation && (
-        <ConfirmationModal
-          id="run-manual-export-confirmation"
-          confirmLabel={<FormattedMessage id="ui-invoice.button.continue" />}
-          heading={<FormattedMessage id="ui-invoice.settings.actions.manualExport.heading" />}
-          message={
-            <FormattedMessage
-              id="ui-invoice.settings.actions.manualExport.message"
-              values={{ selectedBatchGroupName }}
+            <Field
+              component={TextField}
+              id="uploadURI"
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.uploadLocation" />}
+              name="uploadURI"
+              type="text"
+              validate={validateUploadURI}
             />
-          }
-          onCancel={toggleManualExportConfirmation}
-          onConfirm={onRunManualExport}
-          open
+          </Col>
+          <Col
+            data-test-col-format
+            xs={4}
+          >
+            <FieldSelect
+              dataOptions={EXPORT_FORMAT_OPTIONS}
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.format" />}
+              name="format"
+              required
+              validate={validateRequired}
+            />
+          </Col>
+        </Row>
+
+        <Row bottom="xs">
+          <Col
+            data-test-col-username
+            xs={4}
+          >
+            <Field
+              id="username"
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
+              name="username"
+              component={TextField}
+              fullWidth
+              parse={v => v}
+            />
+          </Col>
+
+          <TogglePassword name="password" />
+        </Row>
+
+        <Row>
+          <Col
+            data-test-col-test-connection
+            xs={4}
+          >
+            <Button
+              buttonStyle="primary"
+              bottomMargin0
+              data-test-connection-test-button
+              disabled={!(formValues.id && formValues.uploadURI && hasCredsSaved)}
+              onClick={testConnection}
+            >
+              <FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.testConnection" />
+            </Button>
+          </Col>
+        </Row>
+        <BatchVoucherExportsList
+          batchVoucherExports={batchVoucherExports}
+          format={formValues.format}
+          onNeedMoreData={onNeedMoreData}
+          recordsCount={recordsCount}
         />
-      )}
-    </Pane>
+
+        {isManualExportConfirmation && (
+          <ConfirmationModal
+            id="run-manual-export-confirmation"
+            confirmLabel={<FormattedMessage id="ui-invoice.button.continue" />}
+            heading={<FormattedMessage id="ui-invoice.settings.actions.manualExport.heading" />}
+            message={
+              <FormattedMessage
+                id="ui-invoice.settings.actions.manualExport.message"
+                values={{ selectedBatchGroupName }}
+              />
+            }
+            onCancel={toggleManualExportConfirmation}
+            onConfirm={onRunManualExport}
+            open
+          />
+        )}
+      </Pane>
+    </HasCommand>
   );
 };
 
