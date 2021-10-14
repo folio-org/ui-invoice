@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 * Settings (Invoices) | Apply baseline keyboard shortcuts. Refs UINV-303.
+* Hide cancel invoice button. Refs UINV-310.
 
 ## [3.0.0](https://github.com/folio-org/ui-invoice/tree/v3.0.0) (2021-10-08)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.4...v3.0.0)
