@@ -120,8 +120,7 @@ const InvoiceActions = ({
         </Button>
       )}
       {isCancelable && (
-        // TODO add "invoice.item.cancel" perm when MODINVOICE-270 is done.
-        <IfPermission perm="">
+        <IfPermission perm="invoice.item.cancel">
           <Button
             buttonStyle="dropdownItem"
             onClick={onInvoiceCancel}
