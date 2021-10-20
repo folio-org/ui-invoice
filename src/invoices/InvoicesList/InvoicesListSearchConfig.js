@@ -1,7 +1,7 @@
 const indexes = [
   'voucherNumber',
   'vendorInvoiceNo',
-  'poNumbers',
+  'poNumber',
   'accountingCode',
 ];
 
