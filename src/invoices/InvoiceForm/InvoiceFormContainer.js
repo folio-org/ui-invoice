@@ -20,7 +20,10 @@ import {
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 
-import { INVOICE_STATUS } from '../../common/constants';
+import {
+  INVOICE_STATUS,
+  VALIDATION_ERRORS,
+} from '../../common/constants';
 import {
   batchGroupsResource,
   CONFIG_ADJUSTMENTS,
@@ -87,14 +90,14 @@ export function InvoiceFormContainerComponent({
         // eslint-disable-next-line consistent-return
         .then(([existingInvoices, vendor]) => {
           if (existingInvoices.length) {
-            toggleNotUnique();
             setForceSaveValues(formValues);
 
             const duplicates = existingInvoices.map(i => ({ ...i, vendor }));
 
             setDuplicateInvoices(duplicates);
 
-            return Promise.reject();
+            // eslint-disable-next-line prefer-promise-reject-errors
+            return Promise.reject({ validationError: VALIDATION_ERRORS.dublicateInvoice });
           }
         });
     }
@@ -106,8 +109,10 @@ export function InvoiceFormContainerComponent({
 
         setTimeout(() => onCancel(savedRecord.id));
       })
-      .catch(() => {
-        showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
+      .catch(({ validationError }) => {
+        if (validationError === VALIDATION_ERRORS.dublicateInvoice) return toggleNotUnique();
+
+        return showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [forceSaveValues, id, toggleNotUnique, invoiceDocuments, okapi, showToast, onCancel]);

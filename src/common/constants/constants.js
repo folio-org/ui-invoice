@@ -141,6 +141,10 @@ export const ERROR_CODES = {
   organizationIsNotExist: 'organizationIsNotExist',
 };
 
+export const VALIDATION_ERRORS = {
+  dublicateInvoice: 'dublicateInvoice',
+};
+
 export const RETURN_LINK = '/invoice';
 export const RETURN_LINK_LABEL_ID = 'ui-invoice.meta.title';
 
