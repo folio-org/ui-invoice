@@ -363,7 +363,7 @@
   "search.accountingCode": "Accounting code",
   "search.voucherNumber": "Voucher number",
   "search.vendorInvoiceNo": "Vendor invoice number",
-  "search.poNumbers": "PO numbers",
+  "search.poNumbers": "PO number",
   "search.keyword": "All",
 
   "settings.adjustments.title.new": "New adjustment",
