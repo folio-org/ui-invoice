@@ -97,7 +97,7 @@ class SettingsAdjustmentsView extends Component {
     const {
       metadata,
       title,
-      adjustment: { alwaysShow, defaultAmount, description, type, prorate, relationToTotal },
+      adjustment: { alwaysShow, defaultAmount, description, type, prorate, relationToTotal, exportToAccounting },
     } = adjustment;
     const shortcuts = [
       {
@@ -164,6 +164,7 @@ class SettingsAdjustmentsView extends Component {
                       disabled
                       label={<FormattedMessage id="ui-invoice.settings.adjustments.alwaysShow" />}
                       type="checkbox"
+                      vertical
                     />
                   </Col>
                   <Col
@@ -191,6 +192,18 @@ class SettingsAdjustmentsView extends Component {
                     <KeyValue
                       label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
                       value={relationToTotal}
+                    />
+                  </Col>
+                  <Col
+                    data-test-export-to-accounting
+                    xs={3}
+                  >
+                    <Checkbox
+                      checked={exportToAccounting}
+                      disabled
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
+                      type="checkbox"
+                      vertical
                     />
                   </Col>
                 </Row>

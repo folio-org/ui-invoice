@@ -203,13 +203,18 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                     data-test-always-show="true"
                   >
                     <div
-                      class="checkbox disabled"
+                      class="checkbox inline vertical disabled"
                       data-test-checkbox="true"
                     >
                       <label
                         class="label label"
                         for="checkbox-2"
                       >
+                        <span
+                          class="labelText"
+                        >
+                          ui-invoice.settings.adjustments.alwaysShow
+                        </span>
                         <span
                           class="inner disabledLabel"
                         >
@@ -239,11 +244,6 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                                 stroke-width="1.5"
                               />
                             </svg>
-                          </span>
-                          <span
-                            class="labelText"
-                          >
-                            ui-invoice.settings.adjustments.alwaysShow
                           </span>
                         </span>
                       </label>
@@ -320,6 +320,60 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                       >
                         In addition to
                       </div>
+                    </div>
+                  </div>
+                  <div
+                    class="col-xs-3"
+                    data-test-export-to-accounting="true"
+                  >
+                    <div
+                      class="checkbox inline vertical disabled"
+                      data-test-checkbox="true"
+                    >
+                      <label
+                        class="label label"
+                        for="checkbox-3"
+                      >
+                        <span
+                          class="labelText"
+                        >
+                          ui-invoice.settings.adjustments.exportToAccounting
+                        </span>
+                        <span
+                          class="inner disabledLabel"
+                        >
+                          <input
+                            aria-invalid="false"
+                            class="input"
+                            disabled=""
+                            id="checkbox-3"
+                            type="checkbox"
+                            value=""
+                          />
+                          <span
+                            class="checkboxIcon"
+                          >
+                            <svg
+                              height="10"
+                              viewBox="0 0 14 14"
+                              width="10"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                                fill="none"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-miterlimit="10"
+                                stroke-width="1.5"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </label>
+                      <div
+                        role="alert"
+                      />
                     </div>
                   </div>
                 </div>
