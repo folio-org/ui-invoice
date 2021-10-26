@@ -5,6 +5,7 @@
 * Hide cancel invoice button. Refs UINV-310.
 * Spelling issue - remove "s" from end of "PO numbers". Refs UINV-312.
 * Error message displayed before invoice approval is submitted. Refs UINV-313.
+* "Export to accounting" not displayed in adjustment view in settings. Refs UINV-318.
 
 ## [3.0.0](https://github.com/folio-org/ui-invoice/tree/v3.0.0) (2021-10-08)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.4...v3.0.0)
