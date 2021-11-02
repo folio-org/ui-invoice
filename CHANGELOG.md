@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.0.1](https://github.com/folio-org/ui-invoice/tree/v3.0.1) (2021-11-02)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.0...v3.0.1)
+
 * Hide cancel invoice button. Refs UINV-310.
 * Spelling issue - remove "s" from end of "PO numbers". Refs UINV-312.
 * Error message displayed before invoice approval is submitted. Refs UINV-313.
