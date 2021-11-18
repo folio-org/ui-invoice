@@ -1,3 +1,5 @@
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { differenceBy } from 'lodash';
 
 import { INVOICES_API } from '@folio/stripes-acq-components';
@@ -85,3 +87,7 @@ export const getAlwaysShownAdjustmentsList = (adjustments) => (
     return getAdjustmentFromPreset(adjustment);
   })
 );
+
+export const validateAccountingCode = (value) => {
+  return value ? undefined : <FormattedMessage id="ui-invoice.invoice.validation.accountingCode" />;
+};

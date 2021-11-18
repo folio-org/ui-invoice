@@ -126,6 +126,12 @@ const AdjustmentsForm = ({
       change(`${elem}.prorate`, value);
     };
 
+    const onExportToAccountingChange = ({ target: { checked } }) => {
+      change(`${elem}.exportToAccounting`, checked);
+
+      if (checked) change('exportToAccounting', checked);
+    };
+
     return (
       <Card
         headerEnd={(
@@ -223,6 +229,7 @@ const AdjustmentsForm = ({
               name={`${elem}.exportToAccounting`}
               type="checkbox"
               vertical
+              onChange={onExportToAccountingChange}
             />
           </Col>
         </Row>

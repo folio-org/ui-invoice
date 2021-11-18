@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { Form } from 'react-final-form';
-import { act, render, fireEvent } from '@testing-library/react';
+import { act, render, fireEvent, screen } from '@testing-library/react';
 import { useHistory } from 'react-router';
 
 import {
@@ -9,6 +9,7 @@ import {
   expandAllSections,
   collapseAllSections,
 } from '@folio/stripes/components';
+import { FieldOrganization } from '@folio/stripes-acq-components';
 
 import InvoiceForm from './InvoiceForm';
 
@@ -21,9 +22,11 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
 }));
-jest.mock('@folio/stripes-acq-components/lib/AcqUnits/AcqUnitsField', () => {
-  return () => <span>AcqUnitsField</span>;
-});
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  AcqUnitsField: () => <span>AcqUnitsField</span>,
+  FieldOrganization: jest.fn(() => <span>FieldOrganization</span>),
+}));
 jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
 });
@@ -54,6 +57,7 @@ const renderInvoiceForm = (props = defaultProps) => (render(
 describe('InvoiceForm component', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
+    FieldOrganization.mockClear();
   });
 
   afterEach(() => {
@@ -85,6 +89,12 @@ describe('InvoiceForm component', () => {
     expect(getByTestId('lock-total').checked).toEqual(false);
   });
 
+  it('should uncheck export to account initially', () => {
+    const { getByTestId } = renderInvoiceForm();
+
+    expect(getByTestId('export-to-accounting').checked).toEqual(false);
+  });
+
   describe('When lock total is unchecked', () => {
     it('then lock total amount is readonly', () => {
       const { getByTestId } = renderInvoiceForm();
@@ -111,6 +121,37 @@ describe('InvoiceForm component', () => {
       }));
 
       expect(getByTestId('lock-total-amount')).not.toHaveAttribute('readonly');
+    });
+  });
+
+  describe('When export to accounting is checked', () => {
+    it('then accounting code field should be required', async () => {
+      await act(async () => {
+        await renderInvoiceForm();
+      });
+
+      const exportToAccounting = screen.getByTestId('export-to-accounting');
+
+      fireEvent(exportToAccounting, new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+      }));
+
+      expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon required/i })).toBeInTheDocument();
+    });
+  });
+
+  describe('Select vendor', () => {
+    it('then export to accounting should be checked', async () => {
+      await act(async () => {
+        renderInvoiceForm();
+      });
+
+      await act(async () => {
+        await FieldOrganization.mock.calls[0][0].onSelect({ id: 'vendorId', exportToAccounting: true });
+      });
+
+      expect(screen.getByTestId('export-to-accounting').checked).toEqual(true);
     });
   });
 

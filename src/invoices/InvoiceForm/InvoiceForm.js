@@ -68,6 +68,7 @@ import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 import invoiceCss from '../Invoice.css';
 import FieldBatchGroup from './FieldBatchGroup';
+import { validateAccountingCode } from './utils';
 
 const CREATE_UNITS_PERM = 'invoices.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
@@ -89,6 +90,8 @@ const InvoiceForm = ({
   const filledBillTo = values?.billTo;
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
+  const isExportToAccountingChecked = values?.exportToAccounting ||
+    values?.adjustments?.some(({ exportToAccounting }) => exportToAccounting);
   const {
     acqUnitIds,
     adjustments,
@@ -116,13 +119,13 @@ const InvoiceForm = ({
       const hasAnyAccountingCode = vendor.accounts?.some(({ appSystemNo }) => Boolean(appSystemNo));
       const paymentMethod = vendor.paymentMethod;
       const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
-      const exportToAccounting = Boolean(vendor.exportToAccounting);
+      const exportToAccounting = Boolean(isExportToAccountingChecked || vendor.exportToAccounting);
 
       change('accountingCode', vendorAccountingCode || null);
       change('paymentMethod', paymentMethod || null);
       change('exportToAccounting', exportToAccounting);
     }
-  }, [change, selectedVendor]);
+  }, [change, isExportToAccountingChecked, selectedVendor]);
 
   const paneTitle = id
     ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
@@ -145,6 +148,9 @@ const InvoiceForm = ({
   const invoiceVendor = selectedVendor || initialVendor;
   const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
+  const accountingCodeValidationProps = isExportToAccountingChecked
+    ? { required: true, validate: validateAccountingCode }
+    : {};
 
   const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
     ? INVOICE_STATUSES_OPTIONS
@@ -455,11 +461,13 @@ const InvoiceForm = ({
                             )
                             : (
                               <FieldSelectionFinal
+                                data-testid="accounting-code"
                                 dataOptions={accountingCodeOptions}
                                 labelId="ui-invoice.invoice.accountingCode"
                                 name="accountNo"
                                 onChange={onChangeAccNumber}
                                 readOnly={!invoiceVendor?.id}
+                                {...accountingCodeValidationProps}
                               />
                             )
                           }
@@ -498,6 +506,7 @@ const InvoiceForm = ({
                         </Col>
                         <Col data-test-col-export-to-accounting xs={3}>
                           <Field
+                            data-testid="export-to-accounting"
                             component={Checkbox}
                             label={<FormattedMessage id="ui-invoice.invoice.exportToAccounting" />}
                             name="exportToAccounting"

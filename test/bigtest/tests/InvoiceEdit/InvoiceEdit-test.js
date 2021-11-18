@@ -55,7 +55,7 @@ describe('Invoice edit', function () {
         type: ADJUSTMENT_TYPE_VALUES.amount,
         prorate: ADJUSTMENT_PRORATE_VALUES.notProrated,
         relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo,
-        exportToAccounting: true,
+        exportToAccounting: false,
         fundDistributions: [{
           fundId: fund.id,
           distributionType: FUND_DISTR_TYPE.percent,

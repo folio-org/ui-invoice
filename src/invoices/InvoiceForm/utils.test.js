@@ -1,6 +1,7 @@
 import { invoice } from '../../../test/jest/fixtures';
 import {
   saveInvoice,
+  validateAccountingCode,
 } from './utils';
 
 const okapi = {
@@ -111,4 +112,11 @@ describe('Invoice form utils', () => {
       });
     });
   });
+});
+
+test('validateAccountingCode', () => {
+  expect(validateAccountingCode('')).toBeTruthy();
+  expect(validateAccountingCode(null)).toBeTruthy();
+  expect(validateAccountingCode(undefined)).toBeTruthy();
+  expect(validateAccountingCode('accounting code')).toBe(undefined);
 });
