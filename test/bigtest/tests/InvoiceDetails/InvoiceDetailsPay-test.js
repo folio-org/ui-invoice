@@ -2,6 +2,7 @@ import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 import { Response } from 'miragejs';
 
+import { INVOICES_API } from '@folio/stripes-acq-components';
 import {
   CalloutInteractor,
   ConfirmationInteractor,
@@ -10,7 +11,6 @@ import {
 import {
   CONFIG_MODULE_INVOICE,
   CONFIG_NAME_APPROVALS,
-  INVOICE_API,
   INVOICE_STATUS,
   ERROR_CODES,
 } from '../../../../src/common/constants';
@@ -108,7 +108,7 @@ describe('Invoice details - pay action', function () {
     beforeEach(async function () {
       const invoice = createInvoice(this.server, INVOICE_STATUS.approved);
 
-      this.server.put(`${INVOICE_API}/${invoice.id}`, () => {
+      this.server.put(`${INVOICES_API}/${invoice.id}`, () => {
         return new Response(400, { errors: [{ code: 'test', message: 'cant approve' }] });
       });
       this.visit(`/invoice/view/${invoice.id}`);
@@ -137,7 +137,7 @@ describe('Invoice details - pay action', function () {
         'total_records': 1,
       };
 
-      this.server.put(`${INVOICE_API}/:id`, ERROR_RESPONSE, 422);
+      this.server.put(`${INVOICES_API}/:id`, ERROR_RESPONSE, 422);
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
@@ -172,7 +172,7 @@ describe('Invoice details - pay action', function () {
         'total_records': 1,
       };
 
-      this.server.put(`${INVOICE_API}/:id`, ERROR_RESPONSE, 422);
+      this.server.put(`${INVOICES_API}/:id`, ERROR_RESPONSE, 422);
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();

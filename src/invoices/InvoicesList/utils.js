@@ -9,9 +9,7 @@ export const fetchInvoiceOrganizations = (mutator, invoices, fetchedOrganization
     .filter(invoice => !fetchedOrganizationsMap[invoice.vendorId])
     .map(invoice => invoice.vendorId);
 
-  const organizationsPromise = unfetchedOrganizations.length
+  return unfetchedOrganizations.length
     ? batchFetch(mutator, uniq(unfetchedOrganizations))
     : Promise.resolve([]);
-
-  return organizationsPromise;
 };

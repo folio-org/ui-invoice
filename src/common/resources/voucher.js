@@ -1,12 +1,13 @@
+import { baseManifest } from '@folio/stripes-acq-components';
+
 import {
   VOUCHERS_API,
   VOUCHER_LINES_API,
   VOUCHER_NUMBER_START_API,
 } from '../constants';
-import { BASE_RESOURCE } from './base';
 
 export const VOUCHER = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   accumulate: true,
   fetch: false,
   path: VOUCHERS_API,
@@ -17,7 +18,7 @@ export const VOUCHER = {
 };
 
 export const VOUCHER_BY_ID = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: VOUCHERS_API,
   GET: {
     path: `${VOUCHERS_API}/:{voucherId}`,
@@ -25,13 +26,13 @@ export const VOUCHER_BY_ID = {
 };
 
 export const VOUCHER_LINES = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: VOUCHER_LINES_API,
   records: 'voucherLines',
 };
 
 export const VOUCHER_NUMBER_START = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: VOUCHER_NUMBER_START_API,
   POST: {
     path: `${VOUCHER_NUMBER_START_API}/%{sequenceNumber}`,

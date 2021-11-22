@@ -1,4 +1,3 @@
-export * from './acqUnit';
 export * from './batchGroups';
 export * from './batchVoucherExportsResource';
 export * from './configAddress';
@@ -8,7 +7,6 @@ export * from './configTags';
 export * from './exportConfigs';
 export * from './invoice';
 export * from './orders';
-export * from './tags';
 export * from './vendor';
 export * from './voucher';
 export * from './configVoucherNumber';

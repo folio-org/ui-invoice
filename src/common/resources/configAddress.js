@@ -1,12 +1,9 @@
-import {
-  CONFIG_API,
-  CONFIG_MODULE_TENANT,
-} from '../constants';
-import { BASE_RESOURCE } from './base';
+import { baseManifest, CONFIG_API } from '@folio/stripes-acq-components';
 
-// eslint-disable-next-line import/prefer-default-export
+import { CONFIG_MODULE_TENANT } from '../constants';
+
 export const configAddress = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   records: 'configs',
   path: CONFIG_API,
   GET: {
@@ -17,6 +14,6 @@ export const configAddress = {
 };
 
 export const configAddressItem = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: `${CONFIG_API}/!{billToId}`,
 };

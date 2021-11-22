@@ -5,7 +5,7 @@ import {
   useNamespace,
 } from '@folio/stripes/core';
 
-import { PO_LINES_API } from '../../constants';
+import { LINES_API } from '@folio/stripes-acq-components';
 
 export const useOrderLine = (orderLineId) => {
   const ky = useOkapiKy();
@@ -13,7 +13,7 @@ export const useOrderLine = (orderLineId) => {
 
   const { isLoading, data: orderLine } = useQuery(
     [namespace, orderLineId],
-    () => ky.get(`${PO_LINES_API}/${orderLineId}`).json(),
+    () => ky.get(`${LINES_API}/${orderLineId}`).json(),
     { enabled: Boolean(orderLineId) },
   );
 

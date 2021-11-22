@@ -8,9 +8,11 @@ import {
   NoValue,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
+import {
+  baseManifest,
+  USERS_API,
+} from '@folio/stripes-acq-components';
 
-import { BASE_RESOURCE } from '../../resources/base';
-import { USERS_API } from '../../constants/api';
 import { getUserName } from '../../utils';
 
 export const ApprovedBy = ({ approvedByUserId, resources }) => {
@@ -28,7 +30,7 @@ export const ApprovedBy = ({ approvedByUserId, resources }) => {
 
 ApprovedBy.manifest = Object.freeze({
   approvedByUser: {
-    ...BASE_RESOURCE,
+    ...baseManifest,
     path: `${USERS_API}/!{approvedByUserId}`,
   },
 });

@@ -1,14 +1,12 @@
+import { baseManifest, CONFIG_API } from '@folio/stripes-acq-components';
+
 import {
   CONFIG_NAME_APPROVALS,
-  CONFIG_API,
   CONFIG_MODULE_INVOICE,
 } from '../constants';
 
-import { BASE_RESOURCE } from './base';
-
-// eslint-disable-next-line import/prefer-default-export
 export const configApprovals = {
-  ...BASE_RESOURCE,
+  ...baseManifest,
   path: CONFIG_API,
   records: 'configs',
   fetch: false,

@@ -1,20 +1,19 @@
-import { baseManifest } from '@folio/stripes-acq-components';
+import { baseManifest, INVOICES_API } from '@folio/stripes-acq-components';
 
 import {
-  INVOICE_API,
   INVOICE_LINE_API,
   INVOICE_DOCUMENTS_API,
 } from '../constants';
 
 export const invoicesResource = {
   ...baseManifest,
-  path: INVOICE_API,
+  path: INVOICES_API,
   records: 'invoices',
 };
 
 export const invoiceResource = {
   ...baseManifest,
-  path: `${INVOICE_API}/:{id}`,
+  path: `${INVOICES_API}/:{id}`,
 };
 
 export const invoiceLineResource = {
@@ -32,12 +31,12 @@ export const invoiceLinesResource = {
 
 export const invoiceDocumentsResource = {
   ...baseManifest,
-  path: `${INVOICE_API}/:{id}${INVOICE_DOCUMENTS_API}`,
+  path: `${INVOICES_API}/:{id}${INVOICE_DOCUMENTS_API}`,
   records: 'documents',
   shouldRefresh: () => false,
 };
 
 export const invoiceDocumentFromPropsResource = {
   ...baseManifest,
-  path: `${INVOICE_API}/:{id}${INVOICE_DOCUMENTS_API}/!{documentId}`,
+  path: `${INVOICES_API}/:{id}${INVOICE_DOCUMENTS_API}/!{documentId}`,
 };

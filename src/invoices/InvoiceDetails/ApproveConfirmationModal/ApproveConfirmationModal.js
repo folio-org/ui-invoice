@@ -8,12 +8,10 @@ import {
   Modal,
   ModalFooter,
 } from '@folio/stripes/components';
+import { organizationsManifest } from '@folio/stripes-acq-components';
 
 import DuplicateInvoiceList from '../../../common/components/DuplicateInvoiceList';
-import {
-  invoicesResource,
-  VENDORS,
-} from '../../../common/resources';
+import { invoicesResource } from '../../../common/resources';
 import useDuplicateInvoice from './useDuplicateInvoice';
 
 const ApproveConfirmationModal = ({
@@ -75,7 +73,7 @@ ApproveConfirmationModal.manifest = Object.freeze({
     accumulate: true,
   },
   vendors: {
-    ...VENDORS,
+    ...organizationsManifest,
     fetch: false,
     accumulate: true,
   },

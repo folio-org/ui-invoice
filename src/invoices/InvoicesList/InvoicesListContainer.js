@@ -2,10 +2,10 @@ import React, { useCallback, useMemo } from 'react';
 import { PropTypes } from 'prop-types';
 import { stripesConnect } from '@folio/stripes/core';
 import {
+  organizationsManifest,
   RESULT_COUNT_INCREMENT,
   usePagination,
 } from '@folio/stripes-acq-components';
-import { VENDORS } from '../../common/resources';
 import { useInvoices } from './hooks';
 
 import InvoicesList from './InvoicesList';
@@ -58,7 +58,7 @@ const InvoicesListContainer = ({ mutator: originMutator }) => {
 
 InvoicesListContainer.manifest = Object.freeze({
   invoicesListOrganizations: {
-    ...VENDORS,
+    ...organizationsManifest,
     accumulate: true,
   },
 });
