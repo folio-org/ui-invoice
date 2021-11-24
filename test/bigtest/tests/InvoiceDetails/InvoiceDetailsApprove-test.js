@@ -1,11 +1,12 @@
 import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 
+import { INVOICES_API } from '@folio/stripes-acq-components';
 import {
   CalloutInteractor,
 } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
-import { INVOICE_API, INVOICE_STATUS, ERROR_CODES } from '../../../../src/common/constants';
+import { INVOICE_STATUS, ERROR_CODES } from '../../../../src/common/constants';
 
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
@@ -111,7 +112,7 @@ describe('Invoice details - approve action', function () {
         'total_records': 1,
       };
 
-      this.server.put(`${INVOICE_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
+      this.server.put(`${INVOICES_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
@@ -139,7 +140,7 @@ describe('Invoice details - approve action', function () {
         'total_records': 1,
       };
 
-      this.server.put(`${INVOICE_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
+      this.server.put(`${INVOICES_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();
@@ -167,7 +168,7 @@ describe('Invoice details - approve action', function () {
         'total_records': 1,
       };
 
-      this.server.put(`${INVOICE_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
+      this.server.put(`${INVOICES_API}/:id`, INVOICE_APPROVE_RESPONSE, 422);
 
       this.visit(`/invoice/view/${invoice.id}`);
       await invoiceDetails.whenLoaded();

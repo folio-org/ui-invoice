@@ -9,6 +9,7 @@ import {
   baseManifest,
   batchFetch,
   LIMIT_MAX,
+  INVOICES_API,
   orderLinesResource,
   useShowCallout,
   VENDORS_API,
@@ -22,7 +23,6 @@ import {
   invoiceResource,
 } from '../../common/resources';
 import {
-  INVOICE_API,
   INVOICE_STATUS,
 } from '../../common/constants';
 import {
@@ -64,7 +64,7 @@ export function InvoiceDetailsContainer({
       setBatchVoucherExport();
       setExportFormat();
 
-      return mutator.invoice.GET({ path: `${INVOICE_API}/${id}` })
+      return mutator.invoice.GET({ path: `${INVOICES_API}/${id}` })
         .then(invoiceResponse => {
           setInvoice(invoiceResponse);
 

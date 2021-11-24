@@ -100,10 +100,10 @@ const InvoiceLines = ({
       />
     ),
     // eslint-disable-next-line
-    polNumber: ({ rowIndex, ...invoiceLine }) => (
+    polNumber: ({ rowIndex, ...line }) => (
       <InvoiceLineOrderLineNumber
-        invoiceLine={invoiceLine}
-        poLineNumber={orderlinesMap?.[invoiceLine.poLineId]?.poLineNumber}
+        invoiceLine={line}
+        poLineNumber={orderlinesMap?.[line.poLineId]?.poLineNumber}
         link={setInvoiceLine}
       />
     ),

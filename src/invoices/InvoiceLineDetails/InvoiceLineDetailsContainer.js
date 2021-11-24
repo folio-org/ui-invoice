@@ -2,20 +2,20 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import { stripesConnect } from '@folio/stripes/core';
 import { LoadingPane } from '@folio/stripes/components';
 import {
   baseManifest,
+  LINES_API,
   Tags,
   useModalToggle,
   useShowCallout,
 } from '@folio/stripes-acq-components';
-import { stripesConnect } from '@folio/stripes/core';
 
 import {
   invoiceLineResource,
   invoiceResource,
 } from '../../common/resources';
-import { PO_LINES_API } from '../../common/constants';
 import InvoiceLineDetails from './InvoiceLineDetails';
 
 export const InvoiceLineDetailsContainerComponent = ({
@@ -40,7 +40,7 @@ export const InvoiceLineDetailsContainerComponent = ({
         .then(line => {
           setInvoiceLine(line);
 
-          return line.poLineId && mutator.poLine.GET({ path: `${PO_LINES_API}/${line.poLineId}` });
+          return line.poLineId && mutator.poLine.GET({ path: `${LINES_API}/${line.poLineId}` });
         })
         .then(setPoLine, () => setPoLine({}));
 
@@ -147,7 +147,7 @@ InvoiceLineDetailsContainerComponent.manifest = Object.freeze({
   },
   poLine: {
     ...baseManifest,
-    path: PO_LINES_API,
+    path: LINES_API,
     accumulate: true,
     fetch: false,
   },

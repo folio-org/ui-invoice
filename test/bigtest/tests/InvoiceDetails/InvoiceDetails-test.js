@@ -2,9 +2,9 @@ import { beforeEach, describe, it } from '@bigtest/mocha';
 import { expect } from 'chai';
 import { Response } from 'miragejs';
 
+import { INVOICES_API } from '@folio/stripes-acq-components';
 import { ConfirmationInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
-import { INVOICE_API } from '../../../../src/common/constants';
 import setupApplication from '../../helpers/setup-application';
 import InvoiceDetails from '../../interactors/InvoiceDetails';
 import InvoiceLineFormInteractor from '../../interactors/InvoiceLineFormInteractor';
@@ -77,7 +77,7 @@ describe('Invoice details', function () {
 
   describe('click delete invoice that cant be deleted', () => {
     beforeEach(async function () {
-      this.server.delete(`${INVOICE_API}/${invoiceId}`, () => {
+      this.server.delete(`${INVOICES_API}/${invoiceId}`, () => {
         return new Response(400, { errors: [{ message: 'record is not found' }] });
       });
       await invoiceDetails.header.click();

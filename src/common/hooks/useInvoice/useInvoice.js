@@ -2,14 +2,14 @@ import { useQuery } from 'react-query';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { INVOICE_API } from '../../constants';
+import { INVOICES_API } from '@folio/stripes-acq-components';
 
 export const useInvoice = (invoiceId) => {
   const ky = useOkapiKy();
 
   const { isLoading: isInvoiceLoading, data: invoice = {} } = useQuery(
-    [INVOICE_API, invoiceId],
-    () => ky.get(`${INVOICE_API}/${invoiceId}`).json(),
+    [INVOICES_API, invoiceId],
+    () => ky.get(`${INVOICES_API}/${invoiceId}`).json(),
     { enabled: Boolean(invoiceId) },
   );
 

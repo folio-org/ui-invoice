@@ -142,8 +142,8 @@ const InvoiceForm = ({
   const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, status);
   const isEditMode = Boolean(id);
   const isStatusPaid = isPaid(status);
-  const vendor = selectedVendor || initialVendor;
-  const accountingCodeOptions = getAccountingCodeOptions(vendor);
+  const invoiceVendor = selectedVendor || initialVendor;
+  const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
 
   const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
@@ -151,6 +151,16 @@ const InvoiceForm = ({
     : PRE_PAY_INVOICE_STATUSES_OPTIONS;
   const tooltipTextLockTotalAmount = !isLockTotalAmountEnabled &&
     <FormattedMessage id="ui-invoice.invoice.lockTotalAmount.tooltip" />;
+  const lockTotalAmountProps = isLockTotalAmountEnabled
+    ? {
+      key: 1,
+      required: true,
+      validate: validateRequired,
+    }
+    : {
+      key: 0,
+      readOnly: true,
+    };
 
   const resetLockTotalAmount = useCallback(() => change('lockTotal', null), [change]);
 
@@ -164,14 +174,14 @@ const InvoiceForm = ({
 
   const onChangeAccNumber = useCallback(accNumber => {
     const accCode = accNumber
-      ? vendor.accounts?.find(({ accountNo }) => accountNo === accNumber)?.appSystemNo
-      : vendor.erpCode;
+      ? invoiceVendor.accounts?.find(({ accountNo }) => accountNo === accNumber)?.appSystemNo
+      : invoiceVendor.erpCode;
 
     batch(() => {
       change('accountingCode', accCode || null);
       change('accountNo', accNumber || null);
     });
-  }, [vendor.accounts, vendor.erpCode]);
+  }, [batch, change, invoiceVendor.accounts, invoiceVendor.erpCode]);
 
   const shortcuts = [
     {
@@ -372,14 +382,11 @@ const InvoiceForm = ({
                                 component={TextField}
                                 data-testid="lock-total-amount"
                                 id="lock-total-amount"
-                                key={isLockTotalAmountEnabled ? 1 : 0}
                                 label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}
                                 name="lockTotal"
-                                readOnly={!isLockTotalAmountEnabled}
-                                required={isLockTotalAmountEnabled}
                                 tooltipText={tooltipTextLockTotalAmount}
                                 type="number"
-                                validate={isLockTotalAmountEnabled ? validateRequired : undefined}
+                                {...lockTotalAmountProps}
                               />
                             )
                           }
@@ -452,7 +459,7 @@ const InvoiceForm = ({
                                 labelId="ui-invoice.invoice.accountingCode"
                                 name="accountNo"
                                 onChange={onChangeAccNumber}
-                                readOnly={!vendor?.id}
+                                readOnly={!invoiceVendor?.id}
                               />
                             )
                           }

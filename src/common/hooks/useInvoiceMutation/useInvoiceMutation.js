@@ -4,9 +4,7 @@ import {
 
 import { useOkapiKy } from '@folio/stripes/core';
 
-import {
-  INVOICE_API,
-} from '../../constants';
+import { INVOICES_API } from '@folio/stripes-acq-components';
 
 export const useInvoiceMutation = (options = {}) => {
   const ky = useOkapiKy();
@@ -14,7 +12,7 @@ export const useInvoiceMutation = (options = {}) => {
   const { mutateAsync } = useMutation({
     mutationFn: (invoice) => {
       const kyMethod = invoice.id ? 'put' : 'post';
-      const kyPath = invoice.id ? `${INVOICE_API}/${invoice.id}` : INVOICE_API;
+      const kyPath = invoice.id ? `${INVOICES_API}/${invoice.id}` : INVOICES_API;
 
       return ky[kyMethod](kyPath, { json: invoice });
     },

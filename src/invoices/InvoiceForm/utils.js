@@ -1,8 +1,9 @@
 import { differenceBy } from 'lodash';
 
+import { INVOICES_API } from '@folio/stripes-acq-components';
+
 import {
   CONTENT_TYPES,
-  INVOICE_API,
   INVOICE_DOCUMENTS_API,
 } from '../../common/constants';
 import { getAdjustmentFromPreset } from '../utils';
@@ -27,7 +28,7 @@ export const hydrateInvoiceDocument = (invoiceDocument, invoice) => {
 };
 
 export const saveDocument = (documentBody, okapi) => {
-  return fetch(`${okapi.url}/${INVOICE_API}/${documentBody.documentMetadata.invoiceId}${INVOICE_DOCUMENTS_API}`, {
+  return fetch(`${okapi.url}/${INVOICES_API}/${documentBody.documentMetadata.invoiceId}${INVOICE_DOCUMENTS_API}`, {
     method: 'POST',
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
@@ -39,7 +40,7 @@ export const saveDocument = (documentBody, okapi) => {
 };
 
 export const deleteDocument = ({ id, invoiceId }, okapi) => {
-  return fetch(`${okapi.url}/${INVOICE_API}/${invoiceId}${INVOICE_DOCUMENTS_API}/${id}`, {
+  return fetch(`${okapi.url}/${INVOICES_API}/${invoiceId}${INVOICE_DOCUMENTS_API}/${id}`, {
     method: 'DELETE',
     headers: {
       'X-Okapi-Tenant': okapi.tenant,

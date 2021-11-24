@@ -1,6 +1,5 @@
-import { baseManifest } from '@folio/stripes-acq-components';
+import { baseManifest, CONFIG_API } from '@folio/stripes-acq-components';
 import {
-  CONFIG_API,
   CONFIG_MODULE_INVOICE,
   CONFIG_NAME_VOUCHER_NUMBER,
 } from '../constants';
