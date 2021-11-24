@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Pro rated adjustments are applied incorrectly when adding multiple lines at a time. Refs UINV-327.
+
 ## [3.0.1](https://github.com/folio-org/ui-invoice/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.0...v3.0.1)
 
