@@ -202,10 +202,12 @@ export function InvoiceDetailsContainer({
   const addLines = useCallback(
     async (poLines) => {
       setIsLoading(true);
-      for (const poLine of poLines) {
-        await mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor));
-      }
+
+      await poLines.reduce((acc, poLine) => {
+        return acc.then(() => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor)))
+      }, Promise.resolve());
       await fetchInvoiceData();
+
       setIsLoading(false);
     },
     [fetchInvoiceData, id, mutator.invoiceLines, vendor],
