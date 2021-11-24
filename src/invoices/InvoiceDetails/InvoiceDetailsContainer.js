@@ -204,7 +204,7 @@ export function InvoiceDetailsContainer({
       setIsLoading(true);
 
       await poLines.reduce((acc, poLine) => {
-        return acc.then(() => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor)))
+        return acc.then(() => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor)));
       }, Promise.resolve());
       await fetchInvoiceData();
 
