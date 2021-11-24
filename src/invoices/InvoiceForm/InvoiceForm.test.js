@@ -141,6 +141,16 @@ describe('InvoiceForm component', () => {
     });
   });
 
+  describe('When adjustment export to accounting is checked', () => {
+    it('then accounting code field should be required', async () => {
+      await act(async () => {
+        await renderInvoiceForm({ ...defaultProps, initialValues: { adjustments: [{ exportToAccounting: true }] } });
+      });
+
+      expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon required/i })).toBeInTheDocument();
+    });
+  });
+
   describe('Select vendor', () => {
     it('then export to accounting should be checked', async () => {
       await act(async () => {
