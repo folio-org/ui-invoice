@@ -1019,51 +1019,9 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                           <div
                             class="col-xs-6"
                           >
-                            <div>
-                              <div
-                                class="textField"
-                              >
-                                <label
-                                  class="label"
-                                  for="vendorId"
-                                >
-                                  ui-invoice.invoice.vendorName
-                                  <span
-                                    aria-hidden="true"
-                                    class="asterisk"
-                                  >
-                                    *
-                                  </span>
-                                </label>
-                                <div
-                                  class="formControl disabled inputGroup isDisabled"
-                                >
-                                  <input
-                                    aria-invalid="false"
-                                    aria-required="true"
-                                    autocapitalize="off"
-                                    autocomplete="off"
-                                    autocorrect="off"
-                                    data-testid="field-org"
-                                    disabled=""
-                                    error=""
-                                    id="vendorId"
-                                    name="vendorId"
-                                    required=""
-                                    spellcheck="false"
-                                    type="text"
-                                    value=""
-                                    warning=""
-                                  />
-                                </div>
-                                <div
-                                  role="alert"
-                                />
-                              </div>
-                              <div>
-                                stripes-acq-components.filter.organization.lookupNoSupport
-                              </div>
-                            </div>
+                            <span>
+                              FieldOrganization
+                            </span>
                           </div>
                           <div
                             class="col-xs-3"
@@ -1376,6 +1334,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
+                                    data-testid="export-to-accounting"
                                     id="checkbox-11"
                                     name="exportToAccounting"
                                     type="checkbox"

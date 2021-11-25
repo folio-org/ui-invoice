@@ -68,6 +68,7 @@ import InvoiceLinksForm from './InvoiceLinksForm';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 import invoiceCss from '../Invoice.css';
 import FieldBatchGroup from './FieldBatchGroup';
+import { validateAccountingCode } from './utils';
 
 const CREATE_UNITS_PERM = 'invoices.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
@@ -89,6 +90,8 @@ const InvoiceForm = ({
   const filledBillTo = values?.billTo;
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
+  const isExportToAccountingChecked = values?.exportToAccounting ||
+    values?.adjustments?.some(({ exportToAccounting }) => exportToAccounting);
   const {
     acqUnitIds,
     adjustments,
@@ -118,11 +121,13 @@ const InvoiceForm = ({
       const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
 
-      change('accountingCode', vendorAccountingCode || null);
-      change('paymentMethod', paymentMethod || null);
-      change('exportToAccounting', exportToAccounting);
+      batch(() => {
+        change('accountingCode', vendorAccountingCode || null);
+        change('paymentMethod', paymentMethod || null);
+        change('exportToAccounting', exportToAccounting);
+      });
     }
-  }, [change, selectedVendor]);
+  }, [change, batch, selectedVendor]);
 
   const paneTitle = id
     ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
@@ -145,6 +150,9 @@ const InvoiceForm = ({
   const invoiceVendor = selectedVendor || initialVendor;
   const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
+  const accountingCodeValidationProps = isExportToAccountingChecked
+    ? { required: true, validate: validateAccountingCode, key: 1 }
+    : { key: 0 };
 
   const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
     ? INVOICE_STATUSES_OPTIONS
@@ -173,7 +181,7 @@ const InvoiceForm = ({
   );
 
   const onChangeAccNumber = useCallback(accNumber => {
-    const accCode = accNumber
+    const accCode = accNumber !== invoiceVendor.erpCode
       ? invoiceVendor.accounts?.find(({ accountNo }) => accountNo === accNumber)?.appSystemNo
       : invoiceVendor.erpCode;
 
@@ -455,11 +463,13 @@ const InvoiceForm = ({
                             )
                             : (
                               <FieldSelectionFinal
+                                data-testid="accounting-code"
                                 dataOptions={accountingCodeOptions}
                                 labelId="ui-invoice.invoice.accountingCode"
                                 name="accountNo"
                                 onChange={onChangeAccNumber}
                                 readOnly={!invoiceVendor?.id}
+                                {...accountingCodeValidationProps}
                               />
                             )
                           }
@@ -498,12 +508,14 @@ const InvoiceForm = ({
                         </Col>
                         <Col data-test-col-export-to-accounting xs={3}>
                           <Field
+                            data-testid="export-to-accounting"
                             component={Checkbox}
                             label={<FormattedMessage id="ui-invoice.invoice.exportToAccounting" />}
                             name="exportToAccounting"
                             disabled={isEditPostApproval}
                             type="checkbox"
                             vertical
+                            validateFields={['accountNo']}
                           />
                         </Col>
                         <Col data-test-col-enclosure-needed xs={3}>

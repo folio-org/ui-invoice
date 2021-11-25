@@ -120,6 +120,7 @@ export function InvoiceFormContainerComponent({
   const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
   const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
   const batchGroupId = isCreate && (batchGroups?.length === 1) ? batchGroups[0]?.id : undefined;
+  const exportToAccounting = alwaysShowAdjustments.some(adj => adj.exportToAccounting);
   const invoice = !isCreate
     ? get(resources, ['invoice', 'records', 0], {})
     : {
@@ -129,6 +130,7 @@ export function InvoiceFormContainerComponent({
       adjustments: alwaysShowAdjustments,
       batchGroupId,
       status: INVOICE_STATUS.open,
+      exportToAccounting,
     };
 
   const invoiceVendor = isCreate ? undefined : get(resources, ['invoiceFormVendor', 'records', 0]);
