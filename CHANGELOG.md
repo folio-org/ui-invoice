@@ -3,6 +3,12 @@
 ## (IN PROGRESS)
 
 * Settings (Invoices) | Apply baseline keyboard shortcuts. Refs UINV-303.
+* Tech debt: reducing code smells, usage of consts and resources from stripes-acq. Refs UINV-325.
+
+## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)
+
+* Pro rated adjustments are applied incorrectly when adding multiple lines at a time. Refs UINV-327.
 
 ## [3.0.1](https://github.com/folio-org/ui-invoice/tree/v3.0.1) (2021-11-02)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.0...v3.0.1)
@@ -11,8 +17,6 @@
 * Spelling issue - remove "s" from end of "PO numbers". Refs UINV-312.
 * Error message displayed before invoice approval is submitted. Refs UINV-313.
 * "Export to accounting" not displayed in adjustment view in settings. Refs UINV-318.
-* Tech debt: reducing code smells, usage of consts and resources from stripes-acq. Refs UINV-325.
-* Pro rated adjustments are applied incorrectly when adding multiple lines at a time. Refs UINV-327.
 
 ## [3.0.0](https://github.com/folio-org/ui-invoice/tree/v3.0.0) (2021-10-08)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v2.4.4...v3.0.0)
