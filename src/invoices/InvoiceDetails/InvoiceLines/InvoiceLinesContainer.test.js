@@ -3,9 +3,13 @@ import { render, screen } from '@testing-library/react';
 
 import { history, location, invoiceLine, invoice } from '../../../../test/jest/fixtures';
 
+import { useInvoiceOrders } from './hooks';
 import InvoiceLines from './InvoiceLines';
 import { InvoiceLinesContainerComponent } from './InvoiceLinesContainer';
 
+jest.mock('./hooks', () => ({
+  useInvoiceOrders: jest.fn().mockReturnValue({ orders: [] }),
+}));
 jest.mock('./InvoiceLines', () => jest.fn().mockReturnValue('InvoiceLines'));
 
 const historyMock = {
@@ -28,12 +32,19 @@ const renderInvoiceLinesContainer = (props = defaultProps) => render(
 describe('AddInvoiceLinesActionContainer', () => {
   beforeEach(() => {
     InvoiceLines.mockClear();
+    useInvoiceOrders.mockClear();
   });
 
   it('should display InvoiceLines', () => {
     renderInvoiceLinesContainer();
 
     expect(screen.getByText('InvoiceLines')).toBeDefined();
+  });
+
+  it('should call useInvoiceOrders to fetch related orders', () => {
+    renderInvoiceLinesContainer();
+
+    expect(useInvoiceOrders).toHaveBeenCalledWith(invoice);
   });
 
   describe('Actions', () => {

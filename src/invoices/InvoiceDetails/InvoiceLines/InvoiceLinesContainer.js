@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import {
+  useInvoiceOrders,
+} from './hooks';
 import InvoiceLines from './InvoiceLines';
 
 export const InvoiceLinesContainerComponent = ({
@@ -14,6 +17,8 @@ export const InvoiceLinesContainerComponent = ({
   orderlinesMap,
   refreshData,
 }) => {
+  const { orders } = useInvoiceOrders(invoice);
+
   const openLineDetails = useCallback(
     (e, invoiceLine) => {
       const pathname = `/invoice/view/${invoiceLine.invoiceId}/line/${invoiceLine.id}/view`;
@@ -31,6 +36,7 @@ export const InvoiceLinesContainerComponent = ({
     <InvoiceLines
       invoice={invoice}
       vendor={vendor}
+      orders={orders}
       invoiceLinesItems={invoiceLines}
       openLineDetails={openLineDetails}
       orderlinesMap={orderlinesMap}
