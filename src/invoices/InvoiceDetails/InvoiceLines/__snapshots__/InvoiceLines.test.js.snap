@@ -122,6 +122,15 @@ exports[`InvoiceLines should render correct structure 1`] = `
         <div
           aria-sort="none"
           class="mclHeader"
+          id="list-column-vendorcode"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.vendor.code
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
           id="list-column-vendorrefno"
           role="columnheader"
           style="flex: 0 0 auto;"
@@ -154,7 +163,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
           style="position: static;"
         >
           <div
-            aria-label="[object Object]: null...[object Object]: null...[object Object]: EDI import invoice line...[object Object]: null...[object Object]: 20...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...null: null"
+            aria-label="[object Object]: null...[object Object]: null...[object Object]: EDI import invoice line...[object Object]: null...[object Object]: 20...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...null: null"
             class="mclRow mclIsOdd mclIsInteractive alignLastColToEnd"
             data-row-inner="0"
             style="min-width: 0px;"
@@ -198,6 +207,17 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               $1,523.00
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
             </div>
             <div
               class="mclCell  mclCellStyle"

@@ -26,6 +26,7 @@ const visibleColumns = [
   'subTotal',
   'adjustmentsTotal',
   'total',
+  'vendorCode',
   'vendorRefNo',
 ];
 const columnMapping = {
@@ -37,6 +38,7 @@ const columnMapping = {
   polNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.polNumber" />,
   fundCode: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundCode" />,
   subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
+  vendorCode: <FormattedMessage id="ui-invoice.invoice.details.vendor.code" />,
   vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNumber" />,
 };
 
@@ -47,6 +49,7 @@ const sorters = {
 const InvoiceLines = ({
   invoice,
   vendor,
+  orders,
   invoiceLinesItems,
   openLineDetails,
   orderlinesMap,
@@ -56,6 +59,13 @@ const InvoiceLines = ({
 
   const currency = invoice.currency;
 
+  const ordersMap = useMemo(() => {
+    return orders.reduce((acc, order) => {
+      acc[order.id] = order;
+
+      return acc;
+    }, {});
+  }, [orders]);
   const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
     [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber }) => {
@@ -108,10 +118,15 @@ const InvoiceLines = ({
       />
     ),
     fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
+    vendorCode: ({ poLineId }) => {
+      const orderLine = orderlinesMap?.[poLineId];
+
+      return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || <NoValue />;
+    },
     vendorRefNo: line => (
       line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
     ),
-  }), [currency, orderlinesMap]);
+  }), [currency, ordersMap, orderlinesMap]);
 
   return (
     <>
@@ -147,6 +162,7 @@ const InvoiceLines = ({
 InvoiceLines.propTypes = {
   invoice: PropTypes.object.isRequired,
   vendor: PropTypes.object.isRequired,
+  orders: PropTypes.arrayOf(PropTypes.object),
   invoiceLinesItems: PropTypes.arrayOf(PropTypes.object),
   openLineDetails: PropTypes.func.isRequired,
   orderlinesMap: PropTypes.object,
@@ -154,6 +170,7 @@ InvoiceLines.propTypes = {
 };
 
 InvoiceLines.defaultProps = {
+  orders: [],
   invoiceLinesItems: [],
 };
 
