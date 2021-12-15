@@ -12,35 +12,12 @@ import {
   FrontendSortingMCL,
 } from '@folio/stripes-acq-components';
 
+import { INVOICE_LINES_COLUMN_MAPPING } from '../../constants';
 import { InvoiceLineOrderLineNumber } from './InvoiceLineOrderLineNumber';
 import { InvoiceLineOrderLineLink } from './InvoiceLineOrderLineLink';
 import styles from './InvoiceLines.css';
 
 const COLUMN_LINE_NUMBER = 'lineNumber';
-const visibleColumns = [
-  COLUMN_LINE_NUMBER,
-  'polNumber',
-  'description',
-  'fundCode',
-  'quantity',
-  'subTotal',
-  'adjustmentsTotal',
-  'total',
-  'vendorCode',
-  'vendorRefNo',
-];
-const columnMapping = {
-  description: <FormattedMessage id="ui-invoice.invoice.details.lines.list.description" />,
-  quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
-  adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
-  total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
-  [COLUMN_LINE_NUMBER]: <FormattedMessage id="ui-invoice.invoice.details.lines.list.lineNumber" />,
-  polNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.polNumber" />,
-  fundCode: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundCode" />,
-  subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
-  vendorCode: <FormattedMessage id="ui-invoice.invoice.details.vendor.code" />,
-  vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNumber" />,
-};
 
 const sorters = {
   [COLUMN_LINE_NUMBER]: ({ invoiceLineNumber }) => Number(invoiceLineNumber),
@@ -54,6 +31,7 @@ const InvoiceLines = ({
   openLineDetails,
   orderlinesMap,
   refreshData,
+  visibleColumns,
 }) => {
   const [invoiceLine, setInvoiceLine] = useState();
 
@@ -141,7 +119,7 @@ const InvoiceLines = ({
         id="invoice-lines-list"
         contentData={invoiceLinesItems}
         visibleColumns={visibleColumns}
-        columnMapping={columnMapping}
+        columnMapping={INVOICE_LINES_COLUMN_MAPPING}
         onRowClick={openLineDetails}
         formatter={resultsFormatter}
         hasArrow
@@ -167,6 +145,7 @@ InvoiceLines.propTypes = {
   openLineDetails: PropTypes.func.isRequired,
   orderlinesMap: PropTypes.object,
   refreshData: PropTypes.func.isRequired,
+  visibleColumns: PropTypes.arrayOf(PropTypes.string),
 };
 
 InvoiceLines.defaultProps = {

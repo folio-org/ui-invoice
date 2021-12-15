@@ -14,7 +14,6 @@
   "errors.voucherLoadingFailed": "Voucher has not been loaded",
 
   "button.addAdjustment": "Add adjustment",
-  "button.createLine": "New",
   "button.delete": "Delete",
   "button.edit": "Edit",
   "button.new": "New",
@@ -225,11 +224,13 @@
   "invoice.details.information.batchGroup": "Batch group",
 
   "invoice.details.lines.title": "Invoice lines",
-  "invoice.details.lines.add": "Add",
+  "invoice.details.lines.addFromPOL": "Add line from POL",
+  "invoice.details.lines.createNew": "New blank line",
   "invoice.details.lines.list.adjustments": "Adjustments",
   "invoice.details.lines.list.description": "Description",
   "invoice.details.lines.list.fundCode": "Fund code",
   "invoice.details.lines.list.lineNumber": "#",
+  "invoice.details.lines.list.lineNumber.extended": "Invoice line number",
   "invoice.details.lines.list.polNumber": "POL number",
   "invoice.details.lines.list.quantity": "Quantity",
   "invoice.details.lines.list.subTotal": "Sub-total",
