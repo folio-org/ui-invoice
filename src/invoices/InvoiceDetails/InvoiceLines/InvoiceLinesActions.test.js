@@ -11,6 +11,7 @@ const defaultProps = {
   createLine: jest.fn(),
   invoiceCurrency: 'USD',
   invoiceVendorId: 'invoiceVendorId',
+  toggleColumn: jest.fn(),
 };
 const renderInvoiceLinesActions = (props = defaultProps) => render(
   <InvoiceLinesActions {...props} />,
@@ -26,6 +27,6 @@ describe('InvoiceLinesActions', () => {
   it('should display create invoice line action', () => {
     renderInvoiceLinesActions();
 
-    expect(screen.getByText('ui-invoice.button.createLine')).toBeDefined();
+    expect(screen.getByTestId('create-invoice-line-btn')).toBeInTheDocument();
   });
 });

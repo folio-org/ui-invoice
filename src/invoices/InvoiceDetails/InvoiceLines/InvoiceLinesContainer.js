@@ -16,6 +16,7 @@ export const InvoiceLinesContainerComponent = ({
   location,
   orderlinesMap,
   refreshData,
+  visibleColumns,
 }) => {
   const { orders } = useInvoiceOrders(invoice);
 
@@ -41,6 +42,7 @@ export const InvoiceLinesContainerComponent = ({
       openLineDetails={openLineDetails}
       orderlinesMap={orderlinesMap}
       refreshData={refreshData}
+      visibleColumns={visibleColumns}
     />
   );
 };
@@ -53,6 +55,7 @@ InvoiceLinesContainerComponent.propTypes = {
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
   orderlinesMap: PropTypes.object,
   refreshData: PropTypes.func.isRequired,
+  visibleColumns: PropTypes.arrayOf(PropTypes.string),
 };
 
 InvoiceLinesContainerComponent.defaultProps = {

@@ -21,6 +21,7 @@ import {
   PaneMenu,
   Row,
 } from '@folio/stripes/components';
+import { useColumnManager } from '@folio/stripes/smart-components';
 import {
   FundDistributionView,
   handleKeyCommand,
@@ -38,6 +39,7 @@ import {
 } from '../../common/utils';
 import { INVOICE_STATUS } from '../../common/constants';
 import {
+  INVOICE_LINES_COLUMN_MAPPING,
   SECTIONS_INVOICE as SECTIONS,
 } from '../constants';
 import AdjustmentsDetails from '../AdjustmentsDetails';
@@ -170,6 +172,11 @@ function InvoiceDetails({
     );
   };
 
+  const { toggleColumn, visibleColumns } = useColumnManager(
+    'invoice-lines-column-manager',
+    INVOICE_LINES_COLUMN_MAPPING,
+  );
+
   const renderLinesActions = (
     <InvoiceLinesActions
       createLine={createLine}
@@ -177,6 +184,8 @@ function InvoiceDetails({
       isDisabled={IS_EDIT_POST_APPROVAL(invoice.id, invoice.status)}
       invoiceCurrency={invoice.currency}
       invoiceVendorId={invoice.vendorId}
+      toggleColumn={toggleColumn}
+      visibleColumns={visibleColumns}
     />
   );
 
@@ -293,6 +302,8 @@ function InvoiceDetails({
                 vendor={vendor}
                 orderlinesMap={orderlinesMap}
                 refreshData={refreshData}
+                toggleColumn={toggleColumn}
+                visibleColumns={visibleColumns}
               />
             </Accordion>
             <Accordion

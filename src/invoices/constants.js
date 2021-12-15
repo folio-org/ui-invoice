@@ -1,3 +1,5 @@
+import { FormattedMessage } from 'react-intl';
+
 export const INVOICE_FORM = 'invoiceForm';
 export const INVOICE_LINE_FORM = 'invoiceLineForm';
 
@@ -39,4 +41,17 @@ export const SECTIONS_INVOICE_LINE_FORM = {
 export const SECTIONS_VOUCHER = {
   voucher: 'voucher',
   voucherLines: 'voucherLines',
+};
+
+export const INVOICE_LINES_COLUMN_MAPPING = {
+  lineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.lineNumber" />,
+  polNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.polNumber" />,
+  description: <FormattedMessage id="ui-invoice.invoice.details.lines.list.description" />,
+  fundCode: <FormattedMessage id="ui-invoice.invoice.details.lines.list.fundCode" />,
+  vendorRefNo: <FormattedMessage id="ui-invoice.invoice.details.lines.list.vendorRefNumber" />,
+  quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
+  subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
+  adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
+  total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
+  vendorCode: <FormattedMessage id="ui-invoice.invoice.details.vendor.code" />,
 };

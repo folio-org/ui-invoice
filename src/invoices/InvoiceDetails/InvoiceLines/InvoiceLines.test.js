@@ -18,6 +18,18 @@ const defaultProps = {
   invoiceLinesItems: [invoiceLine],
   orderlinesMap: {},
   vendor: {},
+  visibleColumns: [
+    'lineNumber',
+    'polNumber',
+    'description',
+    'fundCode',
+    'quantity',
+    'subTotal',
+    'adjustmentsTotal',
+    'total',
+    'vendorCode',
+    'vendorRefNo',
+  ],
   openLineDetails: jest.fn(),
   refreshData: jest.fn(),
 };
