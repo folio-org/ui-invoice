@@ -48,6 +48,13 @@ exports[`VendorDetails should render correct structure for invoice vendor detail
         </div>
       </div>
     </div>
+    <div
+      class="col-xs-12"
+    >
+      <span>
+        VendorPrimaryAddress
+      </span>
+    </div>
   </div>
 </DocumentFragment>
 `;

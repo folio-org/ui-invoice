@@ -59,7 +59,10 @@ import {
   isPayable,
   parseAddressConfigs,
 } from '../../common/utils';
-import { ApprovedBy } from '../../common/components';
+import {
+  ApprovedBy,
+  VendorPrimaryAddress,
+} from '../../common/components';
 import {
   SECTIONS_INVOICE_FORM as SECTIONS,
 } from '../constants';
@@ -473,6 +476,10 @@ const InvoiceForm = ({
                               />
                             )
                           }
+                        </Col>
+
+                        <Col xs={12}>
+                          <VendorPrimaryAddress vendor={invoiceVendor} />
                         </Col>
                       </Row>
                     </Accordion>

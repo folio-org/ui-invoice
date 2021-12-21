@@ -7,6 +7,7 @@
 * Indicate that accounting code is a required field when export to accounting is true. Refs UINV-324.
 * Add POL vendor code to invoice line display. Refs UINV-333.
 * Invoice - Allow user to choose what columns display for Invoice lines. Refs UINV-337.
+* Include vendor primary address information on invoice. Refs UINV-332.
 
 ## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)

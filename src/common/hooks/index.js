@@ -1,4 +1,5 @@
 export * from './useBatchGroup';
+export * from './useAddressCategories';
 export * from './useInvoice';
 export * from './useInvoiceMutation';
 export * from './useInvoiceLineMutation';

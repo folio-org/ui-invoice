@@ -1084,6 +1084,13 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               />
                             </div>
                           </div>
+                          <div
+                            class="col-xs-12"
+                          >
+                            <span>
+                              VendorPrimaryAddress
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
