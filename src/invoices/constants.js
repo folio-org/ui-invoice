@@ -30,6 +30,7 @@ export const SECTIONS_INVOICE_LINE = {
   information: 'invoiceLineInformation',
   fundDistribution: 'invoiceLineFundDistribution',
   adjustments: 'invoiceLineAdjustments',
+  otherRelatedInvoiceLines: 'otherRelatedInvoiceLines',
 };
 
 export const SECTIONS_INVOICE_LINE_FORM = {

@@ -18,13 +18,14 @@ const wrapper = ({ children }) => (
 );
 
 describe('useInvoiceLineMutation', () => {
+  const kyMock = jest.fn();
+
+  beforeEach(() => {
+    kyMock.mockClear();
+    useOkapiKy.mockClear().mockReturnValue(kyMock);
+  });
+
   it('should make post request when id is not provided', async () => {
-    const postMock = jest.fn();
-
-    useOkapiKy.mockClear().mockReturnValue({
-      post: postMock,
-    });
-
     const { result } = renderHook(
       () => useInvoiceLineMutation(),
       { wrapper },
@@ -34,26 +35,41 @@ describe('useInvoiceLineMutation', () => {
       status: 'Open',
     });
 
-    expect(postMock).toHaveBeenCalled();
+    expect(kyMock.mock.calls[0][1].method).toBe('post');
   });
 
   it('should make put request when id is provided', async () => {
-    const putMock = jest.fn();
-
-    useOkapiKy.mockClear().mockReturnValue({
-      put: putMock,
-    });
-
     const { result } = renderHook(
       () => useInvoiceLineMutation(),
       { wrapper },
     );
 
     await result.current.mutateInvoiceLine({
-      id: 1,
-      status: 'Paid',
+      data: {
+        id: 1,
+        status: 'Paid',
+      },
     });
 
-    expect(putMock).toHaveBeenCalled();
+    expect(kyMock.mock.calls[0][1].method).toBe('put');
+  });
+
+  it('should make delete request when method was specified', async () => {
+    const { result } = renderHook(
+      () => useInvoiceLineMutation(),
+      { wrapper },
+    );
+
+    await result.current.mutateInvoiceLine({
+      data: {
+        id: 1,
+        status: 'Paid',
+      },
+      options: {
+        method: 'delete',
+      },
+    });
+
+    expect(kyMock.mock.calls[0][1].method).toBe('delete');
   });
 });

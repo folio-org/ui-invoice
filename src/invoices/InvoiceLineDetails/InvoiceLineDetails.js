@@ -33,6 +33,7 @@ import {
 } from '../../common/utils';
 import ActionMenu from './ActionMenu';
 import InvoiceLineInformation from './InvoiceLineInformation';
+import { OtherRelatedInvoiceLines } from './OtherRelatedInvoiceLines';
 import {
   SECTIONS_INVOICE_LINE,
 } from '../constants';
@@ -47,6 +48,7 @@ const InvoiceLineDetails = ({
   tagsToggle,
   currency,
   poLine,
+  otherRelatedInvoiceLines,
 }) => {
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const accordionStatusRef = useRef();
@@ -160,6 +162,14 @@ const InvoiceLineDetails = ({
                 currency={currency}
               />
             </Accordion>
+            {Boolean(otherRelatedInvoiceLines.length) && (
+              <Accordion
+                id={SECTIONS_INVOICE_LINE.otherRelatedInvoiceLines}
+                label={<FormattedMessage id="ui-invoice.otherRelatedInvoiceLines" />}
+              >
+                <OtherRelatedInvoiceLines invoiceLines={otherRelatedInvoiceLines} />
+              </Accordion>
+            )}
           </AccordionSet>
         </AccordionStatus>
         {showConfirmDelete && (
@@ -187,6 +197,7 @@ InvoiceLineDetails.propTypes = {
   tagsToggle: PropTypes.func.isRequired,
   currency: PropTypes.string,
   poLine: PropTypes.object,
+  otherRelatedInvoiceLines: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 InvoiceLineDetails.defaultProps = {
