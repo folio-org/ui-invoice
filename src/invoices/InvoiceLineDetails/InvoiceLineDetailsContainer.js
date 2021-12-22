@@ -14,7 +14,6 @@ import {
   useInvoiceLineMutation,
   useOrderLine,
 } from '../../common/hooks';
-import { useOtherRelatedInvoiceLines } from './OtherRelatedInvoiceLines';
 import InvoiceLineDetails from './InvoiceLineDetails';
 
 const InvoiceLineDetailsContainer = ({
@@ -35,10 +34,6 @@ const InvoiceLineDetailsContainer = ({
     orderLine: poLine,
     isLoading: isOrderLineLoading,
   } = useOrderLine(invoiceLine?.poLineId);
-  const {
-    invoiceLines: otherRelatedInvoiceLines,
-    isLoading: isOtherRelatedInvoiceLinesLoading,
-  } = useOtherRelatedInvoiceLines(invoiceLine?.id, poLine?.id);
 
   const { mutateInvoiceLine } = useInvoiceLineMutation();
 
@@ -91,8 +86,7 @@ const InvoiceLineDetailsContainer = ({
   if (
     isInvoiceLoading ||
     isInvoiceLineLoading ||
-    isOrderLineLoading ||
-    isOtherRelatedInvoiceLinesLoading
+    isOrderLineLoading
   ) {
     return (
       <LoadingPane dismissible onClose={closeInvoiceLine} />
@@ -110,7 +104,6 @@ const InvoiceLineDetailsContainer = ({
         invoiceLine={invoiceLine}
         poLine={poLine}
         tagsToggle={setTagsPaneOpened}
-        otherRelatedInvoiceLines={otherRelatedInvoiceLines}
       />
       {isTagsPaneOpened && (
         <Tags

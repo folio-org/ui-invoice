@@ -1,21 +1,32 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { IntlProvider } from 'react-intl';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router';
+import { render, screen } from '@testing-library/react';
 
-import { invoiceLine } from '../../../../test/jest/fixtures';
+import { invoiceLine, orderLine } from '../../../../test/jest/fixtures';
 
+import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
 import { OtherRelatedInvoiceLines } from './OtherRelatedInvoiceLines';
 
+jest.mock('./useOtherRelatedInvoiceLines', () => ({
+  useOtherRelatedInvoiceLines: jest.fn(),
+}));
+
 const defaultProps = {
-  invoiceLines: [invoiceLine],
+  invoiceLine,
+  poLine: orderLine,
 };
+
+const queryClient = new QueryClient();
 
 // eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
   <MemoryRouter>
     <IntlProvider locale="en">
-      {children}
+      <QueryClientProvider client={queryClient}>
+        {children}
+      </QueryClientProvider>
     </IntlProvider>
   </MemoryRouter>
 );
@@ -29,6 +40,13 @@ const renderOtherRelatedInvoiceLines = (props = {}) => render(
 );
 
 describe('OtherRelatedInvoiceLines', () => {
+  beforeEach(() => {
+    useOtherRelatedInvoiceLines.mockClear().mockReturnValue({
+      isLoading: false,
+      invoiceLines: [{}],
+    });
+  });
+
   it('should render RelatedInvoiceLines multicolumn list', () => {
     renderOtherRelatedInvoiceLines();
 

@@ -331,64 +331,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
               </div>
             </div>
           </section>
-          <section
-            class="accordion hasSeparator"
-            data-test-accordion-section="true"
-            id="otherRelatedInvoiceLines"
-          >
-            <div
-              class="headerWrapper"
-              tabindex="-1"
-            >
-              <div
-                class="header default"
-              >
-                <h3
-                  class="headline size-medium margin-none font-weight-bold block"
-                  data-test-headline="true"
-                >
-                  <button
-                    aria-controls="accordion4"
-                    aria-expanded="true"
-                    class="defaultCollapseButton"
-                    id="accordion-toggle-button-otherRelatedInvoiceLines"
-                    type="button"
-                  >
-                    <span
-                      class="headerInner"
-                    >
-                      <span
-                        class="defaultHeaderIcon"
-                      >
-                        <span>
-                          Icon
-                        </span>
-                      </span>
-                      <div
-                        class="labelArea"
-                      >
-                        ui-invoice.otherRelatedInvoiceLines
-                      </div>
-                    </span>
-                  </button>
-                </h3>
-              </div>
-            </div>
-            <div
-              class="content-wrap expanded"
-              style="z-index: 1;"
-            >
-              <div
-                aria-labelledby="accordion-toggle-button-otherRelatedInvoiceLines"
-                class="content-region expanded"
-                data-test-accordion-wrapper="true"
-                id="accordion4"
-                role="region"
-              >
-                OtherRelatedInvoiceLines
-              </div>
-            </div>
-          </section>
+          OtherRelatedInvoiceLines
         </div>
       </div>
     </section>

@@ -2,12 +2,19 @@ import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
 
-import { NoValue } from '@folio/stripes/components';
+import {
+  Accordion,
+  Loading,
+  NoValue,
+} from '@folio/stripes/components';
 import {
   AmountWithCurrencyField,
   FrontendSortingMCL,
   DESC_DIRECTION,
 } from '@folio/stripes-acq-components';
+
+import { SECTIONS_INVOICE_LINE } from '../../constants';
+import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
 
 const COLUMN_INVOICE_DATE = 'invoiceDate';
 const visibleColumns = [
@@ -58,24 +65,35 @@ const getResultFormatter = ({ search }) => ({
   comment: invoiceLine => invoiceLine.comment || <NoValue />,
 });
 
-export const OtherRelatedInvoiceLines = ({ invoiceLines }) => {
+export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
+  const { invoiceLines, isLoading } = useOtherRelatedInvoiceLines(invoiceLine?.id, poLine?.id);
+
+  if (isLoading) return <Loading />;
 
   return (
-    <FrontendSortingMCL
-      columnMapping={columnMapping}
-      contentData={invoiceLines}
-      formatter={getResultFormatter(location)}
-      id="otherRelatedInvoiceLines"
-      interactive={false}
-      sortDirection={DESC_DIRECTION}
-      sortedColumn={COLUMN_INVOICE_DATE}
-      sorters={sorters}
-      visibleColumns={visibleColumns}
-    />
+    Boolean(invoiceLines.length) && (
+      <Accordion
+        id={SECTIONS_INVOICE_LINE.otherRelatedInvoiceLines}
+        label={<FormattedMessage id="ui-invoice.otherRelatedInvoiceLines" />}
+      >
+        <FrontendSortingMCL
+          columnMapping={columnMapping}
+          contentData={invoiceLines}
+          formatter={getResultFormatter(location)}
+          id="otherRelatedInvoiceLines"
+          interactive={false}
+          sortDirection={DESC_DIRECTION}
+          sortedColumn={COLUMN_INVOICE_DATE}
+          sorters={sorters}
+          visibleColumns={visibleColumns}
+        />
+      </Accordion>
+    )
   );
 };
 
 OtherRelatedInvoiceLines.propTypes = {
-  invoiceLines: PropTypes.arrayOf(PropTypes.object).isRequired,
+  invoiceLine: PropTypes.object.isRequired,
+  poLine: PropTypes.object.isRequired,
 };
