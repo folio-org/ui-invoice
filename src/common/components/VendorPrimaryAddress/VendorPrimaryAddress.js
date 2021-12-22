@@ -33,7 +33,7 @@ const labelMap = {
   categoryValues: <FormattedMessage id="ui-invoice.invoice.details.categories" />,
 };
 
-const VendorPrimaryAddress = ({ vendor }) => {
+export const VendorPrimaryAddress = ({ vendor }) => {
   const primaryAddress = useMemo(() => (vendor?.addresses?.filter(({ isPrimary }) => isPrimary)?.[0] || {}), [vendor]);
 
   const { isLoading, categoriesMap = {} } = useAddressCategories(primaryAddress);
@@ -70,5 +70,3 @@ const VendorPrimaryAddress = ({ vendor }) => {
 VendorPrimaryAddress.propTypes = {
   vendor: PropTypes.object,
 };
-
-export default VendorPrimaryAddress;

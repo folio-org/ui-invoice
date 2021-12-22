@@ -1,1 +1,1 @@
-export { default } from './VendorPrimaryAddress';
+export { VendorPrimaryAddress } from './VendorPrimaryAddress';

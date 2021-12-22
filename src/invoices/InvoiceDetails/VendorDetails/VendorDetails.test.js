@@ -8,9 +8,9 @@ import VendorDetails from './VendorDetails';
 jest.mock('@folio/stripes-acq-components', () => ({
   OrganizationValue: jest.fn(({ id }) => id),
 }));
-jest.mock('../../../common/components/VendorPrimaryAddress', () => {
-  return () => <span>VendorPrimaryAddress</span>;
-});
+jest.mock('../../../common/components/VendorPrimaryAddress', () => ({
+  VendorPrimaryAddress: () => <span>VendorPrimaryAddress</span>,
+}));
 
 const { accountingCode, vendorId, vendorInvoiceNo } = invoice;
 const defaultProps = {

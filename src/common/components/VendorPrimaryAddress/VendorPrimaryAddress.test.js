@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 
-import VendorPrimaryAddress from './VendorPrimaryAddress';
+import { VendorPrimaryAddress } from './VendorPrimaryAddress';
 
 jest.mock('../../hooks/useAddressCategories', () => ({
   useAddressCategories: jest.fn().mockReturnValue({ isLoading: false, categoriesMap: {} }),
