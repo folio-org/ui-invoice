@@ -95,9 +95,9 @@ const InvoiceLines = ({
         link={setInvoiceLine}
       />
     ),
-    fundCode: ({ fundDistributions }) => fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
-    vendorCode: ({ poLineId }) => {
-      const orderLine = orderlinesMap?.[poLineId];
+    fundCode: line => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
+    vendorCode: line => {
+      const orderLine = orderlinesMap?.[line.poLineId];
 
       return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || <NoValue />;
     },

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useMemo } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -45,14 +45,13 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
         search: location.search,
       });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [params.id, location.search],
+    [params.id, history, location.search],
   );
 
-  const voucherEditPath = {
+  const voucherEditPath = useMemo(() => ({
     pathname: `/invoice/view/${params.id}/voucher/${params.voucherId}/edit`,
     search: location.search,
-  };
+  }), [location.search, params.id, params.voucherId]);
 
   const renderActionMenu = useCallback(({ onToggle }) => {
     return (
@@ -81,7 +80,7 @@ const VoucherViewLayer = ({ match: { params }, history, location }) => {
         </Button>
       </MenuSection>
     );
-  }, [location.search, params.id, params.voucherId, togglePrintModal]);
+  }, [togglePrintModal, voucherEditPath]);
 
   const shortcuts = [
     {
