@@ -41,6 +41,12 @@ function PrintValue({ path, source, currency }) {
   }
 }
 
+PrintValue.propTypes = {
+  path: PropTypes.string.isRequired,
+  source: PropTypes.object.isRequired,
+  currency: PropTypes.string.isRequired,
+};
+
 const ComponentToPrint = ({ dataSource: { batchGroup, voucher, vendor, invoice, voucherLines } = {} }) => {
   return (
     <>

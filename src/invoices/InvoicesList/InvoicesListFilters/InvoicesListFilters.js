@@ -29,6 +29,7 @@ const InvoicesListFilters = ({
   applyFilters,
   disabled,
 }) => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const adaptedApplyFilters = useCallback(
     applyFiltersAdapter(applyFilters),
     [applyFilters],

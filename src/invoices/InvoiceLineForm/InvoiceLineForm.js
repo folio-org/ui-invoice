@@ -85,7 +85,7 @@ const InvoiceLineForm = ({
       change('accountingCode', null);
       change('accountNumber', null);
     }
-  }, [accounts, vendorCode]);
+  }, [accounts, change, vendorCode]);
 
   const changeOrderLine = useCallback((orderLine) => {
     const fieldsToUpdate = initialValues.id && invoice.source === 'EDI'

@@ -26,7 +26,7 @@ const PrintVoucherContainer = ({ invoice, closePrint }) => {
     if (isLoading === false) {
       handlePrint();
     }
-  }, [isLoading]);
+  }, [handlePrint, isLoading]);
 
   return (
     <>

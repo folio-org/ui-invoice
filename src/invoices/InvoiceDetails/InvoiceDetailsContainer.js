@@ -264,6 +264,7 @@ export function InvoiceDetailsContainer({
         ))
         .finally(setIsLoading);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [fetchInvoiceData, invoice, mutator.expenseClass, mutator.invoice, mutateInvoice, refreshList, showCallout],
   );
 
@@ -291,6 +292,7 @@ export function InvoiceDetailsContainer({
         ))
         .finally(setIsLoading);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout],
   );
 
@@ -316,6 +318,7 @@ export function InvoiceDetailsContainer({
         ))
         .finally(setIsLoading);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout],
   );
 
@@ -348,6 +351,7 @@ export function InvoiceDetailsContainer({
         })
         .finally(setIsLoading);
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 

@@ -11,6 +11,7 @@ import { getKeywordQuery } from '../../InvoicesListSearchConfig';
 import { FILTERS } from '../../constants';
 
 export const useBuildQuery = () => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(makeQueryBuilder(
     'cql.allRecords=1',
     (query, qindex) => {
