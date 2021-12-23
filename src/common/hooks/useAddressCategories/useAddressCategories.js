@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query';
+import { flatten } from 'lodash';
 
 import { useOkapiKy, useNamespace } from '@folio/stripes/core';
 import { batchRequest } from '@folio/stripes-acq-components';
@@ -19,8 +20,8 @@ export const useAddressCategories = (address) => {
     },
     { enabled: Boolean(address.categories?.length) },
   );
-
-  const categoriesMap = data[0]?.categories?.reduce((acc, cat) => ({ ...acc, [cat.id]: cat.value }), {});
+  const fetchedCategories = flatten(data.map(({ categories }) => categories).filter(Boolean));
+  const categoriesMap = fetchedCategories.reduce((acc, cat) => ({ ...acc, [cat.id]: cat.value }), {});
 
   return ({
     isLoading,
