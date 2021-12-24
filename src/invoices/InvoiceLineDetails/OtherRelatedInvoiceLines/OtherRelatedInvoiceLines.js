@@ -53,9 +53,13 @@ const getResultFormatter = ({ search }) => ({
     </Link>
   ),
   [COLUMN_INVOICE_DATE]: invoiceLine => <FormattedDate value={invoiceLine.invoice?.invoiceDate} />,
-  vendorName: invoiceLine => invoiceLine.vendor?.name,
+  vendorName: invoiceLine => invoiceLine.vendor?.name || <NoValue />,
   vendorInvoiceNo: invoiceLine => invoiceLine.invoice?.vendorInvoiceNo || <NoValue />,
-  status: invoiceLine => <FormattedMessage id={`ui-invoice.invoice.status.${invoiceLine.invoiceLineStatus?.toLowerCase()}`} />,
+  status: invoiceLine => (
+    invoiceLine.invoiceLineStatus
+      ? <FormattedMessage id={`ui-invoice.invoice.status.${invoiceLine.invoiceLineStatus.toLowerCase()}`} />
+      : <NoValue />
+  ),
   amount: invoiceLine => (
     <AmountWithCurrencyField
       currency={invoiceLine.invoice?.currency}
