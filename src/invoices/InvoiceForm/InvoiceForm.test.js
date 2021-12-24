@@ -30,6 +30,9 @@ jest.mock('@folio/stripes-acq-components', () => ({
 jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
 });
+jest.mock('../../common/components/VendorPrimaryAddress', () => ({
+  VendorPrimaryAddress: () => <span>VendorPrimaryAddress</span>,
+}));
 
 const defaultProps = {
   initialValues: {},

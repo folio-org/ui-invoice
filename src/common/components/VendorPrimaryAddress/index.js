@@ -1,0 +1,1 @@
+export { VendorPrimaryAddress } from './VendorPrimaryAddress';

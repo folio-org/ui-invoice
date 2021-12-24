@@ -331,7 +331,7 @@ function InvoiceDetails({
             >
               <VendorDetails
                 vendorInvoiceNo={vendorInvoiceNo}
-                vendorId={invoice.vendorId}
+                vendor={vendor}
                 accountingCode={invoice.accountingCode}
               />
             </Accordion>

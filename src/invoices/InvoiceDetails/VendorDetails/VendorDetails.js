@@ -8,8 +8,9 @@ import {
   Row,
 } from '@folio/stripes/components';
 import { OrganizationValue } from '@folio/stripes-acq-components';
+import { VendorPrimaryAddress } from '../../../common/components';
 
-const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendorId }) => (
+const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendor }) => (
   <Row>
     <Col xs={3}>
       <KeyValue
@@ -21,7 +22,7 @@ const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendorId }) => (
     <Col xs={3}>
       <OrganizationValue
         label={<FormattedMessage id="ui-invoice.invoice.details.vendor.name" />}
-        id={vendorId}
+        id={vendor.id}
       />
     </Col>
 
@@ -31,13 +32,17 @@ const VendorDetails = ({ vendorInvoiceNo, accountingCode, vendorId }) => (
         value={accountingCode}
       />
     </Col>
+
+    <Col xs={12}>
+      <VendorPrimaryAddress vendor={vendor} />
+    </Col>
   </Row>
 );
 
 VendorDetails.propTypes = {
   vendorInvoiceNo: PropTypes.string.isRequired,
   accountingCode: PropTypes.string,
-  vendorId: PropTypes.string.isRequired,
+  vendor: PropTypes.object.isRequired,
 };
 
 export default VendorDetails;
