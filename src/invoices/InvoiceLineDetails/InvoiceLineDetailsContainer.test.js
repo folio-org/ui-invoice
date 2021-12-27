@@ -1,6 +1,9 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { render, screen, act } from '@testing-library/react';
-import { useReactToPrint } from 'react-to-print';
+
+import { useOkapiKy } from '@folio/stripes/core';
+import { Tags } from '@folio/stripes-acq-components';
 
 import {
   match,
@@ -8,34 +11,28 @@ import {
   location,
   invoice,
   invoiceLine,
-  orderLine,
 } from '../../../test/jest/fixtures';
 
+import { useInvoice, useInvoiceLineMutation } from '../../common/hooks';
 import InvoiceLineDetails from './InvoiceLineDetails';
-import { InvoiceLineDetailsContainerComponent } from './InvoiceLineDetailsContainer';
+import InvoiceLineDetailsContainer from './InvoiceLineDetailsContainer';
 
-jest.mock('./InvoiceLineDetails', () => jest.fn().mockReturnValue('InvoiceLineDetails'));
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
-  TagsPane: jest.fn(() => 'TagsPane'),
+  Tags: jest.fn(() => 'Tags'),
 }));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useInvoice: jest.fn(),
+  useInvoiceLineMutation: jest.fn().mockReturnValue(jest.fn()),
+}));
+jest.mock('./InvoiceLineDetails', () => jest.fn().mockReturnValue('InvoiceLineDetails'));
 
 const historyMock = {
   ...history,
   push: jest.fn(),
 };
-const mutatorMock = {
-  invoice: {
-    GET: jest.fn().mockReturnValue(Promise.resolve(invoice)),
-  },
-  invoiceLine: {
-    GET: jest.fn().mockReturnValue(Promise.resolve(invoiceLine)),
-    DELETE: jest.fn().mockReturnValue(Promise.resolve()),
-  },
-  poLine: {
-    GET: jest.fn().mockReturnValue(Promise.resolve(orderLine)),
-  },
-};
+
 const defaultProps = {
   match: {
     ...match,
@@ -46,19 +43,41 @@ const defaultProps = {
   },
   history: historyMock,
   location,
-  mutator: mutatorMock,
-  refreshList: jest.fn(),
 };
-const renderInvoiceLineDetailsContainer = (props = defaultProps) => render(
-  <InvoiceLineDetailsContainerComponent {...props} />,
+
+const queryClient = new QueryClient();
+
+// eslint-disable-next-line react/prop-types
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
 );
 
+const renderInvoiceLineDetailsContainer = (props = {}) => render(
+  <InvoiceLineDetailsContainer
+    {...defaultProps}
+    {...props}
+  />,
+  { wrapper },
+);
+
+const getMock = jest.fn(() => ({
+  json: () => ({}),
+}));
+
 describe('InvoiceLineDetailsContainer', () => {
-  it('should not display InvoiceLineDetails when loading', async () => {
-    renderInvoiceLineDetailsContainer({
-      ...defaultProps,
-      match,
+  beforeEach(() => {
+    useInvoice.mockClear().mockReturnValue({ isInvoiceLoading: false, invoice: {} });
+    useOkapiKy.mockClear().mockReturnValue({
+      get: getMock,
     });
+  });
+
+  it('should not display InvoiceLineDetails when loading', async () => {
+    useInvoice.mockClear().mockReturnValue({ isInvoiceLoading: true });
+
+    renderInvoiceLineDetailsContainer();
 
     await screen.findByText('Icon');
 
@@ -73,34 +92,21 @@ describe('InvoiceLineDetailsContainer', () => {
     expect(screen.getByText('InvoiceLineDetails')).toBeDefined();
   });
 
-  it('should fetch invoice', async () => {
+  it('should fetch invoice, invoice line and order line when invoice line is connected', async () => {
     renderInvoiceLineDetailsContainer();
 
     await screen.findByText('InvoiceLineDetails');
 
-    expect(mutatorMock.invoice.GET).toHaveBeenCalled();
-  });
-
-  it('should fetch invoice line', async () => {
-    renderInvoiceLineDetailsContainer();
-
-    await screen.findByText('InvoiceLineDetails');
-
-    expect(mutatorMock.invoiceLine.GET).toHaveBeenCalled();
-  });
-
-  it('should fetch order line when invoice line is connected', async () => {
-    renderInvoiceLineDetailsContainer();
-
-    await screen.findByText('InvoiceLineDetails');
-
-    expect(mutatorMock.poLine.GET).toHaveBeenCalled();
+    expect(getMock).toHaveBeenCalled();
   });
 
   describe('Actions', () => {
+    const mutationMock = jest.fn().mockReturnValue(Promise.resolve());
+
     beforeEach(() => {
       historyMock.push.mockClear();
       InvoiceLineDetails.mockClear();
+      useInvoiceLineMutation.mockClear().mockReturnValue({ mutateInvoiceLine: mutationMock });
     });
 
     it('should redirect to invoice details when closeInvoiceLine action is called', async () => {
@@ -130,7 +136,6 @@ describe('InvoiceLineDetailsContainer', () => {
     });
 
     it('should make delete request when deleteInvoiceLine action is called', async () => {
-      mutatorMock.invoiceLine.DELETE.mockClear();
       renderInvoiceLineDetailsContainer();
 
       await screen.findByText('InvoiceLineDetails');
@@ -139,7 +144,21 @@ describe('InvoiceLineDetailsContainer', () => {
         InvoiceLineDetails.mock.calls[0][0].deleteInvoiceLine();
       });
 
-      expect(mutatorMock.invoiceLine.DELETE).toHaveBeenCalled();
+      expect(mutationMock.mock.calls[0][0].options.method).toBe('delete');
+    });
+
+    it('should mutate the invoice line when updateInvoiceLineTagList action is called', async () => {
+      renderInvoiceLineDetailsContainer();
+
+      await screen.findByText('InvoiceLineDetails');
+
+      act(() => {
+        InvoiceLineDetails.mock.calls[0][0].tagsToggle();
+      });
+
+      Tags.mock.calls[0][0].putMutator();
+
+      expect(mutationMock).toHaveBeenCalled();
     });
   });
 });

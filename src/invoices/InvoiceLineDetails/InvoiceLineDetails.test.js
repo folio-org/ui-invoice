@@ -24,6 +24,9 @@ jest.mock('@folio/stripes-acq-components', () => ({
   FundDistributionView: jest.fn(() => 'FundDistributionView'),
 }));
 
+jest.mock('./OtherRelatedInvoiceLines', () => ({
+  OtherRelatedInvoiceLines: jest.fn().mockReturnValue('OtherRelatedInvoiceLines'),
+}));
 jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsDetails'));
 
 jest.mock('./ActionMenu', () => jest.fn().mockReturnValue('ActionMenu'));
@@ -38,6 +41,7 @@ const defaultProps = {
   deleteInvoiceLine: jest.fn(),
   goToEditInvoiceLine: jest.fn(),
   tagsToggle: jest.fn(),
+  otherRelatedInvoiceLines: [{ id: 'invoiceLineId' }],
 };
 const renderInvoiceLineDetails = (props = defaultProps) => render(
   <InvoiceLineDetails {...props} />,

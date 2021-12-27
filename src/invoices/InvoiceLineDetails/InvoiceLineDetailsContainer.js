@@ -1,66 +1,43 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useCallback } from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
-import { stripesConnect } from '@folio/stripes/core';
 import { LoadingPane } from '@folio/stripes/components';
 import {
-  baseManifest,
-  LINES_API,
   Tags,
   useModalToggle,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import {
-  invoiceLineResource,
-  invoiceResource,
-} from '../../common/resources';
+  useInvoice,
+  useInvoiceLine,
+  useInvoiceLineMutation,
+  useOrderLine,
+} from '../../common/hooks';
 import InvoiceLineDetails from './InvoiceLineDetails';
 
-export const InvoiceLineDetailsContainerComponent = ({
+const InvoiceLineDetailsContainer = ({
   history,
   location,
   match: { params },
-  mutator: originMutator,
 }) => {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const mutator = useMemo(() => originMutator, []);
-  const [poLine, setPoLine] = useState();
-  const [invoice, setInvoice] = useState({});
-  const [invoiceLine, setInvoiceLine] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
   const [isTagsPaneOpened, setTagsPaneOpened] = useModalToggle();
   const showCallout = useShowCallout();
 
-  const fetchInvoiceLineDetails = useCallback(
-    () => {
-      const invoicePromies = mutator.invoice.GET().then(response => setInvoice(response));
-      const invoiceLinePromise = mutator.invoiceLine.GET()
-        .then(line => {
-          setInvoiceLine(line);
+  const { invoice, isInvoiceLoading } = useInvoice(params?.id);
+  const {
+    invoiceLine,
+    isLoading: isInvoiceLineLoading,
+    refetch,
+  } = useInvoiceLine(params?.lineId);
+  const {
+    orderLine: poLine,
+    isLoading: isOrderLineLoading,
+  } = useOrderLine(invoiceLine?.poLineId);
 
-          return line.poLineId && mutator.poLine.GET({ path: `${LINES_API}/${line.poLineId}` });
-        })
-        .then(setPoLine, () => setPoLine({}));
+  const { mutateInvoiceLine } = useInvoiceLineMutation();
 
-      return Promise.all([invoicePromies, invoiceLinePromise]);
-    },
-    [mutator.invoice, mutator.invoiceLine, mutator.poLine],
-  );
-
-  useEffect(() => {
-    setIsLoading(true);
-    fetchInvoiceLineDetails().finally(setIsLoading);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.id]);
-
-  const updateInvoiceLineTagList = async (line) => {
-    setIsLoading(true);
-    await mutator.invoiceLine.PUT(line);
-    await fetchInvoiceLineDetails();
-    setIsLoading(false);
-  };
+  const updateInvoiceLineTagList = (line) => mutateInvoiceLine({ data: line }).then(refetch);
 
   const closeInvoiceLine = useCallback(
     () => {
@@ -87,9 +64,11 @@ export const InvoiceLineDetailsContainerComponent = ({
   );
 
   const deleteInvoiceLine = useCallback(
-    () => {
-      setIsLoading(true);
-      mutator.invoiceLine.DELETE({ id: params.lineId }, { silent: true })
+    () => (
+      mutateInvoiceLine({
+        data: { id: params.lineId },
+        options: { method: 'delete' },
+      })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenDeleted' });
           history.replace({
@@ -98,14 +77,17 @@ export const InvoiceLineDetailsContainerComponent = ({
           });
         })
         .catch(() => {
-          setIsLoading(false);
           showCallout({ messageId: 'ui-invoice.errors.invoiceLineHasNotBeenDeleted', type: 'error' });
-        });
-    },
-    [mutator.invoiceLine, params.lineId, params.id, showCallout, history, location.search],
+        })
+    ),
+    [mutateInvoiceLine, params.lineId, params.id, showCallout, history, location.search],
   );
 
-  if (isLoading || invoiceLine?.id !== params.lineId) {
+  if (
+    isInvoiceLoading ||
+    isInvoiceLineLoading ||
+    isOrderLineLoading
+  ) {
     return (
       <LoadingPane dismissible onClose={closeInvoiceLine} />
     );
@@ -134,30 +116,10 @@ export const InvoiceLineDetailsContainerComponent = ({
   );
 };
 
-InvoiceLineDetailsContainerComponent.manifest = Object.freeze({
-  invoiceLine: {
-    ...invoiceLineResource,
-    accumulate: true,
-    fetch: false,
-  },
-  invoice: {
-    ...invoiceResource,
-    accumulate: true,
-    fetch: false,
-  },
-  poLine: {
-    ...baseManifest,
-    path: LINES_API,
-    accumulate: true,
-    fetch: false,
-  },
-});
-
-InvoiceLineDetailsContainerComponent.propTypes = {
+InvoiceLineDetailsContainer.propTypes = {
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
-  mutator: PropTypes.object.isRequired,
 };
 
-export default stripesConnect(InvoiceLineDetailsContainerComponent);
+export default InvoiceLineDetailsContainer;

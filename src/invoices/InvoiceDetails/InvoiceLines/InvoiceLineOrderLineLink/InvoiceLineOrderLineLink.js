@@ -35,9 +35,11 @@ export const InvoiceLineOrderLineLink = ({ invoice, invoiceLine, vendor, refresh
       : convertToInvoiceLineFields(orderLine, vendor);
 
     await mutateInvoiceLine({
-      ...invoiceLine,
-      ...invoiceLineUpdates,
-      poLineId: orderLine.id,
+      data: {
+        ...invoiceLine,
+        ...invoiceLineUpdates,
+        poLineId: orderLine.id,
+      },
     });
 
     showCallout({

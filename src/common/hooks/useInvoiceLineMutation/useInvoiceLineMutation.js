@@ -12,11 +12,15 @@ export const useInvoiceLineMutation = (options = {}) => {
   const ky = useOkapiKy();
 
   const { mutateAsync } = useMutation({
-    mutationFn: (invoiceLine) => {
-      const kyMethod = invoiceLine.id ? 'put' : 'post';
-      const kyPath = invoiceLine.id ? `${INVOICE_LINE_API}/${invoiceLine.id}` : INVOICE_LINE_API;
+    mutationFn: ({ data, options: kyOptions = {} }) => {
+      const kyMethod = data?.id ? 'put' : 'post';
+      const kyPath = data?.id ? `${INVOICE_LINE_API}/${data.id}` : INVOICE_LINE_API;
 
-      return ky[kyMethod](kyPath, { json: invoiceLine });
+      return ky(kyPath, {
+        method: kyMethod,
+        json: data,
+        ...kyOptions,
+      });
     },
     ...options,
   });

@@ -365,6 +365,16 @@
   "invoice.paneTitle.create": "Create vendor invoice",
   "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
 
+  "otherRelatedInvoiceLines": "Other related invoice lines",
+  "otherRelatedInvoiceLines.amount": "Amount",
+  "otherRelatedInvoiceLines.invoiceLine": "Invoice line #",
+  "otherRelatedInvoiceLines.invoiceDate": "Invoice date",
+  "otherRelatedInvoiceLines.quantity": "Quantity",
+  "otherRelatedInvoiceLines.status": "Status",
+  "otherRelatedInvoiceLines.vendorInvoiceNo": "Vendor invoice number",
+  "otherRelatedInvoiceLines.vendorName": "Vendor name",
+  "otherRelatedInvoiceLines.comment": "Comment",
+
   "search": "Search",
   "search.accountingCode": "Accounting code",
   "search.voucherNumber": "Voucher number",

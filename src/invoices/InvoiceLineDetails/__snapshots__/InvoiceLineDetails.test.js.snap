@@ -331,6 +331,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
               </div>
             </div>
           </section>
+          OtherRelatedInvoiceLines
         </div>
       </div>
     </section>

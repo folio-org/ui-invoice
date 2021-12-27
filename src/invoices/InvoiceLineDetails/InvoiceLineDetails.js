@@ -33,6 +33,7 @@ import {
 } from '../../common/utils';
 import ActionMenu from './ActionMenu';
 import InvoiceLineInformation from './InvoiceLineInformation';
+import { OtherRelatedInvoiceLines } from './OtherRelatedInvoiceLines';
 import {
   SECTIONS_INVOICE_LINE,
 } from '../constants';
@@ -160,6 +161,10 @@ const InvoiceLineDetails = ({
                 currency={currency}
               />
             </Accordion>
+            <OtherRelatedInvoiceLines
+              invoiceLine={invoiceLine}
+              poLine={poLine}
+            />
           </AccordionSet>
         </AccordionStatus>
         {showConfirmDelete && (
