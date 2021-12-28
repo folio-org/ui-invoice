@@ -68,6 +68,16 @@ const Invoices = () => {
               <NavList>
                 <NavListSection>
                   <NavListItem
+                    id="invoices-app-search-item"
+                    to={RETURN_LINK}
+                    onClick={() => {
+                      handleToggle();
+                      focusSearchField();
+                    }}
+                  >
+                    <FormattedMessage id="ui-invoice.appMenu.invoicesAppSearch" />
+                  </NavListItem>
+                  <NavListItem
                     id="keyboard-shortcuts-item"
                     onClick={() => {
                       handleToggle();
