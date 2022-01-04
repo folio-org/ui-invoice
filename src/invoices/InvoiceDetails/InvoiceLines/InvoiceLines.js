@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { invert } from 'lodash';
 
 import {
   Icon,
@@ -10,6 +11,8 @@ import {
   AmountWithCurrencyField,
   PAYMENT_STATUS,
   FrontendSortingMCL,
+  ORDER_STATUS_LABEL,
+  RECEIPT_STATUS,
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_LINES_COLUMN_MAPPING } from '../../constants';
@@ -96,6 +99,33 @@ const InvoiceLines = ({
       />
     ),
     fundCode: line => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
+    poStatus: line => {
+      const orderLine = orderlinesMap?.[line.poLineId];
+
+      return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
+    },
+    receiptStatus: line => {
+      const status = orderlinesMap?.[line.poLineId]?.receiptStatus;
+      const translationKey = invert(RECEIPT_STATUS)[status];
+
+      return (
+        <FormattedMessage
+          id={`ui-orders.receipt_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      );
+    },
+    paymentStatus: line => {
+      const status = orderlinesMap?.[line.poLineId]?.paymentStatus;
+      const translationKey = invert(PAYMENT_STATUS)[status];
+
+      return (
+        <FormattedMessage
+          id={`ui-orders.payment_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      );
+    },
     vendorCode: line => {
       const orderLine = orderlinesMap?.[line.poLineId];
 
