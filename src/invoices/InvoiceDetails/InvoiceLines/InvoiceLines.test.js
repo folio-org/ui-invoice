@@ -4,6 +4,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { invoice, invoiceLine } from '../../../../test/jest/fixtures';
 
+import { INVOICE_LINES_COLUMN_MAPPING } from '../../constants';
 import InvoiceLines from './InvoiceLines';
 
 jest.mock('./InvoiceLineOrderLineNumber', () => ({
@@ -18,18 +19,7 @@ const defaultProps = {
   invoiceLinesItems: [invoiceLine],
   orderlinesMap: {},
   vendor: {},
-  visibleColumns: [
-    'lineNumber',
-    'polNumber',
-    'description',
-    'fundCode',
-    'quantity',
-    'subTotal',
-    'adjustmentsTotal',
-    'total',
-    'vendorCode',
-    'vendorRefNo',
-  ],
+  visibleColumns: Object.keys(INVOICE_LINES_COLUMN_MAPPING),
   openLineDetails: jest.fn(),
   refreshData: jest.fn(),
 };

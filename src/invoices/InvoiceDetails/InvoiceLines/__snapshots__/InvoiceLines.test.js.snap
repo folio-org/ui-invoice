@@ -86,6 +86,42 @@ exports[`InvoiceLines should render correct structure 1`] = `
         <div
           aria-sort="none"
           class="mclHeader"
+          id="list-column-postatus"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.poStatus
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-receiptstatus"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.receiptStatus
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-paymentstatus"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.paymentStatus
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-vendorrefno"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.lines.list.vendorRefNumber
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
           id="list-column-quantity"
           role="columnheader"
           style="flex: 0 0 auto;"
@@ -131,15 +167,6 @@ exports[`InvoiceLines should render correct structure 1`] = `
         <div
           aria-sort="none"
           class="mclHeader"
-          id="list-column-vendorrefno"
-          role="columnheader"
-          style="flex: 0 0 auto;"
-        >
-          ui-invoice.invoice.details.lines.list.vendorRefNumber
-        </div>
-        <div
-          aria-sort="none"
-          class="mclHeader"
           id="list-column-arrow"
           role="columnheader"
           style="flex: 0 0 auto;"
@@ -163,7 +190,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
           style="position: static;"
         >
           <div
-            aria-label="[object Object]: null...[object Object]: null...[object Object]: EDI import invoice line...[object Object]: null...[object Object]: 20...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...null: null"
+            aria-label="[object Object]: null...[object Object]: null...[object Object]: EDI import invoice line...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: 20...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...null: null"
             class="mclRow mclIsOdd mclIsInteractive alignLastColToEnd"
             data-row-inner="0"
             style="min-width: 0px;"
@@ -200,13 +227,24 @@ exports[`InvoiceLines should render correct structure 1`] = `
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              20
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              $1,523.00
+              ui-orders.receipt_status.undefined
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              ui-orders.payment_status.undefined
             </div>
             <div
               class="mclCell  mclCellStyle"
@@ -218,6 +256,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               >
                 -
               </span>
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              20
+            </div>
+            <div
+              class="mclCell  mclCellStyle"
+              role="gridcell"
+            >
+              $1,523.00
             </div>
             <div
               class="mclCell  mclCellStyle"
