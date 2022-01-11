@@ -11,4 +11,5 @@ export const FILTERS = {
   EXPORT_TO_ACCOUNTING: 'exportToAccounting',
   ACQUISITIONS_UNIT: 'acqUnitIds',
   TAGS: 'tags.tagList',
+  BATCH_GROUP: 'batchGroupId',
 };

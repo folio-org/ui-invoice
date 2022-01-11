@@ -4,6 +4,10 @@ import { MemoryRouter } from 'react-router-dom';
 
 import InvoicesListFilters from './InvoicesListFilters';
 
+jest.mock('./BatchGroupFilter', () => ({
+  BatchGroupFilter: 'BatchGroupFilter',
+}));
+
 const defaultProps = {
   activeFilters: {},
   applyFilters: jest.fn(),
