@@ -21,6 +21,7 @@ import {
 import {
   FILTERS,
 } from '../constants';
+import { BatchGroupFilter } from './BatchGroupFilter';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
@@ -133,6 +134,14 @@ const InvoicesListFilters = ({
         labelId="ui-invoice.invoice.paymentDate"
         name={FILTERS.PAYMENT_DATE}
         onChange={adaptedApplyFilters}
+      />
+      <BatchGroupFilter
+        id={FILTERS.BATCH_GROUP}
+        activeFilters={activeFilters[FILTERS.BATCH_GROUP]}
+        labelId="ui-invoice.invoice.details.information.batchGroup"
+        name={FILTERS.BATCH_GROUP}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
       />
     </AccordionSet>
   );
