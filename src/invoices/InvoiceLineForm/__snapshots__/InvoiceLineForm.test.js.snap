@@ -588,7 +588,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-invoice-line-account-number selected-invoice-line-account-number-item"
                                   aria-owns="sl-invoice-line-account-number"
                                   class="selectionControl formControl"

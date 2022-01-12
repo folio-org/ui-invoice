@@ -281,7 +281,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-invoice-status selected-invoice-status-item sl-invoice-status-required"
                                   aria-owns="sl-invoice-status"
                                   class="selectionControl formControl"
@@ -516,7 +515,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-stripes-selection-5 selected-stripes-selection-5-item"
                                   aria-owns="sl-undefined"
                                   class="selectionControl formControl"
@@ -608,7 +606,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-invoice-batch-groups selected-invoice-batch-groups-item sl-invoice-batch-groups-required"
                                   aria-owns="sl-invoice-batch-groups"
                                   class="selectionControl formControl"
@@ -1053,7 +1050,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   aria-disabled="true"
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-stripes-selection-8 selected-stripes-selection-8-item"
                                   aria-owns="sl-undefined"
                                   class="selectionControl formControl"
@@ -1469,7 +1465,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-currency selected-currency-item sl-currency-required"
                                   aria-owns="sl-currency"
                                   class="selectionControl formControl"
