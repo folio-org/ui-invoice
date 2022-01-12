@@ -1,5 +1,6 @@
 {
   "meta.title": "Invoices",
+  "appMenu.invoicesAppSearch": "Invoices app Search",
 
   "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
   "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",

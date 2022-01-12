@@ -10,6 +10,7 @@
 * Include vendor primary address information on invoice. Refs UINV-332.
 * Display past payments for a POL on an invoice line. Refs UINV-331.
 * Add POL workflow status to invoice line display. Refs UINV-334.
+* Add a return to Invoices default search to app context menu dropdown. Refs UINV-338.
 
 ## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)
