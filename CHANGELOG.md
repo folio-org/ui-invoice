@@ -12,6 +12,7 @@
 * Add POL workflow status to invoice line display. Refs UINV-334.
 * Add a return to Invoices default search to app context menu dropdown. Refs UINV-338.
 * Allow user to filter invoices by Batch group. Refs UINV-335.
+* Display receiving history for a POL on an invoice line. Refs UINV-340.
 
 ## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)

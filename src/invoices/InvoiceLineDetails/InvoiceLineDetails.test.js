@@ -31,6 +31,9 @@ jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsD
 
 jest.mock('./ActionMenu', () => jest.fn().mockReturnValue('ActionMenu'));
 jest.mock('./InvoiceLineInformation', () => jest.fn().mockReturnValue('InvoiceLineInformation'));
+jest.mock('./ReceivingHistory', () => ({
+  ReceivingHistory: jest.fn().mockReturnValue('ReceivingHistory'),
+}));
 
 const defaultProps = {
   invoiceLine,

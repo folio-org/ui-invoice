@@ -31,13 +31,12 @@ import {
   isPayable,
   isPaid,
 } from '../../common/utils';
+import { SECTIONS_INVOICE_LINE } from '../constants';
+import AdjustmentsDetails from '../AdjustmentsDetails';
 import ActionMenu from './ActionMenu';
 import InvoiceLineInformation from './InvoiceLineInformation';
 import { OtherRelatedInvoiceLines } from './OtherRelatedInvoiceLines';
-import {
-  SECTIONS_INVOICE_LINE,
-} from '../constants';
-import AdjustmentsDetails from '../AdjustmentsDetails';
+import { ReceivingHistory } from './ReceivingHistory';
 
 const InvoiceLineDetails = ({
   closeInvoiceLine,
@@ -163,6 +162,9 @@ const InvoiceLineDetails = ({
             </Accordion>
             <OtherRelatedInvoiceLines
               invoiceLine={invoiceLine}
+              poLine={poLine}
+            />
+            <ReceivingHistory
               poLine={poLine}
             />
           </AccordionSet>
