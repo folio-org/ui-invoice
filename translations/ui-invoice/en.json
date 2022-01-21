@@ -79,6 +79,13 @@
   "adjustments.relationToTotal.includedIn": "Included in",
   "adjustments.relationToTotal.separateFrom": "Separate from",
 
+  "receivingHistory.caption": "Caption",
+  "receivingHistory.chronology": "Chronology",
+  "receivingHistory.copyNumber": "Copy number",
+  "receivingHistory.enumeration": "Enumeration",
+  "receivingHistory.receiptDate": "Receipt date",
+  "receivingHistory": "Receiving history",
+
   "settings.general.label": "General",
 
   "settings.adjustments.alwaysShow": "Always show",

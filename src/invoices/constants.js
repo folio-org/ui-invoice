@@ -31,6 +31,7 @@ export const SECTIONS_INVOICE_LINE = {
   fundDistribution: 'invoiceLineFundDistribution',
   adjustments: 'invoiceLineAdjustments',
   otherRelatedInvoiceLines: 'otherRelatedInvoiceLines',
+  receivingHistory: 'invoiceLineReceivingHistory',
 };
 
 export const SECTIONS_INVOICE_LINE_FORM = {
