@@ -84,11 +84,9 @@ exports[`DocumentsDetails should render invoice documents 1`] = `
               style="position: static;"
             >
               <div
-                aria-label="[object Object]: null"
                 class="mclRow mclIsOdd"
                 data-row-inner="0"
                 style="min-width: 0px;"
-                tabindex="0"
               >
                 <div
                   class="mclCell  mclCellStyle"
@@ -111,11 +109,9 @@ exports[`DocumentsDetails should render invoice documents 1`] = `
               style="position: static;"
             >
               <div
-                aria-label="[object Object]: null"
                 class="mclRow"
                 data-row-inner="1"
                 style="min-width: 0px;"
-                tabindex="0"
               >
                 <div
                   class="mclCell  mclCellStyle"

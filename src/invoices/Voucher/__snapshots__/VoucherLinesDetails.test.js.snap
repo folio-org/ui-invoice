@@ -95,11 +95,9 @@ exports[`VoucherLinesDetails should render correct structure 1`] = `
           style="position: static;"
         >
           <div
-            aria-label="[object Object]: 1...[object Object]: null...[object Object]: , , ...[object Object]: 54321098...[object Object]: null"
             class="mclRow mclIsOdd mclIsInteractive"
             data-row-inner="0"
             style="min-width: 0px;"
-            tabindex="0"
           >
             <div
               class="mclCell  mclCellStyle"
