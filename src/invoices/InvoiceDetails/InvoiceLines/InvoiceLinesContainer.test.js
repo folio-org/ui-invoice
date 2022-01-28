@@ -57,6 +57,7 @@ describe('AddInvoiceLinesActionContainer', () => {
       expect(historyMock.push).toHaveBeenCalledWith({
         pathname: `/invoice/view/${invoice.id}/line/${invoiceLine.id}/view`,
         search: location.search,
+        state: { id: invoiceLine.id },
       });
     });
   });
