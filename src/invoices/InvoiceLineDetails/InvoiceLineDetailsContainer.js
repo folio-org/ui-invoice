@@ -46,9 +46,10 @@ const InvoiceLineDetailsContainer = ({
       history.push({
         pathname,
         search: location.search,
+        state: location.state,
       });
     },
-    [params.id, history, location.search],
+    [params.id, history, location.search, location.state],
   );
 
   const goToEditInvoiceLine = useCallback(

@@ -27,6 +27,7 @@ export const InvoiceLinesContainerComponent = ({
       history.push({
         pathname,
         search: location.search,
+        state: { id: invoiceLine.id },
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps

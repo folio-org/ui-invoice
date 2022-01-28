@@ -1,7 +1,8 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { invert } from 'lodash';
+import { useLocation } from 'react-router-dom';
 
 import {
   Icon,
@@ -37,8 +38,17 @@ const InvoiceLines = ({
   visibleColumns,
 }) => {
   const [invoiceLine, setInvoiceLine] = useState();
-
+  const { state } = useLocation();
   const currency = invoice.currency;
+
+  useEffect(() => {
+    if (state?.id) {
+      const el = document.getElementById(state.id);
+
+      el?.focus();
+      el?.scrollIntoView();
+    }
+  }, [state?.id]);
 
   const ordersMap = useMemo(() => {
     return orders.reduce((acc, order) => {
@@ -49,7 +59,7 @@ const InvoiceLines = ({
   }, [orders]);
   const resultsFormatter = useMemo(() => ({
     // eslint-disable-next-line react/prop-types
-    [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber }) => {
+    [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
       const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
       return (
@@ -65,7 +75,7 @@ const InvoiceLines = ({
               &nbsp;
             </>
           )}
-          {invoiceLineNumber}
+          <span id={id}>{invoiceLineNumber}</span>
         </>
       );
     },
