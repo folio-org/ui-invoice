@@ -118,23 +118,27 @@ const InvoiceLines = ({
       const status = orderlinesMap?.[line.poLineId]?.receiptStatus;
       const translationKey = invert(RECEIPT_STATUS)[status];
 
-      return (
-        <FormattedMessage
-          id={`ui-orders.receipt_status.${translationKey}`}
-          defaultMessage={status}
-        />
-      );
+      return status ?
+        (
+          <FormattedMessage
+            id={`ui-orders.receipt_status.${translationKey}`}
+            defaultMessage={status}
+          />
+        )
+        : <NoValue />;
     },
     paymentStatus: line => {
       const status = orderlinesMap?.[line.poLineId]?.paymentStatus;
       const translationKey = invert(PAYMENT_STATUS)[status];
 
-      return (
-        <FormattedMessage
-          id={`ui-orders.payment_status.${translationKey}`}
-          defaultMessage={status}
-        />
-      );
+      return status ?
+        (
+          <FormattedMessage
+            id={`ui-orders.payment_status.${translationKey}`}
+            defaultMessage={status}
+          />
+        )
+        : <NoValue />;
     },
     vendorCode: line => {
       const orderLine = orderlinesMap?.[line.poLineId];
