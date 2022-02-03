@@ -242,13 +242,23 @@ exports[`InvoiceLines should render correct structure 1`] = `
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              ui-orders.receipt_status.undefined
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              ui-orders.payment_status.undefined
+              <span
+                aria-label="stripes-components.noValue.noValueSet"
+                data-test-no-value="true"
+              >
+                -
+              </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
