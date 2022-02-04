@@ -89,7 +89,7 @@ const Information = ({
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedDate" />}
-            value={<FolioFormattedDate value={approvalDate} />}
+            value={<FolioFormattedDate value={approvalDate} utc={false} />}
           />
         </Col>
 
@@ -133,7 +133,7 @@ const Information = ({
 
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoice.paymentDate" />}>
-            <FolioFormattedDate value={paymentDate} />
+            <FolioFormattedDate value={paymentDate} utc={false} />
           </KeyValue>
         </Col>
 

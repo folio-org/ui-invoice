@@ -61,7 +61,7 @@ const ComponentToPrint = ({ dataSource: { batchGroup, voucher, vendor, invoice, 
           />
           <KeyValueInline
             label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherDate" />}
-            value={<FolioFormattedDate value={voucher?.voucherDate} />}
+            value={<FolioFormattedDate value={voucher?.voucherDate} utc={false} />}
           />
           <KeyValueInline
             label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}

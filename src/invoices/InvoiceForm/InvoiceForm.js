@@ -296,7 +296,7 @@ const InvoiceForm = ({
                         <Col data-test-col-approval-date xs={3}>
                           <KeyValue
                             label={<FormattedMessage id="ui-invoice.invoice.approvalDate" />}
-                            value={<FolioFormattedDate value={approvalDate} />}
+                            value={<FolioFormattedDate value={approvalDate} utc={false} />}
                           />
                         </Col>
                         <Col data-test-col-approved-by xs={3}>
