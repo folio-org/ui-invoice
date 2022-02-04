@@ -36,7 +36,7 @@ const VoucherDetails = ({ voucher, withVendorAddress }) => (
       <Col xs={3}>
         <KeyValue
           label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherDate" />}
-          value={<FolioFormattedDate value={voucher.voucherDate} />}
+          value={<FolioFormattedDate value={voucher.voucherDate} utc={false} />}
         />
       </Col>
 
