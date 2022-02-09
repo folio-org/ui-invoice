@@ -21,6 +21,7 @@ import {
   FieldSelectFinal as FieldSelect,
   handleKeyCommand,
   useModalToggle,
+  usePaneFocus,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
@@ -54,6 +55,8 @@ const BatchGroupConfigurationForm = ({
   submitting,
   testConnection,
 }) => {
+  const { paneTitleRef } = usePaneFocus();
+
   const formValues = get(form.getState(), 'values', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
   const [isManualExportConfirmation, toggleManualExportConfirmation] = useModalToggle();
@@ -96,6 +99,7 @@ const BatchGroupConfigurationForm = ({
         footer={paneFooter}
         id="pane-batch-group-configuration"
         paneTitle={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.label" />}
+        paneTitleRef={paneTitleRef}
       >
         <Row>
           <Col

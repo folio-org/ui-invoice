@@ -15,9 +15,10 @@ import {
   HasCommand,
   checkScope,
 } from '@folio/stripes/components';
-import { handleKeyCommand } from '@folio/stripes-acq-components';
+import { handleKeyCommand, usePaneFocus } from '@folio/stripes-acq-components';
 
 const SettingsAdjustmentsList = ({ label, rootPath, adjustments = [] }) => {
+  const { paneTitleRef } = usePaneFocus();
   const history = useHistory();
   const stripes = useStripes();
   const lastMenu = useMemo(() => (
@@ -54,6 +55,7 @@ const SettingsAdjustmentsList = ({ label, rootPath, adjustments = [] }) => {
         id="setting-adjustments-pane"
         lastMenu={lastMenu}
         paneTitle={label}
+        paneTitleRef={paneTitleRef}
         defaultWidth="fill"
         fluidContentWidth
       >
