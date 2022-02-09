@@ -16,6 +16,7 @@
 * When clicking back from invoice line take user back to that row in invoice line table. Refs UINV-347.
 * 'Undefined' displayed for receipt status and payment status if Invoice Line was created without POL. Refs UINV-350.
 * Adding tenant's timezone in UI. Refs UINV-351.
+* Settings > Invoices > change focus. Refs UINV-344.
 
 ## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)
