@@ -14,7 +14,7 @@ export const useReceivingHistory = (poLineId, { pagination } = {}) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'invoice-line-receiving-history' });
 
-  const { isLoading, data = {} } = useQuery(
+  const { isLoading, isFetching, data = {} } = useQuery(
     [namespace, poLineId, pagination?.limit, pagination?.offset],
     () => ky.get(ORDER_PIECES_API, {
       searchParams: {
@@ -23,12 +23,16 @@ export const useReceivingHistory = (poLineId, { pagination } = {}) => {
         offset: pagination?.offset ?? 0,
       },
     }).json(),
-    { enabled: Boolean(poLineId) },
+    {
+      enabled: Boolean(poLineId),
+      keepPreviousData: true,
+    },
   );
 
   return {
     pieces: data.pieces || [],
     piecesCount: data.totalRecords,
     isLoading,
+    isFetching,
   };
 };

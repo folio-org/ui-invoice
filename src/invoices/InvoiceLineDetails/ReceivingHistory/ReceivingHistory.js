@@ -51,7 +51,12 @@ const getResultFormatter = (poLine) => ({
 
 const ReceivingHistory = ({ poLine = {} }) => {
   const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
-  const { pieces, piecesCount, isLoading } = useReceivingHistory(poLine.id, { pagination });
+  const {
+    pieces,
+    piecesCount,
+    isLoading,
+    isFetching,
+  } = useReceivingHistory(poLine.id, { pagination });
 
   if (isLoading) return <Loading />;
 
@@ -65,6 +70,7 @@ const ReceivingHistory = ({ poLine = {} }) => {
           columnMapping={columnMapping}
           contentData={pieces}
           formatter={getResultFormatter(poLine)}
+          loading={isFetching}
           id="invoice-line-receiving-history"
           interactive={false}
           visibleColumns={visibleColumns}
@@ -73,6 +79,7 @@ const ReceivingHistory = ({ poLine = {} }) => {
           {...pagination}
           totalCount={piecesCount}
           onChange={setPagination}
+          disabled={isFetching}
         />
       </Accordion>
     )
