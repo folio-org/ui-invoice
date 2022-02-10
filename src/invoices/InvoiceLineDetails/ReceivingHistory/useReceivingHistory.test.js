@@ -33,7 +33,9 @@ describe('useReceivingHistory', () => {
 
   it('should fetch connected invoice line received pieces', async () => {
     const { result, waitFor } = renderHook(
-      () => useReceivingHistory(orderLine.id),
+      () => useReceivingHistory(orderLine.id, {
+        pagination: { limit: 50, offset: 0 },
+      }),
       { wrapper },
     );
 
