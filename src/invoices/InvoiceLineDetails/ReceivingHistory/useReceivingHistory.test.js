@@ -21,26 +21,47 @@ const wrapper = ({ children }) => (
 );
 
 describe('useReceivingHistory', () => {
+  const mockGet = jest.fn(() => ({
+    json: () => ({ pieces: [piece] }),
+  }));
+
   beforeEach(() => {
     useOkapiKy
       .mockClear()
       .mockReturnValue({
-        get: () => ({
-          json: () => ({ pieces: [piece] }),
-        }),
+        get: mockGet,
       });
   });
 
   it('should fetch connected invoice line received pieces', async () => {
     const { result, waitFor } = renderHook(
-      () => useReceivingHistory(orderLine.id, {
-        pagination: { limit: 50, offset: 0 },
-      }),
+      () => useReceivingHistory(orderLine.id),
       { wrapper },
     );
 
     await waitFor(() => !result.current.isLoading);
 
     expect(result.current.pieces[0].id).toEqual(piece.id);
+  });
+
+  it('should apply pagination in request if it is set', async () => {
+    const pagination = { limit: 50, offset: 100 };
+
+    const { result, waitFor } = renderHook(
+      () => useReceivingHistory(orderLine.id, { pagination }),
+      { wrapper },
+    );
+
+    await waitFor(() => !result.current.isLoading);
+
+    expect(mockGet).toHaveBeenCalledWith(
+      expect.any(String),
+      {
+        searchParams: expect.objectContaining({
+          ...pagination,
+          query: expect.any(String),
+        }),
+      },
+    );
   });
 });
