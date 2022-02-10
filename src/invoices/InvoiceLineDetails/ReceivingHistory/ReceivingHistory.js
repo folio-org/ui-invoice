@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
@@ -9,7 +10,8 @@ import {
   NoValue,
 } from '@folio/stripes/components';
 import {
-
+  PrevNextPagination,
+  RESULT_COUNT_INCREMENT,
 } from '@folio/stripes-acq-components';
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
@@ -48,7 +50,13 @@ const getResultFormatter = (poLine) => ({
 });
 
 const ReceivingHistory = ({ poLine = {} }) => {
-  const { pieces, isLoading } = useReceivingHistory(poLine.id);
+  const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
+  const {
+    pieces,
+    piecesCount,
+    isLoading,
+    isFetching,
+  } = useReceivingHistory(poLine.id, { pagination });
 
   if (isLoading) return <Loading />;
 
@@ -62,9 +70,16 @@ const ReceivingHistory = ({ poLine = {} }) => {
           columnMapping={columnMapping}
           contentData={pieces}
           formatter={getResultFormatter(poLine)}
+          loading={isFetching}
           id="invoice-line-receiving-history"
           interactive={false}
           visibleColumns={visibleColumns}
+        />
+        <PrevNextPagination
+          {...pagination}
+          totalCount={piecesCount}
+          onChange={setPagination}
+          disabled={isFetching}
         />
       </Accordion>
     )
