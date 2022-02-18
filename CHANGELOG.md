@@ -19,6 +19,7 @@
 * Settings > Invoices > change focus. Refs UINV-344.
 * Add pagination to Receiving history accordion MCL table. Refs UINV-353.
 * Message of successful export is displayed after failing export. Refs UINV-354.
+* Refactor psets away from backend ".all" permissions. Refs UINV-308.
 
 ## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)
