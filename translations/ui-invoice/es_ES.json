@@ -323,7 +323,7 @@
     "invoice.enclosureNeeded": "Enclosure needed",
     "invoice.details.voucher.accountNo": "Account number",
     "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}.",
-    "invoice.billTo": "Bill to",
+    "invoice.billTo": "Facturar a",
     "invoice.address": "Address",
     "invoice.cancellationNote": "Cancellation note",
     "voucher.status.awaitingPayment": "Awaiting payment",
