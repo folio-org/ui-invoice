@@ -305,7 +305,7 @@
   "invoice.actions.approve.success": "Invoice has been approved successfully",
   "invoice.actions.approve.error": "Invoice was not approved",
   "invoice.actions.approve.error.accountingCodeNotPresent": "Invoice can not be approved (paid), because the identified vendor must have an accounting code for this invoice to be exported to accounting",
-  "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+  "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in <b>{fundCodes}</b>.",
   "invoice.actions.approve.error.poLineUpdateFailure": "One or more purchase order line record(s) cannot be updated",
   "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
   "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
