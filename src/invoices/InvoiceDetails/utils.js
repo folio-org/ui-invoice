@@ -11,7 +11,6 @@ import {
   convertToInvoiceLineFields,
 } from '../utils';
 
-// eslint-disable-next-line import/prefer-default-export
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   return {
     invoiceId,
@@ -45,7 +44,6 @@ export const showUpdateInvoiceError = async (
     case ERROR_CODES.voucherNumberPrefixNotAlpha:
     case ERROR_CODES.fundDistributionsNotPresent:
     case ERROR_CODES.poLineUpdateFailure:
-    case ERROR_CODES.fundCannotBePaid:
     case ERROR_CODES.transactionCreationFailure:
     case ERROR_CODES.organizationIsNotVendor:
     case ERROR_CODES.adjustmentFundDistributionsNotPresent:
@@ -62,6 +60,12 @@ export const showUpdateInvoiceError = async (
         messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`,
         type: 'error',
       });
+      break;
+    }
+    case ERROR_CODES.fundCannotBePaid: {
+      const fundCodes = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'funds')[0]?.value;
+
+      showCallout({ messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`, type: 'error', values: { fundCodes } });
       break;
     }
     case ERROR_CODES.budgetExpenseClassNotFound: {
