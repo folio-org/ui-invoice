@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { saveAs } from 'file-saver';
+import { useIntl } from 'react-intl';
 
 import {
   IfPermission,
@@ -18,6 +19,7 @@ import {
 
 const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
   const showCallout = useShowCallout();
+  const intl = useIntl();
   const downloadBatchVouchers = useCallback(
     async () => {
       try {
@@ -59,6 +61,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
         data-test-batch-voucher-export-download
         icon="download"
         onClick={downloadBatchVouchers}
+        aria-labelledby={intl.formatMessage({ id: 'ui-invoice.settings.batchGroupConfiguration.download' })}
       />
     </IfPermission>
   );

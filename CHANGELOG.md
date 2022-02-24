@@ -21,6 +21,7 @@
 * Message of successful export is displayed after failing export. Refs UINV-354.
 * Refactor psets away from backend ".all" permissions. Refs UINV-308.
 * Invoice: Error message does not indicate what Fund does not have money. Refs UINV-357.
+* ui-invoice: accessibility analysis. Refs UINV-360.
 
 ## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import {
@@ -11,6 +11,9 @@ import {
 import DuplicateInvoiceList from '../../../common/components/DuplicateInvoiceList';
 
 const DuplicateInvoiceModal = ({ duplicateInvoices, onSubmit, onCancel }) => {
+  const intl = useIntl();
+  const modalLabel = intl.formatMessage({ id: 'ui-invoice.invoice.isNotUnique.confirmation.heading' });
+
   const footer = (
     <ModalFooter>
       <Button
@@ -34,9 +37,10 @@ const DuplicateInvoiceModal = ({ duplicateInvoices, onSubmit, onCancel }) => {
 
   return (
     <Modal
+      aria-label={modalLabel}
       footer={footer}
       id="invoice-is-not-unique-confirmation"
-      label={<FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.heading" />}
+      label={modalLabel}
       open
     >
       <FormattedMessage id="ui-invoice.invoice.isNotUnique.confirmation.message" />

@@ -2,9 +2,7 @@
 
 exports[`InvoicesListFilters should render correct structure 1`] = `
 <DocumentFragment>
-  <div
-    aria-multiselectable="true"
-  >
+  <div>
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"
@@ -2560,9 +2558,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
 
 exports[`InvoicesListFilters should render correct structure when disabled 1`] = `
 <DocumentFragment>
-  <div
-    aria-multiselectable="true"
-  >
+  <div>
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"

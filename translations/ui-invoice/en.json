@@ -112,6 +112,7 @@
   "settings.batchGroups.column.description": "Description",
 
   "settings.batchGroupConfiguration.batchGroup": "Batch group",
+  "settings.batchGroupConfiguration.download": "Download",
   "settings.batchGroupConfiguration.format.Application/json": "JSON",
   "settings.batchGroupConfiguration.format.Application/xml": "XML",
   "settings.batchGroupConfiguration.format": "Format",

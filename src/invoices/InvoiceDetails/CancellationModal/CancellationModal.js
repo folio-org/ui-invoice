@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import {
@@ -17,7 +17,9 @@ const CancellationModal = ({
   onCancel,
   onConfirm,
 }) => {
+  const intl = useIntl();
   const [cancellationNote, setCancellationNote] = useState('');
+  const modalLabel = intl.formatMessage({ id: 'ui-invoice.invoice.actions.cancel.heading' });
 
   const handleChange = useCallback(
     ({ target: { value } }) => (
@@ -47,9 +49,10 @@ const CancellationModal = ({
 
   return (
     <Modal
+      aria-label={modalLabel}
       footer={footer}
       id="cancel-invoice-confirmation"
-      label={<FormattedMessage id="ui-invoice.invoice.actions.cancel.heading" />}
+      label={modalLabel}
       open
     >
       <Row className={styles.message}>

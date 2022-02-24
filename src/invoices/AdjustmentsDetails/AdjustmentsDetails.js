@@ -55,6 +55,7 @@ const AdjustmentsDetails = ({ adjustments, currency }) => {
           sortedColumn={sortedColumn}
           sorters={SORTERS}
           visibleColumns={visibleColumns}
+          columnIdPrefix="adjustments"
         />
       </Col>
     </Row>

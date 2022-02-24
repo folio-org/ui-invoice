@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useReactToPrint } from 'react-to-print';
-import { FormattedMessage } from 'react-intl';
+import { useIntl } from 'react-intl';
 
 import {
   Modal,
@@ -13,6 +13,7 @@ import PrintContent from './PrintContent';
 import { getPrintPageStyles } from './utils';
 
 const PrintVoucherContainer = ({ invoice, closePrint }) => {
+  const intl = useIntl();
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     pageStyle: getPrintPageStyles(),
@@ -21,6 +22,7 @@ const PrintVoucherContainer = ({ invoice, closePrint }) => {
   });
 
   const { dataSource, isLoading } = usePrintData(invoice);
+  const modalLabel = intl.formatMessage({ id: 'ui-invoice.voucher.print.isLoading' });
 
   useEffect(() => {
     if (isLoading === false) {
@@ -31,8 +33,9 @@ const PrintVoucherContainer = ({ invoice, closePrint }) => {
   return (
     <>
       <Modal
+        aria-label={modalLabel}
         open={isLoading}
-        label={<FormattedMessage id="ui-invoice.voucher.print.isLoading" />}
+        label={modalLabel}
         scope="module"
         size="small"
       >

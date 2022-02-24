@@ -35,14 +35,14 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
             <div
               aria-sort="ascending"
               class="mclHeader mclClickable mclSorted mclAscending"
-              id="list-column-description"
+              id="adjustments-list-column-description"
               role="columnheader"
               style="flex: 0 0 auto;"
             >
               <div
                 class="mclHeaderOuter"
                 data-test-clickable-header="true"
-                id="clickable-list-column-description"
+                id="adjustments-clickable-list-column-description"
                 role="button"
                 tabindex="0"
               >
@@ -60,7 +60,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
             <div
               aria-sort="none"
               class="mclHeader"
-              id="list-column-value"
+              id="adjustments-list-column-value"
               role="columnheader"
               style="flex: 0 0 auto;"
             >
@@ -69,7 +69,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
             <div
               aria-sort="none"
               class="mclHeader"
-              id="list-column-prorate"
+              id="adjustments-list-column-prorate"
               role="columnheader"
               style="flex: 0 0 auto;"
             >
@@ -78,7 +78,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
             <div
               aria-sort="none"
               class="mclHeader"
-              id="list-column-relationtototal"
+              id="adjustments-list-column-relationtototal"
               role="columnheader"
               style="flex: 0 0 auto;"
             >

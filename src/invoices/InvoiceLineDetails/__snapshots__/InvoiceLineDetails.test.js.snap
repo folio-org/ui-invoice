@@ -155,9 +155,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
             </button>
           </div>
         </div>
-        <div
-          aria-multiselectable="true"
-        >
+        <div>
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
