@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
 import { stripesConnect } from '@folio/stripes/core';
@@ -20,7 +20,9 @@ const ApproveConfirmationModal = ({
   invoice,
   mutator,
 }) => {
+  const intl = useIntl();
   const [duplicateInvoices] = useDuplicateInvoice(mutator, invoice);
+  const modalLabel = intl.formatMessage({ id: 'ui-invoice.invoice.actions.approve.confirmation.heading' });
 
   const footer = (
     <ModalFooter>
@@ -46,9 +48,10 @@ const ApproveConfirmationModal = ({
 
   return (
     <Modal
+      aria-label={modalLabel}
       footer={footer}
       id="approve-invoice-confirmation"
-      label={<FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.heading" />}
+      label={modalLabel}
       open
     >
       <FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.message" />

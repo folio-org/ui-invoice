@@ -57,6 +57,7 @@ const DocumentsDetails = ({ invoiceDocuments }) => {
             columnMapping={linksColumnMapping}
             formatter={linksFormatter}
             interactive={false}
+            columnIdPrefix="links"
           />
         </Col>
       </Row>
