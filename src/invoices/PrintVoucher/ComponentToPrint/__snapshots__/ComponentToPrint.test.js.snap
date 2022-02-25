@@ -81,10 +81,18 @@ exports[`PrintVoucher -> ComponentToPrint should render correct structure 1`] = 
         </span>
         : 
         <span
-          aria-label="stripes-components.noValue.noValueSet"
           data-test-no-value="true"
         >
-          -
+          <span
+            class="sr-only"
+          >
+            stripes-components.noValue.noValueSet
+          </span>
+          <span
+            aria-hidden="true"
+          >
+            -
+          </span>
         </span>
       </div>
       <div>
@@ -111,10 +119,18 @@ exports[`PrintVoucher -> ComponentToPrint should render correct structure 1`] = 
         </span>
         : 
         <span
-          aria-label="stripes-components.noValue.noValueSet"
           data-test-no-value="true"
         >
-          -
+          <span
+            class="sr-only"
+          >
+            stripes-components.noValue.noValueSet
+          </span>
+          <span
+            aria-hidden="true"
+          >
+            -
+          </span>
         </span>
       </div>
       <div>

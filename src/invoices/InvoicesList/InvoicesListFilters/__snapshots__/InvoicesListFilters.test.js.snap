@@ -321,7 +321,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           <button
             aria-controls="accordion2"
             aria-expanded="false"
-            aria-label="- filter list"
+            aria-label="ui-invoice.invoice.vendorName filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-vendorId"
             tabindex="0"
@@ -347,7 +347,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="ui-invoice.invoice.vendorName"
+          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -916,7 +916,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           <button
             aria-controls="accordion6"
             aria-expanded="false"
-            aria-label="- filter list"
+            aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-tags.tagList"
             tabindex="0"
@@ -942,7 +942,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="stripes-acq-components.filter.tags"
+          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2902,7 +2902,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           <button
             aria-controls="accordion38"
             aria-expanded="false"
-            aria-label="- filter list"
+            aria-label="ui-invoice.invoice.vendorName filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-vendorId"
             tabindex="0"
@@ -2928,7 +2928,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="ui-invoice.invoice.vendorName"
+          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -3498,7 +3498,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           <button
             aria-controls="accordion42"
             aria-expanded="false"
-            aria-label="- filter list"
+            aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
             id="accordion-toggle-button-tags.tagList"
             tabindex="0"
@@ -3524,7 +3524,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="stripes-acq-components.filter.tags"
+          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"

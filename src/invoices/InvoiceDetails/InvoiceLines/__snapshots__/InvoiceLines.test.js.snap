@@ -221,10 +221,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
@@ -232,10 +240,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
@@ -243,10 +259,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
@@ -254,10 +278,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
@@ -265,10 +297,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
@@ -288,10 +328,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
@@ -299,10 +347,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
@@ -310,10 +366,18 @@ exports[`InvoiceLines should render correct structure 1`] = `
               role="gridcell"
             >
               <span
-                aria-label="stripes-components.noValue.noValueSet"
                 data-test-no-value="true"
               >
-                -
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.noValue.noValueSet
+                </span>
+                <span
+                  aria-hidden="true"
+                >
+                  -
+                </span>
               </span>
             </div>
             <div
