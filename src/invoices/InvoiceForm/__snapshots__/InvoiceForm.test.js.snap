@@ -444,10 +444,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
@@ -469,10 +477,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
@@ -560,10 +576,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
@@ -656,10 +680,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
@@ -681,10 +713,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
@@ -706,10 +746,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
@@ -1168,10 +1216,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
@@ -1515,10 +1571,18 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 data-test-kv-value="true"
                               >
                                 <span
-                                  aria-label="stripes-components.noValue.noValueSet"
                                   data-test-no-value="true"
                                 >
-                                  -
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.noValue.noValueSet
+                                  </span>
+                                  <span
+                                    aria-hidden="true"
+                                  >
+                                    -
+                                  </span>
                                 </span>
                               </div>
                             </div>
