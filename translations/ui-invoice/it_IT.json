@@ -219,7 +219,7 @@
     "settings.batchGroups.label": "Batch groups",
     "settings.batchGroupConfiguration.label": "Batch group configuration",
     "invoice.actions.load.error": "Impossibile caricare i dati della fattura",
-    "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in the budget",
+    "invoice.actions.approve.error.fundCannotBePaid": "One or more Fund distributions on this invoice can not be paid, because there is not enough money in <b>{fundCodes}</b>.",
     "invoice.actions.approve.error.fundDistributionsNotPresent": "At least one fund distribution should present for every associated invoice line",
     "settings.batchGroups.labelSingular": "Batch group",
     "settings.batchGroups.column.name": "Name",
