@@ -219,7 +219,7 @@
     "settings.batchGroups.label": "مجموعات بالدفعة",
     "settings.batchGroupConfiguration.label": "تهيئة المجموعة بالدفعة",
     "invoice.actions.load.error": "فشل تحميل بيانات الفاتورة",
-    "invoice.actions.approve.error.fundCannotBePaid": "لا يمكن دفع أحد توزيعات التمويل أو أكثر في هذه الفاتورة بسبب عدم وجود مال كافٍ في الميزانية",
+    "invoice.actions.approve.error.fundCannotBePaid": "لا يمكن دفع أحد توزيعات التمويل أو أكثر في هذه الفاتورة بسبب عدم وجود مال كافٍ في <b>{fundCodes}</b>.",
     "invoice.actions.approve.error.fundDistributionsNotPresent": "يجب وجود توزيع تمويل واحد على الأقل لكل خط فاتورة مرتبط به",
     "settings.batchGroups.labelSingular": "مجموعة بالدفعة",
     "settings.batchGroups.column.name": "الاسم",
