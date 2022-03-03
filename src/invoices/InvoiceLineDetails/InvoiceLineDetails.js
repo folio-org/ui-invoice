@@ -130,7 +130,7 @@ const InvoiceLineDetails = ({
               <ExpandAllButton />
             </Col>
           </Row>
-          <AccordionSet>
+          <AccordionSet id="invoice-line-details-accordion-set">
             <Accordion
               id={SECTIONS_INVOICE_LINE.information}
               label={<FormattedMessage id="ui-invoice.invoiceLineInformation" />}

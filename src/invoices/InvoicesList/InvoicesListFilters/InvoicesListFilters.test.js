@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import '../../../../test/jest/__mock__';
+
 import InvoicesListFilters from './InvoicesListFilters';
 
 jest.mock('./BatchGroupFilter', () => ({
@@ -28,13 +30,17 @@ describe('InvoicesListFilters', () => {
   });
 
   it('should render correct structure', async () => {
-    const { asFragment } = renderInvoicesListFilters();
+    const { container, asFragment } = renderInvoicesListFilters();
+
+    container.querySelector('#invoice-filters-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('should render correct structure when disabled', async () => {
-    const { asFragment } = renderInvoicesListFilters({ ...defaultProps, disabled: true });
+    const { container, asFragment } = renderInvoicesListFilters({ ...defaultProps, disabled: true });
+
+    container.querySelector('#invoice-filters-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

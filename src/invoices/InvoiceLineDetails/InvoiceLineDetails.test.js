@@ -9,6 +9,8 @@ import {
   collapseAllSections,
 } from '@folio/stripes/components';
 
+import '../../../test/jest/__mock__';
+
 import { invoiceLine, orderLine } from '../../../test/jest/fixtures';
 
 import ActionMenu from './ActionMenu';
@@ -61,7 +63,9 @@ describe('InvoiceLineDetails', () => {
   });
 
   it('should render correct structure for invoice line', () => {
-    const { asFragment } = renderInvoiceLineDetails();
+    const { container, asFragment } = renderInvoiceLineDetails();
+
+    container.querySelector('#invoice-line-details-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

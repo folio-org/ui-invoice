@@ -4,6 +4,8 @@ import { Form } from 'react-final-form';
 import { act, render, fireEvent, screen } from '@testing-library/react';
 import { useHistory } from 'react-router';
 
+import '../../../test/jest/__mock__';
+
 import {
   HasCommand,
   expandAllSections,
@@ -68,7 +70,9 @@ describe('InvoiceForm component', () => {
   });
 
   it('should render correct structure', () => {
-    const { asFragment } = renderInvoiceForm();
+    const { container, asFragment } = renderInvoiceForm();
+
+    container.querySelector('#invoice-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

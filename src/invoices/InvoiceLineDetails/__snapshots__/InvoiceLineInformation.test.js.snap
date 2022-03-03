@@ -427,19 +427,8 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
           class="kvValue"
           data-test-kv-value="true"
         >
-          <span
-            data-test-no-value="true"
-          >
-            <span
-              class="sr-only"
-            >
-              stripes-components.noValue.noValueSet
-            </span>
-            <span
-              aria-hidden="true"
-            >
-              -
-            </span>
+          <span>
+            -
           </span>
         </div>
       </div>

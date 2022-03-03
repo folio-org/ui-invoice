@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import '../../../test/jest/__mock__';
+
 import { location } from '../../../test/jest/fixtures';
 
 import { InvoicesListLastMenuComponent } from './InvoicesListLastMenu';

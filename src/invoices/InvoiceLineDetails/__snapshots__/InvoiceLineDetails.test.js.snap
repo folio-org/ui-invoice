@@ -155,7 +155,9 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
             </button>
           </div>
         </div>
-        <div>
+        <div
+          id="invoice-line-details-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"

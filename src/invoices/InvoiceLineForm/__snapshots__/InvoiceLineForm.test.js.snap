@@ -98,7 +98,9 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                     </button>
                   </div>
                 </div>
-                <div>
+                <div
+                  id="invoice-line-form-accordion-set"
+                >
                   <section
                     class="accordion hasSeparator"
                     data-test-accordion-section="true"

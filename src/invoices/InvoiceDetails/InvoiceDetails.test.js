@@ -13,6 +13,8 @@ import {
   PAYMENT_STATUS,
 } from '@folio/stripes-acq-components';
 
+import '../../../test/jest/__mock__';
+
 import { invoice } from '../../../test/jest/fixtures';
 import { INVOICE_STATUS } from '../../common/constants';
 
@@ -86,7 +88,7 @@ describe('InvoiceDetails', () => {
 
   Object.values(INVOICE_STATUS).forEach(invoiceStatus => {
     it(`should render correct structure for ${invoiceStatus} invoice`, () => {
-      const { asFragment } = renderInvoiceDetails({
+      const { container, asFragment } = renderInvoiceDetails({
         ...defaultProps,
         invoice: {
           ...invoice,
@@ -94,12 +96,14 @@ describe('InvoiceDetails', () => {
         },
       });
 
+      container.querySelector('#invoice-details-accordion-set').removeAttribute('aria-multiselectable');
+
       expect(asFragment()).toMatchSnapshot();
     });
   });
 
   it('should render correct structure for invoice with batch voucher', () => {
-    const { asFragment } = renderInvoiceDetails({
+    const { container, asFragment } = renderInvoiceDetails({
       ...defaultProps,
       invoice: {
         ...invoice,
@@ -107,6 +111,8 @@ describe('InvoiceDetails', () => {
       },
       batchVoucherExport: {},
     });
+
+    container.querySelector('#invoice-details-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });

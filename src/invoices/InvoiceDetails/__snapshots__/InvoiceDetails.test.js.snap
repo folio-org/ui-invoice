@@ -158,7 +158,9 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
             </button>
           </div>
         </div>
-        <div>
+        <div
+          id="invoice-details-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
@@ -743,7 +745,9 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
             </button>
           </div>
         </div>
-        <div>
+        <div
+          id="invoice-details-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
@@ -1328,7 +1332,9 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
             </button>
           </div>
         </div>
-        <div>
+        <div
+          id="invoice-details-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
@@ -1912,7 +1918,9 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
             </button>
           </div>
         </div>
-        <div>
+        <div
+          id="invoice-details-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
@@ -2497,7 +2505,9 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
             </button>
           </div>
         </div>
-        <div>
+        <div
+          id="invoice-details-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"
@@ -3081,7 +3091,9 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
             </button>
           </div>
         </div>
-        <div>
+        <div
+          id="invoice-details-accordion-set"
+        >
           <section
             class="accordion hasSeparator"
             data-test-accordion-section="true"

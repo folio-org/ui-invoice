@@ -258,7 +258,10 @@ function InvoiceDetails({
               <ExpandAllButton />
             </Col>
           </Row>
-          <AccordionSet initialStatus={initalAccordionsStatus}>
+          <AccordionSet
+            initialStatus={initalAccordionsStatus}
+            id="invoice-details-accordion-set"
+          >
             <Accordion
               label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
               id={SECTIONS.information}
