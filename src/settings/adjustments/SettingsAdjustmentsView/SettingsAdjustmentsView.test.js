@@ -15,6 +15,9 @@ import SettingsAdjustmentsView from './SettingsAdjustmentsView';
 jest.mock('@folio/stripes-components/lib/Commander', () => ({
   HasCommand: jest.fn(({ children }) => <div>{children}</div>),
 }));
+jest.mock('@folio/stripes-components/lib/NoValue', () => {
+  return () => <span>-</span>;
+});
 
 const mockPush = jest.fn();
 const defaultProps = {
