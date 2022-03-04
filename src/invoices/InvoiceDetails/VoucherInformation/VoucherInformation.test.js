@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
+import '../../../../test/jest/__mock__';
+
 import { batchVoucher, batchVoucherLine } from '../../../../test/jest/fixtures';
 
 import VoucherInformation from './VoucherInformation';

@@ -247,7 +247,10 @@ const InvoiceForm = ({
                       <ExpandAllButton />
                     </Col>
                   </Row>
-                  <AccordionSet initialStatus={{ [SECTIONS.voucher]: false }}>
+                  <AccordionSet
+                    initialStatus={{ [SECTIONS.voucher]: false }}
+                    id="invoice-form-accordion-set"
+                  >
                     <Accordion
                       id={SECTIONS.information}
                       label={<FormattedMessage id="ui-invoice.invoiceInformation" />}

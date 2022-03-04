@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
+import '../../../../test/jest/__mock__';
+
 import { ApprovedBy } from './ApprovedBy';
 
 jest.mock('../../utils', () => ({

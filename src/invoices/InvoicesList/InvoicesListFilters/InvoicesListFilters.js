@@ -37,7 +37,7 @@ const InvoicesListFilters = ({
   );
 
   return (
-    <AccordionSet>
+    <AccordionSet id="invoice-filters-accordion-set">
       <AcqCheckboxFilter
         id={FILTERS.STATUS}
         activeFilters={activeFilters[FILTERS.STATUS]}

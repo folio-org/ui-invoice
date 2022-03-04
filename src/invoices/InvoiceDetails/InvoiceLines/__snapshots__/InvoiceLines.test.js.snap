@@ -220,95 +220,40 @@ exports[`InvoiceLines should render correct structure 1`] = `
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div
@@ -327,57 +272,24 @@ exports[`InvoiceLines should render correct structure 1`] = `
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span
-                data-test-no-value="true"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.noValue.noValueSet
-                </span>
-                <span
-                  aria-hidden="true"
-                >
-                  -
-                </span>
+              <span>
+                -
               </span>
             </div>
             <div

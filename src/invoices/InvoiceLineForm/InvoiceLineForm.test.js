@@ -9,6 +9,8 @@ import {
   collapseAllSections,
 } from '@folio/stripes/components';
 
+import '../../../test/jest/__mock__';
+
 import { invoice, invoiceLine } from '../../../test/jest/fixtures';
 import InvoiceLineForm from './InvoiceLineForm';
 
@@ -48,7 +50,9 @@ describe('InvoiceLineForm component', () => {
   });
 
   it('should render correct structure', () => {
-    const { asFragment } = renderInvoiceLineForm();
+    const { container, asFragment } = renderInvoiceLineForm();
+
+    container.querySelector('#invoice-line-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
   });
