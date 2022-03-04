@@ -2,11 +2,13 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import '../../../test/jest/__mock__';
-
 import { orderLine, invoiceLine } from '../../../test/jest/fixtures';
 
 import InvoiceLineInformation from './InvoiceLineInformation';
+
+jest.mock('@folio/stripes-components/lib/NoValue', () => {
+  return () => <span>-</span>;
+});
 
 const defaultProps = {
   invoiceLine,

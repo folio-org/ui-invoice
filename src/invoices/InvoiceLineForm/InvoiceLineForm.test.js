@@ -9,8 +9,6 @@ import {
   collapseAllSections,
 } from '@folio/stripes/components';
 
-import '../../../test/jest/__mock__';
-
 import { invoice, invoiceLine } from '../../../test/jest/fixtures';
 import InvoiceLineForm from './InvoiceLineForm';
 
@@ -23,6 +21,9 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
 }));
+jest.mock('@folio/stripes-components/lib/NoValue', () => {
+  return () => <span>-</span>;
+});
 jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
 });

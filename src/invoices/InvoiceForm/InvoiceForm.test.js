@@ -4,8 +4,6 @@ import { Form } from 'react-final-form';
 import { act, render, fireEvent, screen } from '@testing-library/react';
 import { useHistory } from 'react-router';
 
-import '../../../test/jest/__mock__';
-
 import {
   HasCommand,
   expandAllSections,
@@ -24,6 +22,9 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
 }));
+jest.mock('@folio/stripes-components/lib/NoValue', () => {
+  return () => <span>-</span>;
+});
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   AcqUnitsField: () => <span>AcqUnitsField</span>,
