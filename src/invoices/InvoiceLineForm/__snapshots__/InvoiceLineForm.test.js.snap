@@ -369,7 +369,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           </span>
                                         </button>
                                         <button
-                                          aria-expanded="false"
                                           aria-haspopup="true"
                                           aria-label="stripes-components.showOrHideDatepicker"
                                           class="iconButton medium"
@@ -379,8 +378,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           type="button"
                                         >
                                           <span
-                                            aria-expanded="false"
-                                            aria-haspopup="true"
                                             class="iconButtonInner mediumOffset"
                                             data-test-calendar-button="true"
                                           >
@@ -465,7 +462,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           </span>
                                         </button>
                                         <button
-                                          aria-expanded="false"
                                           aria-haspopup="true"
                                           aria-label="stripes-components.showOrHideDatepicker"
                                           class="iconButton medium"
@@ -475,8 +471,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           type="button"
                                         >
                                           <span
-                                            aria-expanded="false"
-                                            aria-haspopup="true"
                                             class="iconButtonInner mediumOffset"
                                             data-test-calendar-button="true"
                                           >
