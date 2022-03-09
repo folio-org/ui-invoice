@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Un hide permission 'Invoice: Cancel invoices'. Refs UINV-362.
+
 ## [3.1.0](https://github.com/folio-org/ui-invoice/tree/v3.1.0) (2022-03-03)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.2...v3.1.0)
 
