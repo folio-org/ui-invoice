@@ -55,6 +55,7 @@ exports[`VoucherInformation should render correct structure for invoice voucher 
     <div
       class="mclScrollable"
       style="position: static; width: 100%;"
+      tabindex="0"
     >
       <div
         class="mclRowContainer"
