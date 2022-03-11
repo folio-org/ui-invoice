@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Previous invoice is fetched when Approve and Pay action is called. Refs UINV-396.
+
 ## [3.0.2](https://github.com/folio-org/ui-invoice/tree/v3.0.2) (2021-11-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.1...v3.0.2)
 
