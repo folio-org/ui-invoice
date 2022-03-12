@@ -31,6 +31,7 @@ jest.mock('@folio/stripes-acq-components', () => {
     SingleSearchForm: () => <span>SingleSearchForm</span>,
     useItemToView: () => ({}),
     useLocationFilters: () => ([]),
+    useFunds: () => ([]),
   };
 });
 

@@ -4,6 +4,7 @@
 
 * Un hide permission 'Invoice: Cancel invoices'. Refs UINV-362.
 * Previous invoice is fetched when Approve and Pay action is called. Refs UINV-372.
+* Allow user to filter invoices by Fund and Expense class. Refs UINV-367.
 
 ## [3.1.0](https://github.com/folio-org/ui-invoice/tree/v3.1.0) (2022-03-03)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.0.2...v3.1.0)

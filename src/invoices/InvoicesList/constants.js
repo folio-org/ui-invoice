@@ -12,4 +12,6 @@ export const FILTERS = {
   ACQUISITIONS_UNIT: 'acqUnitIds',
   TAGS: 'tags.tagList',
   BATCH_GROUP: 'batchGroupId',
+  EXPENSE_CLASS: 'expenseClass',
+  FUND_CODE: 'fundCode',
 };

@@ -34,6 +34,8 @@ export const useBuildQuery = () => {
 
         return `(${FILTERS.TAGS}=("${value}") or invoiceLines.tags.tagList=("${value}"))`;
       },
+      [FILTERS.FUND_CODE]: buildArrayFieldQuery.bind(null, ['invoiceLines.fundDistributions']),
+      [FILTERS.EXPENSE_CLASS]: buildArrayFieldQuery.bind(null, ['invoiceLines.fundDistributions']),
     },
   ), []);
 };

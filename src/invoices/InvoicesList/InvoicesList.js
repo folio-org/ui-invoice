@@ -25,6 +25,7 @@ import {
   ResultsPane,
   SingleSearchForm,
   useFiltersToogle,
+  useFunds,
   useItemToView,
   useLocationFilters,
   useLocationSorting,
@@ -95,6 +96,7 @@ const InvoicesList = ({
   const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-invoice/filters');
   const stripes = useStripes();
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
+  const { funds } = useFunds();
 
   const renderLastMenu = useCallback(() => <InvoicesListLastMenu />, []);
 
@@ -165,6 +167,7 @@ const InvoicesList = ({
               activeFilters={filters}
               applyFilters={applyFilters}
               disabled={isLoading}
+              funds={funds}
             />
           </FiltersPane>
         )}

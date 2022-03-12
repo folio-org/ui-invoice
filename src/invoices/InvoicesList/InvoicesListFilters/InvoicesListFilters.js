@@ -10,6 +10,8 @@ import {
   AcqTagsFilter,
   AcqUnitFilter,
   BooleanFilter,
+  ExpenseClassFilter,
+  FundFilter,
   PluggableOrganizationFilter,
   SourceFilter,
   PAYMENT_METHOD_OPTIONS,
@@ -29,6 +31,7 @@ const InvoicesListFilters = ({
   activeFilters,
   applyFilters,
   disabled,
+  funds,
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const adaptedApplyFilters = useCallback(
@@ -143,6 +146,21 @@ const InvoicesListFilters = ({
         onChange={adaptedApplyFilters}
         disabled={disabled}
       />
+      <FundFilter
+        activeFilters={activeFilters[FILTERS.FUND_CODE]}
+        disabled={disabled}
+        id={FILTERS.FUND_CODE}
+        name={FILTERS.FUND_CODE}
+        onChange={adaptedApplyFilters}
+        funds={funds}
+      />
+      <ExpenseClassFilter
+        activeFilters={activeFilters[FILTERS.EXPENSE_CLASS]}
+        disabled={disabled}
+        id={FILTERS.EXPENSE_CLASS}
+        name={FILTERS.EXPENSE_CLASS}
+        onChange={adaptedApplyFilters}
+      />
     </AccordionSet>
   );
 };
@@ -151,6 +169,7 @@ InvoicesListFilters.propTypes = {
   activeFilters: PropTypes.object.isRequired,
   applyFilters: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
+  funds: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default InvoicesListFilters;
