@@ -473,7 +473,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -483,8 +482,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -547,7 +544,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -557,8 +553,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -684,7 +678,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -694,8 +687,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -758,7 +749,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -768,8 +758,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -1148,7 +1136,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -1158,8 +1145,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -1222,7 +1207,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -1232,8 +1216,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -1811,7 +1793,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -1821,8 +1802,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -1885,7 +1864,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -1895,8 +1873,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -2426,7 +2402,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -2436,8 +2411,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -2500,7 +2473,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -2510,8 +2482,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -3064,7 +3034,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -3074,8 +3043,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -3138,7 +3105,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -3148,8 +3114,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -3275,7 +3239,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -3285,8 +3248,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -3349,7 +3310,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -3359,8 +3319,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -3742,7 +3700,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -3752,8 +3709,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -3816,7 +3771,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -3826,8 +3780,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -4445,7 +4397,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -4455,8 +4406,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -4519,7 +4468,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -4529,8 +4477,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -5090,7 +5036,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -5100,8 +5045,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >
@@ -5164,7 +5107,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                       class="controlGroup"
                     >
                       <button
-                        aria-expanded="false"
                         aria-haspopup="true"
                         aria-label="stripes-components.showOrHideDatepicker"
                         class="iconButton medium"
@@ -5174,8 +5116,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         type="button"
                       >
                         <span
-                          aria-expanded="false"
-                          aria-haspopup="true"
                           class="iconButtonInner mediumOffset"
                           data-test-calendar-button="true"
                         >

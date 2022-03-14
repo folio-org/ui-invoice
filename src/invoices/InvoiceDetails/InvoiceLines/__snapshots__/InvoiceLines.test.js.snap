@@ -176,6 +176,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
     <div
       class="mclScrollable"
       style="position: static; width: 100%;"
+      tabindex="0"
     >
       <div
         class="mclRowContainer"
