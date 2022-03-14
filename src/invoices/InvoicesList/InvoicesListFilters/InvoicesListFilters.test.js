@@ -6,6 +6,11 @@ import '../../../../test/jest/__mock__';
 
 import InvoicesListFilters from './InvoicesListFilters';
 
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  FundFilter: 'FundFilter',
+  ExpenseClassFilter: 'ExpenseClassFilter',
+}));
 jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
 }));

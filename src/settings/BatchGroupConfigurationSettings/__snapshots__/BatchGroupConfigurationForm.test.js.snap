@@ -520,7 +520,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
               >
                 <input
                   aria-invalid="false"
-                  aria-label="[object Object] format is h:m m  A use arrow keys to navigate dates. Enter key to confirm. "
+                  aria-label="stripes-components.Timepicker.ScreenReaderLabel"
                   aria-required="true"
                   autocapitalize="off"
                   autocomplete="off"

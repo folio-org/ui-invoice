@@ -2524,6 +2524,14 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       labelid="ui-invoice.invoice.details.information.batchGroup"
       name="batchGroupId"
     />
+    <fundfilter
+      id="fundCode"
+      name="fundCode"
+    />
+    <expenseclassfilter
+      id="expenseClass"
+      name="expenseClass"
+    />
   </div>
 </DocumentFragment>
 `;
@@ -5150,6 +5158,16 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       id="batchGroupId"
       labelid="ui-invoice.invoice.details.information.batchGroup"
       name="batchGroupId"
+    />
+    <fundfilter
+      disabled=""
+      id="fundCode"
+      name="fundCode"
+    />
+    <expenseclassfilter
+      disabled=""
+      id="expenseClass"
+      name="expenseClass"
     />
   </div>
 </DocumentFragment>
