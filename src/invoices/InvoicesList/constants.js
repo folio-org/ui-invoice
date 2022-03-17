@@ -14,4 +14,5 @@ export const FILTERS = {
   BATCH_GROUP: 'batchGroupId',
   EXPENSE_CLASS: 'expenseClass',
   FUND_CODE: 'fundCode',
+  LOCK_TOTAL: 'lockTotal',
 };

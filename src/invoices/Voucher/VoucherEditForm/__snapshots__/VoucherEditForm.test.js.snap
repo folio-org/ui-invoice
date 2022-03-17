@@ -4,7 +4,7 @@ exports[`VoucherEditForm should render correct voucher form structure 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="paneset  "
+      class="paneset"
       data-test-edit-voucher-form="true"
     >
       <section

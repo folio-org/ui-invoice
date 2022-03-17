@@ -38,6 +38,11 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
               id="stripes-selection-1"
               type="button"
             >
+              <span
+                class="sr-only"
+              >
+                stripes-components.selection.controlLabel
+              </span>
               <div
                 class="singleValue"
                 id="selected-stripes-selection-1-item"
@@ -497,6 +502,11 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
               id="stripes-selection-5"
               type="button"
             >
+              <span
+                class="sr-only"
+              >
+                stripes-components.selection.controlLabel
+              </span>
               <div
                 class="singleValue"
                 id="selected-stripes-selection-5-item"

@@ -8,7 +8,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
   >
     <div>
       <div
-        class="paneset  "
+        class="paneset"
       >
         <section
           class="pane focusIndicator"
@@ -585,6 +585,11 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                   name="accountNumber"
                                   type="button"
                                 >
+                                  <span
+                                    class="sr-only"
+                                  >
+                                    stripes-components.selection.controlLabel
+                                  </span>
                                   <div
                                     class="singleValue"
                                     id="selected-invoice-line-account-number-item"
