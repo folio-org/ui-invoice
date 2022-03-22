@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)
+
 * Un hide permission 'Invoice: Cancel invoices'. Refs UINV-362.
 * Previous invoice is fetched when Approve and Pay action is called. Refs UINV-372.
 
