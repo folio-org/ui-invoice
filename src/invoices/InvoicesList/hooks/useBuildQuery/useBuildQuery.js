@@ -4,6 +4,7 @@ import {
   buildArrayFieldQuery,
   buildDateTimeRangeQuery,
   buildDateRangeQuery,
+  buildNumberRangeQuery,
   makeQueryBuilder,
 } from '@folio/stripes-acq-components';
 
@@ -36,6 +37,7 @@ export const useBuildQuery = () => {
       },
       [FILTERS.FUND_CODE]: buildArrayFieldQuery.bind(null, ['invoiceLines.fundDistributions']),
       [FILTERS.EXPENSE_CLASS]: buildArrayFieldQuery.bind(null, ['invoiceLines.fundDistributions']),
+      [FILTERS.LOCK_TOTAL]: buildNumberRangeQuery.bind(null, [FILTERS.LOCK_TOTAL]),
     },
   ), []);
 };

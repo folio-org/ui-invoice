@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 * Allow user to filter invoices by Fund and Expense class. Refs UINV-367.
+* Allow user to filter invoices by Lock total amount range. Refs UINV-366.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)

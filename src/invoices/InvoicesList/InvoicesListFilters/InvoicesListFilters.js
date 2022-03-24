@@ -12,6 +12,7 @@ import {
   BooleanFilter,
   ExpenseClassFilter,
   FundFilter,
+  NumberRangeFilter,
   PluggableOrganizationFilter,
   SourceFilter,
   PAYMENT_METHOD_OPTIONS,
@@ -159,6 +160,14 @@ const InvoicesListFilters = ({
         disabled={disabled}
         id={FILTERS.EXPENSE_CLASS}
         name={FILTERS.EXPENSE_CLASS}
+        onChange={adaptedApplyFilters}
+      />
+      <NumberRangeFilter
+        id={FILTERS.LOCK_TOTAL}
+        activeFilters={activeFilters[FILTERS.LOCK_TOTAL]}
+        disabled={disabled}
+        labelId="ui-invoice.invoice.lockTotal"
+        name={FILTERS.LOCK_TOTAL}
         onChange={adaptedApplyFilters}
       />
     </AccordionSet>
