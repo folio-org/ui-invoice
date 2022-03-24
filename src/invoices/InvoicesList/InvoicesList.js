@@ -181,6 +181,7 @@ const InvoicesList = ({
           toggleFiltersPane={toggleFilters}
           filters={filters}
           isFiltersOpened={isFiltersOpened}
+          isLoading={isLoading}
         >
           {({ height, width }) => (
             <>
