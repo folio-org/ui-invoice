@@ -238,7 +238,6 @@ const InvoiceLineForm = ({
                             label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionInfo" />}
                             id="subscriptionInfo"
                             name="subscriptionInfo"
-                            isNonInteractive={isEditPostApproval}
                             type="text"
                           />
                         </Col>
@@ -246,14 +245,12 @@ const InvoiceLineForm = ({
                           <FieldDatepickerFinal
                             labelId="ui-invoice.invoiceLine.subscriptionStart"
                             name="subscriptionStart"
-                            isNonInteractive={isEditPostApproval}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-subscription-end xs={3}>
                           <FieldDatepickerFinal
                             labelId="ui-invoice.invoiceLine.subscriptionEnd"
                             name="subscriptionEnd"
-                            isNonInteractive={isEditPostApproval}
                           />
                         </Col>
                         <Col data-test-col-invoice-line-comment xs={3}>
