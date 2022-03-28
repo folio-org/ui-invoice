@@ -32,6 +32,7 @@ import { EditInvoice } from './EditInvoice';
 import { CreateInvoiceLine } from './CreateInvoiceLine';
 import { EditInvoiceLine } from './EditInvoiceLine';
 import { Voucher } from './Voucher';
+import { VoucherExport } from './VoucherExport';
 
 const Invoices = () => {
   const [isOpen, toggleModal] = useModalToggle();
@@ -106,6 +107,14 @@ const Invoices = () => {
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
             >
               <CreateInvoice />
+            </PermissionedRoute>
+            <PermissionedRoute
+              path="/invoice/voucher-export"
+              perm="ui-invoice.voucherExport"
+              returnLink={RETURN_LINK}
+              returnLinkLabelId={RETURN_LINK_LABEL_ID}
+            >
+              <VoucherExport />
             </PermissionedRoute>
             <PermissionedRoute
               path="/invoice/view/:id/line/:lineId/edit"

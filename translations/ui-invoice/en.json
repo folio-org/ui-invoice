@@ -24,6 +24,7 @@
   "button.continue": "Continue",
   "button.cancel": "Cancel",
   "button.submit": "Submit",
+  "button.voucherExport": "Voucher export",
 
   "showTags": "Show tags",
   "addTagFor": "Add tag for: {filterValue}",
@@ -418,6 +419,8 @@
   "voucher.voucherLines.amount": "Amount",
   "voucher.voucherLines.total": "Total: ",
 
+  "voucherExport.paneTitle": "Voucher export",
+
   "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
   "poLineLookup": "POL look-up",
 
@@ -431,5 +434,6 @@
   "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
   "permission.pay": "Invoice: Pay invoices",
   "permission.cancel": "Invoice: Cancel invoices",
-  "permission.settings.all": "Settings (Invoices): Can view and edit settings"
+  "permission.settings.all": "Settings (Invoices): Can view and edit settings",
+  "permission.voucherExport": "Invoice: Voucher export"
 }
