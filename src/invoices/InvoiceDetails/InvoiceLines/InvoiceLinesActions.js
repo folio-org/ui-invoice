@@ -28,6 +28,9 @@ const InvoiceLinesActions = ({
     label={<FormattedMessage id="stripes-components.paneMenuActionsToggleLabel" />}
     buttonProps={{ buttonStyle: 'primary' }}
     usePortal={false}
+    modifiers={{
+      preventOverflow: { boundariesElement: 'scrollParent' },
+    }}
   >
     <DropdownMenu>
       <IfPermission perm="invoice.invoice-lines.item.post">
