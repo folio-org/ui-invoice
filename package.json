@@ -266,6 +266,20 @@
         ]
       },
       {
+        "permissionName": "ui-invoice.voucherExport",
+        "displayName": "Invoice: Voucher export",
+        "visible": true,
+        "description": "",
+        "subPermissions": [
+          "batch-groups.collection.get",
+          "batch-voucher.batch-voucher-exports.collection.get",
+          "batch-voucher.batch-voucher-exports.item.get",
+          "batch-voucher.batch-voucher-exports.item.post",
+          "batch-voucher.batch-voucher-exports.upload.item.post",
+          "batch-voucher.batch-vouchers.item.get"
+        ]
+      },
+      {
         "permissionName": "ui-invoice.settings.all",
         "displayName": "Settings (Invoices): Can view and edit settings",
         "visible": true,

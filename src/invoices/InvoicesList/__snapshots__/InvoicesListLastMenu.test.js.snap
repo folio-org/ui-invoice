@@ -2,18 +2,34 @@
 
 exports[`OrganizationsListLastMenu should render correct structure 1`] = `
 <DocumentFragment>
-  <div
-    class="paneMenu"
+  <section
+    aria-labelledby="invoice-list-actions-label"
+    class="menuSection"
+    data-test-menu-section="true"
+    id="invoice-list-actions"
   >
     <a
       aria-label="stripes-smart-components.addNew"
-      class="button primary marginBottom0"
+      class="button dropdownItem"
       href="/invoice/create?search"
-      id="clickable-newInvoice"
+      id="clickable-new-invoice"
       role="button"
     >
-      stripes-smart-components.new
+      <span>
+        Icon
+      </span>
     </a>
-  </div>
+    <a
+      aria-label="ui-invoice.button.voucherExport"
+      class="button dropdownItem"
+      href="/invoice/voucher-export?search"
+      id="clickable-voucher-export"
+      role="button"
+    >
+      <span>
+        Icon
+      </span>
+    </a>
+  </section>
 </DocumentFragment>
 `;

@@ -98,7 +98,7 @@ const InvoicesList = ({
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
   const { funds } = useFunds();
 
-  const renderLastMenu = useCallback(() => <InvoicesListLastMenu />, []);
+  const renderActionMenu = useCallback(() => <InvoicesListLastMenu />, []);
 
   const selectInvoice = useCallback(
     (e, { id }) => {
@@ -177,7 +177,7 @@ const InvoicesList = ({
           autosize
           title={resultsPaneTitle}
           count={invoicesCount}
-          renderLastMenu={renderLastMenu}
+          renderActionMenu={renderActionMenu}
           toggleFiltersPane={toggleFilters}
           filters={filters}
           isFiltersOpened={isFiltersOpened}

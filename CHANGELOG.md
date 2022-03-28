@@ -7,6 +7,7 @@
 * Select filter should announce the number of Results in Result List pane header. Refs UINV-387.
 * Allow editing of subscription dates and subscription info after an invoice is approved/paid. Refs UINV-375.
 * On small screens the action menu is covered by the header. Refs UINV-374.
+* Add "Voucher export" to actions menu. Refs UINV-368.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)
