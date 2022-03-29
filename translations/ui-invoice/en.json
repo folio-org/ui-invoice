@@ -25,6 +25,7 @@
   "button.cancel": "Cancel",
   "button.submit": "Submit",
   "button.voucherExport": "Voucher export",
+  "button.exportCSV": "Export results (CSV)",
 
   "showTags": "Show tags",
   "addTagFor": "Add tag for: {filterValue}",
@@ -435,5 +436,6 @@
   "permission.pay": "Invoice: Pay invoices",
   "permission.cancel": "Invoice: Cancel invoices",
   "permission.settings.all": "Settings (Invoices): Can view and edit settings",
-  "permission.voucherExport": "Invoice: Voucher export"
+  "permission.voucherExport": "Invoice: Voucher export",
+  "permission.exportCSV": "Invoice: Export search results"
 }

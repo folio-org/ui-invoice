@@ -8,6 +8,7 @@
 * Allow editing of subscription dates and subscription info after an invoice is approved/paid. Refs UINV-375.
 * On small screens the action menu is covered by the header. Refs UINV-374.
 * Add "Voucher export" to actions menu. Refs UINV-368.
+* Add "Export results (CSV)" action to invoice app. Refs UINV-383.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)

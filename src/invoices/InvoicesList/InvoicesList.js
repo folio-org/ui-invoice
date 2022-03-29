@@ -40,7 +40,7 @@ import { InvoiceDetailsContainer } from '../InvoiceDetails';
 import { InvoiceLineDetailsContainer } from '../InvoiceLineDetails';
 
 import InvoicesListFilters from './InvoicesListFilters';
-import InvoicesListLastMenu from './InvoicesListLastMenu';
+import { InvoicesListLastMenu } from './InvoicesListLastMenu';
 import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
@@ -98,7 +98,12 @@ const InvoicesList = ({
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
   const { funds } = useFunds();
 
-  const renderActionMenu = useCallback(() => <InvoicesListLastMenu />, []);
+  const renderActionMenu = useCallback(({ onToggle }) => (
+    <InvoicesListLastMenu
+      onToggle={onToggle}
+      invoicesCount={invoicesCount}
+    />
+  ), [invoicesCount]);
 
   const selectInvoice = useCallback(
     (e, { id }) => {
