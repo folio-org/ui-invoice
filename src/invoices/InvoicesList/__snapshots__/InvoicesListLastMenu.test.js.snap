@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OrganizationsListLastMenu should render correct structure 1`] = `
+exports[`InvoicesListLastMenu should render correct structure 1`] = `
 <DocumentFragment>
   <section
     aria-labelledby="invoice-list-actions-label"
@@ -11,7 +11,7 @@ exports[`OrganizationsListLastMenu should render correct structure 1`] = `
     <a
       aria-label="stripes-smart-components.addNew"
       class="button dropdownItem"
-      href="/invoice/create?search"
+      href="/invoice/create"
       id="clickable-new-invoice"
       role="button"
     >
@@ -22,7 +22,7 @@ exports[`OrganizationsListLastMenu should render correct structure 1`] = `
     <a
       aria-label="ui-invoice.button.voucherExport"
       class="button dropdownItem"
-      href="/invoice/voucher-export?search"
+      href="/invoice/voucher-export"
       id="clickable-voucher-export"
       role="button"
     >
@@ -30,6 +30,20 @@ exports[`OrganizationsListLastMenu should render correct structure 1`] = `
         Icon
       </span>
     </a>
+    <button
+      aria-label="ui-invoice.button.exportCSV"
+      class="button dropdownItem"
+      id="clickable-export-csv"
+      type="button"
+    >
+      <span
+        class="inner"
+      >
+        <span>
+          Icon
+        </span>
+      </span>
+    </button>
   </section>
 </DocumentFragment>
 `;

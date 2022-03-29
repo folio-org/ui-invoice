@@ -1,7 +1,7 @@
 import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { withRouter } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import { useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import {
   Button,
@@ -10,8 +10,9 @@ import {
 } from '@folio/stripes/components';
 import { IfPermission } from '@folio/stripes/core';
 
-export const InvoicesListLastMenuComponent = ({ location }) => {
+export const InvoicesListLastMenu = ({ onToggle, invoicesCount }) => {
   const intl = useIntl();
+  const location = useLocation();
 
   return (
     <MenuSection id="invoice-list-actions">
@@ -46,12 +47,27 @@ export const InvoicesListLastMenuComponent = ({ location }) => {
           </Icon>
         </Button>
       </IfPermission>
+
+      <IfPermission perm="ui-invoice.exportCSV">
+        <Button
+          id="clickable-export-csv"
+          buttonStyle="dropdownItem"
+          aria-label={intl.formatMessage({ id: 'ui-invoice.button.exportCSV' })}
+          onClick={() => {
+            onToggle();
+          }}
+          disabled={!invoicesCount}
+        >
+          <Icon size="small" icon="download">
+            <FormattedMessage id="ui-invoice.button.exportCSV" />
+          </Icon>
+        </Button>
+      </IfPermission>
     </MenuSection>
   );
 };
 
-InvoicesListLastMenuComponent.propTypes = {
-  location: ReactRouterPropTypes.location.isRequired,
+InvoicesListLastMenu.propTypes = {
+  invoicesCount: PropTypes.number.isRequired,
+  onToggle: PropTypes.func.isRequired,
 };
-
-export default withRouter(InvoicesListLastMenuComponent);

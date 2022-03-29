@@ -4,16 +4,19 @@ import { MemoryRouter } from 'react-router-dom';
 
 import '../../../test/jest/__mock__';
 
-import { location } from '../../../test/jest/fixtures';
+import { InvoicesListLastMenu } from './InvoicesListLastMenu';
 
-import { InvoicesListLastMenuComponent } from './InvoicesListLastMenu';
+const defaultProps = {
+  onToggle: jest.fn(),
+  invoicesCount: 1,
+};
 
-const renderInvoicesListLastMenu = () => render(
-  <InvoicesListLastMenuComponent location={location} />,
+const renderInvoicesListLastMenu = (props = defaultProps) => render(
+  <InvoicesListLastMenu {...props} />,
   { wrapper: MemoryRouter },
 );
 
-describe('OrganizationsListLastMenu', () => {
+describe('InvoicesListLastMenu', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
   });

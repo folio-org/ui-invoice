@@ -280,6 +280,13 @@
         ]
       },
       {
+        "permissionName": "ui-invoice.exportCSV",
+        "displayName": "Invoice: Export search results",
+        "description": "",
+        "visible": true,
+        "subPermissions": []
+      },
+      {
         "permissionName": "ui-invoice.settings.all",
         "displayName": "Settings (Invoices): Can view and edit settings",
         "visible": true,
