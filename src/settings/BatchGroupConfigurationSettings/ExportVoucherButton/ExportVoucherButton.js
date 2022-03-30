@@ -38,6 +38,10 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
           const blob = await batchVouchers.blob();
 
           saveAs(blob, `${fileName}.${EXPORT_FORMAT_FILE_EXTENSION[format]}`);
+
+          showCallout({
+            messageId: 'ui-invoice.voucherExport.download.success',
+          });
         }
       } catch (e) {
         showCallout({
