@@ -421,6 +421,8 @@
   "voucher.voucherLines.total": "Total: ",
 
   "voucherExport.paneTitle": "Voucher export",
+  "voucherExport.batchGroup.select": "Select batch group",
+  "voucherExport.download.success": "Vouchers have been successfully downloaded",
 
   "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
   "poLineLookup": "POL look-up",

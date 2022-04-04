@@ -4,8 +4,6 @@ import {
   keys,
   pickBy,
 } from 'lodash';
-import moment from 'moment';
-import { BATCH_VOUCHER_EXPORT_STATUS } from '../../common/constants';
 
 const REGEXP_URI = new RegExp('^$|([f][t][p])([s])?://.+$');
 
@@ -45,13 +43,4 @@ export const saveExportConfig = (
         });
       }
     });
-};
-
-export const createManualVoucherExport = (mutatorFn, batchGroupId, start) => {
-  return mutatorFn.POST({
-    batchGroupId,
-    start,
-    end: moment.utc().format(),
-    status: BATCH_VOUCHER_EXPORT_STATUS.pending,
-  });
 };

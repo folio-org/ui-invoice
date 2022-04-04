@@ -1,17 +1,22 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { render, screen, act } from '@testing-library/react';
 
 import {
   batchGroup,
-  batchVoucherExport,
 } from '../../../test/jest/fixtures';
 
+import { useBatchGroups } from '../../invoices/VoucherExport/hooks';
 import {
   SCHEDULE_EXPORT,
 } from './constants';
 import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
 import BatchGroupConfigurationSettings from './BatchGroupConfigurationSettings';
 
+jest.mock('../../invoices/VoucherExport/hooks', () => ({
+  ...jest.requireActual('../../invoices/VoucherExport/hooks'),
+  useBatchGroups: jest.fn().mockReturnValue(),
+}));
 jest.mock('./BatchGroupConfigurationForm', () => jest.fn().mockReturnValue('BatchGroupConfigurationForm'));
 
 const exportConfig = {
@@ -21,16 +26,6 @@ const exportConfig = {
   scheduleExport: SCHEDULE_EXPORT.daily,
 };
 const mutatorMock = {
-  batchGroups: {
-    GET: jest.fn().mockReturnValue(Promise.resolve([batchGroup])),
-  },
-  batchVoucherExports: {
-    GET: jest.fn().mockReturnValue(Promise.resolve({
-      totalRecords: 1,
-      batchVoucherExports: [batchVoucherExport],
-    })),
-    POST: jest.fn().mockReturnValue(Promise.resolve(batchVoucherExport)),
-  },
   exportConfig: {
     GET: jest.fn().mockReturnValue(Promise.resolve([])),
     PUT: jest.fn().mockReturnValue(Promise.resolve(exportConfig)),
@@ -45,11 +40,28 @@ const mutatorMock = {
 const defaultProps = {
   mutator: mutatorMock,
 };
+
+const queryClient = new QueryClient();
+// eslint-disable-next-line react/prop-types
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
+);
+
 const renderBatchGroupConfigurationSettings = (props = defaultProps) => render(
   <BatchGroupConfigurationSettings {...props} />,
+  { wrapper },
 );
 
 describe('BatchGroupConfigurationSettings', () => {
+  beforeEach(() => {
+    useBatchGroups.mockClear().mockReturnValue({
+      batchGroups: [batchGroup],
+      isLoading: false,
+    });
+  });
+
   it('should display BatchGroupConfigurationForm when loaded', async () => {
     renderBatchGroupConfigurationSettings();
 
@@ -87,20 +99,6 @@ describe('BatchGroupConfigurationSettings', () => {
       });
 
       expect(mutatorMock.exportConfig.PUT).toHaveBeenCalled();
-    });
-
-    it('should create manual export when runManualExport is called', async () => {
-      mutatorMock.batchVoucherExports.POST.mockClear();
-
-      renderBatchGroupConfigurationSettings();
-
-      await screen.findByText('BatchGroupConfigurationForm');
-
-      await act(async () => {
-        await BatchGroupConfigurationForm.mock.calls[0][0].runManualExport();
-      });
-
-      expect(mutatorMock.batchVoucherExports.POST).toHaveBeenCalled();
     });
   });
 });

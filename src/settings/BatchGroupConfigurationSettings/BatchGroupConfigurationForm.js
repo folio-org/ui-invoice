@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { Field } from 'react-final-form';
@@ -10,7 +10,6 @@ import {
   Button,
   checkScope,
   Col,
-  ConfirmationModal,
   HasCommand,
   Pane,
   Row,
@@ -20,7 +19,6 @@ import {
 import {
   FieldSelectFinal as FieldSelect,
   handleKeyCommand,
-  useModalToggle,
   usePaneFocus,
   validateRequired,
 } from '@folio/stripes-acq-components';
@@ -36,20 +34,15 @@ import {
   SCHEDULE_EXPORT,
   WEEKDAYS_OPTIONS,
 } from './constants';
-import { BatchVoucherExportsList } from './BatchVoucherExportsList';
 
 const trimTime = value => value.slice(0, 5);
 
 const BatchGroupConfigurationForm = ({
   batchGroups,
-  batchVoucherExports,
   form,
   handleSubmit,
   hasCredsSaved,
-  onNeedMoreData,
   pristine,
-  recordsCount,
-  runManualExport,
   selectBatchGroup,
   selectedBatchGroupId,
   submitting,
@@ -59,23 +52,11 @@ const BatchGroupConfigurationForm = ({
 
   const formValues = get(form.getState(), 'values', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
-  const [isManualExportConfirmation, toggleManualExportConfirmation] = useModalToggle();
-  const selectedBatchGroupName = batchGroups.find(({ id }) => id === selectedBatchGroupId)?.name;
-
-  const onRunManualExport = useCallback(
-    () => {
-      toggleManualExportConfirmation();
-      runManualExport();
-    },
-    [runManualExport, toggleManualExportConfirmation],
-  );
 
   const paneFooter = (
     <BatchGroupConfigurationFormFooter
-      exportConfigId={formValues.id}
       handleSubmit={handleSubmit}
       pristine={pristine}
-      runManualExport={toggleManualExportConfirmation}
       submitting={submitting}
     />
   );
@@ -226,29 +207,6 @@ const BatchGroupConfigurationForm = ({
             </Button>
           </Col>
         </Row>
-        <BatchVoucherExportsList
-          batchVoucherExports={batchVoucherExports}
-          format={formValues.format}
-          onNeedMoreData={onNeedMoreData}
-          recordsCount={recordsCount}
-        />
-
-        {isManualExportConfirmation && (
-          <ConfirmationModal
-            id="run-manual-export-confirmation"
-            confirmLabel={<FormattedMessage id="ui-invoice.button.continue" />}
-            heading={<FormattedMessage id="ui-invoice.settings.actions.manualExport.heading" />}
-            message={
-              <FormattedMessage
-                id="ui-invoice.settings.actions.manualExport.message"
-                values={{ selectedBatchGroupName }}
-              />
-            }
-            onCancel={toggleManualExportConfirmation}
-            onConfirm={onRunManualExport}
-            open
-          />
-        )}
       </Pane>
     </HasCommand>
   );
@@ -256,14 +214,10 @@ const BatchGroupConfigurationForm = ({
 
 BatchGroupConfigurationForm.propTypes = {
   batchGroups: PropTypes.arrayOf(PropTypes.object),
-  batchVoucherExports: PropTypes.arrayOf(PropTypes.object),
   form: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
   hasCredsSaved: PropTypes.bool.isRequired,
-  onNeedMoreData: PropTypes.func,
   pristine: PropTypes.bool,
-  recordsCount: PropTypes.number,
-  runManualExport: PropTypes.func.isRequired,
   selectBatchGroup: PropTypes.func.isRequired,
   selectedBatchGroupId: PropTypes.string,
   submitting: PropTypes.bool,

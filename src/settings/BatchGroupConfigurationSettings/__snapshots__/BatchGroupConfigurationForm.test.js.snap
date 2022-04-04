@@ -773,23 +773,6 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
           </button>
         </div>
       </div>
-      <div
-        style="overflow: visible; height: 0px; width: 0px;"
-      />
-      <div
-        class="resize-triggers"
-      >
-        <div
-          class="expand-trigger"
-        >
-          <div
-            style="width: 1px; height: 1px;"
-          />
-        </div>
-        <div
-          class="contract-trigger"
-        />
-      </div>
     </div>
     <div
       class="paneFooter"
@@ -800,19 +783,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
         <span
           class="renderStart"
           data-test-pane-footer-start="true"
-        >
-          <button
-            class="button default mega"
-            data-test-run-manual-export-button="true"
-            type="button"
-          >
-            <span
-              class="inner"
-            >
-              ui-invoice.button.runManualExport
-            </span>
-          </button>
-        </span>
+        />
         <span
           data-test-pane-footer-end="true"
         >
