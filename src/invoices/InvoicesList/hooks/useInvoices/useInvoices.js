@@ -46,6 +46,7 @@ export const useInvoices = ({ pagination, fetchVendors }) => {
       return {
         invoices: hydratedInvoices,
         invoicesCount: totalRecords,
+        query,
       };
     },
     {

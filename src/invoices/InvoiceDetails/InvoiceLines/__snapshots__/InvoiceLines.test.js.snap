@@ -203,7 +203,9 @@ exports[`InvoiceLines should render correct structure 1`] = `
             >
               <span
                 id="729c379e-ed65-4e8b-ac28-3d75386a5ffc"
-              />
+              >
+                1
+              </span>
             </div>
             <div
               class="mclCell  mclCellStyle"
@@ -221,9 +223,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span>
-                -
-              </span>
+              USHIST
             </div>
             <div
               class="mclCell  mclCellStyle"
@@ -253,9 +253,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
               class="mclCell  mclCellStyle"
               role="gridcell"
             >
-              <span>
-                -
-              </span>
+              9992
             </div>
             <div
               class="mclCell  mclCellStyle"

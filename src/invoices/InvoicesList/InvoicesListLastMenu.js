@@ -10,7 +10,7 @@ import {
 } from '@folio/stripes/components';
 import { IfPermission } from '@folio/stripes/core';
 
-export const InvoicesListLastMenu = ({ onToggle, invoicesCount }) => {
+export const InvoicesListLastMenu = ({ onToggle, invoicesCount, toggleExportModal }) => {
   const intl = useIntl();
   const location = useLocation();
 
@@ -50,11 +50,13 @@ export const InvoicesListLastMenu = ({ onToggle, invoicesCount }) => {
 
       <IfPermission perm="ui-invoice.exportCSV">
         <Button
+          data-testid="export-csv-button"
           id="clickable-export-csv"
           buttonStyle="dropdownItem"
           aria-label={intl.formatMessage({ id: 'ui-invoice.button.exportCSV' })}
           onClick={() => {
             onToggle();
+            toggleExportModal();
           }}
           disabled={!invoicesCount}
         >
@@ -70,4 +72,5 @@ export const InvoicesListLastMenu = ({ onToggle, invoicesCount }) => {
 InvoicesListLastMenu.propTypes = {
   invoicesCount: PropTypes.number.isRequired,
   onToggle: PropTypes.func.isRequired,
+  toggleExportModal: PropTypes.func.isRequired,
 };

@@ -41,6 +41,7 @@ const InvoicesListContainer = ({ mutator: originMutator }) => {
     invoices,
     invoicesCount,
     isFetching,
+    query,
   } = useInvoices({ pagination, fetchVendors });
 
   return (
@@ -52,6 +53,7 @@ const InvoicesListContainer = ({ mutator: originMutator }) => {
       invoices={invoices}
       pagination={pagination}
       refreshList={refreshPage}
+      query={query}
     />
   );
 };
