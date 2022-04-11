@@ -133,9 +133,11 @@ const VoucherExport = () => {
     },
   ];
 
+  const isManualExportDisabled = isLoading || !selectedBatchGroupId || !exportConfigs?.format;
+
   const paneFooter = (
     <VoucherExportFooter
-      disabled={isLoading || !selectedBatchGroupId}
+      disabled={isManualExportDisabled}
       onCancel={onCancel}
       runManualExport={() => setConfirmManualExportModalOpen(true)}
     />
