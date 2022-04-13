@@ -12,7 +12,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { BATCH_VOUCHER_EXPORT_STATUS_LABEL } from '../../../common/constants';
-import ExportVoucherButton from '../../../settings/BatchGroupConfigurationSettings/ExportVoucherButton';
+import { ExportVoucherButton } from '../../VoucherExport';
 import BatchGroupValue from '../BatchGroupValue';
 
 const InvoiceBatchVoucherExport = ({ batchVoucherExport, exportFormat }) => {

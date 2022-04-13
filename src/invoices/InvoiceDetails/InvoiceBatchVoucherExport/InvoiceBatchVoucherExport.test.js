@@ -6,7 +6,7 @@ import { batchVoucherExport } from '../../../../test/jest/fixtures';
 import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
 
 jest.mock(
-  '../../../settings/BatchGroupConfigurationSettings/ExportVoucherButton',
+  '../../VoucherExport/ExportVoucherButton/ExportVoucherButton',
   () => jest.fn(() => 'ExportVoucherButton'),
 );
 jest.mock('../BatchGroupValue', () => jest.fn(() => 'BatchGroupValue'));

@@ -14,9 +14,10 @@ import { BATCH_VOUCHERS_API } from '../../../common/constants';
 import {
   EXPORT_FORMAT_FILE_EXTENSION,
   EXPORT_FORMATS_HEADER_MAP,
-} from '../constants';
+  EXPORT_FORMAT,
+} from '../../../settings/BatchGroupConfigurationSettings/constants';
 
-const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
+const ExportVoucherButton = ({ batchVoucherId, format = EXPORT_FORMAT.xml, stripes, fileName }) => {
   const showCallout = useShowCallout();
   const downloadBatchVouchers = useCallback(
     async () => {
