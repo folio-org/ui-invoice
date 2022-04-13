@@ -18,10 +18,10 @@ import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
 
 const COLUMN_INVOICE_DATE = 'invoiceDate';
 const visibleColumns = [
+  'vendorInvoiceNo',
   'invoiceLine',
   COLUMN_INVOICE_DATE,
   'vendorName',
-  'vendorInvoiceNo',
   'status',
   'quantity',
   'amount',
@@ -49,7 +49,7 @@ const getResultFormatter = ({ search }) => ({
         search,
       }}
     >
-      {`${invoiceLine.invoice?.folioInvoiceNo}-${invoiceLine.invoiceLineNumber}`}
+      {`${invoiceLine.invoiceLineNumber}`}
     </Link>
   ),
   [COLUMN_INVOICE_DATE]: invoiceLine => <FormattedDate value={invoiceLine.invoice?.invoiceDate} />,
