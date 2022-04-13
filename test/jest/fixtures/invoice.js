@@ -12,4 +12,6 @@ export const invoice = {
   status: 'Open',
   vendorId: '11fb627a-cdf1-11e8-a8d5-f2801f1b9fd1',
   vendorInvoiceNo: 'edi',
+  billTo: 'addressId',
+  acqUnitIds: ['0ebb1f7d-983f-3026-8a4c-5318e0ebc041'],
 };

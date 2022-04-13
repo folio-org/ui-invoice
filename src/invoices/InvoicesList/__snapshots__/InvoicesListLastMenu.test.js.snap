@@ -33,6 +33,7 @@ exports[`InvoicesListLastMenu should render correct structure 1`] = `
     <button
       aria-label="ui-invoice.button.exportCSV"
       class="button dropdownItem"
+      data-testid="export-csv-button"
       id="clickable-export-csv"
       type="button"
     >

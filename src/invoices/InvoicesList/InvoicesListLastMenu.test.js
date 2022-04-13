@@ -1,6 +1,7 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import user from '@testing-library/user-event';
 
 import '../../../test/jest/__mock__';
 
@@ -29,5 +30,19 @@ describe('InvoicesListLastMenu', () => {
     const { asFragment } = renderInvoicesListLastMenu();
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  describe('Actions', () => {
+    it('should call toggleExportModal prop', () => {
+      const onToggle = jest.fn();
+      const toggleExportModal = jest.fn();
+
+      renderInvoicesListLastMenu({ onToggle, toggleExportModal, invoicesCount: 1 });
+
+      user.click(screen.getByTestId('export-csv-button'));
+
+      expect(onToggle).toHaveBeenCalled();
+      expect(toggleExportModal).toHaveBeenCalled();
+    });
   });
 });

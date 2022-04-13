@@ -1,6 +1,9 @@
-import { baseManifest, CONFIG_API } from '@folio/stripes-acq-components';
-
-import { CONFIG_MODULE_TENANT } from '../constants';
+import {
+  baseManifest,
+  CONFIG_API,
+  MODULE_TENANT,
+  CONFIG_ADDRESSES,
+} from '@folio/stripes-acq-components';
 
 export const configAddress = {
   ...baseManifest,
@@ -8,7 +11,7 @@ export const configAddress = {
   path: CONFIG_API,
   GET: {
     params: {
-      query: `(module=${CONFIG_MODULE_TENANT} and configName=tenant.addresses)`,
+      query: `(module=${MODULE_TENANT} and configName=${CONFIG_ADDRESSES})`,
     },
   },
 };
