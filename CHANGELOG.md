@@ -15,6 +15,7 @@
 * Allow user to select data points for Export results to CSV. Refs UINV-384.
 * Export invoice functionality - FE approach. Refs UINV-385.
 * Remove "Folio invoice number" from display in invoice line column. Refs UINV-390.
+* Update accordion labels and logic on Invoice. Refs UINV-391.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)
