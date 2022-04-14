@@ -17,7 +17,7 @@ import {
   BATCH_VOUCHER_EXPORT_STATUS,
   BATCH_VOUCHER_EXPORT_STATUS_LABEL,
 } from '../../../common/constants';
-import ExportVoucherButton from '../../../settings/BatchGroupConfigurationSettings/ExportVoucherButton';
+import { ExportVoucherButton } from '../ExportVoucherButton';
 import {
   BV_EXPORT_COLUMN_MAPPING,
   BV_EXPORT_LIST_COLUMNS,

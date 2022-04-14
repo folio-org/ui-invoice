@@ -164,6 +164,7 @@
   "settings.BatchVoucherExports.status.uploaded": "Uploaded",
   "settings.BatchVoucherExports.status.error": "Error",
   "settings.BatchVoucherExports.download.error": "Batch vouchers were not downloaded",
+  "settings.BatchVoucherExports.download.errorFormat": "File format not specified for voucher export. Please update Batch Group Configuration in system settings",
   "settings.BatchVoucherExports.message.uploaded": "Uploaded successfully to FTP location",
 
   "settings.voucherNumber.label": "Voucher number",

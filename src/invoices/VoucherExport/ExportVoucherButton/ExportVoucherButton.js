@@ -14,12 +14,19 @@ import { BATCH_VOUCHERS_API } from '../../../common/constants';
 import {
   EXPORT_FORMAT_FILE_EXTENSION,
   EXPORT_FORMATS_HEADER_MAP,
-} from '../constants';
+} from '../../../settings/BatchGroupConfigurationSettings/constants';
 
 const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
   const showCallout = useShowCallout();
   const downloadBatchVouchers = useCallback(
     async () => {
+      if (!format) {
+        return showCallout({
+          messageId: 'ui-invoice.settings.BatchVoucherExports.download.errorFormat',
+          type: 'error',
+        });
+      }
+
       try {
         const httpHeaders = {
           'Accept': EXPORT_FORMATS_HEADER_MAP[format],
@@ -39,12 +46,12 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
 
           saveAs(blob, `${fileName}.${EXPORT_FORMAT_FILE_EXTENSION[format]}`);
 
-          showCallout({
+          return showCallout({
             messageId: 'ui-invoice.voucherExport.download.success',
           });
         }
       } catch (e) {
-        showCallout({
+        return showCallout({
           messageId: 'ui-invoice.settings.BatchVoucherExports.download.error',
           type: 'error',
         });
