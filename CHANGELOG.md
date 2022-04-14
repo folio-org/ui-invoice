@@ -12,6 +12,8 @@
 * Select batch group and display existing exports. Refs UINV-369.
 * Run manual export and display toast. Refs UINV-370.
 * Download batch export files from full screen view. Refs UINV-371.
+* Allow user to select data points for Export results to CSV. Refs UINV-384.
+* Export invoice functionality - FE approach. Refs UINV-385.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)

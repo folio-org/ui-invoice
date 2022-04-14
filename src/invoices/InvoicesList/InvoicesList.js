@@ -29,6 +29,7 @@ import {
   useItemToView,
   useLocationFilters,
   useLocationSorting,
+  useModalToggle,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -44,6 +45,7 @@ import { InvoicesListLastMenu } from './InvoicesListLastMenu';
 import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
+import { ExportSettingsModal } from './ExportSettingsModal';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
@@ -75,6 +77,7 @@ const InvoicesList = ({
   invoicesCount,
   pagination,
   refreshList,
+  query,
 }) => {
   const location = useLocation();
   const history = useHistory();
@@ -97,13 +100,15 @@ const InvoicesList = ({
   const stripes = useStripes();
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
   const { funds } = useFunds();
+  const [isExportModalOpened, toggleExportModal] = useModalToggle();
 
   const renderActionMenu = useCallback(({ onToggle }) => (
     <InvoicesListLastMenu
       onToggle={onToggle}
       invoicesCount={invoicesCount}
+      toggleExportModal={toggleExportModal}
     />
-  ), [invoicesCount]);
+  ), [invoicesCount, toggleExportModal]);
 
   const selectInvoice = useCallback(
     (e, { id }) => {
@@ -225,6 +230,13 @@ const InvoicesList = ({
           )}
         </ResultsPane>
 
+        {isExportModalOpened && (
+          <ExportSettingsModal
+            onCancel={toggleExportModal}
+            query={query}
+          />
+        )}
+
         <Route
           path="/invoice/view/:id/line/:lineId/view"
           component={InvoiceLineDetailsContainer}
@@ -253,6 +265,7 @@ InvoicesList.propTypes = {
   invoices: PropTypes.arrayOf(PropTypes.object),
   refreshList: PropTypes.func.isRequired,
   pagination: PropTypes.object,
+  query: PropTypes.string,
 };
 
 InvoicesList.defaultProps = {
