@@ -309,25 +309,32 @@ function InvoiceDetails({
                 visibleColumns={visibleColumns}
               />
             </Accordion>
-            <Accordion
-              id={SECTIONS.fundDistribution}
-              label={<FormattedMessage id="ui-invoice.fundDistribution" />}
-            >
-              <FundDistributionView
-                currency={invoice.currency}
-                fundDistributions={fundDistributions}
-                groupBy="adjustmentId"
-              />
-            </Accordion>
-            <Accordion
-              label={<FormattedMessage id="ui-invoice.adjustments" />}
-              id={SECTIONS.adjustments}
-            >
-              <AdjustmentsDetails
-                adjustments={adjustments}
-                currency={invoice.currency}
-              />
-            </Accordion>
+
+            {Boolean(fundDistributions.length) && (
+              <Accordion
+                id={SECTIONS.fundDistribution}
+                label={<FormattedMessage id="ui-invoice.invoice.details.accordion.fundDistribution" />}
+              >
+                <FundDistributionView
+                  currency={invoice.currency}
+                  fundDistributions={fundDistributions}
+                  groupBy="adjustmentId"
+                />
+              </Accordion>
+            )}
+
+            {Boolean(adjustments.length) && (
+              <Accordion
+                label={<FormattedMessage id="ui-invoice.invoice.details.accordion.adjustments" />}
+                id={SECTIONS.adjustments}
+              >
+                <AdjustmentsDetails
+                  adjustments={adjustments}
+                  currency={invoice.currency}
+                />
+              </Accordion>
+            )}
+
             <Accordion
               label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
               id={SECTIONS.vendorDetails}

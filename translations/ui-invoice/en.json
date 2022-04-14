@@ -233,6 +233,9 @@
   "invoice.list.status": "Status",
   "invoice.list.total": "Total amount (system)",
 
+  "invoice.details.accordion.fundDistribution": "Invoice level fund distribution",
+  "invoice.details.accordion.adjustments": "Invoice level adjustments",
+
   "invoice.details.information.title": "Invoice information",
   "invoice.details.information.invoiceDate": "Invoice date",
   "invoice.details.information.paymentDue": "Payment due",
