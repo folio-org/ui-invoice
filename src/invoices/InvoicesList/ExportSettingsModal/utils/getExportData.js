@@ -8,6 +8,7 @@ import {
   ACQUISITIONS_UNITS_API,
   CONFIG_ADDRESSES,
   CONFIG_API,
+  EXCHANGE_RATE_API,
   EXPENSE_CLASSES_API,
   fetchAllRecords,
   fetchExportDataByIds,
@@ -27,7 +28,7 @@ import {
 } from '../../../../common/constants';
 import { createExportReport } from './createExportReport';
 
-export const getExportData = async ({ ky, intl, query }) => {
+export const getExportData = async ({ ky, intl, query, currency: from }) => {
   const exportInvoices = await fetchAllRecords(
     {
       GET: async ({ params: searchParams }) => {
@@ -82,11 +83,16 @@ export const getExportData = async ({ ky, intl, query }) => {
     ky, ids: addressIds, buildQuery: buildAddressQuery, api: CONFIG_API, records: 'configs',
   });
   const addresses = getAddresses(addressRecords);
+  const currencies = uniq(exportInvoices.map(({ currency }) => currency));
+  const exchangeRates = await Promise.all(
+    currencies.map(to => ky.get(EXCHANGE_RATE_API, { searchParams: { from, to } }).json()),
+  );
 
   return (createExportReport({
     acqUnitMap: keyBy(acqUnits, 'id'),
     addressMap: keyBy(addresses, 'id'),
     batchGroupMap: keyBy(batchGroups, 'id'),
+    exchangeRateMap: keyBy(exchangeRates, 'to'),
     expenseClassMap: keyBy(expenseClasses, 'id'),
     intl,
     invoiceLines,

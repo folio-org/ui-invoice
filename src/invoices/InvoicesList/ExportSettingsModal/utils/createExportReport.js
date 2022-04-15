@@ -23,12 +23,7 @@ const getExportVendorPrimaryAddress = (vendor = {}) => {
 
   return primaryAddress
     ? (
-      `"${primaryAddress.addressLine1}"
-      "${primaryAddress.addressLine2 || ''}"
-      "${primaryAddress.city || ''}"
-      "${primaryAddress.state || ''}"
-      "${primaryAddress.zipCode || ''}"
-      "${primaryAddress.language || ''}"`
+      `"${primaryAddress.addressLine1}""${primaryAddress.addressLine2 || ''}""${primaryAddress.city || ''}""${primaryAddress.state || ''}""${primaryAddress.zipCode || ''}""${primaryAddress.language || ''}"`
     )
     : '';
 };
@@ -56,6 +51,7 @@ export const createExportReport = ({
   acqUnitMap,
   addressMap,
   batchGroupMap,
+  exchangeRateMap,
   expenseClassMap,
   intl,
   invoiceLines = [],
@@ -105,7 +101,7 @@ export const createExportReport = ({
       exportToAccounting: invoice.exportToAccounting,
       enclosureNeeded: invoice.enclosureNeeded,
       currency: invoice.currency,
-      exchangeRate: invoice.exchangeRate,
+      exchangeRate: invoice.exchangeRate || exchangeRateMap[invoice.currency]?.exchangeRate,
       invoiceTags: invoice.tags?.tagList?.join(' | '),
       invoiceLineNumber: line.invoiceLineNumber,
       description: line.description,

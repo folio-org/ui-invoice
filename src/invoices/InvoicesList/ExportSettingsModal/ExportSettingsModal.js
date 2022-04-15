@@ -6,7 +6,10 @@ import {
 } from 'react-intl';
 import moment from 'moment';
 
-import { useOkapiKy } from '@folio/stripes/core';
+import {
+  useOkapiKy,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   Button,
   Label,
@@ -36,6 +39,7 @@ const SELECTED_INVOICE_LINE_FIELDS_ID = 'selected-invoice-line-fields';
 const ExportSettingsModal = ({ onCancel, query = '' }) => {
   const intl = useIntl();
   const ky = useOkapiKy();
+  const { currency } = useStripes();
   const [isInvoiceExportAll, setIsInvoiceExportAll] = useState(true);
   const [invoiceFieldsToExport, setInvoiceFieldsToExport] = useState([]);
   const [isInvoiceLineExportAll, setIsInvoiceLineExportAll] = useState(true);
@@ -51,7 +55,7 @@ const ExportSettingsModal = ({ onCancel, query = '' }) => {
 
       showCallout({ messageId: 'ui-invoice.exportSettings.success' });
 
-      const exportData = await getExportData({ ky, intl, query });
+      const exportData = await getExportData({ ky, intl, query, currency });
 
       setIsExporting(false);
 
@@ -76,7 +80,7 @@ const ExportSettingsModal = ({ onCancel, query = '' }) => {
       });
     }
   },
-  [intl, ky, onCancel, query, showCallout]);
+  [currency, intl, ky, onCancel, query, showCallout]);
 
   const isExportBtnDisabled = isExporting ||
     (!isInvoiceExportAll && !invoiceFieldsToExport.length) ||
