@@ -15,7 +15,7 @@ export const exportReport = [
     'disbursementDate': null,
     'disbursementNumber': undefined,
     'enclosureNeeded': undefined,
-    'exchangeRate': undefined,
+    'exchangeRate': 1,
     'exportToAccounting': true,
     'externalAccountNumber': undefined,
     'invoiceAdjustments': '',
@@ -45,12 +45,7 @@ export const exportReport = [
     'total': undefined,
     'totalAmount': undefined,
     'totalUnits': 20,
-    'vendorAddress': `"Saint Lukes"
-      "P.O. Box 41383"
-      "Auckland"
-      ""
-      "1346"
-      "English"`,
+    'vendorAddress': '"Saint Lukes""P.O. Box 41383""Auckland""""1346""English"',
     'vendorCode': 'MGNP',
     'vendorInvoiceNo': 'edi',
     'voucherDate': null,

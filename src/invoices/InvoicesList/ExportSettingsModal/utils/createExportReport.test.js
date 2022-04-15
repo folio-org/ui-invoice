@@ -21,6 +21,7 @@ test('createExportReport should return export report object', () => {
   expect(createExportReport({
     acqUnitMap: keyBy([acqUnit], 'id'),
     addressMap: keyBy([address], 'id'),
+    exchangeRateMap: { [invoice.currency]: { to: invoice.currency, exchangeRate: 1 } },
     expenseClassMap: {},
     intl,
     invoiceLines: [invoiceLine],
