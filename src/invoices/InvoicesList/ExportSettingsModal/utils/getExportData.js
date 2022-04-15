@@ -28,7 +28,7 @@ import {
 } from '../../../../common/constants';
 import { createExportReport } from './createExportReport';
 
-export const getExportData = async ({ ky, intl, query, currency: from }) => {
+export const getExportData = async ({ ky, intl, query, currency: to }) => {
   const exportInvoices = await fetchAllRecords(
     {
       GET: async ({ params: searchParams }) => {
@@ -85,14 +85,14 @@ export const getExportData = async ({ ky, intl, query, currency: from }) => {
   const addresses = getAddresses(addressRecords);
   const currencies = uniq(exportInvoices.map(({ currency }) => currency));
   const exchangeRates = await Promise.all(
-    currencies.map(to => ky.get(EXCHANGE_RATE_API, { searchParams: { from, to } }).json()),
+    currencies.map(from => ky.get(EXCHANGE_RATE_API, { searchParams: { from, to } }).json()),
   );
 
   return (createExportReport({
     acqUnitMap: keyBy(acqUnits, 'id'),
     addressMap: keyBy(addresses, 'id'),
     batchGroupMap: keyBy(batchGroups, 'id'),
-    exchangeRateMap: keyBy(exchangeRates, 'to'),
+    exchangeRateMap: keyBy(exchangeRates, 'from'),
     expenseClassMap: keyBy(expenseClasses, 'id'),
     intl,
     invoiceLines,
