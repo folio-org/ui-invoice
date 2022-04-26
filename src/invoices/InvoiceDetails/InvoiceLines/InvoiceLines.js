@@ -23,10 +23,6 @@ import styles from './InvoiceLines.css';
 
 const COLUMN_LINE_NUMBER = 'lineNumber';
 
-const sorters = {
-  [COLUMN_LINE_NUMBER]: ({ invoiceLineNumber }) => Number(invoiceLineNumber),
-};
-
 const InvoiceLines = ({
   invoice,
   vendor,
@@ -40,6 +36,12 @@ const InvoiceLines = ({
   const [invoiceLine, setInvoiceLine] = useState();
   const { state } = useLocation();
   const currency = invoice.currency;
+
+  const sorters = useMemo(() => ({
+    [COLUMN_LINE_NUMBER]: ({ invoiceLineNumber }) => Number(invoiceLineNumber),
+    polNumber: ({ poLineId }) => Number(orderlinesMap?.[poLineId]?.poLineNumber?.replace('-', '.')),
+    description: ({ description }) => description,
+  }), [orderlinesMap]);
 
   useEffect(() => {
     if (state?.id) {

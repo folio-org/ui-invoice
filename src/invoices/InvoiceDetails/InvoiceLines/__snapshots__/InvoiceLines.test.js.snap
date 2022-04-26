@@ -58,21 +58,53 @@ exports[`InvoiceLines should render correct structure 1`] = `
         </div>
         <div
           aria-sort="none"
-          class="mclHeader"
+          class="mclHeader mclClickable"
           id="list-column-polnumber"
           role="columnheader"
           style="flex: 0 0 auto;"
         >
-          ui-invoice.invoice.details.lines.list.polNumber
+          <div
+            class="mclHeaderOuter"
+            data-test-clickable-header="true"
+            id="clickable-list-column-polnumber"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="mclHeaderInner"
+            >
+              <div
+                style="max-width: calc(100%-15px);"
+              >
+                ui-invoice.invoice.details.lines.list.polNumber
+              </div>
+            </div>
+          </div>
         </div>
         <div
           aria-sort="none"
-          class="mclHeader"
+          class="mclHeader mclClickable"
           id="list-column-description"
           role="columnheader"
           style="flex: 0 0 auto;"
         >
-          ui-invoice.invoice.details.lines.list.description
+          <div
+            class="mclHeaderOuter"
+            data-test-clickable-header="true"
+            id="clickable-list-column-description"
+            role="button"
+            tabindex="0"
+          >
+            <div
+              class="mclHeaderInner"
+            >
+              <div
+                style="max-width: calc(100%-15px);"
+              >
+                ui-invoice.invoice.details.lines.list.description
+              </div>
+            </div>
+          </div>
         </div>
         <div
           aria-sort="none"
