@@ -9,10 +9,15 @@ import {
   invoiceLine,
 } from '../../../test/jest/fixtures';
 
+import { showUpdateInvoiceError } from '../InvoiceDetails/utils';
 import InvoiceLineForm from './InvoiceLineForm';
 import { InvoiceLineFormContainerComponent } from './InvoiceLineFormContainer';
 
 jest.mock('./InvoiceLineForm', () => jest.fn().mockReturnValue('InvoiceLineForm'));
+jest.mock('../InvoiceDetails/utils', () => ({
+  ...jest.requireActual('../InvoiceDetails/utils'),
+  showUpdateInvoiceError: jest.fn(),
+}));
 
 const mutatorMock = {
   invoice: {
@@ -106,6 +111,17 @@ describe('InvoiceLineFormContainer', () => {
       await InvoiceLineForm.mock.calls[0][0].onSubmit(invoiceLine);
 
       expect(mutatorMock.invoiceLine.PUT).toHaveBeenCalled();
+    });
+
+    it('should handle error', async () => {
+      mutatorMock.invoiceLine.POST.mockClear().mockImplementation(() => Promise.reject());
+
+      renderInvoiceLineFormContainer();
+
+      await screen.findByText('InvoiceLineForm');
+      await InvoiceLineForm.mock.calls[0][0].onSubmit({ ...invoiceLine, id: null });
+
+      expect(showUpdateInvoiceError).toHaveBeenCalled();
     });
   });
 });

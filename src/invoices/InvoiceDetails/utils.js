@@ -77,9 +77,14 @@ export const showUpdateInvoiceError = async (
     }
     case ERROR_CODES.inactiveExpenseClass: {
       const expenseClassId = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
+      const expenseClassName = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassName')?.value;
 
-      if (expenseClassId) {
-        expenseClassMutator.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` })
+      if (expenseClassId || expenseClassName) {
+        const expenseClassPromise = expenseClassName
+          ? Promise.resolve({ name: expenseClassName })
+          : expenseClassMutator.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` });
+
+        expenseClassPromise
           .then(({ name }) => {
             const values = { expenseClass: name };
 
