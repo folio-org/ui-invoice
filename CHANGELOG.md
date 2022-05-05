@@ -19,6 +19,7 @@
 * Invoice Date filter search results do not match. Refs UINV-392.
 * Replace `babel-eslint` with `@babel/eslint-parser`. Refs UINV-393.
 * Additional sort options for invoice lines: POL number and description. Refs UINV-283.
+* Error handling for adding invoice line from POL. Refs UINV-398.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)

@@ -203,14 +203,26 @@ export function InvoiceDetailsContainer({
     async (poLines) => {
       setIsLoading(true);
 
-      await poLines.reduce((acc, poLine) => {
-        return acc.then(() => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor)));
-      }, Promise.resolve());
-      await fetchInvoiceData();
+      try {
+        await poLines.reduce((acc, poLine) => {
+          return acc.then(() => mutator.invoiceLines.POST(createInvoiceLineFromPOL(poLine, id, vendor)));
+        }, Promise.resolve());
+        await fetchInvoiceData();
+      } catch (response) {
+        showUpdateInvoiceError(
+          response,
+          showCallout,
+          'saveLine',
+          'ui-invoice.invoice.actions.addLine.error',
+          mutator.expenseClass,
+          mutator.fund,
+        );
+      }
 
       setIsLoading(false);
     },
-    [fetchInvoiceData, id, mutator.invoiceLines, vendor],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [fetchInvoiceData, id, mutator.invoiceLines, showCallout, vendor],
   );
 
   const deleteInvoice = useCallback(

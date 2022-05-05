@@ -12,7 +12,7 @@ import {
 } from '../../../test/jest/fixtures';
 import { useInvoiceMutation } from '../../common/hooks';
 
-import { createInvoiceLineFromPOL } from './utils';
+import { createInvoiceLineFromPOL, showUpdateInvoiceError } from './utils';
 import InvoiceDetails from './InvoiceDetails';
 import { InvoiceDetailsContainer } from './InvoiceDetailsContainer';
 
@@ -20,6 +20,10 @@ jest.mock('../../common/hooks', () => ({
   useInvoiceMutation: jest.fn().mockReturnValue({}),
 }));
 jest.mock('./InvoiceDetails', () => jest.fn().mockReturnValue('InvoiceDetails'));
+jest.mock('./utils', () => ({
+  ...jest.requireActual('./utils'),
+  showUpdateInvoiceError: jest.fn(),
+}));
 
 const historyMock = {
   ...history,
@@ -137,6 +141,19 @@ describe('InvoiceDetailsContainer', () => {
         expect(mutatorMock.invoiceLines.POST).toHaveBeenCalledWith(polInvoiceLine);
       },
     );
+
+    it('should handle error', async () => {
+      mutatorMock.invoiceLines.POST.mockClear().mockImplementation(() => Promise.reject());
+      renderInvoiceDetailsContainer();
+
+      await screen.findByText('InvoiceDetails');
+
+      await act(async () => {
+        await InvoiceDetails.mock.calls[0][0].addLines([orderLine]);
+      });
+
+      expect(showUpdateInvoiceError).toHaveBeenCalled();
+    });
 
     it('should make PUT request to update invoice when onUpdate action is called', async () => {
       mutatorMock.invoice.PUT.mockClear();

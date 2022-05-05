@@ -8,7 +8,10 @@ import {
   LoadingView,
 } from '@folio/stripes/components';
 import { stripesConnect } from '@folio/stripes/core';
-import { VENDORS_API } from '@folio/stripes-acq-components';
+import {
+  baseManifest,
+  VENDORS_API,
+} from '@folio/stripes-acq-components';
 
 import {
   CONFIG_ADJUSTMENTS,
@@ -17,6 +20,7 @@ import {
   VENDOR,
 } from '../../common/resources';
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
+import { showUpdateInvoiceError } from '../InvoiceDetails/utils';
 import InvoiceLineForm from './InvoiceLineForm';
 
 export function InvoiceLineFormContainerComponent({
@@ -87,8 +91,15 @@ export function InvoiceLineFormContainerComponent({
         showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenSaved' });
         onClose();
       })
-      .catch(() => {
-        showCallout({ messageId: 'ui-invoice.errors.invoiceLineHasNotBeenSaved', type: 'error' });
+      .catch((response) => {
+        showUpdateInvoiceError(
+          response,
+          showCallout,
+          'saveLine',
+          'ui-invoice.errors.invoiceLineHasNotBeenSaved',
+          mutator.expenseClass,
+          mutator.fund,
+        );
 
         return { id: 'Unable to save invoice line' };
       });
@@ -147,6 +158,16 @@ InvoiceLineFormContainerComponent.manifest = Object.freeze({
     fetch: false,
   },
   configAdjustments: CONFIG_ADJUSTMENTS,
+  expenseClass: {
+    ...baseManifest,
+    accumulate: true,
+    fetch: false,
+  },
+  fund: {
+    ...baseManifest,
+    accumulate: true,
+    fetch: false,
+  },
 });
 
 InvoiceLineFormContainerComponent.propTypes = {
