@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -14,7 +14,7 @@
   "scripts": {
     "start": "yarn stripes serve",
     "build": "yarn stripes build --output ./output",
-    "test": "yarn run test:unit && yarn run test:e2e",
+    "test": "yarn run test:unit",
     "test:unit": "jest --ci --coverage",
     "test:unit:watch": "jest --ci --coverage --watch",
     "test:e2e": "yarn stripes test karma --karma.singleRun --karma.browsers ChromeDocker --karma.reporters mocha junit --coverage",

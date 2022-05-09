@@ -324,7 +324,7 @@ export function InvoiceDetailsContainer({
       setIsLoading(true);
 
       return mutateInvoice({ ...invoice, status: INVOICE_STATUS.approved })
-        .then(() => mutator.invoice.GET({ path: `${INVOICES_API}/${invoice.id}` }))
+        .then(() => mutator.invoice.GET({ path: `${INVOICE_API}/${invoice.id}` }))
         .then(invoiceResponse => {
           return mutateInvoice({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })

@@ -3,7 +3,7 @@
 exports[`SettingsAdjustmentsView should render correct structure 1`] = `
 <DocumentFragment>
   <div
-    class="paneset  "
+    class="paneset"
   >
     <div
       aria-label="Adjustment details"
@@ -21,6 +21,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
             class="paneHeader"
             data-test-pane-header="true"
             id="paneHeaderinvoice-settings-adjustment-view"
+            role="region"
             tabindex="-1"
           >
             <div

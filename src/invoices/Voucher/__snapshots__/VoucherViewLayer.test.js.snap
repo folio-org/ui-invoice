@@ -4,7 +4,7 @@ exports[`VoucherViewLayer should render correct structure 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="paneset  "
+      class="paneset"
     >
       <section
         class="pane focusIndicator"
@@ -15,6 +15,7 @@ exports[`VoucherViewLayer should render correct structure 1`] = `
           class="paneHeader"
           data-test-pane-header="true"
           id="paneHeaderpane-voucher"
+          role="region"
           tabindex="-1"
         >
           <div

@@ -103,7 +103,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
               style="position: static;"
             >
               <div
-                aria-label="[object Object]: undefined...[object Object]: null...[object Object]: undefined...[object Object]: null"
+                aria-label=""
                 class="mclRow mclIsOdd"
                 data-row-inner="0"
                 style="min-width: 0px;"
@@ -139,7 +139,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
               style="position: static;"
             >
               <div
-                aria-label="[object Object]: undefined...[object Object]: 25.5%...[object Object]: undefined...[object Object]: null"
+                aria-label=""
                 class="mclRow"
                 data-row-inner="1"
                 style="min-width: 0px;"

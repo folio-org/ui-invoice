@@ -12,6 +12,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
         class="paneHeader"
         data-test-pane-header="true"
         id="paneHeaderpane-invoiceLineDetails"
+        role="region"
         tabindex="-1"
       >
         <div
@@ -205,6 +206,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
               style="z-index: 1;"
             >
               <div
+                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLineInformation"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -263,6 +265,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
               style="z-index: 1;"
             >
               <div
+                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLineFundDistribution"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -321,6 +324,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
               style="z-index: 1;"
             >
               <div
+                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLineAdjustments"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"

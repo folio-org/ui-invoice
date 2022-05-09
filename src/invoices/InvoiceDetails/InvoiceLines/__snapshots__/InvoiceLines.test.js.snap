@@ -154,8 +154,8 @@ exports[`InvoiceLines should render correct structure 1`] = `
           style="position: static;"
         >
           <div
-            aria-label="[object Object]: null...[object Object]: null...[object Object]: EDI import invoice line...[object Object]: null...[object Object]: 20...[object Object]: null...[object Object]: null...[object Object]: null...[object Object]: null...null: null"
-            class="mclRow mclIsOdd mclIsInteractive alignLastColToEnd"
+            aria-label=""
+            class="mclRow mclIsOdd mclIsInteractive mclClickableRow alignLastColToEnd"
             data-row-inner="0"
             style="min-width: 0px;"
             tabindex="0"

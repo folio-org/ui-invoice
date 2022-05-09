@@ -7,7 +7,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
   >
     <div>
       <div
-        class="paneset  "
+        class="paneset"
       >
         <section
           class="pane focusIndicator"
@@ -19,6 +19,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
             class="paneHeader"
             data-test-pane-header="true"
             id="paneHeaderpane-invoice-form"
+            role="region"
             tabindex="-1"
           >
             <div
@@ -148,6 +149,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-information"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -281,7 +283,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-invoice-status selected-invoice-status-item sl-invoice-status-required"
                                   aria-owns="sl-invoice-status"
                                   class="selectionControl formControl"
@@ -516,7 +517,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-stripes-selection-5 selected-stripes-selection-5-item"
                                   aria-owns="sl-undefined"
                                   class="selectionControl formControl"
@@ -608,7 +608,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-invoice-batch-groups selected-invoice-batch-groups-item sl-invoice-batch-groups-required"
                                   aria-owns="sl-invoice-batch-groups"
                                   class="selectionControl formControl"
@@ -905,6 +904,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-invoiceAdjustments"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -965,6 +965,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-vendorDetails"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1096,7 +1097,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   aria-disabled="true"
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-stripes-selection-8 selected-stripes-selection-8-item"
                                   aria-owns="sl-undefined"
                                   class="selectionControl formControl"
@@ -1179,6 +1179,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-extendedInformation"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1504,7 +1505,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-invalid="false"
                                   aria-labelledby="sl-label-currency selected-currency-item sl-currency-required"
                                   aria-owns="sl-currency"
                                   class="selectionControl formControl"
@@ -1719,6 +1719,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
+                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-documents"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
