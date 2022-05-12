@@ -7,6 +7,7 @@
   "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
   "errors.invoiceHasNotBeenDeleted": "Invoice has not been deleted",
   "errors.invoiceLineHasNotBeenDeleted": "Invoice has not been deleted",
+  "errors.cantLoadAdjustment": "Error loading adjustment",
   "errors.cantLoadInvoiceLine": "Error loading invoice line",
   "errors.cantLoadInvoice": "Error loading invoice",
   "errors.cantLoadVendor": "Error loading vendor",

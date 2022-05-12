@@ -23,6 +23,7 @@ export const InvoiceLineOrderLineNumber = ({ invoiceLine, poLineNumber, link }) 
     <>
       {!isPostApproval && (
         <Tooltip
+          id="po-line-lookup-tooltip"
           text={<FormattedMessage id="ui-invoice.poLineLookup" />}
         >
           {({ ref, ariaIds }) => (

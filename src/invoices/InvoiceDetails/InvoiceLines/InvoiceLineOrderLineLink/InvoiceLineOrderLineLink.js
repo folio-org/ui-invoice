@@ -72,6 +72,6 @@ export const InvoiceLineOrderLineLink = ({ invoice, invoiceLine, vendor, refresh
 InvoiceLineOrderLineLink.propTypes = {
   invoice: PropTypes.object.isRequired,
   vendor: PropTypes.object.isRequired,
-  invoiceLine: PropTypes.object.isRequired,
+  invoiceLine: PropTypes.object,
   refreshData: PropTypes.func.isRequired,
 };
