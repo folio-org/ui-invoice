@@ -10,6 +10,7 @@ jest.mock('./SettingsAdjustmentsView', () => jest.fn().mockReturnValue('Settings
 
 const mutatorMock = {
   configAdjustment: {
+    GET: jest.fn(() => Promise.resolve({})),
     DELETE: jest.fn(() => Promise.resolve()),
   },
 };
@@ -33,6 +34,17 @@ describe('SettingsAdjustmentsViewContainer', () => {
     renderSettingsAdjustmentsViewContainer();
 
     expect(screen.getByText('SettingsAdjustmentsView')).toBeDefined();
+  });
+
+  it('should fetch adjustment', () => {
+    const mutator = { configAdjustment: { GET: jest.fn(() => Promise.reject()) } };
+
+    renderSettingsAdjustmentsViewContainer({
+      ...defaultProps,
+      mutator,
+    });
+
+    expect(mutator.configAdjustment.GET).toHaveBeenCalled();
   });
 
   describe('Actions', () => {

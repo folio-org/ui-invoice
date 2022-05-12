@@ -1,8 +1,7 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 
 import {
   stripesConnect,
@@ -17,13 +16,28 @@ function SettingsAdjustmentsViewContainer({
   close,
   match: { params: { id } },
   mutator: { configAdjustment },
-  resources,
   rootPath,
   showSuccessDeleteMessage,
   stripes,
   history,
 }) {
   const sendCallout = useShowCallout();
+  const [adjustment, setAdjustment] = useState();
+
+  useEffect(() => {
+    configAdjustment.GET()
+      .then(response => {
+        const adj = getSettingsAdjustmentsList([response]);
+
+        setAdjustment(adj[0]);
+      })
+      .catch(() => sendCallout({
+        message: <FormattedMessage id="ui-invoice.errors.cantLoadAdjustment" />,
+        type: 'error',
+      }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id, sendCallout]);
+
   const deleteAdjustment = useCallback(async () => {
     try {
       await configAdjustment.DELETE({ id });
@@ -38,9 +52,6 @@ function SettingsAdjustmentsViewContainer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [close, id, sendCallout, showSuccessDeleteMessage]);
 
-  const adjustments = getSettingsAdjustmentsList(get(resources, 'configAdjustment.records', []));
-  const adjustment = get(adjustments, '0');
-
   return (
     <SettingsAdjustmentsView
       adjustment={adjustment}
@@ -54,7 +65,11 @@ function SettingsAdjustmentsViewContainer({
 }
 
 SettingsAdjustmentsViewContainer.manifest = Object.freeze({
-  configAdjustment: CONFIG_ADJUSTMENT,
+  configAdjustment: {
+    ...CONFIG_ADJUSTMENT,
+    fetch: false,
+    accumulate: true,
+  },
 });
 
 SettingsAdjustmentsViewContainer.propTypes = {
@@ -63,7 +78,6 @@ SettingsAdjustmentsViewContainer.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
   rootPath: PropTypes.string.isRequired,
   showSuccessDeleteMessage: PropTypes.func.isRequired,
-  resources: PropTypes.object,
   stripes: PropTypes.object.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
 };

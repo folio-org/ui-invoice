@@ -30,7 +30,7 @@ const VoucherEditForm = ({
   onCancel,
   initialValues,
   vendorInvoiceNo,
-  isAllowVoucherNumberEdit,
+  isAllowVoucherNumberEdit = false,
 }) => {
   const history = useHistory();
   const paneFooter = (
@@ -134,7 +134,7 @@ VoucherEditForm.propTypes = {
   onCancel: PropTypes.func.isRequired,
   submitting: PropTypes.bool.isRequired,
   pristine: PropTypes.bool.isRequired,
-  isAllowVoucherNumberEdit: PropTypes.bool.isRequired,
+  isAllowVoucherNumberEdit: PropTypes.bool,
   initialValues: PropTypes.object.isRequired,
   vendorInvoiceNo: PropTypes.string.isRequired,
 };

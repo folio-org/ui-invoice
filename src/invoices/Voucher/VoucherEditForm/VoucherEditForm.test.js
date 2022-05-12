@@ -25,7 +25,6 @@ const defaultProps = {
   initialValues: batchVoucher,
   onCancel: jest.fn(),
   vendorInvoiceNo: 'vendorInvoiceNo',
-  isAllowVoucherNumberEdit: true,
 };
 const renderVoucherEditForm = (props = defaultProps) => render(
   <VoucherEditForm {...props} />,
@@ -43,6 +42,15 @@ describe('VoucherEditForm', () => {
 
   it('should render correct voucher form structure', () => {
     const { asFragment } = renderVoucherEditForm();
+
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render correct voucher form structure with editable voucher number', () => {
+    const { asFragment } = renderVoucherEditForm({
+      ...defaultProps,
+      isAllowVoucherNumberEdit: true,
+    });
 
     expect(asFragment()).toMatchSnapshot();
   });
