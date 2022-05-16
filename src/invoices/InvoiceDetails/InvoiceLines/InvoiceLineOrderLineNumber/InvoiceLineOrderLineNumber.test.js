@@ -60,4 +60,16 @@ describe('InvoiceLineOrderLineNumber', () => {
 
     expect(link).toHaveBeenCalled();
   });
+
+  it('should not display clip copy icon', () => {
+    renderInvoiceLineOrderLineNumber();
+
+    expect(screen.queryByTestId('clip-copy-icon')).toBeNull();
+  });
+
+  it('should display clip copy icon', () => {
+    renderInvoiceLineOrderLineNumber({ ...defaultProps, poLineNumber: '1001-1' });
+
+    expect(screen.getByTestId('clip-copy-icon')).toBeDefined();
+  });
 });

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
 
+import { ClipCopy } from '@folio/stripes/smart-components';
 import {
   Accordion,
   Loading,
@@ -54,7 +55,16 @@ const getResultFormatter = ({ search }) => ({
   ),
   [COLUMN_INVOICE_DATE]: invoiceLine => <FormattedDate value={invoiceLine.invoice?.invoiceDate} />,
   vendorName: invoiceLine => invoiceLine.vendor?.name || <NoValue />,
-  vendorInvoiceNo: invoiceLine => invoiceLine.invoice?.vendorInvoiceNo || <NoValue />,
+  vendorInvoiceNo: invoiceLine => (
+    invoiceLine.invoice?.vendorInvoiceNo
+      ? (
+        <>
+          {invoiceLine.invoice.vendorInvoiceNo}
+          <ClipCopy text={invoiceLine.invoice.vendorInvoiceNo} />
+        </>
+      )
+      : <NoValue />
+  ),
   status: invoiceLine => (
     invoiceLine.invoiceLineStatus
       ? <FormattedMessage id={`ui-invoice.invoice.status.${invoiceLine.invoiceLineStatus.toLowerCase()}`} />

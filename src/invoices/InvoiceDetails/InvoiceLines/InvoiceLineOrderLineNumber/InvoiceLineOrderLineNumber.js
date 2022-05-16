@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
+import { ClipCopy } from '@folio/stripes/smart-components';
 import {
   IconButton,
   NoValue,
@@ -38,7 +39,22 @@ export const InvoiceLineOrderLineNumber = ({ invoiceLine, poLineNumber, link }) 
         </Tooltip>
       )}
 
-      {poLineNumber || <NoValue />}
+      {poLineNumber
+        ? (
+          <>
+            {poLineNumber}
+            <span // eslint-disable-line jsx-a11y/click-events-have-key-events
+              data-testid="clip-copy-icon"
+              tabIndex="0"
+              role="button"
+              onClick={e => e.stopPropagation()}
+            >
+              <ClipCopy text={poLineNumber} />
+            </span>
+          </>
+        )
+        : <NoValue />
+      }
     </>
   );
 };

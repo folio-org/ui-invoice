@@ -21,6 +21,24 @@ exports[`VendorDetails should render correct structure for invoice vendor detail
           data-test-kv-value="true"
         >
           edi
+          <span
+            data-test-copy-icon="true"
+          >
+            <button
+              aria-label="clipboard"
+              class="iconButton medium"
+              icon="clipboard"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+          </span>
         </div>
       </div>
     </div>
