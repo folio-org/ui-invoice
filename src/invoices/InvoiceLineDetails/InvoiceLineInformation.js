@@ -10,7 +10,10 @@ import {
   Row,
   TextLink,
 } from '@folio/stripes/components';
-import { ViewMetaData } from '@folio/stripes/smart-components';
+import {
+  ClipCopy,
+  ViewMetaData,
+} from '@folio/stripes/smart-components';
 import {
   AmountWithCurrencyField,
   FolioFormattedDate,
@@ -34,13 +37,16 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
           <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}>
             {poLine.id
               ? (
-                <TextLink
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  to={`/orders/lines/view/${poLine.id}`}
-                >
-                  {poLine.poLineNumber}
-                </TextLink>
+                <>
+                  <TextLink
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    to={`/orders/lines/view/${poLine.id}`}
+                  >
+                    {poLine.poLineNumber}
+                  </TextLink>
+                  <ClipCopy text={poLine.poLineNumber} />
+                </>
               )
               : <NoValue />
             }

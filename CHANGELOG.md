@@ -21,6 +21,7 @@
 * Additional sort options for invoice lines: POL number and description. Refs UINV-283.
 * Error handling for adding invoice line from POL. Refs UINV-398.
 * ui-invoice: module warnings analysis. Refs UINV-404.
+* Add copy icon to invoice number. Refs UINV-403.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)

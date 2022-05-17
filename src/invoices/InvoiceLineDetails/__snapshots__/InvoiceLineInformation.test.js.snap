@@ -48,6 +48,24 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
           >
             1000-7
           </a>
+          <span
+            data-test-copy-icon="true"
+          >
+            <button
+              aria-label="clipboard"
+              class="iconButton medium"
+              icon="clipboard"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+          </span>
         </div>
       </div>
     </div>
