@@ -213,7 +213,7 @@ export function InvoiceDetailsContainer({
           response,
           showCallout,
           'saveLine',
-          'ui-invoice.invoice.actions.addLine.error',
+          'ui-invoice.invoice.actions.saveLine.error',
           mutator.expenseClass,
           mutator.fund,
         );
