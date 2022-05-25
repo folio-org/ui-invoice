@@ -179,7 +179,7 @@ exports[`PrintVoucher -> ComponentToPrint should render correct structure 1`] = 
             class="kvValue"
             data-test-kv-value="true"
           >
-            ,,
+            , , 
           </div>
         </div>
       </div>
