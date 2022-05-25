@@ -172,7 +172,7 @@ class SettingsAdjustmentsView extends Component {
                     xs={3}
                   >
                     <KeyValue
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.defaultAmount" />}
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.value" />}
                       value={defaultAmount}
                     />
                   </Col>

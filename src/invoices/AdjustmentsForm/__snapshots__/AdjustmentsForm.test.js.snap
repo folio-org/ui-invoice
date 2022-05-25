@@ -179,7 +179,7 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                             class="label"
                             for="adjustments[0].value"
                           >
-                            ui-invoice.adjustment.amount
+                            ui-invoice.adjustment.value
                             <span
                               aria-hidden="true"
                               class="asterisk"

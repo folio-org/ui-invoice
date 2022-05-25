@@ -21,7 +21,7 @@ const sortedColumn = 'description';
 const visibleColumns = ['description', 'value', 'prorate', 'relationToTotal'];
 const columnMapping = {
   description: <FormattedMessage id="ui-invoice.adjustment.description" />,
-  value: <FormattedMessage id="ui-invoice.adjustment.amount" />,
+  value: <FormattedMessage id="ui-invoice.adjustment.value" />,
   prorate: <FormattedMessage id="ui-invoice.settings.adjustments.prorate" />,
   relationToTotal: <FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />,
 };

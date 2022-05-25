@@ -162,7 +162,7 @@ class SettingsAdjustmentsEditor extends Component {
                     >
                       <Field
                         component={TextField}
-                        label={<FormattedMessage id="ui-invoice.settings.adjustments.defaultAmount" />}
+                        label={<FormattedMessage id="ui-invoice.settings.adjustments.value" />}
                         name="defaultAmount"
                         type="number"
                       />

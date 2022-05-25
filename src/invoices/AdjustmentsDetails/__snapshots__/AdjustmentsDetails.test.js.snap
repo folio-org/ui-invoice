@@ -64,7 +64,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
               role="columnheader"
               style="flex: 0 0 auto;"
             >
-              ui-invoice.adjustment.amount
+              ui-invoice.adjustment.value
             </div>
             <div
               aria-sort="none"
