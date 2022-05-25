@@ -260,7 +260,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                       <div
                         class="kvLabel"
                       >
-                        ui-invoice.settings.adjustments.defaultAmount
+                        ui-invoice.settings.adjustments.value
                       </div>
                       <div
                         class="kvValue"

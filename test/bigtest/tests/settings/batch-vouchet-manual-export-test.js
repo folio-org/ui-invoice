@@ -50,7 +50,6 @@ describe('Batch group manual voucher export', function () {
       it('shows updated status (Error)', () => {
         expect(setting.batchVoucherExports.list().length).to.equal(1);
         expect(setting.batchVoucherExports.list(0).rowText).to.contain('Error');
-        console.log(setting.batchVoucherExports.list(0).rowText);
       }).timeout(5000);
     });
   });

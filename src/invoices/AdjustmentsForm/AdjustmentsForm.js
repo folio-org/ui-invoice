@@ -169,7 +169,7 @@ const AdjustmentsForm = ({
               component={TextField}
               fullWidth
               id={`${elem}.value`}
-              label={<FormattedMessage id="ui-invoice.adjustment.amount" />}
+              label={<FormattedMessage id="ui-invoice.adjustment.value" />}
               name={`${elem}.value`}
               required
               type="number"
