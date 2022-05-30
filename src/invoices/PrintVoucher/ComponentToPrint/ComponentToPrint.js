@@ -35,7 +35,7 @@ function PrintValue({ path, source, currency }) {
         />
       );
     case LINE_FIELDS_MAP.fundDistributions:
-      return source[path]?.map(({ code }) => code).join() || null;
+      return source[path]?.map(({ code }) => code).join(', ') || null;
     default:
       return value ?? <NoValue />;
   }

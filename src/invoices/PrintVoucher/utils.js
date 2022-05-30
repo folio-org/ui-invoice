@@ -1,6 +1,6 @@
 export const getPrintPageStyles = () => `
   @page {
-    size: A4 landscape;
+    size: A4 auto;
     margin: 30px;
   }
 
