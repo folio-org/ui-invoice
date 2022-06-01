@@ -25,6 +25,7 @@
 * Update label of adjustments field set. Refs UINV-408.
 * Allow user to print voucher in landscape or portrait orientation. Refs UINV-399.
 * Error message does not contain the reason of failing invoice line adding. Refs UINV-413.
+* Grant budget permissions. Refs UINV-415.
 
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)
