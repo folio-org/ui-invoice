@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Backport recent zh_TW translations. Refs UINV-417.
+
 ## [3.1.1](https://github.com/folio-org/ui-invoice/tree/v3.1.1) (2022-03-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.1.0...v3.1.1)
 

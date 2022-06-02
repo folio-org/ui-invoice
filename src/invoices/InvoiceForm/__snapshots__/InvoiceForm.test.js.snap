@@ -7,7 +7,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
   >
     <div>
       <div
-        class="paneset  "
+        class="paneset"
       >
         <section
           class="pane focusIndicator"

@@ -4,7 +4,7 @@ exports[`VoucherViewLayer should render correct structure 1`] = `
 <DocumentFragment>
   <div>
     <div
-      class="paneset  "
+      class="paneset"
     >
       <section
         class="pane focusIndicator"
