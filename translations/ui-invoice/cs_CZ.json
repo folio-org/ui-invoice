@@ -320,7 +320,7 @@
     "invoiceLine.referenceNumbers": "Vendor reference numbers",
     "invoice.paymentDate": "Payment date",
     "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
-    "invoice.enclosureNeeded": "Enclosure needed",
+    "invoice.enclosureNeeded": "Potřeba závěru",
     "invoice.details.voucher.accountNo": "Account number",
     "invoiceLine.relink.success": "Řádek faktury byl propojen s POL {poLineNumber}.",
     "invoice.billTo": "Fakturovat na",
