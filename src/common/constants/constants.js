@@ -138,6 +138,7 @@ export const ERROR_CODES = {
   currentFYearNotFound: 'currentFYearNotFound',
   expenseClassNotFound: 'expenseClassNotFound',
   organizationIsNotExist: 'organizationIsNotExist',
+  multipleFiscalYears: 'multipleFiscalYears',
 };
 
 export const VALIDATION_ERRORS = {
