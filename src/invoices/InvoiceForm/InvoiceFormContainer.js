@@ -16,6 +16,7 @@ import {
   LIMIT_MAX,
   sourceValues,
   useModalToggle,
+  useOrganization,
   useShowCallout,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -31,8 +32,11 @@ import {
   invoiceDocumentsResource,
   invoiceResource,
   invoicesResource,
-  VENDOR,
 } from '../../common/resources';
+import {
+  useInvoice,
+  useOrders,
+} from '../../common/hooks';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
@@ -44,6 +48,8 @@ import {
 import DuplicateInvoiceModal from './DuplicateInvoiceModal/DuplicateInvoiceModal';
 
 export function InvoiceFormContainerComponent({
+  location,
+  history,
   match,
   mutator,
   okapi,
@@ -51,8 +57,15 @@ export function InvoiceFormContainerComponent({
   resources,
   stripes,
 }) {
+  const { params: { id } } = match;
+  const isCreate = !id;
   const [batchGroups, setBatchGroups] = useState();
   const [duplicateInvoices, setDuplicateInvoices] = useState();
+  const orderIds = location?.state?.orderIds;
+  const { invoice, isInvoiceLoading } = useInvoice(id);
+  const { orders, isLoading: isOrdersLoading } = useOrders(orderIds);
+  const invoiceVendorId = isCreate ? orders?.[0]?.vendor : invoice.vendorId;
+  const { organization: invoiceVendor, isLoading: isVendorLoading } = useOrganization(invoiceVendorId);
 
   useEffect(() => {
     setBatchGroups();
@@ -69,8 +82,6 @@ export function InvoiceFormContainerComponent({
   const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
   const [forceSaveValues, setForceSaveValues] = useState();
   const showToast = useShowCallout();
-  const { params: { id } } = match;
-  const isCreate = !id;
   const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
 
   const saveInvoiceHandler = useCallback(formValues => {
@@ -107,7 +118,10 @@ export function InvoiceFormContainerComponent({
       .then(savedRecord => {
         showToast({ messageId: 'ui-invoice.invoice.invoiceHasBeenSaved' });
 
-        setTimeout(() => onCancel(savedRecord.id));
+        return orderIds?.length
+          // TODO: update route (UINV-421);
+          ? history.push('invoice-line-sequence-route', { orderIds })
+          : setTimeout(() => onCancel(savedRecord.id));
       })
       .catch(({ validationError }) => {
         if (validationError === VALIDATION_ERRORS.dublicateInvoice) return toggleNotUnique();
@@ -115,14 +129,14 @@ export function InvoiceFormContainerComponent({
         return showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
       });
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [forceSaveValues, id, toggleNotUnique, invoiceDocuments, okapi, showToast, onCancel]);
+  }, [forceSaveValues, id, toggleNotUnique, invoiceDocuments, okapi, showToast, onCancel, orderIds, history]);
 
   const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
   const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
   const batchGroupId = isCreate && (batchGroups?.length === 1) ? batchGroups[0]?.id : undefined;
   const exportToAccounting = alwaysShowAdjustments.some(adj => adj.exportToAccounting);
-  const invoice = !isCreate
-    ? get(resources, ['invoice', 'records', 0], {})
+  const initialInvoice = !isCreate
+    ? invoice
     : {
       chkSubscriptionOverlap: true,
       currency: stripes.currency,
@@ -131,18 +145,16 @@ export function InvoiceFormContainerComponent({
       batchGroupId,
       status: INVOICE_STATUS.open,
       exportToAccounting,
+      vendorId: orders?.[0]?.vendor,
     };
 
-  const invoiceVendor = isCreate ? undefined : get(resources, ['invoiceFormVendor', 'records', 0]);
   const initialValues = {
-    ...invoice,
+    ...initialInvoice,
     documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
   };
 
-  const hasLoaded = (!id && batchGroups) || (
-    get(resources, 'invoice.hasLoaded') && get(resources, 'invoiceFormVendor.hasLoaded') && batchGroups
-  );
+  const hasLoaded = batchGroups && !(isInvoiceLoading || isOrdersLoading || isVendorLoading);
 
   if (!hasLoaded) {
     return (
@@ -161,6 +173,7 @@ export function InvoiceFormContainerComponent({
         onSubmit={saveInvoiceHandler}
         onCancel={onCancel}
         batchGroups={batchGroups}
+        isCreateFromOrder={Boolean(orderIds?.length)}
       />
       {
         isNotUniqueOpen && (
@@ -179,7 +192,10 @@ export function InvoiceFormContainerComponent({
 }
 
 InvoiceFormContainerComponent.manifest = Object.freeze({
-  invoice: invoiceResource,
+  invoice: {
+    ...invoiceResource,
+    fetch: false,
+  },
   invoiceFormDocuments: {
     ...invoiceDocumentsResource,
     accumulate: true,
@@ -196,12 +212,13 @@ InvoiceFormContainerComponent.manifest = Object.freeze({
   },
   configAdjustments: CONFIG_ADJUSTMENTS,
   configAddress,
-  invoiceFormVendor: VENDOR,
   batchGroups: batchGroupsResource,
 });
 
 InvoiceFormContainerComponent.propTypes = {
   match: ReactRouterPropTypes.match.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+  location: ReactRouterPropTypes.location.isRequired,
   mutator: PropTypes.object.isRequired,
   okapi: PropTypes.object.isRequired,
   onCancel: PropTypes.func,

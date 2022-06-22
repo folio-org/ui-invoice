@@ -1,29 +1,42 @@
 import React from 'react';
 import { render, screen, act, waitFor } from '@testing-library/react';
-import { useReactToPrint } from 'react-to-print';
 import { MemoryRouter } from 'react-router-dom';
 import user from '@testing-library/user-event';
 
+import { useOrganization } from '@folio/stripes-acq-components';
+
 import {
   match,
+  history,
+  location,
   invoice,
   batchGroup,
+  vendor,
 } from '../../../test/jest/fixtures';
 
+import { useInvoice } from '../../common/hooks';
 import InvoiceForm from './InvoiceForm';
 import { saveInvoice } from './utils';
 import { InvoiceFormContainerComponent } from './InvoiceFormContainer';
 
+jest.mock('@folio/stripes-acq-components', () => {
+  return {
+    ...jest.requireActual('@folio/stripes-acq-components'),
+    useOrganization: jest.fn(),
+  };
+});
 jest.mock('./InvoiceForm', () => jest.fn().mockReturnValue('InvoiceForm'));
 jest.mock('./utils', () => ({
   ...jest.requireActual('./utils'),
   saveInvoice: jest.fn(),
 }));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useInvoice: jest.fn(),
+  useOrders: () => jest.fn().mockReturnValue({ orders: [], isLoading: false }),
+}));
 
 const mutatorMock = {
-  invoice: {
-    GET: jest.fn().mockReturnValue(Promise.resolve(invoice)),
-  },
   invoiceFormInvoices: {
     GET: jest.fn().mockReturnValue(Promise.resolve([invoice])),
   },
@@ -44,6 +57,8 @@ const defaultProps = {
     ...match,
     params: { id: '' },
   },
+  history,
+  location,
   mutator: mutatorMock,
   resources,
   okapi: {},
@@ -56,6 +71,11 @@ const renderInvoiceFormContainer = (props = defaultProps) => render(
 );
 
 describe('InvoiceFormContainer', () => {
+  beforeEach(() => {
+    useInvoice.mockClear().mockReturnValue({ isInvoiceLoading: false, invoice });
+    useOrganization.mockClear().mockReturnValue({ isLoading: false, organization: vendor });
+  });
+
   it('should not display InvoiceForm when loading', () => {
     renderInvoiceFormContainer({
       ...defaultProps,
