@@ -455,6 +455,7 @@ const InvoiceForm = ({
                         <Col xs={6}>
                           <FieldOrganization
                             change={change}
+                            disabled={isCreateFromOrder}
                             id={filledVendorId}
                             labelId="ui-invoice.invoice.vendorName"
                             name="vendorId"

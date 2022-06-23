@@ -33,7 +33,9 @@ jest.mock('./utils', () => ({
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useInvoice: jest.fn(),
+  useOrderLines: () => jest.fn().mockReturnValue({ orderLines: [], isLoading: false }),
   useOrders: () => jest.fn().mockReturnValue({ orders: [], isLoading: false }),
+  useInvoiceLineMutation: () => jest.fn().mockReturnValue({ mutateInvoiceLine: jest.fn() }),
 }));
 
 const mutatorMock = {

@@ -35,11 +35,14 @@ import {
 } from '../../common/resources';
 import {
   useInvoice,
+  useInvoiceLineMutation,
+  useOrderLines,
   useOrders,
 } from '../../common/hooks';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
+import { createInvoiceLineFromPOL } from '../InvoiceDetails/utils';
 import InvoiceForm from './InvoiceForm';
 import {
   saveInvoice,
@@ -59,13 +62,23 @@ export function InvoiceFormContainerComponent({
 }) {
   const { params: { id } } = match;
   const isCreate = !id;
+  const showToast = useShowCallout();
   const [batchGroups, setBatchGroups] = useState();
   const [duplicateInvoices, setDuplicateInvoices] = useState();
   const orderIds = location?.state?.orderIds;
   const { invoice, isInvoiceLoading } = useInvoice(id);
-  const { orders, isLoading: isOrdersLoading } = useOrders(orderIds);
+  const { orders, isLoading: isOrdersLoading } = useOrders(orderIds ? [orderIds[0]] : undefined);
+  const { orderLines, isLoading: isOrderLinesLoading } = useOrderLines(orderIds);
   const invoiceVendorId = isCreate ? orders?.[0]?.vendor : invoice.vendorId;
   const { organization: invoiceVendor, isLoading: isVendorLoading } = useOrganization(invoiceVendorId);
+  const { mutateInvoiceLine } = useInvoiceLineMutation({
+    onSuccess: () => {
+      return showToast({ messageId: 'ui-invoice.invoiceLine.hasBeenSaved' });
+    },
+    onError: () => {
+      return showToast({ messageId: 'ui-invoice.errors.invoiceLineHasNotBeenSaved', type: 'error' });
+    },
+  });
 
   useEffect(() => {
     setBatchGroups();
@@ -81,7 +94,6 @@ export function InvoiceFormContainerComponent({
 
   const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
   const [forceSaveValues, setForceSaveValues] = useState();
-  const showToast = useShowCallout();
   const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
 
   const saveInvoiceHandler = useCallback(formValues => {
@@ -108,28 +120,51 @@ export function InvoiceFormContainerComponent({
             setDuplicateInvoices(duplicates);
 
             // eslint-disable-next-line prefer-promise-reject-errors
-            return Promise.reject({ validationError: VALIDATION_ERRORS.dublicateInvoice });
+            return Promise.reject({ validationError: VALIDATION_ERRORS.duplicateInvoice });
           }
         });
     }
 
     return validationRequest
       .then(() => saveInvoice(formValues, invoiceDocuments, mutator.invoiceFormInvoices, okapi))
-      .then(savedRecord => {
+      .then(async (savedRecord) => {
         showToast({ messageId: 'ui-invoice.invoice.invoiceHasBeenSaved' });
 
-        return orderIds?.length
-          // TODO: update route (UINV-421);
-          ? history.push('invoice-line-sequence-route', { orderIds })
-          : setTimeout(() => onCancel(savedRecord.id));
+        if (orderLines?.length) {
+          if (orderLines.length > 1) return history.push(`/invoice/view/${savedRecord.id}/lines-sequence`, { orderIds });
+
+          const data = createInvoiceLineFromPOL(orderLines[0], savedRecord.id, invoiceVendor);
+
+          try {
+            await mutateInvoiceLine({ data });
+          } catch {
+            return onCancel(savedRecord.id);
+          }
+        }
+
+        return onCancel(savedRecord.id);
       })
       .catch(({ validationError }) => {
-        if (validationError === VALIDATION_ERRORS.dublicateInvoice) return toggleNotUnique();
+        if (validationError === VALIDATION_ERRORS.duplicateInvoice) return toggleNotUnique();
 
         return showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
       });
+  },
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [forceSaveValues, id, toggleNotUnique, invoiceDocuments, okapi, showToast, onCancel, orderIds, history]);
+  [
+    forceSaveValues,
+    id,
+    toggleNotUnique,
+    invoiceDocuments,
+    okapi,
+    showToast,
+    onCancel,
+    orderIds,
+    orderLines,
+    history,
+    mutateInvoiceLine,
+    invoiceVendor,
+  ]);
 
   const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
   const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
@@ -154,7 +189,7 @@ export function InvoiceFormContainerComponent({
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
   };
 
-  const hasLoaded = batchGroups && !(isInvoiceLoading || isOrdersLoading || isVendorLoading);
+  const hasLoaded = batchGroups && !(isInvoiceLoading || isOrdersLoading || isOrderLinesLoading || isVendorLoading);
 
   if (!hasLoaded) {
     return (
