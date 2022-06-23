@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
@@ -82,6 +82,7 @@ const InvoiceForm = ({
   handleSubmit,
   initialValues,
   initialVendor,
+  isCreateFromOrder,
   onCancel: closeForm,
   parentResources,
   pristine,
@@ -132,13 +133,17 @@ const InvoiceForm = ({
     }
   }, [change, batch, selectedVendor]);
 
+  useEffect(() => {
+    if (isCreateFromOrder) selectVendor(initialVendor);
+  }, [isCreateFromOrder, initialVendor, selectVendor]);
+
   const paneTitle = id
     ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
     : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
   const paneFooter = (
     <FormFooter
       id="clickable-save"
-      label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+      label={<FormattedMessage id={`ui-invoice.${isCreateFromOrder ? 'saveAndContinue' : 'saveAndClose'}`} />}
       pristine={pristine}
       submitting={submitting}
       handleSubmit={handleSubmit}
@@ -450,6 +455,7 @@ const InvoiceForm = ({
                         <Col xs={6}>
                           <FieldOrganization
                             change={change}
+                            disabled={isCreateFromOrder}
                             id={filledVendorId}
                             labelId="ui-invoice.invoice.vendorName"
                             name="vendorId"
@@ -606,10 +612,12 @@ InvoiceForm.propTypes = {
   batchGroups: PropTypes.arrayOf(PropTypes.object),
   values: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
+  isCreateFromOrder: PropTypes.bool,
 };
 
 InvoiceForm.defaultProps = {
   initialVendor: {},
+  isCreateFromOrder: false,
 };
 
 export default stripesForm({
