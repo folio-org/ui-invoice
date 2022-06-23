@@ -142,7 +142,7 @@ export const ERROR_CODES = {
 };
 
 export const VALIDATION_ERRORS = {
-  dublicateInvoice: 'dublicateInvoice',
+  duplicateInvoice: 'duplicateInvoice',
 };
 
 export const RETURN_LINK = '/invoice';

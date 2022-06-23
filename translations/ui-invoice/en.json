@@ -397,6 +397,7 @@
   "adjustments": "Adjustments",
   "save": "Save",
   "saveAndClose": "Save & close",
+  "saveAndContinue": "Save & continue",
   "invoice.paymentTerms": "Terms",
   "invoice.paneTitle.edit": "Edit vendor invoice number - {vendorInvoiceNo}",
   "invoice.paneTitle.create": "Create vendor invoice",
