@@ -4,6 +4,7 @@ import {
   useLocation,
   useParams,
 } from 'react-router-dom';
+import { uniq } from 'lodash';
 
 import { Paneset } from '@folio/stripes/components';
 import {
@@ -41,7 +42,7 @@ export const InvoiceLinesSequenceContainer = () => {
   const {
     isLoading: isVendorsLoading,
     vendors,
-  } = useVendors(orders?.map(({ vendor }) => vendor));
+  } = useVendors(uniq(orders?.map(({ vendor }) => vendor)));
 
   const {
     isLoading: isSequenceLoading,
@@ -71,10 +72,10 @@ export const InvoiceLinesSequenceContainer = () => {
   }, [history, invoiceId]);
 
   const isLoading = (
-    isInvoiceLoading
-      || isSequenceLoading
-      || isOrdersLoading
-      || isVendorsLoading
+    isInvoiceLoading ||
+    isSequenceLoading ||
+    isOrdersLoading ||
+    isVendorsLoading
   );
 
   if (isLoading) {

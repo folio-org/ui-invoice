@@ -1,13 +1,13 @@
 import { find, invert } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
+import { NoValue } from '@folio/stripes/components';
 import {
   AmountWithCurrencyField,
   ORDER_STATUS_LABEL,
   PAYMENT_STATUS,
   RECEIPT_STATUS,
 } from '@folio/stripes-acq-components';
-import { NoValue } from '@folio/stripes/components';
 
 export const getAdjustmentFromPreset = ({
   description,
