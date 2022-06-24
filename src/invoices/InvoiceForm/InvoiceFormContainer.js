@@ -67,7 +67,7 @@ export function InvoiceFormContainerComponent({
   const [duplicateInvoices, setDuplicateInvoices] = useState();
   const orderIds = location?.state?.orderIds;
   const { invoice, isInvoiceLoading } = useInvoice(id);
-  const { orders, isLoading: isOrdersLoading } = useOrders(orderIds ? [orderIds[0]] : undefined);
+  const { orders, isLoading: isOrdersLoading } = useOrders(orderIds?.length ? [orderIds[0]] : undefined);
   const { orderLines, isLoading: isOrderLinesLoading } = useOrderLines(orderIds);
   const invoiceVendorId = isCreate ? orders?.[0]?.vendor : invoice.vendorId;
   const { organization: invoiceVendor, isLoading: isVendorLoading } = useOrganization(invoiceVendorId);
