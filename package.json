@@ -67,7 +67,7 @@
     "sinon": "^7.0.0"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "~3.1.0",
+    "@folio/stripes-acq-components": "https://github.com/folio-org/stripes-acq-components.git#dev",
     "file-saver": "^2.0.0",
     "final-form": "^4.18.2",
     "final-form-arrays": "^3.0.1",
