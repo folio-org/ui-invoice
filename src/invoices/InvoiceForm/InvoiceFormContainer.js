@@ -66,6 +66,7 @@ export function InvoiceFormContainerComponent({
   const [batchGroups, setBatchGroups] = useState();
   const [duplicateInvoices, setDuplicateInvoices] = useState();
   const orderIds = location?.state?.orderIds;
+  const isCreateFromOrder = Boolean(orderIds?.length);
   const { invoice, isInvoiceLoading } = useInvoice(id);
   const { orders, isLoading: isOrdersLoading } = useOrders(orderIds?.length ? [orderIds[0]] : undefined);
   const { orderLines, isLoading: isOrderLinesLoading } = useOrderLines(orderIds);
@@ -95,6 +96,14 @@ export function InvoiceFormContainerComponent({
   const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
   const [forceSaveValues, setForceSaveValues] = useState();
   const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
+
+  const onClose = useCallback((invoiceId) => {
+    if (isCreateFromOrder) {
+      const ordersPath = orderIds.length > 1 ? '/orders' : `/orders/view/${orderIds[0]}`;
+
+      history.push(ordersPath);
+    } else onCancel(invoiceId);
+  }, [onCancel, history, isCreateFromOrder, orderIds]);
 
   const saveInvoiceHandler = useCallback(formValues => {
     let validationRequest = Promise.resolve();
@@ -194,7 +203,7 @@ export function InvoiceFormContainerComponent({
   if (!hasLoaded) {
     return (
       <Paneset>
-        <LoadingPane onClose={onCancel} />
+        <LoadingPane onClose={onClose} />
       </Paneset>
     );
   }
@@ -206,9 +215,9 @@ export function InvoiceFormContainerComponent({
         initialVendor={invoiceVendor}
         parentResources={resources}
         onSubmit={saveInvoiceHandler}
-        onCancel={onCancel}
+        onCancel={onClose}
         batchGroups={batchGroups}
-        isCreateFromOrder={Boolean(orderIds?.length)}
+        isCreateFromOrder={isCreateFromOrder}
       />
       {
         isNotUniqueOpen && (
