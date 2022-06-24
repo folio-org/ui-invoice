@@ -76,7 +76,10 @@
   "invoiceLine.delete.message": "Delete invoice line?",
   "invoiceLine.total": "Total number of invoice lines: {total}",
   "invoiceLine.tags": "Invoice line tags",
-  "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}.",
+  "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}",
+  "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
+  "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
+
 
   "adjustment": "Adjustment",
   "adjustment.headerLabel": "Adjustment {index}",

@@ -1,4 +1,13 @@
-import { find } from 'lodash';
+import { find, invert } from 'lodash';
+import { FormattedMessage } from 'react-intl';
+
+import {
+  AmountWithCurrencyField,
+  ORDER_STATUS_LABEL,
+  PAYMENT_STATUS,
+  RECEIPT_STATUS,
+} from '@folio/stripes-acq-components';
+import { NoValue } from '@folio/stripes/components';
 
 export const getAdjustmentFromPreset = ({
   description,
@@ -45,3 +54,67 @@ export const convertToInvoiceLineFields = (orderLine, vendor) => {
     ...optionalProps,
   };
 };
+
+export const getCommonInvoiceLinesFormatter = (currency, ordersMap, orderlinesMap) => ({
+  // eslint-disable-next-line react/prop-types
+  adjustmentsTotal: ({ adjustmentsTotal }) => (
+    <AmountWithCurrencyField
+      amount={adjustmentsTotal}
+      currency={currency}
+    />
+  ),
+  // eslint-disable-next-line react/prop-types
+  total: ({ total }) => (
+    <AmountWithCurrencyField
+      amount={total}
+      currency={currency}
+    />
+  ),
+  // eslint-disable-next-line react/prop-types
+  subTotal: ({ subTotal }) => (
+    <AmountWithCurrencyField
+      amount={subTotal}
+      currency={currency}
+    />
+  ),
+  fundCode: line => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
+  poStatus: line => {
+    const orderLine = orderlinesMap?.[line.poLineId];
+
+    return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
+  },
+  receiptStatus: line => {
+    const status = orderlinesMap?.[line.poLineId]?.receiptStatus;
+    const translationKey = invert(RECEIPT_STATUS)[status];
+
+    return status ?
+      (
+        <FormattedMessage
+          id={`ui-orders.receipt_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      )
+      : <NoValue />;
+  },
+  paymentStatus: line => {
+    const status = orderlinesMap?.[line.poLineId]?.paymentStatus;
+    const translationKey = invert(PAYMENT_STATUS)[status];
+
+    return status ?
+      (
+        <FormattedMessage
+          id={`ui-orders.payment_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      )
+      : <NoValue />;
+  },
+  vendorCode: line => {
+    const orderLine = orderlinesMap?.[line.poLineId];
+
+    return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || <NoValue />;
+  },
+  vendorRefNo: line => (
+    line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
+  ),
+});

@@ -7,6 +7,7 @@ export * from './useInvoiceLineMutation';
 export * from './useOrderLine';
 export * from './useOrderLines';
 export * from './useOrders';
+export * from './useVendors';
 export * from './useVoucherById';
 export * from './useVoucherByInvoiceId';
 export * from './useVoucherLines';

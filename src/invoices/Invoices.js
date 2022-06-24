@@ -26,6 +26,7 @@ import {
   RETURN_LINK,
   RETURN_LINK_LABEL_ID,
 } from '../common/constants';
+import { InvoiceLinesSequence } from './InvoiceLinesSequence';
 import { InvoicesListContainer } from './InvoicesList';
 import { CreateInvoice } from './CreateInvoice';
 import { EditInvoice } from './EditInvoice';
@@ -136,6 +137,14 @@ const Invoices = () => {
               path="/invoice/view/:id/voucher/"
               component={Voucher}
             />
+            <PermissionedRoute
+              path="/invoice/view/:id/lines-sequence"
+              perm="ui-invoice.invoice.create"
+              returnLink={RETURN_LINK}
+              returnLinkLabelId={RETURN_LINK_LABEL_ID}
+            >
+              <InvoiceLinesSequence />
+            </PermissionedRoute>
             <Route
               path="/invoice"
               component={InvoicesListContainer}
