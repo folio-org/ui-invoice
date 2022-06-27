@@ -7,7 +7,6 @@ import {
 import {
   batchRequest,
   LINES_API,
-  PAYMENT_STATUS,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 
@@ -15,14 +14,9 @@ import { createInvoiceLineFromPOL } from '../InvoiceDetails/utils';
 
 const buildOrderLinesQuery = (chunk) => {
   const idsQuery = chunk.join(' or ');
-  const paymentStatusQuery = [
-    PAYMENT_STATUS.fullyPaid,
-    PAYMENT_STATUS.paymentNotRequired,
-  ].map(status => `"${status}"`).join(' or ');
 
   return [
     `purchaseOrderId==(${idsQuery})`,
-    `paymentStatus<>(${paymentStatusQuery})`,
   ].join(' and ');
 };
 
