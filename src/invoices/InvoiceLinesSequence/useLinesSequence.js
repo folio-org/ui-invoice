@@ -15,9 +15,7 @@ import { createInvoiceLineFromPOL } from '../InvoiceDetails/utils';
 const buildOrderLinesQuery = (chunk) => {
   const idsQuery = chunk.join(' or ');
 
-  return [
-    `purchaseOrderId==(${idsQuery})`,
-  ].join(' and ');
+  return `purchaseOrderId==(${idsQuery})`;
 };
 
 export const useLinesSequence = ({
