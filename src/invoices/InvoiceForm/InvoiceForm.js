@@ -86,6 +86,7 @@ const InvoiceForm = ({
   onCancel: closeForm,
   parentResources,
   pristine,
+  saveButtonLabelId,
   submitting,
   values,
 }) => {
@@ -143,7 +144,7 @@ const InvoiceForm = ({
   const paneFooter = (
     <FormFooter
       id="clickable-save"
-      label={<FormattedMessage id={`ui-invoice.${isCreateFromOrder ? 'saveAndContinue' : 'saveAndClose'}`} />}
+      label={<FormattedMessage id={saveButtonLabelId} />}
       pristine={pristine}
       submitting={submitting}
       handleSubmit={handleSubmit}
@@ -613,11 +614,13 @@ InvoiceForm.propTypes = {
   values: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
   isCreateFromOrder: PropTypes.bool,
+  saveButtonLabelId: PropTypes.string,
 };
 
 InvoiceForm.defaultProps = {
   initialVendor: {},
   isCreateFromOrder: false,
+  saveButtonLabelId: 'ui-invoice.saveAndClose',
 };
 
 export default stripesForm({

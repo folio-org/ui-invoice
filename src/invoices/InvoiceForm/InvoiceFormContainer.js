@@ -197,6 +197,7 @@ export function InvoiceFormContainerComponent({
     documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
     links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
   };
+  const saveButtonLabelId = `ui-invoice.${(isCreateFromOrder && orderLines?.length > 1) ? 'saveAndContinue' : 'saveAndClose'}`;
 
   const hasLoaded = batchGroups && !(isInvoiceLoading || isOrdersLoading || isOrderLinesLoading || isVendorLoading);
 
@@ -218,6 +219,7 @@ export function InvoiceFormContainerComponent({
         onCancel={onClose}
         batchGroups={batchGroups}
         isCreateFromOrder={isCreateFromOrder}
+        saveButtonLabelId={saveButtonLabelId}
       />
       {
         isNotUniqueOpen && (
