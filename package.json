@@ -19,6 +19,7 @@
     "test:unit:watch": "jest --ci --coverage --watch",
     "test:e2e": "yarn stripes test karma --karma.singleRun --karma.browsers ChromeDocker --karma.reporters mocha junit --coverage",
     "lint": "eslint .",
+    "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
     "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-invoice ./translations/ui-invoice/compiled"
   },
   "devDependencies": {
