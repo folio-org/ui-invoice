@@ -529,7 +529,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                   error=""
                   id="timepick-10"
                   name="startTime"
-                  placeholder=" HH:mm A"
+                  placeholder=" hh:mm A"
                   required=""
                   spellcheck="false"
                   type="text"
