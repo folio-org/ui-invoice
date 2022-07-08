@@ -43,7 +43,7 @@ export function InvoiceDetailsContainer({
   refreshList,
 }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const mutator = useMemo(() => originMutator, []);
+  const mutator = useMemo(() => originMutator, [id]);
   const showCallout = useShowCallout();
   const [isLoading, setIsLoading] = useState(true);
   const [invoice, setInvoice] = useState({});
@@ -229,7 +229,7 @@ export function InvoiceDetailsContainer({
     () => {
       setIsLoading(true);
 
-      return mutator.invoice.DELETE({ id }, { silent: true })
+      return mutateInvoice({ invoice: { id }, method: 'delete' })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.invoiceHasBeenDeleted' });
           refreshList();
@@ -249,7 +249,7 @@ export function InvoiceDetailsContainer({
           } catch (e) { }
         });
     },
-    [history, id, location.search, mutator.invoice, refreshList, showCallout],
+    [mutateInvoice, history, id, location.search, refreshList, showCallout],
   );
 
   const cancelInvoice = useCallback(
@@ -258,7 +258,7 @@ export function InvoiceDetailsContainer({
 
       setIsLoading(true);
 
-      return mutateInvoice(canceledInvoice)
+      return mutateInvoice({ invoice: canceledInvoice })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.cancel.success' });
           refreshList();
@@ -286,7 +286,7 @@ export function InvoiceDetailsContainer({
 
       setIsLoading(true);
 
-      return mutateInvoice(approvedInvoice)
+      return mutateInvoice({ invoice: approvedInvoice })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' });
           refreshList();
@@ -314,7 +314,7 @@ export function InvoiceDetailsContainer({
 
       setIsLoading(true);
 
-      return mutateInvoice(paidInvoice)
+      return mutateInvoice({ invoice: paidInvoice })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
           refreshList();
@@ -338,10 +338,10 @@ export function InvoiceDetailsContainer({
     () => {
       setIsLoading(true);
 
-      return mutateInvoice({ ...invoice, status: INVOICE_STATUS.approved })
+      return mutateInvoice({ invoice: { ...invoice, status: INVOICE_STATUS.approved } })
         .then(() => mutator.invoice.GET({ path: `${INVOICES_API}/${invoice.id}` }))
         .then(invoiceResponse => {
-          return mutateInvoice({ ...invoiceResponse, status: INVOICE_STATUS.paid });
+          return mutateInvoice({ invoice: { ...invoiceResponse, status: INVOICE_STATUS.paid } });
         })
         .catch(({ response }) => {
           showUpdateInvoiceError(
@@ -369,11 +369,11 @@ export function InvoiceDetailsContainer({
 
   const updateInvoice = useCallback(
     (data) => {
-      mutator.invoice.PUT(data)
+      return mutateInvoice({ invoice: data })
         .then(() => mutator.invoice.GET())
         .then(setInvoice);
     },
-    [mutator.invoice],
+    [mutateInvoice, mutator.invoice],
   );
 
   const invoiceTotalUnits = get(invoiceLines, 'invoiceLines', []).reduce((total, line) => (
