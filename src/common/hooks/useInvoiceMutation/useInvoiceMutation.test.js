@@ -32,9 +32,7 @@ describe('useInvoiceMutation', () => {
 
     await act(async () => {
       result.current.mutateInvoice({
-        invoice: {
-          status: 'Open',
-        },
+        status: 'Open',
       });
     });
 
@@ -55,17 +53,15 @@ describe('useInvoiceMutation', () => {
 
     await act(async () => {
       result.current.mutateInvoice({
-        invoice: {
-          id: 1,
-          status: 'Paid',
-        },
+        id: 1,
+        status: 'Paid',
       });
     });
 
     expect(putMock).toHaveBeenCalled();
   });
 
-  it('should make delete request when method is defined as \'delete\'', async () => {
+  it('should make delete request', async () => {
     const deleteMock = jest.fn();
 
     useOkapiKy.mockClear().mockReturnValue({
@@ -78,13 +74,7 @@ describe('useInvoiceMutation', () => {
     );
 
     await act(async () => {
-      result.current.mutateInvoice({
-        invoice: {
-          id: 1,
-          status: 'Paid',
-        },
-        method: 'delete',
-      });
+      result.current.deleteInvoice();
     });
 
     expect(deleteMock).toHaveBeenCalled();
