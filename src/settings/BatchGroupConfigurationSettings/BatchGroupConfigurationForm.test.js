@@ -38,7 +38,7 @@ describe('BatchGroupConfigurationForm component', () => {
     global.document.createRange = global.document.mockCreateRange;
   });
 
-  xit('should render correct structure', () => {
+  it('should render correct structure', () => {
     const { asFragment } = renderBatchGroupConfigurationForm();
 
     expect(asFragment()).toMatchSnapshot();

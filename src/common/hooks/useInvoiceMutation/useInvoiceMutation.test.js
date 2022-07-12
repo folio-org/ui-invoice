@@ -1,6 +1,6 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
@@ -30,8 +30,10 @@ describe('useInvoiceMutation', () => {
       { wrapper },
     );
 
-    await result.current.mutateInvoice({
-      status: 'Open',
+    await act(async () => {
+      result.current.mutateInvoice({
+        status: 'Open',
+      });
     });
 
     expect(postMock).toHaveBeenCalled();
@@ -49,11 +51,32 @@ describe('useInvoiceMutation', () => {
       { wrapper },
     );
 
-    await result.current.mutateInvoice({
-      id: 1,
-      status: 'Paid',
+    await act(async () => {
+      result.current.mutateInvoice({
+        id: 1,
+        status: 'Paid',
+      });
     });
 
     expect(putMock).toHaveBeenCalled();
+  });
+
+  it('should make delete request', async () => {
+    const deleteMock = jest.fn();
+
+    useOkapiKy.mockClear().mockReturnValue({
+      delete: deleteMock,
+    });
+
+    const { result } = renderHook(
+      () => useInvoiceMutation(),
+      { wrapper },
+    );
+
+    await act(async () => {
+      result.current.deleteInvoice();
+    });
+
+    expect(deleteMock).toHaveBeenCalled();
   });
 });

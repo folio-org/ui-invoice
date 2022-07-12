@@ -43,7 +43,7 @@ export function InvoiceDetailsContainer({
   refreshList,
 }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const mutator = useMemo(() => originMutator, []);
+  const mutator = useMemo(() => originMutator, [id]);
   const showCallout = useShowCallout();
   const [isLoading, setIsLoading] = useState(true);
   const [invoice, setInvoice] = useState({});
@@ -54,7 +54,7 @@ export function InvoiceDetailsContainer({
   const [batchVoucherExport, setBatchVoucherExport] = useState();
   const [exportFormat, setExportFormat] = useState();
 
-  const { mutateInvoice } = useInvoiceMutation();
+  const { mutateInvoice, deleteInvoice } = useInvoiceMutation();
 
   const fetchInvoiceData = useCallback(
     () => {
@@ -225,11 +225,11 @@ export function InvoiceDetailsContainer({
     [fetchInvoiceData, id, mutator.invoiceLines, showCallout, vendor],
   );
 
-  const deleteInvoice = useCallback(
+  const onDeleteInvoice = useCallback(
     () => {
       setIsLoading(true);
 
-      return mutator.invoice.DELETE({ id }, { silent: true })
+      return deleteInvoice(id)
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.invoiceHasBeenDeleted' });
           refreshList();
@@ -249,7 +249,7 @@ export function InvoiceDetailsContainer({
           } catch (e) { }
         });
     },
-    [history, id, location.search, mutator.invoice, refreshList, showCallout],
+    [deleteInvoice, history, id, location.search, refreshList, showCallout],
   );
 
   const cancelInvoice = useCallback(
@@ -369,11 +369,11 @@ export function InvoiceDetailsContainer({
 
   const updateInvoice = useCallback(
     (data) => {
-      mutator.invoice.PUT(data)
+      return mutateInvoice(data)
         .then(() => mutator.invoice.GET())
         .then(setInvoice);
     },
-    [mutator.invoice],
+    [mutateInvoice, mutator.invoice],
   );
 
   const invoiceTotalUnits = get(invoiceLines, 'invoiceLines', []).reduce((total, line) => (
@@ -396,7 +396,7 @@ export function InvoiceDetailsContainer({
       approveAndPayInvoice={approveAndPayInvoice}
       approveInvoice={approveInvoice}
       createLine={createLine}
-      deleteInvoice={deleteInvoice}
+      deleteInvoice={onDeleteInvoice}
       cancelInvoice={cancelInvoice}
       invoice={invoice}
       invoiceLines={invoiceLines.invoiceLines}
