@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, act } from '@testing-library/react';
-import { useReactToPrint } from 'react-to-print';
 
 import {
   match,
@@ -155,8 +154,10 @@ describe('InvoiceDetailsContainer', () => {
       expect(showUpdateInvoiceError).toHaveBeenCalled();
     });
 
-    it('should make PUT request to update invoice when onUpdate action is called', async () => {
-      mutatorMock.invoice.PUT.mockClear();
+    it('should mutate an invoice when onUpdate action is called', async () => {
+      const mutateInvoice = jest.fn(() => Promise.resolve());
+
+      useInvoiceMutation.mockClear().mockReturnValue({ mutateInvoice });
       renderInvoiceDetailsContainer();
 
       await screen.findByText('InvoiceDetails');
@@ -165,12 +166,17 @@ describe('InvoiceDetailsContainer', () => {
         await InvoiceDetails.mock.calls[0][0].onUpdate();
       });
 
-      expect(mutatorMock.invoice.PUT).toHaveBeenCalled();
+      expect(mutateInvoice).toHaveBeenCalled();
     });
 
     describe('Delete action', () => {
+      const deleteInvoice = jest.fn(() => Promise.resolve());
+
+      beforeEach(() => {
+        useInvoiceMutation.mockClear().mockReturnValue({ deleteInvoice });
+      });
+
       it('should make DELETE request when deleteInvoice action is called', async () => {
-        mutatorMock.invoice.DELETE.mockClear();
         renderInvoiceDetailsContainer();
 
         await screen.findByText('InvoiceDetails');
@@ -179,7 +185,7 @@ describe('InvoiceDetailsContainer', () => {
           await InvoiceDetails.mock.calls[0][0].deleteInvoice();
         });
 
-        expect(mutatorMock.invoice.DELETE).toHaveBeenCalled();
+        expect(deleteInvoice).toHaveBeenCalled();
       });
 
       it('should refresh list when invoice has been deleted', async () => {
@@ -197,9 +203,10 @@ describe('InvoiceDetailsContainer', () => {
       });
 
       it('should not refresh list when invoice has not been deleted', async () => {
+        const deleteInvoiceMock = jest.fn(() => Promise.reject());
         const refreshList = jest.fn();
 
-        mutatorMock.invoice.DELETE.mockClear().mockImplementation(() => Promise.reject());
+        useInvoiceMutation.mockClear().mockReturnValue({ deleteInvoice: deleteInvoiceMock });
         renderInvoiceDetailsContainer({ ...defaultProps, refreshList });
 
         await screen.findByText('InvoiceDetails');
@@ -213,11 +220,11 @@ describe('InvoiceDetailsContainer', () => {
     });
 
     describe('Approve action', () => {
-      const mutateInvoice = jest.fn();
+      const mutateInvoice = jest.fn(() => Promise.resolve());
 
       beforeEach(() => {
         useInvoiceMutation.mockClear().mockReturnValue({ mutateInvoice });
-        mutateInvoice.mockClear().mockReturnValue(Promise.resolve());
+        mutateInvoice.mockClear();
       });
 
       it('should call mutateInvoice when approveInvoice action is called', async () => {

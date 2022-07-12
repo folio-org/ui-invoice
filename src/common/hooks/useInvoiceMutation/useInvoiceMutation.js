@@ -19,7 +19,15 @@ export const useInvoiceMutation = (options = {}) => {
     ...options,
   });
 
+  const { mutateAsync: deleteInvoice } = useMutation({
+    mutationFn: (id) => {
+      return ky.delete(`${INVOICES_API}/${id}`);
+    },
+    ...options,
+  });
+
   return {
     mutateInvoice: mutateAsync,
+    deleteInvoice,
   };
 };
