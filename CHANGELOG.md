@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.2.1](https://github.com/folio-org/ui-invoice/tree/v3.2.1) (2022-07-22)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.2.0...v3.2.1)
+
 * Error message appears when deleting invoice imported from EDIFACT. Refs UINV-425.
 
 ## [3.2.0](https://github.com/folio-org/ui-invoice/tree/v3.2.0) (2022-07-07)
