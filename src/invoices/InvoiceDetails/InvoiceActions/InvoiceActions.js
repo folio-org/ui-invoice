@@ -56,7 +56,9 @@ const InvoiceActions = ({
               buttonStyle="dropdownItem"
               onClick={onPay}
             >
-              <FormattedMessage id="ui-invoice.invoice.actions.pay" />
+              <Icon size="small" icon="cart">
+                <FormattedMessage id="ui-invoice.invoice.actions.pay" />
+              </Icon>
             </Button>
           </IfPermission>
         )
@@ -70,7 +72,9 @@ const InvoiceActions = ({
               buttonStyle="dropdownItem"
               onClick={onApprove}
             >
-              <FormattedMessage id="ui-invoice.invoice.actions.approve" />
+              <Icon size="small" icon="check-circle">
+                <FormattedMessage id="ui-invoice.invoice.actions.approve" />
+              </Icon>
             </Button>
           </IfPermission>
         )
@@ -87,7 +91,9 @@ const InvoiceActions = ({
               buttonStyle="dropdownItem"
               onClick={onApproveAndPay}
             >
-              <FormattedMessage id="ui-invoice.invoice.actions.approveAndPay" />
+              <Icon size="small" icon="cart">
+                <FormattedMessage id="ui-invoice.invoice.actions.approveAndPay" />
+              </Icon>
             </Button>
           </IfPermission>
         )
