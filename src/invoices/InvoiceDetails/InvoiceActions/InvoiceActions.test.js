@@ -69,7 +69,7 @@ describe('InvoiceActions', () => {
     expect(screen.getByTestId('invoice-pay')).toBeDefined();
   });
 
-  it('should display Print action when onPrint pro[] is defined', () => {
+  it('should display Print action when onPrint prop is defined', () => {
     renderInvoiceActions({
       ...defaultProps,
       onPrint: jest.fn(),
