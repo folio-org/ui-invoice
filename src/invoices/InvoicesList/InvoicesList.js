@@ -58,7 +58,7 @@ const columnMapping = {
 };
 const sortableFields = ['vendorInvoiceNo', 'invoiceDate', 'status', 'invoiceTotal'];
 const resultsFormatter = {
-  vendor: invoice => invoice?.vendor?.name,
+  vendor: invoice => invoice?.vendor?.code,
   invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
   invoiceTotal: invoice => (
