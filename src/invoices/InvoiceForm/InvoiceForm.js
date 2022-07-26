@@ -233,7 +233,7 @@ const InvoiceForm = ({
             id="pane-invoice-form"
             onClose={closeForm}
             paneTitle={paneTitle}
-            paneSub={initialVendor?.name}
+            paneSub={initialVendor?.code}
           >
             <Row>
               <Col

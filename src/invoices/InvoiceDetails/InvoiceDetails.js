@@ -189,7 +189,7 @@ function InvoiceDetails({
     />
   );
 
-  const vendorName = vendor?.name;
+  const vendorCode = vendor?.code;
   const vendorInvoiceNo = invoice.vendorInvoiceNo;
   const tags = get(invoice, 'tags.tagList', []);
   const adjustments = get(invoice, 'adjustments', []);
@@ -241,7 +241,7 @@ function InvoiceDetails({
         dismissible
         onClose={onClose}
         paneTitle={paneTitle}
-        paneSub={vendorName}
+        paneSub={vendorCode}
         actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
