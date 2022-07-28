@@ -106,22 +106,22 @@ const AdjustmentsForm = ({
     const adjustment = fields.value[index];
     const showFundDistribution = !isLineAdjustments
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
-      && adjustment.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn;
+      && adjustment.relationToTotal === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo;
 
     const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal, currency || stripes.currency);
 
     // TODO: should be removed when no-prorated supports included in
     const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS.filter(({ value }) => (
       adjustment?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
-      || value !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
+      || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
     ));
     const onProrateChange = e => {
       const value = e.target.value;
 
       if (
         value === ADJUSTMENT_PRORATE_VALUES.notProrated
-        && adjustment?.relationToTotal === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
-      ) change(`${elem}.relationToTotal`, '');
+        && adjustment?.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
+      ) change(`${elem}.relationToTotal`, ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo);
 
       change(`${elem}.prorate`, value);
     };
