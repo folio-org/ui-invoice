@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Non-prorated Adjustments at invoice level that are "Separate from" still generate transactions. Refs UINV-433.
+
 ## [3.2.1](https://github.com/folio-org/ui-invoice/tree/v3.2.1) (2022-07-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.2.0...v3.2.1)
 
