@@ -60,14 +60,14 @@ class SettingsAdjustmentsEditor extends Component {
 
       if (
         value === ADJUSTMENT_PRORATE_VALUES.notProrated
-        && formValues?.relationToTotal === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
-      ) change('relationToTotal', '');
+        && formValues?.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
+      ) change('relationToTotal', ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo);
 
       change('prorate', value);
     };
     const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS.filter(({ value }) => (
       formValues?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
-      || value !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn
+      || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
     ));
     const shortcuts = [
       {
