@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -96,8 +96,8 @@
     "@rehooks/local-storage": "2.4.0"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-organization": "*",
-    "@folio/plugin-find-po-line": "*"
+    "@folio/plugin-find-organization": "^3.2.0",
+    "@folio/plugin-find-po-line": "^3.2.0"
   },
   "stripes": {
     "actsAs": [

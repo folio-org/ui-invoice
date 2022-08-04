@@ -4,6 +4,10 @@
 
 * Add icons for invoice approval and pay actions. Refs UINV-426.
 * Display Vendor code rather than Vendor name. Refs UINV-427.
+
+## [3.2.2](https://github.com/folio-org/ui-invoice/tree/v3.2.2) (2022-08-04)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.2.1...v3.2.2)
+
 * Non-prorated Adjustments at invoice level that are "Separate from" still generate transactions. Refs UINV-433.
 
 ## [3.2.1](https://github.com/folio-org/ui-invoice/tree/v3.2.1) (2022-07-22)
