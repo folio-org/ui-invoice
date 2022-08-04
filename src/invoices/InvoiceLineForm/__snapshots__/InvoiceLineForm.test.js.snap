@@ -708,7 +708,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                             data-test-col-invoice-line-accounting-code="true"
                           >
                             <div
-                              class="tether-target tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center tether-enabled"
+                              class="tether-target tether-enabled tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center"
                               style="position: relative; width: 100%;"
                             >
                               <div
@@ -962,11 +962,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                         id="accordion3"
                         role="region"
                       >
-                        <div
-                          class="feedbackError"
-                        >
-                          stripes-acq-components.validation.shouldBeEqualToTotalAmount
-                        </div>
                         <fieldset
                           class="repeatableField hasMargin"
                           data-test-repeatable-field="true"
