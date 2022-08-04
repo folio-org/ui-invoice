@@ -31,6 +31,7 @@ import {
 import {
   withStripes,
   stripesShape,
+  useOkapiKy,
 } from '@folio/stripes/core';
 
 import {
@@ -39,6 +40,7 @@ import {
   ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS,
   ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
+  VALIDATE_INVOICE_FUND_DISTRIBUTION_API,
 } from '../../common/constants';
 import {
   calculateAdjustmentAmount,
@@ -59,6 +61,7 @@ const AdjustmentsForm = ({
   isNonInteractive,
   stripes,
 }) => {
+  const ky = useOkapiKy();
   const [adjPreset, setAdjPreset] = useState();
   const intl = useIntl();
   const onAdd = (fields) => {
@@ -125,6 +128,16 @@ const AdjustmentsForm = ({
 
       change(`${elem}.prorate`, value);
     };
+
+    const validateFundDistributionTotal = (fundDistribution = []) => (
+      ky.put(VALIDATE_INVOICE_FUND_DISTRIBUTION_API, {
+        json: {
+          currency,
+          fundDistribution,
+          subTotal: adjustment.value || 0,
+        },
+      })
+    );
 
     return (
       <Card
@@ -234,6 +247,7 @@ const AdjustmentsForm = ({
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
             totalAmount={adjustmentAmount}
+            validateFundDistributionTotal={validateFundDistributionTotal}
           />
         )}
       </Card>
