@@ -4,6 +4,7 @@
 
 * Add icons for invoice approval and pay actions. Refs UINV-426.
 * Display Vendor code rather than Vendor name. Refs UINV-427.
+* 100% of total calculation is different on FE and BE. Refs UINV-432.
 
 ## [3.2.2](https://github.com/folio-org/ui-invoice/tree/v3.2.2) (2022-08-04)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.2.1...v3.2.2)

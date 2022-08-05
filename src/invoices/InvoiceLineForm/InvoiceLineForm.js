@@ -42,6 +42,7 @@ import {
   VendorReferenceNumbersFields,
 } from '@folio/stripes-acq-components';
 
+import { useFundDistributionValidation } from '../../common/hooks';
 import {
   StatusValue,
 } from '../../common/components';
@@ -74,6 +75,7 @@ const InvoiceLineForm = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
+  const { validateFundDistributionTotal } = useFundDistributionValidation({ formValues, currency: invoice.currency });
 
   const changeAccountNumber = useCallback((accountNo) => {
     const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
@@ -334,6 +336,7 @@ const InvoiceLineForm = ({
                         fundDistribution={formValues.fundDistributions}
                         name="fundDistributions"
                         totalAmount={totalAmount}
+                        validateFundDistributionTotal={validateFundDistributionTotal}
                       />
                     </Accordion>
                     <Accordion
