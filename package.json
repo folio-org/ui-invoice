@@ -203,6 +203,7 @@
           "finance.expense-classes.collection.get",
           "finance.expense-classes.item.get",
           "finance.funds.item.get",
+          "invoice.invoice-lines.fund-distributions.validate",
           "invoice.invoice-lines.item.put",
           "invoice.invoices.documents.item.post",
           "invoice.invoices.documents.item.delete",

@@ -24,6 +24,9 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
 jest.mock('@folio/stripes-components/lib/NoValue', () => {
   return () => <span>-</span>;
 });
+jest.mock('../../common/hooks/useFundDistributionValidation', () => ({
+  useFundDistributionValidation: jest.fn().mockReturnValue({ validateFundDistributionTotal: jest.fn() }),
+}));
 jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
 });
