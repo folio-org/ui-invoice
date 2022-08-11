@@ -396,7 +396,7 @@
     "exportSettings.message": "This export could take a few minutes. If you reload or close the page the export will not be completed. Once the file is ready it could take another minute for your browser to finish downloading the file. You can continue to work with invoices and invoice lines in a different browser tab if needed.",
     "exportSettings.invoice.all": "Export all invoice fields",
     "exportSettings.invoice.selected": "تصدير حقول الفاتورة المحددة",
-    "exportSettings.invoiceLine.all": "Export all invoice line fields",
+    "exportSettings.invoiceLine.all": "تصدير كل حقول سطر الفاتورة",
     "exportSettings.invoiceLine.selected": "تصدير حقول سطر الفاتورة المحددة",
     "exportSettings.success": "Export has been started successfully",
     "exportSettings.error": "فشل تحميل البيانات لتصدير النتائج (CSV)",
@@ -413,7 +413,7 @@
     "invoice.actions.saveLine.error.inactiveExpenseClass": "Invoice line can not be saved because expense class <b>{expenseClass}</b> is inactive.",
     "invoice.actions.saveLine.error": "لم يتم حفظ سطر الفاتورة",
     "voucherExport.paneTitle": "تصدير القسيمة",
-    "voucherExport.batchGroup.select": "Select batch group",
+    "voucherExport.batchGroup.select": "تحديد مجموعة الدفعات",
     "voucherExport.download.success": "Vouchers have been successfully downloaded",
     "permission.voucherExport": "Invoice: Voucher export",
     "permission.exportCSV": "الفواتير: تصدير نتائج البحث"
