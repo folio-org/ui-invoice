@@ -484,8 +484,8 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
           />
           <label
             class="label"
-            for="stripes-selection-5"
-            id="sl-label-stripes-selection-5"
+            for="stripes-selection-7"
+            id="sl-label-stripes-selection-7"
           >
             ui-invoice.adjustment.presetAdjustment
           </label>
@@ -496,10 +496,10 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
               aria-disabled="false"
               aria-expanded="false"
               aria-haspopup="listbox"
-              aria-labelledby="sl-label-stripes-selection-5 selected-stripes-selection-5-item"
+              aria-labelledby="sl-label-stripes-selection-7 selected-stripes-selection-7-item"
               aria-owns="sl-undefined"
               class="selectionControl formControl"
-              id="stripes-selection-5"
+              id="stripes-selection-7"
               type="button"
             >
               <span
@@ -509,7 +509,7 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
               </span>
               <div
                 class="singleValue"
-                id="selected-stripes-selection-5-item"
+                id="selected-stripes-selection-7-item"
               />
             </button>
             <div
