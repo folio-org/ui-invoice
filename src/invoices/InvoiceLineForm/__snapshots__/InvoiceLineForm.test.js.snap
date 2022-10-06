@@ -1096,6 +1096,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           autocapitalize="off"
                                           autocomplete="off"
                                           autocorrect="off"
+                                          data-testid="fundDistribution-value"
                                           error=""
                                           id="text-input-9"
                                           name="fundDistributions[0].value"

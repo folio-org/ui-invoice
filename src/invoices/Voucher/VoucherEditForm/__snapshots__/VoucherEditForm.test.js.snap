@@ -503,7 +503,7 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
                   >
                     <label
                       class="label"
-                      for="dp-4"
+                      for="dp-5"
                     >
                       ui-invoice.invoice.details.voucher.disbursementDate
                     </label>
@@ -515,7 +515,7 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
                         autocapitalize="off"
                         autocomplete="off"
                         autocorrect="off"
-                        id="dp-4"
+                        id="dp-5"
                         name="disbursementDate"
                         placeholder="MM/DD/YYYY"
                         spellcheck="false"
@@ -533,7 +533,7 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
                             class="iconButton medium"
                             data-test-clear="true"
                             icon="times-circle-solid"
-                            id="datepicker-clear-button-dp-4"
+                            id="datepicker-clear-button-dp-5"
                             tabindex="-1"
                             type="button"
                           >
@@ -552,7 +552,7 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
                             class="iconButton medium"
                             data-test-calendar-button="true"
                             icon="calendar"
-                            id="datepicker-toggle-calendar-button-dp-4"
+                            id="datepicker-toggle-calendar-button-dp-5"
                             type="button"
                           >
                             <span
