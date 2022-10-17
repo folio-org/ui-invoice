@@ -5,6 +5,8 @@
 * Add icons for invoice approval and pay actions. Refs UINV-426.
 * Display Vendor code rather than Vendor name. Refs UINV-427.
 * Upgrade `users` interface to `16.0`. Refs UINV-431.
+* Create new invoice from order. Refs UINV-420.
+* Edit sequence of invoice lines (created from PO). Refs UINV-421.
 
 ## [3.2.3](https://github.com/folio-org/ui-invoice/tree/v3.2.3) (2022-08-12)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.2.2...v3.2.3)
