@@ -320,7 +320,7 @@
     "invoice.details.lines.list.vendorRefNumber": "Numéro de référence du fournisseur",
     "invoice.enclosureNeeded": "Enclosure needed",
     "invoice.details.voucher.accountNo": "Numéro de compte",
-    "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}.",
+    "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}",
     "invoice.billTo": "Facturer à",
     "invoice.address": "Adresse",
     "invoice.cancellationNote": "Avis d'annulation",
@@ -416,5 +416,8 @@
     "voucherExport.batchGroup.select": "Select batch group",
     "voucherExport.download.success": "Vouchers have been successfully downloaded",
     "permission.voucherExport": "Invoice: Voucher export",
-    "permission.exportCSV": "Invoice: Export search results"
+    "permission.exportCSV": "Invoice: Export search results",
+    "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
+    "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
+    "saveAndContinue": "Save & continue"
 }
