@@ -416,5 +416,8 @@
     "voucherExport.batchGroup.select": "Select batch group",
     "voucherExport.download.success": "Vouchers have been successfully downloaded",
     "permission.voucherExport": "Invoice: Voucher export",
-    "permission.exportCSV": "Invoice: Export search results"
+    "permission.exportCSV": "Invoice: Export search results",
+    "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
+    "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
+    "saveAndContinue": "Save & continue"
 }

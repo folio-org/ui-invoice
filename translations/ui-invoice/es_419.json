@@ -275,9 +275,9 @@
     "invoice.actions.approve.error.accountingCodeNotPresent": "La factura no se puede aprobar (pagar), porque el proveedor identificado debe tener un código de contabilidad para que esta factura se pueda exportar a contabilidad",
     "invoice.actions.addLine.confirmLabel": "Confirmar",
     "invoice.actions.addLine.currencyMessage": "You are adding one or more purchase order lines that are in a different currency than the one identified on this invoice. If you would still like to add these please click confirm. Note: The cost will be recorded in the currency identified on the invoice.",
-    "invoice.actions.addLine.heading": "Confirmation",
+    "invoice.actions.addLine.heading": "Confirmación",
     "invoice.actions.addLine.vendorMessage": "You are adding one or more purchase order lines that reference a different vendor than the one identified on this invoice. If you would still like to add these please click confirm. Note: The payments will be associated with the Vendor identified on the invoice.",
-    "invoice.actions.addLine.vendorLoadError": "Failed to load vendor data",
+    "invoice.actions.addLine.vendorLoadError": "Falló la carga de datos del proveedor",
     "invoice.details.batchVoucherExport.title": "Voucher export details",
     "invoice.details.batchVoucherExport.batchGroup": "Batch group",
     "invoice.details.batchVoucherExport.fileName": "Batch file name",
@@ -320,7 +320,7 @@
     "invoice.details.lines.list.vendorRefNumber": "Número de referencia del vendedor",
     "invoice.enclosureNeeded": "Recinto necesario",
     "invoice.details.voucher.accountNo": "Número de cuenta",
-    "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}.",
+    "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}",
     "invoice.billTo": "Bill to",
     "invoice.address": "Address",
     "invoice.cancellationNote": "Cancellation note",
@@ -416,5 +416,8 @@
     "voucherExport.batchGroup.select": "Select batch group",
     "voucherExport.download.success": "Vouchers have been successfully downloaded",
     "permission.voucherExport": "Invoice: Voucher export",
-    "permission.exportCSV": "Invoice: Export search results"
+    "permission.exportCSV": "Invoice: Export search results",
+    "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
+    "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
+    "saveAndContinue": "Save & continue"
 }
