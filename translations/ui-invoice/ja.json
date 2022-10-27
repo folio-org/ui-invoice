@@ -320,7 +320,7 @@
     "invoice.details.lines.list.vendorRefNumber": "ベンダー参照番号",
     "invoice.enclosureNeeded": "要封入。",
     "invoice.details.voucher.accountNo": "口座番号",
-    "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}.",
+    "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}",
     "invoice.billTo": "Bill to",
     "invoice.address": "Address",
     "invoice.cancellationNote": "Cancellation note",
@@ -416,5 +416,8 @@
     "voucherExport.batchGroup.select": "Select batch group",
     "voucherExport.download.success": "Vouchers have been successfully downloaded",
     "permission.voucherExport": "Invoice: Voucher export",
-    "permission.exportCSV": "Invoice: Export search results"
+    "permission.exportCSV": "Invoice: Export search results",
+    "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
+    "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
+    "saveAndContinue": "Save & continue"
 }
