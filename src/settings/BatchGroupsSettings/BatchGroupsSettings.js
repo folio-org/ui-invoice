@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 import { stripesShape } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
+import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
 
 const columnMapping = {
   name: <FormattedMessage id="ui-invoice.settings.batchGroups.column.name" />,
@@ -38,7 +39,7 @@ class BatchGroupsSettings extends React.Component {
         id="batch-groups"
         preUpdateHook={preUpdateHook}
         label={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.label' })}
-        labelSingular={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.labelSingular' })}
+        translations={getControlledVocabTranslations('ui-invoice.settings.batchGroups')}
         nameKey="name"
         objectLabel={<FormattedMessage id="ui-invoice.settings.batchGroups.label" />}
         records="batchGroups"

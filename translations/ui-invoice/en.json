@@ -128,8 +128,13 @@
 
   "settings.batchGroups.label": "Batch groups",
   "settings.batchGroups.labelSingular": "Batch group",
+  "settings.batchGroups.cannotDeleteTermHeader": "Cannot delete batch group",
+  "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
   "settings.batchGroups.column.name": "Name",
   "settings.batchGroups.column.description": "Description",
+  "settings.batchGroups.deleteEntry": "Delete batch group",
+  "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
+  "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>",
 
   "settings.batchGroupConfiguration.batchGroup": "Batch group",
   "settings.batchGroupConfiguration.format.Application/json": "JSON",

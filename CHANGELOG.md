@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Provide local translations to `ControlledVocab`. Refs UINV-438.
+
 ## [3.3.0](https://github.com/folio-org/ui-invoice/tree/v3.3.0) (2022-10-25)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.2.3...v3.3.0)
 
