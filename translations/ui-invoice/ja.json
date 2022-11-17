@@ -384,7 +384,7 @@
     "otherRelatedInvoiceLines.quantity": "数量",
     "otherRelatedInvoiceLines.status": "Status",
     "otherRelatedInvoiceLines.vendorInvoiceNo": "ベンダーの請求書番号",
-    "otherRelatedInvoiceLines.vendorName": "Vendor name",
+    "otherRelatedInvoiceLines.vendorName": "ベンダー名",
     "otherRelatedInvoiceLines.comment": "コメント",
     "errors.cantLoadAdjustment": "Error loading adjustment",
     "exportSettings.export": "Export",
@@ -419,5 +419,10 @@
     "permission.exportCSV": "Invoice: Export search results",
     "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
     "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
-    "saveAndContinue": "Save & continue"
+    "saveAndContinue": "Save & continue",
+    "settings.batchGroups.cannotDeleteTermHeader": "Cannot delete batch group",
+    "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
+    "settings.batchGroups.deleteEntry": "Delete batch group",
+    "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>"
 }

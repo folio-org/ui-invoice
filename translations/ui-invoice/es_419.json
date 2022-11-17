@@ -384,7 +384,7 @@
     "otherRelatedInvoiceLines.quantity": "Quantity",
     "otherRelatedInvoiceLines.status": "Status",
     "otherRelatedInvoiceLines.vendorInvoiceNo": "Vendor invoice number",
-    "otherRelatedInvoiceLines.vendorName": "Vendor name",
+    "otherRelatedInvoiceLines.vendorName": "Nombre del proveedor",
     "otherRelatedInvoiceLines.comment": "Comment",
     "errors.cantLoadAdjustment": "Error loading adjustment",
     "exportSettings.export": "Export",
@@ -402,7 +402,7 @@
     "exportSettings.error": "Failed to load data for export results (CSV)",
     "button.voucherExport": "Voucher export",
     "button.exportCSV": "Export results (CSV)",
-    "adjustment.value": "Value",
+    "adjustment.value": "Valor",
     "settings.adjustments.value": "Value",
     "settings.BatchVoucherExports.download.errorFormat": "File format not specified for voucher export. Please update Batch Group Configuration in system settings",
     "invoice.details.accordion.fundDistribution": "Invoice level fund distribution",
@@ -419,5 +419,10 @@
     "permission.exportCSV": "Invoice: Export search results",
     "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
     "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
-    "saveAndContinue": "Save & continue"
+    "saveAndContinue": "Save & continue",
+    "settings.batchGroups.cannotDeleteTermHeader": "Cannot delete batch group",
+    "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
+    "settings.batchGroups.deleteEntry": "Delete batch group",
+    "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>"
 }

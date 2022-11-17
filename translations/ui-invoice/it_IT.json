@@ -419,5 +419,10 @@
     "permission.exportCSV": "Fattura: esportare i risultati della ricerca",
     "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
     "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
-    "saveAndContinue": "Salva e continua"
+    "saveAndContinue": "Salva e continua",
+    "settings.batchGroups.cannotDeleteTermHeader": "Cannot delete batch group",
+    "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
+    "settings.batchGroups.deleteEntry": "Delete batch group",
+    "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>"
 }
