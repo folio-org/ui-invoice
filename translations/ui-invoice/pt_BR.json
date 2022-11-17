@@ -419,5 +419,10 @@
     "permission.exportCSV": "Fatura: exportar resultados de pesquisa",
     "invoiceLine.linesSequence.paneTitle": "Editar sequência de linhas de fatura • Número da fatura do fornecedor {vendorInvoiceNo}",
     "invoiceLine.linesSequence.paneSubTitle": "{count} linhas encontradas",
-    "saveAndContinue": "Salvar e continuar"
+    "saveAndContinue": "Salvar e continuar",
+    "settings.batchGroups.cannotDeleteTermHeader": "Não é possível excluir o grupo de lote",
+    "settings.batchGroups.cannotDeleteTermMessage": "Este grupo de lote não pode ser excluído, pois está em uso por um ou mais registros.",
+    "settings.batchGroups.deleteEntry": "Excluir grupo de lote",
+    "settings.batchGroups.termDeleted": "O grupo de lote <b>{term}</b> foi <b>excluído</b> com sucesso",
+    "settings.batchGroups.termWillBeDeleted": "O grupo de lotes <b> {term} </b> será <b> excluído. </b>"
 }

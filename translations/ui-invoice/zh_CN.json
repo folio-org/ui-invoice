@@ -419,5 +419,10 @@
     "permission.exportCSV": "发票：导出搜索结果",
     "invoiceLine.linesSequence.paneTitle": "编辑发票行序列 • 供应商发票号{vendorInvoiceNo}",
     "invoiceLine.linesSequence.paneSubTitle": "找到{count}行",
-    "saveAndContinue": "保存并继续"
+    "saveAndContinue": "保存并继续",
+    "settings.batchGroups.cannotDeleteTermHeader": "Cannot delete batch group",
+    "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
+    "settings.batchGroups.deleteEntry": "Delete batch group",
+    "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
+    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>"
 }
