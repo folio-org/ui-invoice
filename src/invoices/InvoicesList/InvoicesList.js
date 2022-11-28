@@ -24,6 +24,7 @@ import {
   RESULT_COUNT_INCREMENT,
   ResultsPane,
   SingleSearchForm,
+  useFiltersReset,
   useFiltersToogle,
   useFunds,
   useItemToView,
@@ -101,6 +102,8 @@ const InvoicesList = ({
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
   const { funds } = useFunds();
   const [isExportModalOpened, toggleExportModal] = useModalToggle();
+
+  useFiltersReset(resetFilters);
 
   const renderActionMenu = useCallback(({ onToggle }) => (
     <InvoicesListLastMenu
