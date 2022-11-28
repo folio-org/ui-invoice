@@ -71,7 +71,10 @@ const Invoices = () => {
                 <NavListSection>
                   <NavListItem
                     id="invoices-app-search-item"
-                    to={RETURN_LINK}
+                    to={{
+                      pathname: RETURN_LINK,
+                      state: { resetFilters: true },
+                    }}
                     onClick={() => {
                       handleToggle();
                       focusSearchField();
