@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.3.1](https://github.com/folio-org/ui-invoice/tree/v3.3.1) (2022-11-30)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.3.0...v3.3.1)
+
 * "No results found" shown after return to search page. Refs UINV-448.
 
 ## [3.3.0](https://github.com/folio-org/ui-invoice/tree/v3.3.0) (2022-10-25)
