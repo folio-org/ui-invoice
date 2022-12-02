@@ -95,7 +95,7 @@
     "search.vendorInvoiceNo": "供应商发票号",
     "search.poNumbers": "订单号",
     "search.keyword": "所有",
-    "invoice.details.information.acqUnits": "采购单元",
+    "invoice.details.information.acqUnits": "采购单位",
     "invoice.details.vendor.title": "供应商详情",
     "invoice.details.vendor.vendorInvoiceNo": "供应商发票号",
     "invoice.details.vendor.name": "供应商名称",
@@ -297,7 +297,7 @@
     "invoice.details.lines.list.fundCode": "经费代码",
     "invoice.actions.approve.error.budgetExpenseClassNotFound": "在<b> {fundCode} </b>经费中找不到<b> {expenseClassName} </b>费用类别",
     "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "在<b> {fundCode} </b>经费中找不到<b> {expenseClassName} </b>费用类别",
-    "permission.acq.unit.assignment.assign": "发票：将采购单元分配给新记录",
+    "permission.acq.unit.assignment.assign": "发票：将采购单位分配给新记录",
     "permission.acq.unit.assignment.manage": "发票：管理采购单位",
     "permission.approve": "发票：批准发票",
     "permission.invoice.create": "发票：可以查看、编辑和创建新的发票和发票行",
@@ -420,9 +420,9 @@
     "invoiceLine.linesSequence.paneTitle": "编辑发票行序列 • 供应商发票号{vendorInvoiceNo}",
     "invoiceLine.linesSequence.paneSubTitle": "找到{count}行",
     "saveAndContinue": "保存并继续",
-    "settings.batchGroups.cannotDeleteTermHeader": "Cannot delete batch group",
-    "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
-    "settings.batchGroups.deleteEntry": "Delete batch group",
-    "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
-    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>"
+    "settings.batchGroups.cannotDeleteTermHeader": "无法删除批处理组",
+    "settings.batchGroups.cannotDeleteTermMessage": "无法删除此批次组，因为它正被一个或多个记录使用。",
+    "settings.batchGroups.deleteEntry": "删除批处理组",
+    "settings.batchGroups.termDeleted": "批处理组<b> {term} </b>已成功<b>删除</b>",
+    "settings.batchGroups.termWillBeDeleted": "批处理组<b> {term} </b>将被<b>删除。 </b>"
 }
