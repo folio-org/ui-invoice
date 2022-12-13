@@ -1,5 +1,6 @@
 import user from '@testing-library/user-event';
 import { act, render } from '@testing-library/react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter, useHistory, useLocation } from 'react-router-dom';
 
 import {
@@ -48,10 +49,21 @@ const defaultProps = {
   invoices: [invoice],
   isLoading: false,
 };
-const renderInvoicesList = (props = defaultProps) => (render(
+
+const queryClient = new QueryClient();
+// eslint-disable-next-line react/prop-types
+const wrapper = ({ children }) => (
+  <MemoryRouter>
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  </MemoryRouter>
+);
+
+const renderInvoicesList = (props = defaultProps) => render(
   <InvoicesList {...props} />,
-  { wrapper: MemoryRouter },
-));
+  { wrapper },
+);
 
 describe('InvoicesList', () => {
   beforeEach(() => {

@@ -357,7 +357,7 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
                 aria-rowindex="1"
                 class="mclHeaderRow"
                 role="row"
-                style="display: flex;"
+                style="display: flex; width: 17px;"
               >
                 <div
                   aria-sort="none"
@@ -402,13 +402,13 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
                     style="min-width: 0px;"
                   >
                     <div
-                      class="mclCell  mclCellStyle"
+                      class="mclCell mclCellStyle"
                       role="gridcell"
                     >
                       9992
                     </div>
                     <div
-                      class="mclCell  mclCellStyle"
+                      class="mclCell mclCellStyle"
                       role="gridcell"
                     >
                       type
@@ -781,7 +781,7 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
                 aria-rowindex="1"
                 class="mclHeaderRow"
                 role="row"
-                style="display: flex;"
+                style="display: flex; width: 17px;"
               >
                 <div
                   aria-sort="none"
@@ -826,13 +826,13 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
                     style="min-width: 0px;"
                   >
                     <div
-                      class="mclCell  mclCellStyle"
+                      class="mclCell mclCellStyle"
                       role="gridcell"
                     >
                       9992
                     </div>
                     <div
-                      class="mclCell  mclCellStyle"
+                      class="mclCell mclCellStyle"
                       role="gridcell"
                     >
                       type
