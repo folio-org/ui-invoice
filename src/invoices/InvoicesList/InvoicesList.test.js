@@ -1,5 +1,5 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import user from '@testing-library/user-event';
+import { act, render } from '@testing-library/react';
 import { MemoryRouter, useHistory, useLocation } from 'react-router-dom';
 
 import {
@@ -15,6 +15,9 @@ jest.mock('react-router', () => ({
   useLocation: jest.fn(),
   useHistory: jest.fn(),
 }));
+jest.mock('react-virtualized-auto-sizer', () => jest.fn(
+  (props) => <div>{props.children({ width: 123 })}</div>,
+));
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
   // eslint-disable-next-line react/prop-types
@@ -72,6 +75,16 @@ describe('InvoicesList', () => {
       const { getByText } = renderInvoicesList();
 
       expect(getByText('InvoicesListFilters')).toBeDefined();
+    });
+
+    it('should display org result list', async () => {
+      const { getByText } = renderInvoicesList();
+
+      await act(async () => user.click(getByText(defaultProps.invoices[0].vendorInvoiceNo)));
+
+      expect(getByText('ui-invoice.invoice.list.vendorInvoiceNo')).toBeInTheDocument();
+      expect(getByText('ui-invoice.invoice.list.vendor')).toBeInTheDocument();
+      expect(getByText('ui-invoice.invoice.list.invoiceDate')).toBeInTheDocument();
     });
   });
 

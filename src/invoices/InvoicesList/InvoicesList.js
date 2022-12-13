@@ -1,9 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
+  matchPath,
   Route,
   useHistory,
   useLocation,
+  useRouteMatch,
 } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
@@ -12,6 +14,7 @@ import {
   MultiColumnList,
   checkScope,
   HasCommand,
+  TextLink,
 } from '@folio/stripes/components';
 import { PersistedPaneset } from '@folio/stripes/smart-components';
 import {
@@ -58,7 +61,9 @@ const columnMapping = {
   invoiceTotal: <FormattedMessage id="ui-invoice.invoice.list.total" />,
 };
 const sortableFields = ['vendorInvoiceNo', 'invoiceDate', 'status', 'invoiceTotal'];
-const resultsFormatter = {
+
+const getResultsFormatter = ({ search }) => ({
+  vendorInvoiceNo: invoice => <TextLink to={`/invoice/view/${invoice.id}${search}`}>{invoice.vendorInvoiceNo}</TextLink>,
   vendor: invoice => invoice?.vendor?.code,
   invoiceDate: invoice => formatDate(invoice.invoiceDate),
   status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
@@ -68,7 +73,7 @@ const resultsFormatter = {
       currency={invoice.currency}
     />
   ),
-};
+});
 
 const InvoicesList = ({
   isLoading,
@@ -82,6 +87,7 @@ const InvoicesList = ({
 }) => {
   const location = useLocation();
   const history = useHistory();
+  const match = useRouteMatch();
   const [
     filters,
     searchQuery,
@@ -113,15 +119,13 @@ const InvoicesList = ({
     />
   ), [invoicesCount, toggleExportModal]);
 
-  const selectInvoice = useCallback(
-    (e, { id }) => {
-      history.push({
-        pathname: `/invoice/view/${id}`,
-        search: location.search,
-      });
-    },
-    [history, location.search],
-  );
+  const urlParams = useMemo(() => (
+    matchPath(location.pathname, { path: `${match.path}/view/:id` })
+  ), [location.pathname, match.path]);
+
+  const isRowSelected = useCallback(({ item }) => {
+    return urlParams && (urlParams.params.id === item.id);
+  }, [urlParams]);
 
   const shortcuts = [
     {
@@ -142,6 +146,13 @@ const InvoicesList = ({
       toggleFilters={toggleFilters}
     />
   );
+
+  const renderInvoiceDetails = useCallback((props) => (
+    <InvoiceDetailsContainer
+      {...props}
+      refreshList={refreshList}
+    />
+  ), [refreshList]);
 
   return (
     <HasCommand
@@ -204,15 +215,15 @@ const InvoicesList = ({
                 contentData={invoices}
                 visibleColumns={visibleColumns}
                 columnMapping={columnMapping}
-                formatter={resultsFormatter}
+                formatter={getResultsFormatter(location)}
                 loading={isLoading}
                 onNeedMoreData={onNeedMoreData}
-                onRowClick={selectInvoice}
                 sortOrder={sortingField}
                 sortDirection={sortingDirection}
                 onHeaderClick={changeSorting}
                 pagingType="none"
                 isEmptyMessage={resultsStatusMessage}
+                isSelected={isRowSelected}
                 hasMargin
                 pageAmount={RESULT_COUNT_INCREMENT}
                 height={height - PrevNextPagination.HEIGHT}
@@ -248,12 +259,7 @@ const InvoicesList = ({
         <Route
           path="/invoice/view/:id"
           exact
-          render={props => (
-            <InvoiceDetailsContainer
-              {...props}
-              refreshList={refreshList}
-            />
-          )}
+          render={renderInvoiceDetails}
         />
       </PersistedPaneset>
     </HasCommand>
