@@ -30,7 +30,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
             aria-rowindex="1"
             class="mclHeaderRow"
             role="row"
-            style="display: flex;"
+            style="display: flex; width: 17px;"
           >
             <div
               aria-sort="ascending"
@@ -111,21 +111,21 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
                 tabindex="0"
               >
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 />
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   $25.50
                 </div>
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 />
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   ui-invoice.adjustments.relationToTotal.inAdditionTo
@@ -147,21 +147,21 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
                 tabindex="0"
               >
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 />
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   25.5%
                 </div>
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 />
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   ui-invoice.adjustments.relationToTotal.inAdditionTo

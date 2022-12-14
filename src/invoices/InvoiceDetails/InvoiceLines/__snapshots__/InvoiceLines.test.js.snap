@@ -29,7 +29,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
         aria-rowindex="1"
         class="mclHeaderRow"
         role="row"
-        style="display: flex;"
+        style="display: flex; width: 17px;"
       >
         <div
           aria-sort="ascending"
@@ -230,7 +230,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
             tabindex="0"
           >
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span
@@ -240,25 +240,25 @@ exports[`InvoiceLines should render correct structure 1`] = `
               </span>
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               InvoiceLineOrderLineNumber
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               EDI import invoice line
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               USHIST
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span>
@@ -266,7 +266,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
               </span>
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span>
@@ -274,7 +274,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
               </span>
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span>
@@ -282,25 +282,25 @@ exports[`InvoiceLines should render correct structure 1`] = `
               </span>
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               9992
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               20
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               $1,523.00
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span>
@@ -308,7 +308,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
               </span>
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span>
@@ -316,7 +316,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
               </span>
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span>
@@ -324,7 +324,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
               </span>
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               <span

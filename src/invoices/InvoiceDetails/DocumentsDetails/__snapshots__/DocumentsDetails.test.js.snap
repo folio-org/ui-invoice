@@ -54,7 +54,7 @@ exports[`DocumentsDetails should render invoice documents 1`] = `
             aria-rowindex="1"
             class="mclHeaderRow"
             role="row"
-            style="display: flex;"
+            style="display: flex; width: 17px;"
           >
             <div
               aria-sort="none"
@@ -90,7 +90,7 @@ exports[`DocumentsDetails should render invoice documents 1`] = `
                 style="min-width: 0px;"
               >
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   <button
@@ -115,7 +115,7 @@ exports[`DocumentsDetails should render invoice documents 1`] = `
                 style="min-width: 0px;"
               >
                 <div
-                  class="mclCell  mclCellStyle"
+                  class="mclCell mclCellStyle"
                   role="gridcell"
                 >
                   <button

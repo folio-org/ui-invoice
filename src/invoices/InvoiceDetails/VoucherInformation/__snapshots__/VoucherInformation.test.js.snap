@@ -30,7 +30,7 @@ exports[`VoucherInformation should render correct structure for invoice voucher 
         aria-rowindex="1"
         class="mclHeaderRow"
         role="row"
-        style="display: flex;"
+        style="display: flex; width: 17px;"
       >
         <div
           aria-sort="none"
@@ -75,13 +75,13 @@ exports[`VoucherInformation should render correct structure for invoice voucher 
             style="min-width: 0px;"
           >
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               54321098
             </div>
             <div
-              class="mclCell  mclCellStyle"
+              class="mclCell mclCellStyle"
               role="gridcell"
             >
               $23.45
