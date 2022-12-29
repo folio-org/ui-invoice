@@ -59,6 +59,7 @@ describe('Invoice form utils', () => {
 
       expect(fetch).toHaveBeenCalledWith('folio-okapi/invoice/invoices/2e5067cd-2dc8-4d99-900d-b4518bb6407f/documents', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
           'Content-Type': 'application/octet-stream',
@@ -83,6 +84,7 @@ describe('Invoice form utils', () => {
 
       expect(fetch).toHaveBeenCalledWith('folio-okapi/invoice/invoices/2e5067cd-2dc8-4d99-900d-b4518bb6407f/documents', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
           'Content-Type': 'application/octet-stream',
@@ -102,6 +104,7 @@ describe('Invoice form utils', () => {
 
       expect(fetch).toHaveBeenCalledWith('folio-okapi/invoice/invoices/2e5067cd-2dc8-4d99-900d-b4518bb6407f/documents/documentId', {
         method: 'DELETE',
+        credentials: 'include',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
           'Content-Type': 'application/json',
