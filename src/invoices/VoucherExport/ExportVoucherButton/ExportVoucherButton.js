@@ -31,12 +31,14 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
         const httpHeaders = {
           'Accept': EXPORT_FORMATS_HEADER_MAP[format],
           'X-Okapi-Tenant': stripes.okapi.tenant,
-          'X-Okapi-Token': stripes.okapi.token,
         };
 
         const batchVouchers = await fetch(
           `${stripes.okapi.url}/${BATCH_VOUCHERS_API}/${batchVoucherId}`,
-          { headers: httpHeaders },
+          {
+            headers: httpHeaders,
+            credentials: 'include',
+          },
         );
 
         if (batchVouchers.status >= 400) {

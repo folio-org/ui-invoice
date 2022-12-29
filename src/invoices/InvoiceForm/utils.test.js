@@ -61,7 +61,6 @@ describe('Invoice form utils', () => {
         method: 'POST',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
-          'X-Okapi-Token': okapi.token,
           'Content-Type': 'application/octet-stream',
         },
         body: '{"documentMetadata":{"invoiceId":"2e5067cd-2dc8-4d99-900d-b4518bb6407f","name":"Invoice document"},"contents":{"data":"invoice content"}}',
@@ -86,7 +85,6 @@ describe('Invoice form utils', () => {
         method: 'POST',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
-          'X-Okapi-Token': okapi.token,
           'Content-Type': 'application/octet-stream',
         },
         body: '{"documentMetadata":{"invoiceId":"2e5067cd-2dc8-4d99-900d-b4518bb6407f","name":"Invoice link","url":"https://folio.com"}}',
@@ -106,7 +104,6 @@ describe('Invoice form utils', () => {
         method: 'DELETE',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
-          'X-Okapi-Token': okapi.token,
           'Content-Type': 'application/json',
         },
       });

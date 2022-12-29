@@ -34,9 +34,9 @@ export const saveDocument = (documentBody, okapi) => {
     method: 'POST',
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
-      'X-Okapi-Token': okapi.token,
       'Content-Type': CONTENT_TYPES.octet,
     },
+    credentials: 'include',
     body: JSON.stringify(documentBody),
   });
 };
@@ -46,9 +46,9 @@ export const deleteDocument = ({ id, invoiceId }, okapi) => {
     method: 'DELETE',
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
-      'X-Okapi-Token': okapi.token,
       'Content-Type': CONTENT_TYPES.json,
     },
+    credentials: 'include',
   });
 };
 

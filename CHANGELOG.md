@@ -4,6 +4,7 @@
 
 * Provide local translations to `ControlledVocab`. Refs UINV-438.
 * Results List | Hyperlink one column to improve accessibility. Refs UINV-441.
+* Leverage cookie-based authentication in all API requests. Refs UINV-453.
 
 ## [3.3.1](https://github.com/folio-org/ui-invoice/tree/v3.3.1) (2022-11-30)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.3.0...v3.3.1)
