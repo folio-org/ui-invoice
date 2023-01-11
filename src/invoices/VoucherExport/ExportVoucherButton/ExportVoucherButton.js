@@ -59,7 +59,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
         });
       }
     },
-    [batchVoucherId, format, showCallout, stripes.okapi.tenant, stripes.okapi.token, stripes.okapi.url, fileName],
+    [batchVoucherId, format, showCallout, stripes.okapi.tenant, stripes.okapi.url, fileName],
   );
 
   if (!batchVoucherId) {
