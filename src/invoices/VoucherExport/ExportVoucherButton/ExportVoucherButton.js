@@ -11,6 +11,7 @@ import { IconButton } from '@folio/stripes/components';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import { BATCH_VOUCHERS_API } from '../../../common/constants';
+import { getLegacyTokenHeader } from '../../../common/utils';
 import {
   EXPORT_FORMAT_FILE_EXTENSION,
   EXPORT_FORMATS_HEADER_MAP,
@@ -31,6 +32,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
         const httpHeaders = {
           'Accept': EXPORT_FORMATS_HEADER_MAP[format],
           'X-Okapi-Tenant': stripes.okapi.tenant,
+          ...getLegacyTokenHeader(stripes.okapi),
         };
 
         const batchVouchers = await fetch(
@@ -59,7 +61,7 @@ const ExportVoucherButton = ({ batchVoucherId, format, stripes, fileName }) => {
         });
       }
     },
-    [batchVoucherId, format, showCallout, stripes.okapi.tenant, stripes.okapi.url, fileName],
+    [format, showCallout, stripes.okapi, batchVoucherId, fileName],
   );
 
   if (!batchVoucherId) {
