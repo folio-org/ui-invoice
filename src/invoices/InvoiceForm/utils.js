@@ -8,6 +8,7 @@ import {
   CONTENT_TYPES,
   INVOICE_DOCUMENTS_API,
 } from '../../common/constants';
+import { getLegacyTokenHeader } from '../../common/utils';
 import { getAdjustmentFromPreset } from '../utils';
 
 export const hydrateInvoiceDocument = (invoiceDocument, invoice) => {
@@ -34,9 +35,10 @@ export const saveDocument = (documentBody, okapi) => {
     method: 'POST',
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
-      'X-Okapi-Token': okapi.token,
       'Content-Type': CONTENT_TYPES.octet,
+      ...getLegacyTokenHeader(okapi),
     },
+    credentials: 'include',
     body: JSON.stringify(documentBody),
   });
 };
@@ -46,9 +48,10 @@ export const deleteDocument = ({ id, invoiceId }, okapi) => {
     method: 'DELETE',
     headers: {
       'X-Okapi-Tenant': okapi.tenant,
-      'X-Okapi-Token': okapi.token,
       'Content-Type': CONTENT_TYPES.json,
+      ...getLegacyTokenHeader(okapi),
     },
+    credentials: 'include',
   });
 };
 

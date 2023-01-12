@@ -1,4 +1,5 @@
 import { invoice } from '../../../test/jest/fixtures';
+import { getLegacyTokenHeader } from '../../common/utils';
 import {
   saveInvoice,
   validateAccountingCode,
@@ -59,10 +60,11 @@ describe('Invoice form utils', () => {
 
       expect(fetch).toHaveBeenCalledWith('folio-okapi/invoice/invoices/2e5067cd-2dc8-4d99-900d-b4518bb6407f/documents', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
-          'X-Okapi-Token': okapi.token,
           'Content-Type': 'application/octet-stream',
+          ...getLegacyTokenHeader(okapi),
         },
         body: '{"documentMetadata":{"invoiceId":"2e5067cd-2dc8-4d99-900d-b4518bb6407f","name":"Invoice document"},"contents":{"data":"invoice content"}}',
       });
@@ -84,10 +86,11 @@ describe('Invoice form utils', () => {
 
       expect(fetch).toHaveBeenCalledWith('folio-okapi/invoice/invoices/2e5067cd-2dc8-4d99-900d-b4518bb6407f/documents', {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
-          'X-Okapi-Token': okapi.token,
           'Content-Type': 'application/octet-stream',
+          ...getLegacyTokenHeader(okapi),
         },
         body: '{"documentMetadata":{"invoiceId":"2e5067cd-2dc8-4d99-900d-b4518bb6407f","name":"Invoice link","url":"https://folio.com"}}',
       });
@@ -104,10 +107,11 @@ describe('Invoice form utils', () => {
 
       expect(fetch).toHaveBeenCalledWith('folio-okapi/invoice/invoices/2e5067cd-2dc8-4d99-900d-b4518bb6407f/documents/documentId', {
         method: 'DELETE',
+        credentials: 'include',
         headers: {
           'X-Okapi-Tenant': okapi.tenant,
-          'X-Okapi-Token': okapi.token,
           'Content-Type': 'application/json',
+          ...getLegacyTokenHeader(okapi),
         },
       });
     });
