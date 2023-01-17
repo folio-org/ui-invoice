@@ -240,7 +240,7 @@
     "settings.batchGroupConfiguration.scheduleExport.weekly": "Wöchentlich",
     "settings.batchGroupConfiguration.scheduleExport": "Export planen",
     "settings.batchGroupConfiguration.setTime": "Zeit einstellen",
-    "settings.batchGroupConfiguration.testConnection": "Testverbindung",
+    "settings.batchGroupConfiguration.testConnection": "Verbindung testen",
     "settings.batchGroupConfiguration.uploadLocation": "Upload-Speicherort",
     "settings.batchGroupConfiguration.username": "Kennung",
     "settings.batchGroupConfiguration.weekdays.Friday": "F",
