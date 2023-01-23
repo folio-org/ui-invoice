@@ -171,7 +171,7 @@
     "settings.voucherNumber.startNumber.error": "Startovní číslo se nepodařilo uložit.",
     "invoice.links.title": "Odkazy",
     "invoice.documents.name": "Název dokumentu",
-    "addTagFor": "Přidat značku pro: {filterValue}",
+    "addTagFor": "Přidat tag pro: {filterValue}",
     "invoice.actions.approve": "Schválit",
     "invoice.actions.approve.success": "Faktura byla úspěšně schválena",
     "invoice.actions.approve.confirmation.heading": "Schválit fakturu",
