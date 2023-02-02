@@ -142,7 +142,7 @@ exports[`InvoiceLineDetails should render correct structure for invoice line 1`]
           >
             <button
               class="button link bottomMargin0"
-              data-tast-expand-button="true"
+              data-test-expand-button="true"
               type="button"
             >
               <span

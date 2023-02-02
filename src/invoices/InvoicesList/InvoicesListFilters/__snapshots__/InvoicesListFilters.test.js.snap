@@ -845,7 +845,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           role="region"
         >
           <div
-            class="tether-target tether-enabled tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center"
             style="position: relative; width: 100%;"
           >
             <div
@@ -891,6 +890,60 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
             <div
               role="alert"
             />
+          </div>
+          <div
+            class="overlay"
+            hidden=""
+          >
+            <div
+              class="selectionListRoot sr-only"
+              hidden=""
+              id="sl-container-acqUnitIds-selection"
+            >
+              <div
+                class="selectionFilterContainer"
+              >
+                <input
+                  aria-activedescendant="option-acqUnitIds-selection-0-/respectAccents []"
+                  aria-controls="sl-container-acqUnitIds-selection"
+                  aria-expanded="true"
+                  aria-label="stripes-components.selection.filterOptionsLabel"
+                  aria-owns="sl-acqUnitIds-selection"
+                  class="selectionFilter"
+                  placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <ul
+                aria-label="stripes-components.selection.filterOptionsLabel"
+                class="selectionList"
+                id="sl-acqUnitIds-selection"
+                role="listbox"
+                style="max-height: 174px;"
+              >
+                <li
+                  aria-selected="false"
+                  class="option optionOutside cursor"
+                  id="option-acqUnitIds-selection-0-/respectAccents []"
+                  role="option"
+                  tabindex="-1"
+                  unselectable="on"
+                >
+                  <div
+                    class="optionSegment"
+                    data-test-selection-option-segment="true"
+                  >
+                    stripes-acq-components.filter.acqUnit.noAcqUnit
+                  </div>
+                </li>
+              </ul>
+              <div
+                class="selectListSection"
+                role="alert"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -3529,7 +3582,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           role="region"
         >
           <div
-            class="tether-target tether-enabled tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center"
             style="position: relative; width: 100%;"
           >
             <div
@@ -3576,6 +3628,60 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
             <div
               role="alert"
             />
+          </div>
+          <div
+            class="overlay"
+            hidden=""
+          >
+            <div
+              class="selectionListRoot sr-only"
+              hidden=""
+              id="sl-container-acqUnitIds-selection"
+            >
+              <div
+                class="selectionFilterContainer"
+              >
+                <input
+                  aria-activedescendant="option-acqUnitIds-selection-0-/respectAccents []"
+                  aria-controls="sl-container-acqUnitIds-selection"
+                  aria-expanded="true"
+                  aria-label="stripes-components.selection.filterOptionsLabel"
+                  aria-owns="sl-acqUnitIds-selection"
+                  class="selectionFilter"
+                  placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <ul
+                aria-label="stripes-components.selection.filterOptionsLabel"
+                class="selectionList"
+                id="sl-acqUnitIds-selection"
+                role="listbox"
+                style="max-height: 174px;"
+              >
+                <li
+                  aria-selected="false"
+                  class="option optionOutside cursor"
+                  id="option-acqUnitIds-selection-0-/respectAccents []"
+                  role="option"
+                  tabindex="-1"
+                  unselectable="on"
+                >
+                  <div
+                    class="optionSegment"
+                    data-test-selection-option-segment="true"
+                  >
+                    stripes-acq-components.filter.acqUnit.noAcqUnit
+                  </div>
+                </li>
+              </ul>
+              <div
+                class="selectListSection"
+                role="alert"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -145,7 +145,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
           >
             <button
               class="button link bottomMargin0"
-              data-tast-expand-button="true"
+              data-test-expand-button="true"
               type="button"
             >
               <span
@@ -614,7 +614,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
           >
             <button
               class="button link bottomMargin0"
-              data-tast-expand-button="true"
+              data-test-expand-button="true"
               type="button"
             >
               <span
@@ -1083,7 +1083,7 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
           >
             <button
               class="button link bottomMargin0"
-              data-tast-expand-button="true"
+              data-test-expand-button="true"
               type="button"
             >
               <span
@@ -1551,7 +1551,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
           >
             <button
               class="button link bottomMargin0"
-              data-tast-expand-button="true"
+              data-test-expand-button="true"
               type="button"
             >
               <span
@@ -2020,7 +2020,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
           >
             <button
               class="button link bottomMargin0"
-              data-tast-expand-button="true"
+              data-test-expand-button="true"
               type="button"
             >
               <span
@@ -2488,7 +2488,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
           >
             <button
               class="button link bottomMargin0"
-              data-tast-expand-button="true"
+              data-test-expand-button="true"
               type="button"
             >
               <span
