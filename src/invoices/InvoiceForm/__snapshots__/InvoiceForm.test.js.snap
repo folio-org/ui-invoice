@@ -85,7 +85,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                   >
                     <button
                       class="button link bottomMargin0"
-                      data-tast-expand-button="true"
+                      data-test-expand-button="true"
                       type="button"
                     >
                       <span
@@ -247,7 +247,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-status="true"
                           >
                             <div
-                              class="tether-target tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center tether-enabled"
                               style="position: relative; width: 100%;"
                             >
                               <div
@@ -312,6 +311,75 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 role="alert"
                               />
+                            </div>
+                            <div
+                              class="overlay"
+                              hidden=""
+                            >
+                              <div
+                                class="selectionListRoot sr-only"
+                                hidden=""
+                                id="sl-container-invoice-status"
+                              >
+                                <div
+                                  class="selectionFilterContainer"
+                                >
+                                  <input
+                                    aria-activedescendant="option-invoice-status-0-Open"
+                                    aria-controls="sl-container-invoice-status"
+                                    aria-expanded="true"
+                                    aria-label="stripes-components.selection.filterOptionsLabel"
+                                    aria-owns="sl-invoice-status"
+                                    class="selectionFilter"
+                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                    role="combobox"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                                <ul
+                                  aria-label="stripes-components.selection.filterOptionsLabel"
+                                  class="selectionList"
+                                  id="sl-invoice-status"
+                                  role="listbox"
+                                  style="max-height: 174px;"
+                                >
+                                  <li
+                                    aria-selected="false"
+                                    class="option optionOutside cursor"
+                                    id="option-invoice-status-0-Open"
+                                    role="option"
+                                    tabindex="-1"
+                                    unselectable="on"
+                                  >
+                                    <div
+                                      class="optionSegment"
+                                      data-test-selection-option-segment="true"
+                                    >
+                                      ui-invoice.invoice.status.open
+                                    </div>
+                                  </li>
+                                  <li
+                                    aria-selected="false"
+                                    class="option optionOutside"
+                                    id="option-invoice-status-1-Reviewed"
+                                    role="option"
+                                    tabindex="-1"
+                                    unselectable="on"
+                                  >
+                                    <div
+                                      class="optionSegment"
+                                      data-test-selection-option-segment="true"
+                                    >
+                                      ui-invoice.invoice.status.reviewed
+                                    </div>
+                                  </li>
+                                </ul>
+                                <div
+                                  class="selectListSection"
+                                  role="alert"
+                                />
+                              </div>
                             </div>
                           </div>
                           <div
@@ -489,7 +557,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-bill-to-name="true"
                           >
                             <div
-                              class="tether-target tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center tether-enabled"
                               style="position: relative; width: 100%;"
                             >
                               <div
@@ -543,6 +610,58 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 role="alert"
                               />
                             </div>
+                            <div
+                              class="overlay"
+                              hidden=""
+                            >
+                              <div
+                                class="selectionListRoot sr-only"
+                                hidden=""
+                                id="sl-container-stripes-selection-5"
+                              >
+                                <div
+                                  class="selectionFilterContainer"
+                                >
+                                  <input
+                                    aria-activedescendant="option-stripes-selection-5-0-null"
+                                    aria-controls="sl-container-stripes-selection-5"
+                                    aria-expanded="true"
+                                    aria-label="stripes-components.selection.filterOptionsLabel"
+                                    aria-owns="sl-stripes-selection-5"
+                                    class="selectionFilter"
+                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                    role="combobox"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                                <ul
+                                  aria-label="stripes-components.selection.filterOptionsLabel"
+                                  class="selectionList"
+                                  id="sl-stripes-selection-5"
+                                  role="listbox"
+                                  style="max-height: 174px;"
+                                >
+                                  <li
+                                    aria-selected="false"
+                                    class="option optionOutside cursor"
+                                    id="option-stripes-selection-5-0-null"
+                                    role="option"
+                                    tabindex="-1"
+                                    unselectable="on"
+                                  >
+                                    <div
+                                      class="optionSegment"
+                                      data-test-selection-option-segment="true"
+                                    />
+                                  </li>
+                                </ul>
+                                <div
+                                  class="selectListSection"
+                                  role="alert"
+                                />
+                              </div>
+                            </div>
                           </div>
                           <div
                             class="col-xs-3 addressWrapper"
@@ -570,7 +689,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-batch-group="true"
                           >
                             <div
-                              class="tether-target tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center tether-enabled"
                               style="position: relative; width: 100%;"
                             >
                               <div
@@ -635,6 +753,58 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 role="alert"
                               />
+                            </div>
+                            <div
+                              class="overlay"
+                              hidden=""
+                            >
+                              <div
+                                class="selectionListRoot sr-only"
+                                hidden=""
+                                id="sl-container-invoice-batch-groups"
+                              >
+                                <div
+                                  class="selectionFilterContainer"
+                                >
+                                  <input
+                                    aria-activedescendant=""
+                                    aria-controls="sl-container-invoice-batch-groups"
+                                    aria-expanded="true"
+                                    aria-label="stripes-components.selection.filterOptionsLabel"
+                                    aria-owns="sl-invoice-batch-groups"
+                                    class="selectionFilter"
+                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                    role="combobox"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                                <ul
+                                  aria-label="stripes-components.selection.filterOptionsLabel"
+                                  class="selectionList"
+                                  id="sl-invoice-batch-groups"
+                                  role="listbox"
+                                  style="max-height: 174px;"
+                                >
+                                  <li
+                                    aria-selected="false"
+                                    class="option"
+                                    role="option"
+                                  >
+                                    -stripes-components.selection.emptyList-
+                                  </li>
+                                </ul>
+                                <div
+                                  class="selectListSection"
+                                  role="alert"
+                                >
+                                  <div
+                                    class="selectionAlertMessage"
+                                  >
+                                    stripes-components.selection.noMatches
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1020,7 +1190,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-accounting-code="true"
                           >
                             <div
-                              class="tether-target tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center tether-enabled"
                               style="position: relative; width: 100%;"
                             >
                               <div
@@ -1078,6 +1247,58 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 role="alert"
                               />
+                            </div>
+                            <div
+                              class="overlay"
+                              hidden=""
+                            >
+                              <div
+                                class="selectionListRoot sr-only"
+                                hidden=""
+                                id="sl-container-stripes-selection-8"
+                              >
+                                <div
+                                  class="selectionFilterContainer"
+                                >
+                                  <input
+                                    aria-activedescendant="option-stripes-selection-8-0-null"
+                                    aria-controls="sl-container-stripes-selection-8"
+                                    aria-expanded="true"
+                                    aria-label="stripes-components.selection.filterOptionsLabel"
+                                    aria-owns="sl-stripes-selection-8"
+                                    class="selectionFilter"
+                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                    role="combobox"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                                <ul
+                                  aria-label="stripes-components.selection.filterOptionsLabel"
+                                  class="selectionList"
+                                  id="sl-stripes-selection-8"
+                                  role="listbox"
+                                  style="max-height: 174px;"
+                                >
+                                  <li
+                                    aria-selected="false"
+                                    class="option optionOutside cursor"
+                                    id="option-stripes-selection-8-0-null"
+                                    role="option"
+                                    tabindex="-1"
+                                    unselectable="on"
+                                  >
+                                    <div
+                                      class="optionSegment"
+                                      data-test-selection-option-segment="true"
+                                    />
+                                  </li>
+                                </ul>
+                                <div
+                                  class="selectListSection"
+                                  role="alert"
+                                />
+                              </div>
                             </div>
                           </div>
                           <div
@@ -1430,7 +1651,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-currency="true"
                           >
                             <div
-                              class="tether-target tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center tether-enabled"
                               style="position: relative; width: 100%;"
                             >
                               <div
@@ -1495,6 +1715,75 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 role="alert"
                               />
+                            </div>
+                            <div
+                              class="overlay"
+                              hidden=""
+                            >
+                              <div
+                                class="selectionListRoot sr-only"
+                                hidden=""
+                                id="sl-container-currency"
+                              >
+                                <div
+                                  class="selectionFilterContainer"
+                                >
+                                  <input
+                                    aria-activedescendant="option-currency-0-BYN"
+                                    aria-controls="sl-container-currency"
+                                    aria-expanded="true"
+                                    aria-label="stripes-components.selection.filterOptionsLabel"
+                                    aria-owns="sl-currency"
+                                    class="selectionFilter"
+                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                    role="combobox"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                                <ul
+                                  aria-label="stripes-components.selection.filterOptionsLabel"
+                                  class="selectionList"
+                                  id="sl-currency"
+                                  role="listbox"
+                                  style="max-height: 174px;"
+                                >
+                                  <li
+                                    aria-selected="false"
+                                    class="option optionOutside cursor"
+                                    id="option-currency-0-BYN"
+                                    role="option"
+                                    tabindex="-1"
+                                    unselectable="on"
+                                  >
+                                    <div
+                                      class="optionSegment"
+                                      data-test-selection-option-segment="true"
+                                    >
+                                      BYN (BYN)
+                                    </div>
+                                  </li>
+                                  <li
+                                    aria-selected="false"
+                                    class="option optionOutside"
+                                    id="option-currency-1-USD"
+                                    role="option"
+                                    tabindex="-1"
+                                    unselectable="on"
+                                  >
+                                    <div
+                                      class="optionSegment"
+                                      data-test-selection-option-segment="true"
+                                    >
+                                      USD (USD)
+                                    </div>
+                                  </li>
+                                </ul>
+                                <div
+                                  class="selectListSection"
+                                  role="alert"
+                                />
+                              </div>
                             </div>
                           </div>
                           <div

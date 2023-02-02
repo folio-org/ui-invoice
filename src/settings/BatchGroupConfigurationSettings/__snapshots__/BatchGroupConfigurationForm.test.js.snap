@@ -497,15 +497,13 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
               aria-live="assertive"
               aria-relevant="additions"
               class="sr-only"
-            >
-              <div />
-            </div>
+            />
             <div
               class="textField"
             >
               <label
                 class="label"
-                for="timepick-10"
+                for="text-input-10"
               >
                 ui-invoice.settings.batchGroupConfiguration.setTime
                 <span
@@ -525,11 +523,10 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                   autocapitalize="off"
                   autocomplete="off"
                   autocorrect="off"
-                  data-test-timepicker-input="true"
                   error=""
-                  id="timepick-10"
+                  id="text-input-10"
                   name="startTime"
-                  placeholder=" hh:mm A"
+                  placeholder="H:MM A"
                   required=""
                   spellcheck="false"
                   type="text"
@@ -546,8 +543,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                       aria-label="stripes-components.showOrHideTimepicker"
                       class="iconButton medium"
                       icon="clock"
-                      id="timepicker-toggle-button-timepick-10"
-                      tabindex="-1"
+                      id="timepicker-toggle-button--timepicker1"
                       type="button"
                     >
                       <span
@@ -565,6 +561,11 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 role="alert"
               />
             </div>
+            <input
+              hidden=""
+              type="text"
+              value=""
+            />
           </div>
         </div>
       </div>

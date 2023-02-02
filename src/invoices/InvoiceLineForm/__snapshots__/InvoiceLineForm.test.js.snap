@@ -85,7 +85,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                   >
                     <button
                       class="button link bottomMargin0"
-                      data-tast-expand-button="true"
+                      data-test-expand-button="true"
                       type="button"
                     >
                       <span
@@ -708,7 +708,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                             data-test-col-invoice-line-accounting-code="true"
                           >
                             <div
-                              class="tether-target tether-enabled tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center"
                               style="position: relative; width: 100%;"
                             >
                               <div
@@ -761,6 +760,58 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                               <div
                                 role="alert"
                               />
+                            </div>
+                            <div
+                              class="overlay"
+                              hidden=""
+                            >
+                              <div
+                                class="selectionListRoot sr-only"
+                                hidden=""
+                                id="sl-container-invoice-line-account-number"
+                              >
+                                <div
+                                  class="selectionFilterContainer"
+                                >
+                                  <input
+                                    aria-activedescendant="option-invoice-line-account-number-0-null"
+                                    aria-controls="sl-container-invoice-line-account-number"
+                                    aria-expanded="true"
+                                    aria-label="stripes-components.selection.filterOptionsLabel"
+                                    aria-owns="sl-invoice-line-account-number"
+                                    class="selectionFilter"
+                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                    role="combobox"
+                                    type="text"
+                                    value=""
+                                  />
+                                </div>
+                                <ul
+                                  aria-label="stripes-components.selection.filterOptionsLabel"
+                                  class="selectionList"
+                                  id="sl-invoice-line-account-number"
+                                  role="listbox"
+                                  style="max-height: 174px;"
+                                >
+                                  <li
+                                    aria-selected="false"
+                                    class="option optionOutside cursor"
+                                    id="option-invoice-line-account-number-0-null"
+                                    role="option"
+                                    tabindex="-1"
+                                    unselectable="on"
+                                  >
+                                    <div
+                                      class="optionSegment"
+                                      data-test-selection-option-segment="true"
+                                    />
+                                  </li>
+                                </ul>
+                                <div
+                                  class="selectListSection"
+                                  role="alert"
+                                />
+                              </div>
                             </div>
                           </div>
                           <div
@@ -992,7 +1043,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                     class="col-xs"
                                   >
                                     <div
-                                      class="tether-target tether-abutted tether-abutted-left tether-abutted-right tether-abutted-top tether-abutted-bottom tether-element-attached-top tether-element-attached-center tether-target-attached-bottom tether-target-attached-center tether-enabled"
                                       style="position: relative; width: 100%;"
                                     >
                                       <div
@@ -1064,6 +1114,60 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                       <div
                                         role="alert"
                                       />
+                                    </div>
+                                    <div
+                                      class="overlay"
+                                      hidden=""
+                                    >
+                                      <div
+                                        class="selectionListRoot sr-only"
+                                        hidden=""
+                                        id="sl-container-fundDistributions[0].fundId"
+                                      >
+                                        <div
+                                          class="selectionFilterContainer"
+                                        >
+                                          <input
+                                            aria-activedescendant="option-fundDistributions[0].fundId-0-65032151-39a5-4cef-8810-5350eb316300"
+                                            aria-controls="sl-container-fundDistributions[0].fundId"
+                                            aria-expanded="true"
+                                            aria-label="stripes-components.selection.filterOptionsLabel"
+                                            aria-owns="sl-fundDistributions[0].fundId"
+                                            class="selectionFilter"
+                                            placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                            role="combobox"
+                                            type="text"
+                                            value=""
+                                          />
+                                        </div>
+                                        <ul
+                                          aria-label="stripes-components.selection.filterOptionsLabel"
+                                          class="selectionList"
+                                          id="sl-fundDistributions[0].fundId"
+                                          role="listbox"
+                                          style="max-height: 174px;"
+                                        >
+                                          <li
+                                            aria-selected="true"
+                                            class="option optionOutside cursor selected"
+                                            id="option-fundDistributions[0].fundId-0-65032151-39a5-4cef-8810-5350eb316300"
+                                            role="option"
+                                            tabindex="-1"
+                                            unselectable="on"
+                                          >
+                                            <div
+                                              class="optionSegment"
+                                              data-test-selection-option-segment="true"
+                                            >
+                                              stripes-acq-components.fundDistribution.unavailableFund
+                                            </div>
+                                          </li>
+                                        </ul>
+                                        <div
+                                          class="selectListSection"
+                                          role="alert"
+                                        />
+                                      </div>
                                     </div>
                                   </div>
                                   <div
