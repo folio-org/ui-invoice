@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Unpin `@rehooks/local-storage` now that it's no longer broken. Refs UINV-456.
+
 ## [4.0.0](https://github.com/folio-org/ui-invoice/tree/v4.0.0) (2023-02-22)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.3.1...v4.0.0)
 
@@ -9,7 +11,6 @@
 * Results List | Hyperlink one column to improve accessibility. Refs UINV-441.
 * Leverage cookie-based authentication in all API requests. Refs UINV-453.
 * *BREAKING*: Update `@folio/stripes` to `8.0.0`. Refs UINV-455.
-* Unpin `@rehooks/local-storage` now that it's no longer broken. Refs UINV-456.
 
 ## [3.3.1](https://github.com/folio-org/ui-invoice/tree/v3.3.1) (2022-11-30)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.3.0...v3.3.1)
