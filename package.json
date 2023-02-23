@@ -92,9 +92,6 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   },
-  "resolutions": {
-    "@rehooks/local-storage": "2.4.0"
-  },
   "optionalDependencies": {
     "@folio/plugin-find-organization": "^4.0.0",
     "@folio/plugin-find-po-line": "^4.0.0"
