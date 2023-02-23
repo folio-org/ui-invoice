@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [4.0.0](https://github.com/folio-org/ui-invoice/tree/v4.0.0) (2023-02-22)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v3.3.1...v4.0.0)
+
 * Provide local translations to `ControlledVocab`. Refs UINV-438.
 * Results List | Hyperlink one column to improve accessibility. Refs UINV-441.
 * Leverage cookie-based authentication in all API requests. Refs UINV-453.
