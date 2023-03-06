@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { get } from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -27,13 +27,13 @@ import {
 } from '../../common/constants';
 import {
   batchGroupsResource,
-  CONFIG_ADJUSTMENTS,
   configAddress,
   invoiceDocumentsResource,
   invoiceResource,
   invoicesResource,
 } from '../../common/resources';
 import {
+  useConfigsAdjustments,
   useInvoice,
   useInvoiceLineMutation,
   useOrderLines,
@@ -67,6 +67,11 @@ export function InvoiceFormContainerComponent({
   const [duplicateInvoices, setDuplicateInvoices] = useState();
   const orderIds = location?.state?.orderIds;
   const isCreateFromOrder = Boolean(orderIds?.length);
+
+  const {
+    adjustments: configAdjustments,
+    isLoading: isConfigAdjustmentsLoading,
+  } = useConfigsAdjustments();
   const { invoice, isInvoiceLoading } = useInvoice(id);
   const { orders, isLoading: isOrdersLoading } = useOrders(orderIds?.length ? [orderIds[0]] : undefined);
   const { orderLines, isLoading: isOrderLinesLoading } = useOrderLines(orderIds);
@@ -175,31 +180,52 @@ export function InvoiceFormContainerComponent({
     invoiceVendor,
   ]);
 
-  const allAdjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
-  const alwaysShowAdjustments = getAlwaysShownAdjustmentsList(allAdjustments);
+  const allAdjustments = useMemo(() => getSettingsAdjustmentsList(configAdjustments), [configAdjustments]);
+  const alwaysShowAdjustments = useMemo(() => getAlwaysShownAdjustmentsList(allAdjustments), [allAdjustments]);
   const batchGroupId = isCreate && (batchGroups?.length === 1) ? batchGroups[0]?.id : undefined;
   const exportToAccounting = alwaysShowAdjustments.some(adj => adj.exportToAccounting);
-  const initialInvoice = !isCreate
-    ? invoice
-    : {
-      chkSubscriptionOverlap: true,
-      currency: stripes.currency,
-      source: sourceValues.user,
-      adjustments: alwaysShowAdjustments,
-      batchGroupId,
-      status: INVOICE_STATUS.open,
-      exportToAccounting,
-      vendorId: orders?.[0]?.vendor,
-    };
 
-  const initialValues = {
+  const initialInvoice = useMemo(() => {
+    return !isCreate
+      ? invoice
+      : {
+        chkSubscriptionOverlap: true,
+        currency: stripes.currency,
+        source: sourceValues.user,
+        adjustments: alwaysShowAdjustments,
+        batchGroupId,
+        status: INVOICE_STATUS.open,
+        exportToAccounting,
+        vendorId: orders?.[0]?.vendor,
+      };
+  }, [
+    alwaysShowAdjustments,
+    batchGroupId,
+    exportToAccounting,
+    invoice,
+    isCreate,
+    orders,
+    stripes.currency,
+  ]);
+
+  const documents = useMemo(() => invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url), [invoiceDocuments]);
+  const links = useMemo(() => invoiceDocuments.filter(invoiceDocument => invoiceDocument.url), [invoiceDocuments]);
+
+  const initialValues = useMemo(() => ({
     ...initialInvoice,
-    documents: invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url),
-    links: invoiceDocuments.filter(invoiceDocument => invoiceDocument.url),
-  };
+    documents,
+    links,
+  }), [documents, initialInvoice, links]);
+
   const saveButtonLabelId = `ui-invoice.${(isCreateFromOrder && orderLines?.length > 1) ? 'saveAndContinue' : 'saveAndClose'}`;
 
-  const hasLoaded = batchGroups && !(isInvoiceLoading || isOrdersLoading || isOrderLinesLoading || isVendorLoading);
+  const hasLoaded = batchGroups && !(
+    isInvoiceLoading
+    || isOrdersLoading
+    || isOrderLinesLoading
+    || isVendorLoading
+    || isConfigAdjustmentsLoading
+  );
 
   if (!hasLoaded) {
     return (
@@ -256,7 +282,6 @@ InvoiceFormContainerComponent.manifest = Object.freeze({
     accumulate: true,
     fetch: false,
   },
-  configAdjustments: CONFIG_ADJUSTMENTS,
   configAddress,
   batchGroups: batchGroupsResource,
 });

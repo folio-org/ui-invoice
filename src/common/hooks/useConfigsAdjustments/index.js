@@ -1,0 +1,1 @@
+export { useConfigsAdjustments } from './useConfigsAdjustments';

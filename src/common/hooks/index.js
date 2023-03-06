@@ -1,5 +1,6 @@
-export * from './useBatchGroup';
 export * from './useAddressCategories';
+export * from './useBatchGroup';
+export * from './useConfigsAdjustments';
 export * from './useFundDistributionValidation';
 export * from './useInvoice';
 export * from './useInvoiceMutation';
