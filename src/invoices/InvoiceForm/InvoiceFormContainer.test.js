@@ -1,14 +1,9 @@
 import React from 'react';
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { render, screen, act, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import user from '@testing-library/user-event';
 
-import { useOkapiKy } from '@folio/stripes/core';
-import {
-  CONFIG_API,
-  useOrganization,
-} from '@folio/stripes-acq-components';
+import { useOrganization } from '@folio/stripes-acq-components';
 
 import {
   match,
@@ -37,10 +32,11 @@ jest.mock('./utils', () => ({
 }));
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
+  useConfigsAdjustments: jest.fn().mockReturnValue({ adjustments: [], isLoading: false }),
   useInvoice: jest.fn(),
-  useOrderLines: () => jest.fn().mockReturnValue({ orderLines: [], isLoading: false }),
-  useOrders: () => jest.fn().mockReturnValue({ orders: [], isLoading: false }),
-  useInvoiceLineMutation: () => jest.fn().mockReturnValue({ mutateInvoiceLine: jest.fn() }),
+  useOrderLines: jest.fn().mockReturnValue({ orderLines: [], isLoading: false }),
+  useOrders: jest.fn().mockReturnValue({ orders: [], isLoading: false }),
+  useInvoiceLineMutation: jest.fn().mockReturnValue({ mutateInvoiceLine: jest.fn() }),
 }));
 
 const mutatorMock = {
@@ -72,38 +68,13 @@ const defaultProps = {
   stripes: { currency: 'USD' },
   onCancel: jest.fn(),
 };
-
-const queryClient = new QueryClient();
-
-// eslint-disable-next-line react/prop-types
-const wrapper = ({ children }) => (
-  <MemoryRouter>
-    <QueryClientProvider client={queryClient}>
-      {children}
-    </QueryClientProvider>
-  </MemoryRouter>
-);
-
 const renderInvoiceFormContainer = (props = defaultProps) => render(
   <InvoiceFormContainerComponent {...props} />,
-  { wrapper },
+  { wrapper: MemoryRouter },
 );
-
-const kyMock = {
-  get: jest.fn((url) => ({
-    json: async () => {
-      if (url.startsWith(CONFIG_API)) {
-        return { adjustments: [], isLoading: false };
-      }
-
-      return {};
-    },
-  })),
-};
 
 describe('InvoiceFormContainer', () => {
   beforeEach(() => {
-    useOkapiKy.mockClear().mockReturnValue(kyMock);
     useInvoice.mockClear().mockReturnValue({ isInvoiceLoading: false, invoice });
     useOrganization.mockClear().mockReturnValue({ isLoading: false, organization: vendor });
   });
