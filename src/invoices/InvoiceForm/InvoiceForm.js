@@ -8,6 +8,7 @@ import {
   find,
   get,
   isNumber,
+  noop,
 } from 'lodash';
 
 import {
@@ -78,7 +79,7 @@ const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
 
 const InvoiceForm = ({
   batchGroups,
-  form: { batch, change, mutators: { push } },
+  form,
   handleSubmit,
   initialValues,
   initialVendor,
@@ -92,6 +93,14 @@ const InvoiceForm = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
+
+  const {
+    batch,
+    change,
+    mutators: { push },
+    registerField,
+  } = form;
+
   const filledBillTo = values?.billTo;
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
@@ -116,6 +125,16 @@ const InvoiceForm = ({
   } = initialValues;
   const [selectedVendor, setSelectedVendor] = useState();
   const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
+
+  useEffect(() => {
+    const unregisterAccountingCodeField = registerField('accountingCode', noop);
+
+    return () => {
+      unregisterAccountingCodeField();
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
       setSelectedVendor(vendor);
