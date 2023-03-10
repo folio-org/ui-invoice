@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)
+
 * Unpin `@rehooks/local-storage` now that it's no longer broken. Refs UINV-456.
 * Invoices with `exportToAccounting` but no `accountingCode`. Refs UINV-460.
 
