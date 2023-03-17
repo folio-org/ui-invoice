@@ -417,12 +417,12 @@
     "voucherExport.download.success": "Vouchers have been successfully downloaded",
     "permission.voucherExport": "Invoice: Voucher export",
     "permission.exportCSV": "Invoice: Export search results",
-    "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
-    "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
-    "saveAndContinue": "Save & continue",
-    "settings.batchGroups.cannotDeleteTermHeader": "Cannot delete batch group",
-    "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
-    "settings.batchGroups.deleteEntry": "Delete batch group",
-    "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
-    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>"
+    "invoiceLine.linesSequence.paneTitle": "Editar secuencia de líneas de factura - Número de factura de proveedor {vendorInvoiceNo}",
+    "invoiceLine.linesSequence.paneSubTitle": "{cuenta} líneas encontradas",
+    "saveAndContinue": "Guardar y continuar",
+    "settings.batchGroups.cannotDeleteTermHeader": "No se puede eliminar el grupo de lotes",
+    "settings.batchGroups.cannotDeleteTermMessage": "Este grupo de lotes no puede eliminarse, ya que está siendo utilizado por uno o varios registros.",
+    "settings.batchGroups.deleteEntry": "Borrar grupo de lotes",
+    "settings.batchGroups.termDeleted": "El grupo de lotes <b>{term}</b> se ha <b>eliminado</b> correctamente",
+    "settings.batchGroups.termWillBeDeleted": "Se <b>eliminará</b> el grupo de lotes <b>{term}</b> <b>.</b>"
 }
