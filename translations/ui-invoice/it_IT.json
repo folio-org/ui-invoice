@@ -392,7 +392,7 @@
     "exportSettings.all": "All",
     "exportSettings.invoiceFieldsLabel": "Invoice fields to export",
     "exportSettings.invoiceLineFieldsLabel": "Invoice line fields to export",
-    "exportSettings.label": "Export settings",
+    "exportSettings.label": "Impostazioni di esportazione",
     "exportSettings.message": "This export could take a few minutes. If you reload or close the page the export will not be completed. Once the file is ready it could take another minute for your browser to finish downloading the file. You can continue to work with invoices and invoice lines in a different browser tab if needed.",
     "exportSettings.invoice.all": "Export all invoice fields",
     "exportSettings.invoice.selected": "Export selected invoice fields",
