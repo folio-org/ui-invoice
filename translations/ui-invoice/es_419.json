@@ -418,7 +418,7 @@
     "permission.voucherExport": "Invoice: Voucher export",
     "permission.exportCSV": "Invoice: Export search results",
     "invoiceLine.linesSequence.paneTitle": "Editar secuencia de líneas de factura - Número de factura de proveedor {vendorInvoiceNo}",
-    "invoiceLine.linesSequence.paneSubTitle": "{cuenta} líneas encontradas",
+    "invoiceLine.linesSequence.paneSubTitle": "{count} líneas encontradas",
     "saveAndContinue": "Guardar y continuar",
     "settings.batchGroups.cannotDeleteTermHeader": "No se puede eliminar el grupo de lotes",
     "settings.batchGroups.cannotDeleteTermMessage": "Este grupo de lotes no puede eliminarse, ya que está siendo utilizado por uno o varios registros.",
