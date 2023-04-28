@@ -144,7 +144,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
           >
             <label
               class="label label checkboxInteractionStylesControl"
-              for="checkbox-13"
+              for="checkbox-12"
             >
               <span
                 class="labelText"
@@ -157,8 +157,57 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 <input
                   aria-invalid="false"
                   class="input"
-                  id="checkbox-13"
+                  id="checkbox-12"
                   name="weekdays[Sunday]"
+                  type="checkbox"
+                  value=""
+                />
+                <span
+                  class="checkboxIcon"
+                >
+                  <svg
+                    height="10"
+                    viewBox="0 0 14 14"
+                    width="10"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                      fill="none"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-miterlimit="10"
+                      stroke-width="1.5"
+                    />
+                  </svg>
+                </span>
+              </span>
+            </label>
+            <div
+              role="alert"
+            />
+          </div>
+          <div
+            class="checkbox inline vertical"
+            data-test-checkbox="true"
+          >
+            <label
+              class="label label checkboxInteractionStylesControl"
+              for="checkbox-13"
+            >
+              <span
+                class="labelText"
+              >
+                ui-invoice.settings.batchGroupConfiguration.weekdays.Monday
+              </span>
+              <span
+                class="inner checkboxInteractionStyles"
+              >
+                <input
+                  aria-invalid="false"
+                  class="input"
+                  id="checkbox-13"
+                  name="weekdays[Monday]"
                   type="checkbox"
                   value=""
                 />
@@ -198,7 +247,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
               <span
                 class="labelText"
               >
-                ui-invoice.settings.batchGroupConfiguration.weekdays.Monday
+                ui-invoice.settings.batchGroupConfiguration.weekdays.Tuesday
               </span>
               <span
                 class="inner checkboxInteractionStyles"
@@ -207,7 +256,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                   aria-invalid="false"
                   class="input"
                   id="checkbox-14"
-                  name="weekdays[Monday]"
+                  name="weekdays[Tuesday]"
                   type="checkbox"
                   value=""
                 />
@@ -247,7 +296,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
               <span
                 class="labelText"
               >
-                ui-invoice.settings.batchGroupConfiguration.weekdays.Tuesday
+                ui-invoice.settings.batchGroupConfiguration.weekdays.Wednesday
               </span>
               <span
                 class="inner checkboxInteractionStyles"
@@ -256,7 +305,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                   aria-invalid="false"
                   class="input"
                   id="checkbox-15"
-                  name="weekdays[Tuesday]"
+                  name="weekdays[Wednesday]"
                   type="checkbox"
                   value=""
                 />
@@ -296,7 +345,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
               <span
                 class="labelText"
               >
-                ui-invoice.settings.batchGroupConfiguration.weekdays.Wednesday
+                ui-invoice.settings.batchGroupConfiguration.weekdays.Thursday
               </span>
               <span
                 class="inner checkboxInteractionStyles"
@@ -305,7 +354,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                   aria-invalid="false"
                   class="input"
                   id="checkbox-16"
-                  name="weekdays[Wednesday]"
+                  name="weekdays[Thursday]"
                   type="checkbox"
                   value=""
                 />
@@ -345,7 +394,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
               <span
                 class="labelText"
               >
-                ui-invoice.settings.batchGroupConfiguration.weekdays.Thursday
+                ui-invoice.settings.batchGroupConfiguration.weekdays.Friday
               </span>
               <span
                 class="inner checkboxInteractionStyles"
@@ -354,7 +403,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                   aria-invalid="false"
                   class="input"
                   id="checkbox-17"
-                  name="weekdays[Thursday]"
+                  name="weekdays[Friday]"
                   type="checkbox"
                   value=""
                 />
@@ -394,55 +443,6 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
               <span
                 class="labelText"
               >
-                ui-invoice.settings.batchGroupConfiguration.weekdays.Friday
-              </span>
-              <span
-                class="inner checkboxInteractionStyles"
-              >
-                <input
-                  aria-invalid="false"
-                  class="input"
-                  id="checkbox-18"
-                  name="weekdays[Friday]"
-                  type="checkbox"
-                  value=""
-                />
-                <span
-                  class="checkboxIcon"
-                >
-                  <svg
-                    height="10"
-                    viewBox="0 0 14 14"
-                    width="10"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M10.395 4.617L5.63 9.383 3.605 7.358"
-                      fill="none"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-miterlimit="10"
-                      stroke-width="1.5"
-                    />
-                  </svg>
-                </span>
-              </span>
-            </label>
-            <div
-              role="alert"
-            />
-          </div>
-          <div
-            class="checkbox inline vertical"
-            data-test-checkbox="true"
-          >
-            <label
-              class="label label checkboxInteractionStylesControl"
-              for="checkbox-19"
-            >
-              <span
-                class="labelText"
-              >
                 ui-invoice.settings.batchGroupConfiguration.weekdays.Saturday
               </span>
               <span
@@ -451,7 +451,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 <input
                   aria-invalid="false"
                   class="input"
-                  id="checkbox-19"
+                  id="checkbox-18"
                   name="weekdays[Saturday]"
                   type="checkbox"
                   value=""
@@ -503,7 +503,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
             >
               <label
                 class="label"
-                for="text-input-10"
+                for="-timepicker1"
               >
                 ui-invoice.settings.batchGroupConfiguration.setTime
                 <span
@@ -524,7 +524,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                   autocomplete="off"
                   autocorrect="off"
                   error=""
-                  id="text-input-10"
+                  id="-timepicker1"
                   name="startTime"
                   placeholder="H:MM A"
                   required=""
@@ -616,8 +616,8 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
           >
             <label
               class="label"
-              for="select-11"
-              id="select-11-label"
+              for="select-10"
+              id="select-10-label"
             >
               ui-invoice.settings.batchGroupConfiguration.format
               <span
@@ -632,10 +632,10 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
             >
               <select
                 aria-invalid="false"
-                aria-labelledby="select-11-label"
+                aria-labelledby="select-10-label"
                 aria-required="true"
                 class="selectControl formControl"
-                id="select-11"
+                id="select-10"
                 name="format"
                 required=""
               >
