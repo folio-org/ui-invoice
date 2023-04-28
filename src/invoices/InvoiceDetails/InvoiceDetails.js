@@ -271,6 +271,7 @@ function InvoiceDetails({
                 approvalDate={invoice.approvalDate}
                 approvedBy={invoice.approvedBy}
                 batchGroupId={invoice.batchGroupId}
+                fiscalYearId={invoice.fiscalYearId}
                 invoiceDate={invoice.invoiceDate}
                 paymentDate={invoice.paymentDate}
                 paymentDue={invoice.paymentDue}
