@@ -35,7 +35,7 @@ describe('CancellationModal', () => {
 
     expect(textarea.value).toBe('');
 
-    await waitFor(() => user.type(textarea, cancellationNote));
+    user.type(textarea, cancellationNote);
 
     expect(textarea.value).toBe(cancellationNote);
   });
