@@ -36,6 +36,10 @@ jest.mock('../AdjustmentsForm', () => {
 jest.mock('../../common/components/VendorPrimaryAddress', () => ({
   VendorPrimaryAddress: () => <span>VendorPrimaryAddress</span>,
 }));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  usePayableFiscalYears: jest.fn(() => ({ fiscalYears: [{ code: 'FY2023', id: 'fyId' }] })),
+}));
 
 const defaultProps = {
   initialValues: {},

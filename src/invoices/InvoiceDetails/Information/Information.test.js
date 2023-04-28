@@ -6,6 +6,10 @@ import '@folio/stripes-acq-components/test/jest/__mock__';
 
 import Information from './Information';
 
+jest.mock('../../../common/hooks', () => ({
+  ...jest.requireActual('../../../common/hooks'),
+  useFiscalYear: jest.fn(() => ({ fiscalYear: { code: 'FY2023' } })),
+}));
 jest.mock('../BatchGroupValue', () => {
   return () => <span>BatchGroupValue</span>;
 });
@@ -45,6 +49,7 @@ describe('Information component', () => {
     expect(getByText('stripes-acq-components.sources.user')).toBeDefined();
     expect(getByText('ui-invoice.invoice.status.open')).toBeDefined();
     expect(getByText('2020-12-09')).toBeDefined();
+    expect(getByText('FY2023')).toBeInTheDocument();
   });
 
   it('should not display lock total amount', () => {
