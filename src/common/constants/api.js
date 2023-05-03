@@ -3,6 +3,7 @@ export const BATCH_VOUCHERS_API = 'batch-voucher/batch-vouchers';
 export const BATCH_VOUCHER_EXPORTS_API = 'batch-voucher/batch-voucher-exports';
 export const CATEGORIES_API = 'organizations-storage/categories';
 export const EXPORT_CONFIGURATIONS_API = 'batch-voucher/export-configurations';
+export const FISCAL_YEARS_API = 'finance/fiscal-years';
 export const INVOICE_DOCUMENTS_API = '/documents';
 export const INVOICE_LINE_API = 'invoice/invoice-lines';
 export const VALIDATE_INVOICE_FUND_DISTRIBUTION_API = `${INVOICE_LINE_API}/fund-distributions/validate`;

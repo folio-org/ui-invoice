@@ -18,6 +18,7 @@ import {
 
 import {
   ApprovedBy,
+  FiscalYearValueContainer as FiscalYearValue,
   StatusValue,
 } from '../../../common/components';
 import { isCancelled } from '../../../common/utils';
@@ -29,6 +30,7 @@ const Information = ({
   approvalDate,
   approvedBy,
   batchGroupId,
+  fiscalYearId,
   invoiceDate,
   paymentDue,
   metadata,
@@ -57,6 +59,10 @@ const Information = ({
             label={<FormattedMessage id="ui-invoice.invoice.details.information.invoiceDate" />}
             value={<FolioFormattedDate value={invoiceDate} />}
           />
+        </Col>
+
+        <Col xs={3}>
+          <FiscalYearValue fiscalYearId={fiscalYearId} />
         </Col>
 
         <Col xs={3}>
@@ -197,6 +203,7 @@ Information.propTypes = {
   approvedBy: PropTypes.string,
   batchGroupId: PropTypes.string.isRequired,
   invoiceDate: PropTypes.string.isRequired,
+  fiscalYearId: PropTypes.string,
   paymentDue: PropTypes.string,
   paymentTerms: PropTypes.string,
   status: PropTypes.string.isRequired,

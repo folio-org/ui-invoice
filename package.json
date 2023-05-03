@@ -116,6 +116,7 @@
       "finance.budgets": "1.3 2.0",
       "finance.exchange-rate": "1.0",
       "finance.expense-classes": "2.0 3.0",
+      "finance.fiscal-years": "2.0",
       "finance.funds": "1.0 2.0",
       "identifier-types": "1.2",
       "invoice": "7.0",
@@ -166,6 +167,7 @@
           "batch-voucher.export-configurations.collection.get",
           "configuration.entries.collection.get",
           "finance.budgets.collection.get",
+          "finance.fiscal-years.item.get",
           "finance.funds.collection.get",
           "finance.funds.expense-classes.collection.get",
           "finance.transactions.collection.get",
@@ -257,6 +259,15 @@
           "finance.expense-classes.item.get",
           "finance.funds.item.get",
           "invoice.item.pay"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.payDifferentFY",
+        "displayName": "Invoice: Pay invoices in a different fiscal year",
+        "visible": true,
+        "subPermissions": [
+          "ui-invoice.pay",
+          "finance.fiscal-years.collection.get"
         ]
       },
       {

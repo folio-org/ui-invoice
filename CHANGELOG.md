@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Allow user to process invoices against previous fiscal years. Refs UINV-419.
+
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)
 

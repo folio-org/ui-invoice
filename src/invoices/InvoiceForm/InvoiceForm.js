@@ -11,6 +11,7 @@ import {
   noop,
 } from 'lodash';
 
+import { IfPermission } from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
@@ -62,6 +63,7 @@ import {
 } from '../../common/utils';
 import {
   ApprovedBy,
+  FieldFiscalYearContainer as FieldFiscalYear,
   VendorPrimaryAddress,
 } from '../../common/components';
 import {
@@ -197,6 +199,7 @@ const InvoiceForm = ({
       key: 0,
       readOnly: true,
     };
+  const isFiscalYearFieldDisabled = isPayable(status) || isStatusPaid || isCancelled(status);
 
   const resetLockTotalAmount = useCallback(() => change('lockTotal', null), [change]);
 
@@ -291,6 +294,15 @@ const InvoiceForm = ({
                             validate={validateRequired}
                           />
                         </Col>
+                        <IfPermission perm="ui-invoice.payDifferentFY">
+                          <Col xs={3}>
+                            <FieldFiscalYear
+                              id="invoice-fiscal-year"
+                              name="fiscalYearId"
+                              disabled={isFiscalYearFieldDisabled}
+                            />
+                          </Col>
+                        </IfPermission>
                         <Col data-test-col-status xs={3}>
                           <FieldSelectionFinal
                             dataOptions={statusOptions}
