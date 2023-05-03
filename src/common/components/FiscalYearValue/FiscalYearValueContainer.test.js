@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { FiscalYearValueContainer } from './FiscalYearValueContainer';
 
 jest.mock('../../hooks', () => ({
+  ...jest.requireActual('../../hooks'),
   useFiscalYear: jest.fn(() => ({
     fiscalYear: { id: 'fiscalYearId', code: 'FY2023' },
   })),
