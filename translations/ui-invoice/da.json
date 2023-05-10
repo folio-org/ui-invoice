@@ -424,5 +424,7 @@
     "settings.batchGroups.cannotDeleteTermMessage": "This batch group cannot be deleted, as it is in use by one or more records.",
     "settings.batchGroups.deleteEntry": "Delete batch group",
     "settings.batchGroups.termDeleted": "The batch group <b>{term}</b> was successfully <b>deleted</b>",
-    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>"
+    "settings.batchGroups.termWillBeDeleted": "The batch group <b>{term}</b> will be <b>deleted.</b>",
+    "invoice.details.information.fiscalYear": "Fiscal year",
+    "permission.payDifferentFY": "Invoice: Pay invoices in a different fiscal year"
 }

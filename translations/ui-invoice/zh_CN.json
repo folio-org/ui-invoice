@@ -2,7 +2,7 @@
     "meta.title": "发票",
     "invoice.details.paneTitle": "供应商发票号 - {vendorInvoiceNo}",
     "invoice.status.approved": "已批准",
-    "invoice.status.open": "打开",
+    "invoice.status.open": "未结",
     "invoice.status.reviewed": "已审核",
     "invoice.status.paid": "已支付",
     "invoice.status.cancelled": "已取消",
@@ -74,7 +74,7 @@
     "invoiceLineInformation": "发票行信息",
     "fundDistribution": "经费分配",
     "adjustments": "调整",
-    "status.Open": "打开",
+    "status.Open": "未结",
     "invoice.details.lines.list.description": "描述",
     "invoice.details.lines.list.quantity": "数量",
     "invoice.details.lines.list.total": "总计",
@@ -424,5 +424,7 @@
     "settings.batchGroups.cannotDeleteTermMessage": "无法删除此批次组，因为它正被一个或多个记录使用。",
     "settings.batchGroups.deleteEntry": "删除批处理组",
     "settings.batchGroups.termDeleted": "批处理组<b> {term} </b>已成功<b>删除</b>",
-    "settings.batchGroups.termWillBeDeleted": "批处理组<b> {term} </b>将被<b>删除。 </b>"
+    "settings.batchGroups.termWillBeDeleted": "批处理组<b> {term} </b>将被<b>删除。 </b>",
+    "invoice.details.information.fiscalYear": "Fiscal year",
+    "permission.payDifferentFY": "Invoice: Pay invoices in a different fiscal year"
 }

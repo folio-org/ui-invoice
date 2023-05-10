@@ -93,7 +93,7 @@
     "links": "Links",
     "search.voucherNumber": "Número do voucher",
     "search.vendorInvoiceNo": "Número da fatura do fornecedor",
-    "search.poNumbers": "Número de pedido de compra",
+    "search.poNumbers": "Número do pedido de compra",
     "search.keyword": "Todos",
     "invoice.details.information.acqUnits": "Unidades de aquisição",
     "invoice.details.vendor.title": "Detalhes do fornecedor",
@@ -320,7 +320,7 @@
     "invoice.details.lines.list.vendorRefNumber": "Número de referência do fornecedor",
     "invoice.enclosureNeeded": "Gabinete necessário",
     "invoice.details.voucher.accountNo": "Número da conta",
-    "invoiceLine.relink.success": "A linha de fatura foi vinculada à Linha de Ordem de Compra {poLineNumber}.",
+    "invoiceLine.relink.success": "A linha de fatura foi vinculada à Linha do Pedido de Compra {poLineNumber}.",
     "invoice.billTo": "Cobrança para",
     "invoice.address": "Endereço",
     "invoice.cancellationNote": "Aviso de cancelamento",
@@ -362,7 +362,7 @@
     "receivingHistory.receiptDate": "Data de recebimento",
     "receivingHistory": "Histórico de recebimento",
     "invoice.validation.accountingCode": "Para exportar para contabilidade, você deve selecionar um código de contabilidade",
-    "invoice.details.lines.addFromPOL": "Adicionar Linha de Ordem de Compra",
+    "invoice.details.lines.addFromPOL": "Adicionar Linha do Pedido de Compra",
     "invoice.details.lines.createNew": "Nova linha em branco",
     "invoice.details.lines.list.lineNumber.extended": "Número da linha da fatura",
     "invoice.details.lines.list.paymentStatus": "Estado do pagamento",
@@ -424,5 +424,7 @@
     "settings.batchGroups.cannotDeleteTermMessage": "Este grupo de lote não pode ser excluído, pois está em uso por um ou mais registros.",
     "settings.batchGroups.deleteEntry": "Excluir grupo de lote",
     "settings.batchGroups.termDeleted": "O grupo de lote <b>{term}</b> foi <b>excluído</b> com sucesso",
-    "settings.batchGroups.termWillBeDeleted": "O grupo de lotes <b> {term} </b> será <b> excluído. </b>"
+    "settings.batchGroups.termWillBeDeleted": "O grupo de lotes <b> {term} </b> será <b> excluído. </b>",
+    "invoice.details.information.fiscalYear": "Ano fiscal",
+    "permission.payDifferentFY": "Fatura: Pagar faturas em um ano fiscal diferente"
 }
