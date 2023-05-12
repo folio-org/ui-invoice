@@ -17,7 +17,6 @@ import {
   SelectionFilter,
 } from '@folio/stripes-acq-components';
 
-import { IfPermission } from '@folio/stripes/core';
 import {
   INVOICE_STATUSES_OPTIONS,
 } from '../../../common/constants';
@@ -171,16 +170,14 @@ const InvoicesListFilters = ({
         name={FILTERS.LOCK_TOTAL}
         onChange={adaptedApplyFilters}
       />
-      <IfPermission perm="ui-invoice.payDifferentFY">
-        <SelectionFilter
-          activeFilters={activeFilters[FILTERS.FISCAL_YEAR]}
-          options={fiscalYearOptions}
-          id={FILTERS.FISCAL_YEAR}
-          name={FILTERS.FISCAL_YEAR}
-          onChange={adaptedApplyFilters}
-          labelId="ui-invoice.invoice.details.information.fiscalYear"
-        />
-      </IfPermission>
+      <SelectionFilter
+        activeFilters={activeFilters[FILTERS.FISCAL_YEAR]}
+        options={fiscalYearOptions}
+        id={FILTERS.FISCAL_YEAR}
+        name={FILTERS.FISCAL_YEAR}
+        onChange={adaptedApplyFilters}
+        labelId="ui-invoice.invoice.details.information.fiscalYear"
+      />
     </AccordionSet>
   );
 };
