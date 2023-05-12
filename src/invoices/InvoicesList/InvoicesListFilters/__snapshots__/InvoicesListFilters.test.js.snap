@@ -47,7 +47,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-status"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -349,7 +348,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -427,7 +425,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-metadata.createdDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -632,7 +629,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-invoiceDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -837,7 +833,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 2;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -990,7 +985,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -1149,7 +1143,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDue"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -1354,7 +1347,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -1806,7 +1798,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-approvalDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2011,7 +2002,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-source"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2263,7 +2253,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-exportToAccounting"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2415,7 +2404,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2633,7 +2621,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-lockTotal"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2708,6 +2695,158 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         </div>
       </div>
     </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="fiscalYearId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion14"
+            aria-expanded="false"
+            aria-label="ui-invoice.invoice.details.information.fiscalYear filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-fiscalYearId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.invoice.details.information.fiscalYear
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 2;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-fiscalYearId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion14"
+          role="region"
+        >
+          <div
+            style="position: relative; width: 100%;"
+          >
+            <div
+              aria-live="assertive"
+              aria-relevant="additions"
+              class="sr-only"
+            />
+            <div
+              class="selectionControlContainer"
+            >
+              <button
+                aria-disabled="false"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                aria-labelledby="accordion-toggle-button-fiscalYearId selected-fiscalYearId-selection-item"
+                aria-owns="sl-fiscalYearId-selection"
+                class="selectionControl formControl"
+                id="fiscalYearId-selection"
+                type="button"
+              >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
+                <div
+                  class="singleValue"
+                  id="selected-fiscalYearId-selection-item"
+                />
+              </button>
+              <div
+                class="selectionEndControls"
+              >
+                <div
+                  class="textFieldIcon"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <div
+            class="overlay"
+            hidden=""
+          >
+            <div
+              class="selectionListRoot sr-only"
+              hidden=""
+              id="sl-container-fiscalYearId-selection"
+            >
+              <div
+                class="selectionFilterContainer"
+              >
+                <input
+                  aria-activedescendant="option-fiscalYearId-selection-0-FY 2023"
+                  aria-controls="sl-container-fiscalYearId-selection"
+                  aria-expanded="true"
+                  aria-label="stripes-components.selection.filterOptionsLabel"
+                  aria-owns="sl-fiscalYearId-selection"
+                  class="selectionFilter"
+                  placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <ul
+                aria-label="stripes-components.selection.filterOptionsLabel"
+                class="selectionList"
+                id="sl-fiscalYearId-selection"
+                role="listbox"
+                style="max-height: 174px;"
+              >
+                <li
+                  aria-selected="false"
+                  class="option optionOutside cursor"
+                  id="option-fiscalYearId-selection-0-FY 2023"
+                  role="option"
+                  tabindex="-1"
+                  unselectable="on"
+                >
+                  <div
+                    class="optionSegment"
+                    data-test-selection-option-segment="true"
+                  >
+                    FY 2023
+                  </div>
+                </li>
+              </ul>
+              <div
+                class="selectListSection"
+                role="alert"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </DocumentFragment>
 `;
@@ -2731,7 +2870,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion40"
+            aria-controls="accordion43"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.status filter list"
             class="filterSetHeader"
@@ -2759,11 +2898,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-status"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion40"
+          id="accordion43"
           role="region"
         >
           <div
@@ -3058,7 +3196,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion41"
+            aria-controls="accordion44"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.vendorName filter list"
             class="filterSetHeader"
@@ -3086,11 +3224,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion41"
+          id="accordion44"
           role="region"
         >
           <div
@@ -3106,7 +3243,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-39"
+                id="text-input-40"
                 spellcheck="false"
                 type="text"
                 value=""
@@ -3136,7 +3273,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion42"
+            aria-controls="accordion45"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.dateCreated filter list"
             class="filterSetHeader"
@@ -3164,11 +3301,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-metadata.createdDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion42"
+          id="accordion45"
           role="region"
         >
           <div
@@ -3183,7 +3319,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-41"
+                  for="dp-42"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -3196,7 +3332,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-41"
+                    id="dp-42"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3215,7 +3351,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-41"
+                        id="datepicker-toggle-calendar-button-dp-42"
                         type="button"
                       >
                         <span
@@ -3254,7 +3390,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-42"
+                  for="dp-43"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -3267,7 +3403,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-42"
+                    id="dp-43"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3286,7 +3422,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-42"
+                        id="datepicker-toggle-calendar-button-dp-43"
                         type="button"
                       >
                         <span
@@ -3341,7 +3477,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion43"
+            aria-controls="accordion46"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
             class="filterSetHeader"
@@ -3369,11 +3505,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-invoiceDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion43"
+          id="accordion46"
           role="region"
         >
           <div
@@ -3388,7 +3523,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-44"
+                  for="dp-45"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -3401,7 +3536,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-44"
+                    id="dp-45"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3420,7 +3555,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-44"
+                        id="datepicker-toggle-calendar-button-dp-45"
                         type="button"
                       >
                         <span
@@ -3459,7 +3594,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-45"
+                  for="dp-46"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -3472,7 +3607,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-45"
+                    id="dp-46"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3491,7 +3626,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-45"
+                        id="datepicker-toggle-calendar-button-dp-46"
                         type="button"
                       >
                         <span
@@ -3546,7 +3681,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion44"
+            aria-controls="accordion47"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
@@ -3574,11 +3709,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 2;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion44"
+          id="accordion47"
           role="region"
         >
           <div
@@ -3700,7 +3834,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion45"
+            aria-controls="accordion48"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
@@ -3728,11 +3862,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion45"
+          id="accordion48"
           role="region"
         >
           <div
@@ -3861,7 +3994,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion46"
+            aria-controls="accordion49"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
             class="filterSetHeader"
@@ -3889,11 +4022,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDue"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion46"
+          id="accordion49"
           role="region"
         >
           <div
@@ -3908,7 +4040,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-49"
+                  for="dp-50"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -3921,7 +4053,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-49"
+                    id="dp-50"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3940,7 +4072,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-49"
+                        id="datepicker-toggle-calendar-button-dp-50"
                         type="button"
                       >
                         <span
@@ -3979,7 +4111,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-50"
+                  for="dp-51"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -3992,7 +4124,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-50"
+                    id="dp-51"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -4011,7 +4143,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-50"
+                        id="datepicker-toggle-calendar-button-dp-51"
                         type="button"
                       >
                         <span
@@ -4066,7 +4198,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion47"
+            aria-controls="accordion50"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentMethod filter list"
             class="filterSetHeader"
@@ -4094,11 +4226,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion47"
+          id="accordion50"
           role="region"
         >
           <div
@@ -4558,7 +4689,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion48"
+            aria-controls="accordion51"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.approvalDate filter list"
             class="filterSetHeader"
@@ -4586,11 +4717,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-approvalDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion48"
+          id="accordion51"
           role="region"
         >
           <div
@@ -4605,7 +4735,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-53"
+                  for="dp-54"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -4618,7 +4748,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-53"
+                    id="dp-54"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -4637,7 +4767,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-53"
+                        id="datepicker-toggle-calendar-button-dp-54"
                         type="button"
                       >
                         <span
@@ -4676,7 +4806,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-54"
+                  for="dp-55"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -4689,7 +4819,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-54"
+                    id="dp-55"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -4708,7 +4838,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-54"
+                        id="datepicker-toggle-calendar-button-dp-55"
                         type="button"
                       >
                         <span
@@ -4763,7 +4893,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion49"
+            aria-controls="accordion52"
             aria-expanded="false"
             aria-label="stripes-acq-components.label.sourceFilter filter list"
             class="filterSetHeader"
@@ -4791,11 +4921,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-source"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion49"
+          id="accordion52"
           role="region"
         >
           <div
@@ -5035,7 +5164,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion50"
+            aria-controls="accordion53"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.exportToAccounting filter list"
             class="filterSetHeader"
@@ -5063,11 +5192,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-exportToAccounting"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion50"
+          id="accordion53"
           role="region"
         >
           <div
@@ -5197,7 +5325,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion51"
+            aria-controls="accordion54"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentDate filter list"
             class="filterSetHeader"
@@ -5225,11 +5353,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion51"
+          id="accordion54"
           role="region"
         >
           <div
@@ -5244,7 +5371,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-58"
+                  for="dp-59"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -5257,7 +5384,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-58"
+                    id="dp-59"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -5276,7 +5403,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-58"
+                        id="datepicker-toggle-calendar-button-dp-59"
                         type="button"
                       >
                         <span
@@ -5315,7 +5442,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-59"
+                  for="dp-60"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -5328,7 +5455,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-59"
+                    id="dp-60"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -5347,7 +5474,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-59"
+                        id="datepicker-toggle-calendar-button-dp-60"
                         type="button"
                       >
                         <span
@@ -5418,7 +5545,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion52"
+            aria-controls="accordion55"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.lockTotal filter list"
             class="filterSetHeader"
@@ -5446,11 +5573,10 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-lockTotal"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion52"
+          id="accordion55"
           role="region"
         >
           <div
@@ -5458,7 +5584,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           >
             <label
               class="label"
-              for="text-input-61"
+              for="text-input-62"
             >
               stripes-acq-components.filter.numberRange.min
             </label>
@@ -5471,7 +5597,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-61"
+                id="text-input-62"
                 spellcheck="false"
                 type="number"
                 value=""
@@ -5486,7 +5612,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           >
             <label
               class="label"
-              for="text-input-62"
+              for="text-input-63"
             >
               stripes-acq-components.filter.numberRange.max
             </label>
@@ -5499,7 +5625,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-62"
+                id="text-input-63"
                 spellcheck="false"
                 type="number"
                 value=""
@@ -5521,6 +5647,158 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               stripes-acq-components.button.apply
             </span>
           </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="fiscalYearId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion56"
+            aria-expanded="false"
+            aria-label="ui-invoice.invoice.details.information.fiscalYear filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-fiscalYearId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.invoice.details.information.fiscalYear
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 2;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-fiscalYearId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion56"
+          role="region"
+        >
+          <div
+            style="position: relative; width: 100%;"
+          >
+            <div
+              aria-live="assertive"
+              aria-relevant="additions"
+              class="sr-only"
+            />
+            <div
+              class="selectionControlContainer"
+            >
+              <button
+                aria-disabled="false"
+                aria-expanded="false"
+                aria-haspopup="listbox"
+                aria-labelledby="accordion-toggle-button-fiscalYearId selected-fiscalYearId-selection-item"
+                aria-owns="sl-fiscalYearId-selection"
+                class="selectionControl formControl"
+                id="fiscalYearId-selection"
+                type="button"
+              >
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
+                </span>
+                <div
+                  class="singleValue"
+                  id="selected-fiscalYearId-selection-item"
+                />
+              </button>
+              <div
+                class="selectionEndControls"
+              >
+                <div
+                  class="textFieldIcon"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <div
+            class="overlay"
+            hidden=""
+          >
+            <div
+              class="selectionListRoot sr-only"
+              hidden=""
+              id="sl-container-fiscalYearId-selection"
+            >
+              <div
+                class="selectionFilterContainer"
+              >
+                <input
+                  aria-activedescendant="option-fiscalYearId-selection-0-FY 2023"
+                  aria-controls="sl-container-fiscalYearId-selection"
+                  aria-expanded="true"
+                  aria-label="stripes-components.selection.filterOptionsLabel"
+                  aria-owns="sl-fiscalYearId-selection"
+                  class="selectionFilter"
+                  placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <ul
+                aria-label="stripes-components.selection.filterOptionsLabel"
+                class="selectionList"
+                id="sl-fiscalYearId-selection"
+                role="listbox"
+                style="max-height: 174px;"
+              >
+                <li
+                  aria-selected="false"
+                  class="option optionOutside cursor"
+                  id="option-fiscalYearId-selection-0-FY 2023"
+                  role="option"
+                  tabindex="-1"
+                  unselectable="on"
+                >
+                  <div
+                    class="optionSegment"
+                    data-test-selection-option-segment="true"
+                  >
+                    FY 2023
+                  </div>
+                </li>
+              </ul>
+              <div
+                class="selectListSection"
+                role="alert"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

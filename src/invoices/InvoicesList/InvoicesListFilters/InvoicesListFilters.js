@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  AccordionSet,
-} from '@folio/stripes/components';
+import { AccordionSet } from '@folio/stripes/components';
 import {
   AcqCheckboxFilter,
   AcqDateRangeFilter,
@@ -16,8 +14,10 @@ import {
   PluggableOrganizationFilter,
   SourceFilter,
   PAYMENT_METHOD_OPTIONS,
+  SelectionFilter,
 } from '@folio/stripes-acq-components';
 
+import { IfPermission } from '@folio/stripes/core';
 import {
   INVOICE_STATUSES_OPTIONS,
 } from '../../../common/constants';
@@ -33,6 +33,7 @@ const InvoicesListFilters = ({
   applyFilters,
   disabled,
   funds,
+  fiscalYearOptions,
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const adaptedApplyFilters = useCallback(
@@ -170,6 +171,16 @@ const InvoicesListFilters = ({
         name={FILTERS.LOCK_TOTAL}
         onChange={adaptedApplyFilters}
       />
+      <IfPermission perm="ui-invoice.payDifferentFY">
+        <SelectionFilter
+          activeFilters={activeFilters[FILTERS.FISCAL_YEAR]}
+          options={fiscalYearOptions}
+          id={FILTERS.FISCAL_YEAR}
+          name={FILTERS.FISCAL_YEAR}
+          onChange={adaptedApplyFilters}
+          labelId="ui-invoice.invoice.details.information.fiscalYear"
+        />
+      </IfPermission>
     </AccordionSet>
   );
 };
@@ -179,6 +190,10 @@ InvoicesListFilters.propTypes = {
   applyFilters: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
   funds: PropTypes.arrayOf(PropTypes.object),
+  fiscalYearOptions: PropTypes.arrayOf(PropTypes.shape({
+    label: PropTypes.string,
+    value: PropTypes.string,
+  })),
 };
 
 export default InvoicesListFilters;

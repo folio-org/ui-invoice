@@ -19,6 +19,10 @@ const defaultProps = {
   activeFilters: {},
   applyFilters: jest.fn(),
   disabled: false,
+  fiscalYearOptions: [{
+    label: 'FY 2023',
+    value: 'FY 2023',
+  }],
 };
 const renderInvoicesListFilters = (props = defaultProps) => render(
   <InvoicesListFilters {...props} />,

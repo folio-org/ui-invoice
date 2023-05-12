@@ -267,7 +267,8 @@
         "visible": true,
         "subPermissions": [
           "ui-invoice.pay",
-          "finance.fiscal-years.collection.get"
+          "finance.fiscal-years.collection.get",
+          "ui-finance.fiscal-year.view"
         ]
       },
       {

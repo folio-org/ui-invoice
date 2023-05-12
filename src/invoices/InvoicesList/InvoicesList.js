@@ -50,6 +50,7 @@ import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
 import { ExportSettingsModal } from './ExportSettingsModal';
+import { usePayableFiscalYears } from '../../common/hooks';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
@@ -107,6 +108,12 @@ const InvoicesList = ({
   const stripes = useStripes();
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
   const { funds } = useFunds();
+  const { fiscalYears } = usePayableFiscalYears();
+
+  const fiscalYearOptions = useMemo(() => (
+    fiscalYears.map(({ code, id: fiscalYearId }) => ({ value: fiscalYearId, label: code }))
+  ), [fiscalYears]);
+
   const [isExportModalOpened, toggleExportModal] = useModalToggle();
 
   useFiltersReset(resetFilters);
@@ -192,6 +199,7 @@ const InvoicesList = ({
               applyFilters={applyFilters}
               disabled={isLoading}
               funds={funds}
+              fiscalYearOptions={fiscalYearOptions}
             />
           </FiltersPane>
         )}

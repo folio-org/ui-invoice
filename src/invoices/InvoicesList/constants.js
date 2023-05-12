@@ -15,4 +15,5 @@ export const FILTERS = {
   EXPENSE_CLASS: 'expenseClass',
   FUND_CODE: 'fundCode',
   LOCK_TOTAL: 'lockTotal',
+  FISCAL_YEAR: 'fiscalYearId',
 };
