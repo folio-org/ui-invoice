@@ -149,7 +149,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-information"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1006,7 +1005,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-fundDistribution"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1368,7 +1366,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-adjustments"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"

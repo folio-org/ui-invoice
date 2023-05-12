@@ -14,7 +14,6 @@ import {
   PluggableOrganizationFilter,
   SourceFilter,
   PAYMENT_METHOD_OPTIONS,
-  SelectionFilter,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -24,6 +23,7 @@ import {
   FILTERS,
 } from '../constants';
 import { BatchGroupFilter } from './BatchGroupFilter';
+import { FiscalYearFilter } from '../../../common/components/FiscalYearFilter';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
@@ -32,7 +32,6 @@ const InvoicesListFilters = ({
   applyFilters,
   disabled,
   funds,
-  fiscalYearOptions,
 }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const adaptedApplyFilters = useCallback(
@@ -170,13 +169,13 @@ const InvoicesListFilters = ({
         name={FILTERS.LOCK_TOTAL}
         onChange={adaptedApplyFilters}
       />
-      <SelectionFilter
-        activeFilters={activeFilters[FILTERS.FISCAL_YEAR]}
-        options={fiscalYearOptions}
+      <FiscalYearFilter
         id={FILTERS.FISCAL_YEAR}
+        activeFilters={activeFilters[FILTERS.FISCAL_YEAR]}
+        labelId="ui-invoice.invoice.details.information.fiscalYear"
         name={FILTERS.FISCAL_YEAR}
         onChange={adaptedApplyFilters}
-        labelId="ui-invoice.invoice.details.information.fiscalYear"
+        disabled={disabled}
       />
     </AccordionSet>
   );
@@ -187,10 +186,6 @@ InvoicesListFilters.propTypes = {
   applyFilters: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
   funds: PropTypes.arrayOf(PropTypes.object),
-  fiscalYearOptions: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string,
-    value: PropTypes.string,
-  })),
 };
 
 export default InvoicesListFilters;

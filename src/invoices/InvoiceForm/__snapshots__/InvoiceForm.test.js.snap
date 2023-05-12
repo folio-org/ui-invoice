@@ -149,7 +149,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-information"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1190,7 +1189,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-invoiceAdjustments"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1251,7 +1249,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-vendorDetails"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -1486,7 +1483,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 2;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-extendedInformation"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
@@ -2094,7 +2090,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                       style="z-index: 1;"
                     >
                       <div
-                        aria-label="[object Object]"
                         aria-labelledby="accordion-toggle-button-invoiceForm-documents"
                         class="content-region expanded"
                         data-test-accordion-wrapper="true"
