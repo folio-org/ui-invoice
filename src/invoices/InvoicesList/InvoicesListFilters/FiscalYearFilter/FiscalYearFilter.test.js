@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import { noop } from 'lodash';
 
 import { FiscalYearFilter } from './FiscalYearFilter';
-import { usePayableFiscalYears } from '../../hooks';
+import { usePayableFiscalYears } from '../../../../common/hooks';
 
-jest.mock('../../hooks', () => ({
+jest.mock('../../../../common/hooks', () => ({
   usePayableFiscalYears: jest.fn(),
 }));
 

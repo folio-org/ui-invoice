@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Loading } from '@folio/stripes/components';
 import { SelectionFilter } from '@folio/stripes-acq-components';
-import { usePayableFiscalYears } from '../../hooks';
+import { usePayableFiscalYears } from '../../../../common/hooks';
 
 export const FiscalYearFilter = (props) => {
   const { isLoading, fiscalYears } = usePayableFiscalYears();

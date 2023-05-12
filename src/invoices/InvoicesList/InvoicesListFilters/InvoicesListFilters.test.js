@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import '../../../../test/jest/__mock__';
 
@@ -24,8 +25,13 @@ const defaultProps = {
     value: 'FY 2023',
   }],
 };
+
+const queryClient = new QueryClient();
+
 const renderInvoicesListFilters = (props = defaultProps) => render(
-  <InvoicesListFilters {...props} />,
+  <QueryClientProvider client={queryClient}>
+    <InvoicesListFilters {...props} />
+  </QueryClientProvider>,
   { wrapper: MemoryRouter },
 );
 

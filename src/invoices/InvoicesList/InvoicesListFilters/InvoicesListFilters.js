@@ -23,7 +23,7 @@ import {
   FILTERS,
 } from '../constants';
 import { BatchGroupFilter } from './BatchGroupFilter';
-import { FiscalYearFilter } from '../../../common/components/FiscalYearFilter';
+import { FiscalYearFilter } from './FiscalYearFilter';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
