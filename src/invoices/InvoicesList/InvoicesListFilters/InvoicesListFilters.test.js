@@ -1,7 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { QueryClient, QueryClientProvider } from 'react-query';
 
 import '../../../../test/jest/__mock__';
 
@@ -15,23 +14,18 @@ jest.mock('@folio/stripes-acq-components', () => ({
 jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
 }));
+jest.mock('../FiscalYearFilter', () => ({
+  FiscalYearFilter: 'FiscalYearFilter',
+}));
 
 const defaultProps = {
   activeFilters: {},
   applyFilters: jest.fn(),
   disabled: false,
-  fiscalYearOptions: [{
-    label: 'FY 2023',
-    value: 'FY 2023',
-  }],
 };
 
-const queryClient = new QueryClient();
-
 const renderInvoicesListFilters = (props = defaultProps) => render(
-  <QueryClientProvider client={queryClient}>
-    <InvoicesListFilters {...props} />
-  </QueryClientProvider>,
+  <InvoicesListFilters {...props} />,
   { wrapper: MemoryRouter },
 );
 
