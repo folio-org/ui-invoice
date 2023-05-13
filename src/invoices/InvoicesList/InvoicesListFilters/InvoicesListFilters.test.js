@@ -14,7 +14,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
 }));
-jest.mock('../FiscalYearFilter', () => ({
+jest.mock('./FiscalYearFilter', () => ({
   FiscalYearFilter: 'FiscalYearFilter',
 }));
 

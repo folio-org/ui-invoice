@@ -2695,20 +2695,11 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         </div>
       </div>
     </section>
-    <div
-      class="spinner"
-      style="width: 30px; height: 15px;"
-    >
-      <div
-        class="bounce1"
-      />
-      <div
-        class="bounce2"
-      />
-      <div
-        class="bounce3"
-      />
-    </div>
+    <fiscalyearfilter
+      id="fiscalYearId"
+      labelid="ui-invoice.invoice.details.information.fiscalYear"
+      name="fiscalYearId"
+    />
   </div>
 </DocumentFragment>
 `;
@@ -5512,20 +5503,12 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         </div>
       </div>
     </section>
-    <div
-      class="spinner"
-      style="width: 30px; height: 15px;"
-    >
-      <div
-        class="bounce1"
-      />
-      <div
-        class="bounce2"
-      />
-      <div
-        class="bounce3"
-      />
-    </div>
+    <fiscalyearfilter
+      disabled=""
+      id="fiscalYearId"
+      labelid="ui-invoice.invoice.details.information.fiscalYear"
+      name="fiscalYearId"
+    />
   </div>
 </DocumentFragment>
 `;
