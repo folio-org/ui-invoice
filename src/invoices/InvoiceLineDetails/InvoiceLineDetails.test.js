@@ -46,6 +46,8 @@ const defaultProps = {
   deleteInvoiceLine: jest.fn(),
   goToEditInvoiceLine: jest.fn(),
   tagsToggle: jest.fn(),
+  vendorInvoiceNo: '1234',
+  vendorCode: 'AMZN',
   otherRelatedInvoiceLines: [{ id: 'invoiceLineId' }],
 };
 const renderInvoiceLineDetails = (props = defaultProps) => render(
@@ -62,12 +64,11 @@ describe('InvoiceLineDetails', () => {
     global.document.createRange = global.document.mockCreateRange;
   });
 
-  it('should render correct structure for invoice line', () => {
-    const { container, asFragment } = renderInvoiceLineDetails();
+  it('should render correct subtitle for invoice line', () => {
+    renderInvoiceLineDetails();
+    const subTitle = `${defaultProps.vendorInvoiceNo} - ${defaultProps.vendorCode}`;
 
-    container.querySelector('#invoice-line-details-accordion-set').removeAttribute('aria-multiselectable');
-
-    expect(asFragment()).toMatchSnapshot();
+    expect(screen.getByText(subTitle)).toBeInTheDocument();
   });
 
   describe('Actions', () => {
