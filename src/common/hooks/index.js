@@ -2,6 +2,7 @@ export * from './useAddressCategories';
 export * from './useBatchGroup';
 export * from './useConfigsAdjustments';
 export * from './useFiscalYear';
+export * from './useFiscalYears';
 export * from './useFundDistributionValidation';
 export * from './useInvoice';
 export * from './useInvoiceMutation';
