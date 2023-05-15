@@ -50,7 +50,7 @@ describe('useFiscalYears', () => {
       FISCAL_YEARS_API,
       expect.objectContaining({
         searchParams: expect.objectContaining({
-          query: expect.stringMatching(/code="\*" sortby code\/sort.descending/),
+          query: expect.stringMatching(/cql.allRecords=1 sortby periodStart/),
         }),
       }),
     );

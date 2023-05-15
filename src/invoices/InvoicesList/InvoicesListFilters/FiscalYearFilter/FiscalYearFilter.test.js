@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react';
 import { noop } from 'lodash';
 
 import { FiscalYearFilter } from './FiscalYearFilter';
-import { usePayableFiscalYears } from '../../../../common/hooks';
+import { useFiscalYears } from '../../../../common/hooks';
 
 jest.mock('../../../../common/hooks', () => ({
-  usePayableFiscalYears: jest.fn(),
+  useFiscalYears: jest.fn(),
 }));
 
 const labelId = 'fiscalYearId';
@@ -27,7 +27,7 @@ const renderFilter = () => (render(
 
 describe('FiscalYearFilter', () => {
   beforeEach(() => {
-    usePayableFiscalYears.mockClear().mockReturnValue({ fiscalYears: fiscalYearsMock, isLoading: false });
+    useFiscalYears.mockClear().mockReturnValue({ fiscalYears: fiscalYearsMock, isLoading: false });
   });
 
   it('should display filter title', () => {
@@ -39,7 +39,7 @@ describe('FiscalYearFilter', () => {
   });
 
   it('should display spinner element', () => {
-    usePayableFiscalYears.mockClear().mockReturnValue({ fiscalYears: fiscalYearsMock, isLoading: true });
+    useFiscalYears.mockClear().mockReturnValue({ fiscalYears: fiscalYearsMock, isLoading: true });
     const { container } = renderFilter();
     const spinnerElement = container.querySelector('.spinner');
 
