@@ -16,7 +16,7 @@ export const useFiscalYears = (options = {}) => {
 
   const searchParams = {
     limit: LIMIT_MAX,
-    query: 'code="*" sortby code/sort.descending',
+    query: 'cql.allRecords=1 sortby periodStart',
   };
 
   const { data, ...rest } = useQuery(
