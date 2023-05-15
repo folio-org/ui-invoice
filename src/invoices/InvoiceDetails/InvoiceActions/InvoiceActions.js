@@ -28,6 +28,7 @@ const InvoiceActions = ({
   onPay,
   onPrint,
   onInvoiceCancel,
+  isApprovePayButtonDisabled = false,
 }) => {
   const isDeletable = !(isPayable(invoice.status) || isPaid(invoice.status));
   const isCancelable = isPayable(invoice.status) || isPaid(invoice.status);
@@ -55,6 +56,7 @@ const InvoiceActions = ({
               data-test-invoice-action-pay
               buttonStyle="dropdownItem"
               onClick={onPay}
+              disabled={isApprovePayButtonDisabled}
             >
               <Icon size="small" icon="cart">
                 <FormattedMessage id="ui-invoice.invoice.actions.pay" />
@@ -71,6 +73,7 @@ const InvoiceActions = ({
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApprove}
+              disabled={isApprovePayButtonDisabled}
             >
               <Icon size="small" icon="check-circle">
                 <FormattedMessage id="ui-invoice.invoice.actions.approve" />
@@ -90,6 +93,7 @@ const InvoiceActions = ({
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApproveAndPay}
+              disabled={isApprovePayButtonDisabled}
             >
               <Icon size="small" icon="cart">
                 <FormattedMessage id="ui-invoice.invoice.actions.approveAndPay" />
@@ -145,6 +149,7 @@ InvoiceActions.propTypes = {
   invoice: PropTypes.object.isRequired,
   invoiceLinesCount: PropTypes.number,
   isApprovePayEnabled: PropTypes.bool,
+  isApprovePayButtonDisabled: PropTypes.bool,
   isDeleteDisabled: PropTypes.bool.isRequired,
   isEditDisabled: PropTypes.bool.isRequired,
   onApprove: PropTypes.func.isRequired,

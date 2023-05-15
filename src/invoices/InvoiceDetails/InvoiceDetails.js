@@ -101,6 +101,7 @@ function InvoiceDetails({
     invoice.id, invoice.acqUnitIds,
   );
   const stripes = useStripes();
+  const isVendorInactive = vendor?.status === 'Inactive';
 
   const shortcuts = [
     {
@@ -168,6 +169,7 @@ function InvoiceDetails({
         isApprovePayEnabled={isApprovePayEnabled}
         isEditDisabled={isRestrictionsLoading || restrictions.protectUpdate}
         isDeleteDisabled={isRestrictionsLoading || restrictions.protectDelete}
+        isApprovePayButtonDisabled={isVendorInactive}
       />
     );
   };
@@ -251,6 +253,11 @@ function InvoiceDetails({
               {!hasPOLineIsFullyPaid ? null : (
                 <MessageBanner type="warning">
                   <FormattedMessage id="ui-invoice.invoice.details.hasFullyPaidPOLine" />
+                </MessageBanner>
+              )}
+              {isVendorInactive && (
+                <MessageBanner type="warning">
+                  <FormattedMessage id="ui-invoice.invoice.details.vendor.inactive" />
                 </MessageBanner>
               )}
             </Col>

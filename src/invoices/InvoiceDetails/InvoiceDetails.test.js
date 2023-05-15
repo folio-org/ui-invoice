@@ -71,6 +71,9 @@ const defaultProps = {
   payInvoice: jest.fn(),
   refreshData: jest.fn(),
   totalInvoiceLines: 0,
+  vendor: {
+    status: 'Active',
+  },
 };
 const renderInvoiceDetails = (props = defaultProps) => render(
   <InvoiceDetails {...props} />,
@@ -140,6 +143,9 @@ describe('InvoiceDetails', () => {
         renderInvoiceDetails({
           ...defaultProps,
           onEdit,
+          vendor: {
+            status: 'Inactive',
+          },
         });
 
         act(() => {

@@ -17,6 +17,7 @@ const defaultProps = {
   onEdit: jest.fn(),
   onPay: jest.fn(),
   onPrint: jest.fn(),
+  isApprovePayButtonDisabled: false,
 };
 const renderInvoiceActions = (props = defaultProps) => render(
   <InvoiceActions {...props} />,
@@ -55,6 +56,15 @@ describe('InvoiceActions', () => {
     renderInvoiceActions();
 
     expect(screen.getByTestId('invoice-approve')).toBeDefined();
+  });
+
+  it('should Approve & Pay button disabled', () => {
+    renderInvoiceActions({
+      ...defaultProps,
+      isApprovePayButtonDisabled: true,
+    });
+    expect(screen.getByTestId('invoice-approve')).toBeDefined();
+    expect(screen.getByTestId('invoice-approve')).toBeDisabled();
   });
 
   it('should display Pay action when approved status', () => {
