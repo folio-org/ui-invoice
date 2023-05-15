@@ -25,6 +25,7 @@ jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useInvoice: jest.fn(),
   useInvoiceLineMutation: jest.fn().mockReturnValue(jest.fn()),
+  useVendors: jest.fn().mockReturnValue({ vendors: [], isLoading: false }),
 }));
 jest.mock('./InvoiceLineDetails', () => jest.fn().mockReturnValue('InvoiceLineDetails'));
 

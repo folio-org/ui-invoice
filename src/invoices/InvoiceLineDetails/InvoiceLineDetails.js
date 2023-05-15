@@ -42,6 +42,8 @@ const InvoiceLineDetails = ({
   closeInvoiceLine,
   deleteInvoiceLine,
   goToEditInvoiceLine,
+  vendorInvoiceNo,
+  vendorCode,
   invoiceLine,
   invoiceStatus,
   tagsToggle,
@@ -75,6 +77,7 @@ const InvoiceLineDetails = ({
   const tags = get(invoiceLine, ['tags', 'tagList'], []);
   const fundDistributions = get(invoiceLine, 'fundDistributions');
   const total = get(invoiceLine, 'total', 0);
+  const paneSubTitle = `${vendorInvoiceNo} - ${vendorCode}`;
 
   const paneTitle = (
     <FormattedMessage
@@ -121,6 +124,7 @@ const InvoiceLineDetails = ({
         dismissible
         onClose={closeInvoiceLine}
         paneTitle={paneTitle}
+        paneSub={paneSubTitle}
         actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
@@ -194,6 +198,8 @@ InvoiceLineDetails.propTypes = {
   tagsToggle: PropTypes.func.isRequired,
   currency: PropTypes.string,
   poLine: PropTypes.object,
+  vendorInvoiceNo: PropTypes.string,
+  vendorCode: PropTypes.string,
 };
 
 InvoiceLineDetails.defaultProps = {

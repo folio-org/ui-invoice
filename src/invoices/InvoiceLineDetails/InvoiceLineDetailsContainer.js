@@ -13,6 +13,7 @@ import {
   useInvoiceLine,
   useInvoiceLineMutation,
   useOrderLine,
+  useVendors,
 } from '../../common/hooks';
 import InvoiceLineDetails from './InvoiceLineDetails';
 
@@ -34,6 +35,7 @@ const InvoiceLineDetailsContainer = ({
     orderLine: poLine,
     isLoading: isOrderLineLoading,
   } = useOrderLine(invoiceLine?.poLineId);
+  const { vendors, isLoading: isVendorLoading } = useVendors([invoice?.vendorId]);
 
   const { mutateInvoiceLine } = useInvoiceLineMutation();
 
@@ -87,24 +89,28 @@ const InvoiceLineDetailsContainer = ({
   if (
     isInvoiceLoading ||
     isInvoiceLineLoading ||
-    isOrderLineLoading
+    isOrderLineLoading ||
+    isVendorLoading
   ) {
     return (
       <LoadingPane dismissible onClose={closeInvoiceLine} />
     );
   }
+  const { currency, status, vendorInvoiceNo } = invoice;
 
   return (
     <>
       <InvoiceLineDetails
         closeInvoiceLine={closeInvoiceLine}
-        currency={invoice.currency}
+        currency={currency}
         deleteInvoiceLine={deleteInvoiceLine}
         goToEditInvoiceLine={goToEditInvoiceLine}
-        invoiceStatus={invoice.status}
+        invoiceStatus={status}
         invoiceLine={invoiceLine}
         poLine={poLine}
         tagsToggle={setTagsPaneOpened}
+        vendorInvoiceNo={vendorInvoiceNo}
+        vendorCode={vendors?.[0]?.code}
       />
       {isTagsPaneOpened && (
         <Tags
