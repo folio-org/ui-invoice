@@ -107,6 +107,7 @@ const InvoicesList = ({
   const stripes = useStripes();
   const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
   const { funds } = useFunds();
+
   const [isExportModalOpened, toggleExportModal] = useModalToggle();
 
   useFiltersReset(resetFilters);

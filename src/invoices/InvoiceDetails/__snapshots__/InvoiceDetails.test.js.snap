@@ -209,7 +209,6 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -273,7 +272,6 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -332,7 +330,6 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -391,7 +388,6 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -451,7 +447,6 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -678,7 +673,6 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -742,7 +736,6 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -801,7 +794,6 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -860,7 +852,6 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -920,7 +911,6 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -1147,7 +1137,6 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -1211,7 +1200,6 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -1270,7 +1258,6 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -1329,7 +1316,6 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -1388,7 +1374,6 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -1615,7 +1600,6 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -1679,7 +1663,6 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -1738,7 +1721,6 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -1797,7 +1779,6 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -1857,7 +1838,6 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -2084,7 +2064,6 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -2148,7 +2127,6 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -2207,7 +2185,6 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -2266,7 +2243,6 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -2325,7 +2301,6 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -2552,7 +2527,6 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -2616,7 +2590,6 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -2675,7 +2648,6 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -2734,7 +2706,6 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
@@ -2793,7 +2764,6 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-batchVoucherExport"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
@@ -2853,7 +2823,6 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
               style="z-index: 1;"
             >
               <div
-                aria-label="[object Object]"
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"

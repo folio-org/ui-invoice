@@ -1,9 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
-import {
-  AccordionSet,
-} from '@folio/stripes/components';
+import { AccordionSet } from '@folio/stripes/components';
 import {
   AcqCheckboxFilter,
   AcqDateRangeFilter,
@@ -25,6 +23,7 @@ import {
   FILTERS,
 } from '../constants';
 import { BatchGroupFilter } from './BatchGroupFilter';
+import { FiscalYearFilter } from './FiscalYearFilter';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
@@ -169,6 +168,14 @@ const InvoicesListFilters = ({
         labelId="ui-invoice.invoice.lockTotal"
         name={FILTERS.LOCK_TOTAL}
         onChange={adaptedApplyFilters}
+      />
+      <FiscalYearFilter
+        id={FILTERS.FISCAL_YEAR}
+        activeFilters={activeFilters[FILTERS.FISCAL_YEAR]}
+        labelId="ui-invoice.invoice.details.information.fiscalYear"
+        name={FILTERS.FISCAL_YEAR}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
       />
     </AccordionSet>
   );

@@ -47,7 +47,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-status"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -349,7 +348,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -427,7 +425,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-metadata.createdDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -632,7 +629,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-invoiceDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -837,7 +833,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 2;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -990,7 +985,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -1149,7 +1143,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDue"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -1354,7 +1347,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -1806,7 +1798,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-approvalDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2011,7 +2002,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-source"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2263,7 +2253,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-exportToAccounting"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2415,7 +2404,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2633,7 +2621,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-lockTotal"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -2708,6 +2695,11 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
         </div>
       </div>
     </section>
+    <fiscalyearfilter
+      id="fiscalYearId"
+      labelid="ui-invoice.invoice.details.information.fiscalYear"
+      name="fiscalYearId"
+    />
   </div>
 </DocumentFragment>
 `;
@@ -2759,7 +2751,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-status"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -3086,7 +3077,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -3164,7 +3154,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-metadata.createdDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -3369,7 +3358,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-invoiceDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -3574,7 +3562,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 2;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -3728,7 +3715,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -3889,7 +3875,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDue"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -4094,7 +4079,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -4586,7 +4570,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-approvalDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -4791,7 +4774,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-source"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -5063,7 +5045,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-exportToAccounting"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -5225,7 +5206,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-paymentDate"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -5446,7 +5426,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         style="z-index: 1;"
       >
         <div
-          aria-label="[object Object]"
           aria-labelledby="accordion-toggle-button-lockTotal"
           class="content-region"
           data-test-accordion-wrapper="true"
@@ -5524,6 +5503,12 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
         </div>
       </div>
     </section>
+    <fiscalyearfilter
+      disabled=""
+      id="fiscalYearId"
+      labelid="ui-invoice.invoice.details.information.fiscalYear"
+      name="fiscalYearId"
+    />
   </div>
 </DocumentFragment>
 `;

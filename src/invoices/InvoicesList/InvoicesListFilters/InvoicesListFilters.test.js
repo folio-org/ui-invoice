@@ -14,12 +14,16 @@ jest.mock('@folio/stripes-acq-components', () => ({
 jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
 }));
+jest.mock('./FiscalYearFilter', () => ({
+  FiscalYearFilter: 'FiscalYearFilter',
+}));
 
 const defaultProps = {
   activeFilters: {},
   applyFilters: jest.fn(),
   disabled: false,
 };
+
 const renderInvoicesListFilters = (props = defaultProps) => render(
   <InvoicesListFilters {...props} />,
   { wrapper: MemoryRouter },

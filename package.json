@@ -188,7 +188,8 @@
           "users.item.get",
           "voucher.voucher-lines.collection.get",
           "voucher.vouchers.collection.get",
-          "voucher.vouchers.item.get"
+          "voucher.vouchers.item.get",
+          "finance.fiscal-years.collection.get"
         ]
       },
       {
@@ -266,8 +267,7 @@
         "displayName": "Invoice: Pay invoices in a different fiscal year",
         "visible": true,
         "subPermissions": [
-          "ui-invoice.pay",
-          "finance.fiscal-years.collection.get"
+          "ui-invoice.pay"
         ]
       },
       {
