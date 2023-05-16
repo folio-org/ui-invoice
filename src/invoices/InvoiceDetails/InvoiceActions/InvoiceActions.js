@@ -32,7 +32,6 @@ const InvoiceActions = ({
 }) => {
   const isDeletable = !(isPayable(invoice.status) || isPaid(invoice.status));
   const isCancelable = isPayable(invoice.status) || isPaid(invoice.status);
-  const isDisabled = isApprovePayEnabled === false;
 
   return (
     <MenuSection id="invoice-details-actions">
@@ -57,7 +56,7 @@ const InvoiceActions = ({
               data-test-invoice-action-pay
               buttonStyle="dropdownItem"
               onClick={onPay}
-              disabled={isDisabled}
+              disabled={!isApprovePayEnabled}
             >
               <Icon size="small" icon="cart">
                 <FormattedMessage id="ui-invoice.invoice.actions.pay" />
@@ -74,7 +73,7 @@ const InvoiceActions = ({
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApprove}
-              disabled={isDisabled}
+              disabled={!isApprovePayEnabled}
             >
               <Icon size="small" icon="check-circle">
                 <FormattedMessage id="ui-invoice.invoice.actions.approve" />
@@ -94,7 +93,7 @@ const InvoiceActions = ({
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApproveAndPay}
-              disabled={isDisabled}
+              disabled={!isApprovePayEnabled}
             >
               <Icon size="small" icon="cart">
                 <FormattedMessage id="ui-invoice.invoice.actions.approveAndPay" />
