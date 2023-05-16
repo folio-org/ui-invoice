@@ -55,6 +55,7 @@ import ExtendedInformation from './ExtendedInformation';
 import CancellationModal from './CancellationModal';
 
 import styles from './InvoiceDetails.css';
+import { VENDOR_STATUS } from './constants';
 
 const initalAccordionsStatus = {
   [SECTIONS.documents]: false,
@@ -101,7 +102,7 @@ function InvoiceDetails({
     invoice.id, invoice.acqUnitIds,
   );
   const stripes = useStripes();
-  const isVendorInactive = vendor?.status === 'Inactive';
+  const isVendorInactive = vendor?.status === VENDOR_STATUS.INACTIVE;
 
   const shortcuts = [
     {
@@ -166,10 +167,10 @@ function InvoiceDetails({
           onToggle();
           toggleCancellationModal();
         }}
-        isApprovePayEnabled={isApprovePayEnabled}
+        isApprovePayAvailable={isApprovePayEnabled}
         isEditDisabled={isRestrictionsLoading || restrictions.protectUpdate}
         isDeleteDisabled={isRestrictionsLoading || restrictions.protectDelete}
-        isApprovePayButtonDisabled={isVendorInactive}
+        isApprovePayEnabled={!isVendorInactive}
       />
     );
   };

@@ -18,7 +18,7 @@ import {
 const InvoiceActions = ({
   invoice,
   invoiceLinesCount,
-  isApprovePayEnabled,
+  isApprovePayAvailable,
   isDeleteDisabled,
   isEditDisabled,
   onApprove,
@@ -28,10 +28,11 @@ const InvoiceActions = ({
   onPay,
   onPrint,
   onInvoiceCancel,
-  isApprovePayButtonDisabled = false,
+  isApprovePayEnabled,
 }) => {
   const isDeletable = !(isPayable(invoice.status) || isPaid(invoice.status));
   const isCancelable = isPayable(invoice.status) || isPaid(invoice.status);
+  const isDisabled = isApprovePayEnabled === false;
 
   return (
     <MenuSection id="invoice-details-actions">
@@ -49,14 +50,14 @@ const InvoiceActions = ({
         </Button>
       </IfPermission>
       {
-        !isApprovePayEnabled && invoiceLinesCount > 0 && isPayable(invoice.status) && (
+        !isApprovePayAvailable && invoiceLinesCount > 0 && isPayable(invoice.status) && (
           <IfPermission perm="invoice.item.pay">
             <Button
               data-testid="invoice-pay"
               data-test-invoice-action-pay
               buttonStyle="dropdownItem"
               onClick={onPay}
-              disabled={isApprovePayButtonDisabled}
+              disabled={isDisabled}
             >
               <Icon size="small" icon="cart">
                 <FormattedMessage id="ui-invoice.invoice.actions.pay" />
@@ -66,14 +67,14 @@ const InvoiceActions = ({
         )
       }
       {
-        !isApprovePayEnabled && invoiceLinesCount > 0 && !IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) && (
+        !isApprovePayAvailable && invoiceLinesCount > 0 && !IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) && (
           <IfPermission perm="invoice.item.approve">
             <Button
               data-testid="invoice-approve"
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApprove}
-              disabled={isApprovePayButtonDisabled}
+              disabled={isDisabled}
             >
               <Icon size="small" icon="check-circle">
                 <FormattedMessage id="ui-invoice.invoice.actions.approve" />
@@ -83,7 +84,7 @@ const InvoiceActions = ({
         )
       }
       {
-        isApprovePayEnabled
+        isApprovePayAvailable
         && invoiceLinesCount > 0
         && (!IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) || isPayable(invoice.status))
         && (
@@ -93,7 +94,7 @@ const InvoiceActions = ({
               data-test-invoice-action-approve
               buttonStyle="dropdownItem"
               onClick={onApproveAndPay}
-              disabled={isApprovePayButtonDisabled}
+              disabled={isDisabled}
             >
               <Icon size="small" icon="cart">
                 <FormattedMessage id="ui-invoice.invoice.actions.approveAndPay" />
@@ -148,8 +149,8 @@ const InvoiceActions = ({
 InvoiceActions.propTypes = {
   invoice: PropTypes.object.isRequired,
   invoiceLinesCount: PropTypes.number,
+  isApprovePayAvailable: PropTypes.bool,
   isApprovePayEnabled: PropTypes.bool,
-  isApprovePayButtonDisabled: PropTypes.bool,
   isDeleteDisabled: PropTypes.bool.isRequired,
   isEditDisabled: PropTypes.bool.isRequired,
   onApprove: PropTypes.func.isRequired,
@@ -163,7 +164,7 @@ InvoiceActions.propTypes = {
 
 InvoiceActions.defaultProps = {
   invoiceLinesCount: 0,
-  isApprovePayEnabled: false,
+  isApprovePayAvailable: false,
 };
 
 export default InvoiceActions;

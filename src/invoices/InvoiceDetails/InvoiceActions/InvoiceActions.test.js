@@ -10,14 +10,14 @@ const defaultProps = {
   invoiceLinesCount: 1,
   isDeleteDisabled: false,
   isEditDisabled: false,
-  isApprovePayEnabled: false,
+  isApprovePayAvailable: false,
   onApprove: jest.fn(),
   onApproveAndPay: jest.fn(),
   onDelete: jest.fn(),
   onEdit: jest.fn(),
   onPay: jest.fn(),
   onPrint: jest.fn(),
-  isApprovePayButtonDisabled: false,
+  isApprovePayEnabled: true,
 };
 const renderInvoiceActions = (props = defaultProps) => render(
   <InvoiceActions {...props} />,
@@ -37,7 +37,7 @@ describe('InvoiceActions', () => {
         ...invoice,
         status: 'Approved',
       },
-      isApprovePayEnabled: true,
+      isApprovePayAvailable: true,
     });
 
     expect(screen.getByTestId('invoice-approve-pay')).toBeDefined();
@@ -46,10 +46,11 @@ describe('InvoiceActions', () => {
   it('should display Approve and Pay action when setting is enabled and not post approved status', () => {
     renderInvoiceActions({
       ...defaultProps,
-      isApprovePayEnabled: true,
+      isApprovePayAvailable: true,
     });
 
     expect(screen.getByTestId('invoice-approve-pay')).toBeDefined();
+    expect(screen.getByTestId('invoice-approve-pay')).not.toBeDisabled();
   });
 
   it('should display Approve action when not post approved status', () => {
@@ -61,7 +62,7 @@ describe('InvoiceActions', () => {
   it('should Approve & Pay button disabled', () => {
     renderInvoiceActions({
       ...defaultProps,
-      isApprovePayButtonDisabled: true,
+      isApprovePayEnabled: false,
     });
     expect(screen.getByTestId('invoice-approve')).toBeDefined();
     expect(screen.getByTestId('invoice-approve')).toBeDisabled();
