@@ -22,6 +22,7 @@ import InvoiceActions from './InvoiceActions';
 import ApproveConfirmationModal from './ApproveConfirmationModal';
 import CancellationModal from './CancellationModal';
 import InvoiceDetails from './InvoiceDetails';
+import { VENDOR_STATUS } from './constants';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -71,6 +72,9 @@ const defaultProps = {
   payInvoice: jest.fn(),
   refreshData: jest.fn(),
   totalInvoiceLines: 0,
+  vendor: {
+    status: VENDOR_STATUS.ACTIVE,
+  },
 };
 const renderInvoiceDetails = (props = defaultProps) => render(
   <InvoiceDetails {...props} />,
@@ -126,6 +130,16 @@ describe('InvoiceDetails', () => {
     });
 
     expect(screen.getByText('ui-invoice.invoice.details.hasFullyPaidPOLine')).toBeDefined();
+  });
+
+  it('should display vendor not active banner message', () => {
+    renderInvoiceDetails({
+      ...defaultProps,
+      vendor: {
+        status: VENDOR_STATUS.INACTIVE,
+      },
+    });
+    expect(screen.getByText(/invoice.details.vendor.inactive/)).toBeDefined();
   });
 
   describe('Actions', () => {
