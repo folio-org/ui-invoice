@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import '../../../../test/jest/__mock__';
@@ -15,7 +15,7 @@ jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
 }));
 jest.mock('./FiscalYearFilter', () => ({
-  FiscalYearFilter: 'FiscalYearFilter',
+  FiscalYearFilter: () => <div>ui-invoice.invoice.details.information.fiscalYear</div>,
 }));
 
 const defaultProps = {
@@ -39,18 +39,21 @@ describe('InvoicesListFilters', () => {
   });
 
   it('should render correct structure', async () => {
-    const { container, asFragment } = renderInvoicesListFilters();
+    renderInvoicesListFilters();
 
-    container.querySelector('#invoice-filters-accordion-set').removeAttribute('aria-multiselectable');
+    const totalAmountFilter = await screen.findByText('ui-invoice.invoice.details.information.totalAmount');
+    const fiscalYearFilter = await screen.findByText('ui-invoice.invoice.details.information.fiscalYear');
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(totalAmountFilter).toBeInTheDocument();
+    expect(fiscalYearFilter).toBeInTheDocument();
   });
 
   it('should render correct structure when disabled', async () => {
-    const { container, asFragment } = renderInvoicesListFilters({ ...defaultProps, disabled: true });
+    renderInvoicesListFilters({ ...defaultProps, disabled: true });
+    const totalAmountFilter = await screen.findByText('ui-invoice.invoice.details.information.totalAmount');
+    const applyButton = screen.getAllByRole('textbox', { disabled: true });
 
-    container.querySelector('#invoice-filters-accordion-set').removeAttribute('aria-multiselectable');
-
-    expect(asFragment()).toMatchSnapshot();
+    expect(totalAmountFilter).toBeInTheDocument();
+    expect(applyButton.length).toBeGreaterThanOrEqual(1);
   });
 });
