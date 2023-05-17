@@ -424,5 +424,8 @@
     "settings.batchGroups.cannotDeleteTermMessage": "이 일괄 그룹은 하나 이상의 레코드에서 사용 중이므로 삭제할 수 없습니다.",
     "settings.batchGroups.deleteEntry": "일괄 그룹 삭제",
     "settings.batchGroups.termDeleted": "일괄 그룹 <b> {term} </b> 이 성공적으로 <b> 삭제되었습니다 </b>",
-    "settings.batchGroups.termWillBeDeleted": "일괄 그룹 <b> {term} </b> 이 <b> 삭제됩니다. </b>"
+    "settings.batchGroups.termWillBeDeleted": "일괄 그룹 <b> {term} </b> 이 <b> 삭제됩니다. </b>",
+    "invoice.details.information.fiscalYear": "Fiscal year",
+    "permission.payDifferentFY": "Invoice: Pay invoices in a different fiscal year",
+    "invoice.details.vendor.inactive": "Vendor is inactive. Invoice cannot be approved or paid."
 }
