@@ -72,7 +72,7 @@
     "adjustment.type": "Vyberte úpravu",
     "adjustment.description": "Popis",
     "invoiceLineInformation": "Informace o řádku faktury",
-    "fundDistribution": "Rozdělení fondu",
+    "fundDistribution": "Rozdělení prostředků",
     "adjustments": "Úpravy",
     "status.Open": "Otevřeno",
     "invoice.details.lines.list.description": "Popis",
@@ -330,9 +330,9 @@
     "invoice.details.voucher.vendor": "Prodejce",
     "invoice.actions.approve.error.organizationIsNotVendor": "Fakturu nelze schválit, protože přidružené ID prodejce patří organizaci, která není prodejcem.",
     "invoice.actions.approve.error.budgetNotFoundByFundId": "Fakturu nelze schválit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
-    "invoice.actions.approve.error.adjustmentFundDistributionsNotPresent": "U každé nepoměrné úpravy by mělo být přítomno alespoň jedno rozdělení fondů",
-    "invoice.actions.approve.error.lineFundDistributionsSummaryMismatch": "Souhrn rozdělení fondu by měl být 100 % nebo roven mezisoučtu pro každý přidružený řádek faktury",
-    "invoice.actions.approve.error.adjustmentFundDistributionsSummaryMismatch": "Souhrn rozdělení fondů by měl být 100 % nebo roven mezisoučtu pro každou nepoměrnou úpravu",
+    "invoice.actions.approve.error.adjustmentFundDistributionsNotPresent": "U každé nepoměrné úpravy by mělo být přítomno alespoň jedno rozdělení prostředků",
+    "invoice.actions.approve.error.lineFundDistributionsSummaryMismatch": "Souhrn rozdělení prostředků by měl být 100 % nebo roven mezisoučtu pro každý přidružený řádek faktury",
+    "invoice.actions.approve.error.adjustmentFundDistributionsSummaryMismatch": "Souhrn rozdělení prostředků by měl být 100 % nebo roven mezisoučtu pro každou nepoměrnou úpravu",
     "invoice.actions.approve.error.fundsNotFound": "Fakturu nelze schválit, protože nebyly nalezeny záznamy o financování",
     "invoice.actions.approve.error.externalAccountNoIsMissing": "Fakturu nelze schválit, protože záznam o fondu neobsahuje externí číslo účtu.",
     "invoice.actions.approve.error.pendingPaymentError": "Fakturu nelze schválit, protože se nezdařilo vytvoření nevyřízené platby",
@@ -424,5 +424,8 @@
     "settings.batchGroups.cannotDeleteTermMessage": "Tuto skupinu dávek nelze smazat, protože je používána jedním nebo více záznamy.",
     "settings.batchGroups.deleteEntry": "Smazat skupinu dávek",
     "settings.batchGroups.termDeleted": "Skupina dávek <b>{term}</b> byla úspěšně <b>smazána</b>",
-    "settings.batchGroups.termWillBeDeleted": "Skupina dávek <b>{term}</b> bude <b>smazána.</b>"
+    "settings.batchGroups.termWillBeDeleted": "Skupina dávek <b>{term}</b> bude <b>smazána.</b>",
+    "invoice.details.information.fiscalYear": "Fiskální rok",
+    "permission.payDifferentFY": "Faktury: Zaplatit faktury v jiném fiskálním roce",
+    "invoice.details.vendor.inactive": "Vendor is inactive. Invoice cannot be approved or paid."
 }
