@@ -248,6 +248,7 @@
   "invoice.details.information.title": "Invoice information",
   "invoice.details.information.invoiceDate": "Invoice date",
   "invoice.details.information.fiscalYear": "Fiscal year",
+  "invoice.details.information.totalAmount": "Total amount",
   "invoice.details.information.paymentDue": "Payment due",
   "invoice.details.information.terms": "Terms",
   "invoice.details.information.source": "Source",
