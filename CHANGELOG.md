@@ -6,6 +6,7 @@
 * Filter Invoices by Fiscal year. Refs UINV-480.
 * Disable ability to approve & pay invoice against inactive organization. Refs UINV-467.
 * Allow user to filter invoices by Amount. Refs UINV-341.
+* Select Upload location type in settings. Refs UINV-322.
 
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)

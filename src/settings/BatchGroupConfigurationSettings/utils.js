@@ -30,6 +30,9 @@ export const saveExportConfig = (
     enableScheduledExport: values.enableScheduledExport,
     format: values.format,
     uploadURI: values.uploadURI,
+    uploadDirectory: values.uploadDirectory,
+    ftpFormat: values.ftpFormat,
+    ftpPort: values.ftpPort,
   };
 
   return exportConfig[httpMethod](config)

@@ -573,6 +573,63 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
         class="row"
       >
         <div
+          class="col-xs-4"
+          data-test-col-location-type="true"
+        >
+          <div
+            class="select inputGroup fullWidth"
+          >
+            <label
+              class="label"
+              for="ftpFormat"
+              id="ftpFormat-label"
+            >
+              ui-invoice.settings.batchGroupConfiguration.locationType
+              <span
+                aria-hidden="true"
+                class="asterisk"
+              >
+                *
+              </span>
+            </label>
+            <div
+              class="selectWrap"
+            >
+              <select
+                aria-invalid="false"
+                aria-labelledby="ftpFormat-label"
+                aria-required="true"
+                class="selectControl formControl"
+                id="ftpFormat"
+                name="ftpFormat"
+                required=""
+              >
+                <option
+                  value=""
+                >
+                  stripes-acq-components.label.emptyValue
+                </option>
+                <option
+                  value="FTP"
+                >
+                  ui-invoice.settings.batchGroupConfiguration.locationType.FTP
+                </option>
+                <option
+                  value="SFTP"
+                >
+                  ui-invoice.settings.batchGroupConfiguration.locationType.SFTP
+                </option>
+              </select>
+              <span>
+                Icon
+              </span>
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+        </div>
+        <div
           class="col-xs-8"
           data-test-col-upload-location="true"
         >
@@ -598,7 +655,81 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 name="uploadURI"
                 spellcheck="false"
                 type="text"
-                value="https://folio.com"
+                value="ftp.amherst-lib.edu"
+                warning=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="col-xs-4"
+          data-test-col-port="true"
+        >
+          <div
+            class="textField"
+          >
+            <label
+              class="label"
+              for="ftpPort"
+            >
+              ui-invoice.settings.batchGroupConfiguration.port
+            </label>
+            <div
+              class="formControl inputGroup"
+            >
+              <input
+                aria-invalid="false"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                error=""
+                id="ftpPort"
+                name="ftpPort"
+                spellcheck="false"
+                type="number"
+                value="22"
+                warning=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+        </div>
+        <div
+          class="col-xs-4"
+          data-test-col-directory="true"
+        >
+          <div
+            class="textField"
+          >
+            <label
+              class="label"
+              for="uploadDirectory"
+            >
+              ui-invoice.settings.batchGroupConfiguration.directory
+            </label>
+            <div
+              class="formControl inputGroup"
+            >
+              <input
+                aria-invalid="false"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                error=""
+                id="uploadDirectory"
+                name="uploadDirectory"
+                spellcheck="false"
+                type="text"
+                value="/files/invoices"
                 warning=""
               />
             </div>

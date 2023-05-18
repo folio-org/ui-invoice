@@ -33,6 +33,7 @@ import {
   SCHEDULE_EXPORT_OPTIONS,
   SCHEDULE_EXPORT,
   WEEKDAYS_OPTIONS,
+  LOCATION_TYPE_OPTIONS,
 } from './constants';
 
 const trimTime = value => value.slice(0, 5);
@@ -144,8 +145,19 @@ const BatchGroupConfigurationForm = ({
             </Row>
           </>
         )}
-
         <Row>
+          <Col
+            data-test-col-location-type
+            xs={4}
+          >
+            <FieldSelect
+              dataOptions={LOCATION_TYPE_OPTIONS}
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.locationType" />}
+              name="ftpFormat"
+              id="ftpFormat"
+              required
+            />
+          </Col>
           <Col
             data-test-col-upload-location
             xs={8}
@@ -157,6 +169,35 @@ const BatchGroupConfigurationForm = ({
               name="uploadURI"
               type="text"
               validate={validateUploadURI}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            data-test-col-port
+            xs={4}
+          >
+            <Field
+              id="ftpPort"
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.port" />}
+              name="ftpPort"
+              component={TextField}
+              fullWidth
+              type="number"
+              parse={v => v}
+            />
+          </Col>
+          <Col
+            data-test-col-directory
+            xs={4}
+          >
+            <Field
+              id="uploadDirectory"
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.directory" />}
+              name="uploadDirectory"
+              component={TextField}
+              fullWidth
+              parse={v => v}
             />
           </Col>
           <Col
