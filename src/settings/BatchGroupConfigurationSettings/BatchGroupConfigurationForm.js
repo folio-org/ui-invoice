@@ -37,6 +37,7 @@ import {
 } from './constants';
 
 const trimTime = value => value.slice(0, 5);
+const SHOW_SCHEDULED_EXPORT = false;
 
 const BatchGroupConfigurationForm = ({
   batchGroups,
@@ -95,24 +96,27 @@ const BatchGroupConfigurationForm = ({
             />
           </Col>
         </Row>
+        {
+          SHOW_SCHEDULED_EXPORT && (
+            <Row>
+              <Col
+                data-test-col-schedule-export
+                xs={4}
+              >
+                <FieldSelect
+                  dataOptions={SCHEDULE_EXPORT_OPTIONS}
+                  label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.scheduleExport" />}
+                  name="scheduleExport"
+                />
+                <OnChange name="scheduleExport">
+                  {form.mutators.setScheduledExport}
+                </OnChange>
+              </Col>
+            </Row>
+          )
+        }
 
-        <Row>
-          <Col
-            data-test-col-schedule-export
-            xs={4}
-          >
-            <FieldSelect
-              dataOptions={SCHEDULE_EXPORT_OPTIONS}
-              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.scheduleExport" />}
-              name="scheduleExport"
-            />
-            <OnChange name="scheduleExport">
-              {form.mutators.setScheduledExport}
-            </OnChange>
-          </Col>
-        </Row>
-
-        {formValues.enableScheduledExport && (
+        {(SHOW_SCHEDULED_EXPORT && formValues.enableScheduledExport) && (
           <>
             {scheduleExportWeekly && (
               <Row>
