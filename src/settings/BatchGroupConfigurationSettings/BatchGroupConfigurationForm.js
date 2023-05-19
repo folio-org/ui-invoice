@@ -33,6 +33,8 @@ import {
   SCHEDULE_EXPORT_OPTIONS,
   SCHEDULE_EXPORT,
   WEEKDAYS_OPTIONS,
+  LOCATION_TYPE_OPTIONS,
+  SHOW_SCHEDULED_EXPORT,
 } from './constants';
 
 const trimTime = value => value.slice(0, 5);
@@ -94,24 +96,27 @@ const BatchGroupConfigurationForm = ({
             />
           </Col>
         </Row>
+        {
+          SHOW_SCHEDULED_EXPORT && (
+            <Row>
+              <Col
+                data-test-col-schedule-export
+                xs={4}
+              >
+                <FieldSelect
+                  dataOptions={SCHEDULE_EXPORT_OPTIONS}
+                  label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.scheduleExport" />}
+                  name="scheduleExport"
+                />
+                <OnChange name="scheduleExport">
+                  {form.mutators.setScheduledExport}
+                </OnChange>
+              </Col>
+            </Row>
+          )
+        }
 
-        <Row>
-          <Col
-            data-test-col-schedule-export
-            xs={4}
-          >
-            <FieldSelect
-              dataOptions={SCHEDULE_EXPORT_OPTIONS}
-              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.scheduleExport" />}
-              name="scheduleExport"
-            />
-            <OnChange name="scheduleExport">
-              {form.mutators.setScheduledExport}
-            </OnChange>
-          </Col>
-        </Row>
-
-        {formValues.enableScheduledExport && (
+        {(SHOW_SCHEDULED_EXPORT && formValues.enableScheduledExport) && (
           <>
             {scheduleExportWeekly && (
               <Row>
@@ -144,8 +149,19 @@ const BatchGroupConfigurationForm = ({
             </Row>
           </>
         )}
-
         <Row>
+          <Col
+            data-test-col-location-type
+            xs={4}
+          >
+            <FieldSelect
+              dataOptions={LOCATION_TYPE_OPTIONS}
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.locationType" />}
+              name="ftpFormat"
+              id="ftpFormat"
+              required
+            />
+          </Col>
           <Col
             data-test-col-upload-location
             xs={8}
@@ -157,6 +173,33 @@ const BatchGroupConfigurationForm = ({
               name="uploadURI"
               type="text"
               validate={validateUploadURI}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            data-test-col-port
+            xs={4}
+          >
+            <Field
+              id="ftpPort"
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.port" />}
+              name="ftpPort"
+              component={TextField}
+              fullWidth
+              type="number"
+            />
+          </Col>
+          <Col
+            data-test-col-directory
+            xs={4}
+          >
+            <Field
+              id="uploadDirectory"
+              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.directory" />}
+              name="uploadDirectory"
+              component={TextField}
+              fullWidth
             />
           </Col>
           <Col
