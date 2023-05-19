@@ -6,6 +6,8 @@ import { CONTENT_TYPES } from '../../common/constants';
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 const LOCATION_TYPES = ['FTP', 'SFTP'];
 
+export const SHOW_SCHEDULED_EXPORT = false;
+
 export const WEEKDAYS_OPTIONS = Object.values(WEEKDAYS).map(day => ({
   label: <FormattedMessage id={`ui-invoice.settings.batchGroupConfiguration.weekdays.${day}`} />,
   value: day,

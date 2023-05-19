@@ -34,10 +34,10 @@ import {
   SCHEDULE_EXPORT,
   WEEKDAYS_OPTIONS,
   LOCATION_TYPE_OPTIONS,
+  SHOW_SCHEDULED_EXPORT,
 } from './constants';
 
 const trimTime = value => value.slice(0, 5);
-const SHOW_SCHEDULED_EXPORT = false;
 
 const BatchGroupConfigurationForm = ({
   batchGroups,
@@ -188,7 +188,6 @@ const BatchGroupConfigurationForm = ({
               component={TextField}
               fullWidth
               type="number"
-              parse={v => v}
             />
           </Col>
           <Col
@@ -201,7 +200,6 @@ const BatchGroupConfigurationForm = ({
               name="uploadDirectory"
               component={TextField}
               fullWidth
-              parse={v => v}
             />
           </Col>
           <Col
