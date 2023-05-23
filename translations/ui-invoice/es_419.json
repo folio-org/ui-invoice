@@ -427,5 +427,11 @@
     "settings.batchGroups.termWillBeDeleted": "Se <b>eliminará</b> el grupo de lotes <b>{term}</b> <b>.</b>",
     "invoice.details.information.fiscalYear": "Año fiscal",
     "permission.payDifferentFY": "Facturar: Pagar facturas en un ejercicio fiscal diferente",
-    "invoice.details.vendor.inactive": "El vendedor está inactivo. La factura no puede ser aprobada o pagada."
+    "invoice.details.vendor.inactive": "El vendedor está inactivo. La factura no puede ser aprobada o pagada.",
+    "invoice.details.information.totalAmount": "Importe total",
+    "settings.batchGroupConfiguration.locationType": "Location type",
+    "settings.batchGroupConfiguration.locationType.FTP": "FTP",
+    "settings.batchGroupConfiguration.locationType.SFTP": "SFTP",
+    "settings.batchGroupConfiguration.port": "Port",
+    "settings.batchGroupConfiguration.directory": "Directory"
 }

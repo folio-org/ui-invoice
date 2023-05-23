@@ -427,5 +427,11 @@
     "settings.batchGroups.termWillBeDeleted": "Batch-Gruppe <b>{term}</b> wird<b> gelöscht</b>",
     "invoice.details.information.fiscalYear": "Fiscal year",
     "permission.payDifferentFY": "Invoice: Pay invoices in a different fiscal year",
-    "invoice.details.vendor.inactive": "Vendor is inactive. Invoice cannot be approved or paid."
+    "invoice.details.vendor.inactive": "Vendor is inactive. Invoice cannot be approved or paid.",
+    "invoice.details.information.totalAmount": "Total amount",
+    "settings.batchGroupConfiguration.locationType": "Location type",
+    "settings.batchGroupConfiguration.locationType.FTP": "FTP",
+    "settings.batchGroupConfiguration.locationType.SFTP": "SFTP",
+    "settings.batchGroupConfiguration.port": "Port",
+    "settings.batchGroupConfiguration.directory": "Directory"
 }
