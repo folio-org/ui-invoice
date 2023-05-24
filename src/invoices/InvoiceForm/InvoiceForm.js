@@ -124,6 +124,7 @@ const InvoiceForm = ({
     subTotal,
     total,
     vendorInvoiceNo,
+    fiscalYearId,
   } = initialValues;
   const [selectedVendor, setSelectedVendor] = useState();
   const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
@@ -178,6 +179,7 @@ const InvoiceForm = ({
   const isEditMode = Boolean(id);
   const isStatusPaid = isPaid(status);
   const invoiceVendor = selectedVendor || initialVendor;
+  const isFiscalYearRequired = isEditMode && Boolean(fiscalYearId);
   const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
   const accountingCodeValidationProps = isExportToAccountingChecked
@@ -300,6 +302,7 @@ const InvoiceForm = ({
                               id="invoice-fiscal-year"
                               name="fiscalYearId"
                               disabled={isFiscalYearFieldDisabled}
+                              required={isFiscalYearRequired}
                             />
                           </Col>
                         </IfPermission>
