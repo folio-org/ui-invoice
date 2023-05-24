@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { Form } from 'react-final-form';
-import { act, render, fireEvent, screen, waitFor } from '@testing-library/react';
+import { act, render, fireEvent, screen } from '@testing-library/react';
 import { useHistory } from 'react-router';
 
 import {
