@@ -16,6 +16,7 @@ const defaultProps = {
   id: 'fy',
   disabled: false,
   name: 'fiscalYearId',
+  required: false,
 };
 
 const renderFieldFiscalYearContainer = (props = {}) => render(
@@ -35,5 +36,13 @@ describe('FieldFiscalYearContainer', () => {
     renderFieldFiscalYearContainer();
 
     expect(screen.getByLabelText('ui-invoice.invoice.details.information.fiscalYear')).toBeInTheDocument();
+  });
+
+  it('should have a required label', () => {
+    renderFieldFiscalYearContainer({
+      required: true,
+    });
+
+    expect(screen.getByText(/required/)).toBeInTheDocument();
   });
 });

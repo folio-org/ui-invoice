@@ -7,6 +7,7 @@ export const FieldFiscalYear = ({
   disabled,
   name,
   dataOptions,
+  required,
 }) => {
   return (
     <FieldSelectionFinal
@@ -15,6 +16,7 @@ export const FieldFiscalYear = ({
       id={id}
       labelId="ui-invoice.invoice.details.information.fiscalYear"
       name={name}
+      required={required}
     />
   );
 };
@@ -27,4 +29,5 @@ FieldFiscalYear.propTypes = {
   disabled: PropTypes.bool,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 };

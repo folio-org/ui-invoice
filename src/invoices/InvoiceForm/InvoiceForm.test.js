@@ -13,6 +13,8 @@ import { FieldOrganization } from '@folio/stripes-acq-components';
 
 import InvoiceForm from './InvoiceForm';
 
+const FISCAL_YEARS = [{ code: 'FY2023', id: 'fyId' }];
+
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
   useHistory: jest.fn(),
@@ -38,7 +40,7 @@ jest.mock('../../common/components/VendorPrimaryAddress', () => ({
 }));
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
-  usePayableFiscalYears: jest.fn(() => ({ fiscalYears: [{ code: 'FY2023', id: 'fyId' }] })),
+  usePayableFiscalYears: jest.fn(() => ({ fiscalYears: FISCAL_YEARS })),
 }));
 
 const defaultProps = {
@@ -174,6 +176,41 @@ describe('InvoiceForm component', () => {
       });
 
       expect(screen.getByTestId('export-to-accounting').checked).toEqual(true);
+    });
+  });
+
+  describe('FieldFiscalYearContainer', () => {
+    const labelId = 'ui-invoice.invoice.details.information.fiscalYear';
+    const labelIdRequired = `${labelId}<span class="asterisk" aria-hidden="true">*</span>`;
+    const optionIdQuery = 'li[id^="option-invoice-fiscal-year"]';
+
+    it('should render fiscal year component with empty select option', async () => {
+      const optionLengthWithEmptyLine = FISCAL_YEARS.length + 1;
+      const { container } = renderInvoiceForm({
+        ...defaultProps,
+        initialValues: { fiscalYearId: 'fyId' },
+      });
+      const fiscalYearLabel = await screen.findByText(labelId);
+
+      expect(fiscalYearLabel).toBeInTheDocument();
+
+      const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
+
+      expect(fiscalYearOptions.length).toBe(optionLengthWithEmptyLine);
+    });
+
+    it('should render edit fiscal year component with required "*" sign and not to have empty input selection', async () => {
+      const { container } = renderInvoiceForm({
+        ...defaultProps,
+        initialValues: { fiscalYearId: 'fyId', id: 'invoiceId' },
+      });
+      const fiscalYearLabel = await screen.findByText(labelId);
+
+      expect(fiscalYearLabel.innerHTML).toBe(labelIdRequired);
+
+      const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
+
+      expect(fiscalYearOptions.length).toBe(FISCAL_YEARS.length);
     });
   });
 

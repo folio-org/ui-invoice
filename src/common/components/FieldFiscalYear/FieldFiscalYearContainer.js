@@ -10,6 +10,7 @@ export const FieldFiscalYearContainer = ({
   id,
   disabled,
   name,
+  required,
 }) => {
   const {
     fiscalYears,
@@ -28,6 +29,7 @@ export const FieldFiscalYearContainer = ({
       disabled={disabled}
       name={name}
       dataOptions={dataOptions}
+      required={required}
     />
   );
 };
@@ -36,4 +38,5 @@ FieldFiscalYearContainer.propTypes = {
   disabled: PropTypes.bool,
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  required: PropTypes.bool,
 };
