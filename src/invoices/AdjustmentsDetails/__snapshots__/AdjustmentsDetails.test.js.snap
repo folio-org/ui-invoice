@@ -173,7 +173,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
             >
               <div
                 class="mclCenteredContainer"
-                style="width: 100%; visibility: hidden; height: 0px; padding: 0px;"
+                style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
               >
                 <div
                   class="textCentered"

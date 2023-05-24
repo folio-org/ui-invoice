@@ -327,7 +327,8 @@
           "configuration.entries.item.post",
           "configuration.entries.item.put",
           "voucher-number.start.get",
-          "voucher-number.start.post"
+          "voucher-number.start.post",
+          "users.collection.get"
         ]
       },
       {
