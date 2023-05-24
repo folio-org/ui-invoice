@@ -16,5 +16,4 @@ export const FILTERS = {
   FUND_CODE: 'fundCode',
   LOCK_TOTAL: 'lockTotal',
   FISCAL_YEAR: 'fiscalYearId',
-  TOTAL_AMOUNT: 'total',
 };
