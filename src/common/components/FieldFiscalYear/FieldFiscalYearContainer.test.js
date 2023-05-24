@@ -36,7 +36,6 @@ describe('FieldFiscalYearContainer', () => {
     renderFieldFiscalYearContainer();
 
     expect(screen.getByLabelText('ui-invoice.invoice.details.information.fiscalYear')).toBeInTheDocument();
-    screen.debug(undefined, 300000);
   });
 
   it('should have a required label', () => {
