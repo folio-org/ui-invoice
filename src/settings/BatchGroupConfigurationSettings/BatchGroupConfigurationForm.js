@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import { Field } from 'react-final-form';
 import { OnChange } from 'react-final-form-listeners';
 import { get } from 'lodash';
@@ -51,7 +54,7 @@ const BatchGroupConfigurationForm = ({
   testConnection,
 }) => {
   const { paneTitleRef } = usePaneFocus();
-
+  const intl = useIntl();
   const formValues = get(form.getState(), 'values', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
 
@@ -173,6 +176,7 @@ const BatchGroupConfigurationForm = ({
               name="uploadURI"
               type="text"
               validate={validateUploadURI}
+              placeholder={intl.formatMessage({ id: 'ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder' })}
             />
           </Col>
         </Row>

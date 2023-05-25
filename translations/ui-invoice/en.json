@@ -156,6 +156,7 @@
   "settings.batchGroupConfiguration.testConnection.success": "Connection is valid",
   "settings.batchGroupConfiguration.testConnection.error": "Connection error: {cause}",
   "settings.batchGroupConfiguration.uploadLocation": "Upload location",
+  "settings.batchGroupConfiguration.uploadLocation.placeholder": "ftp(s)://uploadlocation.com",
   "settings.batchGroupConfiguration.username": "Username",
   "settings.batchGroupConfiguration.weekdays.Friday": "F",
   "settings.batchGroupConfiguration.weekdays.Monday": "M",

@@ -66,4 +66,9 @@ describe('BatchGroupConfigurationForm component', () => {
 
     expect(screen.getByText('ui-invoice.settings.batchGroupConfiguration.scheduleExport')).toBeInTheDocument();
   });
+  it('should render upload location placeholder', async () => {
+    renderBatchGroupConfigurationForm();
+
+    expect(screen.queryByText('ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder')).not.toBeInTheDocument();
+  });
 });
