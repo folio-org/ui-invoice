@@ -317,11 +317,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
             <div
               class="mclCell mclCellStyle"
               role="gridcell"
-            >
-              <span>
-                -
-              </span>
-            </div>
+            />
             <div
               class="mclCell mclCellStyle"
               role="gridcell"
