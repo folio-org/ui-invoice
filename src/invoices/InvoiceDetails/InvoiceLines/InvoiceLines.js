@@ -145,12 +145,12 @@ const InvoiceLines = ({
     vendorCode: line => {
       const orderLine = orderlinesMap?.[line.poLineId];
 
-      return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || <NoValue />;
+      return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || vendor.code;
     },
     vendorRefNo: line => (
       line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
     ),
-  }), [currency, ordersMap, orderlinesMap]);
+  }), [currency, ordersMap, orderlinesMap, vendor]);
 
   return (
     <>
