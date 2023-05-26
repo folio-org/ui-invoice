@@ -38,6 +38,7 @@ import {
   WEEKDAYS_OPTIONS,
   LOCATION_TYPE_OPTIONS,
   SHOW_SCHEDULED_EXPORT,
+  LOCATION_TYPES,
 } from './constants';
 
 const trimTime = value => value.slice(0, 5);
@@ -57,6 +58,7 @@ const BatchGroupConfigurationForm = ({
   const intl = useIntl();
   const formValues = get(form.getState(), 'values', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
+  const placeholder = formValues.ftpFormat || LOCATION_TYPES.FTP;
 
   const paneFooter = (
     <BatchGroupConfigurationFormFooter
@@ -176,7 +178,7 @@ const BatchGroupConfigurationForm = ({
               name="uploadURI"
               type="text"
               validate={validateUploadURI}
-              placeholder={intl.formatMessage({ id: 'ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder' })}
+              placeholder={intl.formatMessage({ id: `ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder.${placeholder}` })}
             />
           </Col>
         </Row>

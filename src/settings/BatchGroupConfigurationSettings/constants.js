@@ -4,7 +4,6 @@ import { FormattedMessage } from 'react-intl';
 import { CONTENT_TYPES } from '../../common/constants';
 
 const WEEKDAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const LOCATION_TYPES = ['FTP', 'SFTP'];
 
 export const SHOW_SCHEDULED_EXPORT = false;
 
@@ -43,6 +42,11 @@ export const EXPORT_FORMATS_HEADER_MAP = {
 export const EXPORT_FORMAT_FILE_EXTENSION = {
   [EXPORT_FORMAT.json]: 'json',
   [EXPORT_FORMAT.xml]: 'xml',
+};
+
+export const LOCATION_TYPES = {
+  FTP: 'FTP',
+  SFTP: 'SFTP',
 };
 
 export const LOCATION_TYPE_OPTIONS = Object.values(LOCATION_TYPES).map(locationType => ({

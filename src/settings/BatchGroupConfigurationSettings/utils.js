@@ -4,11 +4,16 @@ import {
   keys,
   pickBy,
 } from 'lodash';
+import { LOCATION_TYPES } from './constants';
 
-const REGEXP_URI = new RegExp('^$|([f][t][p])([s])?://.+$');
+const REGEXP_URI = {
+  [LOCATION_TYPES.SFTP]: /^sftp:\/\/([^\s/?#]+)(?:[/?#]|$)/,
+  [LOCATION_TYPES.FTP]: /^ftp:\/\/([^\s/?#]+)(?:[/?#]|$)/,
+};
 
-export const validateUploadURI = (value) => {
-  const isValid = REGEXP_URI.test(value);
+export const validateUploadURI = (value, fields) => {
+  const ftpFormat = fields.ftpFormat || LOCATION_TYPES.FTP;
+  const isValid = REGEXP_URI[ftpFormat].test(value);
 
   if (value === undefined || isValid) return undefined;
 
