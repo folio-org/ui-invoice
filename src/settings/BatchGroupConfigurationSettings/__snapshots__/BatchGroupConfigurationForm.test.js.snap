@@ -290,7 +290,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 error=""
                 id="uploadURI"
                 name="uploadURI"
-                placeholder="ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder"
+                placeholder="ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder.FTP"
                 spellcheck="false"
                 type="text"
                 value="ftp.amherst-lib.edu"
