@@ -23,6 +23,7 @@ import ApproveConfirmationModal from './ApproveConfirmationModal';
 import CancellationModal from './CancellationModal';
 import InvoiceDetails from './InvoiceDetails';
 import { VENDOR_STATUS } from './constants';
+import { useHasPendingOrders } from './hooks';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -57,6 +58,9 @@ jest.mock('./DocumentsDetails', () => jest.fn().mockReturnValue('DocumentsDetail
 jest.mock('./InvoiceBatchVoucherExport', () => jest.fn().mockReturnValue('InvoiceBatchVoucherExport'));
 jest.mock('./ExtendedInformation', () => jest.fn().mockReturnValue('ExtendedInformation'));
 jest.mock('./CancellationModal', () => jest.fn().mockReturnValue('CancellationModal'));
+jest.mock('./hooks', () => ({
+  useHasPendingOrders: jest.fn().mockReturnValue({ hasPendingOrders: false }),
+}));
 
 const defaultProps = {
   invoice,
@@ -140,6 +144,14 @@ describe('InvoiceDetails', () => {
       },
     });
     expect(screen.getByText(/invoice.details.vendor.inactive/)).toBeDefined();
+  });
+
+  it('should display pending orders banner message', () => {
+    useHasPendingOrders.mockReturnValue({ hasPendingOrders: true });
+    renderInvoiceDetails({
+      ...defaultProps,
+    });
+    expect(screen.getByText(/invoice.details.hasPendingOrders/)).toBeDefined();
   });
 
   describe('Actions', () => {

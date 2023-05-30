@@ -325,6 +325,7 @@
   "invoice.details.voucher.voucherNumber": "Voucher number",
   "invoice.details.voucher.save.success": "Voucher has been successfully saved",
   "invoice.details.hasFullyPaidPOLine": "Purchase order line status is Fully Paid",
+  "invoice.details.hasPendingOrders": "Invoice can not be approved. One or more of the related orders has a workflow status of \"Pending\". If desired, please open the related orders before approving this invoice.",
 
   "invoice.duplicateInvoice.amount": "Amount",
   "invoice.duplicateInvoice.title": "Possible duplicate invoice",
