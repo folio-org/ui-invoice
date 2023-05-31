@@ -69,7 +69,7 @@
     "invoiceLine.comment": "Komentář",
     "invoiceLine.releaseEncumbrance": "Uvolnění věcného břemene",
     "invoiceLine.subTotal": "Mezisoučet",
-    "adjustment.type": "Vyberte úpravu",
+    "adjustment.type": "Vybrat úpravu",
     "adjustment.description": "Popis",
     "invoiceLineInformation": "Informace o řádku faktury",
     "fundDistribution": "Rozdělení prostředků",
@@ -413,7 +413,7 @@
     "invoice.actions.saveLine.error.inactiveExpenseClass": "Řádek faktury nelze uložit, protože třída výdajů <b>{expenseClass}</b> je neaktivní.",
     "invoice.actions.saveLine.error": "Řádek faktury nebyl uložen",
     "voucherExport.paneTitle": "Export poukazu",
-    "voucherExport.batchGroup.select": "Vyberte skupinu dávek",
+    "voucherExport.batchGroup.select": "Vybrat skupinu dávek",
     "voucherExport.download.success": "Poukazy byly úspěšně staženy",
     "permission.voucherExport": "Faktura: Export poukazu",
     "permission.exportCSV": "Faktura: Export výsledků vyhledávání",
@@ -427,5 +427,13 @@
     "settings.batchGroups.termWillBeDeleted": "Skupina dávek <b>{term}</b> bude <b>smazána.</b>",
     "invoice.details.information.fiscalYear": "Fiskální rok",
     "permission.payDifferentFY": "Faktury: Zaplatit faktury v jiném fiskálním roce",
-    "invoice.details.vendor.inactive": "Vendor is inactive. Invoice cannot be approved or paid."
+    "invoice.details.vendor.inactive": "Prodejce je neaktivní. Fakturu nelze schválit ani zaplatit.",
+    "settings.batchGroupConfiguration.locationType": "Typ umístění",
+    "settings.batchGroupConfiguration.locationType.FTP": "FTP",
+    "settings.batchGroupConfiguration.locationType.SFTP": "SFTP",
+    "settings.batchGroupConfiguration.port": "Port",
+    "settings.batchGroupConfiguration.directory": "Adresář",
+    "settings.batchGroupConfiguration.uploadLocation.placeholder.FTP": "ftp://uploadlocation.com",
+    "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
+    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Invoice could not be approved. Encumbrance fund id does not match the fund id in the invoice line. Error must be corrected in database."
 }

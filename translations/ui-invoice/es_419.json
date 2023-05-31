@@ -427,5 +427,13 @@
     "settings.batchGroups.termWillBeDeleted": "Se <b>eliminará</b> el grupo de lotes <b>{term}</b> <b>.</b>",
     "invoice.details.information.fiscalYear": "Año fiscal",
     "permission.payDifferentFY": "Facturar: Pagar facturas en un ejercicio fiscal diferente",
-    "invoice.details.vendor.inactive": "El vendedor está inactivo. La factura no puede ser aprobada o pagada."
+    "invoice.details.vendor.inactive": "El vendedor está inactivo. La factura no puede ser aprobada o pagada.",
+    "settings.batchGroupConfiguration.locationType": "Tipo de ubicación",
+    "settings.batchGroupConfiguration.locationType.FTP": "FTP",
+    "settings.batchGroupConfiguration.locationType.SFTP": "SFTP",
+    "settings.batchGroupConfiguration.port": "Puerto",
+    "settings.batchGroupConfiguration.directory": "Directorio",
+    "settings.batchGroupConfiguration.uploadLocation.placeholder.FTP": "ftp://uploadlocation.com",
+    "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
+    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "No se ha podido aprobar la factura. El identificador de fondos del gravamen no coincide con el identificador de fondos de la línea de factura. El error debe corregirse en la base de datos."
 }
