@@ -12,7 +12,7 @@ export const useHasPendingOrders = (orderLinesMap = {}) => {
     isLoading,
     orders,
     isFetched,
-  } = useOrders(orderIds, { skip: !orderIds.length });
+  } = useOrders(orderIds);
 
   const hasPendingOrders = useMemo(() => {
     if (isLoading) {
