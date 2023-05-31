@@ -139,6 +139,7 @@ export const ERROR_CODES = {
   expenseClassNotFound: 'expenseClassNotFound',
   organizationIsNotExist: 'organizationIsNotExist',
   multipleFiscalYears: 'multipleFiscalYears',
+  outdatedFundIdInEncumbrance: 'outdatedFundIdInEncumbrance',
 };
 
 export const VALIDATION_ERRORS = {

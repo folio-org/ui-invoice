@@ -8,6 +8,7 @@
 * Select Upload location type in settings. Refs UINV-322.
 * Prevent resetting fiscalYearId. Refs UINV-481.
 * Display Vendor code in Invoice line accordion when invoice line is not linked to PO line. Refs UINV-482.
+* Support a new error code `outdatedFundIdInEncumbrance`. Refs UINV-486.
 * Prevent approval or payment of invoice with linked order status of "pending". Refs UINV-465.
 
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
