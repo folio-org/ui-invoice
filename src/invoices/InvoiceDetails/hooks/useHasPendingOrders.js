@@ -27,7 +27,7 @@ export const useHasPendingOrders = (orderLinesMap = {}) => {
   }, [orders, isLoading, isFetched]);
 
   return {
-    isLoading: isLoading || false,
+    isLoading,
     hasPendingOrders,
   };
 };
