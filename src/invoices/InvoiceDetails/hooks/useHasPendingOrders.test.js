@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks';
+import { ORDER_STATUSES } from '@folio/stripes-acq-components';
 import { useOrders } from '../../../common/hooks';
-import { ORDER_STATUS } from '../constants';
 import { useHasPendingOrders } from './useHasPendingOrders';
 
 jest.mock('../../../common/hooks', () => ({
@@ -17,6 +17,14 @@ describe('useHasPendingOrders', () => {
     expect(result.current.hasPendingOrders).toBeFalsy();
   });
 
+  it('should return hasPendingOrders: false when there are no orders return from useOrders hook', async () => {
+    useOrders.mockReturnValue({ orders: [], isLoading: false, isFetched: true });
+    const { result } = renderHook(() => useHasPendingOrders(ordersLineMap));
+
+    expect(result.current.isLoading).toBeFalsy();
+    expect(result.current.hasPendingOrders).toBeFalsy();
+  });
+
   it('should return hasPendingOrders: false', async () => {
     useOrders.mockReturnValue({ orders: [], isLoading: true });
     const { result } = renderHook(() => useHasPendingOrders(ordersLineMap));
@@ -26,7 +34,7 @@ describe('useHasPendingOrders', () => {
   });
 
   it('should return hasPendingOrders: true', async () => {
-    useOrders.mockReturnValue({ orders: [{ workflowStatus: ORDER_STATUS.PENDING }] });
+    useOrders.mockReturnValue({ orders: [{ workflowStatus: ORDER_STATUSES.pending }] });
     const { result } = renderHook(() => useHasPendingOrders(ordersLineMap));
 
     expect(result.current.isLoading).toBeFalsy();

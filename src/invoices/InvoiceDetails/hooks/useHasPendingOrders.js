@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
+import { ORDER_STATUSES } from '@folio/stripes-acq-components';
 import { useOrders } from '../../../common/hooks';
-import { ORDER_STATUS } from '../constants';
 
 export const useHasPendingOrders = (orderLinesMap = {}) => {
   const orderIds = useMemo(() => {
@@ -23,7 +23,7 @@ export const useHasPendingOrders = (orderLinesMap = {}) => {
       return false;
     }
 
-    return orders.some(({ workflowStatus }) => workflowStatus === ORDER_STATUS.PENDING);
+    return orders.some(({ workflowStatus }) => workflowStatus === ORDER_STATUSES.pending);
   }, [orders, isLoading, isFetched]);
 
   return {
