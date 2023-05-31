@@ -14,7 +14,7 @@ export const useOrders = (orderIds, options = {}) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'compositeOrders' });
 
-  const { isLoading, data: orders = [] } = useQuery(
+  const { isLoading, data: orders = [], ...rest } = useQuery(
     [namespace, orderIds],
     () => batchRequest(
       ({ params: searchParams }) => ky
@@ -30,5 +30,6 @@ export const useOrders = (orderIds, options = {}) => {
   return ({
     isLoading,
     orders,
+    ...rest,
   });
 };

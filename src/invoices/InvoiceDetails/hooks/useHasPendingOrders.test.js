@@ -17,6 +17,14 @@ describe('useHasPendingOrders', () => {
     expect(result.current.hasPendingOrders).toBeFalsy();
   });
 
+  it('should return hasPendingOrders: false', async () => {
+    useOrders.mockReturnValue({ orders: [], isLoading: true });
+    const { result } = renderHook(() => useHasPendingOrders(ordersLineMap));
+
+    expect(result.current.isLoading).toBeTruthy();
+    expect(result.current.hasPendingOrders).toBeTruthy();
+  });
+
   it('should return hasPendingOrders: true', async () => {
     useOrders.mockReturnValue({ orders: [{ workflowStatus: ORDER_STATUS.PENDING }] });
     const { result } = renderHook(() => useHasPendingOrders(ordersLineMap));

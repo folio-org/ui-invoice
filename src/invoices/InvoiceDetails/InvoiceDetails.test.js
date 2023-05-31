@@ -154,6 +154,14 @@ describe('InvoiceDetails', () => {
     expect(screen.getByText(/invoice.details.hasPendingOrders/)).toBeDefined();
   });
 
+  it('should not display pending orders banner message', () => {
+    useHasPendingOrders.mockReturnValue({ hasPendingOrders: true, isLoading: true });
+    renderInvoiceDetails({
+      ...defaultProps,
+    });
+    expect(screen.queryByText(/invoice.details.hasPendingOrders/)).toBeNull();
+  });
+
   describe('Actions', () => {
     beforeEach(() => {
       InvoiceActions.mockClear();

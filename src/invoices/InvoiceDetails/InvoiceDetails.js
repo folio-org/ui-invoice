@@ -103,8 +103,9 @@ function InvoiceDetails({
     invoice.id, invoice.acqUnitIds,
   );
   const stripes = useStripes();
-  const { hasPendingOrders } = useHasPendingOrders(orderlinesMap);
+  const { hasPendingOrders, isLoading: isPendingOrdersLoading } = useHasPendingOrders(orderlinesMap);
   const isVendorInactive = vendor?.status === VENDOR_STATUS.INACTIVE;
+  const showHasPendingOrdersMessage = hasPendingOrders && !isPendingOrdersLoading;
 
   const shortcuts = [
     {
@@ -258,7 +259,7 @@ function InvoiceDetails({
                   <FormattedMessage id="ui-invoice.invoice.details.hasFullyPaidPOLine" />
                 </MessageBanner>
               )}
-              {hasPendingOrders && (
+              {showHasPendingOrdersMessage && (
                 <MessageBanner type="warning">
                   <FormattedMessage id="ui-invoice.invoice.details.hasPendingOrders" />
                 </MessageBanner>
