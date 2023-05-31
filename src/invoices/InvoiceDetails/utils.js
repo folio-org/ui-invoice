@@ -128,6 +128,14 @@ export const showUpdateInvoiceError = async (
       }
       break;
     }
+    case ERROR_CODES.outdatedFundIdInEncumbrance: {
+      showCallout({
+        messageId: 'ui-invoice.invoice.actions.approve.error.outdatedFundIdInEncumbrance',
+        type: 'error',
+      });
+
+      break;
+    }
     default: {
       showCallout({ messageId: defaultErrorMessageId, type: 'error' });
     }
