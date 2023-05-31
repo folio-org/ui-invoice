@@ -6,8 +6,7 @@ export const useHasPendingOrders = (orderLinesMap = {}) => {
   const orderIds = useMemo(() => {
     return Object.values(orderLinesMap)
       .map(({ purchaseOrderId }) => purchaseOrderId);
-  },
-  [orderLinesMap]);
+  }, [orderLinesMap]);
 
   const {
     isLoading,
@@ -20,8 +19,7 @@ export const useHasPendingOrders = (orderLinesMap = {}) => {
     }
 
     return orders.some(({ workflowStatus }) => workflowStatus === ORDER_STATUS.PENDING);
-  },
-  [orders]);
+  }, [orders]);
 
   return {
     isLoading: isLoading || false,

@@ -172,7 +172,7 @@ function InvoiceDetails({
         isApprovePayAvailable={isApprovePayEnabled}
         isEditDisabled={isRestrictionsLoading || restrictions.protectUpdate}
         isDeleteDisabled={isRestrictionsLoading || restrictions.protectDelete}
-        isApprovePayEnabled={!isVendorInactive && hasPendingOrders}
+        isApprovePayEnabled={!isVendorInactive && !hasPendingOrders}
       />
     );
   };
