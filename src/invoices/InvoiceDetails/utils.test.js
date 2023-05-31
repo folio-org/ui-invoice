@@ -94,4 +94,25 @@ describe('showUpdateInvoiceError', () => {
       values: { expenseClass: 'expClass' },
     });
   });
+
+  it('should error message for outdatedFundIdInEncumbrance', async () => {
+    response = {
+      clone: () => ({
+        json: () => ({
+          errors: [{
+            code: ERROR_CODES.outdatedFundIdInEncumbrance,
+          }],
+        }),
+      }),
+    };
+
+    await showUpdateInvoiceError(
+      response, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
+    );
+
+    expect(showCallout).toHaveBeenCalledWith({
+      messageId: 'ui-invoice.invoice.actions.approve.error.outdatedFundIdInEncumbrance',
+      type: 'error',
+    });
+  });
 });
