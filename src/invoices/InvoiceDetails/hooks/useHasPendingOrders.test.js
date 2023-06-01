@@ -17,20 +17,12 @@ describe('useHasPendingOrders', () => {
     expect(result.current.hasPendingOrders).toBeFalsy();
   });
 
-  it('should return hasPendingOrders: false when there are no orders return from useOrders hook', async () => {
-    useOrders.mockReturnValue({ orders: [], isLoading: false, isFetched: true });
-    const { result } = renderHook(() => useHasPendingOrders(ordersLineMap));
-
-    expect(result.current.isLoading).toBeFalsy();
-    expect(result.current.hasPendingOrders).toBeFalsy();
-  });
-
   it('should return hasPendingOrders: false', async () => {
     useOrders.mockReturnValue({ orders: [], isLoading: true });
     const { result } = renderHook(() => useHasPendingOrders(ordersLineMap));
 
     expect(result.current.isLoading).toBeTruthy();
-    expect(result.current.hasPendingOrders).toBeTruthy();
+    expect(result.current.hasPendingOrders).toBeFalsy();
   });
 
   it('should return hasPendingOrders: true', async () => {

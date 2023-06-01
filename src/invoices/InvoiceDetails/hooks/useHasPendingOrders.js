@@ -11,20 +11,11 @@ export const useHasPendingOrders = (orderLinesMap = {}) => {
   const {
     isLoading,
     orders,
-    isFetched,
   } = useOrders(orderIds);
 
   const hasPendingOrders = useMemo(() => {
-    if (isLoading) {
-      return true;
-    }
-
-    if (isFetched && !orders.length) {
-      return false;
-    }
-
     return orders.some(({ workflowStatus }) => workflowStatus === ORDER_STATUSES.pending);
-  }, [orders, isLoading, isFetched]);
+  }, [orders]);
 
   return {
     isLoading,
