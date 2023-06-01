@@ -268,7 +268,8 @@
         "displayName": "Invoice: Pay invoices in a different fiscal year",
         "visible": true,
         "subPermissions": [
-          "ui-invoice.pay"
+          "ui-invoice.pay",
+          "invoices.fiscal-year.update"
         ]
       },
       {
