@@ -56,6 +56,7 @@ import CancellationModal from './CancellationModal';
 
 import styles from './InvoiceDetails.css';
 import { VENDOR_STATUS } from './constants';
+import { useHasPendingOrders } from './hooks';
 
 const initalAccordionsStatus = {
   [SECTIONS.documents]: false,
@@ -102,7 +103,9 @@ function InvoiceDetails({
     invoice.id, invoice.acqUnitIds,
   );
   const stripes = useStripes();
+  const { hasPendingOrders, isLoading: isPendingOrdersLoading } = useHasPendingOrders(orderlinesMap);
   const isVendorInactive = vendor?.status === VENDOR_STATUS.INACTIVE;
+  const showHasPendingOrdersMessage = hasPendingOrders && !isPendingOrdersLoading;
 
   const shortcuts = [
     {
@@ -170,7 +173,7 @@ function InvoiceDetails({
         isApprovePayAvailable={isApprovePayEnabled}
         isEditDisabled={isRestrictionsLoading || restrictions.protectUpdate}
         isDeleteDisabled={isRestrictionsLoading || restrictions.protectDelete}
-        isApprovePayEnabled={!isVendorInactive}
+        isApprovePayEnabled={!isVendorInactive && !hasPendingOrders && !isPendingOrdersLoading}
       />
     );
   };
@@ -254,6 +257,11 @@ function InvoiceDetails({
               {!hasPOLineIsFullyPaid ? null : (
                 <MessageBanner type="warning">
                   <FormattedMessage id="ui-invoice.invoice.details.hasFullyPaidPOLine" />
+                </MessageBanner>
+              )}
+              {showHasPendingOrdersMessage && (
+                <MessageBanner type="warning">
+                  <FormattedMessage id="ui-invoice.invoice.details.hasPendingOrders" />
                 </MessageBanner>
               )}
               {isVendorInactive && (
