@@ -60,6 +60,8 @@ const AdjustmentsForm = ({
   isLineAdjustments,
   isNonInteractive,
   stripes,
+  fiscalYearId,
+  formValues,
 }) => {
   const ky = useOkapiKy();
   const [adjPreset, setAdjPreset] = useState();
@@ -248,6 +250,8 @@ const AdjustmentsForm = ({
             name={`${elem}.fundDistributions`}
             totalAmount={adjustmentAmount}
             validateFundDistributionTotal={validateFundDistributionTotal}
+            fiscalYearId={fiscalYearId}
+            formValues={formValues}
           />
         )}
       </Card>
@@ -301,6 +305,8 @@ AdjustmentsForm.propTypes = {
   initialAdjustments: PropTypes.arrayOf(PropTypes.object),
   initialCurrency: PropTypes.string,
   isNonInteractive: PropTypes.bool,
+  fiscalYearId: PropTypes.string,
+  formValues: PropTypes.object,
 };
 
 AdjustmentsForm.defaultProps = {

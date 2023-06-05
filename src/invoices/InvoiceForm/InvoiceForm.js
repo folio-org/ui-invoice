@@ -468,6 +468,8 @@ const InvoiceForm = ({
                         isNonInteractive={isEditPostApproval}
                         initialCurrency={currency}
                         initialAdjustments={adjustments}
+                        fiscalYearId={values.fiscalYearId}
+                        formValues={values}
                       />
                     </Accordion>
                     <Accordion

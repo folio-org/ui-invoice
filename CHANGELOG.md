@@ -10,6 +10,7 @@
 * Display Vendor code in Invoice line accordion when invoice line is not linked to PO line. Refs UINV-482.
 * Support a new error code `outdatedFundIdInEncumbrance`. Refs UINV-486.
 * Prevent approval or payment of invoice with linked order status of "pending". Refs UINV-465.
+* Allow user to select Fund and Expense class from Fiscal year specified in invoice. Refs UINV-479.
 
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)
