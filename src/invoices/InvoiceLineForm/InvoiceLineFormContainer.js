@@ -117,6 +117,7 @@ export function InvoiceLineFormContainerComponent({
         invoiceId: id,
         invoiceLineStatus: invoice?.status,
         fundDistributions: [],
+        releaseEncumbrance: false,
       };
   }, [id, lineId, invoice, invoiceLine]);
 
