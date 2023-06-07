@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 import stripesFinalForm from '@folio/stripes/final-form';
@@ -12,6 +12,8 @@ jest.mock('../AdjustmentsDetails', () => jest.fn(() => 'AdjustmentsDetails'));
 
 const TestForm = stripesFinalForm({})(
   (props) => {
+    console.log('props', props);
+
     return (
       <form>
         <AdjustmentsForm {...props} />
@@ -24,12 +26,14 @@ const renderForm = ({
   isNonInteractive = false,
   initialValues = {},
   change = jest.fn(),
+  ...props
 } = {}) => render(
   <TestForm
     onSubmit={jest.fn()}
     initialValues={initialValues}
     isNonInteractive={isNonInteractive}
     change={change}
+    {...props}
   />,
   { wrapper: MemoryRouter },
 );
@@ -61,5 +65,35 @@ describe('AdjustmentsForm', () => {
     renderForm({ isNonInteractive: true });
 
     expect(screen.getByText('AdjustmentsDetails')).toBeDefined();
+  });
+
+  it('should reset expenseClassId on fiscalYearId changed', async () => {
+    const change = jest.fn();
+
+    renderForm({
+      isNonInteractive: true,
+      initialValues: { adjustments: [adjustment] },
+      fiscalYearId: 'fiscalYearId',
+      adjustments: [{
+        'type': 'Amount',
+        'description': '111',
+        'value': 1,
+        'relationToTotal': 'In addition to',
+        'prorate': 'Not prorated',
+        'fundDistributions': [{
+          'distributionType': 'percentage',
+          'value': 100,
+          'fundId': '7fbd5d84-62d1-44c6-9c45-6cb173998bbd',
+          'code': 'AFRICAHIST',
+          'encumbrance': null,
+          'expenseClassId': '1bcc3247-99bf-4dca-9b0f-7bc51a2998c2',
+        }],
+      }],
+      isFiscalYearChanged: true,
+      change,
+    });
+
+    expect(screen.getByText('AdjustmentsDetails')).toBeDefined();
+    await waitFor(() => expect(change).toHaveBeenCalledWith('adjustments[0].fundDistributions[0].expenseClassId', null));
   });
 });
