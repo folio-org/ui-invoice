@@ -337,8 +337,8 @@ const InvoiceLineForm = ({
                         name="fundDistributions"
                         totalAmount={totalAmount}
                         fiscalYearId={invoice.fiscalYearId}
-                        formValues={formValues}
                         validateFundDistributionTotal={validateFundDistributionTotal}
+                        shouldRefetchExpenseClassesOnFiscalYearChange
                       />
                     </Accordion>
                     <Accordion
@@ -353,7 +353,6 @@ const InvoiceLineForm = ({
                         isLineAdjustments
                         isNonInteractive={isEditPostApproval}
                         fiscalYearId={invoice.fiscalYearId}
-                        formValues={formValues}
                       />
                     </Accordion>
                   </AccordionSet>

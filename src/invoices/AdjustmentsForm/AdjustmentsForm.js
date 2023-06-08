@@ -268,6 +268,7 @@ const AdjustmentsForm = ({
             totalAmount={adjustmentAmount}
             validateFundDistributionTotal={validateFundDistributionTotal}
             fiscalYearId={fiscalYearId}
+            shouldRefetchExpenseClassesOnFiscalYearChange
           />
         )}
       </Card>
