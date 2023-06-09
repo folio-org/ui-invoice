@@ -338,7 +338,6 @@ const InvoiceLineForm = ({
                         totalAmount={totalAmount}
                         fiscalYearId={invoice.fiscalYearId}
                         validateFundDistributionTotal={validateFundDistributionTotal}
-                        shouldRefetchExpenseClassesOnFiscalYearChange
                       />
                     </Accordion>
                     <Accordion
