@@ -1,23 +1,30 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 
 import { ClipCopy } from '@folio/stripes/smart-components';
 import {
   Accordion,
   Loading,
   NoValue,
+  MultiColumnList,
 } from '@folio/stripes/components';
+
 import {
   AmountWithCurrencyField,
-  FrontendSortingMCL,
-  DESC_DIRECTION,
+  RESULT_COUNT_INCREMENT,
+  PrevNextPagination,
+  useLocationSorting,
 } from '@folio/stripes-acq-components';
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
 
+const resetData = () => {};
+
 const COLUMN_INVOICE_DATE = 'invoiceDate';
+const sortableFields = [COLUMN_INVOICE_DATE];
 const visibleColumns = [
   'vendorInvoiceNo',
   'invoiceLine',
@@ -37,9 +44,6 @@ const columnMapping = {
   quantity: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.quantity" />,
   amount: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.amount" />,
   comment: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.comment" />,
-};
-const sorters = {
-  [COLUMN_INVOICE_DATE]: ({ invoice }) => invoice?.invoiceDate,
 };
 
 const getResultFormatter = ({ search }) => ({
@@ -81,7 +85,18 @@ const getResultFormatter = ({ search }) => ({
 
 export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
-  const { invoiceLines, isLoading } = useOtherRelatedInvoiceLines(invoiceLine?.id, poLine?.id);
+  const history = useHistory();
+  const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
+  const [
+    sortingField,
+    sortingDirection,
+    changeSorting,
+  ] = useLocationSorting(location, history, resetData, sortableFields);
+  const { invoiceLines, isLoading, totalInvoiceLines, isFetching } = useOtherRelatedInvoiceLines({
+    invoiceLineId: invoiceLine.id,
+    poLineId: poLine.id,
+    pagination,
+  });
 
   if (isLoading) return <Loading />;
 
@@ -91,16 +106,23 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
         id={SECTIONS_INVOICE_LINE.otherRelatedInvoiceLines}
         label={<FormattedMessage id="ui-invoice.otherRelatedInvoiceLines" />}
       >
-        <FrontendSortingMCL
+        <MultiColumnList
           columnMapping={columnMapping}
           contentData={invoiceLines}
           formatter={getResultFormatter(location)}
           id="otherRelatedInvoiceLines"
           interactive={false}
-          sortDirection={DESC_DIRECTION}
-          sortedColumn={COLUMN_INVOICE_DATE}
-          sorters={sorters}
+          isLoading={isFetching}
+          sortOrder={sortingField}
+          sortDirection={sortingDirection}
+          onHeaderClick={changeSorting}
           visibleColumns={visibleColumns}
+        />
+        <PrevNextPagination
+          {...pagination}
+          totalCount={totalInvoiceLines}
+          onChange={setPagination}
+          disabled={false}
         />
       </Accordion>
     )

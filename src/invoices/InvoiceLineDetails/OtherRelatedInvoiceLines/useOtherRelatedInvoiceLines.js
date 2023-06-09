@@ -14,17 +14,20 @@ import {
 
 import { INVOICE_LINE_API } from '../../../common/constants';
 
-export const useOtherRelatedInvoiceLines = (invoiceLineId, poLineId) => {
+export const useOtherRelatedInvoiceLines = ({ invoiceLineId, poLineId, pagination = {} }) => {
+  const { limit = LIMIT_MAX, offset = 0 } = pagination;
+
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'other-related-invoice-lines' });
 
-  const { isLoading, data = [] } = useQuery(
-    [namespace, invoiceLineId, poLineId],
+  const { isLoading, data = [], isFetching } = useQuery(
+    [namespace, invoiceLineId, poLineId, limit, offset],
     async () => {
-      const { invoiceLines = [] } = await ky.get(INVOICE_LINE_API, {
+      const { invoiceLines = [], totalRecords } = await ky.get(INVOICE_LINE_API, {
         searchParams: {
           query: `id<>${invoiceLineId} and poLineId==${poLineId}`,
-          limit: LIMIT_MAX,
+          limit,
+          offset,
         },
       }).json();
 
@@ -50,7 +53,7 @@ export const useOtherRelatedInvoiceLines = (invoiceLineId, poLineId) => {
       );
       const vendorsMap = keyBy(vendors, 'id');
 
-      return invoiceLines.map(invoiceLine => {
+      const result = invoiceLines.map(invoiceLine => {
         const invoice = invoicesMap[invoiceLine.invoiceId];
         const vendor = vendorsMap[invoice.vendorId];
 
@@ -60,12 +63,19 @@ export const useOtherRelatedInvoiceLines = (invoiceLineId, poLineId) => {
           vendor,
         };
       });
+
+      return {
+        invoiceLines: result,
+        totalInvoiceLines: totalRecords,
+      };
     },
     { enabled: Boolean(invoiceLineId && poLineId) },
   );
 
   return {
-    invoiceLines: data,
     isLoading,
+    isFetching,
+    invoiceLines: data.invoiceLines,
+    totalInvoiceLines: data.totalInvoiceLines,
   };
 };
