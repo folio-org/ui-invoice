@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { ClipCopy } from '@folio/stripes/smart-components';
 import {
@@ -15,7 +15,7 @@ import {
   AmountWithCurrencyField,
   RESULT_COUNT_INCREMENT,
   PrevNextPagination,
-  useLocationSorting,
+  useSorting,
 } from '@folio/stripes-acq-components';
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
@@ -85,13 +85,12 @@ const getResultFormatter = ({ search }) => ({
 
 export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
-  const history = useHistory();
   const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
   const [
     sortingField,
     sortingDirection,
     changeSorting,
-  ] = useLocationSorting(location, history, resetData, sortableFields);
+  ] = useSorting(resetData, sortableFields);
   const { invoiceLines, isLoading, totalInvoiceLines, isFetching } = useOtherRelatedInvoiceLines({
     invoiceLineId: invoiceLine.id,
     poLineId: poLine.id,
