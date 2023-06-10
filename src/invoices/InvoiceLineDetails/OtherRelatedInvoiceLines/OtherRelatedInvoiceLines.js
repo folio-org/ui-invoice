@@ -18,13 +18,15 @@ import {
   useSorting,
 } from '@folio/stripes-acq-components';
 
+import { noop } from 'lodash';
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
 
-const resetData = () => {};
-
 const COLUMN_INVOICE_DATE = 'invoiceDate';
 const sortableFields = [COLUMN_INVOICE_DATE];
+
+export const DEFAULT_SORT_FIELD = COLUMN_INVOICE_DATE;
+
 const visibleColumns = [
   'vendorInvoiceNo',
   'invoiceLine',
@@ -87,20 +89,26 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
   const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
   const [
-    sortingField,
-    sortingDirection,
+    sortingField = DEFAULT_SORT_FIELD,
+    sortingDirection = 'descending',
     changeSorting,
-  ] = useSorting(resetData, sortableFields);
+  ] = useSorting(noop, sortableFields);
   const { invoiceLines, isLoading, totalInvoiceLines, isFetching } = useOtherRelatedInvoiceLines({
     invoiceLineId: invoiceLine.id,
     poLineId: poLine.id,
     pagination,
+    sorting: { sortingField, sortingDirection },
   });
+
+  const applySorting = (e, meta) => {
+    changeSorting(e, meta);
+    setPagination(prev => ({ ...prev, offset: 0 }));
+  };
 
   if (isLoading) return <Loading />;
 
   return (
-    Boolean(invoiceLines.length) && (
+    Boolean(invoiceLines?.length) && (
       <Accordion
         id={SECTIONS_INVOICE_LINE.otherRelatedInvoiceLines}
         label={<FormattedMessage id="ui-invoice.otherRelatedInvoiceLines" />}
@@ -114,15 +122,16 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
           isLoading={isFetching}
           sortOrder={sortingField}
           sortDirection={sortingDirection}
-          onHeaderClick={changeSorting}
+          onHeaderClick={applySorting}
           visibleColumns={visibleColumns}
         />
+        {invoiceLines.length > 0 && (
         <PrevNextPagination
           {...pagination}
           totalCount={totalInvoiceLines}
           onChange={setPagination}
           disabled={false}
-        />
+        />)}
       </Accordion>
     )
   );
