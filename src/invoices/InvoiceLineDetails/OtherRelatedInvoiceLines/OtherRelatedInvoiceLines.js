@@ -9,6 +9,7 @@ import {
   Loading,
   NoValue,
   MultiColumnList,
+  DESC_DIRECTION,
 } from '@folio/stripes/components';
 
 import {
@@ -89,7 +90,7 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
   const [
     sortingField = DEFAULT_SORT_FIELD,
-    sortingDirection = 'descending',
+    sortingDirection = DESC_DIRECTION,
     changeSorting,
   ] = useSorting(noop, sortableFields);
   const { invoiceLines, isLoading, totalInvoiceLines, isFetching } = useOtherRelatedInvoiceLines({

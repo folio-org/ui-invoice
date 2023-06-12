@@ -10,12 +10,13 @@ import {
   INVOICES_API,
   LIMIT_MAX,
   VENDORS_API,
+  DESC_DIRECTION,
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_LINE_API } from '../../../common/constants';
 
 function getSortQuery(sorting) {
-  const { sortingField = 'invoiceDate', sortingDirection = 'descending' } = sorting;
+  const { sortingField = 'invoiceDate', sortingDirection = DESC_DIRECTION } = sorting;
 
   if (!sortingField || !sortingDirection) return '';
 
