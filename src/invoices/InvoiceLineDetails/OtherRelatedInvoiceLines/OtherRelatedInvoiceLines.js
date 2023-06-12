@@ -21,32 +21,7 @@ import {
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
-
-const COLUMN_INVOICE_DATE = 'invoiceDate';
-const sortableFields = [COLUMN_INVOICE_DATE];
-
-export const DEFAULT_SORT_FIELD = COLUMN_INVOICE_DATE;
-
-const visibleColumns = [
-  'vendorInvoiceNo',
-  'invoiceLine',
-  COLUMN_INVOICE_DATE,
-  'vendorName',
-  'status',
-  'quantity',
-  'amount',
-  'comment',
-];
-const columnMapping = {
-  invoiceLine: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.invoiceLine" />,
-  [COLUMN_INVOICE_DATE]: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.invoiceDate" />,
-  vendorName: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.vendorName" />,
-  vendorInvoiceNo: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.vendorInvoiceNo" />,
-  status: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.status" />,
-  quantity: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.quantity" />,
-  amount: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.amount" />,
-  comment: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.comment" />,
-};
+import { COLUMN_INVOICE_DATE, COLUMN_MAPPING, SORTABLE_FIELDS, VISIBLE_COLUMNS } from './constants';
 
 const getResultFormatter = ({ search }) => ({
   invoiceLine: invoiceLine => (
@@ -89,15 +64,15 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
   const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
   const [
-    sortingField = DEFAULT_SORT_FIELD,
-    sortingDirection = DESC_DIRECTION,
+    sortingField,
+    sortingDirection,
     changeSorting,
-  ] = useSorting(noop, sortableFields);
+  ] = useSorting(noop, SORTABLE_FIELDS);
   const { invoiceLines, isLoading, totalInvoiceLines, isFetching } = useOtherRelatedInvoiceLines({
     invoiceLineId: invoiceLine.id,
     poLineId: poLine.id,
     pagination,
-    sorting: { sortingField, sortingDirection },
+    sorting: { sortingField, sortingDirection: sortingDirection || DESC_DIRECTION },
   });
 
   const applySorting = (e, meta) => {
@@ -114,7 +89,7 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
         label={<FormattedMessage id="ui-invoice.otherRelatedInvoiceLines" />}
       >
         <MultiColumnList
-          columnMapping={columnMapping}
+          columnMapping={COLUMN_MAPPING}
           contentData={invoiceLines}
           formatter={getResultFormatter(location)}
           id="otherRelatedInvoiceLines"
@@ -123,7 +98,7 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
           sortOrder={sortingField}
           sortDirection={sortingDirection}
           onHeaderClick={applySorting}
-          visibleColumns={visibleColumns}
+          visibleColumns={VISIBLE_COLUMNS}
         />
         {invoiceLines.length > 0 && (
         <PrevNextPagination

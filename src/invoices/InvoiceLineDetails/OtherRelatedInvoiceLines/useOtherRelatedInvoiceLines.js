@@ -14,17 +14,10 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_LINE_API } from '../../../common/constants';
+import { DEFAULT_SORT_FIELD } from './constants';
 
 function getSortQuery(sorting) {
-  const { sortingField = 'invoiceDate', sortingDirection = DESC_DIRECTION } = sorting;
-
-  if (!sortingField || !sortingDirection) return '';
-
-  if (sortingField === 'invoiceDate') {
-    return `sortby metadata.createdDate/sort.${sortingDirection}`;
-  }
-
-  return `sortby ${sortingField}/sort.${sortingDirection}`;
+  return `sortby ${sorting.sortingField || DEFAULT_SORT_FIELD}/sort.${sorting.sortingDirection || DESC_DIRECTION}`;
 }
 
 export const useOtherRelatedInvoiceLines = ({
