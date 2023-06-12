@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
-
+import { noop } from 'lodash';
 import { ClipCopy } from '@folio/stripes/smart-components';
 import {
   Accordion,
@@ -18,7 +18,6 @@ import {
   useSorting,
 } from '@folio/stripes-acq-components';
 
-import { noop } from 'lodash';
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
 
