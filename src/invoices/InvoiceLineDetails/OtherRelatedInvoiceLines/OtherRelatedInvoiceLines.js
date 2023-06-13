@@ -19,7 +19,12 @@ import {
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
-import { COLUMN_INVOICE_DATE, COLUMN_MAPPING, DEFAULT_SORT_FIELD, VISIBLE_COLUMNS } from './constants';
+import {
+  COLUMN_INVOICE_DATE,
+  COLUMN_MAPPING,
+  DEFAULT_SORT_FIELD,
+  VISIBLE_COLUMNS,
+} from './constants';
 
 const sorters = {
   [COLUMN_INVOICE_DATE]: ({ invoice }) => invoice?.invoiceDate,
