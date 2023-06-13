@@ -60,32 +60,16 @@ describe('useOtherRelatedInvoiceLines', () => {
   });
 
   it('should fetch connected to po line invoice lines', async () => {
-    const pagination = { limit: 1, offset: 0 };
     const { result, waitFor } = renderHook(
-      () => useOtherRelatedInvoiceLines({
-        invoiceLineId: invoiceLine.id,
-        poLineId: poLine.id,
-        pagination,
-      }),
+      () => useOtherRelatedInvoiceLines(
+        invoiceLine.id,
+        poLine.id,
+      ),
       { wrapper },
     );
 
     await waitFor(() => !result.current.isLoading);
 
-    expect(result.current.invoiceLines).toEqual(resultData);
-    expect(result.current.totalInvoiceLines).toBe(1);
-  });
-
-  it('should fetch connected to po line invoice lines without pagination', async () => {
-    const { result, waitFor } = renderHook(
-      () => useOtherRelatedInvoiceLines({
-        invoiceLineId: invoiceLine.id,
-        poLineId: poLine.id,
-      }),
-      { wrapper },
-    );
-
-    await waitFor(() => !result.current.isLoading);
     expect(result.current.invoiceLines).toEqual(resultData);
     expect(result.current.totalInvoiceLines).toBe(1);
   });
