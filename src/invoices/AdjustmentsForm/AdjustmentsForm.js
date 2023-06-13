@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   FormattedMessage,
   useIntl,
@@ -60,6 +60,9 @@ const AdjustmentsForm = ({
   isLineAdjustments,
   isNonInteractive,
   stripes,
+  fiscalYearId,
+  adjustments,
+  isFiscalYearChanged,
 }) => {
   const ky = useOkapiKy();
   const [adjPreset, setAdjPreset] = useState();
@@ -73,6 +76,22 @@ const AdjustmentsForm = ({
 
     fields.push(newAdjustment);
   };
+
+  const resetExpenseClassesOnFiscalYearIdChanged = useCallback(() => {
+    adjustments.forEach(({ fundDistributions }, index) => {
+      fundDistributions?.forEach((_, distributionIndex) => {
+        const fieldName = `adjustments[${index}].fundDistributions[${distributionIndex}]`;
+
+        change(`${fieldName}.expenseClassId`, null);
+      });
+    });
+  }, [change, adjustments]);
+
+  useEffect(() => {
+    if (isFiscalYearChanged) {
+      resetExpenseClassesOnFiscalYearIdChanged();
+    }
+  }, [fiscalYearId]);
 
   const renderTypeToggle = useCallback(({ input: { value, onChange } }) => {
     return (
@@ -248,6 +267,7 @@ const AdjustmentsForm = ({
             name={`${elem}.fundDistributions`}
             totalAmount={adjustmentAmount}
             validateFundDistributionTotal={validateFundDistributionTotal}
+            fiscalYearId={fiscalYearId}
           />
         )}
       </Card>
@@ -301,6 +321,9 @@ AdjustmentsForm.propTypes = {
   initialAdjustments: PropTypes.arrayOf(PropTypes.object),
   initialCurrency: PropTypes.string,
   isNonInteractive: PropTypes.bool,
+  fiscalYearId: PropTypes.string,
+  adjustments: PropTypes.arrayOf(PropTypes.object),
+  isFiscalYearChanged: PropTypes.bool,
 };
 
 AdjustmentsForm.defaultProps = {
@@ -309,6 +332,8 @@ AdjustmentsForm.defaultProps = {
   isLineAdjustments: false,
   invoiceSubTotal: 0,
   isNonInteractive: false,
+  isFiscalYearChanged: false,
+  adjustments: [],
 };
 
 export default withStripes(AdjustmentsForm);
