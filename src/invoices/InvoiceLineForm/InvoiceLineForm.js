@@ -336,6 +336,7 @@ const InvoiceLineForm = ({
                         fundDistribution={formValues.fundDistributions}
                         name="fundDistributions"
                         totalAmount={totalAmount}
+                        fiscalYearId={invoice.fiscalYearId}
                         validateFundDistributionTotal={validateFundDistributionTotal}
                       />
                     </Accordion>
@@ -350,6 +351,7 @@ const InvoiceLineForm = ({
                         initialCurrency={invoice.currency}
                         isLineAdjustments
                         isNonInteractive={isEditPostApproval}
+                        fiscalYearId={invoice.fiscalYearId}
                       />
                     </Accordion>
                   </AccordionSet>
@@ -375,6 +377,7 @@ InvoiceLineForm.propTypes = {
   vendorCode: PropTypes.string,
   accounts: PropTypes.arrayOf(PropTypes.object),
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
+  fiscalYearId: PropTypes.string,
 };
 
 InvoiceLineForm.defaultProps = {

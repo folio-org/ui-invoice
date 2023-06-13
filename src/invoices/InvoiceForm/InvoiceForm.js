@@ -180,6 +180,7 @@ const InvoiceForm = ({
   const isStatusPaid = isPaid(status);
   const invoiceVendor = selectedVendor || initialVendor;
   const isFiscalYearRequired = isEditMode && Boolean(fiscalYearId);
+  const isFiscalYearChanged = values?.fiscalYearId && (fiscalYearId !== values?.fiscalYearId);
   const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
   const accountingCodeValidationProps = isExportToAccountingChecked
@@ -468,6 +469,9 @@ const InvoiceForm = ({
                         isNonInteractive={isEditPostApproval}
                         initialCurrency={currency}
                         initialAdjustments={adjustments}
+                        fiscalYearId={values.fiscalYearId}
+                        adjustments={values.adjustments}
+                        isFiscalYearChanged={isFiscalYearChanged}
                       />
                     </Accordion>
                     <Accordion
