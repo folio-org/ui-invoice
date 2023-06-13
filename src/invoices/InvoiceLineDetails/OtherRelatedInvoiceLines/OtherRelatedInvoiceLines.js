@@ -92,7 +92,7 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
           sortedColumn={DEFAULT_SORT_FIELD}
           sorters={sorters}
           visibleColumns={VISIBLE_COLUMNS}
-          isEndOfListHidden
+          hasPagination
         />
         {invoiceLines.length > 0 && (
         <PrevNextPagination
