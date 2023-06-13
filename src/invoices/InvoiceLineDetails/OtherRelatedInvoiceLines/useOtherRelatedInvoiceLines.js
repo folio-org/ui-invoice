@@ -10,21 +10,14 @@ import {
   INVOICES_API,
   LIMIT_MAX,
   VENDORS_API,
-  DESC_DIRECTION,
 } from '@folio/stripes-acq-components';
 
 import { INVOICE_LINE_API } from '../../../common/constants';
-import { DEFAULT_SORT_FIELD } from './constants';
-
-function getSortQuery(sorting) {
-  return `sortby ${sorting.sortingField || DEFAULT_SORT_FIELD}/sort.${sorting.sortingDirection || DESC_DIRECTION}`;
-}
 
 export const useOtherRelatedInvoiceLines = ({
   invoiceLineId,
   poLineId,
   pagination = {},
-  sorting = {},
 }) => {
   const { limit = LIMIT_MAX, offset = 0 } = pagination;
 
@@ -32,15 +25,11 @@ export const useOtherRelatedInvoiceLines = ({
   const [namespace] = useNamespace({ key: 'other-related-invoice-lines' });
 
   const { isLoading, data = [], isFetching } = useQuery(
-    [namespace, invoiceLineId, poLineId, limit, offset, sorting.sortingDirection,
-      sorting.sortingField],
+    [namespace, invoiceLineId, poLineId, limit, offset],
     async () => {
       const { invoiceLines = [], totalRecords } = await ky.get(INVOICE_LINE_API, {
         searchParams: {
-          query: [
-            `id<>${invoiceLineId} and poLineId==${poLineId}`,
-            getSortQuery(sorting),
-          ].join(' '),
+          query: `id<>${invoiceLineId} and poLineId==${poLineId}`,
           limit,
           offset,
         },

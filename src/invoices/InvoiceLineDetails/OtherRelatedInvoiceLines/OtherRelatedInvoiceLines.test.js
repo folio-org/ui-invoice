@@ -80,6 +80,6 @@ describe('OtherRelatedInvoiceLines', () => {
 
     user.click(sortButton);
 
-    await waitFor(() => expect(container.querySelector('#list-column-invoicedate').getAttribute('aria-sort')).toBe('ascending'));
+    await waitFor(() => expect(container.querySelector('#list-column-invoicedate').getAttribute('aria-sort')).toBe('descending'));
   });
 });

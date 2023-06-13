@@ -2,13 +2,11 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
-import { noop } from 'lodash';
 import { ClipCopy } from '@folio/stripes/smart-components';
 import {
   Accordion,
   Loading,
   NoValue,
-  MultiColumnList,
   DESC_DIRECTION,
 } from '@folio/stripes/components';
 
@@ -16,12 +14,16 @@ import {
   AmountWithCurrencyField,
   RESULT_COUNT_INCREMENT,
   PrevNextPagination,
-  useSorting,
+  FrontendSortingMCL,
 } from '@folio/stripes-acq-components';
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
-import { COLUMN_INVOICE_DATE, COLUMN_MAPPING, SORTABLE_FIELDS, VISIBLE_COLUMNS } from './constants';
+import { COLUMN_INVOICE_DATE, COLUMN_MAPPING, DEFAULT_SORT_FIELD, VISIBLE_COLUMNS } from './constants';
+
+const sorters = {
+  [COLUMN_INVOICE_DATE]: ({ invoice }) => invoice?.invoiceDate,
+};
 
 const getResultFormatter = ({ search }) => ({
   invoiceLine: invoiceLine => (
@@ -63,22 +65,12 @@ const getResultFormatter = ({ search }) => ({
 export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
   const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
-  const [
-    sortingField,
-    sortingDirection,
-    changeSorting,
-  ] = useSorting(noop, SORTABLE_FIELDS);
+
   const { invoiceLines, isLoading, totalInvoiceLines, isFetching } = useOtherRelatedInvoiceLines({
     invoiceLineId: invoiceLine.id,
     poLineId: poLine.id,
     pagination,
-    sorting: { sortingField, sortingDirection: sortingDirection || DESC_DIRECTION },
   });
-
-  const applySorting = (e, meta) => {
-    changeSorting(e, meta);
-    setPagination(prev => ({ ...prev, offset: 0 }));
-  };
 
   if (isLoading) return <Loading />;
 
@@ -88,16 +80,16 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
         id={SECTIONS_INVOICE_LINE.otherRelatedInvoiceLines}
         label={<FormattedMessage id="ui-invoice.otherRelatedInvoiceLines" />}
       >
-        <MultiColumnList
+        <FrontendSortingMCL
           columnMapping={COLUMN_MAPPING}
           contentData={invoiceLines}
           formatter={getResultFormatter(location)}
           id="otherRelatedInvoiceLines"
           interactive={false}
           isLoading={isFetching}
-          sortOrder={sortingField}
-          sortDirection={sortingDirection}
-          onHeaderClick={applySorting}
+          sortDirection={DESC_DIRECTION}
+          sortedColumn={DEFAULT_SORT_FIELD}
+          sorters={sorters}
           visibleColumns={VISIBLE_COLUMNS}
         />
         {invoiceLines.length > 0 && (
