@@ -14,24 +14,20 @@ import {
 
 import { INVOICE_LINE_API } from '../../../common/constants';
 
-export const useOtherRelatedInvoiceLines = ({
+export const useOtherRelatedInvoiceLines = (
   invoiceLineId,
   poLineId,
-  pagination = {},
-}) => {
-  const { limit = LIMIT_MAX, offset = 0 } = pagination;
-
+) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'other-related-invoice-lines' });
 
-  const { isLoading, data = [], isFetching } = useQuery(
-    [namespace, invoiceLineId, poLineId, limit, offset],
+  const { isLoading, data = [] } = useQuery(
+    [namespace, invoiceLineId, poLineId],
     async () => {
       const { invoiceLines = [], totalRecords } = await ky.get(INVOICE_LINE_API, {
         searchParams: {
           query: `id<>${invoiceLineId} and poLineId==${poLineId}`,
-          limit,
-          offset,
+          limit: LIMIT_MAX,
         },
       }).json();
 
@@ -78,7 +74,6 @@ export const useOtherRelatedInvoiceLines = ({
 
   return {
     isLoading,
-    isFetching,
     invoiceLines: data.invoiceLines,
     totalInvoiceLines: data.totalInvoiceLines,
   };

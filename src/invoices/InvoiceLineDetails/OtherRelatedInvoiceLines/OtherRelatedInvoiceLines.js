@@ -19,6 +19,7 @@ import {
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
+import { useFrontendPaginatedData } from '../../../common/hooks/useFrontendPaginatedData';
 import {
   COLUMN_INVOICE_DATE,
   COLUMN_MAPPING,
@@ -70,12 +71,8 @@ const getResultFormatter = ({ search }) => ({
 export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
   const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
-
-  const { invoiceLines, isLoading, totalInvoiceLines, isFetching } = useOtherRelatedInvoiceLines({
-    invoiceLineId: invoiceLine.id,
-    poLineId: poLine.id,
-    pagination,
-  });
+  const { invoiceLines, isLoading, totalInvoiceLines } = useOtherRelatedInvoiceLines(invoiceLine.id, poLine.id);
+  const paginatedInvoiceLines = useFrontendPaginatedData(invoiceLines, pagination);
 
   if (isLoading) return <Loading />;
 
@@ -87,15 +84,15 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
       >
         <FrontendSortingMCL
           columnMapping={COLUMN_MAPPING}
-          contentData={invoiceLines}
+          contentData={paginatedInvoiceLines}
           formatter={getResultFormatter(location)}
           id="otherRelatedInvoiceLines"
           interactive={false}
-          isLoading={isFetching}
           sortDirection={DESC_DIRECTION}
           sortedColumn={DEFAULT_SORT_FIELD}
           sorters={sorters}
           visibleColumns={VISIBLE_COLUMNS}
+          isEndOfListHidden
         />
         {invoiceLines.length > 0 && (
         <PrevNextPagination
