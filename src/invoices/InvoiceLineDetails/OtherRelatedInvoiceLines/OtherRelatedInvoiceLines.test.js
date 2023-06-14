@@ -82,4 +82,10 @@ describe('OtherRelatedInvoiceLines', () => {
 
     await waitFor(() => expect(container.querySelector('#list-column-invoicedate').getAttribute('aria-sort')).toBe('descending'));
   });
+
+  it('should display pagination', () => {
+    renderOtherRelatedInvoiceLines();
+
+    expect(screen.getByText('1 - 50')).toBeInTheDocument();
+  });
 });

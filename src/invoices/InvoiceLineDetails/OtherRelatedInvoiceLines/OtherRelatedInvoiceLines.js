@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
@@ -12,14 +11,14 @@ import {
 
 import {
   AmountWithCurrencyField,
-  RESULT_COUNT_INCREMENT,
   PrevNextPagination,
   FrontendSortingMCL,
+  useLocalPagination,
+  RESULT_COUNT_INCREMENT,
 } from '@folio/stripes-acq-components';
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
-import { useFrontendPaginatedData } from '../../../common/hooks/useFrontendPaginatedData';
 import {
   COLUMN_INVOICE_DATE,
   COLUMN_MAPPING,
@@ -70,9 +69,8 @@ const getResultFormatter = ({ search }) => ({
 
 export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
-  const [pagination, setPagination] = useState({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
   const { invoiceLines, isLoading, totalInvoiceLines } = useOtherRelatedInvoiceLines(invoiceLine.id, poLine.id);
-  const paginatedInvoiceLines = useFrontendPaginatedData(invoiceLines, pagination);
+  const { paginatedData, pagination, setPagination } = useLocalPagination(invoiceLines, RESULT_COUNT_INCREMENT);
 
   if (isLoading) return <Loading />;
 
@@ -84,7 +82,7 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
       >
         <FrontendSortingMCL
           columnMapping={COLUMN_MAPPING}
-          contentData={paginatedInvoiceLines}
+          contentData={paginatedData}
           formatter={getResultFormatter(location)}
           id="otherRelatedInvoiceLines"
           interactive={false}
@@ -95,12 +93,13 @@ export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
           hasPagination
         />
         {invoiceLines.length > 0 && (
-        <PrevNextPagination
-          {...pagination}
-          totalCount={totalInvoiceLines}
-          onChange={setPagination}
-          disabled={false}
-        />)}
+          <PrevNextPagination
+            {...pagination}
+            totalCount={totalInvoiceLines}
+            onChange={setPagination}
+            disabled={false}
+          />
+        )}
       </Accordion>
     )
   );
