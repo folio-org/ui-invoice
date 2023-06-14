@@ -2,7 +2,8 @@ import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
+import user from '@testing-library/user-event';
 
 import { invoiceLine, orderLine } from '../../../../test/jest/fixtures';
 
@@ -11,6 +12,11 @@ import { OtherRelatedInvoiceLines } from './OtherRelatedInvoiceLines';
 
 jest.mock('./useOtherRelatedInvoiceLines', () => ({
   useOtherRelatedInvoiceLines: jest.fn(),
+}));
+
+jest.mock('@folio/stripes/components', () => ({
+  ...jest.requireActual('@folio/stripes/components'),
+  Loading: jest.fn(() => 'Loading'),
 }));
 
 const defaultProps = {
@@ -58,5 +64,28 @@ describe('OtherRelatedInvoiceLines', () => {
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.quantity')).toBeInTheDocument();
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.amount')).toBeInTheDocument();
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.comment')).toBeInTheDocument();
+  });
+
+  it('should render loading', () => {
+    useOtherRelatedInvoiceLines.mockClear().mockReturnValue({
+      isLoading: true,
+    });
+    renderOtherRelatedInvoiceLines();
+    expect(screen.getByText('Loading')).toBeInTheDocument();
+  });
+
+  it('should sort by elements by invoice date onclick header', async () => {
+    const { container } = renderOtherRelatedInvoiceLines();
+    const sortButton = screen.getByText('ui-invoice.otherRelatedInvoiceLines.invoiceDate');
+
+    user.click(sortButton);
+
+    await waitFor(() => expect(container.querySelector('#list-column-invoicedate').getAttribute('aria-sort')).toBe('descending'));
+  });
+
+  it('should display pagination', () => {
+    renderOtherRelatedInvoiceLines();
+
+    expect(screen.getByText('1 - 50')).toBeInTheDocument();
   });
 });

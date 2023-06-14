@@ -1,43 +1,31 @@
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
-
 import { ClipCopy } from '@folio/stripes/smart-components';
 import {
   Accordion,
   Loading,
   NoValue,
+  DESC_DIRECTION,
 } from '@folio/stripes/components';
+
 import {
   AmountWithCurrencyField,
+  PrevNextPagination,
   FrontendSortingMCL,
-  DESC_DIRECTION,
+  useLocalPagination,
+  RESULT_COUNT_INCREMENT,
 } from '@folio/stripes-acq-components';
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
-
-const COLUMN_INVOICE_DATE = 'invoiceDate';
-const visibleColumns = [
-  'vendorInvoiceNo',
-  'invoiceLine',
+import {
   COLUMN_INVOICE_DATE,
-  'vendorName',
-  'status',
-  'quantity',
-  'amount',
-  'comment',
-];
-const columnMapping = {
-  invoiceLine: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.invoiceLine" />,
-  [COLUMN_INVOICE_DATE]: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.invoiceDate" />,
-  vendorName: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.vendorName" />,
-  vendorInvoiceNo: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.vendorInvoiceNo" />,
-  status: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.status" />,
-  quantity: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.quantity" />,
-  amount: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.amount" />,
-  comment: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.comment" />,
-};
+  COLUMN_MAPPING,
+  DEFAULT_SORT_FIELD,
+  VISIBLE_COLUMNS,
+} from './constants';
+
 const sorters = {
   [COLUMN_INVOICE_DATE]: ({ invoice }) => invoice?.invoiceDate,
 };
@@ -81,27 +69,37 @@ const getResultFormatter = ({ search }) => ({
 
 export const OtherRelatedInvoiceLines = ({ invoiceLine, poLine }) => {
   const location = useLocation();
-  const { invoiceLines, isLoading } = useOtherRelatedInvoiceLines(invoiceLine?.id, poLine?.id);
+  const { invoiceLines, isLoading, totalInvoiceLines } = useOtherRelatedInvoiceLines(invoiceLine.id, poLine.id);
+  const { paginatedData, pagination, setPagination } = useLocalPagination(invoiceLines, RESULT_COUNT_INCREMENT);
 
   if (isLoading) return <Loading />;
 
   return (
-    Boolean(invoiceLines.length) && (
+    Boolean(invoiceLines?.length) && (
       <Accordion
         id={SECTIONS_INVOICE_LINE.otherRelatedInvoiceLines}
         label={<FormattedMessage id="ui-invoice.otherRelatedInvoiceLines" />}
       >
         <FrontendSortingMCL
-          columnMapping={columnMapping}
-          contentData={invoiceLines}
+          columnMapping={COLUMN_MAPPING}
+          contentData={paginatedData}
           formatter={getResultFormatter(location)}
           id="otherRelatedInvoiceLines"
           interactive={false}
           sortDirection={DESC_DIRECTION}
-          sortedColumn={COLUMN_INVOICE_DATE}
+          sortedColumn={DEFAULT_SORT_FIELD}
           sorters={sorters}
-          visibleColumns={visibleColumns}
+          visibleColumns={VISIBLE_COLUMNS}
+          hasPagination
         />
+        {invoiceLines.length > 0 && (
+          <PrevNextPagination
+            {...pagination}
+            totalCount={totalInvoiceLines}
+            onChange={setPagination}
+            disabled={false}
+          />
+        )}
       </Accordion>
     )
   );

@@ -36,7 +36,7 @@ const resultData = [{
 const queryClient = new QueryClient();
 
 const kyResponseMap = {
-  [INVOICE_LINE_API]: { invoiceLines: [invoiceLine] },
+  [INVOICE_LINE_API]: { invoiceLines: [invoiceLine], totalRecords: 1 },
   [INVOICES_API]: { invoices: [invoice] },
   [VENDORS_API]: { organizations: [vendor] },
 };
@@ -61,12 +61,16 @@ describe('useOtherRelatedInvoiceLines', () => {
 
   it('should fetch connected to po line invoice lines', async () => {
     const { result, waitFor } = renderHook(
-      () => useOtherRelatedInvoiceLines(invoiceLine.id, poLine.id),
+      () => useOtherRelatedInvoiceLines(
+        invoiceLine.id,
+        poLine.id,
+      ),
       { wrapper },
     );
 
     await waitFor(() => !result.current.isLoading);
 
     expect(result.current.invoiceLines).toEqual(resultData);
+    expect(result.current.totalInvoiceLines).toBe(1);
   });
 });

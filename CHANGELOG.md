@@ -12,6 +12,7 @@
 * Prevent approval or payment of invoice with linked order status of "pending". Refs UINV-465.
 * "Release encumbrance" checkbox becomes checked after adding new blank invoice line. Refs UINV-484.
 * Allow user to select Fund and Expense class from Fiscal year specified in invoice. Refs UINV-479.
+* Add pagination to "Related invoices" accordion Invoice. Refs UINV-443.
 
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)
