@@ -368,13 +368,13 @@
     "invoice.details.lines.list.paymentStatus": "Payment status",
     "invoice.details.lines.list.poStatus": "PO status",
     "invoice.details.lines.list.receiptStatus": "受入ステータス",
-    "invoice.details.address": "Address",
+    "invoice.details.address": "住所",
     "invoice.details.addressLine1": "住所 1",
     "invoice.details.addressLine2": "住所 2",
-    "invoice.details.categories": "Categories",
+    "invoice.details.categories": "カテゴリー",
     "invoice.details.city": "市",
-    "invoice.details.country": "Country",
-    "invoice.details.language": "Language",
+    "invoice.details.country": "国",
+    "invoice.details.language": "言語",
     "invoice.details.stateRegion": "州 / 県 / 地域",
     "invoice.details.zipCode": "郵便番号",
     "otherRelatedInvoiceLines": "Other related invoice lines",
@@ -435,5 +435,6 @@
     "settings.batchGroupConfiguration.directory": "Directory",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.FTP": "ftp://uploadlocation.com",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
-    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Invoice could not be approved. Encumbrance fund id does not match the fund id in the invoice line. Error must be corrected in database."
+    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Invoice could not be approved. Encumbrance fund id does not match the fund id in the invoice line. Error must be corrected in database.",
+    "invoice.details.hasPendingOrders": "Invoice can not be approved. One or more of the related orders has a workflow status of \"Pending\". If desired, please open the related orders before approving this invoice."
 }

@@ -435,5 +435,6 @@
     "settings.batchGroupConfiguration.directory": "Directorio",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.FTP": "ftp://uploadlocation.com",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
-    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "No se ha podido aprobar la factura. El identificador de fondos del gravamen no coincide con el identificador de fondos de la línea de factura. El error debe corregirse en la base de datos."
+    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "No se ha podido aprobar la factura. El identificador de fondos del gravamen no coincide con el identificador de fondos de la línea de factura. El error debe corregirse en la base de datos.",
+    "invoice.details.hasPendingOrders": "La factura no puede aprobarse. Uno o más de los pedidos relacionados tiene un estado de flujo de trabajo de \"Pendiente\". Si lo desea, abra los pedidos relacionados antes de aprobar esta factura."
 }
