@@ -435,5 +435,6 @@
     "settings.batchGroupConfiguration.directory": "Adresář",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.FTP": "ftp://uploadlocation.com",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
-    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Invoice could not be approved. Encumbrance fund id does not match the fund id in the invoice line. Error must be corrected in database."
+    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Fakturu nebylo možné schválit. Identifikátor fondu pro úhradu se neshoduje s identifikátorem fondu v řádku faktury. Chybu je třeba opravit v databázi.",
+    "invoice.details.hasPendingOrders": "Fakturu nelze schválit. Jedna nebo více souvisejících objednávek má v pracovním postupu stav \"Čekající\". V případě potřeby otevřete související objednávky před schválením této faktury."
 }
