@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 
 import {
   useBatchGroup,
+  useDefaultAccountingCode,
   useVoucherByInvoiceId,
   useVoucherLines,
 } from '../../common/hooks';
@@ -12,20 +13,30 @@ const usePrintData = (invoice = {}) => {
   const { isVoucherLinesLoading, voucherLines } = useVoucherLines(voucher.id);
   const { isBatchGroupLoading, batchGroup } = useBatchGroup(voucher.batchGroupId);
   const { vendor, isLoading: isLoadingVendor } = useVendor(voucher.vendorId);
+  const { isLoading: isDefaultAccountingCodeLoading, accountNo } = useDefaultAccountingCode(voucher);
 
   const dataSource = useMemo(() => {
     return {
       batchGroup,
       invoice,
       vendor,
-      voucher,
+      voucher: {
+        ...voucher,
+        accountNo,
+      },
       voucherLines,
     };
-  }, [batchGroup, invoice, vendor, voucher, voucherLines]);
+  }, [batchGroup, invoice, vendor, voucher, voucherLines, accountNo]);
+
+  const isLoading = isVoucherLoading
+  || isVoucherLinesLoading
+  || isBatchGroupLoading
+  || isLoadingVendor
+  || isDefaultAccountingCodeLoading;
 
   return ({
     dataSource,
-    isLoading: isVoucherLoading || isVoucherLinesLoading || isBatchGroupLoading || isLoadingVendor,
+    isLoading,
   });
 };
 

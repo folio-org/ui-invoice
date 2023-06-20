@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import {
   Checkbox,
   Col,
+  Loading,
   KeyValue,
   Row,
 } from '@folio/stripes/components';
@@ -15,111 +16,120 @@ import {
 
 import { VOUCHER_STATUS_LABEL } from '../../common/constants';
 import VendorAddress from './VendorAddress';
+import { useDefaultAccountingCode } from '../../common/hooks';
 
-const VoucherDetails = ({ voucher, withVendorAddress }) => (
-  <>
-    <Row>
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.status" />}
-          value={VOUCHER_STATUS_LABEL[voucher.status] || voucher.status}
-        />
-      </Col>
+const VoucherDetails = ({ voucher, withVendorAddress }) => {
+  const { isLoading, accountNo } = useDefaultAccountingCode(voucher);
 
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
-          value={voucher.voucherNumber}
-        />
-      </Col>
+  if (isLoading) {
+    return <Loading />;
+  }
 
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherDate" />}
-          value={<FolioFormattedDate value={voucher.voucherDate} utc={false} />}
-        />
-      </Col>
-
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.total" />}
-        >
-          <AmountWithCurrencyField
-            amount={voucher.amount}
-            currency={voucher.systemCurrency}
+  return (
+    <>
+      <Row>
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.status" />}
+            value={VOUCHER_STATUS_LABEL[voucher.status] || voucher.status}
           />
-        </KeyValue>
-      </Col>
-    </Row>
+        </Col>
 
-    <Row>
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.exchangeRate" />}
-          value={voucher.exchangeRate}
-        />
-      </Col>
-
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
-          value={voucher.disbursementNumber}
-        />
-      </Col>
-
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
-          value={<FolioFormattedDate value={voucher.disbursementDate} />}
-        />
-      </Col>
-
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
-        >
-          <AmountWithCurrencyField
-            amount={voucher.disbursementAmount}
-            currency={voucher.systemCurrency}
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherNumber" />}
+            value={voucher.voucherNumber}
           />
-        </KeyValue>
-      </Col>
-    </Row>
+        </Col>
 
-    <Row>
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountNo" />}
-          value={voucher.accountNo}
-        />
-      </Col>
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.voucherDate" />}
+            value={<FolioFormattedDate value={voucher.voucherDate} utc={false} />}
+          />
+        </Col>
 
-      <Col xs={3}>
-        <KeyValue
-          label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountingCode" />}
-          value={voucher.accountingCode}
-        />
-      </Col>
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.total" />}
+          >
+            <AmountWithCurrencyField
+              amount={voucher.amount}
+              currency={voucher.systemCurrency}
+            />
+          </KeyValue>
+        </Col>
+      </Row>
 
-      <Col xs={3}>
-        <Checkbox
-          checked={voucher.enclosureNeeded}
-          disabled
-          label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
-          type="checkbox"
-          vertical
-        />
-      </Col>
-    </Row>
+      <Row>
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.exchangeRate" />}
+            value={voucher.exchangeRate}
+          />
+        </Col>
 
-    {withVendorAddress && (
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementNumber" />}
+            value={voucher.disbursementNumber}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementDate" />}
+            value={<FolioFormattedDate value={voucher.disbursementDate} />}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.disbursementAmount" />}
+          >
+            <AmountWithCurrencyField
+              amount={voucher.disbursementAmount}
+              currency={voucher.systemCurrency}
+            />
+          </KeyValue>
+        </Col>
+      </Row>
+
+      <Row>
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountNo" />}
+            value={accountNo}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoice.details.voucher.accountingCode" />}
+            value={voucher.accountingCode}
+          />
+        </Col>
+
+        <Col xs={3}>
+          <Checkbox
+            checked={voucher.enclosureNeeded}
+            disabled
+            label={<FormattedMessage id="ui-invoice.invoice.enclosureNeeded" />}
+            type="checkbox"
+            vertical
+          />
+        </Col>
+      </Row>
+
+      {withVendorAddress && (
       <VendorAddress
         vendorId={voucher.vendorId}
         address={voucher.vendorAddress}
       />
-    )}
-  </>
-);
+      )}
+    </>
+  );
+};
 
 VoucherDetails.propTypes = {
   voucher: PropTypes.object.isRequired,
