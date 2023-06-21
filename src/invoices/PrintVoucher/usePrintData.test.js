@@ -12,6 +12,7 @@ import {
   useBatchGroup,
   useVoucherByInvoiceId,
   useVoucherLines,
+  useDefaultAccountingCode,
 } from '../../common/hooks';
 import { useVendor } from '../Voucher/VendorAddress/useVendor';
 
@@ -23,6 +24,7 @@ jest.mock('../../common/hooks', () => ({
   useVoucherByInvoiceId: jest.fn(),
   useVoucherLines: jest.fn(),
   useBatchGroup: jest.fn(),
+  useDefaultAccountingCode: jest.fn(),
 }));
 jest.mock('../Voucher/VendorAddress/useVendor', () => ({
   useVendor: jest.fn(),
@@ -43,6 +45,7 @@ describe('usePrintData', () => {
     useVoucherLines.mockClear().mockReturnValue({ voucherLines: [batchVoucherLine], isVoucherLinesLoading: false });
     useBatchGroup.mockClear().mockReturnValue({ batchGroup, isBatchGroupLoading: false });
     useVendor.mockClear().mockReturnValue({ isLoading: false, vendor });
+    useDefaultAccountingCode.mockClear().mockReturnValue({ isLoading: false, accountNo: '123' });
   });
 
   it('should get voucher by invoice id', () => {
@@ -78,7 +81,7 @@ describe('usePrintData', () => {
         batchGroup,
         invoice,
         vendor,
-        voucher: batchVoucher,
+        voucher: { ...batchVoucher, accountNo: '123' },
         voucherLines: [batchVoucherLine],
       },
     });
