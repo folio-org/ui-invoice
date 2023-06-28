@@ -517,6 +517,7 @@ const InvoiceForm = ({
                             )
                             : (
                               <FieldSelectionFinal
+                                id="accounting-code-selection"
                                 data-testid="accounting-code"
                                 dataOptions={accountingCodeOptions}
                                 labelId="ui-invoice.invoice.accountingCode"

@@ -1,8 +1,7 @@
-import React from 'react';
-import { MemoryRouter } from 'react-router-dom';
+import userEvent from '@testing-library/user-event';
+import { act, render, screen } from '@testing-library/react';
 import { Form } from 'react-final-form';
-import { act, render, fireEvent, screen } from '@testing-library/react';
-import { useHistory } from 'react-router';
+import { MemoryRouter, useHistory } from 'react-router-dom';
 
 import {
   HasCommand,
@@ -11,6 +10,7 @@ import {
 } from '@folio/stripes/components';
 import { FieldOrganization } from '@folio/stripes-acq-components';
 
+import { vendor } from '../../../test/jest/fixtures';
 import InvoiceForm from './InvoiceForm';
 
 const FISCAL_YEARS = [{ code: 'FY2023', id: 'fyId' }];
@@ -43,12 +43,20 @@ jest.mock('../../common/hooks', () => ({
   usePayableFiscalYears: jest.fn(() => ({ fiscalYears: FISCAL_YEARS })),
 }));
 
+const accounts = [{
+  name: 'Test account',
+  accountNo: '1234',
+  appSystemNo: 'test',
+  accountStatus: 'Active',
+}];
+
 const defaultProps = {
   initialValues: {},
   batchGroups: [],
   parentResources: {},
   onCancel: jest.fn(),
 };
+const onSubmitMock = jest.fn();
 const renderInvoiceForm = (props = defaultProps) => (render(
   <MemoryRouter>
     <Form
@@ -56,7 +64,7 @@ const renderInvoiceForm = (props = defaultProps) => (render(
       render={() => (
         <InvoiceForm
           form={{}}
-          onSubmit={jest.fn()}
+          onSubmit={onSubmitMock}
           pristine={false}
           submitting={false}
           {...props}
@@ -109,6 +117,25 @@ describe('InvoiceForm component', () => {
     expect(getByTestId('export-to-accounting').checked).toEqual(false);
   });
 
+  it('should change selected \'Accounting code\' value', () => {
+    const { container } = renderInvoiceForm({
+      ...defaultProps,
+      initialVendor: {
+        ...vendor,
+        accounts,
+      },
+    });
+
+    const { accountNo, appSystemNo } = accounts[0];
+    const accountLabel = `${accountNo} (${appSystemNo})`;
+
+    expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent('');
+
+    userEvent.click(screen.getByText(accountLabel));
+
+    expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent(accountLabel);
+  });
+
   describe('When lock total is unchecked', () => {
     it('then lock total amount is readonly', () => {
       const { getByTestId } = renderInvoiceForm();
@@ -129,10 +156,10 @@ describe('InvoiceForm component', () => {
 
       const lockTotal = getByTestId('lock-total');
 
-      fireEvent(lockTotal, new MouseEvent('click', {
+      userEvent.click(lockTotal, {
         bubbles: true,
         cancelable: true,
-      }));
+      });
 
       expect(getByTestId('lock-total-amount')).not.toHaveAttribute('readonly');
     });
@@ -146,10 +173,10 @@ describe('InvoiceForm component', () => {
 
       const exportToAccounting = screen.getByTestId('export-to-accounting');
 
-      fireEvent(exportToAccounting, new MouseEvent('click', {
+      userEvent.click(exportToAccounting, {
         bubbles: true,
         cancelable: true,
-      }));
+      });
 
       expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon required/i })).toBeInTheDocument();
     });
@@ -172,10 +199,42 @@ describe('InvoiceForm component', () => {
       });
 
       await act(async () => {
-        await FieldOrganization.mock.calls[0][0].onSelect({ id: 'vendorId', exportToAccounting: true });
+        await FieldOrganization.mock.calls[0][0].onSelect({
+          ...vendor,
+          exportToAccounting: true,
+        });
       });
 
       expect(screen.getByTestId('export-to-accounting').checked).toEqual(true);
+    });
+
+    describe('interactions with \'Accounting code\'', () => {
+      it('should set the default accounting code if the vendor has an ERP code and does not have any accounts', async () => {
+        const { container } = renderInvoiceForm();
+        const erpCode = 'ERP-code';
+
+        await act(async () => {
+          await FieldOrganization.mock.calls[0][0].onSelect({
+            ...vendor,
+            erpCode,
+          });
+        });
+
+        expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent(`Default (${erpCode})`);
+      });
+
+      it('should clear accounting code if the vendor have an account', async () => {
+        const { container } = renderInvoiceForm();
+
+        await act(async () => {
+          await FieldOrganization.mock.calls[0][0].onSelect({
+            ...vendor,
+            accounts,
+          });
+        });
+
+        expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent('');
+      });
     });
   });
 
