@@ -1,5 +1,7 @@
 import { get } from 'lodash';
 
+export const NO_ACCOUNT_NUMBER = '__NO_ACCOUNT_NUMBER__';
+
 // eslint-disable-next-line import/prefer-default-export
 export const getAccountingCodeOptions = (vendor) => {
   const accounts = get(vendor, 'accounts', []).filter(({ appSystemNo }) => Boolean(appSystemNo));
@@ -9,7 +11,7 @@ export const getAccountingCodeOptions = (vendor) => {
   }));
   const erpCode = get(vendor, 'erpCode');
   const defaultOption = erpCode
-    ? [{ label: `Default (${erpCode})`, value: erpCode }]
+    ? [{ label: `Default (${erpCode})`, value: NO_ACCOUNT_NUMBER }]
     : [];
 
   return [

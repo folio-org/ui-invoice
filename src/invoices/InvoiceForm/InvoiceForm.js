@@ -53,6 +53,7 @@ import {
   PRE_PAY_INVOICE_STATUSES_OPTIONS,
 } from '../../common/constants';
 import {
+  NO_ACCOUNT_NUMBER,
   getAccountingCodeOptions,
   getAddressOptions,
   IS_EDIT_POST_APPROVAL,
@@ -146,10 +147,12 @@ const InvoiceForm = ({
       const hasAnyAccountingCode = vendor.accounts?.some(({ appSystemNo }) => Boolean(appSystemNo));
       const paymentMethod = vendor.paymentMethod;
       const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
+      const accountNo = hasAnyAccountingCode ? null : NO_ACCOUNT_NUMBER;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
 
       batch(() => {
         change('accountingCode', vendorAccountingCode || null);
+        change('accountNo', accountNo);
         change('paymentMethod', paymentMethod || null);
         change('exportToAccounting', exportToAccounting);
       });
@@ -215,7 +218,7 @@ const InvoiceForm = ({
   );
 
   const onChangeAccNumber = useCallback(accNumber => {
-    const accCode = accNumber !== invoiceVendor.erpCode
+    const accCode = accNumber !== NO_ACCOUNT_NUMBER
       ? invoiceVendor.accounts?.find(({ accountNo }) => accountNo === accNumber)?.appSystemNo
       : invoiceVendor.erpCode;
 

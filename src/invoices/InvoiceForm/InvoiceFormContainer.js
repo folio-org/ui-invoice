@@ -39,6 +39,7 @@ import {
   useOrderLines,
   useOrders,
 } from '../../common/hooks';
+import { NO_ACCOUNT_NUMBER } from '../../common/utils';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
@@ -110,8 +111,12 @@ export function InvoiceFormContainerComponent({
     } else onCancel(invoiceId);
   }, [onCancel, history, isCreateFromOrder, orderIds]);
 
-  const saveInvoiceHandler = useCallback(formValues => {
+  const saveInvoiceHandler = useCallback(({ accountNo, ..._formValues }) => {
     let validationRequest = Promise.resolve();
+    const formValues = {
+      ..._formValues,
+      accountNo: accountNo === NO_ACCOUNT_NUMBER ? null : accountNo,
+    };
 
     if (!forceSaveValues) {
       const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
@@ -211,11 +216,16 @@ export function InvoiceFormContainerComponent({
   const documents = useMemo(() => invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url), [invoiceDocuments]);
   const links = useMemo(() => invoiceDocuments.filter(invoiceDocument => invoiceDocument.url), [invoiceDocuments]);
 
-  const initialValues = useMemo(() => ({
-    ...initialInvoice,
-    documents,
-    links,
-  }), [documents, initialInvoice, links]);
+  const initialValues = useMemo(() => {
+    const { accountingCode, accountNo } = initialInvoice;
+
+    return {
+      ...initialInvoice,
+      accountNo: accountingCode && !accountNo ? NO_ACCOUNT_NUMBER : accountNo,
+      documents,
+      links,
+    };
+  }, [documents, initialInvoice, links]);
 
   const saveButtonLabelId = `ui-invoice.${(isCreateFromOrder && orderLines?.length > 1) ? 'saveAndContinue' : 'saveAndClose'}`;
 
