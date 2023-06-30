@@ -217,6 +217,11 @@ const InvoiceForm = ({
     }, [resetLockTotalAmount],
   );
 
+  /**
+   * The values of the options are a vendor's account numbers, which are used to determine the corresponding accounting codes of the accounts.
+   *
+   * NO_ACCOUNT_NUMBER is used to indicate that the invoice accounting code value is the default organization accounting code (erpCode) and there is no account number value.
+   */
   const onChangeAccNumber = useCallback(accNumber => {
     const accCode = accNumber !== NO_ACCOUNT_NUMBER
       ? invoiceVendor.accounts?.find(({ accountNo }) => accountNo === accNumber)?.appSystemNo
