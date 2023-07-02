@@ -53,6 +53,7 @@ import {
   PRE_PAY_INVOICE_STATUSES_OPTIONS,
 } from '../../common/constants';
 import {
+  NO_ACCOUNT_NUMBER,
   getAccountingCodeOptions,
   getAddressOptions,
   IS_EDIT_POST_APPROVAL,
@@ -146,10 +147,12 @@ const InvoiceForm = ({
       const hasAnyAccountingCode = vendor.accounts?.some(({ appSystemNo }) => Boolean(appSystemNo));
       const paymentMethod = vendor.paymentMethod;
       const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
+      const accountNo = hasAnyAccountingCode ? null : NO_ACCOUNT_NUMBER;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
 
       batch(() => {
         change('accountingCode', vendorAccountingCode || null);
+        change('accountNo', accountNo);
         change('paymentMethod', paymentMethod || null);
         change('exportToAccounting', exportToAccounting);
       });
@@ -214,8 +217,13 @@ const InvoiceForm = ({
     }, [resetLockTotalAmount],
   );
 
+  /**
+   * The values of the options are a vendor's account numbers, which are used to determine the corresponding accounting codes of the accounts.
+   *
+   * NO_ACCOUNT_NUMBER is used to indicate that the invoice accounting code value is the default organization accounting code (erpCode) and there is no account number value.
+   */
   const onChangeAccNumber = useCallback(accNumber => {
-    const accCode = accNumber !== invoiceVendor.erpCode
+    const accCode = accNumber !== NO_ACCOUNT_NUMBER
       ? invoiceVendor.accounts?.find(({ accountNo }) => accountNo === accNumber)?.appSystemNo
       : invoiceVendor.erpCode;
 
@@ -514,6 +522,7 @@ const InvoiceForm = ({
                             )
                             : (
                               <FieldSelectionFinal
+                                id="accounting-code-selection"
                                 data-testid="accounting-code"
                                 dataOptions={accountingCodeOptions}
                                 labelId="ui-invoice.invoice.accountingCode"
