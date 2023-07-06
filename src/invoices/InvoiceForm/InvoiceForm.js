@@ -1,5 +1,8 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { useHistory } from 'react-router';
@@ -94,6 +97,7 @@ const InvoiceForm = ({
   submitting,
   values,
 }) => {
+  const intl = useIntl();
   const history = useHistory();
   const accordionStatusRef = useRef();
 
@@ -184,7 +188,7 @@ const InvoiceForm = ({
   const invoiceVendor = selectedVendor || initialVendor;
   const isFiscalYearRequired = isEditMode && Boolean(fiscalYearId);
   const isFiscalYearChanged = values?.fiscalYearId && (fiscalYearId !== values?.fiscalYearId);
-  const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor);
+  const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor, intl);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
   const accountingCodeValidationProps = isExportToAccountingChecked
     ? { required: true, validate: validateAccountingCode, key: 1 }

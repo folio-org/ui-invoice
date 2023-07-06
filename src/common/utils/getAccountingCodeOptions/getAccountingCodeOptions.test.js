@@ -32,6 +32,10 @@ const accounts = [
   },
 ];
 
+const intl = {
+  formatMessage: jest.fn((_id, values) => `Default (${values.erpCode})`),
+};
+
 describe('getAccountingCodeOptions', () => {
   it('should populate options list with default option if the vendor has ERP code', () => {
     const erpCode = 'G64758-74834';
@@ -41,7 +45,7 @@ describe('getAccountingCodeOptions', () => {
     };
 
     // Default option have __NO_ACCOUNT_NUMBER__ value
-    expect(getAccountingCodeOptions(vendor)).toEqual([{
+    expect(getAccountingCodeOptions(vendor, intl)).toEqual([{
       label: `Default (${erpCode})`,
       value: NO_ACCOUNT_NUMBER,
     }]);
@@ -53,7 +57,7 @@ describe('getAccountingCodeOptions', () => {
       accounts,
     };
 
-    expect(getAccountingCodeOptions(vendor)).toEqual(
+    expect(getAccountingCodeOptions(vendor, intl)).toEqual(
       [accounts[0], accounts[1]].map(({ accountNo, appSystemNo }) => ({
         label: `${accountNo} (${appSystemNo})`,
         value: accountNo,
@@ -62,6 +66,6 @@ describe('getAccountingCodeOptions', () => {
   });
 
   it('should return empty list if the vendor does not have any accounts or ERP code', () => {
-    expect(getAccountingCodeOptions(vendorStub)).toEqual([]);
+    expect(getAccountingCodeOptions(vendorStub, intl)).toEqual([]);
   });
 });
