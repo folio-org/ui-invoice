@@ -14,6 +14,7 @@
 * Allow user to select Fund and Expense class from Fiscal year specified in invoice. Refs UINV-479.
 * Add pagination to "Related invoices" accordion Invoice. Refs UINV-443.
 * "Account number" value must be `null` for the default value of "Accounting code". Refs UINV-487.
+* The value "Default" is hard-coded instead of localized. Refs UINV-489.
 
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)

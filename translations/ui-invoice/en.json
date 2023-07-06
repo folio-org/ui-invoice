@@ -212,6 +212,7 @@
   "invoice.voucherNumber": "Voucher number",
   "invoice.vendorName": "Vendor name",
   "invoice.accountingCode": "Accounting code",
+  "invoice.accountingCode.default": "Default ({erpCode})",
   "invoice.exportToAccounting": "Export to accounting",
   "invoice.enclosureNeeded": "Enclosure needed",
   "invoice.billTo": "Bill to",

@@ -220,7 +220,9 @@ describe('InvoiceForm component', () => {
           });
         });
 
-        expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent(`Default (${erpCode})`);
+        expect(
+          container.querySelector('#selected-accounting-code-selection-item'),
+        ).toHaveTextContent('ui-invoice.invoice.accountingCode.default');
       });
 
       it('should clear accounting code if the vendor have an account', async () => {

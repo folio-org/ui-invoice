@@ -15,7 +15,7 @@ export const NO_ACCOUNT_NUMBER = '__NO_ACCOUNT_NUMBER__';
  * Since the default accounting code does not have an associated account number,
  * "NO_ACCOUNT_NUMBER" is used as the value for this option to be displayed correctly (to distinguish it from an empty option with a value of `null`).
  */
-export const getAccountingCodeOptions = (vendor) => {
+export const getAccountingCodeOptions = (vendor, intl) => {
   const accounts = get(vendor, 'accounts', []).filter(({ appSystemNo }) => Boolean(appSystemNo));
   const options = accounts.map(({ accountNo, appSystemNo }) => ({
     label: `${accountNo} (${appSystemNo})`,
@@ -23,7 +23,12 @@ export const getAccountingCodeOptions = (vendor) => {
   }));
   const erpCode = get(vendor, 'erpCode');
   const defaultOption = erpCode
-    ? [{ label: `Default (${erpCode})`, value: NO_ACCOUNT_NUMBER }]
+    ? (
+      [{
+        label: intl.formatMessage({ id: 'ui-invoice.invoice.accountingCode.default' }, { erpCode }),
+        value: NO_ACCOUNT_NUMBER,
+      }]
+    )
     : [];
 
   return [
