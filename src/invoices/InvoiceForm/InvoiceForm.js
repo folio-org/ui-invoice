@@ -50,7 +50,6 @@ import {
   validateRequired,
 } from '@folio/stripes-acq-components';
 
-import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
 import {
   INVOICE_STATUSES_OPTIONS,
   PRE_PAY_INVOICE_STATUSES_OPTIONS,
@@ -84,6 +83,7 @@ const CREATE_UNITS_PERM = 'invoices.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
 
 const InvoiceForm = ({
+  adjustmentPresets,
   batchGroups,
   form,
   handleSubmit,
@@ -189,7 +189,6 @@ const InvoiceForm = ({
   const isFiscalYearRequired = isEditMode && Boolean(fiscalYearId);
   const isFiscalYearChanged = values?.fiscalYearId && (fiscalYearId !== values?.fiscalYearId);
   const accountingCodeOptions = getAccountingCodeOptions(invoiceVendor, intl);
-  const adjustmentsPresets = getSettingsAdjustmentsList(get(parentResources, ['configAdjustments', 'records'], []));
   const accountingCodeValidationProps = isExportToAccountingChecked
     ? { required: true, validate: validateAccountingCode, key: 1 }
     : { key: 0 };
@@ -474,7 +473,7 @@ const InvoiceForm = ({
                       label={<FormattedMessage id="ui-invoice.adjustments" />}
                     >
                       <AdjustmentsForm
-                        adjustmentsPresets={adjustmentsPresets}
+                        adjustmentsPresets={adjustmentPresets}
                         currency={filledCurrency}
                         change={change}
                         invoiceSubTotal={subTotal}
@@ -654,6 +653,7 @@ const InvoiceForm = ({
 };
 
 InvoiceForm.propTypes = {
+  adjustmentPresets: PropTypes.arrayOf(PropTypes.object),
   initialValues: PropTypes.object.isRequired,
   initialVendor: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
@@ -669,6 +669,7 @@ InvoiceForm.propTypes = {
 };
 
 InvoiceForm.defaultProps = {
+  adjustmentPresets: [],
   initialVendor: {},
   isCreateFromOrder: false,
   saveButtonLabelId: 'ui-invoice.saveAndClose',
