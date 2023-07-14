@@ -248,6 +248,7 @@ export function InvoiceFormContainerComponent({
   return (
     <>
       <InvoiceForm
+        adjustmentPresets={allAdjustments}
         initialValues={initialValues}
         initialVendor={invoiceVendor}
         parentResources={resources}
