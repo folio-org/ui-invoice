@@ -436,5 +436,6 @@
     "settings.batchGroupConfiguration.uploadLocation.placeholder.FTP": "ftp://uploadlocation.com",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
     "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "A fatura não pôde ser aprovada. O id do fundo de ônus não corresponde ao id do fundo na linha da fatura. O erro deve ser corrigido no banco de dados.",
-    "invoice.details.hasPendingOrders": "A fatura não pode ser aprovada. Um ou mais dos pedidos relacionados têm um status de fluxo de trabalho \"Pendente\". Se desejar, abra os pedidos relacionados antes de aprovar essa fatura."
+    "invoice.details.hasPendingOrders": "A fatura não pode ser aprovada. Um ou mais dos pedidos relacionados têm um status de fluxo de trabalho \"Pendente\". Se desejar, abra os pedidos relacionados antes de aprovar essa fatura.",
+    "invoice.accountingCode.default": "Padrão ({erpCode})"
 }
