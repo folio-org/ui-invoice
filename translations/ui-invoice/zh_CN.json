@@ -437,5 +437,5 @@
     "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
     "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "发票无法获得批准。预留经费ID与发票行中的经费ID不匹配。必须更正数据库中的错误。",
     "invoice.details.hasPendingOrders": "发票不能被批准。一个或多个相关订单的工作流程状态为“待处理”。如果需要，请在批准此发票之前打开相关订单。",
-    "invoice.accountingCode.default": "Default ({erpCode})"
+    "invoice.accountingCode.default": "默认（ {erpCode} ）"
 }
