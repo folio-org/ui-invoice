@@ -57,7 +57,6 @@ export const showUpdateInvoiceError = async (
     case ERROR_CODES.organizationIsNotExist:
     case ERROR_CODES.lockCalculatedTotalsMismatch:
     case ERROR_CODES.outdatedFundIdInEncumbrance:
-    case ERROR_CODES.incorrectFundDistributionTotal:
     case ERROR_CODES.multipleFiscalYears: {
       showCallout({
         messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`,
@@ -69,6 +68,12 @@ export const showUpdateInvoiceError = async (
       const fundCodes = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'funds')[0]?.value;
 
       showCallout({ messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`, type: 'error', values: { fundCodes } });
+      break;
+    }
+    case ERROR_CODES.incorrectFundDistributionTotal: {
+      const invoiceLineNumber = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'invoiceLineNumber')[0]?.value;
+
+      showCallout({ messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`, type: 'error', values: { invoiceLineNumber } });
       break;
     }
     case ERROR_CODES.budgetExpenseClassNotFound: {
