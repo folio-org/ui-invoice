@@ -140,6 +140,7 @@ export const ERROR_CODES = {
   organizationIsNotExist: 'organizationIsNotExist',
   multipleFiscalYears: 'multipleFiscalYears',
   outdatedFundIdInEncumbrance: 'outdatedFundIdInEncumbrance',
+  incorrectFundDistributionTotal: 'incorrectFundDistributionTotal',
 };
 
 export const VALIDATION_ERRORS = {

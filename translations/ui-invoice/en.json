@@ -365,6 +365,7 @@
   "invoice.actions.approve.error.organizationIsNotExist": "Invoice cannot be approved because organization does not exist",
   "invoice.actions.approve.error.multipleFiscalYears": "Invoice cannot be approved because the funds used belong to multiple fiscal years",
   "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Invoice could not be approved. Encumbrance fund id does not match the fund id in the invoice line. Error must be corrected in database.",
+  "invoice.actions.approve.error.incorrectFundDistributionTotal": "Fund distribution total must be distributed by 100 percent in the invoice line number {invoiceLineNumber}",
   "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
   "invoice.actions.pay.error.budgetNotFoundByFundId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
   "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> expense class not found on <b>{fundCode}</b> Fund",

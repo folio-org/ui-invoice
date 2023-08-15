@@ -115,4 +115,49 @@ describe('showUpdateInvoiceError', () => {
       type: 'error',
     });
   });
+
+  it.each([
+    ['budgetExpenseClassNotFound', 'ui-invoice.invoice.actions.approve.error.budgetExpenseClassNotFound', ['expenseClassName', 'fundCode']],
+    ['incorrectFundDistributionTotal', 'ui-invoice.invoice.actions.approve.error.incorrectFundDistributionTotal', ['invoiceLineNumber']],
+    ['budgetNotFoundByFundId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundId', ['fund', 'fundCode']],
+    ['budgetNotFoundByFundId', 'defaultErrorMessageId', []],
+    ['fundCannotBePaid', 'ui-invoice.invoice.actions.approve.error.fundCannotBePaid', ['funds']],
+  ])('should get %s error message', async (code, messageId, key) => {
+    const mockActionName = 'approve';
+    const parameters = key.map(k => ({ key: k, value: 'value' }));
+    let values = { values: { ...parameters.reduce((acc, { key: k, value }) => ({ ...acc, [k]: value }), {}) } };
+
+    if (code === 'budgetNotFoundByFundId') {
+      values = parameters.length ? { values: { fundCode: 'value' } } : {};
+    } else if (code === 'fundCannotBePaid') {
+      values = { values: { fundCodes: 'value' } };
+    }
+
+    const mockResponse = {
+      clone: () => ({
+        json: () => Promise.resolve(
+          ({
+            errors: [{
+              code: ERROR_CODES[code],
+              parameters,
+            }],
+          }),
+        ),
+      }),
+    };
+
+    const mockFundMutator = {
+      GET: jest.fn().mockResolvedValue({ fund: { code: 'value' } }),
+    };
+
+    await showUpdateInvoiceError(
+      mockResponse, showCallout, mockActionName, defaultErrorMessageId, expenseClassMutator, mockFundMutator,
+    );
+
+    expect(showCallout).toHaveBeenCalledWith({
+      messageId,
+      type: 'error',
+      ...values,
+    });
+  });
 });
