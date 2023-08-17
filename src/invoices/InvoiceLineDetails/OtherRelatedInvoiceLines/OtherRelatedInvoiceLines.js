@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
-import moment from 'moment';
 
 import { ClipCopy } from '@folio/stripes/smart-components';
 import {
@@ -34,7 +33,7 @@ const sorters = {
 const getFormattedDate = (date) => {
   if (!date) return <NoValue />;
 
-  return moment.utc(date).format('MM/DD/YYYY');
+  return <FormattedDate value={date} />;
 };
 
 const getResultFormatter = ({ search }) => ({
