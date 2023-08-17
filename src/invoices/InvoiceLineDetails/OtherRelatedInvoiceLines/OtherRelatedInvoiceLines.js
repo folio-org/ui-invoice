@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { Link, useLocation } from 'react-router-dom';
+import moment from 'moment';
+
 import { ClipCopy } from '@folio/stripes/smart-components';
 import {
   Accordion,
@@ -8,7 +10,6 @@ import {
   NoValue,
   DESC_DIRECTION,
 } from '@folio/stripes/components';
-
 import {
   AmountWithCurrencyField,
   PrevNextPagination,
@@ -30,6 +31,12 @@ const sorters = {
   [COLUMN_INVOICE_DATE]: ({ invoice }) => invoice?.invoiceDate,
 };
 
+const getFormattedDate = (date) => {
+  if (!date) return <NoValue />;
+
+  return moment.utc(date).format('MM/DD/YYYY');
+};
+
 const getResultFormatter = ({ search }) => ({
   invoiceLine: invoiceLine => (
     <Link
@@ -38,11 +45,15 @@ const getResultFormatter = ({ search }) => ({
         search,
       }}
     >
-      {`${invoiceLine.invoiceLineNumber}`}
+      {`${invoiceLine?.invoiceLineNumber}`}
     </Link>
   ),
+  fiscalYear: invoiceLine => invoiceLine.fiscalYear?.code || <NoValue />,
   [COLUMN_INVOICE_DATE]: invoiceLine => <FormattedDate value={invoiceLine.invoice?.invoiceDate} />,
-  vendorName: invoiceLine => invoiceLine.vendor?.name || <NoValue />,
+  vendorCode: invoiceLine => invoiceLine.vendor?.code || <NoValue />,
+  subscriptionStart: invoiceLine => getFormattedDate(invoiceLine.fiscalYear?.periodStart),
+  subscriptionEnd: invoiceLine => getFormattedDate(invoiceLine.fiscalYear?.periodEnd),
+  subscriptionDescription: invoiceLine => invoiceLine.fiscalYear?.description || <NoValue />,
   vendorInvoiceNo: invoiceLine => (
     invoiceLine.invoice?.vendorInvoiceNo
       ? (

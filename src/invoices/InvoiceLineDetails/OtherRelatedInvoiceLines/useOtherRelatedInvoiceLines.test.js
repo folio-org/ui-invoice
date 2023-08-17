@@ -3,21 +3,27 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { renderHook } from '@testing-library/react-hooks';
 
 import { useOkapiKy } from '@folio/stripes/core';
-
 import {
   INVOICES_API,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 
-import { INVOICE_LINE_API } from '../../../common/constants';
+import {
+  INVOICE_LINE_API,
+  FISCAL_YEARS_API,
+} from '../../../common/constants';
 import { useOtherRelatedInvoiceLines } from './useOtherRelatedInvoiceLines';
 
+const fiscalYear = {
+  id: 'fiscalYearId',
+};
 const vendor = {
   id: 'vendorId',
 };
 const invoice = {
   id: 'invoiceId',
   vendorId: vendor.id,
+  fiscalYearId: fiscalYear.id,
 };
 const invoiceLine = {
   id: 'invoiceLineId',
@@ -31,6 +37,7 @@ const resultData = [{
   ...invoiceLine,
   invoice,
   vendor,
+  fiscalYear,
 }];
 
 const queryClient = new QueryClient();
@@ -39,6 +46,7 @@ const kyResponseMap = {
   [INVOICE_LINE_API]: { invoiceLines: [invoiceLine], totalRecords: 1 },
   [INVOICES_API]: { invoices: [invoice] },
   [VENDORS_API]: { organizations: [vendor] },
+  [FISCAL_YEARS_API]: { fiscalYears: [fiscalYear] },
 };
 
 // eslint-disable-next-line react/prop-types

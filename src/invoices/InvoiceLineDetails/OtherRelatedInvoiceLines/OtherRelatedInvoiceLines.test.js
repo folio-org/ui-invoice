@@ -59,7 +59,11 @@ describe('OtherRelatedInvoiceLines', () => {
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.invoiceLine')).toBeInTheDocument();
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.invoiceDate')).toBeInTheDocument();
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.vendorInvoiceNo')).toBeInTheDocument();
-    expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.vendorName')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.vendorCode')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.fiscalYear')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.subscriptionStart')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.subscriptionEnd')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.subscriptionDescription')).toBeInTheDocument();
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.status')).toBeInTheDocument();
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.quantity')).toBeInTheDocument();
     expect(screen.getByText('ui-invoice.otherRelatedInvoiceLines.amount')).toBeInTheDocument();
