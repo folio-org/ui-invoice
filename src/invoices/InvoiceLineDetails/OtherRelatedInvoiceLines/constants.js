@@ -7,8 +7,12 @@ export const DEFAULT_SORT_FIELD = COLUMN_INVOICE_DATE;
 export const VISIBLE_COLUMNS = [
   'vendorInvoiceNo',
   'invoiceLine',
+  'fiscalYear',
   COLUMN_INVOICE_DATE,
-  'vendorName',
+  'vendorCode',
+  'subscriptionStart',
+  'subscriptionEnd',
+  'subscriptionDescription',
   'status',
   'quantity',
   'amount',
@@ -17,8 +21,12 @@ export const VISIBLE_COLUMNS = [
 
 export const COLUMN_MAPPING = {
   invoiceLine: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.invoiceLine" />,
+  fiscalYear: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.fiscalYear" />,
   [COLUMN_INVOICE_DATE]: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.invoiceDate" />,
-  vendorName: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.vendorName" />,
+  vendorCode: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.vendorCode" />,
+  subscriptionStart: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.subscriptionStart" />,
+  subscriptionEnd: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.subscriptionEnd" />,
+  subscriptionDescription: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.subscriptionDescription" />,
   vendorInvoiceNo: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.vendorInvoiceNo" />,
   status: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.status" />,
   quantity: <FormattedMessage id="ui-invoice.otherRelatedInvoiceLines.quantity" />,

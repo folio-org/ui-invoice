@@ -12,7 +12,10 @@ import {
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 
-import { INVOICE_LINE_API } from '../../../common/constants';
+import {
+  INVOICE_LINE_API,
+  FISCAL_YEARS_API,
+} from '../../../common/constants';
 
 export const useOtherRelatedInvoiceLines = (
   invoiceLineId,
@@ -53,14 +56,27 @@ export const useOtherRelatedInvoiceLines = (
       );
       const vendorsMap = keyBy(vendors, 'id');
 
+      const fiscalYearIds = invoices.map(({ fiscalYearId }) => fiscalYearId);
+      const fiscalYears = await batchRequest(
+        async ({ params: searchParams }) => {
+          const fiscalYearData = await ky.get(FISCAL_YEARS_API, { searchParams }).json();
+
+          return fiscalYearData.fiscalYears;
+        },
+        fiscalYearIds,
+      );
+      const fiscalYearsMap = keyBy(fiscalYears, 'id');
+
       const result = invoiceLines.map(invoiceLine => {
         const invoice = invoicesMap[invoiceLine.invoiceId];
         const vendor = vendorsMap[invoice.vendorId];
+        const fiscalYear = fiscalYearsMap[invoice.fiscalYearId];
 
         return {
           ...invoiceLine,
           invoice,
           vendor,
+          fiscalYear,
         };
       });
 
