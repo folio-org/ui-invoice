@@ -17,6 +17,7 @@
 * The value "Default" is hard-coded instead of localized. Refs UINV-489.
 * Add handling for a new error code that occurs during invoice approval. Refs UINV-497.
 * Update related invoice details to include additional fields on invoice line. Refs UINV-496.
+* Update Node.js to v18 in GitHub Actions. Refs UINV-495.
 
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)

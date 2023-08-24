@@ -8,9 +8,6 @@
     "url": "https://github.com/folio-org/ui-invoice.git"
   },
   "license": "Apache-2.0",
-  "engines": {
-    "node": ">=10"
-  },
   "scripts": {
     "start": "yarn stripes serve",
     "build": "yarn stripes build --output ./output",
