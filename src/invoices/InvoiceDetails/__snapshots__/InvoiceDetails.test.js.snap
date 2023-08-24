@@ -178,7 +178,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion13"
+                    aria-controls="accordion21"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-information"
@@ -212,7 +212,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion13"
+                id="accordion21"
                 role="region"
               >
                 Information
@@ -236,7 +236,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion14"
+                    aria-controls="accordion22"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-invoiceLines"
@@ -275,7 +275,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion14"
+                id="accordion22"
                 role="region"
               >
                 InvoiceLines
@@ -299,7 +299,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion15"
+                    aria-controls="accordion23"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-vendorDetails"
@@ -333,7 +333,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion15"
+                id="accordion23"
                 role="region"
               >
                 VendorDetails
@@ -357,7 +357,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion16"
+                    aria-controls="accordion24"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-extendedInformation"
@@ -391,7 +391,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion16"
+                id="accordion24"
                 role="region"
               >
                 ExtendedInformation
@@ -416,7 +416,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion17"
+                    aria-controls="accordion25"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-documents"
@@ -450,7 +450,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion17"
+                id="accordion25"
                 role="region"
               >
                 DocumentsDetails
@@ -642,7 +642,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion37"
+                    aria-controls="accordion61"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-information"
@@ -676,7 +676,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion37"
+                id="accordion61"
                 role="region"
               >
                 Information
@@ -700,7 +700,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion38"
+                    aria-controls="accordion62"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-invoiceLines"
@@ -739,7 +739,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion38"
+                id="accordion62"
                 role="region"
               >
                 InvoiceLines
@@ -763,7 +763,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion39"
+                    aria-controls="accordion63"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-vendorDetails"
@@ -797,7 +797,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion39"
+                id="accordion63"
                 role="region"
               >
                 VendorDetails
@@ -821,7 +821,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion40"
+                    aria-controls="accordion64"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-extendedInformation"
@@ -855,7 +855,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion40"
+                id="accordion64"
                 role="region"
               >
                 ExtendedInformation
@@ -880,7 +880,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion41"
+                    aria-controls="accordion65"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-documents"
@@ -914,7 +914,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion41"
+                id="accordion65"
                 role="region"
               >
                 DocumentsDetails
@@ -1569,7 +1569,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion25"
+                    aria-controls="accordion41"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-information"
@@ -1603,7 +1603,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion25"
+                id="accordion41"
                 role="region"
               >
                 Information
@@ -1627,7 +1627,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion26"
+                    aria-controls="accordion42"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-invoiceLines"
@@ -1666,7 +1666,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion26"
+                id="accordion42"
                 role="region"
               >
                 InvoiceLines
@@ -1690,7 +1690,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion27"
+                    aria-controls="accordion43"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-vendorDetails"
@@ -1724,7 +1724,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion27"
+                id="accordion43"
                 role="region"
               >
                 VendorDetails
@@ -1748,7 +1748,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion28"
+                    aria-controls="accordion44"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-extendedInformation"
@@ -1782,7 +1782,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion28"
+                id="accordion44"
                 role="region"
               >
                 ExtendedInformation
@@ -1807,7 +1807,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion29"
+                    aria-controls="accordion45"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-documents"
@@ -1841,7 +1841,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion29"
+                id="accordion45"
                 role="region"
               >
                 DocumentsDetails
@@ -2033,7 +2033,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion49"
+                    aria-controls="accordion81"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-information"
@@ -2067,7 +2067,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion49"
+                id="accordion81"
                 role="region"
               >
                 Information
@@ -2091,7 +2091,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion50"
+                    aria-controls="accordion82"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-invoiceLines"
@@ -2130,7 +2130,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion50"
+                id="accordion82"
                 role="region"
               >
                 InvoiceLines
@@ -2154,7 +2154,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion51"
+                    aria-controls="accordion83"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-vendorDetails"
@@ -2188,7 +2188,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion51"
+                id="accordion83"
                 role="region"
               >
                 VendorDetails
@@ -2212,7 +2212,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion52"
+                    aria-controls="accordion84"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-extendedInformation"
@@ -2246,7 +2246,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion52"
+                id="accordion84"
                 role="region"
               >
                 ExtendedInformation
@@ -2270,7 +2270,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion53"
+                    aria-controls="accordion85"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-documents"
@@ -2304,7 +2304,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion53"
+                id="accordion85"
                 role="region"
               >
                 DocumentsDetails
@@ -2496,7 +2496,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion61"
+                    aria-controls="accordion101"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-information"
@@ -2530,7 +2530,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                 aria-labelledby="accordion-toggle-button-information"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion61"
+                id="accordion101"
                 role="region"
               >
                 Information
@@ -2554,7 +2554,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion62"
+                    aria-controls="accordion102"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-invoiceLines"
@@ -2593,7 +2593,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                 aria-labelledby="accordion-toggle-button-invoiceLines"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion62"
+                id="accordion102"
                 role="region"
               >
                 InvoiceLines
@@ -2617,7 +2617,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion63"
+                    aria-controls="accordion103"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-vendorDetails"
@@ -2651,7 +2651,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                 aria-labelledby="accordion-toggle-button-vendorDetails"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion63"
+                id="accordion103"
                 role="region"
               >
                 VendorDetails
@@ -2675,7 +2675,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion64"
+                    aria-controls="accordion104"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-extendedInformation"
@@ -2709,7 +2709,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                 aria-labelledby="accordion-toggle-button-extendedInformation"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion64"
+                id="accordion104"
                 role="region"
               >
                 ExtendedInformation
@@ -2733,7 +2733,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion65"
+                    aria-controls="accordion105"
                     aria-expanded="true"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-batchVoucherExport"
@@ -2767,7 +2767,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                 aria-labelledby="accordion-toggle-button-batchVoucherExport"
                 class="content-region expanded"
                 data-test-accordion-wrapper="true"
-                id="accordion65"
+                id="accordion105"
                 role="region"
               >
                 InvoiceBatchVoucherExport
@@ -2792,7 +2792,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                   data-test-headline="true"
                 >
                   <button
-                    aria-controls="accordion66"
+                    aria-controls="accordion106"
                     aria-expanded="false"
                     class="defaultCollapseButton"
                     id="accordion-toggle-button-documents"
@@ -2826,7 +2826,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                 aria-labelledby="accordion-toggle-button-documents"
                 class="content-region"
                 data-test-accordion-wrapper="true"
-                id="accordion66"
+                id="accordion106"
                 role="region"
               >
                 DocumentsDetails
