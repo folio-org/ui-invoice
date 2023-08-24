@@ -3,6 +3,7 @@ export const EXPORT_INVOICE_FIELDS = {
   vendorCode: 'Vendor code',
   status: 'Status',
   invoiceDate: 'Invoice date',
+  fiscalYear: 'Fiscal year',
   paymentDue: 'Payment due',
   approvalDate: 'Approved date',
   approvedBy: 'ApprovedBy',
