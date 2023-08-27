@@ -438,5 +438,10 @@
     "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "No se ha podido aprobar la factura. El identificador de fondos del gravamen no coincide con el identificador de fondos de la línea de factura. El error debe corregirse en la base de datos.",
     "invoice.details.hasPendingOrders": "La factura no puede aprobarse. Uno o más de los pedidos relacionados tiene un estado de flujo de trabajo de \"Pendiente\". Si lo desea, abra los pedidos relacionados antes de aprobar esta factura.",
     "invoice.accountingCode.default": "Por defecto ({erpCode})",
-    "invoice.actions.approve.error.incorrectFundDistributionTotal": "Fund distribution total must be distributed by 100 percent in the invoice line number {invoiceLineNumber}"
+    "invoice.actions.approve.error.incorrectFundDistributionTotal": "El total de la distribución de fondos debe distribuirse en un 100% en el número de línea de la factura {invoiceLineNumber}.",
+    "otherRelatedInvoiceLines.vendorCode": "Código del proveedor",
+    "otherRelatedInvoiceLines.subscriptionStart": "Inicio de la suscripción",
+    "otherRelatedInvoiceLines.subscriptionEnd": "Fin de la suscripción",
+    "otherRelatedInvoiceLines.subscriptionDescription": "Información de suscripción",
+    "otherRelatedInvoiceLines.fiscalYear": "Año fiscal"
 }
