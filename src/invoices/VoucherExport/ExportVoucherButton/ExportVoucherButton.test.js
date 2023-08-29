@@ -53,7 +53,7 @@ describe('ExportVoucherButton', () => {
 
     renderExportVoucherButton(props);
 
-    user.click(screen.getByText('Icon'));
+    await user.click(screen.getByText('Icon'));
 
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());

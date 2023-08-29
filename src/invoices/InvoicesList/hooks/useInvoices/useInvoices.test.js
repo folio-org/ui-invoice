@@ -56,7 +56,7 @@ describe('useInvoices', () => {
       pagination: { limit: 5, offset: 0, timestamp: 42 },
     }), { wrapper });
 
-    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
 
     expect(result.current).toEqual({
       invoices: [],
@@ -76,7 +76,7 @@ describe('useInvoices', () => {
       fetchVendors,
     }), { wrapper });
 
-    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
+    await waitFor(() => expect(result.current.isFetching).toBeFalsy());
 
     expect(fetchVendors).toHaveBeenCalled();
   });

@@ -51,12 +51,12 @@ describe('InvoiceLineOrderLineNumber', () => {
     expect(screen.queryByText('Icon')).toBeNull();
   });
 
-  it('should call link prop when link icon is pressed', () => {
+  it('should call link prop when link icon is pressed', async () => {
     const link = jest.fn();
 
     renderInvoiceLineOrderLineNumber({ ...defaultProps, link });
 
-    user.click(screen.getByText('Icon'));
+    await user.click(screen.getByText('Icon'));
 
     expect(link).toHaveBeenCalled();
   });

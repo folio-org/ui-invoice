@@ -1,7 +1,13 @@
 import user from '@folio/jest-config-stripes/testing-library/user-event';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { exportToCsv } from '@folio/stripes/components';
 
 import ExportSettingsModal from './ExportSettingsModal';
+
+jest.mock('@folio/stripes/components', () => ({
+  ...jest.requireActual('@folio/stripes/components'),
+  exportToCsv: jest.fn(),
+}));
 
 const defaultProps = {
   onCancel: jest.fn(),
@@ -26,6 +32,7 @@ describe('ExportSettingsModal', () => {
 describe('ExportSettingsModal actions', () => {
   beforeEach(() => {
     defaultProps.onCancel.mockClear();
+    exportToCsv.mockClear();
   });
 
   describe('selected fields', () => {
@@ -86,12 +93,12 @@ describe('ExportSettingsModal actions', () => {
   });
 
   describe('Export', () => {
-    it('should exporting when cancel button clicked', async () => {
+    it('should exporting when \'Export\' button clicked', async () => {
       renderExportSettingsModal();
 
-      await user.click(screen.getByText('ui-invoice.exportSettings.export'));
+      await user.click(await screen.findByText('ui-invoice.exportSettings.export'));
 
-      expect(screen.queryByText('ui-invoice.exportSettings.invoiceFieldsLabel')).toBeNull();
+      expect(exportToCsv).toHaveBeenCalled();
     });
   });
 });
