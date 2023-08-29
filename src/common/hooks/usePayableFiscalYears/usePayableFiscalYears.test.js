@@ -2,8 +2,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { FISCAL_YEARS_API } from '../../constants';
@@ -42,9 +42,9 @@ describe('usePayableFiscalYears', () => {
   });
 
   it('should fetch payable (current and previous) fiscal years', async () => {
-    const { result, waitFor } = renderHook(() => usePayableFiscalYears(), { wrapper });
+    const { result } = renderHook(() => usePayableFiscalYears(), { wrapper });
 
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(kyMock.get).toHaveBeenCalledWith(
       FISCAL_YEARS_API,

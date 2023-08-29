@@ -1,7 +1,7 @@
-import React from 'react';
 import { saveAs } from 'file-saver';
-import { render, screen, waitFor } from '@testing-library/react';
-import user from '@testing-library/user-event';
+
+import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import ExportVoucherButton from './ExportVoucherButton';
 

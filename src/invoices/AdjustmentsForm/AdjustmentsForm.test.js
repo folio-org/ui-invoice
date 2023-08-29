@@ -1,7 +1,6 @@
-import React from 'react';
-import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import stripesFinalForm from '@folio/stripes/final-form';
 
 import { adjustment } from '../../../test/jest/fixtures';
@@ -12,8 +11,6 @@ jest.mock('../AdjustmentsDetails', () => jest.fn(() => 'AdjustmentsDetails'));
 
 const TestForm = stripesFinalForm({})(
   (props) => {
-    console.log('props', props);
-
     return (
       <form>
         <AdjustmentsForm {...props} />

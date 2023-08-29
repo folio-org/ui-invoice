@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useOrders } from './useOrders';
@@ -23,11 +22,9 @@ describe('useOrders', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useOrders(['orderId']), { wrapper });
+    const { result } = renderHook(() => useOrders(['orderId']), { wrapper });
 
-    await waitFor(() => {
-      return !result.current.isLoading;
-    });
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.orders.length).toBe(1);
   });

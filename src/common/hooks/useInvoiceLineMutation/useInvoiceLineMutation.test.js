@@ -1,12 +1,9 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import {
-  useInvoiceLineMutation,
-} from './useInvoiceLineMutation';
+import { useInvoiceLineMutation } from './useInvoiceLineMutation';
 
 const queryClient = new QueryClient();
 

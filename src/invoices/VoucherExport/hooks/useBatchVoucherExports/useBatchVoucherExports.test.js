@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useBatchVoucherExports } from './useBatchVoucherExports';
@@ -27,9 +26,9 @@ describe('useBatchVoucherExports', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useBatchVoucherExports('batchGroupId'), { wrapper });
+    const { result } = renderHook(() => useBatchVoucherExports('batchGroupId'), { wrapper });
 
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.totalRecords).toEqual(batchVoucherExports.length);
   });

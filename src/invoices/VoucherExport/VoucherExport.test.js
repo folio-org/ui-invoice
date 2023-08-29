@@ -1,9 +1,8 @@
-import React from 'react';
 import { useHistory } from 'react-router';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import user from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
 
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { useSorting } from '@folio/stripes-acq-components';
 
 import {
@@ -118,7 +117,7 @@ describe('VoucherExport', () => {
     expect(screen.getByText('ui-invoice.button.runManualExport')).toBeInTheDocument();
   });
 
-  it('should change sorting when sortable list heading was clicked', () => {
+  it('should change sorting when sortable list heading was clicked', async () => {
     const mockSorting = ['field', 'ascending', jest.fn()];
 
     useSorting.mockClear().mockReturnValue(mockSorting);
@@ -131,17 +130,17 @@ describe('VoucherExport', () => {
 
     const dateHeading = screen.getByText('ui-invoice.settings.BatchVoucherExports.date');
 
-    user.click(dateHeading);
+    await user.click(dateHeading);
 
     expect(mockSorting[2]).toHaveBeenCalled();
   });
 
-  it('should close \'Voucher export\' pane when \'Cancel\' button was clicked', () => {
+  it('should close \'Voucher export\' pane when \'Cancel\' button was clicked', async () => {
     renderVoucherExport();
 
     const cancelBtn = screen.getByText('ui-invoice.button.cancel');
 
-    user.click(cancelBtn);
+    await user.click(cancelBtn);
 
     expect(mockHistory.push).toHaveBeenCalled();
   });
@@ -149,7 +148,7 @@ describe('VoucherExport', () => {
   describe('ConfirmManualExportModal', () => {
     let selection;
 
-    beforeEach(() => {
+    beforeEach(async () => {
       renderVoucherExport();
 
       selection = screen.getByRole(
@@ -157,24 +156,24 @@ describe('VoucherExport', () => {
         { name: 'ui-invoice.settings.batchGroupConfiguration.batchGroup' },
       );
 
-      user.selectOptions(selection, mockBatchGroups.batchGroups[0].name);
+      await user.selectOptions(selection, mockBatchGroups.batchGroups[0].name);
     });
 
     describe('when confirmation modal is open', () => {
-      beforeEach(() => {
+      beforeEach(async () => {
         const runManualExportBtn = screen.getByText('ui-invoice.button.runManualExport');
 
-        user.click(runManualExportBtn);
+        await user.click(runManualExportBtn);
       });
 
       it('should open \'Confirm run manual export\' modal when \'Run manual export\' button was clicked', () => {
         expect(screen.getByText('ui-invoice.settings.actions.manualExport.heading')).toBeInTheDocument();
       });
 
-      it('should run manual export when \'Continue\' button was clicked', () => {
+      it('should run manual export when \'Continue\' button was clicked', async () => {
         const confirmBtn = screen.getByText('ui-invoice.button.continue');
 
-        user.click(confirmBtn);
+        await user.click(confirmBtn);
 
         expect(mockManualRun[0]).toHaveBeenCalled();
       });

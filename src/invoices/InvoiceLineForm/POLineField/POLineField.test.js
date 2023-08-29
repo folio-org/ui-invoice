@@ -1,7 +1,6 @@
-import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { render, screen, waitFor } from '@testing-library/react';
 
+import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import stripesFinalForm from '@folio/stripes/final-form';
 
 import { useOrderLine } from '../../../common/hooks';

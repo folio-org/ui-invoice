@@ -1,11 +1,7 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import { adjustment } from '../../../test/jest/fixtures';
-import {
-  ADJUSTMENT_TYPE_VALUES,
-} from '../../common/constants';
-
+import { ADJUSTMENT_TYPE_VALUES } from '../../common/constants';
 import AdjustmentsDetails from './AdjustmentsDetails';
 
 const renderAdjustmentsDetails = (props) => (render(

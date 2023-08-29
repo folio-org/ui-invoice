@@ -1,11 +1,9 @@
-import user from '@testing-library/user-event';
-import { act, render } from '@testing-library/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter, useHistory, useLocation } from 'react-router-dom';
 
-import {
-  HasCommand,
-} from '@folio/stripes/components';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { act, render } from '@folio/jest-config-stripes/testing-library/react';
+import { HasCommand } from '@folio/stripes/components';
 
 import { invoice, location } from '../../../test/jest/fixtures';
 

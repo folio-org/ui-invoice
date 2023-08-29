@@ -1,9 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import user from '@testing-library/user-event';
 
-import '../../../test/jest/__mock__';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { InvoicesListLastMenu } from './InvoicesListLastMenu';
 
@@ -18,14 +16,6 @@ const renderInvoicesListLastMenu = (props = defaultProps) => render(
 );
 
 describe('InvoicesListLastMenu', () => {
-  beforeEach(() => {
-    global.document.createRange = global.document.originalCreateRange;
-  });
-
-  afterEach(() => {
-    global.document.createRange = global.document.mockCreateRange;
-  });
-
   it('should render correct structure', async () => {
     const { asFragment } = renderInvoicesListLastMenu();
 
@@ -33,13 +23,13 @@ describe('InvoicesListLastMenu', () => {
   });
 
   describe('Actions', () => {
-    it('should call toggleExportModal prop', () => {
+    it('should call toggleExportModal prop', async () => {
       const onToggle = jest.fn();
       const toggleExportModal = jest.fn();
 
       renderInvoicesListLastMenu({ onToggle, toggleExportModal, invoicesCount: 1 });
 
-      user.click(screen.getByTestId('export-csv-button'));
+      await user.click(screen.getByTestId('export-csv-button'));
 
       expect(onToggle).toHaveBeenCalled();
       expect(toggleExportModal).toHaveBeenCalled();

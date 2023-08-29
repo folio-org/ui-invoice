@@ -1,6 +1,7 @@
-import { renderHook } from '@testing-library/react-hooks';
 import { useIntl } from 'react-intl';
 import { keyBy } from 'lodash';
+
+import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 
 import { createExportReport } from './createExportReport';
 import {

@@ -1,15 +1,12 @@
-import React from 'react';
-import { render, screen, act } from '@testing-library/react';
-import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,
   collapseAllSections,
 } from '@folio/stripes/components';
-
-import '../../../test/jest/__mock__';
 
 import { invoiceLine, orderLine } from '../../../test/jest/fixtures';
 
@@ -56,14 +53,6 @@ const renderInvoiceLineDetails = (props = defaultProps) => render(
 );
 
 describe('InvoiceLineDetails', () => {
-  beforeEach(() => {
-    global.document.createRange = global.document.originalCreateRange;
-  });
-
-  afterEach(() => {
-    global.document.createRange = global.document.mockCreateRange;
-  });
-
   it('should render correct subtitle for invoice line', () => {
     renderInvoiceLineDetails();
     const subTitle = `${defaultProps.vendorInvoiceNo} - ${defaultProps.vendorCode}`;
@@ -104,7 +93,7 @@ describe('InvoiceLineDetails', () => {
         expect(screen.getByText('ui-invoice.invoiceLine.delete.message')).toBeDefined();
       });
 
-      it('should call deleteInvoiceLine when delete action is confirmed', () => {
+      it('should call deleteInvoiceLine when delete action is confirmed', async () => {
         const deleteInvoiceLine = jest.fn();
 
         renderInvoiceLineDetails({
@@ -115,7 +104,7 @@ describe('InvoiceLineDetails', () => {
         act(() => {
           ActionMenu.mock.calls[0][0].onDelete();
         });
-        user.click(screen.getByText('ui-invoice.invoiceLine.delete.confirmLabel'));
+        await user.click(screen.getByText('ui-invoice.invoiceLine.delete.confirmLabel'));
 
         expect(deleteInvoiceLine).toHaveBeenCalled();
       });

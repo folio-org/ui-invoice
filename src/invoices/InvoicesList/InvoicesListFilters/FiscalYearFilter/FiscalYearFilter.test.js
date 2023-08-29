@@ -1,9 +1,8 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { noop } from 'lodash';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
-import { FiscalYearFilter } from './FiscalYearFilter';
 import { useFiscalYears } from '../../../../common/hooks';
+import { FiscalYearFilter } from './FiscalYearFilter';
 
 jest.mock('../../../../common/hooks', () => ({
   useFiscalYears: jest.fn(),

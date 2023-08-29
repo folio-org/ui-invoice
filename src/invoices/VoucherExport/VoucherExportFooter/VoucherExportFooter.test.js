@@ -1,5 +1,5 @@
-import user from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { VoucherExportFooter } from './VoucherExportFooter';
 
@@ -25,22 +25,22 @@ describe('VoucherExportFooter', () => {
     expect(screen.getByText('ui-invoice.button.runManualExport')).toBeInTheDocument();
   });
 
-  it('should call \'onCancel\' when \'Cancel\' button was clicked', () => {
+  it('should call \'onCancel\' when \'Cancel\' button was clicked', async () => {
     renderVoucherExportFooter();
 
     const cancelBtn = screen.getByText('ui-invoice.button.cancel');
 
-    user.click(cancelBtn);
+    await user.click(cancelBtn);
 
     expect(defaultProps.onCancel).toHaveBeenCalled();
   });
 
-  it('should call \'runManualExport\' when \'Run manual export\' button was clicked', () => {
+  it('should call \'runManualExport\' when \'Run manual export\' button was clicked', async () => {
     renderVoucherExportFooter();
 
     const runExportBtn = screen.getByText('ui-invoice.button.runManualExport');
 
-    user.click(runExportBtn);
+    await user.click(runExportBtn);
 
     expect(defaultProps.runManualExport).toHaveBeenCalled();
   });

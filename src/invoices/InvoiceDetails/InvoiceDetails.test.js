@@ -1,9 +1,8 @@
-import React from 'react';
-import { render, screen, act, waitFor } from '@testing-library/react';
-import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen, act, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,
@@ -12,8 +11,6 @@ import {
 import {
   PAYMENT_STATUS,
 } from '@folio/stripes-acq-components';
-
-import '../../../test/jest/__mock__';
 
 import { invoice } from '../../../test/jest/fixtures';
 import { INVOICE_STATUS } from '../../common/constants';
@@ -86,14 +83,6 @@ const renderInvoiceDetails = (props = defaultProps) => render(
 );
 
 describe('InvoiceDetails', () => {
-  beforeEach(() => {
-    global.document.createRange = global.document.originalCreateRange;
-  });
-
-  afterEach(() => {
-    global.document.createRange = global.document.mockCreateRange;
-  });
-
   Object.values(INVOICE_STATUS).forEach(invoiceStatus => {
     it(`should render correct structure for ${invoiceStatus} invoice`, () => {
       const { container, asFragment } = renderInvoiceDetails({
@@ -220,7 +209,7 @@ describe('InvoiceDetails', () => {
         expect(screen.getByText('ui-invoice.invoice.delete.message')).toBeDefined();
       });
 
-      it('should call deleteInvoice when delete action is confirmed', () => {
+      it('should call deleteInvoice when delete action is confirmed', async () => {
         const deleteInvoice = jest.fn();
 
         renderInvoiceDetails({
@@ -231,7 +220,7 @@ describe('InvoiceDetails', () => {
         act(() => {
           InvoiceActions.mock.calls[0][0].onDelete();
         });
-        user.click(screen.getByText('ui-invoice.invoice.delete.confirmLabel'));
+        await user.click(screen.getByText('ui-invoice.invoice.delete.confirmLabel'));
 
         expect(deleteInvoice).toHaveBeenCalled();
       });
@@ -280,7 +269,7 @@ describe('InvoiceDetails', () => {
         expect(screen.getByText('ui-invoice.invoice.actions.pay.confirmation.message')).toBeDefined();
       });
 
-      it('should call payInvoice when pay is confirmed', () => {
+      it('should call payInvoice when pay is confirmed', async () => {
         const payInvoice = jest.fn();
 
         renderInvoiceDetails({
@@ -291,7 +280,7 @@ describe('InvoiceDetails', () => {
         act(() => {
           InvoiceActions.mock.calls[0][0].onPay();
         });
-        user.click(screen.getByText('stripes-components.submit'));
+        await user.click(screen.getByText('stripes-components.submit'));
 
         expect(payInvoice).toHaveBeenCalled();
       });
@@ -308,7 +297,7 @@ describe('InvoiceDetails', () => {
         expect(screen.getByText('ui-invoice.invoice.actions.approveAndPay.confirmation.message')).toBeDefined();
       });
 
-      it('should call approveAndPayInvoice when Approve&Pay is confirmed', () => {
+      it('should call approveAndPayInvoice when Approve&Pay is confirmed', async () => {
         const approveAndPayInvoice = jest.fn();
 
         renderInvoiceDetails({
@@ -319,7 +308,7 @@ describe('InvoiceDetails', () => {
         act(() => {
           InvoiceActions.mock.calls[0][0].onApproveAndPay();
         });
-        user.click(screen.getByText('stripes-components.submit'));
+        await user.click(screen.getByText('stripes-components.submit'));
 
         expect(approveAndPayInvoice).toHaveBeenCalled();
       });
@@ -345,10 +334,10 @@ describe('InvoiceDetails', () => {
   });
 
   describe('Tags', () => {
-    it('should open tags pane when badge is clicked', () => {
+    it('should open tags pane when badge is clicked', async () => {
       renderInvoiceDetails();
 
-      user.click(screen.getAllByTitle('stripes-acq-components.showTags')[0]);
+      await user.click(screen.getAllByTitle('stripes-acq-components.showTags')[0]);
 
       expect(screen.getByText('TagsPane')).toBeDefined();
     });

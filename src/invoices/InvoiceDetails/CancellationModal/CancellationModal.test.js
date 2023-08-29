@@ -1,6 +1,5 @@
-import React from 'react';
-import user from '@testing-library/user-event';
-import { render, waitFor, screen } from '@testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, waitFor, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import CancellationModal from './CancellationModal';
 
@@ -35,7 +34,7 @@ describe('CancellationModal', () => {
 
     expect(textarea.value).toBe('');
 
-    user.type(textarea, cancellationNote);
+    await user.type(textarea, cancellationNote);
 
     expect(textarea.value).toBe(cancellationNote);
   });

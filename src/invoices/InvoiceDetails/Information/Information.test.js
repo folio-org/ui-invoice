@@ -1,8 +1,6 @@
-import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { render } from '@testing-library/react';
 
-import '@folio/stripes-acq-components/test/jest/__mock__';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import Information from './Information';
 

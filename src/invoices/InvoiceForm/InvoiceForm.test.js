@@ -1,7 +1,8 @@
-import userEvent from '@testing-library/user-event';
-import { act, render, screen } from '@testing-library/react';
 import { Form } from 'react-final-form';
 import { MemoryRouter, useHistory } from 'react-router-dom';
+
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
+import { act, render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import {
   HasCommand,
@@ -76,12 +77,7 @@ const renderInvoiceForm = (props = defaultProps) => (render(
 
 describe('InvoiceForm component', () => {
   beforeEach(() => {
-    global.document.createRange = global.document.originalCreateRange;
     FieldOrganization.mockClear();
-  });
-
-  afterEach(() => {
-    global.document.createRange = global.document.mockCreateRange;
   });
 
   it('should render correct structure', () => {
@@ -117,7 +113,7 @@ describe('InvoiceForm component', () => {
     expect(getByTestId('export-to-accounting').checked).toEqual(false);
   });
 
-  it('should change selected \'Accounting code\' value', () => {
+  it('should change selected \'Accounting code\' value', async () => {
     const { container } = renderInvoiceForm({
       ...defaultProps,
       initialVendor: {
@@ -131,7 +127,7 @@ describe('InvoiceForm component', () => {
 
     expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent('');
 
-    userEvent.click(screen.getByText(accountLabel));
+    await userEvent.click(screen.getByText(accountLabel));
 
     expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent(accountLabel);
   });
@@ -156,7 +152,7 @@ describe('InvoiceForm component', () => {
 
       const lockTotal = getByTestId('lock-total');
 
-      userEvent.click(lockTotal, {
+      await userEvent.click(lockTotal, {
         bubbles: true,
         cancelable: true,
       });
@@ -173,7 +169,7 @@ describe('InvoiceForm component', () => {
 
       const exportToAccounting = screen.getByTestId('export-to-accounting');
 
-      userEvent.click(exportToAccounting, {
+      await userEvent.click(exportToAccounting, {
         bubbles: true,
         cancelable: true,
       });

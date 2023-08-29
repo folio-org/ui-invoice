@@ -276,7 +276,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                         >
                                           <label
                                             class="label"
-                                            for="text-input-3"
+                                            for="text-input-6"
                                           >
                                             stripes-acq-components.referenceNumbers.refNumber
                                             <span
@@ -297,7 +297,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                               autocorrect="off"
                                               data-testid="referenceNumbers[0].refNumber"
                                               error=""
-                                              id="text-input-3"
+                                              id="text-input-6"
                                               name="referenceNumbers[0].refNumber"
                                               required=""
                                               spellcheck="false"
@@ -319,8 +319,8 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                         >
                                           <label
                                             class="label"
-                                            for="select-4"
-                                            id="select-4-label"
+                                            for="select-7"
+                                            id="select-7-label"
                                           >
                                             stripes-acq-components.referenceNumbers.refNumberType
                                             <span
@@ -335,11 +335,11 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           >
                                             <select
                                               aria-invalid="false"
-                                              aria-labelledby="select-4-label"
+                                              aria-labelledby="select-7-label"
                                               aria-required="true"
                                               class="selectControl formControl"
                                               data-testid="referenceNumbers[0].refNumberType"
-                                              id="select-4"
+                                              id="select-7"
                                               name="referenceNumbers[0].refNumberType"
                                               required=""
                                             >
@@ -475,7 +475,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="dp-5"
+                                    for="dp-8"
                                   >
                                     ui-invoice.invoiceLine.subscriptionStart
                                   </label>
@@ -487,7 +487,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                       autocapitalize="off"
                                       autocomplete="off"
                                       autocorrect="off"
-                                      id="dp-5"
+                                      id="dp-8"
                                       name="subscriptionStart"
                                       placeholder="MM/DD/YYYY"
                                       spellcheck="false"
@@ -505,7 +505,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           class="iconButton medium"
                                           data-test-clear="true"
                                           icon="times-circle-solid"
-                                          id="datepicker-clear-button-dp-5"
+                                          id="datepicker-clear-button-dp-8"
                                           tabindex="-1"
                                           type="button"
                                         >
@@ -524,7 +524,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           class="iconButton medium"
                                           data-test-calendar-button="true"
                                           icon="calendar"
-                                          id="datepicker-toggle-calendar-button-dp-5"
+                                          id="datepicker-toggle-calendar-button-dp-8"
                                           type="button"
                                         >
                                           <span
@@ -568,7 +568,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="dp-6"
+                                    for="dp-9"
                                   >
                                     ui-invoice.invoiceLine.subscriptionEnd
                                   </label>
@@ -580,7 +580,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                       autocapitalize="off"
                                       autocomplete="off"
                                       autocorrect="off"
-                                      id="dp-6"
+                                      id="dp-9"
                                       name="subscriptionEnd"
                                       placeholder="MM/DD/YYYY"
                                       spellcheck="false"
@@ -598,7 +598,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           class="iconButton medium"
                                           data-test-clear="true"
                                           icon="times-circle-solid"
-                                          id="datepicker-clear-button-dp-6"
+                                          id="datepicker-clear-button-dp-9"
                                           tabindex="-1"
                                           type="button"
                                         >
@@ -617,7 +617,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           class="iconButton medium"
                                           data-test-calendar-button="true"
                                           icon="calendar"
-                                          id="datepicker-toggle-calendar-button-dp-6"
+                                          id="datepicker-toggle-calendar-button-dp-9"
                                           type="button"
                                         >
                                           <span
@@ -909,7 +909,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-7"
+                                for="checkbox-10"
                               >
                                 <span
                                   class="inner checkboxInteractionStyles"
@@ -917,7 +917,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
-                                    id="checkbox-7"
+                                    id="checkbox-10"
                                     name="releaseEncumbrance"
                                     type="checkbox"
                                     value=""
@@ -1179,7 +1179,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                     >
                                       <label
                                         class="label"
-                                        for="text-input-9"
+                                        for="text-input-11"
                                       >
                                         stripes-acq-components.fundDistribution.value
                                         <span
@@ -1200,7 +1200,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           autocorrect="off"
                                           data-testid="fundDistribution-value"
                                           error=""
-                                          id="text-input-9"
+                                          id="text-input-11"
                                           name="fundDistributions[0].value"
                                           required=""
                                           spellcheck="false"

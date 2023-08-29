@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useBatchGroupExportConfigs } from './useBatchGroupExportConfigs';
@@ -26,9 +25,9 @@ describe('useBatchGroupExportConfigs', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useBatchGroupExportConfigs('batchGroupId'), { wrapper });
+    const { result } = renderHook(() => useBatchGroupExportConfigs('batchGroupId'), { wrapper });
 
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.exportConfigs.id).toEqual(exportConfigs.id);
   });

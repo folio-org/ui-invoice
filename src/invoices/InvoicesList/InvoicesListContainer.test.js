@@ -1,5 +1,4 @@
-import React from 'react';
-import { render, screen, act } from '@testing-library/react';
+import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
 
 import { location, invoice } from '../../../test/jest/fixtures';
 import { useInvoices } from './hooks';

@@ -1,5 +1,5 @@
-import user from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { ConfirmManualExportModal } from './ConfirmManualExportModal';
 
@@ -26,22 +26,22 @@ describe('ConfirmManualExportModal', () => {
     expect(screen.getByText('ui-invoice.settings.actions.manualExport.message')).toBeInTheDocument();
   });
 
-  it('should call \'onCancel\' when \'Cancel\' button was clicked', () => {
+  it('should call \'onCancel\' when \'Cancel\' button was clicked', async () => {
     renderConfirmManualExportModal();
 
     const cancelBtn = screen.getByText('stripes-components.cancel');
 
-    user.click(cancelBtn);
+    await user.click(cancelBtn);
 
     expect(defaultProps.onCancel).toHaveBeenCalled();
   });
 
-  it('should call \'onConfirm\' when \'Continue\' button was clicked', () => {
+  it('should call \'onConfirm\' when \'Continue\' button was clicked', async () => {
     renderConfirmManualExportModal();
 
     const confirmBtn = screen.getByText('ui-invoice.button.continue');
 
-    user.click(confirmBtn);
+    await user.click(confirmBtn);
 
     expect(defaultProps.onConfirm).toHaveBeenCalled();
   });

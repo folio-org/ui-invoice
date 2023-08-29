@@ -1,7 +1,6 @@
-import React from 'react';
-import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 import stripesFinalForm from '@folio/stripes/final-form';
 
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';

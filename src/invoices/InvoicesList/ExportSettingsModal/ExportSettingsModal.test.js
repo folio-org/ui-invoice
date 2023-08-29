@@ -1,6 +1,5 @@
-import React from 'react';
-import user from '@testing-library/user-event';
-import { render, screen } from '@testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import ExportSettingsModal from './ExportSettingsModal';
 
@@ -33,7 +32,7 @@ describe('ExportSettingsModal actions', () => {
     it('should select an option item if it was clicked', async () => {
       renderExportSettingsModal();
 
-      user.click(screen.getAllByRole('radio')[1]);
+      await user.click(screen.getAllByRole('radio')[1]);
 
       const radioBtns = await screen.findAllByRole('radio');
 
@@ -42,11 +41,11 @@ describe('ExportSettingsModal actions', () => {
 
       const selects = await screen.findAllByRole('textbox');
 
-      user.click(selects[0]);
+      await user.click(selects[0]);
 
       const options = await screen.findAllByRole('option');
 
-      user.click(options[0]);
+      await user.click(options[0]);
 
       expect(options[0].getAttribute('aria-selected')).toBeTruthy();
     });
@@ -56,8 +55,8 @@ describe('ExportSettingsModal actions', () => {
     it('should select all Invoice fields when the corresponding radio button was clicked', async () => {
       renderExportSettingsModal();
 
-      user.click(screen.getAllByRole('radio')[1]);
-      user.click(screen.getAllByRole('radio')[0]);
+      await user.click(screen.getAllByRole('radio')[1]);
+      await user.click(screen.getAllByRole('radio')[0]);
 
       const radioBtns = await screen.findAllByRole('radio');
 
@@ -67,8 +66,8 @@ describe('ExportSettingsModal actions', () => {
     it('should select all Invoice lines fields when the corresponding radio button was clicked', async () => {
       renderExportSettingsModal();
 
-      user.click(screen.getAllByRole('radio')[3]);
-      user.click(screen.getAllByRole('radio')[2]);
+      await user.click(screen.getAllByRole('radio')[3]);
+      await user.click(screen.getAllByRole('radio')[2]);
 
       const radioBtns = await screen.findAllByRole('radio');
 
@@ -77,20 +76,20 @@ describe('ExportSettingsModal actions', () => {
   });
 
   describe('Close modal', () => {
-    it('should close modal when cancel button clicked', () => {
+    it('should close modal when cancel button clicked', async () => {
       renderExportSettingsModal();
 
-      user.click(screen.getByText('ui-invoice.exportSettings.cancel'));
+      await user.click(screen.getByText('ui-invoice.exportSettings.cancel'));
 
       expect(defaultProps.onCancel).toHaveBeenCalled();
     });
   });
 
   describe('Export', () => {
-    it('should exporting when cancel button clicked', () => {
+    it('should exporting when cancel button clicked', async () => {
       renderExportSettingsModal();
 
-      user.click(screen.getByText('ui-invoice.exportSettings.export'));
+      await user.click(screen.getByText('ui-invoice.exportSettings.export'));
 
       expect(screen.queryByText('ui-invoice.exportSettings.invoiceFieldsLabel')).toBeNull();
     });

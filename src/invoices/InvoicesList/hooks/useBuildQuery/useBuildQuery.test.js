@@ -1,5 +1,6 @@
 import queryString from 'query-string';
-import { renderHook } from '@testing-library/react-hooks';
+
+import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useBuildQuery } from './useBuildQuery';
 

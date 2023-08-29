@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useAddressCategories } from './useAddressCategories';
@@ -26,11 +25,9 @@ describe('useAddressCategories', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useAddressCategories({ categories: ['001'] }), { wrapper });
+    const { result } = renderHook(() => useAddressCategories({ categories: ['001'] }), { wrapper });
 
-    await waitFor(() => {
-      return !result.current.isLoading;
-    });
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.categoriesMap[category.id]).toEqual(category.value);
   });

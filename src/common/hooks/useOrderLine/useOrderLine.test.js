@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useOrderLine } from './useOrderLine';
@@ -27,11 +26,9 @@ describe('useOrderLine', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useOrderLine(orderLineId), { wrapper });
+    const { result } = renderHook(() => useOrderLine(orderLineId), { wrapper });
 
-    await waitFor(() => {
-      return !result.current.isLoading;
-    });
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.orderLine.id).toBe(orderLineId);
   });

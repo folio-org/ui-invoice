@@ -1,8 +1,7 @@
-import React from 'react';
-import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 import { HasCommand } from '@folio/stripes/components';
 
 import { adjustment } from '../../../../test/jest/fixtures';

@@ -1,7 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { useReactToPrint } from 'react-to-print';
 import { MemoryRouter } from 'react-router-dom';
+
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import {
   match,
