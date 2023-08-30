@@ -1,8 +1,7 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import {
   Paneset,
   HasCommand,
@@ -40,14 +39,6 @@ const renderSettingsAdjustmentsView = (props = defaultProps) => render(
 );
 
 describe('SettingsAdjustmentsView', () => {
-  beforeEach(() => {
-    global.document.createRange = global.document.originalCreateRange;
-  });
-
-  afterEach(() => {
-    global.document.createRange = global.document.mockCreateRange;
-  });
-
   it('should render correct structure', async () => {
     const { asFragment } = renderSettingsAdjustmentsView();
 
@@ -55,21 +46,21 @@ describe('SettingsAdjustmentsView', () => {
   });
 
   describe('Actions', () => {
-    it('should open confirmation modal when delete action is pressed', () => {
+    it('should open confirmation modal when delete action is pressed', async () => {
       renderSettingsAdjustmentsView();
 
-      user.click(screen.getByTestId('adjustment-delete'));
+      await user.click(screen.getByTestId('adjustment-delete'));
 
       expect(screen.getByText('ui-invoice.settings.adjustments.confirmDelete.message')).toBeDefined();
     });
 
-    it('should call onDelete prop when delete is confirmed', () => {
+    it('should call onDelete prop when delete is confirmed', async () => {
       const onDelete = jest.fn();
 
       renderSettingsAdjustmentsView({ ...defaultProps, onDelete });
 
-      user.click(screen.getByTestId('adjustment-delete'));
-      user.click(screen.getByText('ui-invoice.settings.adjustments.confirmDelete.confirmLabel'));
+      await user.click(screen.getByTestId('adjustment-delete'));
+      await user.click(screen.getByText('ui-invoice.settings.adjustments.confirmDelete.confirmLabel'));
 
       expect(onDelete).toHaveBeenCalled();
     });

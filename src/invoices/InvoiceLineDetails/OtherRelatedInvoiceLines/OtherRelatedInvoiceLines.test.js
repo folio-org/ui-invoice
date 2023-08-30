@@ -1,9 +1,9 @@
-import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { MemoryRouter } from 'react-router';
-import { render, screen, waitFor } from '@testing-library/react';
-import user from '@testing-library/user-event';
+
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 
 import { invoiceLine, orderLine } from '../../../../test/jest/fixtures';
 

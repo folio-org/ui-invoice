@@ -2,8 +2,8 @@ import {
   QueryClient,
   QueryClientProvider,
 } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { FISCAL_YEARS_API } from '../../constants';
@@ -35,9 +35,9 @@ describe('useFiscalYear', () => {
   });
 
   it('should fetch fiscal year by ID', async () => {
-    const { result, waitFor } = renderHook(() => useFiscalYear(fiscalYearMock.id), { wrapper });
+    const { result } = renderHook(() => useFiscalYear(fiscalYearMock.id), { wrapper });
 
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(kyMock.get).toHaveBeenCalledWith(`${FISCAL_YEARS_API}/${fiscalYearMock.id}`, expect.objectContaining({}));
     expect(result.current.fiscalYear).toEqual(fiscalYearMock);

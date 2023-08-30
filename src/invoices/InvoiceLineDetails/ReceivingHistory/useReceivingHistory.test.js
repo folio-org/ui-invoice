@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { orderLine } from '../../../../test/jest/fixtures';
@@ -34,12 +33,12 @@ describe('useReceivingHistory', () => {
   });
 
   it('should fetch connected invoice line received pieces', async () => {
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useReceivingHistory(orderLine.id),
       { wrapper },
     );
 
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.pieces[0].id).toEqual(piece.id);
   });
@@ -47,12 +46,12 @@ describe('useReceivingHistory', () => {
   it('should apply pagination in request if it is set', async () => {
     const pagination = { limit: 50, offset: 100 };
 
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useReceivingHistory(orderLine.id, { pagination }),
       { wrapper },
     );
 
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(mockGet).toHaveBeenCalledWith(
       expect.any(String),

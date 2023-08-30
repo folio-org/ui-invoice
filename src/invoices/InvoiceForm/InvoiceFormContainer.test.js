@@ -1,8 +1,7 @@
-import React from 'react';
-import { render, screen, act, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import user from '@testing-library/user-event';
 
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen, act, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOrganization } from '@folio/stripes-acq-components';
 
 import {
@@ -127,7 +126,7 @@ describe('InvoiceFormContainer', () => {
 
       await screen.findByText('ui-invoice.invoice.isNotUnique.confirmation.heading');
 
-      user.click(screen.getByText('ui-invoice.button.submit'));
+      await user.click(screen.getByText('ui-invoice.button.submit'));
 
       await waitFor(() => !screen.queryByRole('ui-invoice.invoice.isNotUnique.confirmation.heading'));
 

@@ -1,5 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks';
 import { useIntl } from 'react-intl';
+
+import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 
 import { getExportData } from './getExportData';
 

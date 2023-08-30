@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { useReactToPrint } from 'react-to-print';
+
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { invoice } from '../../../test/jest/fixtures';
 

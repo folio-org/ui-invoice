@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useVoucherByInvoiceId } from './useVoucherByInvoiceId';
@@ -28,11 +27,9 @@ describe('useVoucherByInvoiceId', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useVoucherByInvoiceId(invoiceId), { wrapper });
+    const { result } = renderHook(() => useVoucherByInvoiceId(invoiceId), { wrapper });
 
-    await waitFor(() => {
-      return !result.current.isVoucherLoading;
-    });
+    await waitFor(() => expect(result.current.isVoucherLoading).toBeFalsy());
 
     expect(result.current.voucher.id).toBe(voucherId);
   });

@@ -174,7 +174,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="dp-3"
+                                    for="dp-8"
                                   >
                                     ui-invoice.invoice.details.information.invoiceDate
                                     <span
@@ -193,7 +193,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                       autocapitalize="off"
                                       autocomplete="off"
                                       autocorrect="off"
-                                      id="dp-3"
+                                      id="dp-8"
                                       name="invoiceDate"
                                       placeholder="MM/DD/YYYY"
                                       required=""
@@ -213,7 +213,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                           class="iconButton medium"
                                           data-test-calendar-button="true"
                                           icon="calendar"
-                                          id="datepicker-toggle-calendar-button-dp-3"
+                                          id="datepicker-toggle-calendar-button-dp-8"
                                           type="button"
                                         >
                                           <span
@@ -523,7 +523,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 >
                                   <label
                                     class="label"
-                                    for="dp-4"
+                                    for="dp-9"
                                   >
                                     ui-invoice.invoice.details.information.paymentDue
                                   </label>
@@ -535,7 +535,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                       autocapitalize="off"
                                       autocomplete="off"
                                       autocorrect="off"
-                                      id="dp-4"
+                                      id="dp-9"
                                       name="paymentDue"
                                       placeholder="MM/DD/YYYY"
                                       spellcheck="false"
@@ -554,7 +554,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                           class="iconButton medium"
                                           data-test-calendar-button="true"
                                           icon="calendar"
-                                          id="datepicker-toggle-calendar-button-dp-4"
+                                          id="datepicker-toggle-calendar-button-dp-9"
                                           type="button"
                                         >
                                           <span
@@ -691,8 +691,8 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               />
                               <label
                                 class="label"
-                                for="stripes-selection-5"
-                                id="sl-label-stripes-selection-5"
+                                for="stripes-selection-10"
+                                id="sl-label-stripes-selection-10"
                               >
                                 ui-invoice.invoice.billTo
                               </label>
@@ -702,10 +702,10 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <button
                                   aria-expanded="false"
                                   aria-haspopup="listbox"
-                                  aria-labelledby="sl-label-stripes-selection-5 selected-stripes-selection-5-item"
+                                  aria-labelledby="sl-label-stripes-selection-10 selected-stripes-selection-10-item"
                                   aria-owns="sl-undefined"
                                   class="selectionControl formControl"
-                                  id="stripes-selection-5"
+                                  id="stripes-selection-10"
                                   name="billTo"
                                   type="button"
                                 >
@@ -716,7 +716,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   </span>
                                   <div
                                     class="singleValue"
-                                    id="selected-stripes-selection-5-item"
+                                    id="selected-stripes-selection-10-item"
                                   />
                                 </button>
                                 <div
@@ -742,17 +742,17 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 class="selectionListRoot sr-only"
                                 hidden=""
-                                id="sl-container-stripes-selection-5"
+                                id="sl-container-stripes-selection-10"
                               >
                                 <div
                                   class="selectionFilterContainer"
                                 >
                                   <input
-                                    aria-activedescendant="option-stripes-selection-5-0-null"
-                                    aria-controls="sl-container-stripes-selection-5"
+                                    aria-activedescendant="option-stripes-selection-10-0-null"
+                                    aria-controls="sl-container-stripes-selection-10"
                                     aria-expanded="true"
                                     aria-label="stripes-components.selection.filterOptionsLabel"
-                                    aria-owns="sl-stripes-selection-5"
+                                    aria-owns="sl-stripes-selection-10"
                                     class="selectionFilter"
                                     placeholder="stripes-components.selection.filterOptionsPlaceholder"
                                     role="combobox"
@@ -763,14 +763,14 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <ul
                                   aria-label="stripes-components.selection.filterOptionsLabel"
                                   class="selectionList"
-                                  id="sl-stripes-selection-5"
+                                  id="sl-stripes-selection-10"
                                   role="listbox"
                                   style="max-height: 174px;"
                                 >
                                   <li
                                     aria-selected="false"
                                     class="option optionOutside cursor"
-                                    id="option-stripes-selection-5-0-null"
+                                    id="option-stripes-selection-10-0-null"
                                     role="option"
                                     tabindex="-1"
                                     unselectable="on"
@@ -1611,7 +1611,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-9"
+                                for="checkbox-11"
                               >
                                 <span
                                   class="labelText"
@@ -1624,7 +1624,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
-                                    id="checkbox-9"
+                                    id="checkbox-11"
                                     name="chkSubscriptionOverlap"
                                     type="checkbox"
                                     value=""
@@ -1665,7 +1665,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-10"
+                                for="checkbox-12"
                               >
                                 <span
                                   class="labelText"
@@ -1679,7 +1679,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     aria-invalid="false"
                                     class="input"
                                     data-testid="export-to-accounting"
-                                    id="checkbox-10"
+                                    id="checkbox-12"
                                     name="exportToAccounting"
                                     type="checkbox"
                                     value=""
@@ -1720,7 +1720,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="checkbox-11"
+                                for="checkbox-13"
                               >
                                 <span
                                   class="labelText"
@@ -1733,7 +1733,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
-                                    id="checkbox-11"
+                                    id="checkbox-13"
                                     name="enclosureNeeded"
                                     type="checkbox"
                                     value=""

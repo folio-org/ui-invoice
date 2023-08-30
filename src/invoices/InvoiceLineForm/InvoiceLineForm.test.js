@@ -1,8 +1,7 @@
-import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { act, render } from '@testing-library/react';
 import { useHistory } from 'react-router';
 
+import { act, render } from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,

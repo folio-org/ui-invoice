@@ -1,5 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 import { ORDER_STATUSES } from '@folio/stripes-acq-components';
+
 import { useOrders } from '../../../common/hooks';
 import { useHasPendingOrders } from './useHasPendingOrders';
 

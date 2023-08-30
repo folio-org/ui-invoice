@@ -1,8 +1,6 @@
-import React from 'react';
-import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import '../../../../test/jest/__mock__';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import { invoice, invoiceLine } from '../../../../test/jest/fixtures';
 

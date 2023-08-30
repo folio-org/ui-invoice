@@ -1,6 +1,5 @@
-import React from 'react';
-import { render, screen, act } from '@testing-library/react';
-import user from '@testing-library/user-event';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
 
 import { orderLine } from '../../../../test/jest/fixtures';
 
@@ -72,7 +71,7 @@ describe('AddInvoiceLinesActionContainer', () => {
       });
 
       await screen.findByText('ui-invoice.invoice.actions.addLine.vendorMessage');
-      user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
+      await user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
 
       expect(addLines).toHaveBeenCalled();
     });
@@ -85,7 +84,7 @@ describe('AddInvoiceLinesActionContainer', () => {
       });
 
       await screen.findByText('ui-invoice.invoice.actions.addLine.vendorMessage');
-      user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
+      await user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
 
       expect(screen.getByText('ui-invoice.invoice.actions.addLine.currencyMessage')).toBeDefined();
     });
@@ -100,9 +99,9 @@ describe('AddInvoiceLinesActionContainer', () => {
       });
 
       await screen.findByText('ui-invoice.invoice.actions.addLine.vendorMessage');
-      user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
+      await user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
       await screen.findByText('ui-invoice.invoice.actions.addLine.currencyMessage');
-      user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
+      await user.click(screen.getByText('ui-invoice.invoice.actions.addLine.confirmLabel'));
 
       expect(addLines).toHaveBeenCalled();
     });

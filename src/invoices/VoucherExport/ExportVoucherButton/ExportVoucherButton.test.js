@@ -1,7 +1,7 @@
-import React from 'react';
 import { saveAs } from 'file-saver';
-import { render, screen, waitFor } from '@testing-library/react';
-import user from '@testing-library/user-event';
+
+import { render, screen, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import ExportVoucherButton from './ExportVoucherButton';
 
@@ -53,7 +53,7 @@ describe('ExportVoucherButton', () => {
 
     renderExportVoucherButton(props);
 
-    user.click(screen.getByText('Icon'));
+    await user.click(screen.getByText('Icon'));
 
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());
     await waitFor(() => expect(global.fetch).toHaveBeenCalled());

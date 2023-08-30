@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
+
+import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 
 import {
   batchGroup,

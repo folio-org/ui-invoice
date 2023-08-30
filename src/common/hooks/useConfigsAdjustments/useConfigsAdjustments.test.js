@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useConfigsAdjustments } from './useConfigsAdjustments';
@@ -26,11 +26,9 @@ describe('useConfigsAdjustments', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useConfigsAdjustments(), { wrapper });
+    const { result } = renderHook(() => useConfigsAdjustments(), { wrapper });
 
-    await waitFor(() => {
-      return !result.current.isLoading;
-    });
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.adjustments[0].value).toEqual(configValue);
   });

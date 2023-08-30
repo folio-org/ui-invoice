@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
 import { noop } from 'lodash';
+
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useBatchGroupOptions } from './useBatchGroupOptions';
 import BatchGroupFilter from './BatchGroupFilter';

@@ -1,6 +1,6 @@
-import { renderHook } from '@testing-library/react-hooks';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { VALIDATE_INVOICE_FUND_DISTRIBUTION_API } from '../../constants';
@@ -46,7 +46,7 @@ describe('useFundDistributionValidation', () => {
   });
 
   it('should send PUT request for validation', async () => {
-    const { result, waitFor } = renderHook(
+    const { result } = renderHook(
       () => useFundDistributionValidation({ adjustments, currency, subTotal }),
       { wrapper },
     );
@@ -57,7 +57,7 @@ describe('useFundDistributionValidation', () => {
       fundDistribution,
       subTotal,
     });
-    await waitFor(() => !result.current.isLoading);
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(putMock).toHaveBeenCalledWith(VALIDATE_INVOICE_FUND_DISTRIBUTION_API, expect.objectContaining({}));
   });

@@ -1,12 +1,9 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import user from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
-import {
-  HasCommand,
-} from '@folio/stripes/components';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { HasCommand } from '@folio/stripes/components';
 
 import { batchVoucher } from '../../../../test/jest/fixtures';
 
@@ -32,14 +29,6 @@ const renderVoucherEditForm = (props = defaultProps) => render(
 );
 
 describe('VoucherEditForm', () => {
-  beforeEach(() => {
-    global.document.createRange = global.document.originalCreateRange;
-  });
-
-  afterEach(() => {
-    global.document.createRange = global.document.mockCreateRange;
-  });
-
   it('should render correct voucher form structure', () => {
     const { asFragment } = renderVoucherEditForm();
 
@@ -55,7 +44,7 @@ describe('VoucherEditForm', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should call onCancel prop when cancel button is pressed', () => {
+  it('should call onCancel prop when cancel button is pressed', async () => {
     const onCancel = jest.fn();
 
     renderVoucherEditForm({
@@ -63,7 +52,7 @@ describe('VoucherEditForm', () => {
       onCancel,
     });
 
-    user.click(screen.getByText('stripes-acq-components.FormFooter.cancel'));
+    await user.click(screen.getByText('stripes-acq-components.FormFooter.cancel'));
 
     expect(onCancel).toHaveBeenCalled();
   });

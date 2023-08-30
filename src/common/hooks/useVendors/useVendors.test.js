@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useVendors } from './useVendors';
@@ -23,11 +22,9 @@ describe('useVendors', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useVendors(['vendorId']), { wrapper });
+    const { result } = renderHook(() => useVendors(['vendorId']), { wrapper });
 
-    await waitFor(() => {
-      return !result.current.isLoading;
-    });
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.vendors.length).toBe(1);
   });

@@ -1,7 +1,6 @@
-import React from 'react';
-import { render, act } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import { render, act } from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,
