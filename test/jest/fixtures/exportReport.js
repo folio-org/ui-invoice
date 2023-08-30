@@ -18,6 +18,7 @@ export const exportReport = [
     'exchangeRate': 1,
     'exportToAccounting': true,
     'externalAccountNumber': undefined,
+    'fiscalYear': 'FY2023',
     'invoiceAdjustments': '',
     'invoiceDate': '2021-06-08',
     'invoiceFundDistributions': undefined,

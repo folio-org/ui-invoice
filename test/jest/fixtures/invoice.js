@@ -5,6 +5,7 @@ export const invoice = {
   chkSubscriptionOverlap: true,
   currency: 'USD',
   exportToAccounting: true,
+  fiscalYearId: 'b0727c6a-a097-4841-bddf-8bb4f6be4118',
   id: '2e5067cd-2dc8-4d99-900d-b4518bb6407f',
   invoiceDate: '2021-06-08',
   paymentMethod: 'Credit Card',

@@ -45,6 +45,19 @@
   to solve this problem.
 -->
 
+## Screenshots
+<!-- OPTIONAL
+ One picture is literally worth a thousand words. When the feature is
+ an interaction, an animated GIF or video is best. Most of the time it helps to
+ include "before" and "after" screenshots to quickly demonstrate the
+ value of the feature.
+
+ Here are some great tools to help you record gifs:
+
+ Windows: https://getsharex.com/
+ Mac: https://gifox.io/
+-->
+
 ## Pre-Merge Checklist
 Before merging this PR, please go through the following list and take appropriate actions.
 - [ ] I've added appropriate record to the CHANGELOG.md

@@ -24,6 +24,7 @@ test('createExportReport should return export report object', () => {
     addressMap: keyBy([address], 'id'),
     exchangeRateMap: { [invoice.currency]: { from: invoice.currency, exchangeRate: 1 } },
     expenseClassMap: {},
+    fiscalYearMap: { [invoice.fiscalYearId]: { code: 'FY2023' } },
     intl,
     invoiceLines: [invoiceLine],
     batchGroupMap: keyBy([batchGroup], 'id'),

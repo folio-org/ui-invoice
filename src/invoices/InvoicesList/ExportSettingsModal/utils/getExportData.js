@@ -22,6 +22,7 @@ import {
 
 import {
   BATCH_GROUPS_API,
+  FISCAL_YEARS_API,
   INVOICE_LINE_API,
   VOUCHER_LINES_API,
   VOUCHERS_API,
@@ -87,6 +88,8 @@ export const getExportData = async ({ ky, intl, query, currency: to }) => {
   const exchangeRates = await Promise.all(
     currencies.map(from => ky.get(EXCHANGE_RATE_API, { searchParams: { from, to } }).json()),
   );
+  const fiscalYearIds = uniq(exportInvoices.map(({ fiscalYearId }) => fiscalYearId));
+  const fiscalYears = await fetchExportDataByIds({ ky, ids: fiscalYearIds, api: FISCAL_YEARS_API, records: 'fiscalYears' });
 
   return (createExportReport({
     acqUnitMap: keyBy(acqUnits, 'id'),
@@ -94,6 +97,7 @@ export const getExportData = async ({ ky, intl, query, currency: to }) => {
     batchGroupMap: keyBy(batchGroups, 'id'),
     exchangeRateMap: keyBy(exchangeRates, 'from'),
     expenseClassMap: keyBy(expenseClasses, 'id'),
+    fiscalYearMap: keyBy(fiscalYears, 'id'),
     intl,
     invoiceLines,
     invoiceMap: keyBy(exportInvoices, 'id'),
