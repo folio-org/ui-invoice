@@ -383,7 +383,7 @@
     "otherRelatedInvoiceLines.invoiceDate": "Datum faktury",
     "otherRelatedInvoiceLines.quantity": "Množství",
     "otherRelatedInvoiceLines.status": "Stav",
-    "otherRelatedInvoiceLines.vendorInvoiceNo": "Číslo faktury prodejce",
+    "otherRelatedInvoiceLines.vendorInvoiceNo": "# faktury prodejce",
     "otherRelatedInvoiceLines.vendorName": "Název prodejce",
     "otherRelatedInvoiceLines.comment": "Komentář",
     "errors.cantLoadAdjustment": "Chyba při načítání nastavení",
@@ -438,5 +438,10 @@
     "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Fakturu nebylo možné schválit. Identifikátor fondu pro úhradu se neshoduje s identifikátorem fondu v řádku faktury. Chybu je třeba opravit v databázi.",
     "invoice.details.hasPendingOrders": "Fakturu nelze schválit. Jedna nebo více souvisejících objednávek má v pracovním postupu stav \"Čekající\". V případě potřeby otevřete související objednávky před schválením této faktury.",
     "invoice.accountingCode.default": "Výchozí ({erpCode})",
-    "invoice.actions.approve.error.incorrectFundDistributionTotal": "Fund distribution total must be distributed by 100 percent in the invoice line number {invoiceLineNumber}"
+    "invoice.actions.approve.error.incorrectFundDistributionTotal": "Faktura nemohla být schválena nebo zaplacena. Celkové rozdělení prostředků musí být rozděleno na 100 procent v řádku faktury {invoiceLineNumber}. Aktualizujte prosím podrobnosti o rozdělení prostředků pro tento řádek faktury, abyste mohli pokračovat.",
+    "otherRelatedInvoiceLines.vendorCode": "Kód prodejce",
+    "otherRelatedInvoiceLines.subscriptionStart": "Začátek předplatného",
+    "otherRelatedInvoiceLines.subscriptionEnd": "Konec předplatného",
+    "otherRelatedInvoiceLines.subscriptionDescription": "Informace o předplatném",
+    "otherRelatedInvoiceLines.fiscalYear": "Fiskální rok"
 }
