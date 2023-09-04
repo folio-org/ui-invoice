@@ -438,5 +438,10 @@
     "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "发票无法获得批准。预留经费ID与发票行中的经费ID不匹配。必须更正数据库中的错误。",
     "invoice.details.hasPendingOrders": "发票不能被批准。一个或多个相关订单的工作流程状态为“待处理”。如果需要，请在批准此发票之前打开相关订单。",
     "invoice.accountingCode.default": "默认（ {erpCode} ）",
-    "invoice.actions.approve.error.incorrectFundDistributionTotal": "Fund distribution total must be distributed by 100 percent in the invoice line number {invoiceLineNumber}"
+    "invoice.actions.approve.error.incorrectFundDistributionTotal": "发票无法批准或支付。发票行{invoiceLineNumber}中的经费分配总额必须按 100% 分配。请更新该发票行的经费分配详细信息以继续。",
+    "otherRelatedInvoiceLines.vendorCode": "供应商代码",
+    "otherRelatedInvoiceLines.subscriptionStart": "订阅开始",
+    "otherRelatedInvoiceLines.subscriptionEnd": "订阅结束",
+    "otherRelatedInvoiceLines.subscriptionDescription": "订阅信息",
+    "otherRelatedInvoiceLines.fiscalYear": "财务年度"
 }
