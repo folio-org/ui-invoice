@@ -438,7 +438,7 @@
     "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Invoice could not be approved. Encumbrance fund id does not match the fund id in the invoice line. Error must be corrected in database.",
     "invoice.details.hasPendingOrders": "Invoice can not be approved. One or more of the related orders has a workflow status of \"Pending\". If desired, please open the related orders before approving this invoice.",
     "invoice.accountingCode.default": "Default ({erpCode})",
-    "invoice.actions.approve.error.incorrectFundDistributionTotal": "Invoice could not be approve or paid. The fund distribution total must be distributed by 100 percent in invoice line {invoiceLineNumber}. Please update fund distribution details for that invoice line to continue.",
+    "invoice.actions.approve.error.incorrectFundDistributionTotal": "Invoice could not be approved or paid. The fund distribution total must be distributed by 100 percent in invoice line {invoiceLineNumber}. Please update fund distribution details for that invoice line to continue.",
     "otherRelatedInvoiceLines.vendorCode": "Vendor code",
     "otherRelatedInvoiceLines.subscriptionStart": "Subscription start",
     "otherRelatedInvoiceLines.subscriptionEnd": "Subscription end",
