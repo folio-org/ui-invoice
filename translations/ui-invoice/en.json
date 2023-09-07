@@ -368,7 +368,7 @@
   "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
   "invoice.actions.pay.error.budgetNotFoundByFundId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
   "invoice.actions.approveAndPay.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> expense class not found on <b>{fundCode}</b> Fund",
-  "invoice.actions.approve.error.incorrectFundDistributionTotal": "Invoice could not be approve or paid. The fund distribution total must be distributed by 100 percent in invoice line {invoiceLineNumber}. Please update fund distribution details for that invoice line to continue.",
+  "invoice.actions.approve.error.incorrectFundDistributionTotal": "Invoice could not be approved or paid. The fund distribution total must be distributed by 100 percent in invoice line {invoiceLineNumber}. Please update fund distribution details for that invoice line to continue.",
   "invoice.actions.approveAndPay.error.inactiveExpenseClass": "Invoice can not be <b>Approved and Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
   "invoice.actions.approveAndPay.error.budgetNotFoundByFundId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
   "invoice.actions.approve.error.transactionCreationFailure": "One or more transactions record(s) failed to be created",
