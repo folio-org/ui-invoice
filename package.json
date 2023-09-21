@@ -289,7 +289,10 @@
         "displayName": "Invoice: Export search results",
         "description": "",
         "visible": true,
-        "subPermissions": []
+        "subPermissions": [
+          "batch-groups.collection.get",
+          "finance.exchange-rate.item.get"
+        ]
       },
       {
         "permissionName": "ui-invoice.settings.all",
