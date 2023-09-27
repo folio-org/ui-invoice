@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
@@ -7,7 +7,6 @@ import { useHistory } from 'react-router';
 import {
   find,
   get,
-  uniq,
 } from 'lodash';
 
 import {
@@ -43,9 +42,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { useFundDistributionValidation } from '../../common/hooks';
-import {
-  StatusValue,
-} from '../../common/components';
+import { StatusValue } from '../../common/components';
 import {
   calculateTotalAmount,
   getAccountNumberOptions,
@@ -53,11 +50,10 @@ import {
 } from '../../common/utils';
 import {
   convertToInvoiceLineFields,
+  getActiveAccountNumbers,
 } from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
-import {
-  SECTIONS_INVOICE_LINE_FORM as SECTIONS,
-} from '../constants';
+import { SECTIONS_INVOICE_LINE_FORM as SECTIONS } from '../constants';
 import { POLineField } from './POLineField';
 
 const InvoiceLineForm = ({
@@ -165,7 +161,7 @@ const InvoiceLineForm = ({
       onCancel={onCancel}
     />
   );
-  const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
+  const accountNumbers = useMemo(() => getActiveAccountNumbers(accounts), [accounts]);
 
   return (
     <form

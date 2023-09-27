@@ -1,6 +1,37 @@
 import {
   convertToInvoiceLineFields,
+  getActiveAccountNumbers,
 } from './utils';
+
+const mockAccounts = [
+  {
+    'name': 'Monographic ordering unit account',
+    'accountNo': '1234',
+    'description': 'Monographic ordering unit account',
+    'appSystemNo': '',
+    'paymentMethod': 'Credit Card',
+    'accountStatus': 'Active',
+    'contactInfo': 'cust.service03@amazon.com',
+    'libraryCode': 'COB',
+    'libraryEdiCode': '765987610',
+    'notes': '',
+    'acqUnitIds': [],
+  },
+  {
+    'name': 'Amazon Test account',
+    'accountNo': '00000001',
+    'description': 'Amazon Test account',
+    'accountStatus': 'Inactive',
+    'acqUnitIds': [],
+  },
+  {
+    'name': 'Amazon Pending account',
+    'accountNo': '00000002',
+    'description': 'Amazon Pending account',
+    'accountStatus': 'Pending',
+    'acqUnitIds': [],
+  },
+];
 
 describe('Invoice utils', () => {
   describe('convertToInvoiceLineFields', () => {
@@ -31,6 +62,12 @@ describe('Invoice utils', () => {
         subTotal: poLine.cost.poLineEstimatedPrice,
         accountNumber: poLine.vendorDetail.vendorAccount,
       });
+    });
+  });
+
+  describe('getActiveAccountNumbers', () => {
+    it('should return active account numbers', () => {
+      expect(getActiveAccountNumbers(mockAccounts)).toEqual(mockAccounts[0].accountNo);
     });
   });
 });

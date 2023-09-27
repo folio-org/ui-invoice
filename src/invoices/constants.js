@@ -60,3 +60,9 @@ export const INVOICE_LINES_COLUMN_MAPPING = {
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
   vendorCode: <FormattedMessage id="ui-invoice.invoice.details.vendor.code" />,
 };
+
+export const ACCOUNT_STATUS = {
+  ACTIVE: 'Active',
+  INACTIVE: 'Inactive',
+  PENDING: 'Pending',
+};
