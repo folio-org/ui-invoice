@@ -121,7 +121,6 @@ export const getCommonInvoiceLinesFormatter = (currency, ordersMap, orderlinesMa
 });
 
 export const getActiveAccountNumbers = (accounts = []) => {
-  console.log('accounts', accounts);
   const activeAccounts = accounts.filter(({ accountStatus }) => accountStatus === ACCOUNT_STATUS.ACTIVE);
 
   return uniq(activeAccounts.map(({ accountNo }) => accountNo).filter(Boolean));
