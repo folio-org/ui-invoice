@@ -3,11 +3,9 @@ import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { useHistory } from 'react-router';
-
 import {
   find,
   get,
-  values,
 } from 'lodash';
 
 import {
@@ -73,7 +71,10 @@ const InvoiceLineForm = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
-  const { validateFundDistributionTotal } = useFundDistributionValidation({ formValues, currency: invoice.currency });
+  const { validateFundDistributionTotal } = useFundDistributionValidation({ 
+    formValues, 
+    currency: invoice.currency, 
+  });
 
   const changeAccountNumber = useCallback((accountNo) => {
     const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
@@ -121,7 +122,6 @@ const InvoiceLineForm = ({
   } = initialValues;
   const totalAmount = calculateTotalAmount(formValues, invoice.currency);
   const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, invoiceLineStatus);
-  const initialAccountNumber = useRef(accountNumber);
   const isDisabledToEditAccountNumber = Boolean(
     isEditPostApproval
     || (poLineId && poLineId !== formValues.poLineId && accountNumber),
@@ -169,9 +169,9 @@ const InvoiceLineForm = ({
   const accountNumbers = useMemo(() => {
     return getActiveAccountNumbers({ 
       accounts, 
-      initialAccountNumber: initialAccountNumber.current, 
+      initialAccountNumber: accountNumber, 
     });
-  }, [accounts, initialAccountNumber]);
+  }, [accounts, accountNumber]);
 
   const activeAccountOptions = useMemo(() => {
     return getAccountNumberOptions(accountNumbers);
