@@ -129,7 +129,7 @@ const InvoiceLineForm = ({
     isEditPostApproval
     || (poLineId && poLineId !== formValues.poLineId && accountNumber),
   );
-  const currentAccountNumber = formValues?.accountNumber || accountNumber;
+  const currentAccountNumber = formValues?.accountNumber;
 
   const shortcuts = [
     {
