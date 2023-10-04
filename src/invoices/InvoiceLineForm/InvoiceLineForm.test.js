@@ -63,6 +63,29 @@ describe('InvoiceLineForm component', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  it('should display inactive account warning message when the selected account is inactive', () => {
+    const { getByText } = renderInvoiceLineForm({
+      ...defaultProps,
+      accounts: [
+        {
+          'name': 'Monographic ordering unit account',
+          'accountNo': '1234',
+          'accountStatus': 'Inactive',
+          'acqUnitIds': [],
+        },
+      ],
+      initialValues: {
+        ...invoiceLine,
+        accountNumber: '1234',
+      },
+      values: {
+        accountNumber: '1234',
+      },
+    });
+
+    expect(getByText('ui-invoice.invoiceLine.accountNumber.inactive')).toBeDefined();
+  });
+
   describe('Shortcuts', () => {
     beforeEach(() => {
       HasCommand.mockClear();
