@@ -53,7 +53,7 @@ import {
   getActiveAccountNumbers,
 } from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
-import { 
+import {
   ACCOUNT_STATUS,
   SECTIONS_INVOICE_LINE_FORM as SECTIONS,
 } from '../constants';
@@ -74,9 +74,9 @@ const InvoiceLineForm = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
-  const { validateFundDistributionTotal } = useFundDistributionValidation({ 
-    formValues, 
-    currency: invoice.currency, 
+  const { validateFundDistributionTotal } = useFundDistributionValidation({
+    formValues,
+    currency: invoice.currency,
   });
 
   const changeAccountNumber = useCallback((accountNo) => {
@@ -170,9 +170,9 @@ const InvoiceLineForm = ({
   );
 
   const accountNumbers = useMemo(() => {
-    return getActiveAccountNumbers({ 
-      accounts, 
-      initialAccountNumber: accountNumber, 
+    return getActiveAccountNumbers({
+      accounts,
+      initialAccountNumber: accountNumber,
     });
   }, [accounts, accountNumber]);
 

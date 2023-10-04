@@ -1,7 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
-import { 
+import {
   act,
   render,
 } from '@folio/jest-config-stripes/testing-library/react';
