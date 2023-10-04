@@ -7,13 +7,13 @@ import {
   Accordion,
   Loading,
   NoValue,
-  DESC_DIRECTION,
 } from '@folio/stripes/components';
 import {
   AmountWithCurrencyField,
   PrevNextPagination,
   FrontendSortingMCL,
   useLocalPagination,
+  DESC_DIRECTION,
   RESULT_COUNT_INCREMENT,
 } from '@folio/stripes-acq-components';
 
