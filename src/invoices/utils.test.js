@@ -67,7 +67,14 @@ describe('Invoice utils', () => {
 
   describe('getActiveAccountNumbers', () => {
     it('should return active account numbers', () => {
-      expect(getActiveAccountNumbers(mockAccounts)).toEqual([mockAccounts[0].accountNo]);
+      const initialAccountNumber = mockAccounts[1].accountNo;
+      expect(getActiveAccountNumbers({ 
+        accounts: mockAccounts, 
+        initialAccountNumber, 
+      })).toEqual([
+        mockAccounts[0].accountNo,
+        initialAccountNumber,
+      ]);
     });
   });
 });

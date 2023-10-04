@@ -7,6 +7,7 @@ import { useHistory } from 'react-router';
 import {
   find,
   get,
+  values,
 } from 'lodash';
 
 import {
@@ -21,6 +22,7 @@ import {
   expandAllSections,
   HasCommand,
   KeyValue,
+  MessageBanner,
   Pane,
   Paneset,
   Row,
@@ -53,7 +55,7 @@ import {
   getActiveAccountNumbers,
 } from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
-import { SECTIONS_INVOICE_LINE_FORM as SECTIONS } from '../constants';
+import { ACCOUNT_STATUS, SECTIONS_INVOICE_LINE_FORM as SECTIONS } from '../constants';
 import { POLineField } from './POLineField';
 
 const InvoiceLineForm = ({
@@ -119,10 +121,12 @@ const InvoiceLineForm = ({
   } = initialValues;
   const totalAmount = calculateTotalAmount(formValues, invoice.currency);
   const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, invoiceLineStatus);
+  const initialAccountNumber = useRef(accountNumber);
   const isDisabledToEditAccountNumber = Boolean(
     isEditPostApproval
     || (poLineId && poLineId !== formValues.poLineId && accountNumber),
   );
+  const currentAccountNumber = formValues?.accountNumber || accountNumber;
 
   const shortcuts = [
     {
@@ -161,7 +165,31 @@ const InvoiceLineForm = ({
       onCancel={onCancel}
     />
   );
-  const accountNumbers = useMemo(() => getActiveAccountNumbers(accounts), [accounts]);
+
+  const accountNumbers = useMemo(() => {
+    return getActiveAccountNumbers({ 
+      accounts, 
+      initialAccountNumber: initialAccountNumber.current, 
+    });
+  }, [accounts, initialAccountNumber]);
+
+  const activeAccountOptions = useMemo(() => {
+    return getAccountNumberOptions(accountNumbers);
+  }, [accountNumbers]);
+
+  const accountNumberDisabled = useMemo(() => {
+    const hasCurrentAccountNumber = accounts.some(({ accountNo }) => accountNo === currentAccountNumber);
+    const isOnlyOneActiveAccount = activeAccountOptions.length === 1;
+    const noActiveAccounts = activeAccountOptions.length === 0;
+
+    return noActiveAccounts || (hasCurrentAccountNumber && isOnlyOneActiveAccount);
+  }, [accounts, activeAccountOptions, currentAccountNumber]);
+
+  const isSelectedAccountInactive = useMemo(() => {
+    return accounts.some(({ accountNo, accountStatus }) => {
+      return accountNo === currentAccountNumber && accountStatus === ACCOUNT_STATUS.INACTIVE;
+    });
+  }, [accounts, currentAccountNumber]);
 
   return (
     <form
@@ -267,13 +295,20 @@ const InvoiceLineForm = ({
                         </Col>
                         <Col data-test-col-invoice-line-accounting-code xs={3}>
                           <FieldSelectionFinal
-                            dataOptions={getAccountNumberOptions(accountNumbers)}
+                            dataOptions={activeAccountOptions}
                             id="invoice-line-account-number"
                             labelId="ui-invoice.invoiceLine.accountNumber"
                             name="accountNumber"
                             onChange={changeAccountNumber}
-                            isNonInteractive={isDisabledToEditAccountNumber}
+                            isNonInteractive={isDisabledToEditAccountNumber || accountNumberDisabled}
                           />
+                          {
+                            isSelectedAccountInactive && (
+                              <MessageBanner type="warning">
+                                <FormattedMessage id="ui-invoice.invoiceLine.accountNumber.inactive" />
+                              </MessageBanner>
+                            )
+                          }
                         </Col>
                         <Col data-test-col-invoice-line-quantity xs={3}>
                           <Field
