@@ -53,7 +53,10 @@ import {
   getActiveAccountNumbers,
 } from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
-import { ACCOUNT_STATUS, SECTIONS_INVOICE_LINE_FORM as SECTIONS } from '../constants';
+import { 
+  ACCOUNT_STATUS,
+  SECTIONS_INVOICE_LINE_FORM as SECTIONS,
+} from '../constants';
 import { POLineField } from './POLineField';
 
 const InvoiceLineForm = ({
