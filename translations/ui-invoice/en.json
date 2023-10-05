@@ -66,6 +66,7 @@
   "invoiceLine.value": "Value",
   "invoiceLine.referenceNumbers": "Vendor reference numbers",
   "invoiceLine.accountNumber": "Account number",
+  "invoiceLine.accountNumber.inactive": "The selected account number is inactive.",
   "invoiceLine.accountingCode": "Accounting code",
   "invoiceLine.comment": "Comment",
   "invoiceLine.releaseEncumbrance": "Release encumbrance",

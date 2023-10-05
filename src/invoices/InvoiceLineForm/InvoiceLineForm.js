@@ -1,13 +1,11 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useMemo, useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { useHistory } from 'react-router';
-
 import {
   find,
   get,
-  uniq,
 } from 'lodash';
 
 import {
@@ -22,6 +20,7 @@ import {
   expandAllSections,
   HasCommand,
   KeyValue,
+  MessageBanner,
   Pane,
   Paneset,
   Row,
@@ -43,9 +42,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { useFundDistributionValidation } from '../../common/hooks';
-import {
-  StatusValue,
-} from '../../common/components';
+import { StatusValue } from '../../common/components';
 import {
   calculateTotalAmount,
   getAccountNumberOptions,
@@ -53,9 +50,11 @@ import {
 } from '../../common/utils';
 import {
   convertToInvoiceLineFields,
+  getActiveAccountNumbers,
 } from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import {
+  ACCOUNT_STATUS,
   SECTIONS_INVOICE_LINE_FORM as SECTIONS,
 } from '../constants';
 import { POLineField } from './POLineField';
@@ -75,7 +74,10 @@ const InvoiceLineForm = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
-  const { validateFundDistributionTotal } = useFundDistributionValidation({ formValues, currency: invoice.currency });
+  const { validateFundDistributionTotal } = useFundDistributionValidation({
+    formValues,
+    currency: invoice.currency,
+  });
 
   const changeAccountNumber = useCallback((accountNo) => {
     const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
@@ -127,6 +129,7 @@ const InvoiceLineForm = ({
     isEditPostApproval
     || (poLineId && poLineId !== formValues.poLineId && accountNumber),
   );
+  const currentAccountNumber = formValues?.accountNumber;
 
   const shortcuts = [
     {
@@ -165,7 +168,31 @@ const InvoiceLineForm = ({
       onCancel={onCancel}
     />
   );
-  const accountNumbers = uniq(accounts.map(account => get(account, 'accountNo')).filter(Boolean));
+
+  const accountNumbers = useMemo(() => {
+    return getActiveAccountNumbers({
+      accounts,
+      initialAccountNumber: accountNumber,
+    });
+  }, [accounts, accountNumber]);
+
+  const activeAccountOptions = useMemo(() => {
+    return getAccountNumberOptions(accountNumbers);
+  }, [accountNumbers]);
+
+  const accountNumberDisabled = useMemo(() => {
+    const hasCurrentAccountNumber = accounts.some(({ accountNo }) => accountNo === currentAccountNumber);
+    const isOnlyOneActiveAccount = activeAccountOptions.length === 1;
+    const noActiveAccounts = activeAccountOptions.length === 0;
+
+    return noActiveAccounts || (hasCurrentAccountNumber && isOnlyOneActiveAccount);
+  }, [accounts, activeAccountOptions, currentAccountNumber]);
+
+  const isSelectedAccountInactive = useMemo(() => {
+    return accounts.some(({ accountNo, accountStatus }) => {
+      return accountNo === currentAccountNumber && accountStatus === ACCOUNT_STATUS.INACTIVE;
+    });
+  }, [accounts, currentAccountNumber]);
 
   return (
     <form
@@ -271,13 +298,20 @@ const InvoiceLineForm = ({
                         </Col>
                         <Col data-test-col-invoice-line-accounting-code xs={3}>
                           <FieldSelectionFinal
-                            dataOptions={getAccountNumberOptions(accountNumbers)}
+                            dataOptions={activeAccountOptions}
                             id="invoice-line-account-number"
                             labelId="ui-invoice.invoiceLine.accountNumber"
                             name="accountNumber"
                             onChange={changeAccountNumber}
-                            isNonInteractive={isDisabledToEditAccountNumber}
+                            isNonInteractive={isDisabledToEditAccountNumber || accountNumberDisabled}
                           />
+                          {
+                            isSelectedAccountInactive && (
+                              <MessageBanner type="warning">
+                                <FormattedMessage id="ui-invoice.invoiceLine.accountNumber.inactive" />
+                              </MessageBanner>
+                            )
+                          }
                         </Col>
                         <Col data-test-col-invoice-line-quantity xs={3}>
                           <Field

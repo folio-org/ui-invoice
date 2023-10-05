@@ -146,7 +146,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 2;"
+                      style="z-index: 1;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-information"
@@ -707,109 +707,20 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                             data-test-col-invoice-line-accounting-code="true"
                           >
                             <div
-                              style="position: relative; width: 100%;"
+                              class="kvRoot"
                             >
                               <div
-                                aria-live="assertive"
-                                aria-relevant="additions"
-                                class="sr-only"
-                              />
-                              <label
-                                class="label"
-                                for="invoice-line-account-number"
-                                id="sl-label-invoice-line-account-number"
+                                class="kvLabel"
                               >
                                 ui-invoice.invoiceLine.accountNumber
-                              </label>
-                              <div
-                                class="selectionControlContainer"
-                              >
-                                <button
-                                  aria-expanded="false"
-                                  aria-haspopup="listbox"
-                                  aria-labelledby="sl-label-invoice-line-account-number selected-invoice-line-account-number-item"
-                                  aria-owns="sl-invoice-line-account-number"
-                                  class="selectionControl formControl"
-                                  id="invoice-line-account-number"
-                                  name="accountNumber"
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-invoice-line-account-number-item"
-                                  />
-                                </button>
-                                <div
-                                  class="selectionEndControls"
-                                >
-                                  <div
-                                    class="textFieldIcon"
-                                  >
-                                    <span>
-                                      Icon
-                                    </span>
-                                  </div>
-                                </div>
                               </div>
                               <div
-                                role="alert"
-                              />
-                            </div>
-                            <div
-                              class="overlay"
-                              hidden=""
-                            >
-                              <div
-                                class="selectionListRoot sr-only"
-                                hidden=""
-                                id="sl-container-invoice-line-account-number"
+                                class="kvValue"
+                                data-test-kv-value="true"
                               >
-                                <div
-                                  class="selectionFilterContainer"
-                                >
-                                  <input
-                                    aria-activedescendant="option-invoice-line-account-number-0-null"
-                                    aria-controls="sl-container-invoice-line-account-number"
-                                    aria-expanded="true"
-                                    aria-label="stripes-components.selection.filterOptionsLabel"
-                                    aria-owns="sl-invoice-line-account-number"
-                                    class="selectionFilter"
-                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                    role="combobox"
-                                    type="text"
-                                    value=""
-                                  />
-                                </div>
-                                <ul
-                                  aria-label="stripes-components.selection.filterOptionsLabel"
-                                  class="selectionList"
-                                  id="sl-invoice-line-account-number"
-                                  role="listbox"
-                                  style="max-height: 174px;"
-                                >
-                                  <li
-                                    aria-selected="false"
-                                    class="option optionOutside cursor"
-                                    id="option-invoice-line-account-number-0-null"
-                                    role="option"
-                                    tabindex="-1"
-                                    unselectable="on"
-                                  >
-                                    <div
-                                      class="optionSegment"
-                                      data-test-selection-option-segment="true"
-                                    />
-                                  </li>
-                                </ul>
-                                <div
-                                  class="selectListSection"
-                                  role="alert"
-                                />
+                                <span>
+                                  -
+                                </span>
                               </div>
                             </div>
                           </div>

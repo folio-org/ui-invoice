@@ -1,7 +1,10 @@
 import { MemoryRouter } from 'react-router-dom';
 import { useHistory } from 'react-router';
 
-import { act, render } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  act,
+  render,
+} from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,
@@ -58,6 +61,29 @@ describe('InvoiceLineForm component', () => {
     container.querySelector('#invoice-line-form-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should display inactive account warning message when the selected account is inactive', () => {
+    const { getByText } = renderInvoiceLineForm({
+      ...defaultProps,
+      accounts: [
+        {
+          'name': 'Monographic ordering unit account',
+          'accountNo': '1234',
+          'accountStatus': 'Inactive',
+          'acqUnitIds': [],
+        },
+      ],
+      initialValues: {
+        ...invoiceLine,
+        accountNumber: '1234',
+      },
+      values: {
+        accountNumber: '1234',
+      },
+    });
+
+    expect(getByText('ui-invoice.invoiceLine.accountNumber.inactive')).toBeDefined();
   });
 
   describe('Shortcuts', () => {

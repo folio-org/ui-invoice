@@ -1,4 +1,4 @@
-import { find, invert } from 'lodash';
+import { find, invert, uniq } from 'lodash';
 import { FormattedMessage } from 'react-intl';
 
 import { NoValue } from '@folio/stripes/components';
@@ -8,6 +8,7 @@ import {
   PAYMENT_STATUS,
   RECEIPT_STATUS,
 } from '@folio/stripes-acq-components';
+import { ACCOUNT_STATUS } from './constants';
 
 export const getAdjustmentFromPreset = ({
   description,
@@ -118,3 +119,11 @@ export const getCommonInvoiceLinesFormatter = (currency, ordersMap, orderlinesMa
     line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
   ),
 });
+
+export const getActiveAccountNumbers = ({ accounts = [], initialAccountNumber }) => {
+  const activeAccounts = accounts.filter(({ accountStatus, accountNo }) => {
+    return accountStatus === ACCOUNT_STATUS.ACTIVE || accountNo === initialAccountNumber;
+  });
+
+  return uniq(activeAccounts.map(({ accountNo }) => accountNo).filter(Boolean));
+};
