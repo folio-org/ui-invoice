@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { useHistory } from 'react-router';
@@ -45,12 +45,11 @@ import { useFundDistributionValidation } from '../../common/hooks';
 import { StatusValue } from '../../common/components';
 import {
   calculateTotalAmount,
-  getAccountNumberOptions,
   IS_EDIT_POST_APPROVAL,
 } from '../../common/utils';
 import {
   convertToInvoiceLineFields,
-  getActiveAccountNumbers,
+  getActiveAccountNumberOptions,
 } from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import {
@@ -74,6 +73,7 @@ const InvoiceLineForm = ({
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
+  const { formatMessage } = useIntl();
   const { validateFundDistributionTotal } = useFundDistributionValidation({
     formValues,
     currency: invoice.currency,
@@ -169,16 +169,13 @@ const InvoiceLineForm = ({
     />
   );
 
-  const accountNumbers = useMemo(() => {
-    return getActiveAccountNumbers({
+  const activeAccountOptions = useMemo(() => {
+    return getActiveAccountNumberOptions({
       accounts,
       initialAccountNumber: accountNumber,
+      formatMessage,
     });
-  }, [accounts, accountNumber]);
-
-  const activeAccountOptions = useMemo(() => {
-    return getAccountNumberOptions(accountNumbers);
-  }, [accountNumbers]);
+  }, [accounts, accountNumber, formatMessage]);
 
   const accountNumberDisabled = useMemo(() => {
     const hasCurrentAccountNumber = accounts.some(({ accountNo }) => accountNo === currentAccountNumber);

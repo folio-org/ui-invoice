@@ -1,7 +1,9 @@
 import {
   convertToInvoiceLineFields,
-  getActiveAccountNumbers,
+  getActiveAccountNumberOptions,
 } from './utils';
+
+const mockFormatMessage = jest.fn(({ id }) => id);
 
 const mockAccounts = [
   {
@@ -65,16 +67,23 @@ describe('Invoice utils', () => {
     });
   });
 
-  describe('getActiveAccountNumbers', () => {
+  describe('getActiveAccountNumberOptions', () => {
     it('should return active account numbers', () => {
       const initialAccountNumber = mockAccounts[1].accountNo;
 
-      expect(getActiveAccountNumbers({
+      expect(getActiveAccountNumberOptions({
         accounts: mockAccounts,
         initialAccountNumber,
+        formatMessage: mockFormatMessage,
       })).toEqual([
-        mockAccounts[0].accountNo,
-        initialAccountNumber,
+        {
+          'label': 'Monographic ordering unit account (1234) ',
+          'value': '1234',
+        },
+        {
+          'label': 'Amazon Test account (00000001)  - ui-invoice.inactive',
+          'value': '00000001',
+        },
       ]);
     });
   });

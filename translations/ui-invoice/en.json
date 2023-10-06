@@ -44,6 +44,7 @@
 
   "showTags": "Show tags",
   "addTagFor": "Add tag for: {filterValue}",
+  "inactive": "Inactive",
 
   "invoiceLine.adminData": "Invoice line admin data",
   "invoiceLine.adjustments": "Invoice line adjustments",
