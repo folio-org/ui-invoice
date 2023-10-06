@@ -123,13 +123,14 @@ export const getCommonInvoiceLinesFormatter = (currency, ordersMap, orderlinesMa
   ),
 });
 
-export const getActiveAccountNumbers = ({ accounts = [], initialAccountNumber }) => {
+export const getActiveAccountNumberOptions = ({ accounts = [], initialAccountNumber, formatMessage }) => {
+  const message = ` - ${formatMessage({ id: 'ui-invoice.inactive' })}`;
   const activeAccounts = accounts.filter(({ accountStatus, accountNo }) => {
     return accountStatus === ACTIVE || accountNo === initialAccountNumber;
   });
 
   return uniq(activeAccounts.map(({ name, accountNo, accountStatus }) => ({
-    label: `${name} (${accountNo}) ${accountStatus === INACTIVE ? ' - Inactive' : ''}`,
+    label: `${name} (${accountNo}) ${accountStatus === INACTIVE ? message : ''}`,
     value: accountNo,
   })));
 };
