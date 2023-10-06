@@ -45,7 +45,6 @@ import { useFundDistributionValidation } from '../../common/hooks';
 import { StatusValue } from '../../common/components';
 import {
   calculateTotalAmount,
-  getAccountNumberOptions,
   IS_EDIT_POST_APPROVAL,
 } from '../../common/utils';
 import {
@@ -169,16 +168,12 @@ const InvoiceLineForm = ({
     />
   );
 
-  const accountNumbers = useMemo(() => {
+  const activeAccountOptions = useMemo(() => {
     return getActiveAccountNumbers({
       accounts,
       initialAccountNumber: accountNumber,
     });
   }, [accounts, accountNumber]);
-
-  const activeAccountOptions = useMemo(() => {
-    return getAccountNumberOptions(accountNumbers);
-  }, [accountNumbers]);
 
   const accountNumberDisabled = useMemo(() => {
     const hasCurrentAccountNumber = accounts.some(({ accountNo }) => accountNo === currentAccountNumber);

@@ -8,7 +8,10 @@ import {
   PAYMENT_STATUS,
   RECEIPT_STATUS,
 } from '@folio/stripes-acq-components';
+
 import { ACCOUNT_STATUS } from './constants';
+
+const { ACTIVE, INACTIVE } = ACCOUNT_STATUS;
 
 export const getAdjustmentFromPreset = ({
   description,
@@ -122,8 +125,11 @@ export const getCommonInvoiceLinesFormatter = (currency, ordersMap, orderlinesMa
 
 export const getActiveAccountNumbers = ({ accounts = [], initialAccountNumber }) => {
   const activeAccounts = accounts.filter(({ accountStatus, accountNo }) => {
-    return accountStatus === ACCOUNT_STATUS.ACTIVE || accountNo === initialAccountNumber;
+    return accountStatus === ACTIVE || accountNo === initialAccountNumber;
   });
 
-  return uniq(activeAccounts.map(({ accountNo }) => accountNo).filter(Boolean));
+  return uniq(activeAccounts.map(({ name, accountNo, accountStatus }) => ({
+    label: `${name} (${accountNo}) ${accountStatus === INACTIVE ? ' - Inactive' : ''}`,
+    value: accountNo,
+  })));
 };
