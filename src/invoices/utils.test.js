@@ -73,8 +73,14 @@ describe('Invoice utils', () => {
         accounts: mockAccounts,
         initialAccountNumber,
       })).toEqual([
-        mockAccounts[0].accountNo,
-        initialAccountNumber,
+        {
+          'label': 'Monographic ordering unit account (1234) ',
+          'value': '1234',
+        },
+        {
+          'label': 'Amazon Test account (00000001)  - Inactive',
+          'value': '00000001',
+        },
       ]);
     });
   });
