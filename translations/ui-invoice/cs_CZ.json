@@ -443,5 +443,7 @@
     "otherRelatedInvoiceLines.subscriptionStart": "Začátek předplatného",
     "otherRelatedInvoiceLines.subscriptionEnd": "Konec předplatného",
     "otherRelatedInvoiceLines.subscriptionDescription": "Informace o předplatném",
-    "otherRelatedInvoiceLines.fiscalYear": "Fiskální rok"
+    "otherRelatedInvoiceLines.fiscalYear": "Fiskální rok",
+    "invoiceLine.accountNumber.inactive": "The selected account number is inactive.",
+    "inactive": "Inactive"
 }

@@ -443,5 +443,7 @@
     "otherRelatedInvoiceLines.subscriptionStart": "Subscription start",
     "otherRelatedInvoiceLines.subscriptionEnd": "Subscription end",
     "otherRelatedInvoiceLines.subscriptionDescription": "Subscription info",
-    "otherRelatedInvoiceLines.fiscalYear": "Fiscal year"
+    "otherRelatedInvoiceLines.fiscalYear": "Fiscal year",
+    "invoiceLine.accountNumber.inactive": "The selected account number is inactive.",
+    "inactive": "Inactive"
 }
