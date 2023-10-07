@@ -443,5 +443,7 @@
     "otherRelatedInvoiceLines.subscriptionStart": "订阅开始",
     "otherRelatedInvoiceLines.subscriptionEnd": "订阅结束",
     "otherRelatedInvoiceLines.subscriptionDescription": "订阅信息",
-    "otherRelatedInvoiceLines.fiscalYear": "财务年度"
+    "otherRelatedInvoiceLines.fiscalYear": "财务年度",
+    "invoiceLine.accountNumber.inactive": "The selected account number is inactive.",
+    "inactive": "Inactive"
 }
