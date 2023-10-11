@@ -24,6 +24,7 @@
 * Add required sub permissions to perform export of search results. Refs UINV-502.
 * Correctly import `DESC_DIRECTION` in `OtherRelatedInvoiceLines`. Refs UINV-507.
 * Display only active account numbers in dropdown list. Refs UINV-498.
+* Bump optional plugins to their `@folio/stripes` `v9` compatible versions. Refs UINV-506.
 
 ## [4.0.1](https://github.com/folio-org/ui-invoice/tree/v4.0.1) (2023-03-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.0...v4.0.1)
