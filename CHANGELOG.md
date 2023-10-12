@@ -1,9 +1,13 @@
 # Change history for ui-invoice
 
-## (IN PROGRESS)
+## (5.1.0 IN PROGRESS)
+
+## [5.0.0](https://github.com/folio-org/ui-invoice/tree/v5.0.0) (2023-10-12)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.1...v5.0.0)
 
 * Allow user to process invoices against previous fiscal years. Refs UINV-419.
 * Filter Invoices by Fiscal year. Refs UINV-480.
+* Display "Vendor invoice number" on invoice line subheading. Refs UINV-447.
 * Disable ability to approve & pay invoice against inactive organization. Refs UINV-467.
 * Select Upload location type in settings. Refs UINV-322.
 * Prevent resetting fiscalYearId. Refs UINV-481.
@@ -15,12 +19,13 @@
 * Add pagination to "Related invoices" accordion Invoice. Refs UINV-443.
 * "Account number" value must be `null` for the default value of "Accounting code". Refs UINV-487.
 * The value "Default" is hard-coded instead of localized. Refs UINV-489.
+* Fix invoice adjustments select list. Refs UINV-491.
 * Add handling for a new error code that occurs during invoice approval. Refs UINV-497.
 * Update related invoice details to include additional fields on invoice line. Refs UINV-496.
 * Update `Node.js` to `v18` in GitHub Actions. Refs UINV-495.
-* **BREAKING:** Upgrade `React` to `v18`. Refs UINV-493.
+* *BREAKING:*: Upgrade `React` to `v18`. Refs UINV-493.
 * Update invoice export details to include Fiscal year. Refs UINV-492.
-* *BREAKING* bump `react-intl` to `v6.4.4`. Refs UINV-503.
+* *BREAKING*: Bump `react-intl` to `v6.4.4`. Refs UINV-503.
 * Add required sub permissions to perform export of search results. Refs UINV-502.
 * Correctly import `DESC_DIRECTION` in `OtherRelatedInvoiceLines`. Refs UINV-507.
 * Display only active account numbers in dropdown list. Refs UINV-498.
