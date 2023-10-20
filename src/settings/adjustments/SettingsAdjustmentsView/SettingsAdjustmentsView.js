@@ -15,10 +15,13 @@ import {
   KeyValue,
   Layer,
   Pane,
+  PaneHeader,
   Row,
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import { handleKeyCommand } from '@folio/stripes-acq-components';
+
+import { hasEditSettingsPerm } from '../../utils';
 
 class SettingsAdjustmentsView extends Component {
   static propTypes = {
@@ -85,6 +88,24 @@ class SettingsAdjustmentsView extends Component {
     );
   };
 
+  renderHeader = (paneHeaderProps) => {
+    const {
+      adjustment,
+      close,
+      stripes,
+    } = this.props;
+
+    return (
+      <PaneHeader
+        {...paneHeaderProps}
+        actionMenu={hasEditSettingsPerm(stripes) && this.getActionMenu}
+        dismissible
+        onClose={close}
+        paneTitle={adjustment.title}
+      />
+    );
+  };
+
   render() {
     const {
       close,
@@ -96,7 +117,6 @@ class SettingsAdjustmentsView extends Component {
     const { showConfirmDelete } = this.state;
     const {
       metadata,
-      title,
       adjustment: { alwaysShow, defaultAmount, description, type, prorate, relationToTotal, exportToAccounting },
     } = adjustment;
     const shortcuts = [
@@ -124,12 +144,9 @@ class SettingsAdjustmentsView extends Component {
           scope={document.body}
         >
           <Pane
-            actionMenu={this.getActionMenu}
             id="invoice-settings-adjustment-view"
             defaultWidth="fill"
-            paneTitle={title}
-            dismissible
-            onClose={close}
+            renderHeader={this.renderHeader}
           >
             <Row center="xs">
               <Col xs={12} md={8}>

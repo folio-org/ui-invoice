@@ -1,30 +1,45 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
+import { FormattedMessage } from 'react-intl';
+import { Field, useFormState } from 'react-final-form';
 
 import {
   Button,
   Col,
+  KeyValue,
   TextField,
 } from '@folio/stripes/components';
 import { useToggle } from '@folio/stripes-acq-components';
 
-const TogglePassword = ({ name }) => {
+const CHAR_REPLACER = '•';
+const FIELD_LABEL = <FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.password" />;
+
+const TogglePassword = ({ name, isNonInteractive = false }) => {
   const [showPassword, togglePassword] = useToggle(false);
+  const { values } = useFormState();
 
   return (
     <>
       <Col xs={4}>
-        <Field
-          autoComplete="new-password"
-          component={TextField}
-          fullWidth
-          id={name}
-          label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.password" />}
-          name={name}
-          type={showPassword ? 'text' : 'password'}
-        />
+        {
+          isNonInteractive
+            ? (
+              <KeyValue
+                label={FIELD_LABEL}
+                value={showPassword ? values[name] : values[name]?.replaceAll(/./g, CHAR_REPLACER)}
+              />
+            )
+            : (
+              <Field
+                autoComplete="new-password"
+                component={TextField}
+                fullWidth
+                id={name}
+                label={FIELD_LABEL}
+                name={name}
+                type={showPassword ? 'text' : 'password'}
+              />
+            )
+        }
       </Col>
       <Col xs={2}>
         <Button
@@ -44,6 +59,7 @@ const TogglePassword = ({ name }) => {
 };
 
 TogglePassword.propTypes = {
+  isNonInteractive: PropTypes.bool,
   name: PropTypes.string.isRequired,
 };
 

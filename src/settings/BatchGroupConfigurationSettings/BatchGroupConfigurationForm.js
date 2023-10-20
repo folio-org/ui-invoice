@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import {
   FormattedMessage,
@@ -6,7 +6,7 @@ import {
 } from 'react-intl';
 import { Field } from 'react-final-form';
 import { OnChange } from 'react-final-form-listeners';
-import { get } from 'lodash';
+import { get, noop } from 'lodash';
 
 import stripesFinalForm from '@folio/stripes/final-form';
 import {
@@ -15,17 +15,20 @@ import {
   Col,
   HasCommand,
   Pane,
+  PaneHeader,
   Row,
-  TextField,
   Timepicker,
 } from '@folio/stripes/components';
+import { IfPermission, useStripes } from '@folio/stripes/core';
 import {
   FieldSelectFinal as FieldSelect,
+  TextField,
   handleKeyCommand,
   usePaneFocus,
   validateRequired,
 } from '@folio/stripes-acq-components';
 
+import { hasEditSettingsPerm } from '../utils';
 import BatchGroupConfigurationFormFooter from './BatchGroupConfigurationFormFooter';
 import BatchGroupsField from './BatchGroupsField';
 import TogglePassword from './TogglePassword';
@@ -56,9 +59,11 @@ const BatchGroupConfigurationForm = ({
 }) => {
   const { paneTitleRef } = usePaneFocus();
   const intl = useIntl();
+  const stripes = useStripes();
   const formValues = get(form.getState(), 'values', {});
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
   const placeholder = formValues.ftpFormat || LOCATION_TYPES.FTP;
+  const hasEditPerm = hasEditSettingsPerm(stripes);
 
   const paneFooter = (
     <BatchGroupConfigurationFormFooter
@@ -68,10 +73,18 @@ const BatchGroupConfigurationForm = ({
     />
   );
 
+  const renderHeader = useCallback((paneHeaderProps) => (
+    <PaneHeader
+      {...paneHeaderProps}
+      paneTitle={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.label" />}
+      paneTitleRef={paneTitleRef}
+    />
+  ), []);
+
   const shortcuts = [
     {
       name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+      handler: handleKeyCommand(hasEditPerm ? handleSubmit : noop, { disabled: pristine || submitting }),
     },
   ];
 
@@ -84,10 +97,9 @@ const BatchGroupConfigurationForm = ({
       <Pane
         data-test-batch-group-configuration-settings
         defaultWidth="fill"
-        footer={paneFooter}
+        renderHeader={renderHeader}
+        footer={hasEditPerm && paneFooter}
         id="pane-batch-group-configuration"
-        paneTitle={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.label" />}
-        paneTitleRef={paneTitleRef}
       >
         <Row>
           <Col
@@ -109,6 +121,7 @@ const BatchGroupConfigurationForm = ({
                 xs={4}
               >
                 <FieldSelect
+                  isNonInteractive={!hasEditPerm}
                   dataOptions={SCHEDULE_EXPORT_OPTIONS}
                   label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.scheduleExport" />}
                   name="scheduleExport"
@@ -130,6 +143,7 @@ const BatchGroupConfigurationForm = ({
                   xs={12}
                 >
                   <WeekdaysField
+                    disabled={!hasEditPerm}
                     name="weekdays"
                     weekdays={WEEKDAYS_OPTIONS}
                   />
@@ -145,6 +159,7 @@ const BatchGroupConfigurationForm = ({
                 <Field
                   name="startTime"
                   component={Timepicker}
+                  disabled={!hasEditPerm}
                   label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.setTime" />}
                   parse={trimTime}
                   required
@@ -160,6 +175,7 @@ const BatchGroupConfigurationForm = ({
             xs={4}
           >
             <FieldSelect
+              isNonInteractive={!hasEditPerm}
               dataOptions={LOCATION_TYPE_OPTIONS}
               label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.locationType" />}
               name="ftpFormat"
@@ -172,6 +188,7 @@ const BatchGroupConfigurationForm = ({
             xs={8}
           >
             <Field
+              isNonInteractive={!hasEditPerm}
               component={TextField}
               id="uploadURI"
               label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.uploadLocation" />}
@@ -188,6 +205,7 @@ const BatchGroupConfigurationForm = ({
             xs={4}
           >
             <Field
+              isNonInteractive={!hasEditPerm}
               id="ftpPort"
               label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.port" />}
               name="ftpPort"
@@ -201,6 +219,7 @@ const BatchGroupConfigurationForm = ({
             xs={4}
           >
             <Field
+              isNonInteractive={!hasEditPerm}
               id="uploadDirectory"
               label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.directory" />}
               name="uploadDirectory"
@@ -213,6 +232,7 @@ const BatchGroupConfigurationForm = ({
             xs={4}
           >
             <FieldSelect
+              isNonInteractive={!hasEditPerm}
               dataOptions={EXPORT_FORMAT_OPTIONS}
               label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.format" />}
               name="format"
@@ -222,40 +242,48 @@ const BatchGroupConfigurationForm = ({
           </Col>
         </Row>
 
-        <Row bottom="xs">
-          <Col
-            data-test-col-username
-            xs={4}
-          >
-            <Field
-              id="username"
-              label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
-              name="username"
-              component={TextField}
-              fullWidth
-              parse={v => v}
-            />
-          </Col>
-
-          <TogglePassword name="password" />
-        </Row>
-
-        <Row>
-          <Col
-            data-test-col-test-connection
-            xs={4}
-          >
-            <Button
-              buttonStyle="primary"
-              bottomMargin0
-              data-test-connection-test-button
-              disabled={!(formValues.id && formValues.uploadURI && hasCredsSaved)}
-              onClick={testConnection}
+        <IfPermission perm="batch-voucher.export-configurations.credentials.item.get">
+          <Row bottom="xs">
+            <Col
+              data-test-col-username
+              xs={4}
             >
-              <FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.testConnection" />
-            </Button>
-          </Col>
-        </Row>
+              <Field
+                id="username"
+                label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
+                name="username"
+                isNonInteractive={!hasEditPerm}
+                component={TextField}
+                fullWidth
+                parse={v => v}
+              />
+            </Col>
+
+            <TogglePassword
+              isNonInteractive={!hasEditPerm}
+              name="password"
+            />
+          </Row>
+        </IfPermission>
+
+        {hasEditPerm && (
+          <Row>
+            <Col
+              data-test-col-test-connection
+              xs={4}
+            >
+              <Button
+                buttonStyle="primary"
+                bottomMargin0
+                data-test-connection-test-button
+                disabled={!(formValues.id && formValues.uploadURI && hasCredsSaved)}
+                onClick={testConnection}
+              >
+                <FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.testConnection" />
+              </Button>
+            </Col>
+          </Row>
+        )}
       </Pane>
     </HasCommand>
   );

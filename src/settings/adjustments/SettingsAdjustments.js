@@ -8,13 +8,18 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
-import { useShowCallout } from '@folio/stripes-acq-components';
+import {
+  PermissionedRoute,
+  useShowCallout,
+} from '@folio/stripes-acq-components';
 
 import { CONFIG_ADJUSTMENTS } from '../../common/resources';
 import SettingsAdjustmentsList from './SettingsAdjustmentsList';
 import SettingsAdjustmentsEditorContainer from './SettingsAdjustmentsEditor';
 import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsView';
 import { getSettingsAdjustmentsList } from './util';
+
+export const RETURN_LINK_LABEL_ID = 'ui-invoice.settings.adjustments.label';
 
 function SettingsAdjustments({ history, label, match: { path }, resources }) {
   const closePane = useCallback(() => {
@@ -44,8 +49,9 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
           />
         )}
       />
-      <Route
+      <PermissionedRoute
         exact
+        perm="ui-invoice.settings.all"
         path={`${path}/create`}
         render={(props) => (
           <SettingsAdjustmentsEditorContainer
@@ -53,6 +59,8 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
             close={closePane}
           />
         )}
+        returnLink={path}
+        returnLinkLabelId={RETURN_LINK_LABEL_ID}
       />
       <Route
         path={`${path}/:id/view`}
@@ -65,8 +73,9 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
           />
         )}
       />
-      <Route
+      <PermissionedRoute
         exact
+        perm="ui-invoice.settings.all"
         path={`${path}/:id/edit`}
         render={(props) => (
           <SettingsAdjustmentsEditorContainer
@@ -74,6 +83,8 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
             close={closePane}
           />
         )}
+        returnLink={path}
+        returnLinkLabelId={RETURN_LINK_LABEL_ID}
       />
     </Switch>
   );
