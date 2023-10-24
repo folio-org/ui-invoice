@@ -3,7 +3,6 @@ import { keyBy } from 'lodash';
 
 import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 
-import { createExportReport } from './createExportReport';
 import {
   acqUnit,
   address,
@@ -13,7 +12,8 @@ import {
   invoiceLine,
   orderLine,
   vendor,
-} from '../../../../../test/jest/fixtures';
+} from 'fixtures';
+import { createExportReport } from './createExportReport';
 
 test('createExportReport should return export report object', () => {
   const { result } = renderHook(() => useIntl());
@@ -22,7 +22,6 @@ test('createExportReport should return export report object', () => {
   expect(createExportReport({
     acqUnitMap: keyBy([acqUnit], 'id'),
     addressMap: keyBy([address], 'id'),
-    exchangeRateMap: { [invoice.currency]: { from: invoice.currency, exchangeRate: 1 } },
     expenseClassMap: {},
     fiscalYearMap: { [invoice.fiscalYearId]: { code: 'FY2023' } },
     intl,
