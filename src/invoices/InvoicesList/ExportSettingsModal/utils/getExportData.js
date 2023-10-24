@@ -28,7 +28,7 @@ import {
 } from '../../../../common/constants';
 import { createExportReport } from './createExportReport';
 
-export const getExportData = async ({ ky, intl, query, currency: to }) => {
+export const getExportData = async ({ ky, intl, query }) => {
   const exportInvoices = await fetchAllRecords(
     {
       GET: async ({ params: searchParams }) => {
