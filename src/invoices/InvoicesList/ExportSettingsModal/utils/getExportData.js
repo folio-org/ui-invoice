@@ -94,7 +94,7 @@ export const getExportData = async ({ ky, intl, query }) => {
     fiscalYearMap: keyBy(fiscalYears, 'id'),
     intl,
     invoiceLines,
-    invoiceMap: keyBy(exportInvoices, 'id'),
+    invoices: exportInvoices,
     poLineMap: keyBy(poLines, 'id'),
     userMap: keyBy(users, 'id'),
     vendorMap: keyBy(vendors, 'id'),
