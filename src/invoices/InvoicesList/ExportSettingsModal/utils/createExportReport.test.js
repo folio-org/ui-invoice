@@ -27,7 +27,7 @@ test('createExportReport should return export report object', () => {
     intl,
     invoiceLines: [invoiceLine],
     batchGroupMap: keyBy([batchGroup], 'id'),
-    invoiceMap: keyBy([invoice], 'id'),
+    invoices: [invoice],
     poLineMap: keyBy([orderLine], 'id'),
     userMap: {},
     vendorMap: keyBy([vendor], 'id'),
