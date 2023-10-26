@@ -484,6 +484,8 @@
   "permission.acq.unit.assignment.manage": "Invoice: Manage acquisition units",
   "permission.approve": "Invoice: Approve invoices",
   "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
+  "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
+  "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
   "permission.invoice.create": "Invoice: Can view, edit and create new Invoices and Invoice lines",
   "permission.invoice.delete": "Invoice: Can view, edit and delete Invoices and Invoice lines",
   "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",

@@ -296,6 +296,25 @@
         ]
       },
       {
+        "permissionName": "ui-invoice.batchVoucher.exportConfigs.credentials.view",
+        "displayName": "Settings (Invoices): Batch group usernames and passwords: view",
+        "visible": true,
+        "subPermissions": [
+          "batch-voucher.export-configurations.credentials.item.get",
+          "batch-voucher.export-configurations.credentials.test"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.batchVoucher.exportConfigs.credentials.edit",
+        "displayName": "Settings (Invoices): Batch group usernames and passwords: view and edit",
+        "visible": true,
+        "subPermissions": [
+          "ui-invoice.batchVoucher.exportConfigs.credentials.view",
+          "batch-voucher.export-configurations.credentials.item.post",
+          "batch-voucher.export-configurations.credentials.item.put"
+        ]
+      },
+      {
         "permissionName": "ui-invoice.settings.view",
         "displayName": "Settings (Invoices): View settings",
         "visible": true,
@@ -320,10 +339,6 @@
           "batch-groups.item.delete",
           "batch-groups.item.post",
           "batch-groups.item.put",
-          "batch-voucher.export-configurations.credentials.item.get",
-          "batch-voucher.export-configurations.credentials.item.post",
-          "batch-voucher.export-configurations.credentials.item.put",
-          "batch-voucher.export-configurations.credentials.test",
           "batch-voucher.export-configurations.item.delete",
           "batch-voucher.export-configurations.item.post",
           "batch-voucher.export-configurations.item.put",
