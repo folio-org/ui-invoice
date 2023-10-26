@@ -8,7 +8,6 @@ import {
   ACQUISITIONS_UNITS_API,
   CONFIG_ADDRESSES,
   CONFIG_API,
-  EXCHANGE_RATE_API,
   EXPENSE_CLASSES_API,
   fetchAllRecords,
   fetchExportDataByIds,
@@ -29,7 +28,7 @@ import {
 } from '../../../../common/constants';
 import { createExportReport } from './createExportReport';
 
-export const getExportData = async ({ ky, intl, query, currency: to }) => {
+export const getExportData = async ({ ky, intl, query }) => {
   const exportInvoices = await fetchAllRecords(
     {
       GET: async ({ params: searchParams }) => {
@@ -84,10 +83,6 @@ export const getExportData = async ({ ky, intl, query, currency: to }) => {
     ky, ids: addressIds, buildQuery: buildAddressQuery, api: CONFIG_API, records: 'configs',
   });
   const addresses = getAddresses(addressRecords);
-  const currencies = uniq(exportInvoices.map(({ currency }) => currency));
-  const exchangeRates = await Promise.all(
-    currencies.map(from => ky.get(EXCHANGE_RATE_API, { searchParams: { from, to } }).json()),
-  );
   const fiscalYearIds = uniq(exportInvoices.map(({ fiscalYearId }) => fiscalYearId));
   const fiscalYears = await fetchExportDataByIds({ ky, ids: fiscalYearIds, api: FISCAL_YEARS_API, records: 'fiscalYears' });
 
@@ -95,12 +90,11 @@ export const getExportData = async ({ ky, intl, query, currency: to }) => {
     acqUnitMap: keyBy(acqUnits, 'id'),
     addressMap: keyBy(addresses, 'id'),
     batchGroupMap: keyBy(batchGroups, 'id'),
-    exchangeRateMap: keyBy(exchangeRates, 'from'),
     expenseClassMap: keyBy(expenseClasses, 'id'),
     fiscalYearMap: keyBy(fiscalYears, 'id'),
     intl,
     invoiceLines,
-    invoiceMap: keyBy(exportInvoices, 'id'),
+    invoices: exportInvoices,
     poLineMap: keyBy(poLines, 'id'),
     userMap: keyBy(users, 'id'),
     vendorMap: keyBy(vendors, 'id'),

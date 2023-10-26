@@ -15,7 +15,6 @@ export const exportReport = [
     'disbursementDate': null,
     'disbursementNumber': undefined,
     'enclosureNeeded': undefined,
-    'exchangeRate': 1,
     'exportToAccounting': true,
     'externalAccountNumber': undefined,
     'fiscalYear': 'FY2023',
