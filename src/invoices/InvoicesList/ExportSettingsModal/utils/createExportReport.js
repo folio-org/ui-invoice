@@ -1,3 +1,6 @@
+import flatten from 'lodash/flatten';
+import groupBy from 'lodash/groupBy';
+
 import {
   calculateFundAmount,
   formatDate,
@@ -47,86 +50,206 @@ const getExportAdjustmentData = (adjustments) => (
   )).join(' | ').replace(/\n\s+/g, '')
 );
 
+const getInvoiceExportData = ({
+  acqUnitMap,
+  addressMap,
+  batchGroupMap,
+  expenseClassMap,
+  fiscalYearMap,
+  intl,
+  invoice,
+  invoiceLines,
+  invalidReferenceLabel,
+  userMap,
+  vendorMap,
+  voucherLines,
+  vouchers,
+}) => {
+  const voucher = vouchers.find(({ invoiceId }) => invoiceId === invoice.id) || {};
+  const voucherLine = voucherLines.find(({ voucherId }) => voucherId === voucher.id) || {};
+  const totalUnits = invoiceLines?.reduce((total, { quantity }) => (total + +quantity), 0) ?? 0;
+
+  return {
+    subTotal: invoice.subTotal,
+    adjustmentsTotal: invoice.adjustmentsTotal,
+    totalAmount: invoice.total,
+    lockTotal: invoice.lockTotal,
+    invoiceFundDistributions: getExportFundDistributionData(
+      invoice.adjustments,
+      expenseClassMap,
+      invalidReferenceLabel,
+      invoice.currency,
+    ),
+    invoiceAdjustments: getExportAdjustmentData(invoice.adjustments),
+    accountingCode: invoice.accountingCode,
+    vendorAddress: getExportVendorPrimaryAddress(vendorMap[invoice.vendorId]),
+    paymentMethod: invoice.paymentMethod,
+    chkSubscriptionOverlap: invoice.chkSubscriptionOverlap,
+    exportToAccounting: invoice.exportToAccounting,
+    enclosureNeeded: invoice.enclosureNeeded,
+    currency: invoice.currency,
+    exchangeRate: invoice.exchangeRate,
+    invoiceTags: invoice.tags?.tagList?.join(' | '),
+    voucherNumber: invoice.voucherNumber,
+    vendorInvoiceNo: invoice.vendorInvoiceNo,
+    vendorCode: vendorMap[invoice.vendorId]?.code ?? invalidReferenceLabel,
+    status: invoice.status,
+    fiscalYear: fiscalYearMap[invoice.fiscalYearId]?.code,
+    invoiceDate: formatDate(invoice.invoiceDate, intl),
+    paymentDue: formatDate(invoice.paymentDue, intl),
+    approvalDate: formatDate(invoice.approvalDate, intl),
+    approvedBy: userMap[invoice.approvedBy]?.username,
+    paymentTerms: invoice.paymentTerms,
+    acqUnitIds: invoice.acqUnitIds?.map(id => acqUnitMap[id]?.name).filter(Boolean).join(' | '),
+    note: invoice.note,
+    billTo: invoice.billTo && getExportAddressData(invoice.billTo, addressMap, invalidReferenceLabel),
+    batchGroup: batchGroupMap[invoice.batchGroupId]?.name ?? invalidReferenceLabel,
+    paymentDate: formatDate(invoice.paymentDate, intl),
+    totalUnits,
+    externalAccountNumber: voucherLine.externalAccountNumber,
+    voucherStatus: voucher.status,
+    voucherDate: formatDate(voucher.voucherDate, intl),
+    disbursementNumber: voucher.disbursementNumber,
+    disbursementDate: formatDate(voucher.disbursementDate, intl),
+  };
+};
+
+function getInvoiceLineExportData({
+  expenseClassMap,
+  intl,
+  invalidReferenceLabel,
+  invoice,
+  invoiceLine: line,
+  poLineMap,
+}) {
+  return {
+    invoiceLineNumber: line.invoiceLineNumber,
+    description: line.description,
+    poLineNumber: poLineMap[line.poLineId]?.poLineNumber,
+    subscriptionInfo: line.subscriptionInfo,
+    subscriptionStart: formatDate(line.subscriptionStart, intl),
+    subscriptionEnd: formatDate(line.subscriptionEnd, intl),
+    comment: line.comment,
+    accountNumber: line.accountNumber,
+    lineAccountingCode: line.accountingCode,
+    quantity: line.quantity,
+    lineSubTotal: line.subTotal,
+    lineAdjustments: getExportAdjustmentData(line.adjustments),
+    total: line.total,
+    lineFundDistributions: getExportFundDistributionData(
+      line,
+      expenseClassMap,
+      invalidReferenceLabel,
+      invoice.currency,
+    ),
+    referenceNumbers: getExportReferenceNumbers(line),
+    lineTags: line.tags?.tagList?.join(' | '),
+  };
+}
+
+const buildExportRow = ({
+  acqUnitMap,
+  addressMap,
+  batchGroupMap,
+  expenseClassMap,
+  fiscalYearMap,
+  intl,
+  invoice,
+  invoiceLine,
+  invoiceLines,
+  poLineMap,
+  userMap,
+  vendorMap,
+  voucherLines,
+  vouchers,
+}) => {
+  const invalidReferenceLabel = intl.formatMessage({ id: 'stripes-acq-components.invalidReference' });
+
+  const invoiceExportData = getInvoiceExportData({
+    acqUnitMap,
+    addressMap,
+    batchGroupMap,
+    expenseClassMap,
+    fiscalYearMap,
+    intl,
+    invoice,
+    invoiceLines,
+    invalidReferenceLabel,
+    userMap,
+    vendorMap,
+    voucherLines,
+    vouchers,
+  });
+
+  const invoiceLineExportData = invoiceLine
+    ? getInvoiceLineExportData({
+      expenseClassMap,
+      intl,
+      invalidReferenceLabel,
+      invoice,
+      invoiceLine,
+      poLineMap,
+    })
+    : {};
+
+  return {
+    ...invoiceExportData,
+    ...invoiceLineExportData,
+  };
+};
+
+const buildInvoiceExportRows = ({
+  intl,
+  invoice,
+  invoiceLines: _invoiceLines,
+  ...params
+}) => {
+  const invoiceLinesGroupedByInvoice = groupBy(_invoiceLines, 'invoiceId');
+  const invoiceLines = invoiceLinesGroupedByInvoice[invoice.id];
+
+  const buildRow = (invoiceLine) => buildExportRow({
+    intl,
+    invoice,
+    invoiceLine,
+    invoiceLines,
+    ...params,
+  });
+
+  return invoiceLines?.length
+    ? invoiceLines.map(buildRow)
+    : [buildRow()];
+};
+
 export const createExportReport = ({
   acqUnitMap,
   addressMap,
   batchGroupMap,
-  exchangeRateMap,
   expenseClassMap,
   fiscalYearMap,
   intl,
+  invoices = [],
   invoiceLines = [],
-  invoiceMap,
   poLineMap,
   userMap,
   vendorMap,
   voucherLines = [],
   vouchers = [],
 }) => {
-  const invalidReference = intl.formatMessage({ id: 'stripes-acq-components.invalidReference' });
+  const exportRows = invoices.map(invoice => buildInvoiceExportRows({
+    acqUnitMap,
+    addressMap,
+    batchGroupMap,
+    expenseClassMap,
+    fiscalYearMap,
+    invoice,
+    intl,
+    invoiceLines,
+    poLineMap,
+    userMap,
+    vendorMap,
+    voucherLines,
+    vouchers,
+  }));
 
-  return invoiceLines.map(line => {
-    const invoice = invoiceMap[line.invoiceId] || {};
-    const voucher = vouchers.find(({ invoiceId }) => invoiceId === invoice.id) || {};
-    const voucherLine = voucherLines.find(({ voucherId }) => voucherId === voucher.id) || {};
-    const totalUnits = invoiceLines.filter(({ invoiceId }) => invoiceId === invoice.id)
-      .reduce((total, { quantity }) => (total + +quantity), 0);
-
-    return ({
-      vendorInvoiceNo: invoice.vendorInvoiceNo,
-      vendorCode: vendorMap[invoice.vendorId]?.code ?? invalidReference,
-      status: invoice.status,
-      fiscalYear: fiscalYearMap[invoice.fiscalYearId]?.code,
-      invoiceDate: formatDate(invoice.invoiceDate, intl),
-      paymentDue: formatDate(invoice.paymentDue, intl),
-      approvalDate: formatDate(invoice.approvalDate, intl),
-      approvedBy: userMap[invoice.approvedBy]?.username,
-      paymentTerms: invoice.paymentTerms,
-      acqUnitIds: invoice.acqUnitIds?.map(id => acqUnitMap[id]?.name).filter(Boolean).join(' | '),
-      note: invoice.note,
-      billTo: invoice.billTo && getExportAddressData(invoice.billTo, addressMap, invalidReference),
-      batchGroup: batchGroupMap[invoice.batchGroupId]?.name ?? invalidReference,
-      paymentDate: formatDate(invoice.paymentDate, intl),
-      totalUnits,
-      subTotal: invoice.subTotal,
-      adjustmentsTotal: invoice.adjustmentsTotal,
-      totalAmount: invoice.total,
-      lockTotal: invoice.lockTotal,
-      invoiceFundDistributions: getExportFundDistributionData(
-        invoice.adjustments, expenseClassMap, invalidReference, invoice.currency,
-      ),
-      invoiceAdjustments: getExportAdjustmentData(invoice.adjustments),
-      accountingCode: invoice.accountingCode,
-      vendorAddress: getExportVendorPrimaryAddress(vendorMap[invoice.vendorId]),
-      paymentMethod: invoice.paymentMethod,
-      chkSubscriptionOverlap: invoice.chkSubscriptionOverlap,
-      exportToAccounting: invoice.exportToAccounting,
-      enclosureNeeded: invoice.enclosureNeeded,
-      currency: invoice.currency,
-      exchangeRate: invoice.exchangeRate || exchangeRateMap[invoice.currency]?.exchangeRate,
-      invoiceTags: invoice.tags?.tagList?.join(' | '),
-      invoiceLineNumber: line.invoiceLineNumber,
-      description: line.description,
-      poLineNumber: poLineMap[line.poLineId]?.poLineNumber,
-      subscriptionInfo: line.subscriptionInfo,
-      subscriptionStart: formatDate(line.subscriptionStart, intl),
-      subscriptionEnd: formatDate(line.subscriptionEnd, intl),
-      comment: line.comment,
-      accountNumber: line.accountNumber,
-      lineAccountingCode: line.accountingCode,
-      quantity: line.quantity,
-      lineSubTotal: line.subTotal,
-      lineAdjustments: getExportAdjustmentData(line.adjustments),
-      total: line.total,
-      lineFundDistributions: getExportFundDistributionData(line, expenseClassMap, invalidReference, invoice.currency),
-      externalAccountNumber: voucherLine.externalAccountNumber,
-      referenceNumbers: getExportReferenceNumbers(line),
-      lineTags: line.tags?.tagList?.join(' | '),
-      voucherNumber: invoice.voucherNumber,
-      voucherStatus: voucher.status,
-      voucherDate: formatDate(voucher.voucherDate, intl),
-      disbursementNumber: voucher.disbursementNumber,
-      disbursementDate: formatDate(voucher.disbursementDate, intl),
-    });
-  });
+  return flatten(exportRows);
 };
