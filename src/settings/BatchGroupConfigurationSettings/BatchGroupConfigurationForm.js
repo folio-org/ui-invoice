@@ -19,7 +19,10 @@ import {
   Row,
   Timepicker,
 } from '@folio/stripes/components';
-import { IfPermission, useStripes } from '@folio/stripes/core';
+import {
+  IfPermission,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   FieldSelectFinal as FieldSelect,
   TextField,
@@ -28,10 +31,14 @@ import {
   validateRequired,
 } from '@folio/stripes-acq-components';
 
+import {
+  CredentialsField,
+  CredentialsFieldsGroup,
+  CredentialsToggle,
+} from '../../common/components';
 import { hasEditSettingsPerm } from '../utils';
 import BatchGroupConfigurationFormFooter from './BatchGroupConfigurationFormFooter';
 import BatchGroupsField from './BatchGroupsField';
-import TogglePassword from './TogglePassword';
 import WeekdaysField from './WeekdaysField';
 import { validateUploadURI } from './utils';
 import {
@@ -64,6 +71,7 @@ const BatchGroupConfigurationForm = ({
   const scheduleExportWeekly = formValues.scheduleExport === SCHEDULE_EXPORT.weekly;
   const placeholder = formValues.ftpFormat || LOCATION_TYPES.FTP;
   const hasEditPerm = hasEditSettingsPerm(stripes);
+  const hasEditCredentialsPerm = hasEditPerm && stripes.hasPerm('ui-invoice.batchVoucher.exportConfigs.credentials.edit');
 
   const paneFooter = (
     <BatchGroupConfigurationFormFooter
@@ -243,30 +251,37 @@ const BatchGroupConfigurationForm = ({
         </Row>
 
         <IfPermission perm="batch-voucher.export-configurations.credentials.item.get">
-          <Row bottom="xs">
-            <Col
-              data-test-col-username
-              xs={4}
-            >
-              <Field
-                id="username"
-                label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
-                name="username"
-                isNonInteractive={!hasEditPerm}
-                component={TextField}
-                fullWidth
-                parse={v => v}
-              />
-            </Col>
-
-            <TogglePassword
-              isNonInteractive={!hasEditPerm}
-              name="password"
-            />
-          </Row>
+          <CredentialsFieldsGroup>
+            <Row bottom="xs">
+              <Col
+                data-test-col-username
+                xs={4}
+              >
+                <CredentialsField
+                  id="username"
+                  isNonInteractive={!hasEditCredentialsPerm}
+                  label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
+                  name="username"
+                  parse={v => v}
+                  />
+              </Col>
+              <Col xs={4}>
+                <CredentialsField
+                  autoComplete="new-password"
+                  id="password"
+                  isNonInteractive={!hasEditCredentialsPerm}
+                  label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.password" />}
+                  name="password"
+                />
+              </Col>
+              <Col xs={2}>
+                <CredentialsToggle />
+              </Col>
+            </Row>
+          </CredentialsFieldsGroup>
         </IfPermission>
 
-        {hasEditPerm && (
+        <IfPermission perm="batch-voucher.export-configurations.credentials.test">
           <Row>
             <Col
               data-test-col-test-connection
@@ -283,7 +298,7 @@ const BatchGroupConfigurationForm = ({
               </Button>
             </Col>
           </Row>
-        )}
+        </IfPermission>
       </Pane>
     </HasCommand>
   );
