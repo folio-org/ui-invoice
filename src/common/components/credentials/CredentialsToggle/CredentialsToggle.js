@@ -21,7 +21,7 @@ export const CredentialsToggle = ({ label, ...props }) => {
       </Button>
     </div>
   );
-}
+};
 
 CredentialsToggle.propTypes = {
   label: PropTypes.node,

@@ -11,7 +11,6 @@ import { CredentialsContext } from '../CredentialsContext';
 const CHAR_REPLACER = '•';
 
 export const CredentialsField = ({
-  disabled,
   isNonInteractive,
   name,
   ...props

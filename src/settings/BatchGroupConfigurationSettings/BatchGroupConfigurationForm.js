@@ -263,7 +263,7 @@ const BatchGroupConfigurationForm = ({
                   label={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.username" />}
                   name="username"
                   parse={v => v}
-                  />
+                />
               </Col>
               <Col xs={4}>
                 <CredentialsField

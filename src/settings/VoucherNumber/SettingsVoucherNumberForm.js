@@ -6,7 +6,6 @@ import {
   Col,
   Row,
   Checkbox,
-  TextField,
 } from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 import { TextField } from '@folio/stripes-acq-components';
@@ -15,7 +14,6 @@ import SettingsVoucherNumberReset from './SettingsVoucherNumberReset';
 import { hasEditSettingsPerm } from '../utils';
 
 import css from './VoucherNumber.css';
-
 
 const validatePrefix = prefix => (
   prefix?.match(/[^a-zA-Z]/)
@@ -41,9 +39,9 @@ const SettingsVoucherNumberForm = () => {
           />
         </Col>
       </Row>
-  
+
       <SettingsVoucherNumberReset isNonInteractive={!hasEditPerm} />
-  
+
       <Row>
         <Col xs={12} className={css.allowNumberEdit}>
           <Field

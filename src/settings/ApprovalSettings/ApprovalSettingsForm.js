@@ -26,7 +26,7 @@ const ApprovalSettingsForm = () => {
         />
       </Col>
     </Row>
-  )
+  );
 };
 
 export default ApprovalSettingsForm;
