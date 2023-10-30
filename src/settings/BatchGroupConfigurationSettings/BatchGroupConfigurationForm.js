@@ -6,7 +6,7 @@ import {
 } from 'react-intl';
 import { Field } from 'react-final-form';
 import { OnChange } from 'react-final-form-listeners';
-import { get, noop } from 'lodash';
+import { get } from 'lodash';
 
 import stripesFinalForm from '@folio/stripes/final-form';
 import {
@@ -87,12 +87,12 @@ const BatchGroupConfigurationForm = ({
       paneTitle={<FormattedMessage id="ui-invoice.settings.batchGroupConfiguration.label" />}
       paneTitleRef={paneTitleRef}
     />
-  ), []);
+  ), [paneTitleRef]);
 
   const shortcuts = [
     {
       name: 'save',
-      handler: handleKeyCommand(hasEditPerm ? handleSubmit : noop, { disabled: pristine || submitting }),
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting || !hasEditPerm }),
     },
   ];
 
