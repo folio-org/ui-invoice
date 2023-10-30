@@ -8,7 +8,7 @@ import { TextField } from '@folio/stripes-acq-components';
 
 import { CredentialsContext } from '../CredentialsContext';
 
-const CHAR_REPLACER = '•';
+export const CHAR_REPLACER = '•';
 
 export const CredentialsField = ({
   isNonInteractive,
