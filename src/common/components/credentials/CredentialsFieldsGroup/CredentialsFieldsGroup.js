@@ -4,13 +4,13 @@ import { useMemo, useState } from 'react';
 import { CredentialsContext } from '../CredentialsContext';
 
 export const CredentialsFieldsGroup = ({ children }) => {
-  const [isCredsVisible, setCredsVisible] = useState(false);
-  const toggleCreds = useMemo(() => () => setCredsVisible(prev => !prev), []);
+  const [isCredsVisible, setIsCredsVisible] = useState(false);
+  const toggleCreds = useMemo(() => () => setIsCredsVisible(prev => !prev), []);
 
-  const contextValue = {
+  const contextValue = useMemo(() => ({
     isCredsVisible,
     toggleCreds,
-  };
+  }), [isCredsVisible, toggleCreds]);
 
   return (
     <CredentialsContext.Provider value={contextValue}>
