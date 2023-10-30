@@ -322,10 +322,10 @@
     "invoice.details.voucher.accountNo": "Account number",
     "invoiceLine.relink.success": "Invoice line has been linked to POL {poLineNumber}",
     "invoice.billTo": "Bill to",
-    "invoice.address": "Address",
+    "invoice.address": "Dirección",
     "invoice.cancellationNote": "Cancellation note",
     "voucher.status.awaitingPayment": "Awaiting payment",
-    "voucher.status.paid": "Paid",
+    "voucher.status.paid": "Pagado",
     "invoice.details.vendor.code": "Vendor code",
     "invoice.details.voucher.vendor": "Vendor",
     "invoice.actions.approve.error.organizationIsNotVendor": "Invoice cannot be approved because the associated Vendor Id belongs to a non-vendor organization.",
@@ -344,9 +344,9 @@
     "invoice.actions.print": "Print voucher",
     "invoice.actions.cancel.success": "Invoice has been cancelled successfully",
     "invoice.actions.cancel.error": "Invoice was not cancelled",
-    "invoice.actions.cancel.heading": "Cancel invoice",
+    "invoice.actions.cancel.heading": "Cancelar factura",
     "invoice.actions.cancel.message": "Are you sure you want to cancel this invoice? Any related transactions against funds will be voided.",
-    "voucher.print": "Print",
+    "voucher.print": "Imprimir",
     "voucher.print.isLoading": "Print voucher data is loading",
     "voucher.print.voucher": "Voucher",
     "voucher.print.voucherTotal": "Voucher total",
@@ -445,5 +445,5 @@
     "otherRelatedInvoiceLines.subscriptionDescription": "Subscription info",
     "otherRelatedInvoiceLines.fiscalYear": "Fiscal year",
     "invoiceLine.accountNumber.inactive": "The selected account number is inactive.",
-    "inactive": "Inactive"
+    "inactive": "Inactivo"
 }
