@@ -444,6 +444,6 @@
     "otherRelatedInvoiceLines.subscriptionEnd": "订阅结束",
     "otherRelatedInvoiceLines.subscriptionDescription": "订阅信息",
     "otherRelatedInvoiceLines.fiscalYear": "财务年度",
-    "invoiceLine.accountNumber.inactive": "The selected account number is inactive.",
-    "inactive": "Inactive"
+    "invoiceLine.accountNumber.inactive": "所选帐号处于非激活状态。",
+    "inactive": "未激活"
 }
