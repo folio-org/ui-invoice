@@ -2,8 +2,12 @@
 
 ## (5.1.0 IN PROGRESS)
 
-* Use an exchange rate from an invoice instead of the API when exporting the invoice to CSV. Refs UINV-509.
 * Introduce new permission to view all invoices' settings. Refs UINV-458.
+
+## [5.0.1](https://github.com/folio-org/ui-invoice/tree/v5.0.1) (2023-10-31)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v5.0.0...v5.0.1)
+
+* Use an exchange rate from an invoice instead of the API when exporting the invoice to CSV. Refs UINV-509.
 
 ## [5.0.0](https://github.com/folio-org/ui-invoice/tree/v5.0.0) (2023-10-12)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v4.0.1...v5.0.0)
