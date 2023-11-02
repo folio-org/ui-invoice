@@ -9,11 +9,12 @@ import {
   Label,
 } from '@folio/stripes/components';
 
-const WeekdaysField = ({ name, weekdays }) => {
+const WeekdaysField = ({ name, disabled, weekdays }) => {
   const WeekdaysGroup = ({ fields, options }) => (
     options.map((weekday, index) => (
       <Field
         key={index}
+        disabled={disabled}
         component={Checkbox}
         label={weekday.label}
         name={`${fields.name}[${weekday.value}]`}
@@ -39,11 +40,13 @@ const WeekdaysField = ({ name, weekdays }) => {
 };
 
 WeekdaysField.propTypes = {
+  disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   weekdays: PropTypes.arrayOf(PropTypes.object),
 };
 
 WeekdaysField.defaultProps = {
+  disabled: false,
   weekdays: [],
 };
 

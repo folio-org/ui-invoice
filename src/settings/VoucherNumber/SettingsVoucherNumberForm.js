@@ -6,9 +6,12 @@ import {
   Col,
   Row,
   Checkbox,
-  TextField,
 } from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
+import { TextField } from '@folio/stripes-acq-components';
+
 import SettingsVoucherNumberReset from './SettingsVoucherNumberReset';
+import { hasEditSettingsPerm } from '../utils';
 
 import css from './VoucherNumber.css';
 
@@ -18,34 +21,41 @@ const validatePrefix = prefix => (
     : undefined
 );
 
-const SettingsVoucherNumberForm = () => (
-  <>
-    <Row>
-      <Col xs={12}>
-        <Field
-          component={TextField}
-          id="voucherNumberPrefix"
-          label={<FormattedMessage id="ui-invoice.settings.voucherNumber.prefix" />}
-          name="voucherNumberPrefix"
-          validate={validatePrefix}
-        />
-      </Col>
-    </Row>
+const SettingsVoucherNumberForm = () => {
+  const stripes = useStripes();
+  const hasEditPerm = hasEditSettingsPerm(stripes);
 
-    <SettingsVoucherNumberReset />
+  return (
+    <>
+      <Row>
+        <Col xs={12}>
+          <Field
+            isNonInteractive={!hasEditPerm}
+            component={TextField}
+            id="voucherNumberPrefix"
+            label={<FormattedMessage id="ui-invoice.settings.voucherNumber.prefix" />}
+            name="voucherNumberPrefix"
+            validate={validatePrefix}
+          />
+        </Col>
+      </Row>
 
-    <Row>
-      <Col xs={12} className={css.allowNumberEdit}>
-        <Field
-          component={Checkbox}
-          label={<FormattedMessage id="ui-invoice.settings.voucherNumber.allowVoucherNumberEdit" />}
-          name="allowVoucherNumberEdit"
-          type="checkbox"
-        />
-      </Col>
-    </Row>
-  </>
-);
+      <SettingsVoucherNumberReset isNonInteractive={!hasEditPerm} />
+
+      <Row>
+        <Col xs={12} className={css.allowNumberEdit}>
+          <Field
+            disabled={!hasEditPerm}
+            component={Checkbox}
+            label={<FormattedMessage id="ui-invoice.settings.voucherNumber.allowVoucherNumberEdit" />}
+            name="allowVoucherNumberEdit"
+            type="checkbox"
+          />
+        </Col>
+      </Row>
+    </>
+  );
+};
 
 SettingsVoucherNumberForm.propTypes = {};
 

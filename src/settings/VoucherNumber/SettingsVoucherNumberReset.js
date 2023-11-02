@@ -18,7 +18,7 @@ import {
   VOUCHER_NUMBER_START,
 } from '../../common/resources';
 
-const SettingsVoucherNumberReset = ({ resources, mutator }) => {
+const SettingsVoucherNumberReset = ({ resources, mutator, isNonInteractive = false }) => {
   const sendCallout = useShowCallout();
   const [sequenceNumber, setSequenceNumber] = useState();
 
@@ -55,14 +55,25 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
     <>
       <Row>
         <Col xs={12}>
-          <TextField
-            id="sequenceNumber"
-            label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
-            name="sequenceNumber"
-            type="number"
-            value={sequenceNumber}
-            onChange={({ target }) => setSequenceNumber(target.value)}
-          />
+          {
+            isNonInteractive
+              ? (
+                <KeyValue
+                  label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
+                  value={sequenceNumber}
+                />
+              )
+              : (
+                <TextField
+                  id="sequenceNumber"
+                  label={<FormattedMessage id="ui-invoice.settings.voucherNumber.startNumber" />}
+                  name="sequenceNumber"
+                  type="number"
+                  value={sequenceNumber}
+                  onChange={({ target }) => setSequenceNumber(target.value)}
+                />
+              )
+          }
         </Col>
       </Row>
       <Row>
@@ -85,13 +96,15 @@ const SettingsVoucherNumberReset = ({ resources, mutator }) => {
       </Row>
       <Row>
         <Col xs={12}>
-          <Button
-            onClick={onReset}
-            disabled={!sequenceNumber}
-            data-test-invoice-settings-voucher-number-reset
-          >
-            <FormattedMessage id="ui-invoice.settings.voucherNumber.reset" />
-          </Button>
+          {!isNonInteractive && (
+            <Button
+              onClick={onReset}
+              disabled={!sequenceNumber}
+              data-test-invoice-settings-voucher-number-reset
+            >
+              <FormattedMessage id="ui-invoice.settings.voucherNumber.reset" />
+            </Button>
+          )}
         </Col>
       </Row>
     </>
@@ -104,6 +117,7 @@ SettingsVoucherNumberReset.manifest = Object.freeze({
 });
 
 SettingsVoucherNumberReset.propTypes = {
+  isNonInteractive: PropTypes.bool,
   mutator: PropTypes.object.isRequired,
   resources: PropTypes.object.isRequired,
 };

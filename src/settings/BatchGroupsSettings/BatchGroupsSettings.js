@@ -9,6 +9,8 @@ import { stripesShape } from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
 import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
 
+import { hasEditSettingsPerm } from '../utils';
+
 const columnMapping = {
   name: <FormattedMessage id="ui-invoice.settings.batchGroups.column.name" />,
   description: <FormattedMessage id="ui-invoice.settings.batchGroups.column.description" />,
@@ -34,7 +36,7 @@ class BatchGroupsSettings extends React.Component {
         baseUrl="batch-groups"
         columnMapping={columnMapping}
         data-test-batch-groups-settings
-        editable
+        editable={hasEditSettingsPerm(stripes)}
         hiddenFields={['numberOfObjects']}
         id="batch-groups"
         preUpdateHook={preUpdateHook}

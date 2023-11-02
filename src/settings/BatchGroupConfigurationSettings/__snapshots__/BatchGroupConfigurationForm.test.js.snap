@@ -458,11 +458,12 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 autocapitalize="off"
                 autocomplete="off"
                 autocorrect="off"
+                data-testid="credentials-field"
                 error=""
                 id="username"
                 name="username"
                 spellcheck="false"
-                type="text"
+                type="password"
                 value=""
                 warning=""
               />
@@ -492,6 +493,7 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 autocapitalize="off"
                 autocomplete="new-password"
                 autocorrect="off"
+                data-testid="credentials-field"
                 error=""
                 id="password"
                 name="password"
@@ -509,18 +511,20 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
         <div
           class="col-xs-2"
         >
-          <button
-            class="button default"
-            data-test-toggle-password-button="true"
-            style="margin-bottom: 15px;"
-            type="button"
+          <div
+            class="toggle"
           >
-            <span
-              class="inner"
+            <button
+              class="button default"
+              type="button"
             >
-              ui-invoice.settings.batchGroupConfiguration.password.show
-            </span>
-          </button>
+              <span
+                class="inner"
+              >
+                ui-invoice.settings.batchGroupConfiguration.password.show
+              </span>
+            </button>
+          </div>
         </div>
       </div>
       <div

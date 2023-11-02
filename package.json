@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -296,33 +296,56 @@
         ]
       },
       {
-        "permissionName": "ui-invoice.settings.all",
-        "displayName": "Settings (Invoices): Can view and edit settings",
+        "permissionName": "ui-invoice.batchVoucher.exportConfigs.credentials.view",
+        "displayName": "Settings (Invoices): Batch group usernames and passwords: view",
+        "visible": true,
+        "subPermissions": [
+          "batch-voucher.export-configurations.credentials.item.get",
+          "batch-voucher.export-configurations.credentials.test"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.batchVoucher.exportConfigs.credentials.edit",
+        "displayName": "Settings (Invoices): Batch group usernames and passwords: view and edit",
+        "visible": true,
+        "subPermissions": [
+          "ui-invoice.batchVoucher.exportConfigs.credentials.view",
+          "batch-voucher.export-configurations.credentials.item.post",
+          "batch-voucher.export-configurations.credentials.item.put"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.settings.view",
+        "displayName": "Settings (Invoices): View settings",
         "visible": true,
         "subPermissions": [
           "settings.invoice.enabled",
           "batch-groups.collection.get",
-          "batch-groups.item.delete",
           "batch-groups.item.get",
+          "batch-voucher.export-configurations.collection.get",
+          "batch-voucher.export-configurations.item.get",
+          "configuration.entries.collection.get",
+          "configuration.entries.item.get",
+          "voucher-number.start.get",
+          "users.collection.get"
+        ]
+      },
+      {
+        "permissionName": "ui-invoice.settings.all",
+        "displayName": "Settings (Invoices): Can view and edit settings",
+        "visible": true,
+        "subPermissions": [
+          "ui-invoice.settings.view",
+          "batch-groups.item.delete",
           "batch-groups.item.post",
           "batch-groups.item.put",
-          "batch-voucher.export-configurations.collection.get",
-          "batch-voucher.export-configurations.credentials.item.get",
-          "batch-voucher.export-configurations.credentials.item.post",
-          "batch-voucher.export-configurations.credentials.item.put",
-          "batch-voucher.export-configurations.credentials.test",
           "batch-voucher.export-configurations.item.delete",
-          "batch-voucher.export-configurations.item.get",
           "batch-voucher.export-configurations.item.post",
           "batch-voucher.export-configurations.item.put",
-          "configuration.entries.collection.get",
           "configuration.entries.item.delete",
-          "configuration.entries.item.get",
           "configuration.entries.item.post",
           "configuration.entries.item.put",
-          "voucher-number.start.get",
-          "voucher-number.start.post",
-          "users.collection.get"
+          "voucher-number.start.post"
         ]
       },
       {
