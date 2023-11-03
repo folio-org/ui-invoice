@@ -2,10 +2,10 @@ import React, { useCallback } from 'react';
 import {
   Route,
   Switch,
+  withRouter,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { withRouter } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
@@ -59,9 +59,7 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
       >
-        <SettingsAdjustmentsEditor
-          close={closePane}
-        />
+        <SettingsAdjustmentsEditor close={closePane} />
       </PermissionedRoute>
       <Route
         path={`${path}/:id/view`}
@@ -81,9 +79,7 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
       >
-        <SettingsAdjustmentsEditor
-          close={closePane}
-        />
+        <SettingsAdjustmentsEditor close={closePane} />
       </PermissionedRoute>
     </Switch>
   );
