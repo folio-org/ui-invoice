@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import {
   Route,
   Switch,
+  withRouter,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -20,6 +21,8 @@ import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsView';
 import { getSettingsAdjustmentsList } from './util';
 
 export const RETURN_LINK_LABEL_ID = 'ui-invoice.settings.adjustments.label';
+
+const SettingsAdjustmentsEditor = withRouter(SettingsAdjustmentsEditorContainer);
 
 function SettingsAdjustments({ history, label, match: { path }, resources }) {
   const closePane = useCallback(() => {
@@ -53,15 +56,11 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
         exact
         perm="ui-invoice.settings.all"
         path={`${path}/create`}
-        render={(props) => (
-          <SettingsAdjustmentsEditorContainer
-            {...props}
-            close={closePane}
-          />
-        )}
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
-      />
+      >
+        <SettingsAdjustmentsEditor close={closePane} />
+      </PermissionedRoute>
       <Route
         path={`${path}/:id/view`}
         render={(props) => (
@@ -77,15 +76,11 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
         exact
         perm="ui-invoice.settings.all"
         path={`${path}/:id/edit`}
-        render={(props) => (
-          <SettingsAdjustmentsEditorContainer
-            {...props}
-            close={closePane}
-          />
-        )}
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
-      />
+      >
+        <SettingsAdjustmentsEditor close={closePane} />
+      </PermissionedRoute>
     </Switch>
   );
 }
