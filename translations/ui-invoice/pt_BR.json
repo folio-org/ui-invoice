@@ -445,5 +445,7 @@
     "otherRelatedInvoiceLines.subscriptionDescription": "Informações da assinatura",
     "otherRelatedInvoiceLines.fiscalYear": "Ano fiscal",
     "invoiceLine.accountNumber.inactive": "O número da conta selecionada está inativo.",
-    "inactive": "Inativo"
+    "inactive": "Inativo",
+    "permission.batchVoucher.exportConfigs.credentials.view": "Configurações (faturas): Nomes de usuário e senhas de grupos em lote: visualizar",
+    "permission.batchVoucher.exportConfigs.credentials.edit": "Configurações (faturas): Nomes de usuário e senhas de grupos em lote: visualizar e editar"
 }

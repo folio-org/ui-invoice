@@ -445,5 +445,7 @@
     "otherRelatedInvoiceLines.subscriptionDescription": "订阅信息",
     "otherRelatedInvoiceLines.fiscalYear": "财务年度",
     "invoiceLine.accountNumber.inactive": "所选帐号处于非激活状态。",
-    "inactive": "未激活"
+    "inactive": "未激活",
+    "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
+    "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit"
 }

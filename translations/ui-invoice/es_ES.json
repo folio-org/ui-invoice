@@ -445,5 +445,7 @@
     "otherRelatedInvoiceLines.subscriptionDescription": "Información de la Suscripción",
     "otherRelatedInvoiceLines.fiscalYear": "Año Fiscal",
     "invoiceLine.accountNumber.inactive": "El número de cuenta seleccionado está inactivo.",
-    "inactive": "Inactivo"
+    "inactive": "Inactivo",
+    "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
+    "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit"
 }
