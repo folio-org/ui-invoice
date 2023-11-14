@@ -446,6 +446,6 @@
     "otherRelatedInvoiceLines.fiscalYear": "Fiskální rok",
     "invoiceLine.accountNumber.inactive": "Vybrané číslo účtu je neaktivní.",
     "inactive": "Neaktivní",
-    "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
-    "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit"
+    "permission.batchVoucher.exportConfigs.credentials.view": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení",
+    "permission.batchVoucher.exportConfigs.credentials.edit": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení a úprava"
 }
