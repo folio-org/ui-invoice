@@ -122,15 +122,18 @@ describe('showUpdateInvoiceError', () => {
     ['budgetNotFoundByFundId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundId', ['fund', 'fundCode']],
     ['budgetNotFoundByFundId', 'defaultErrorMessageId', []],
     ['fundCannotBePaid', 'ui-invoice.invoice.actions.approve.error.fundCannotBePaid', ['funds']],
+    ['budgetNotFoundByFundIdAndFiscalYearId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId', ['fundId']],
   ])('should get %s error message', async (code, messageId, key) => {
     const mockActionName = 'approve';
     const parameters = key.map(k => ({ key: k, value: 'value' }));
     let values = { values: { ...parameters.reduce((acc, { key: k, value }) => ({ ...acc, [k]: value }), {}) } };
 
     if (code === 'budgetNotFoundByFundId') {
-      values = parameters.length ? { values: { fundCode: 'value' } } : {};
+      values = parameters.length ? { values: { fundCode: 'value', fundName: 'name' } } : {};
     } else if (code === 'fundCannotBePaid') {
       values = { values: { fundCodes: 'value' } };
+    } else if (code === 'budgetNotFoundByFundIdAndFiscalYearId') {
+      values = { values: { fundName: 'name', fundCode: 'value' } };
     }
 
     const mockResponse = {
@@ -147,7 +150,7 @@ describe('showUpdateInvoiceError', () => {
     };
 
     const mockFundMutator = {
-      GET: jest.fn().mockResolvedValue({ fund: { code: 'value' } }),
+      GET: jest.fn().mockResolvedValue({ fund: { code: 'value', name: 'name' } }),
     };
 
     await showUpdateInvoiceError(
