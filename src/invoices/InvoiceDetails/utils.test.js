@@ -122,6 +122,7 @@ describe('showUpdateInvoiceError', () => {
     ['budgetNotFoundByFundId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundId', ['fund', 'fundCode']],
     ['budgetNotFoundByFundId', 'defaultErrorMessageId', []],
     ['fundCannotBePaid', 'ui-invoice.invoice.actions.approve.error.fundCannotBePaid', ['funds']],
+    ['budgetNotFoundByFundIdAndFiscalYearId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId', ['fundId']],
   ])('should get %s error message', async (code, messageId, key) => {
     const mockActionName = 'approve';
     const parameters = key.map(k => ({ key: k, value: 'value' }));
@@ -131,6 +132,8 @@ describe('showUpdateInvoiceError', () => {
       values = parameters.length ? { values: { fundCode: 'value' } } : {};
     } else if (code === 'fundCannotBePaid') {
       values = { values: { fundCodes: 'value' } };
+    } else if (code === 'budgetNotFoundByFundIdAndFiscalYearId') {
+      values = { values: { fundCode: 'value' } };
     }
 
     const mockResponse = {

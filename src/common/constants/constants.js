@@ -141,6 +141,7 @@ export const ERROR_CODES = {
   multipleFiscalYears: 'multipleFiscalYears',
   outdatedFundIdInEncumbrance: 'outdatedFundIdInEncumbrance',
   incorrectFundDistributionTotal: 'incorrectFundDistributionTotal',
+  budgetNotFoundByFundIdAndFiscalYearId: 'budgetNotFoundByFundIdAndFiscalYearId',
 };
 
 export const VALIDATION_ERRORS = {

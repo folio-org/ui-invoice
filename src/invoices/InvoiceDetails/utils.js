@@ -110,8 +110,14 @@ export const showUpdateInvoiceError = async (
       }
       break;
     }
-    case ERROR_CODES.budgetNotFoundByFundId: {
-      const fundId = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'fund')?.value;
+    case ERROR_CODES.budgetNotFoundByFundId:
+    case ERROR_CODES.budgetNotFoundByFundIdAndFiscalYearId: {
+      const errors = error?.errors?.[0]?.parameters;
+      let fundId = errors?.find(({ key }) => key === 'fundId')?.value;
+
+      if (!fundId) {
+        fundId = errors?.find(({ key }) => key === 'fund')?.value;
+      }
 
       if (fundId) {
         fundMutator.GET({ path: `${FUNDS_API}/${fundId}` })
@@ -119,7 +125,9 @@ export const showUpdateInvoiceError = async (
             showCallout({
               messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
               type: 'error',
-              values: { fundCode: fund?.code },
+              values: {
+                fundCode: fund?.code,
+              },
             });
           }, () => {
             showCallout({
