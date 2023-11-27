@@ -405,7 +405,7 @@
   "invoice.actions.cancel.error": "Invoice was not cancelled",
   "invoice.actions.cancel.heading": "Cancel invoice",
   "invoice.actions.cancel.message": "Are you sure you want to cancel this invoice? Any related transactions against funds will be voided.",
-  "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundName}</b> for the targeted fiscal year or the budget is not Active.",
+  "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundCode}</b> for the targeted fiscal year or the budget is not Active.",
 
   "invoice.isNotUnique.confirmation.heading": "Save invoice",
   "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice",

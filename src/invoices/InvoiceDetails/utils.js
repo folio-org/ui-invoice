@@ -127,7 +127,6 @@ export const showUpdateInvoiceError = async (
               type: 'error',
               values: {
                 fundCode: fund?.code,
-                fundName: fund?.name,
               },
             });
           }, () => {

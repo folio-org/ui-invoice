@@ -129,11 +129,11 @@ describe('showUpdateInvoiceError', () => {
     let values = { values: { ...parameters.reduce((acc, { key: k, value }) => ({ ...acc, [k]: value }), {}) } };
 
     if (code === 'budgetNotFoundByFundId') {
-      values = parameters.length ? { values: { fundCode: 'value', fundName: 'name' } } : {};
+      values = parameters.length ? { values: { fundCode: 'value' } } : {};
     } else if (code === 'fundCannotBePaid') {
       values = { values: { fundCodes: 'value' } };
     } else if (code === 'budgetNotFoundByFundIdAndFiscalYearId') {
-      values = { values: { fundName: 'name', fundCode: 'value' } };
+      values = { values: { fundCode: 'value' } };
     }
 
     const mockResponse = {
@@ -150,7 +150,7 @@ describe('showUpdateInvoiceError', () => {
     };
 
     const mockFundMutator = {
-      GET: jest.fn().mockResolvedValue({ fund: { code: 'value', name: 'name' } }),
+      GET: jest.fn().mockResolvedValue({ fund: { code: 'value' } }),
     };
 
     await showUpdateInvoiceError(
