@@ -4,6 +4,7 @@
 
 * Introduce new permission to view all invoices' settings. Refs UINV-458.
 * Error Message - Invoice cancellation allowed against closed budget. Refs UINV-513.
+* Not able to filter with tags that are entirely made of special characters. Refs UINV-510.
 
 ## [5.0.1](https://github.com/folio-org/ui-invoice/tree/v5.0.1) (2023-10-31)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v5.0.0...v5.0.1)
