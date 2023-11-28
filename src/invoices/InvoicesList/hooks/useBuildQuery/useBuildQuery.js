@@ -11,6 +11,13 @@ import {
 import { getKeywordQuery } from '../../InvoicesListSearchConfig';
 import { FILTERS } from '../../constants';
 
+function getQueryForTags(filterValue) {
+  const tagsQuery = buildArrayFieldQuery(FILTERS.TAGS, filterValue);
+  const invoiceLineTagsQuery = buildArrayFieldQuery(FILTERS.INVOICE_LINE_TAGS, filterValue);
+
+  return `${tagsQuery} or ${invoiceLineTagsQuery}`;
+}
+
 export const useBuildQuery = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(makeQueryBuilder(
@@ -30,11 +37,7 @@ export const useBuildQuery = () => {
       [FILTERS.PAYMENT_DUE]: buildDateRangeQuery.bind(null, [FILTERS.PAYMENT_DUE]),
       [FILTERS.APPROVAL_DATE]: buildDateTimeRangeQuery.bind(null, [FILTERS.APPROVAL_DATE]),
       [FILTERS.PAYMENT_DATE]: buildDateTimeRangeQuery.bind(null, [FILTERS.PAYMENT_DATE]),
-      [FILTERS.TAGS]: (filterValue) => {
-        const value = Array.isArray(filterValue) ? filterValue.join('" or "') : filterValue;
-
-        return `(${FILTERS.TAGS}=("${value}") or invoiceLines.tags.tagList=("${value}"))`;
-      },
+      [FILTERS.TAGS]: getQueryForTags,
       [FILTERS.FUND_CODE]: buildArrayFieldQuery.bind(null, ['invoiceLines.fundDistributions']),
       [FILTERS.EXPENSE_CLASS]: buildArrayFieldQuery.bind(null, ['invoiceLines.fundDistributions']),
       [FILTERS.LOCK_TOTAL]: buildNumberRangeQuery.bind(null, [FILTERS.LOCK_TOTAL]),
