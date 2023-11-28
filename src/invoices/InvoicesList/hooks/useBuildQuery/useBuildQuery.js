@@ -12,9 +12,10 @@ import { getKeywordQuery } from '../../InvoicesListSearchConfig';
 import { FILTERS } from '../../constants';
 
 function getQueryForTags(filterValue) {
-  const value = Array.isArray(filterValue) ? `(${filterValue.map(v => `"*${v}*"`).join(' or ')})` : `"*${filterValue}*"`;
+  const tagsQuery = buildArrayFieldQuery(FILTERS.TAGS, filterValue);
+  const invoiceLineTagsQuery = buildArrayFieldQuery(FILTERS.INVOICE_LINE_TAGS, filterValue);
 
-  return `${FILTERS.TAGS}==${value} or invoiceLines.tags.tagList==${value}`;
+  return `${tagsQuery} or ${invoiceLineTagsQuery}`;
 }
 
 export const useBuildQuery = () => {

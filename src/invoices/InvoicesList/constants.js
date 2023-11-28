@@ -16,4 +16,5 @@ export const FILTERS = {
   FUND_CODE: 'fundCode',
   LOCK_TOTAL: 'lockTotal',
   FISCAL_YEAR: 'fiscalYearId',
+  INVOICE_LINE_TAGS: 'invoiceLines.tags.tagList',
 };
