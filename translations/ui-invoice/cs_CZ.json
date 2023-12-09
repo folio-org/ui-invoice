@@ -225,7 +225,7 @@
     "button.runManualExport": "Spuštění ručního exportu",
     "button.save": "Uložit",
     "settings.batchGroupConfiguration.batchGroup": "Skupina dávek",
-    "search": "Vyhledávání",
+    "search": "Vyhledat",
     "settings.batchGroupConfiguration.format.Application/json": "JSON",
     "settings.batchGroupConfiguration.format.Application/xml": "XML",
     "settings.batchGroupConfiguration.format": "Formát",
@@ -447,5 +447,6 @@
     "invoiceLine.accountNumber.inactive": "Vybrané číslo účtu je neaktivní.",
     "inactive": "Neaktivní",
     "permission.batchVoucher.exportConfigs.credentials.view": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení",
-    "permission.batchVoucher.exportConfigs.credentials.edit": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení a úprava"
+    "permission.batchVoucher.exportConfigs.credentials.edit": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení a úprava",
+    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "Tuto operaci se nepodařilo úspěšně dokončit. Pro <b>{fundCode}</b> buď neexistuje rozpočet pro cílový fiskální rok, nebo rozpočet není aktivní."
 }
