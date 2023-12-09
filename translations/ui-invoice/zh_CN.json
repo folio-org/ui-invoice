@@ -446,6 +446,7 @@
     "otherRelatedInvoiceLines.fiscalYear": "财务年度",
     "invoiceLine.accountNumber.inactive": "所选帐号处于非激活状态。",
     "inactive": "未激活",
-    "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
-    "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit"
+    "permission.batchVoucher.exportConfigs.credentials.view": "设置（发票）：批量组用户名和密码：查看",
+    "permission.batchVoucher.exportConfigs.credentials.edit": "设置（发票）：批量组用户名和密码：查看和编辑",
+    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "此操作无法成功完成。目标财务年度的<b> {fundCode} </b>没有预算，或者预算未激活。"
 }

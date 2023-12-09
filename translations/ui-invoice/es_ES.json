@@ -447,5 +447,6 @@
     "invoiceLine.accountNumber.inactive": "El número de cuenta seleccionado está inactivo.",
     "inactive": "Inactivo",
     "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
-    "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit"
+    "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
+    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundCode}</b> for the targeted fiscal year or the budget is not Active."
 }
