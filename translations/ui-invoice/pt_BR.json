@@ -447,5 +447,6 @@
     "invoiceLine.accountNumber.inactive": "O número da conta selecionada está inativo.",
     "inactive": "Inativo",
     "permission.batchVoucher.exportConfigs.credentials.view": "Configurações (faturas): Nomes de usuário e senhas de grupos em lote: visualizar",
-    "permission.batchVoucher.exportConfigs.credentials.edit": "Configurações (faturas): Nomes de usuário e senhas de grupos em lote: visualizar e editar"
+    "permission.batchVoucher.exportConfigs.credentials.edit": "Configurações (faturas): Nomes de usuário e senhas de grupos em lote: visualizar e editar",
+    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "Esta operação não pôde ser concluída com êxito. Não há orçamento para <b>{fundCode}</b> para o ano fiscal pretendido ou o orçamento não é Ativo."
 }
