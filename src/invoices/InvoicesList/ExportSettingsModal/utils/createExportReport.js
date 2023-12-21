@@ -50,6 +50,13 @@ const getExportAdjustmentData = (adjustments) => (
   )).join(' | ').replace(/\n\s+/g, '')
 );
 
+const getVoucherExternalAccountNumbers = (voucher, voucherLines) => (
+  voucherLines
+    .filter(({ voucherId }) => voucherId === voucher.id)
+    .map(({ externalAccountNumber }) => `"${externalAccountNumber}"`)
+    .join(' | ')
+);
+
 const getInvoiceExportData = ({
   acqUnitMap,
   addressMap,
@@ -66,7 +73,6 @@ const getInvoiceExportData = ({
   vouchers,
 }) => {
   const voucher = vouchers.find(({ invoiceId }) => invoiceId === invoice.id) || {};
-  const voucherLine = voucherLines.find(({ voucherId }) => voucherId === voucher.id) || {};
   const totalUnits = invoiceLines?.reduce((total, { quantity }) => (total + +quantity), 0) ?? 0;
 
   return {
@@ -106,7 +112,7 @@ const getInvoiceExportData = ({
     batchGroup: batchGroupMap[invoice.batchGroupId]?.name ?? invalidReferenceLabel,
     paymentDate: formatDate(invoice.paymentDate, intl),
     totalUnits,
-    externalAccountNumber: voucherLine.externalAccountNumber,
+    externalAccountNumber: getVoucherExternalAccountNumbers(voucher, voucherLines),
     voucherStatus: voucher.status,
     voucherDate: formatDate(voucher.voucherDate, intl),
     disbursementNumber: voucher.disbursementNumber,
