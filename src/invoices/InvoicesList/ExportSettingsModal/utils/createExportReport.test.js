@@ -26,7 +26,7 @@ const voucher = {
 const voucherLine = {
   id: 'voucherLineId',
   amount: 23.45,
-  voucherId: [voucher.id],
+  voucherId: voucher.id,
   externalAccountNumber: '54321098',
 };
 
