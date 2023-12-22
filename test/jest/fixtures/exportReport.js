@@ -16,7 +16,7 @@ export const exportReport = [
     'disbursementNumber': undefined,
     'enclosureNeeded': undefined,
     'exportToAccounting': true,
-    'externalAccountNumber': undefined,
+    'externalAccountNumber': '"54321098"',
     'fiscalYear': 'FY2023',
     'invoiceAdjustments': '',
     'invoiceDate': '2021-06-08',
