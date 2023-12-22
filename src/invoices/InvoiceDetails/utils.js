@@ -64,6 +64,13 @@ export const showUpdateInvoiceError = async (
       });
       break;
     }
+    case ERROR_CODES.userNotAMemberOfTheAcq: {
+      showCallout({
+        messageId: `ui-invoice.invoice.actions.pay.error.${ERROR_CODES[code]}`,
+        type: 'error',
+      });
+      break;
+    }
     case ERROR_CODES.fundCannotBePaid: {
       const fundCodes = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'funds')[0]?.value;
 

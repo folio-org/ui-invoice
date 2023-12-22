@@ -142,6 +142,7 @@ export const ERROR_CODES = {
   outdatedFundIdInEncumbrance: 'outdatedFundIdInEncumbrance',
   incorrectFundDistributionTotal: 'incorrectFundDistributionTotal',
   budgetNotFoundByFundIdAndFiscalYearId: 'budgetNotFoundByFundIdAndFiscalYearId',
+  userNotAMemberOfTheAcq: 'userNotAMemberOfTheAcq',
 };
 
 export const VALIDATION_ERRORS = {
