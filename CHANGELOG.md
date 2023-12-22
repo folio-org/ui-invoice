@@ -6,6 +6,7 @@
 * Error Message - Invoice cancellation allowed against closed budget. Refs UINV-513.
 * Not able to filter with tags that are entirely made of special characters. Refs UINV-510.
 * Refactor CSS away from postcss-color-function. Refs UINV-516.
+* Display all external account numbers associated with an invoice in the export report. Refs UINV-515.
 * Uninformative error in invoice payment due to user not linked to the Purchase Order's acquisition unit. Refs UINV-518.
 
 ## [5.0.1](https://github.com/folio-org/ui-invoice/tree/v5.0.1) (2023-10-31)
