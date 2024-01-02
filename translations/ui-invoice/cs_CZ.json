@@ -448,5 +448,6 @@
     "inactive": "Neaktivní",
     "permission.batchVoucher.exportConfigs.credentials.view": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení a úprava",
-    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "Tuto operaci se nepodařilo úspěšně dokončit. Pro <b>{fundCode}</b> buď neexistuje rozpočet pro cílový fiskální rok, nebo rozpočet není aktivní."
+    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "Tuto operaci se nepodařilo úspěšně dokončit. Pro <b>{fundCode}</b> buď neexistuje rozpočet pro cílový fiskální rok, nebo rozpočet není aktivní.",
+    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit"
 }

@@ -448,5 +448,6 @@
     "inactive": "未激活",
     "permission.batchVoucher.exportConfigs.credentials.view": "设置（发票）：批量组用户名和密码：查看",
     "permission.batchVoucher.exportConfigs.credentials.edit": "设置（发票）：批量组用户名和密码：查看和编辑",
-    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "此操作无法成功完成。目标财务年度的<b> {fundCode} </b>没有预算，或者预算未激活。"
+    "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "此操作无法成功完成。目标财务年度的<b> {fundCode} </b>没有预算，或者预算未激活。",
+    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit"
 }
