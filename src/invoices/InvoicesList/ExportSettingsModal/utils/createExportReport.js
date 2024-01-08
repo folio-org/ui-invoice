@@ -50,12 +50,13 @@ const getExportAdjustmentData = (adjustments) => (
   )).join(' | ').replace(/\n\s+/g, '')
 );
 
-const getVoucherExternalAccountNumbers = (voucher, voucherLines) => (
-  voucherLines
-    .filter(({ voucherId }) => voucherId === voucher.id)
-    .map(({ externalAccountNumber }) => `"${externalAccountNumber}"`)
-    .join(' | ')
-);
+const getInvoiceLineExternalAccountNumbers = (line, fundsMap, invalidReferenceLabel) => {
+  return line.fundDistributions?.map(fund => {
+    const externalAccountNumber = fundsMap[fund.fundId]?.externalAccountNo;
+
+    return externalAccountNumber ? `"${externalAccountNumber}"` : invalidReferenceLabel;
+  }).join(' | ');
+};
 
 const getInvoiceExportData = ({
   acqUnitMap,
@@ -69,7 +70,6 @@ const getInvoiceExportData = ({
   invalidReferenceLabel,
   userMap,
   vendorMap,
-  voucherLines,
   vouchers,
 }) => {
   const voucher = vouchers.find(({ invoiceId }) => invoiceId === invoice.id) || {};
@@ -112,7 +112,6 @@ const getInvoiceExportData = ({
     batchGroup: batchGroupMap[invoice.batchGroupId]?.name ?? invalidReferenceLabel,
     paymentDate: formatDate(invoice.paymentDate, intl),
     totalUnits,
-    externalAccountNumber: getVoucherExternalAccountNumbers(voucher, voucherLines),
     voucherStatus: voucher.status,
     voucherDate: formatDate(voucher.voucherDate, intl),
     disbursementNumber: voucher.disbursementNumber,
@@ -122,6 +121,7 @@ const getInvoiceExportData = ({
 
 function getInvoiceLineExportData({
   expenseClassMap,
+  fundsMap,
   intl,
   invalidReferenceLabel,
   invoice,
@@ -148,6 +148,7 @@ function getInvoiceLineExportData({
       invalidReferenceLabel,
       invoice.currency,
     ),
+    externalAccountNumber: getInvoiceLineExternalAccountNumbers(line, fundsMap, invalidReferenceLabel),
     referenceNumbers: getExportReferenceNumbers(line),
     lineTags: line.tags?.tagList?.join(' | '),
   };
@@ -159,6 +160,7 @@ const buildExportRow = ({
   batchGroupMap,
   expenseClassMap,
   fiscalYearMap,
+  fundsMap,
   intl,
   invoice,
   invoiceLine,
@@ -166,7 +168,6 @@ const buildExportRow = ({
   poLineMap,
   userMap,
   vendorMap,
-  voucherLines,
   vouchers,
 }) => {
   const invalidReferenceLabel = intl.formatMessage({ id: 'stripes-acq-components.invalidReference' });
@@ -183,13 +184,13 @@ const buildExportRow = ({
     invalidReferenceLabel,
     userMap,
     vendorMap,
-    voucherLines,
     vouchers,
   });
 
   const invoiceLineExportData = invoiceLine
     ? getInvoiceLineExportData({
       expenseClassMap,
+      fundsMap,
       intl,
       invalidReferenceLabel,
       invoice,
@@ -232,6 +233,7 @@ export const createExportReport = ({
   batchGroupMap,
   expenseClassMap,
   fiscalYearMap,
+  fundsMap,
   intl,
   invoices = [],
   invoiceLines = [],
@@ -247,6 +249,7 @@ export const createExportReport = ({
     batchGroupMap,
     expenseClassMap,
     fiscalYearMap,
+    fundsMap,
     invoice,
     intl,
     invoiceLines,
