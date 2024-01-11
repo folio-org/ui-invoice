@@ -1117,7 +1117,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-note="true"
                           >
                             <div
-                              class="textArea inputGroup"
+                              class="textArea"
                             >
                               <label
                                 class="label"
@@ -1125,16 +1125,20 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               >
                                 ui-invoice.invoice.note
                               </label>
-                              <textarea
-                                aria-invalid="false"
-                                class="formControl"
-                                id="note"
-                                name="note"
-                                type="text"
-                              />
                               <div
-                                role="alert"
-                              />
+                                class="inputGroup"
+                              >
+                                <textarea
+                                  aria-invalid="false"
+                                  class="formControl"
+                                  id="note"
+                                  name="note"
+                                  type="text"
+                                />
+                                <div
+                                  role="alert"
+                                />
+                              </div>
                             </div>
                           </div>
                         </div>
