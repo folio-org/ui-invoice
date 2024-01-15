@@ -11,6 +11,7 @@ import {
   EXPENSE_CLASSES_API,
   fetchAllRecords,
   fetchExportDataByIds,
+  FUNDS_API,
   getAddresses,
   INVOICES_API,
   LINES_API,
@@ -85,6 +86,8 @@ export const getExportData = async ({ ky, intl, query }) => {
   const addresses = getAddresses(addressRecords);
   const fiscalYearIds = uniq(exportInvoices.map(({ fiscalYearId }) => fiscalYearId));
   const fiscalYears = await fetchExportDataByIds({ ky, ids: fiscalYearIds, api: FISCAL_YEARS_API, records: 'fiscalYears' });
+  const fundIds = uniq(invoiceLines.flatMap(({ fundDistributions }) => fundDistributions?.map(({ fundId }) => fundId)));
+  const funds = await fetchExportDataByIds({ ky, ids: fundIds, api: FUNDS_API, records: 'funds' });
 
   return (createExportReport({
     acqUnitMap: keyBy(acqUnits, 'id'),
@@ -92,6 +95,7 @@ export const getExportData = async ({ ky, intl, query }) => {
     batchGroupMap: keyBy(batchGroups, 'id'),
     expenseClassMap: keyBy(expenseClasses, 'id'),
     fiscalYearMap: keyBy(fiscalYears, 'id'),
+    fundsMap: keyBy(funds, 'id'),
     intl,
     invoiceLines,
     invoices: exportInvoices,
