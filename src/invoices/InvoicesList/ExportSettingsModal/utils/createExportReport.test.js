@@ -27,7 +27,11 @@ const voucherLine = {
   id: 'voucherLineId',
   amount: 23.45,
   voucherId: voucher.id,
-  externalAccountNumber: '54321098',
+};
+
+const fund = {
+  id: invoiceLine.fundDistributions[0].fundId,
+  externalAccountNo: '54321098',
 };
 
 const defaultExportData = {
@@ -35,6 +39,7 @@ const defaultExportData = {
   addressMap: keyBy([address], 'id'),
   expenseClassMap: {},
   fiscalYearMap: { [invoice.fiscalYearId]: { code: 'FY2023' } },
+  fundsMap: { [fund.id]: fund },
   batchGroupMap: keyBy([batchGroup], 'id'),
   invoices: [invoice],
   poLineMap: keyBy([orderLine], 'id'),
