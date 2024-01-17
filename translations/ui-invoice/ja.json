@@ -449,5 +449,5 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundCode}</b> for the targeted fiscal year or the budget is not Active.",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit"
+    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "ユーザーは指定されたユニットのメンバーではないため、操作は許可されません"
 }
