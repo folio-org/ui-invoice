@@ -10,107 +10,103 @@ exports[`VoucherInformation should render correct structure for invoice voucher 
     ui-invoice.invoice.details.voucher.voucherLines
   </div>
   <div
-    class="mclContainer"
-    style="position: relative; overflow: hidden; height: auto; width: 100%;"
+    aria-live="assertive"
+    aria-relevant="additions"
+    class="sr-only"
     tabindex="-1"
+  />
+  <div
+    aria-rowcount="2"
+    class="mclContainer"
+    data-total-count="0"
+    role="grid"
+    style="position: relative; overflow: hidden; height: auto; width: 100%;"
+    tabindex="0"
   >
     <div
-      aria-live="assertive"
-      aria-relevant="additions"
-      class="sr-only"
-    />
+      class="mclHeaderContainer"
+    >
+      <div
+        aria-rowindex="1"
+        class="mclHeaderRow"
+        role="row"
+        style="display: flex; width: 17px;"
+      >
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-externalaccountnumber"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.voucher.externalAccountNumber
+        </div>
+        <div
+          aria-sort="none"
+          class="mclHeader"
+          id="list-column-amount"
+          role="columnheader"
+          style="flex: 0 0 auto;"
+        >
+          ui-invoice.invoice.details.voucher.amount
+        </div>
+      </div>
+    </div>
     <div
-      aria-rowcount="2"
-      class=""
-      data-total-count="0"
-      role="grid"
+      class="mclScrollable"
+      style="position: static; width: 100%;"
       tabindex="0"
     >
       <div
-        class="mclHeaderContainer"
+        class="mclRowContainer"
+        role="rowgroup"
+        style="position: static;"
       >
         <div
-          aria-rowindex="1"
-          class="mclHeaderRow"
+          aria-rowindex="2"
+          class="mclRowFormatterContainer"
+          data-row-index="row-0"
           role="row"
-          style="display: flex; width: 17px;"
-        >
-          <div
-            aria-sort="none"
-            class="mclHeader"
-            id="list-column-externalaccountnumber"
-            role="columnheader"
-            style="flex: 0 0 auto;"
-          >
-            ui-invoice.invoice.details.voucher.externalAccountNumber
-          </div>
-          <div
-            aria-sort="none"
-            class="mclHeader"
-            id="list-column-amount"
-            role="columnheader"
-            style="flex: 0 0 auto;"
-          >
-            ui-invoice.invoice.details.voucher.amount
-          </div>
-        </div>
-      </div>
-      <div
-        class="mclScrollable"
-        style="position: static; width: 100%;"
-        tabindex="0"
-      >
-        <div
-          class="mclRowContainer"
-          role="rowgroup"
           style="position: static;"
         >
           <div
-            aria-rowindex="2"
-            class="mclRowFormatterContainer"
-            data-row-index="row-0"
-            role="row"
-            style="position: static;"
+            class="mclRow mclIsOdd mclIsInteractive"
+            data-row-inner="0"
+            style="min-width: 0px;"
           >
             <div
-              class="mclRow mclIsOdd mclIsInteractive"
-              data-row-inner="0"
-              style="min-width: 0px;"
+              class="mclCell mclCellStyle"
+              role="gridcell"
             >
-              <div
-                class="mclCell mclCellStyle"
-                role="gridcell"
-              >
-                54321098
-              </div>
-              <div
-                class="mclCell mclCellStyle"
-                role="gridcell"
-              >
-                $23.45
-              </div>
+              54321098
+            </div>
+            <div
+              class="mclCell mclCellStyle"
+              role="gridcell"
+            >
+              $23.45
             </div>
           </div>
+        </div>
+        <div
+          class="mclEndOfListContainer"
+          data-end-of-list="1"
+        >
           <div
-            class="mclEndOfListContainer"
-            data-end-of-list="1"
+            class="mclCenteredContainer"
+            style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
           >
             <div
-              class="mclCenteredContainer"
-              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
+              class="textCentered"
+              data-test-layout="true"
             >
               <div
-                class="textCentered"
+                class="mclEndOfList"
                 data-test-layout="true"
               >
-                <div
-                  class="mclEndOfList"
-                  data-test-layout="true"
-                >
-                  <span>
-                    Icon
-                  </span>
-                </div>
+                <span>
+                  Icon
+                </span>
               </div>
             </div>
           </div>
