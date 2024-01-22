@@ -9,150 +9,154 @@ exports[`VoucherLinesDetails should render correct structure 1`] = `
     ui-invoice.voucher.voucherLinesTitle.externalAccountNumber
   </div>
   <div
-    aria-live="assertive"
-    aria-relevant="additions"
-    class="sr-only"
-    tabindex="-1"
-  />
-  <div
-    aria-rowcount="2"
     class="mclContainer"
-    data-total-count="0"
-    role="grid"
     style="position: relative; overflow: hidden; height: auto; width: 100%;"
-    tabindex="0"
+    tabindex="-1"
   >
     <div
-      class="mclHeaderContainer"
-    >
-      <div
-        aria-rowindex="1"
-        class="mclHeaderRow"
-        role="row"
-        style="display: flex; width: 17px;"
-      >
-        <div
-          aria-sort="none"
-          class="mclHeader"
-          id="list-column-linenumber"
-          role="columnheader"
-          style="flex: 0 0 auto;"
-        >
-          ui-invoice.voucher.voucherLines.lineNumber
-        </div>
-        <div
-          aria-sort="none"
-          class="mclHeader"
-          id="list-column-group"
-          role="columnheader"
-          style="flex: 0 0 auto;"
-        >
-          ui-invoice.voucher.voucherLines.group
-        </div>
-        <div
-          aria-sort="none"
-          class="mclHeader"
-          id="list-column-fundcode"
-          role="columnheader"
-          style="flex: 0 0 auto;"
-        >
-          ui-invoice.voucher.voucherLines.fundCode
-        </div>
-        <div
-          aria-sort="none"
-          class="mclHeader"
-          id="list-column-externalaccountnumber"
-          role="columnheader"
-          style="flex: 0 0 auto;"
-        >
-          ui-invoice.voucher.voucherLines.externalAccountNumber
-        </div>
-        <div
-          aria-sort="none"
-          class="mclHeader"
-          id="list-column-amount"
-          role="columnheader"
-          style="flex: 0 0 auto;"
-        >
-          ui-invoice.voucher.voucherLines.amount
-        </div>
-      </div>
-    </div>
+      aria-live="assertive"
+      aria-relevant="additions"
+      class="sr-only"
+    />
     <div
-      class="mclScrollable"
-      style="position: static; width: 100%;"
+      aria-rowcount="2"
+      class=""
+      data-total-count="0"
+      role="grid"
       tabindex="0"
     >
       <div
-        class="mclRowContainer"
-        role="rowgroup"
-        style="position: static;"
+        class="mclHeaderContainer"
       >
         <div
-          aria-rowindex="2"
-          class="mclRowFormatterContainer"
-          data-row-index="row-0"
+          aria-rowindex="1"
+          class="mclHeaderRow"
           role="row"
+          style="display: flex; width: 17px;"
+        >
+          <div
+            aria-sort="none"
+            class="mclHeader"
+            id="list-column-linenumber"
+            role="columnheader"
+            style="flex: 0 0 auto;"
+          >
+            ui-invoice.voucher.voucherLines.lineNumber
+          </div>
+          <div
+            aria-sort="none"
+            class="mclHeader"
+            id="list-column-group"
+            role="columnheader"
+            style="flex: 0 0 auto;"
+          >
+            ui-invoice.voucher.voucherLines.group
+          </div>
+          <div
+            aria-sort="none"
+            class="mclHeader"
+            id="list-column-fundcode"
+            role="columnheader"
+            style="flex: 0 0 auto;"
+          >
+            ui-invoice.voucher.voucherLines.fundCode
+          </div>
+          <div
+            aria-sort="none"
+            class="mclHeader"
+            id="list-column-externalaccountnumber"
+            role="columnheader"
+            style="flex: 0 0 auto;"
+          >
+            ui-invoice.voucher.voucherLines.externalAccountNumber
+          </div>
+          <div
+            aria-sort="none"
+            class="mclHeader"
+            id="list-column-amount"
+            role="columnheader"
+            style="flex: 0 0 auto;"
+          >
+            ui-invoice.voucher.voucherLines.amount
+          </div>
+        </div>
+      </div>
+      <div
+        class="mclScrollable"
+        style="position: static; width: 100%;"
+        tabindex="0"
+      >
+        <div
+          class="mclRowContainer"
+          role="rowgroup"
           style="position: static;"
         >
           <div
-            class="mclRow mclIsOdd mclIsInteractive"
-            data-row-inner="0"
-            style="min-width: 0px;"
+            aria-rowindex="2"
+            class="mclRowFormatterContainer"
+            data-row-index="row-0"
+            role="row"
+            style="position: static;"
           >
             <div
-              class="mclCell mclCellStyle"
-              role="gridcell"
-            >
-              1
-            </div>
-            <div
-              class="mclCell mclCellStyle"
-              role="gridcell"
-            >
-              <span>
-                -
-              </span>
-            </div>
-            <div
-              class="mclCell mclCellStyle"
-              role="gridcell"
-            >
-              , , 
-            </div>
-            <div
-              class="mclCell mclCellStyle"
-              role="gridcell"
-            >
-              54321098
-            </div>
-            <div
-              class="mclCell mclCellStyle"
-              role="gridcell"
-            >
-              $23.45
-            </div>
-          </div>
-        </div>
-        <div
-          class="mclEndOfListContainer"
-          data-end-of-list="1"
-        >
-          <div
-            class="mclCenteredContainer"
-            style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
-          >
-            <div
-              class="textCentered"
-              data-test-layout="true"
+              class="mclRow mclIsOdd mclIsInteractive"
+              data-row-inner="0"
+              style="min-width: 0px;"
             >
               <div
-                class="mclEndOfList"
-                data-test-layout="true"
+                class="mclCell mclCellStyle"
+                role="gridcell"
+              >
+                1
+              </div>
+              <div
+                class="mclCell mclCellStyle"
+                role="gridcell"
               >
                 <span>
-                  Icon
+                  -
                 </span>
+              </div>
+              <div
+                class="mclCell mclCellStyle"
+                role="gridcell"
+              >
+                , , 
+              </div>
+              <div
+                class="mclCell mclCellStyle"
+                role="gridcell"
+              >
+                54321098
+              </div>
+              <div
+                class="mclCell mclCellStyle"
+                role="gridcell"
+              >
+                $23.45
+              </div>
+            </div>
+          </div>
+          <div
+            class="mclEndOfListContainer"
+            data-end-of-list="1"
+          >
+            <div
+              class="mclCenteredContainer"
+              style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
+            >
+              <div
+                class="textCentered"
+                data-test-layout="true"
+              >
+                <div
+                  class="mclEndOfList"
+                  data-test-layout="true"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </div>
               </div>
             </div>
           </div>
