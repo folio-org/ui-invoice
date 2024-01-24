@@ -449,5 +449,9 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "设置（发票）：批量组用户名和密码：查看",
     "permission.batchVoucher.exportConfigs.credentials.edit": "设置（发票）：批量组用户名和密码：查看和编辑",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "此操作无法成功完成。目标财务年度的<b> {fundCode} </b>没有预算，或者预算未激活。",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit"
+    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
+    "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
+    "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
+    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget."
 }
