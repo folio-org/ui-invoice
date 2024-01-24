@@ -375,7 +375,7 @@
     "invoice.details.city": "Město",
     "invoice.details.country": "Země",
     "invoice.details.language": "Jazyk",
-    "invoice.details.stateRegion": "Stát / Prov. / Region",
+    "invoice.details.stateRegion": "Stát / Prov. / Oblast",
     "invoice.details.zipCode": "PSČ",
     "otherRelatedInvoiceLines": "Další související fakturační řádky",
     "otherRelatedInvoiceLines.amount": "Částka",
@@ -449,5 +449,9 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení a úprava",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "Tuto operaci se nepodařilo úspěšně dokončit. Pro <b>{fundCode}</b> buď neexistuje rozpočet pro cílový fiskální rok, nebo rozpočet není aktivní.",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit"
+    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
+    "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
+    "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
+    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget."
 }
