@@ -1,6 +1,6 @@
 # Change history for ui-invoice
 
-## (6.0.0 IN PROGRESS)
+## (5.1.0 IN PROGRESS)
 
 * Introduce new permission to view all invoices' settings. Refs UINV-458.
 * Error Message - Invoice cancellation allowed against closed budget. Refs UINV-513.
