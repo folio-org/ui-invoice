@@ -1,6 +1,6 @@
 # Change history for ui-invoice
 
-## (5.1.0 IN PROGRESS)
+## (6.0.0 IN PROGRESS)
 
 * Introduce new permission to view all invoices' settings. Refs UINV-458.
 * Error Message - Invoice cancellation allowed against closed budget. Refs UINV-513.
@@ -8,7 +8,7 @@
 * Refactor CSS away from postcss-color-function. Refs UINV-516.
 * Display all external account numbers associated with an invoice in the export report. Refs UINV-515.
 * Uninformative error in invoice payment due to user not linked to the Purchase Order's acquisition unit. Refs UINV-518.
-* Bump up okapi interfaces for `pieces` (2.0 3.0). Refs UINV-529.
+* *BREAKING:* Bump up okapi interfaces for `pieces` (3.0). Refs UINV-529.
 
 ## [5.0.1](https://github.com/folio-org/ui-invoice/tree/v5.0.1) (2023-10-31)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v5.0.0...v5.0.1)

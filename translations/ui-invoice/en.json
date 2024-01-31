@@ -101,7 +101,7 @@
   "adjustments.relationToTotal.includedIn": "Included in",
   "adjustments.relationToTotal.separateFrom": "Separate from",
 
-  "receivingHistory.caption": "Caption",
+  "receivingHistory.displaySummary": "Display summary",
   "receivingHistory.chronology": "Chronology",
   "receivingHistory.copyNumber": "Copy number",
   "receivingHistory.enumeration": "Enumeration",

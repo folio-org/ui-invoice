@@ -13,7 +13,7 @@ jest.mock('./useReceivingHistory', () => ({
   useReceivingHistory: jest.fn(),
 }));
 
-const caption = 'testCaption';
+const displaySummary = 'testDisplaySummary';
 const defaultProps = {
   poLine: orderLine,
 };
@@ -43,7 +43,7 @@ describe('ReceivingHistory', () => {
   beforeEach(() => {
     useReceivingHistory.mockClear().mockReturnValue({
       isLoading: false,
-      pieces: [{ caption }],
+      pieces: [{ displaySummary }],
     });
   });
 
@@ -51,7 +51,7 @@ describe('ReceivingHistory', () => {
     renderReceivingHistory();
 
     expect(screen.getByText('ui-invoice.receivingHistory')).toBeInTheDocument();
-    expect(screen.getByText('ui-invoice.receivingHistory.caption')).toBeInTheDocument();
-    expect(screen.getByText(caption)).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.receivingHistory.displaySummary')).toBeInTheDocument();
+    expect(screen.getByText(displaySummary)).toBeInTheDocument();
   });
 });
