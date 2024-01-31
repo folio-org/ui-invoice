@@ -18,14 +18,14 @@ import { SECTIONS_INVOICE_LINE } from '../../constants';
 import { useReceivingHistory } from './useReceivingHistory';
 
 const visibleColumns = [
-  'caption',
+  'displaySummary',
   'copyNumber',
   'enumeration',
   'chronology',
   'receiptDate',
 ];
 const columnMapping = {
-  caption: <FormattedMessage id="ui-invoice.receivingHistory.caption" />,
+  displaySummary: <FormattedMessage id="ui-invoice.receivingHistory.displaySummary" />,
   copyNumber: <FormattedMessage id="ui-invoice.receivingHistory.copyNumber" />,
   enumeration: <FormattedMessage id="ui-invoice.receivingHistory.enumeration" />,
   chronology: <FormattedMessage id="ui-invoice.receivingHistory.chronology" />,
@@ -33,7 +33,7 @@ const columnMapping = {
 };
 
 const getResultFormatter = (poLine) => ({
-  caption: piece => piece.caption || <NoValue />,
+  displaySummary: piece => piece.displaySummary || <NoValue />,
   copyNumber: piece => piece.copyNumber || <NoValue />,
   enumeration: piece => piece.enumeration || <NoValue />,
   chronology: piece => piece.chronology || <NoValue />,
