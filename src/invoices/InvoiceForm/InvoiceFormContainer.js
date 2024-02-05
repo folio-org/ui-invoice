@@ -187,7 +187,7 @@ export function InvoiceFormContainerComponent({
 
   const allAdjustments = useMemo(() => getSettingsAdjustmentsList(configAdjustments), [configAdjustments]);
   const alwaysShowAdjustments = useMemo(() => getAlwaysShownAdjustmentsList(allAdjustments), [allAdjustments]);
-  const batchGroupId = isCreate && (batchGroups?.length === 1) ? batchGroups[0]?.id : undefined;
+  const batchGroupId = isCreate && (batchGroups?.length === 1) ? batchGroups?.[0]?.id : undefined;
   const exportToAccounting = alwaysShowAdjustments.some(adj => adj.exportToAccounting);
 
   const initialInvoice = useMemo(() => {
@@ -195,7 +195,8 @@ export function InvoiceFormContainerComponent({
       ? invoice
       : {
         chkSubscriptionOverlap: true,
-        currency: stripes.currency,
+        currency: orderLines?.[0]?.cost?.currency || stripes.currency,
+        exchangeRate: orderLines?.[0]?.cost?.exchangeRate,
         source: sourceValues.user,
         adjustments: alwaysShowAdjustments,
         batchGroupId,
@@ -209,6 +210,7 @@ export function InvoiceFormContainerComponent({
     exportToAccounting,
     invoice,
     isCreate,
+    orderLines,
     orders,
     stripes.currency,
   ]);
