@@ -146,7 +146,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 3;"
+                      style="z-index: 1;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-information"

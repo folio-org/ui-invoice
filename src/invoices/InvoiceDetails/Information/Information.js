@@ -18,6 +18,7 @@ import {
 
 import {
   ApprovedBy,
+  DisplayExchangedAmount,
   FiscalYearValueContainer as FiscalYearValue,
   StatusValue,
 } from '../../../common/components';
@@ -30,6 +31,7 @@ const Information = ({
   approvalDate,
   approvedBy,
   batchGroupId,
+  exchangeRate,
   fiscalYearId,
   invoiceDate,
   paymentDue,
@@ -182,6 +184,13 @@ const Information = ({
       </Row>
 
       <Row>
+        <Col xs={3}>
+          <DisplayExchangedAmount
+            currency={currency}
+            exchangeRate={exchangeRate}
+            total={total}
+          />
+        </Col>
         {isLockTotal && (
           <Col xs={3} data-testid="lock-total-amount">
             <KeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>
@@ -202,6 +211,7 @@ Information.propTypes = {
   approvalDate: PropTypes.string,
   approvedBy: PropTypes.string,
   batchGroupId: PropTypes.string.isRequired,
+  exchangeRate: PropTypes.number,
   invoiceDate: PropTypes.string.isRequired,
   fiscalYearId: PropTypes.string,
   paymentDue: PropTypes.string,

@@ -44,7 +44,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 13;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-status"
@@ -345,7 +345,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 12;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-vendorId"
@@ -422,7 +422,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 11;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-metadata.createdDate"
@@ -626,7 +626,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 10;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-invoiceDate"
@@ -830,7 +830,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 9;"
+        style="z-index: 2;"
       >
         <div
           aria-labelledby="accordion-toggle-button-acqUnitIds"
@@ -982,7 +982,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 8;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-tags.tagList"
@@ -1140,7 +1140,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 7;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDue"
@@ -1344,7 +1344,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 6;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentMethod"
@@ -1795,7 +1795,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 5;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-approvalDate"
@@ -1999,7 +1999,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 4;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-source"
@@ -2250,7 +2250,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 3;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-exportToAccounting"
@@ -2401,7 +2401,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 2;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDate"
@@ -2723,7 +2723,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion53"
+            aria-controls="accordion54"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.status filter list"
             class="filterSetHeader"
@@ -2748,13 +2748,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 13;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-status"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion53"
+          id="accordion54"
           role="region"
         >
           <div
@@ -3049,7 +3049,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion54"
+            aria-controls="accordion55"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.vendorName filter list"
             class="filterSetHeader"
@@ -3074,13 +3074,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 12;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion54"
+          id="accordion55"
           role="region"
         >
           <div
@@ -3126,7 +3126,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion55"
+            aria-controls="accordion56"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.dateCreated filter list"
             class="filterSetHeader"
@@ -3151,13 +3151,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 11;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-metadata.createdDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion55"
+          id="accordion56"
           role="region"
         >
           <div
@@ -3330,7 +3330,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion56"
+            aria-controls="accordion57"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
             class="filterSetHeader"
@@ -3355,13 +3355,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 10;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-invoiceDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion56"
+          id="accordion57"
           role="region"
         >
           <div
@@ -3534,7 +3534,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion57"
+            aria-controls="accordion58"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
@@ -3559,13 +3559,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 9;"
+        style="z-index: 2;"
       >
         <div
           aria-labelledby="accordion-toggle-button-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion57"
+          id="accordion58"
           role="region"
         >
           <div
@@ -3687,7 +3687,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion58"
+            aria-controls="accordion59"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
@@ -3712,13 +3712,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 8;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion58"
+          id="accordion59"
           role="region"
         >
           <div
@@ -3847,7 +3847,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion59"
+            aria-controls="accordion60"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
             class="filterSetHeader"
@@ -3872,13 +3872,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 7;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDue"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion59"
+          id="accordion60"
           role="region"
         >
           <div
@@ -4051,7 +4051,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion60"
+            aria-controls="accordion61"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentMethod filter list"
             class="filterSetHeader"
@@ -4076,13 +4076,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 6;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion60"
+          id="accordion61"
           role="region"
         >
           <div
@@ -4542,7 +4542,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion61"
+            aria-controls="accordion62"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.approvalDate filter list"
             class="filterSetHeader"
@@ -4567,13 +4567,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 5;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-approvalDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion61"
+          id="accordion62"
           role="region"
         >
           <div
@@ -4746,7 +4746,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion62"
+            aria-controls="accordion63"
             aria-expanded="false"
             aria-label="stripes-acq-components.label.sourceFilter filter list"
             class="filterSetHeader"
@@ -4771,13 +4771,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 4;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-source"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion62"
+          id="accordion63"
           role="region"
         >
           <div
@@ -5017,7 +5017,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion63"
+            aria-controls="accordion64"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.exportToAccounting filter list"
             class="filterSetHeader"
@@ -5042,13 +5042,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 3;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-exportToAccounting"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion63"
+          id="accordion64"
           role="region"
         >
           <div
@@ -5178,7 +5178,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion64"
+            aria-controls="accordion65"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentDate filter list"
             class="filterSetHeader"
@@ -5203,13 +5203,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 2;"
+        style="z-index: 1;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion64"
+          id="accordion65"
           role="region"
         >
           <div
@@ -5398,7 +5398,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion65"
+            aria-controls="accordion66"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.lockTotal filter list"
             class="filterSetHeader"
@@ -5429,7 +5429,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           aria-labelledby="accordion-toggle-button-lockTotal"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion65"
+          id="accordion66"
           role="region"
         >
           <div

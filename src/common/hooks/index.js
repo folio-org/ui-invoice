@@ -4,6 +4,7 @@ export * from './useConfigsAdjustments';
 export * from './useFiscalYear';
 export * from './useFiscalYears';
 export * from './useFundDistributionValidation';
+export * from './useExchangeCalculation';
 export * from './useInvoice';
 export * from './useInvoiceMutation';
 export * from './useInvoiceLine';

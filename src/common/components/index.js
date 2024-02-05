@@ -4,6 +4,7 @@ export {
   CredentialsFieldsGroup,
   CredentialsToggle,
 } from './credentials';
+export { DisplayExchangedAmount } from './DisplayExchangedAmount';
 export { default as DuplicateInvoiceList } from './DuplicateInvoiceList';
 export * from './FieldFiscalYear';
 export * from './FiscalYearValue';

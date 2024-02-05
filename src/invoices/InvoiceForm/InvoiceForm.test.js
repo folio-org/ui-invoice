@@ -42,6 +42,7 @@ jest.mock('../../common/components/VendorPrimaryAddress', () => ({
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   usePayableFiscalYears: jest.fn(() => ({ fiscalYears: FISCAL_YEARS })),
+  useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
 }));
 
 const accounts = [{

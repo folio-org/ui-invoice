@@ -146,7 +146,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 5;"
+                      style="z-index: 2;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-information"
@@ -1117,7 +1117,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-note="true"
                           >
                             <div
-                              class="textArea"
+                              class="textArea inputGroup"
                             >
                               <label
                                 class="label"
@@ -1125,20 +1125,16 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               >
                                 ui-invoice.invoice.note
                               </label>
+                              <textarea
+                                aria-invalid="false"
+                                class="formControl"
+                                id="note"
+                                name="note"
+                                type="text"
+                              />
                               <div
-                                class="inputGroup"
-                              >
-                                <textarea
-                                  aria-invalid="false"
-                                  class="formControl"
-                                  id="note"
-                                  name="note"
-                                  type="text"
-                                />
-                                <div
-                                  role="alert"
-                                />
-                              </div>
+                                role="alert"
+                              />
                             </div>
                           </div>
                         </div>
@@ -1190,7 +1186,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 4;"
+                      style="z-index: 1;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-invoiceAdjustments"
@@ -1250,7 +1246,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 3;"
+                      style="z-index: 2;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-vendorDetails"
@@ -2041,6 +2037,21 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 stripes-acq-components.setExchangeRate.tooltip
                               </span>
                             </span>
+                          </div>
+                        </div>
+                        <div
+                          class="kvRoot"
+                        >
+                          <div
+                            class="kvLabel"
+                          >
+                            ui-invoice.invoice.details.information.calculatedTotalExchangeAmount
+                          </div>
+                          <div
+                            class="kvValue"
+                            data-test-kv-value="true"
+                          >
+                            $30.00
                           </div>
                         </div>
                       </div>
