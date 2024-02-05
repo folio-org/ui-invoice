@@ -206,7 +206,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 5;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-information"
@@ -269,7 +269,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 4;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-invoiceLines"
@@ -327,7 +327,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 3;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-vendorDetails"
@@ -385,7 +385,7 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
             </div>
             <div
               class="content-wrap"
-              style="z-index: 1;"
+              style="z-index: 2;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-extendedInformation"
@@ -670,7 +670,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 5;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-information"
@@ -733,7 +733,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 4;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-invoiceLines"
@@ -791,7 +791,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 3;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-vendorDetails"
@@ -849,7 +849,7 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
             </div>
             <div
               class="content-wrap"
-              style="z-index: 1;"
+              style="z-index: 2;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-extendedInformation"
@@ -1134,7 +1134,7 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 5;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-information"
@@ -1197,7 +1197,7 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 4;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-invoiceLines"
@@ -1255,7 +1255,7 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 3;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-vendorDetails"
@@ -1313,7 +1313,7 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
             </div>
             <div
               class="content-wrap"
-              style="z-index: 1;"
+              style="z-index: 2;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-extendedInformation"
@@ -1597,7 +1597,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 5;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-information"
@@ -1660,7 +1660,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 4;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-invoiceLines"
@@ -1718,7 +1718,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 3;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-vendorDetails"
@@ -1776,7 +1776,7 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
             </div>
             <div
               class="content-wrap"
-              style="z-index: 1;"
+              style="z-index: 2;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-extendedInformation"
@@ -2061,7 +2061,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 5;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-information"
@@ -2124,7 +2124,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 4;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-invoiceLines"
@@ -2182,7 +2182,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 3;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-vendorDetails"
@@ -2240,7 +2240,7 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
             </div>
             <div
               class="content-wrap"
-              style="z-index: 1;"
+              style="z-index: 2;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-extendedInformation"
@@ -2524,7 +2524,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 6;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-information"
@@ -2587,7 +2587,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 5;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-invoiceLines"
@@ -2645,7 +2645,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 4;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-vendorDetails"
@@ -2703,7 +2703,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
             </div>
             <div
               class="content-wrap"
-              style="z-index: 1;"
+              style="z-index: 3;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-extendedInformation"
@@ -2761,7 +2761,7 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
             </div>
             <div
               class="content-wrap expanded"
-              style="z-index: 1;"
+              style="z-index: 2;"
             >
               <div
                 aria-labelledby="accordion-toggle-button-batchVoucherExport"
