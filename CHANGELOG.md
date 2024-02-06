@@ -9,6 +9,7 @@
 * Display all external account numbers associated with an invoice in the export report. Refs UINV-515.
 * Uninformative error in invoice payment due to user not linked to the Purchase Order's acquisition unit. Refs UINV-518.
 * *BREAKING:* Bump up okapi interfaces for `pieces` (3.0). Refs UINV-529.
+* Include the currency in an invoice upon creation derived from a purchase order. Refs UINV-530
 * Display the exchanged calculated total amount when invoice in foreign currency. Refs UINV-522.
 
 ## [5.0.1](https://github.com/folio-org/ui-invoice/tree/v5.0.1) (2023-10-31)
