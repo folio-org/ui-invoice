@@ -50,9 +50,9 @@ const getResultFormatter = ({ search }) => ({
   fiscalYear: invoiceLine => invoiceLine.fiscalYear?.code || <NoValue />,
   [COLUMN_INVOICE_DATE]: invoiceLine => <FormattedDate value={invoiceLine.invoice?.invoiceDate} />,
   vendorCode: invoiceLine => invoiceLine.vendor?.code || <NoValue />,
-  subscriptionStart: invoiceLine => getFormattedDate(invoiceLine.fiscalYear?.periodStart),
-  subscriptionEnd: invoiceLine => getFormattedDate(invoiceLine.fiscalYear?.periodEnd),
-  subscriptionDescription: invoiceLine => invoiceLine.fiscalYear?.description || <NoValue />,
+  subscriptionStart: invoiceLine => getFormattedDate(invoiceLine.subscriptionStart),
+  subscriptionEnd: invoiceLine => getFormattedDate(invoiceLine.subscriptionEnd),
+  subscriptionDescription: invoiceLine => invoiceLine.subscriptionInfo || <NoValue />,
   vendorInvoiceNo: invoiceLine => (
     invoiceLine.invoice?.vendorInvoiceNo
       ? (
