@@ -355,7 +355,6 @@
     "poLineLookup": "POL look-up",
     "permission.cancel": "Invoice: Cancel invoices",
     "appMenu.invoicesAppSearch": "Invoices app Search",
-    "receivingHistory.caption": "Caption",
     "receivingHistory.chronology": "Chronology",
     "receivingHistory.copyNumber": "Copy number",
     "receivingHistory.enumeration": "Enumeration",
@@ -375,7 +374,7 @@
     "invoice.details.city": "City",
     "invoice.details.country": "Country",
     "invoice.details.language": "Język",
-    "invoice.details.stateRegion": "State / Prov. / Region",
+    "invoice.details.stateRegion": "Województwo/Powiat/Gmina",
     "invoice.details.zipCode": "Zip code",
     "otherRelatedInvoiceLines": "Other related invoice lines",
     "otherRelatedInvoiceLines.amount": "Amount",
@@ -416,7 +415,7 @@
     "voucherExport.batchGroup.select": "Select batch group",
     "voucherExport.download.success": "Vouchers have been successfully downloaded",
     "permission.voucherExport": "Invoice: Voucher export",
-    "permission.exportCSV": "Invoice: Export search results",
+    "permission.exportCSV": "Faktury: Eksport wyników wyszukiwania",
     "invoiceLine.linesSequence.paneTitle": "Edit sequence of invoice lines • Vendor invoice number {vendorInvoiceNo}",
     "invoiceLine.linesSequence.paneSubTitle": "{count} lines found",
     "saveAndContinue": "Save & continue",
@@ -449,9 +448,10 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundCode}</b> for the targeted fiscal year or the budget is not Active.",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
+    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operacja jest niedozwolona, ponieważ użytkownik nie jest członkiem określonej jednostki gromadzenia",
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zatwierdzić faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można opłacić faktury, ponieważ Fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zatwierdzić i opłacić faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zapisać faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu."
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zapisać faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
+    "receivingHistory.displaySummary": "Display summary"
 }

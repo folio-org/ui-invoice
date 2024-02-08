@@ -355,7 +355,6 @@
     "poLineLookup": "POL 조회",
     "permission.cancel": "인보이스: 인보이스 취소",
     "appMenu.invoicesAppSearch": "인보이스 앱 검색",
-    "receivingHistory.caption": "캡션",
     "receivingHistory.chronology": "연대기",
     "receivingHistory.copyNumber": "복본 수량",
     "receivingHistory.enumeration": "열거",
@@ -453,5 +452,6 @@
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget."
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget.",
+    "receivingHistory.displaySummary": "Display summary"
 }
