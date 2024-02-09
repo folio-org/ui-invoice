@@ -2,6 +2,9 @@
 
 ## (6.0.0 IN PROGRESS)
 
+## [5.0.2](https://github.com/folio-org/ui-invoice/tree/v5.0.2) (2023-02-09)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v5.0.1...v5.0.2)
+
 * Invoice line Subscription fields are not populated correctly on Invoice line pane. Refs UINV-534.
 
 ## [5.0.1](https://github.com/folio-org/ui-invoice/tree/v5.0.1) (2023-10-31)
