@@ -2043,21 +2043,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             </span>
                           </div>
                         </div>
-                        <div
-                          class="kvRoot"
-                        >
-                          <div
-                            class="kvLabel"
-                          >
-                            ui-invoice.invoice.details.information.calculatedTotalExchangeAmount
-                          </div>
-                          <div
-                            class="kvValue"
-                            data-test-kv-value="true"
-                          >
-                            $30.00
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </section>
