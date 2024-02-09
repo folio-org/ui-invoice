@@ -355,7 +355,6 @@
     "poLineLookup": "订单行查询",
     "permission.cancel": "发票：取消发票",
     "appMenu.invoicesAppSearch": "发票应用搜索",
-    "receivingHistory.caption": "卷期标识",
     "receivingHistory.chronology": "年表",
     "receivingHistory.copyNumber": "复本号",
     "receivingHistory.enumeration": "期数",
@@ -449,9 +448,10 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "设置（发票）：批量组用户名和密码：查看",
     "permission.batchVoucher.exportConfigs.credentials.edit": "设置（发票）：批量组用户名和密码：查看和编辑",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "此操作无法成功完成。目标财务年度的<b> {fundCode} </b>没有预算，或者预算未激活。",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
-    "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget."
+    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "由于用户不是指定采访单位的成员，因此不允许操作",
+    "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "无法批准发票，因为经费<b>  {fundCode} </b>没有当前预算。",
+    "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "无法支付发票，因为经费 <b> {fundCode} </b>没有当前预算。",
+    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "无法批准和支付发票，因为经费 <b> {fundCode} </b>没有当前预算。",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "无法保存发票行，因为经费<b> {fundCode} </b>没有当前预算。",
+    "receivingHistory.displaySummary": "显示摘要"
 }

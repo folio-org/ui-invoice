@@ -355,7 +355,6 @@
     "poLineLookup": "ŘNO vyhledávání",
     "permission.cancel": "Faktura: Zrušení faktur",
     "appMenu.invoicesAppSearch": "Vyhledat fakturu",
-    "receivingHistory.caption": "Titulek",
     "receivingHistory.chronology": "Chronologie",
     "receivingHistory.copyNumber": "Číslo kopie",
     "receivingHistory.enumeration": "Výčet",
@@ -450,8 +449,9 @@
     "permission.batchVoucher.exportConfigs.credentials.edit": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení a úprava",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "Tuto operaci se nepodařilo úspěšně dokončit. Pro <b>{fundCode}</b> buď neexistuje rozpočet pro cílový fiskální rok, nebo rozpočet není aktivní.",
     "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
-    "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget."
+    "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze schválit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
+    "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze uhradit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
+    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze schválit a zaplatit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Řádek faktury nelze uložit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
+    "receivingHistory.displaySummary": "Display summary"
 }

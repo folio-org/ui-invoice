@@ -355,7 +355,6 @@
     "poLineLookup": "Consulta linha do pedido de compra",
     "permission.cancel": "Fatura: Cancelar faturas",
     "appMenu.invoicesAppSearch": "Busca no aplicativo de Faturas",
-    "receivingHistory.caption": "Legenda",
     "receivingHistory.chronology": "Cronologia",
     "receivingHistory.copyNumber": "Número do exemplar",
     "receivingHistory.enumeration": "Enumeração",
@@ -453,5 +452,6 @@
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "A fatura não pode ser aprovada porque o Fundo <b>{fundCode}</b> não tem orçamento atual.",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "A fatura não pode ser paga porque o Fundo <b>{fundCode}</b> não tem orçamento atual.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "A fatura não pode ser aprovada e paga porque o Fundo <b>{fundCode}</b> não tem orçamento atual.",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "A linha de fatura não pode ser salva porque o Fundo <b>{fundCode}</b> não tem orçamento atual."
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "A linha de fatura não pode ser salva porque o Fundo <b>{fundCode}</b> não tem orçamento atual.",
+    "receivingHistory.displaySummary": "Exibir resumo"
 }

@@ -355,7 +355,6 @@
     "poLineLookup": "POL look-up",
     "permission.cancel": "Fattura: annullare le fatture",
     "appMenu.invoicesAppSearch": "Invoices app Search",
-    "receivingHistory.caption": "Caption",
     "receivingHistory.chronology": "Cronologia",
     "receivingHistory.copyNumber": "Numero copia",
     "receivingHistory.enumeration": "Enumerazione",
@@ -453,5 +452,6 @@
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget."
+    "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget.",
+    "receivingHistory.displaySummary": "Display summary"
 }
