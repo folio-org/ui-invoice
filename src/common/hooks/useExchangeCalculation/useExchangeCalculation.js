@@ -19,18 +19,19 @@ export const useExchangeCalculation = ({ from, to, amount, rate }, options = {})
     rate,
   };
 
-  const { data, isLoading } = useQuery(
-    [namespace, amount, rate, from],
+  const { data, isLoading, isFetching } = useQuery(
+    [namespace, amount, rate, from, to],
     ({ signal }) => ky.get(`${CALCULATE_EXCHANGE_API}`, { searchParams, signal }).json(),
     {
       keepPreviousData: true,
       ...otherOptions,
-      enabled: enabled && Boolean(amount && from && to),
+      enabled: enabled && Boolean(amount && from && to && rate),
     },
   );
 
   return ({
     exchangedAmount: data,
+    isFetching,
     isLoading,
   });
 };

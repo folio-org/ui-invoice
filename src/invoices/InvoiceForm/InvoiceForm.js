@@ -66,7 +66,7 @@ import {
 } from '../../common/utils';
 import {
   ApprovedBy,
-  DisplayExchangedAmount,
+  CalculatedExchangeAmount,
   FieldFiscalYearContainer as FieldFiscalYear,
   VendorPrimaryAddress,
 } from '../../common/components';
@@ -606,7 +606,7 @@ const InvoiceForm = ({
                         isUseExangeRateDisabled={isEditPostApproval}
                         isSetExchangeRateNonIntaractive={isStatusPaid}
                       />
-                      <DisplayExchangedAmount
+                      <CalculatedExchangeAmount
                         currency={values.currency}
                         exchangeRate={values.exchangeRate}
                         total={values.total}

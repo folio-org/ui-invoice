@@ -18,7 +18,7 @@ import {
 
 import {
   ApprovedBy,
-  DisplayExchangedAmount,
+  CalculatedExchangeAmount,
   FiscalYearValueContainer as FiscalYearValue,
   StatusValue,
 } from '../../../common/components';
@@ -185,7 +185,7 @@ const Information = ({
 
       <Row>
         <Col xs={3}>
-          <DisplayExchangedAmount
+          <CalculatedExchangeAmount
             currency={currency}
             exchangeRate={exchangeRate}
             total={total}

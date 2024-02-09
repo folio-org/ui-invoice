@@ -157,6 +157,8 @@
           "batch-voucher.export-configurations.collection.get",
           "configuration.entries.collection.get",
           "finance.budgets.collection.get",
+          "finance.calculate-exchange.item.get",
+          "finance.fiscal-years.collection.get",
           "finance.fiscal-years.item.get",
           "finance.funds.collection.get",
           "finance.funds.expense-classes.collection.get",
@@ -178,8 +180,7 @@
           "users.item.get",
           "voucher.voucher-lines.collection.get",
           "voucher.vouchers.collection.get",
-          "voucher.vouchers.item.get",
-          "finance.fiscal-years.collection.get"
+          "voucher.vouchers.item.get"
         ]
       },
       {

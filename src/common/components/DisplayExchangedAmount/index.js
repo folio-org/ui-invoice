@@ -1,1 +1,0 @@
-export { DisplayExchangedAmount } from './DisplayExchangedAmount';
