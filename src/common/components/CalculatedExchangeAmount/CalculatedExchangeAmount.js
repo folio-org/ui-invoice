@@ -27,6 +27,7 @@ export const CalculatedExchangeAmount = ({ currency, exchangeRate, total }) => {
     rate: exchangeRate,
   });
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedSave = useCallback(debounce(() => {
     setExchangeProps({
       to: systemCurrency,
