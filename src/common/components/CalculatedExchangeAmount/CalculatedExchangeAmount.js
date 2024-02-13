@@ -28,7 +28,7 @@ export const CalculatedExchangeAmount = ({ currency, exchangeRate, total }) => {
   });
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const debouncedSave = useCallback(debounce(() => {
+  const debounceSetExchangeProps = useCallback(debounce(() => {
     setExchangeProps({
       to: systemCurrency,
       from: currency,
@@ -38,10 +38,10 @@ export const CalculatedExchangeAmount = ({ currency, exchangeRate, total }) => {
   }, DEBOUNCE_DELAY), [currency, exchangeRate, systemCurrency, total]);
 
   useEffect(() => {
-    debouncedSave();
+    debounceSetExchangeProps();
 
-    return () => debouncedSave.cancel();
-  }, [currency, debouncedSave, exchangeRate, total]);
+    return () => debounceSetExchangeProps.cancel();
+  }, [currency, debounceSetExchangeProps, exchangeRate, total]);
 
   const { exchangedAmount } = useExchangeCalculation(exchangeProps, { enabled });
 
