@@ -12,7 +12,7 @@
     "start": "yarn stripes serve",
     "build": "yarn stripes build --output ./output",
     "test": "yarn run test:unit",
-    "test:unit": "jest --ci --coverage",
+    "test:unit": "jest --ci --coverage --updateSnapshot",
     "test:unit:watch": "jest --ci --coverage --watch",
     "test:e2e": "yarn stripes test karma --karma.singleRun --karma.browsers ChromeDocker --karma.reporters mocha junit --coverage",
     "lint": "eslint .",
