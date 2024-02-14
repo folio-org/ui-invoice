@@ -30,6 +30,7 @@ import {
   TagsBadge,
   TagsPane,
   useAcqRestrictions,
+  useExchangeRateValue,
 } from '@folio/stripes-acq-components';
 
 import { PrintVoucherContainer } from '../PrintVoucher';
@@ -106,6 +107,12 @@ function InvoiceDetails({
   const { hasPendingOrders, isLoading: isPendingOrdersLoading } = useHasPendingOrders(orderlinesMap);
   const isVendorInactive = vendor?.status === VENDOR_STATUS.INACTIVE;
   const showHasPendingOrdersMessage = hasPendingOrders && !isPendingOrdersLoading;
+
+  const { exchangeRate } = useExchangeRateValue(
+    invoice.currency,
+    stripes.currency,
+    invoice.exchangeRate,
+  );
 
   const shortcuts = [
     {
@@ -287,7 +294,7 @@ function InvoiceDetails({
                 approvalDate={invoice.approvalDate}
                 approvedBy={invoice.approvedBy}
                 batchGroupId={invoice.batchGroupId}
-                exchangeRate={invoice.exchangeRate}
+                exchangeRate={invoice.exchangeRate || exchangeRate}
                 fiscalYearId={invoice.fiscalYearId}
                 invoiceDate={invoice.invoiceDate}
                 paymentDate={invoice.paymentDate}
