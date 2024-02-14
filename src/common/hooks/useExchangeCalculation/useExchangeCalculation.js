@@ -6,6 +6,7 @@ import {
 } from 'react';
 import { useQuery } from 'react-query';
 
+import { useExchangeRateValue } from '@folio/stripes-acq-components';
 import {
   useOkapiKy,
   useNamespace,
@@ -20,10 +21,16 @@ export const useExchangeCalculation = ({ from, to, amount, rate }, options = {})
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'exchange-calculation' });
 
+  const { exchangeRate } = useExchangeRateValue(
+    from,
+    to,
+    rate,
+  );
+
   const [searchParams, setSearchParams] = useState({
     amount,
     from,
-    rate,
+    rate: rate || exchangeRate,
     to,
   });
 
@@ -32,16 +39,16 @@ export const useExchangeCalculation = ({ from, to, amount, rate }, options = {})
     setSearchParams({
       amount,
       from,
-      rate,
+      rate: rate || exchangeRate,
       to,
     });
-  }, DEBOUNCE_DELAY), [amount, from, rate, to]);
+  }, DEBOUNCE_DELAY), [amount, from, rate, to, exchangeRate]);
 
   useEffect(() => {
     debounceSetSearchParams();
 
     return () => debounceSetSearchParams.cancel();
-  }, [amount, debounceSetSearchParams, from, rate, to]);
+  }, [amount, debounceSetSearchParams, from, rate, to, exchangeRate]);
 
   const {
     amount: amountProp,

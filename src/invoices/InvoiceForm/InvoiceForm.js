@@ -51,7 +51,6 @@ import {
   PAYMENT_METHOD_OPTIONS,
   TextField,
   validateRequired,
-  useExchangeRateValue,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -105,8 +104,6 @@ const InvoiceForm = ({
   const intl = useIntl();
   const history = useHistory();
   const accordionStatusRef = useRef();
-  const stripes = useStripes();
-  const systemCurrency = stripes.currency;
 
   const {
     batch,
@@ -138,12 +135,6 @@ const InvoiceForm = ({
     vendorInvoiceNo,
     fiscalYearId,
   } = initialValues;
-
-  const { exchangeRate: exchangeRateValue } = useExchangeRateValue(
-    values.currency,
-    systemCurrency,
-    values.exchangeRate,
-  );
 
   const [selectedVendor, setSelectedVendor] = useState();
   const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
@@ -620,7 +611,7 @@ const InvoiceForm = ({
                       />
                       <CalculatedExchangeAmount
                         currency={values.currency}
-                        exchangeRate={values.exchangeRate || exchangeRateValue}
+                        exchangeRate={values.exchangeRate}
                         total={values.total}
                       />
                     </Accordion>
