@@ -21,11 +21,7 @@ export const useExchangeCalculation = ({ from, to, amount, rate }, options = {})
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'exchange-calculation' });
 
-  const { exchangeRate } = useExchangeRateValue(
-    from,
-    to,
-    rate,
-  );
+  const { exchangeRate } = useExchangeRateValue(from, to, rate);
 
   const [searchParams, setSearchParams] = useState({
     amount,
