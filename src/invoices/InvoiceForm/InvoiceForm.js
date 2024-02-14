@@ -14,10 +14,7 @@ import {
   noop,
 } from 'lodash';
 
-import {
-  IfPermission,
-  useStripes,
-} from '@folio/stripes/core';
+import { IfPermission } from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
