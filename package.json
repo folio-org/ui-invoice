@@ -86,6 +86,9 @@
     "@folio/plugin-find-organization": "^5.0.0",
     "@folio/plugin-find-po-line": "^5.0.0"
   },
+  "resolutions": {
+    "@folio/stripes-acq-components": "https://github.com/folio-org/stripes-acq-components.git#develop"
+  },
   "stripes": {
     "actsAs": [
       "app",
@@ -157,6 +160,8 @@
           "batch-voucher.export-configurations.collection.get",
           "configuration.entries.collection.get",
           "finance.budgets.collection.get",
+          "finance.calculate-exchange.item.get",
+          "finance.fiscal-years.collection.get",
           "finance.fiscal-years.item.get",
           "finance.funds.collection.get",
           "finance.funds.expense-classes.collection.get",
@@ -178,8 +183,7 @@
           "users.item.get",
           "voucher.voucher-lines.collection.get",
           "voucher.vouchers.collection.get",
-          "voucher.vouchers.item.get",
-          "finance.fiscal-years.collection.get"
+          "voucher.vouchers.item.get"
         ]
       },
       {

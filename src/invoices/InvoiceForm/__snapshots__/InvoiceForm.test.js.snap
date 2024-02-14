@@ -146,7 +146,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 5;"
+                      style="z-index: 0;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-information"
@@ -1190,7 +1190,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 4;"
+                      style="z-index: 1;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-invoiceAdjustments"
@@ -1250,7 +1250,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 3;"
+                      style="z-index: 2;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-vendorDetails"
@@ -1484,7 +1484,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 2;"
+                      style="z-index: 5;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-extendedInformation"
@@ -1917,21 +1917,26 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-current-exchange-rate="true"
                           >
                             <div
-                              class="kvRoot"
-                              data-testid="current-exchange-rate"
+                              class="full"
+                              data-test-layout="true"
                             >
                               <div
-                                class="kvLabel"
+                                class="kvRoot"
+                                data-testid="current-exchange-rate"
                               >
-                                stripes-acq-components.currentExchangeRate
-                              </div>
-                              <div
-                                class="kvValue"
-                                data-test-kv-value="true"
-                              >
-                                <span>
-                                  -
-                                </span>
+                                <div
+                                  class="kvLabel"
+                                >
+                                  stripes-acq-components.currentExchangeRate
+                                </div>
+                                <div
+                                  class="kvValue"
+                                  data-test-kv-value="true"
+                                >
+                                  <span>
+                                    -
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -1940,7 +1945,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             data-test-col-use-set-exchange-rate="true"
                           >
                             <div
-                              class="checkbox inline vertical"
+                              class="checkbox fullWidth inline vertical"
                               data-test-checkbox="true"
                             >
                               <label
@@ -2091,7 +2096,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 1;"
+                      style="z-index: 4;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-documents"
