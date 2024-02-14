@@ -146,7 +146,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 3;"
+                      style="z-index: 0;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-information"
@@ -913,7 +913,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 2;"
+                      style="z-index: 1;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-fundDistribution"
@@ -922,310 +922,20 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                         id="accordion3"
                         role="region"
                       >
-                        <fieldset
-                          class="repeatableField hasMargin"
-                          data-test-repeatable-field="true"
-                          id="fundDistributions"
+                        <div
+                          class="spinner"
+                          style="width: 90px; height: 45px;"
                         >
-                          <legend
-                            class="headline size-medium margin-medium font-weight-bold"
-                            data-test-headline="true"
-                            data-test-repeatable-field-legend="true"
-                          >
-                            stripes-acq-components.fundDistribution.remainingAmount
-                          </legend>
-                          <ul
-                            class="repeatableFieldList"
-                            data-test-repeatable-field-list="true"
-                          >
-                            <li
-                              class="repeatableFieldItem"
-                              data-test-repeatable-field-list-item="true"
-                            >
-                              <div
-                                class="repeatableFieldItemContent"
-                              >
-                                <div
-                                  class="row"
-                                >
-                                  <div
-                                    class="col-xs"
-                                  >
-                                    <div
-                                      style="position: relative; width: 100%;"
-                                    >
-                                      <div
-                                        aria-live="assertive"
-                                        aria-relevant="additions"
-                                        class="sr-only"
-                                      />
-                                      <label
-                                        class="label"
-                                        for="fundDistributions[0].fundId"
-                                        id="sl-label-fundDistributions[0].fundId"
-                                      >
-                                        stripes-acq-components.fundDistribution.id
-                                        <span
-                                          aria-hidden="true"
-                                          class="asterisk"
-                                        >
-                                          *
-                                        </span>
-                                      </label>
-                                      <span
-                                        class="sr-only"
-                                        id="sl-fundDistributions[0].fundId-required"
-                                      >
-                                        required
-                                      </span>
-                                      <div
-                                        class="selectionControlContainer"
-                                      >
-                                        <button
-                                          aria-expanded="false"
-                                          aria-haspopup="listbox"
-                                          aria-labelledby="sl-label-fundDistributions[0].fundId selected-fundDistributions[0].fundId-item sl-fundDistributions[0].fundId-required"
-                                          aria-owns="sl-fundDistributions[0].fundId"
-                                          class="selectionControl formControl"
-                                          id="fundDistributions[0].fundId"
-                                          name="fundDistributions[0].fundId"
-                                          type="button"
-                                        >
-                                          <span
-                                            class="sr-only"
-                                          >
-                                            stripes-components.selection.controlLabel
-                                          </span>
-                                          <div
-                                            class="singleValue"
-                                            id="selected-fundDistributions[0].fundId-item"
-                                          >
-                                            <div
-                                              class="optionSegment"
-                                              data-test-selection-option-segment="true"
-                                            >
-                                              stripes-acq-components.fundDistribution.unavailableFund
-                                            </div>
-                                          </div>
-                                        </button>
-                                        <div
-                                          class="selectionEndControls"
-                                        >
-                                          <div
-                                            class="textFieldIcon"
-                                          >
-                                            <span>
-                                              Icon
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div
-                                        role="alert"
-                                      />
-                                    </div>
-                                    <div
-                                      class="overlay"
-                                      hidden=""
-                                    >
-                                      <div
-                                        class="selectionListRoot sr-only"
-                                        hidden=""
-                                        id="sl-container-fundDistributions[0].fundId"
-                                      >
-                                        <div
-                                          class="selectionFilterContainer"
-                                        >
-                                          <input
-                                            aria-activedescendant="option-fundDistributions[0].fundId-0-65032151-39a5-4cef-8810-5350eb316300"
-                                            aria-controls="sl-container-fundDistributions[0].fundId"
-                                            aria-expanded="true"
-                                            aria-label="stripes-components.selection.filterOptionsLabel"
-                                            aria-owns="sl-fundDistributions[0].fundId"
-                                            class="selectionFilter"
-                                            placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                            role="combobox"
-                                            type="text"
-                                            value=""
-                                          />
-                                        </div>
-                                        <ul
-                                          aria-label="stripes-components.selection.filterOptionsLabel"
-                                          class="selectionList"
-                                          id="sl-fundDistributions[0].fundId"
-                                          role="listbox"
-                                          style="max-height: 174px;"
-                                        >
-                                          <li
-                                            aria-selected="true"
-                                            class="option optionOutside cursor selected"
-                                            id="option-fundDistributions[0].fundId-0-65032151-39a5-4cef-8810-5350eb316300"
-                                            role="option"
-                                            tabindex="-1"
-                                            unselectable="on"
-                                          >
-                                            <div
-                                              class="optionSegment"
-                                              data-test-selection-option-segment="true"
-                                            >
-                                              stripes-acq-components.fundDistribution.unavailableFund
-                                            </div>
-                                          </li>
-                                        </ul>
-                                        <div
-                                          class="selectListSection"
-                                          role="alert"
-                                        />
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div
-                                    class="col-xs"
-                                  />
-                                  <div
-                                    class="col-xs"
-                                  >
-                                    <div
-                                      class="textField"
-                                    >
-                                      <label
-                                        class="label"
-                                        for="text-input-11"
-                                      >
-                                        stripes-acq-components.fundDistribution.value
-                                        <span
-                                          aria-hidden="true"
-                                          class="asterisk"
-                                        >
-                                          *
-                                        </span>
-                                      </label>
-                                      <div
-                                        class="formControl inputGroup"
-                                      >
-                                        <input
-                                          aria-invalid="false"
-                                          aria-required="true"
-                                          autocapitalize="off"
-                                          autocomplete="off"
-                                          autocorrect="off"
-                                          data-testid="fundDistribution-value"
-                                          error=""
-                                          id="text-input-11"
-                                          name="fundDistributions[0].value"
-                                          required=""
-                                          spellcheck="false"
-                                          type="number"
-                                          value="50"
-                                          warning=""
-                                        />
-                                      </div>
-                                      <div
-                                        role="alert"
-                                      />
-                                    </div>
-                                  </div>
-                                  <div
-                                    class="col-xs"
-                                  >
-                                    <div
-                                      class="kvRoot"
-                                    >
-                                      <div
-                                        class="kvLabel"
-                                      >
-                                        stripes-acq-components.fundDistribution.type
-                                      </div>
-                                      <div
-                                        class="kvValue"
-                                        data-test-kv-value="true"
-                                      >
-                                        <div
-                                          class="buttonGroup fullWidth"
-                                          data-test-fund-distr-type="true"
-                                        >
-                                          <button
-                                            class="button primary"
-                                            data-test-fund-distr-type-percent="true"
-                                            type="button"
-                                          >
-                                            <span
-                                              class="inner"
-                                            >
-                                              stripes-acq-components.fundDistribution.type.sign.percent
-                                            </span>
-                                          </button>
-                                          <button
-                                            class="button default"
-                                            data-test-fund-distr-type-amount="true"
-                                            type="button"
-                                          >
-                                            <span
-                                              class="inner"
-                                            >
-                                              $
-                                            </span>
-                                          </button>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div
-                                    class="col-xs"
-                                  >
-                                    <div
-                                      class="kvRoot"
-                                    >
-                                      <div
-                                        class="kvLabel"
-                                      >
-                                        stripes-acq-components.fundDistribution.amount
-                                      </div>
-                                      <div
-                                        class="kvValue"
-                                        data-test-kv-value="true"
-                                      >
-                                        $837.65
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div
-                                class="repeatableFieldRemoveItem "
-                              >
-                                <button
-                                  aria-label="stripes-components.deleteThisItem"
-                                  class="iconButton medium"
-                                  data-test-repeatable-field-remove-item-button="true"
-                                  icon="trash"
-                                  type="button"
-                                >
-                                  <span
-                                    class="iconButtonInner mediumOffset"
-                                    data-test-repeatable-field-remove-item-button="true"
-                                  >
-                                    <span>
-                                      Icon
-                                    </span>
-                                  </span>
-                                </button>
-                              </div>
-                            </li>
-                          </ul>
-                          <button
-                            class="button default"
-                            data-test-repeatable-field-add-item-button="true"
-                            id="fundDistributions-add-button"
-                            type="button"
-                          >
-                            <span
-                              class="inner"
-                            >
-                              stripes-acq-components.fundDistribution.addBtn
-                            </span>
-                          </button>
-                        </fieldset>
+                          <div
+                            class="bounce1"
+                          />
+                          <div
+                            class="bounce2"
+                          />
+                          <div
+                            class="bounce3"
+                          />
+                        </div>
                       </div>
                     </div>
                   </section>
@@ -1274,7 +984,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 1;"
+                      style="z-index: 2;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-adjustments"
