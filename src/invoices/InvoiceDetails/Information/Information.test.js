@@ -7,6 +7,7 @@ import Information from './Information';
 jest.mock('../../../common/hooks', () => ({
   ...jest.requireActual('../../../common/hooks'),
   useFiscalYear: jest.fn(() => ({ fiscalYear: { code: 'FY2023' } })),
+  useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
 }));
 jest.mock('../BatchGroupValue', () => {
   return () => <span>BatchGroupValue</span>;

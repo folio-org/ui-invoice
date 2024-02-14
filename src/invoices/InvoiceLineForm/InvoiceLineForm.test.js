@@ -1,5 +1,6 @@
-import { MemoryRouter } from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { useHistory } from 'react-router';
+import { MemoryRouter } from 'react-router-dom';
 
 import {
   act,
@@ -34,6 +35,16 @@ jest.mock('../AdjustmentsForm', () => {
 });
 jest.mock('./POLineField', () => ({ POLineField: jest.fn(() => 'POLineField') }));
 
+const queryClient = new QueryClient();
+
+const wrapper = ({ children }) => (
+  <MemoryRouter>
+    <QueryClientProvider client={queryClient}>
+      {children}
+    </QueryClientProvider>
+  </MemoryRouter>
+);
+
 const defaultProps = {
   initialValues: invoiceLine,
   invoice,
@@ -43,7 +54,7 @@ const defaultProps = {
 };
 const renderInvoiceLineForm = (props = defaultProps) => render(
   <InvoiceLineForm {...props} />,
-  { wrapper: MemoryRouter },
+  { wrapper },
 );
 
 describe('InvoiceLineForm component', () => {

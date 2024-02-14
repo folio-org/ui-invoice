@@ -66,6 +66,7 @@ import {
 } from '../../common/utils';
 import {
   ApprovedBy,
+  CalculatedExchangeAmount,
   FieldFiscalYearContainer as FieldFiscalYear,
   VendorPrimaryAddress,
 } from '../../common/components';
@@ -131,6 +132,7 @@ const InvoiceForm = ({
     vendorInvoiceNo,
     fiscalYearId,
   } = initialValues;
+
   const [selectedVendor, setSelectedVendor] = useState();
   const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
 
@@ -603,6 +605,11 @@ const InvoiceForm = ({
                         isTooltipTextExchangeRate={!isEditPostApproval}
                         isUseExangeRateDisabled={isEditPostApproval}
                         isSetExchangeRateNonIntaractive={isStatusPaid}
+                      />
+                      <CalculatedExchangeAmount
+                        currency={values.currency}
+                        exchangeRate={values.exchangeRate}
+                        total={values.total}
                       />
                     </Accordion>
                     {/* <Accordion
