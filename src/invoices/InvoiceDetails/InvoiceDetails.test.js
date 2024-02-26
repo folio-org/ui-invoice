@@ -287,6 +287,10 @@ describe('InvoiceDetails', () => {
     });
 
     describe('Approve and Pay', () => {
+      beforeEach(() => {
+        ApproveConfirmationModal.mockClear();
+      });
+
       it('should open confirmation modal when Approve&Pay invoice action is called', () => {
         renderInvoiceDetails();
 
@@ -294,7 +298,7 @@ describe('InvoiceDetails', () => {
           InvoiceActions.mock.calls[0][0].onApproveAndPay();
         });
 
-        expect(screen.getByText('ui-invoice.invoice.actions.approveAndPay.confirmation.message')).toBeDefined();
+        expect(screen.getByText('ApproveConfirmationModal')).toBeInTheDocument();
       });
 
       it('should call approveAndPayInvoice when Approve&Pay is confirmed', async () => {
@@ -308,7 +312,9 @@ describe('InvoiceDetails', () => {
         act(() => {
           InvoiceActions.mock.calls[0][0].onApproveAndPay();
         });
-        await user.click(screen.getByText('stripes-components.submit'));
+        act(() => {
+          ApproveConfirmationModal.mock.calls[0][0].onConfirm();
+        });
 
         expect(approveAndPayInvoice).toHaveBeenCalled();
       });
