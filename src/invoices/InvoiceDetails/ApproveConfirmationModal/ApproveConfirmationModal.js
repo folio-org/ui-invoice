@@ -18,11 +18,14 @@ const ApproveConfirmationModal = ({
   onCancel,
   onConfirm,
   invoice,
+  headingLabelId,
+  id,
+  messageLabelId,
   mutator,
 }) => {
   const intl = useIntl();
   const [duplicateInvoices] = useDuplicateInvoice(mutator, invoice);
-  const modalLabel = intl.formatMessage({ id: 'ui-invoice.invoice.actions.approve.confirmation.heading' });
+  const modalLabel = intl.formatMessage({ id: headingLabelId });
 
   const footer = (
     <ModalFooter>
@@ -50,11 +53,11 @@ const ApproveConfirmationModal = ({
     <Modal
       aria-label={modalLabel}
       footer={footer}
-      id="approve-invoice-confirmation"
+      id={id}
       label={modalLabel}
       open
     >
-      <FormattedMessage id="ui-invoice.invoice.actions.approve.confirmation.message" />
+      <FormattedMessage id={messageLabelId} />
 
       {duplicateInvoices?.length
         ? (
@@ -83,10 +86,19 @@ ApproveConfirmationModal.manifest = Object.freeze({
 });
 
 ApproveConfirmationModal.propTypes = {
+  headingLabelId: PropTypes.string,
+  id: PropTypes.string,
   invoice: PropTypes.object.isRequired,
+  messageLabelId: PropTypes.string,
   mutator: PropTypes.object.isRequired,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
+};
+
+ApproveConfirmationModal.defaultProps = {
+  headingLabelId: 'ui-invoice.invoice.actions.approve.confirmation.heading',
+  id: 'approve-invoice-confirmation',
+  messageLabelId: 'ui-invoice.invoice.actions.approve.confirmation.message',
 };
 
 export default stripesConnect(ApproveConfirmationModal);
