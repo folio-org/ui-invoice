@@ -448,16 +448,16 @@ function InvoiceDetails({
         }
         {
           isApproveAndPayConfirmationOpen && (
-            <ConfirmationModal
+            <ApproveConfirmationModal
               id="approve-pay-invoice-confirmation"
-              heading={<FormattedMessage id="ui-invoice.invoice.actions.approveAndPay.confirmation.heading" />}
-              message={<FormattedMessage id="ui-invoice.invoice.actions.approveAndPay.confirmation.message" />}
+              headingLabelId="ui-invoice.invoice.actions.approveAndPay.confirmation.heading"
+              messageLabelId="ui-invoice.invoice.actions.approveAndPay.confirmation.message"
               onCancel={toggleApproveAndPayConfirmation}
               onConfirm={() => {
                 toggleApproveAndPayConfirmation();
                 approveAndPayInvoice();
               }}
-              open
+              invoice={invoice}
             />
           )
         }
