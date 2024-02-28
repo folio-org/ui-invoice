@@ -450,8 +450,8 @@ function InvoiceDetails({
           isApproveAndPayConfirmationOpen && (
             <ApproveConfirmationModal
               id="approve-pay-invoice-confirmation"
-              heading="ui-invoice.invoice.actions.approveAndPay.confirmation.heading"
-              message="ui-invoice.invoice.actions.approveAndPay.confirmation.message"
+              headingLabelId="ui-invoice.invoice.actions.approveAndPay.confirmation.heading"
+              messageLabelId="ui-invoice.invoice.actions.approveAndPay.confirmation.message"
               onCancel={toggleApproveAndPayConfirmation}
               onConfirm={() => {
                 toggleApproveAndPayConfirmation();
