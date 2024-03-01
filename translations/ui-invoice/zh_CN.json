@@ -453,5 +453,6 @@
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "无法支付发票，因为经费 <b> {fundCode} </b>没有当前预算。",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "无法批准和支付发票，因为经费 <b> {fundCode} </b>没有当前预算。",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "无法保存发票行，因为经费<b> {fundCode} </b>没有当前预算。",
-    "receivingHistory.displaySummary": "显示摘要"
+    "receivingHistory.displaySummary": "显示摘要",
+    "invoice.details.information.calculatedTotalExchangeAmount": "Calculated total amount (Exchanged)"
 }

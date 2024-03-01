@@ -211,7 +211,7 @@
     "invoice.invoiceLinksAndDocuments": "Linki do faktur i dokumenty",
     "invoice.invoiceTags": "Etykiety faktury",
     "invoice.invoiceVendorInformation": "Informacje o sprzedawcy na fakturze",
-    "tag": "Etykietka",
+    "tag": "Tag",
     "errors.fileLimit": "Plik przekracza limit rozmiaru {size}MB",
     "settings.vouchers.label": "Kupony",
     "settings.batchGroups.label": "Grupy wsadowe",
@@ -453,5 +453,6 @@
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można opłacić faktury, ponieważ Fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zatwierdzić i opłacić faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zapisać faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
-    "receivingHistory.displaySummary": "Display summary"
+    "receivingHistory.displaySummary": "Display summary",
+    "invoice.details.information.calculatedTotalExchangeAmount": "Calculated total amount (Exchanged)"
 }
