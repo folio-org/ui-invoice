@@ -177,14 +177,6 @@ const InvoiceLineForm = ({
     });
   }, [accounts, accountNumber, formatMessage]);
 
-  const accountNumberDisabled = useMemo(() => {
-    const hasCurrentAccountNumber = accounts.some(({ accountNo }) => accountNo === currentAccountNumber);
-    const isOnlyOneActiveAccount = activeAccountOptions.length === 1;
-    const noActiveAccounts = activeAccountOptions.length === 0;
-
-    return noActiveAccounts || (hasCurrentAccountNumber && isOnlyOneActiveAccount);
-  }, [accounts, activeAccountOptions, currentAccountNumber]);
-
   const isSelectedAccountInactive = useMemo(() => {
     return accounts.some(({ accountNo, accountStatus }) => {
       return accountNo === currentAccountNumber && accountStatus === ACCOUNT_STATUS.INACTIVE;
@@ -300,7 +292,7 @@ const InvoiceLineForm = ({
                             labelId="ui-invoice.invoiceLine.accountNumber"
                             name="accountNumber"
                             onChange={changeAccountNumber}
-                            isNonInteractive={isDisabledToEditAccountNumber || accountNumberDisabled}
+                            isNonInteractive={isDisabledToEditAccountNumber}
                           />
                           {
                             isSelectedAccountInactive && (
