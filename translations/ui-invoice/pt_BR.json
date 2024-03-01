@@ -67,7 +67,7 @@
     "invoiceLine.accountNumber": "Número da conta",
     "invoiceLine.accountingCode": "Código contábil",
     "invoiceLine.comment": "Comentário",
-    "invoiceLine.releaseEncumbrance": "Lançar oneração",
+    "invoiceLine.releaseEncumbrance": "Lançar encargo",
     "invoiceLine.subTotal": "Subtotal",
     "adjustment.type": "Selecione o ajuste",
     "adjustment.description": "Descrição",
@@ -434,7 +434,7 @@
     "settings.batchGroupConfiguration.directory": "Diretório",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.FTP": "ftp://uploadlocation.com",
     "settings.batchGroupConfiguration.uploadLocation.placeholder.SFTP": "sftp://uploadlocation.com",
-    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "A fatura não pôde ser aprovada. O id do fundo de ônus não corresponde ao id do fundo na linha da fatura. O erro deve ser corrigido no banco de dados.",
+    "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "A fatura não pôde ser aprovada. O id do fundo de encargo não corresponde ao id do fundo na linha da fatura. O erro deve ser corrigido no banco de dados.",
     "invoice.details.hasPendingOrders": "A fatura não pode ser aprovada. Um ou mais dos pedidos relacionados têm um status de fluxo de trabalho \"Pendente\". Se desejar, abra os pedidos relacionados antes de aprovar essa fatura.",
     "invoice.accountingCode.default": "Padrão ({erpCode})",
     "invoice.actions.approve.error.incorrectFundDistributionTotal": "A fatura não pôde ser aprovada ou paga. O total da distribuição de fundos deve ser de 100% na linha da fatura {invoiceLineNumber}. Atualize os detalhes de distribuição de fundos para essa linha de fatura para continuar.",
@@ -453,5 +453,6 @@
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "A fatura não pode ser paga porque o Fundo <b>{fundCode}</b> não tem orçamento atual.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "A fatura não pode ser aprovada e paga porque o Fundo <b>{fundCode}</b> não tem orçamento atual.",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "A linha de fatura não pode ser salva porque o Fundo <b>{fundCode}</b> não tem orçamento atual.",
-    "receivingHistory.displaySummary": "Exibir resumo"
+    "receivingHistory.displaySummary": "Exibir resumo",
+    "invoice.details.information.calculatedTotalExchangeAmount": "Valor total calculado (trocado)"
 }
