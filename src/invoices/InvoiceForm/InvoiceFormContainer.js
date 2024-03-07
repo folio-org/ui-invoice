@@ -78,6 +78,7 @@ export function InvoiceFormContainerComponent({
   const { orderLines, isLoading: isOrderLinesLoading } = useOrderLines(orderIds);
   const invoiceVendorId = isCreate ? orders?.[0]?.vendor : invoice.vendorId;
   const { organization: invoiceVendor, isLoading: isVendorLoading } = useOrganization(invoiceVendorId);
+
   const { mutateInvoiceLine } = useInvoiceLineMutation({
     onSuccess: () => {
       return showToast({ messageId: 'ui-invoice.invoiceLine.hasBeenSaved' });
@@ -191,11 +192,15 @@ export function InvoiceFormContainerComponent({
   const exportToAccounting = alwaysShowAdjustments.some(adj => adj.exportToAccounting);
 
   const initialInvoice = useMemo(() => {
+    // Get the vendor's latest currency as default
+    const vendorPreferredCurrency = invoiceVendor?.vendorCurrencies?.slice(-1)[0];
+    const currency = vendorPreferredCurrency || orderLines?.[0]?.cost?.currency || stripes.currency;
+
     return !isCreate
       ? invoice
       : {
         chkSubscriptionOverlap: true,
-        currency: orderLines?.[0]?.cost?.currency || stripes.currency,
+        currency,
         exchangeRate: orderLines?.[0]?.cost?.exchangeRate,
         source: sourceValues.user,
         adjustments: alwaysShowAdjustments,
@@ -209,6 +214,7 @@ export function InvoiceFormContainerComponent({
     batchGroupId,
     exportToAccounting,
     invoice,
+    invoiceVendor,
     isCreate,
     orderLines,
     orders,
