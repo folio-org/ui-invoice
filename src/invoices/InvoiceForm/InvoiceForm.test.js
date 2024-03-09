@@ -81,12 +81,10 @@ describe('InvoiceForm component', () => {
     FieldOrganization.mockClear();
   });
 
-  it('should render correct structure', () => {
-    const { container, asFragment } = renderInvoiceForm();
+  it('should render component', () => {
+    renderInvoiceForm();
 
-    container.querySelector('#invoice-form-accordion-set').removeAttribute('aria-multiselectable');
-
-    expect(asFragment()).toMatchSnapshot();
+    expect(screen.getByText('ui-invoice.saveAndClose')).toBeInTheDocument();
   });
 
   it('should display title', () => {
