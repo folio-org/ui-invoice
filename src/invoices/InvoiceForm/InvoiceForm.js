@@ -155,7 +155,7 @@ const InvoiceForm = ({
       const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
       const accountNo = hasAnyAccountingCode ? null : NO_ACCOUNT_NUMBER;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
-      const vendorPreferredCurrency = vendor?.vendorCurrencies?.slice(-1)[0];
+      const vendorPreferredCurrency = vendor?.vendorCurrencies?.at(-1);
 
       batch(() => {
         change('accountingCode', vendorAccountingCode || null);
