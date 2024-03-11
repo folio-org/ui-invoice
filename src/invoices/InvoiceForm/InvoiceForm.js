@@ -155,15 +155,17 @@ const InvoiceForm = ({
       const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
       const accountNo = hasAnyAccountingCode ? null : NO_ACCOUNT_NUMBER;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
+      const vendorPreferredCurrency = vendor?.vendorCurrencies?.at(-1);
 
       batch(() => {
         change('accountingCode', vendorAccountingCode || null);
         change('accountNo', accountNo);
         change('paymentMethod', paymentMethod || null);
         change('exportToAccounting', exportToAccounting);
+        change('currency', vendorPreferredCurrency || currency);
       });
     }
-  }, [change, batch, selectedVendor]);
+  }, [selectedVendor?.id, batch, change, currency]);
 
   useEffect(() => {
     if (isCreateFromOrder) selectVendor(initialVendor);

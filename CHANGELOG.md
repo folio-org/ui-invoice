@@ -14,6 +14,7 @@
 * Display the exchanged calculated total amount when invoice in foreign currency. Refs UINV-522.
 * Approve and Pay does not have duplicate warning when approving and paying an invoice. Refs UINV-521.
 * Enable interaction for the "Account Number" field in the invoice line form when it contains only one account. Refs UINV-533.
+* Use Vendor's most recent currency as default currency for creating Invoice. Refs UINV-537.
 
 ## [5.0.1](https://github.com/folio-org/ui-invoice/tree/v5.0.1) (2023-10-31)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v5.0.0...v5.0.1)

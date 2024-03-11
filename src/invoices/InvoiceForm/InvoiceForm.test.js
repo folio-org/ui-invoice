@@ -85,7 +85,6 @@ describe('InvoiceForm component', () => {
     const { container, asFragment } = renderInvoiceForm();
 
     container.querySelector('#invoice-form-accordion-set').removeAttribute('aria-multiselectable');
-
     expect(asFragment()).toMatchSnapshot();
   });
 
