@@ -7,9 +7,15 @@ import {
   useLocation,
   useRouteMatch,
 } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
-import { useStripes } from '@folio/stripes/core';
+import {
+  TitleManager,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   MultiColumnList,
   checkScope,
@@ -26,6 +32,7 @@ import {
   ResetButton,
   RESULT_COUNT_INCREMENT,
   ResultsPane,
+  SEARCH_PARAMETER,
   SingleSearchForm,
   useFiltersReset,
   useFiltersToogle,
@@ -85,6 +92,7 @@ const InvoicesList = ({
   refreshList,
   query,
 }) => {
+  const intl = useIntl();
   const location = useLocation();
   const history = useHistory();
   const match = useRouteMatch();
@@ -139,6 +147,9 @@ const InvoicesList = ({
     },
   ];
 
+  const queryFilter = filters?.[SEARCH_PARAMETER];
+  const pageTitle = queryFilter ? intl.formatMessage({ id: 'ui-invoice.document.title.search' }, { query: queryFilter }) : null;
+
   const resultsStatusMessage = (
     <NoResultsMessage
       isLoading={isLoading}
@@ -161,6 +172,7 @@ const InvoicesList = ({
       isWithinScope={checkScope}
       scope={document.body}
     >
+      <TitleManager page={pageTitle} />
       <PersistedPaneset
         appId="ui-receiving"
         id="invoice-paneset"
