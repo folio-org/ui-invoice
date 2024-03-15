@@ -3,3 +3,7 @@ export const VENDOR_STATUS = {
   INACTIVE: 'Inactive',
   PENDING: 'Pending',
 };
+
+export const ACQ_ERROR_TYPE = {
+  order: 'order',
+};

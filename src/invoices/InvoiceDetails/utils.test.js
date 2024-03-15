@@ -121,7 +121,8 @@ describe('showUpdateInvoiceError', () => {
     ['incorrectFundDistributionTotal', 'ui-invoice.invoice.actions.approve.error.incorrectFundDistributionTotal', ['invoiceLineNumber']],
     ['budgetNotFoundByFundId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundId', ['fund', 'fundCode']],
     ['budgetNotFoundByFundId', 'defaultErrorMessageId', []],
-    ['userNotAMemberOfTheAcq', 'ui-invoice.invoice.actions.pay.error.userNotAMemberOfTheAcq', []],
+    ['userHasNoPermission', 'ui-invoice.invoice.actions.error.userHasNoPermission', []],
+    ['userNotAMemberOfTheAcq', 'ui-invoice.invoice.actions.error.userNotAMemberOfTheAcq', []],
     ['fundCannotBePaid', 'ui-invoice.invoice.actions.approve.error.fundCannotBePaid', ['funds']],
     ['budgetNotFoundByFundIdAndFiscalYearId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId', ['fundId']],
   ])('should get %s error message', async (code, messageId, key) => {
@@ -135,7 +136,7 @@ describe('showUpdateInvoiceError', () => {
       values = { values: { fundCodes: 'value' } };
     } else if (code === 'budgetNotFoundByFundIdAndFiscalYearId') {
       values = { values: { fundCode: 'value' } };
-    } else if (code === 'userNotAMemberOfTheAcq') {
+    } else if (code === 'userNotAMemberOfTheAcq' || code === 'userHasNoPermission') {
       values = {};
     }
 

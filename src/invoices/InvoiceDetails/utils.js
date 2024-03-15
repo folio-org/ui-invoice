@@ -10,6 +10,7 @@ import {
 import {
   convertToInvoiceLineFields,
 } from '../utils';
+import { ACQ_ERROR_TYPE } from './constants';
 
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   return {
@@ -64,11 +65,23 @@ export const showUpdateInvoiceError = async (
       });
       break;
     }
+    case ERROR_CODES.userHasNoPermission:
     case ERROR_CODES.userNotAMemberOfTheAcq: {
-      showCallout({
-        messageId: `ui-invoice.invoice.actions.pay.error.${ERROR_CODES[code]}`,
-        type: 'error',
-      });
+      const acqErrorType = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'type')[0]?.value;
+      const messageId = `ui-invoice.invoice.actions.error.${ERROR_CODES[code]}`;
+
+      if (acqErrorType === ACQ_ERROR_TYPE.order) {
+        showCallout({
+          messageId: `${messageId}.${ACQ_ERROR_TYPE.order}`,
+          type: 'error',
+        });
+      } else {
+        showCallout({
+          messageId,
+          type: 'error',
+        });
+      }
+
       break;
     }
     case ERROR_CODES.fundCannotBePaid: {

@@ -370,7 +370,6 @@
   "invoice.actions.approve.error.organizationIsNotExist": "Invoice cannot be approved because organization does not exist",
   "invoice.actions.approve.error.multipleFiscalYears": "Invoice cannot be approved because the funds used belong to multiple fiscal years",
   "invoice.actions.approve.error.outdatedFundIdInEncumbrance": "Invoice could not be approved. Encumbrance fund id does not match the fund id in the invoice line. Error must be corrected in database.",
-  "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
   "invoice.actions.pay.error.inactiveExpenseClass": "Invoice can not be <b>Payed</b> because expense class <b>{expenseClass}</b> is inactive.",
   "invoice.actions.pay.error.budgetNotFoundByFundId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
   "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
@@ -387,6 +386,9 @@
   "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget.",
   "invoice.actions.saveLine.error.inactiveExpenseClass": "Invoice line can not be saved because expense class <b>{expenseClass}</b> is inactive.",
   "invoice.actions.saveLine.error": "Invoice line was not saved",
+  "invoice.actions.error.userHasNoPermission": "Operation is not permitted because user is not a member of the specified acquisition unit",
+  "invoice.actions.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
+  "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operation is not permitted because user is not a member of the specified acquisition unit of the Order(s)",
 
   "invoice.actions.approveAndPay": "Approve & pay",
   "invoice.actions.approveAndPay.error": "Invoice was not approved/paid",
