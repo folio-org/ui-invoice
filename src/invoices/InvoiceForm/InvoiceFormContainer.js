@@ -194,7 +194,7 @@ export function InvoiceFormContainerComponent({
   const initialInvoice = useMemo(() => {
     // Get the vendor's latest currency as default
     const vendorPreferredCurrency = invoiceVendor?.vendorCurrencies?.slice(-1)[0];
-    const currency = vendorPreferredCurrency || orderLines?.[0]?.cost?.currency || stripes.currency;
+    const currency = orderLines?.[0]?.cost?.currency || vendorPreferredCurrency || stripes.currency;
 
     return !isCreate
       ? invoice
@@ -265,6 +265,7 @@ export function InvoiceFormContainerComponent({
         batchGroups={batchGroups}
         isCreateFromOrder={isCreateFromOrder}
         saveButtonLabelId={saveButtonLabelId}
+        hasPoLines={Boolean(orderLines?.length)}
       />
       {
         isNotUniqueOpen && (
