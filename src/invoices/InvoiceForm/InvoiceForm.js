@@ -14,7 +14,10 @@ import {
   noop,
 } from 'lodash';
 
-import { IfPermission } from '@folio/stripes/core';
+import {
+  IfPermission,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
@@ -88,6 +91,7 @@ const InvoiceForm = ({
   batchGroups,
   form,
   handleSubmit,
+  hasPoLines,
   initialValues,
   initialVendor,
   isCreateFromOrder,
@@ -101,6 +105,7 @@ const InvoiceForm = ({
   const intl = useIntl();
   const history = useHistory();
   const accordionStatusRef = useRef();
+  const stripes = useStripes();
 
   const {
     batch,
@@ -112,6 +117,7 @@ const InvoiceForm = ({
   const filledBillTo = values?.billTo;
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
+  const systemCurrency = stripes.currency;
   const isExportToAccountingChecked = values?.exportToAccounting ||
     values?.adjustments?.some(({ exportToAccounting }) => exportToAccounting);
   const {
@@ -132,7 +138,6 @@ const InvoiceForm = ({
     vendorInvoiceNo,
     fiscalYearId,
   } = initialValues;
-
   const [selectedVendor, setSelectedVendor] = useState();
   const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
 
@@ -155,17 +160,17 @@ const InvoiceForm = ({
       const vendorAccountingCode = hasAnyAccountingCode ? null : erpCode;
       const accountNo = hasAnyAccountingCode ? null : NO_ACCOUNT_NUMBER;
       const exportToAccounting = Boolean(vendor.exportToAccounting);
-      const vendorPreferredCurrency = vendor?.vendorCurrencies?.at(-1);
+      const vendorPreferredCurrency = vendor?.vendorCurrencies?.at(-1) || systemCurrency;
 
       batch(() => {
         change('accountingCode', vendorAccountingCode || null);
         change('accountNo', accountNo);
         change('paymentMethod', paymentMethod || null);
         change('exportToAccounting', exportToAccounting);
-        change('currency', vendorPreferredCurrency || currency);
+        change('currency', hasPoLines ? currency : vendorPreferredCurrency);
       });
     }
-  }, [selectedVendor?.id, batch, change, currency]);
+  }, [selectedVendor?.id, systemCurrency, batch, change, hasPoLines, currency]);
 
   useEffect(() => {
     if (isCreateFromOrder) selectVendor(initialVendor);
@@ -666,6 +671,7 @@ InvoiceForm.propTypes = {
   initialValues: PropTypes.object.isRequired,
   initialVendor: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
+  hasPoLines: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   parentResources: PropTypes.object.isRequired,
   pristine: PropTypes.bool.isRequired,
@@ -679,6 +685,7 @@ InvoiceForm.propTypes = {
 
 InvoiceForm.defaultProps = {
   adjustmentPresets: [],
+  hasPoLines: false,
   initialVendor: {},
   isCreateFromOrder: false,
   saveButtonLabelId: 'ui-invoice.saveAndClose',
