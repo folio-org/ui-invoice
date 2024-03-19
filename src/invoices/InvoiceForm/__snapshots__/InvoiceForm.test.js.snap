@@ -146,7 +146,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 0;"
+                      style="z-index: 5;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-information"
@@ -1250,7 +1250,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 2;"
+                      style="z-index: 5;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-vendorDetails"
@@ -1484,7 +1484,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 6;"
+                      style="z-index: 5;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceForm-extendedInformation"
