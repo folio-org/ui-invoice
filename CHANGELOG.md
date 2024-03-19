@@ -2,7 +2,7 @@
 
 ## (6.1.0 IN PROGRESS)
 
-## [6.0.0](https://github.com/folio-org/ui-invoice/tree/v6.0.0) (2024-03-18)
+## [6.0.0](https://github.com/folio-org/ui-invoice/tree/v6.0.0) (2024-03-19)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v5.0.1...v6.0.0)
 
 * Introduce new permission to view all invoices' settings. Refs UINV-458.
