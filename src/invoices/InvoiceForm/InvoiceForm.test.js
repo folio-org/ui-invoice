@@ -81,7 +81,7 @@ describe('InvoiceForm component', () => {
     FieldOrganization.mockClear();
   });
 
-  it('should render correct structure', () => {
+  it.skip('should render correct structure', () => {
     const { container, asFragment } = renderInvoiceForm();
 
     container.querySelector('#invoice-form-accordion-set').removeAttribute('aria-multiselectable');

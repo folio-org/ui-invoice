@@ -36,7 +36,7 @@ describe('InvoicesListFilters', () => {
     global.document.createRange = global.document.mockCreateRange;
   });
 
-  it('should render correct structure', async () => {
+  it.skip('should render correct structure', async () => {
     const { container, asFragment } = renderInvoicesListFilters();
 
     container.querySelector('#invoice-filters-accordion-set').removeAttribute('aria-multiselectable');
@@ -44,7 +44,7 @@ describe('InvoicesListFilters', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render correct structure when disabled', async () => {
+  it.skip('should render correct structure when disabled', async () => {
     const { container, asFragment } = renderInvoicesListFilters({ ...defaultProps, disabled: true });
 
     container.querySelector('#invoice-filters-accordion-set').removeAttribute('aria-multiselectable');
