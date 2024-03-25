@@ -4,7 +4,10 @@ import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 import { useHistory } from 'react-router';
 
-import { useStripes } from '@folio/stripes/core';
+import {
+  TitleManager,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
@@ -251,6 +254,7 @@ function InvoiceDetails({
         actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
+        <TitleManager record={vendorInvoiceNo} />
         <AccordionStatus ref={accordionStatusRef}>
           <Row end="xs">
             <Col xs={10}>

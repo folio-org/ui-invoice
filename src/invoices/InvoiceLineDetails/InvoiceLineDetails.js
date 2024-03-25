@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import { get } from 'lodash';
 
-import { useStripes } from '@folio/stripes/core';
+import {
+  TitleManager,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
@@ -128,6 +131,7 @@ const InvoiceLineDetails = ({
         actionMenu={renderActionMenu}
         lastMenu={lastMenu}
       >
+        <TitleManager record={invoiceLineNumber} />
         <AccordionStatus ref={accordionStatusRef}>
           <Row end="xs">
             <Col xs={12}>
