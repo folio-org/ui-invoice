@@ -448,11 +448,14 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Nastavení (Faktury): Dávková uživatelská jména a hesla skupin: zobrazení a úprava",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "Tuto operaci se nepodařilo úspěšně dokončit. Pro <b>{fundCode}</b> buď neexistuje rozpočet pro cílový fiskální rok, nebo rozpočet není aktivní.",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze schválit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze uhradit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze schválit a zaplatit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Řádek faktury nelze uložit, protože fond <b>{fundCode}</b> nemá aktuální rozpočet.",
     "receivingHistory.displaySummary": "Zobrazit souhrn",
-    "invoice.details.information.calculatedTotalExchangeAmount": "Vypočítaná celková částka (vyměněná)"
+    "invoice.details.information.calculatedTotalExchangeAmount": "Vypočítaná celková částka (vyměněná)",
+    "document.title.search": "Faktury - {query} - Vyhledat",
+    "invoice.actions.error.userHasNoPermission": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
+    "invoice.actions.error.userNotAMemberOfTheAcq": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
+    "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky objednávky/ek"
 }

@@ -448,11 +448,14 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundCode}</b> for the targeted fiscal year or the budget is not Active.",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved because Fund <b>{fundCode}</b> has no current budget.",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be paid because Fund <b>{fundCode}</b> has no current budget.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget.",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget.",
     "receivingHistory.displaySummary": "Display summary",
-    "invoice.details.information.calculatedTotalExchangeAmount": "Calculated total amount (Exchanged)"
+    "invoice.details.information.calculatedTotalExchangeAmount": "Calculated total amount (Exchanged)",
+    "document.title.search": "Invoices - {query} - Search",
+    "invoice.actions.error.userHasNoPermission": "Operation is not permitted because user is not a member of the specified acquisition unit",
+    "invoice.actions.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
+    "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operation is not permitted because user is not a member of the specified acquisition unit of the Order(s)"
 }
