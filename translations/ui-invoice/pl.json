@@ -401,8 +401,8 @@
     "exportSettings.error": "Nie udało się załadować danych dla eksportu wyników (CSV)",
     "button.voucherExport": "Voucher export",
     "button.exportCSV": "Eksport wyniki (CSV)",
-    "adjustment.value": "Value",
-    "settings.adjustments.value": "Value",
+    "adjustment.value": "Wartość",
+    "settings.adjustments.value": "Wartość",
     "settings.BatchVoucherExports.download.errorFormat": "File format not specified for voucher export. Please update Batch Group Configuration in system settings",
     "invoice.details.accordion.fundDistribution": "Invoice level fund distribution",
     "invoice.details.accordion.adjustments": "Invoice level adjustments",
@@ -448,11 +448,14 @@
     "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundCode}</b> for the targeted fiscal year or the budget is not Active.",
-    "invoice.actions.pay.error.userNotAMemberOfTheAcq": "Operacja jest niedozwolona, ponieważ użytkownik nie jest członkiem określonej jednostki gromadzenia",
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zatwierdzić faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można opłacić faktury, ponieważ Fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zatwierdzić i opłacić faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Nie można zapisać faktury, ponieważ fundusz <b>{fundCode}</b> nie ma bieżącego budżetu.",
     "receivingHistory.displaySummary": "Display summary",
-    "invoice.details.information.calculatedTotalExchangeAmount": "Calculated total amount (Exchanged)"
+    "invoice.details.information.calculatedTotalExchangeAmount": "Calculated total amount (Exchanged)",
+    "document.title.search": "Invoices - {query} - Search",
+    "invoice.actions.error.userHasNoPermission": "Operation is not permitted because user is not a member of the specified acquisition unit",
+    "invoice.actions.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
+    "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operation is not permitted because user is not a member of the specified acquisition unit of the Order(s)"
 }
