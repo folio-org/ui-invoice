@@ -134,6 +134,9 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
         id="pane-invoiceDetails-content"
         tabindex="-1"
       >
+        <div>
+          TitleManager
+        </div>
         <div
           class="row end-xs"
         >
@@ -598,6 +601,9 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
         id="pane-invoiceDetails-content"
         tabindex="-1"
       >
+        <div>
+          TitleManager
+        </div>
         <div
           class="row end-xs"
         >
@@ -1062,6 +1068,9 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
         id="pane-invoiceDetails-content"
         tabindex="-1"
       >
+        <div>
+          TitleManager
+        </div>
         <div
           class="row end-xs"
         >
@@ -1525,6 +1534,9 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
         id="pane-invoiceDetails-content"
         tabindex="-1"
       >
+        <div>
+          TitleManager
+        </div>
         <div
           class="row end-xs"
         >
@@ -1989,6 +2001,9 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
         id="pane-invoiceDetails-content"
         tabindex="-1"
       >
+        <div>
+          TitleManager
+        </div>
         <div
           class="row end-xs"
         >
@@ -2452,6 +2467,9 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
         id="pane-invoiceDetails-content"
         tabindex="-1"
       >
+        <div>
+          TitleManager
+        </div>
         <div
           class="row end-xs"
         >
