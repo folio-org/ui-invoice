@@ -1,6 +1,6 @@
 # Change history for ui-invoice
 
-## (6.1.0 IN PROGRESS)
+## 6.1.0 (IN PROGRESS)
 
 * UX Consistency: Update HTML Page Title display when third pane (detail record) displays. Refs UINV-525.
 
