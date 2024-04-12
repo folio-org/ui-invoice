@@ -12,6 +12,7 @@ import {
   FundFilter,
   NumberRangeFilter,
   PluggableOrganizationFilter,
+  PluggableUserFilter,
   SourceFilter,
   PAYMENT_METHOD_OPTIONS,
 } from '@folio/stripes-acq-components';
@@ -60,14 +61,6 @@ const InvoicesListFilters = ({
         onChange={adaptedApplyFilters}
       />
 
-      <AcqDateRangeFilter
-        id={FILTERS.DATE_CREATED}
-        activeFilters={activeFilters[FILTERS.DATE_CREATED]}
-        disabled={disabled}
-        labelId="ui-invoice.invoice.dateCreated"
-        name={FILTERS.DATE_CREATED}
-        onChange={adaptedApplyFilters}
-      />
       <AcqDateRangeFilter
         id={FILTERS.INVOICE_DATE}
         activeFilters={activeFilters[FILTERS.INVOICE_DATE]}
@@ -177,6 +170,79 @@ const InvoicesListFilters = ({
         onChange={adaptedApplyFilters}
         disabled={disabled}
       />
+
+      <PluggableUserFilter
+        id={FILTERS.CREATED_BY}
+        activeFilters={activeFilters[FILTERS.CREATED_BY]}
+        labelId="ui-invoice.filter.createdBy"
+        name={FILTERS.CREATED_BY}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
+      />
+
+      <AcqDateRangeFilter
+        id={FILTERS.DATE_CREATED}
+        activeFilters={activeFilters[FILTERS.DATE_CREATED]}
+        disabled={disabled}
+        labelId="ui-invoice.invoice.dateCreated"
+        name={FILTERS.DATE_CREATED}
+        onChange={adaptedApplyFilters}
+      />
+
+      <PluggableUserFilter
+        id={FILTERS.UPDATED_BY}
+        activeFilters={activeFilters[FILTERS.UPDATED_BY]}
+        labelId="ui-invoice.filter.updatedBy"
+        name={FILTERS.UPDATED_BY}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
+      />
+
+      <AcqDateRangeFilter
+        id={FILTERS.DATE_UPDATED}
+        activeFilters={activeFilters[FILTERS.DATE_UPDATED]}
+        labelId="ui-invoice.filter.dateUpdated"
+        name={FILTERS.DATE_UPDATED}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
+      />
+
+      <PluggableUserFilter
+        id={FILTERS.INVOICE_LINE_CREATED_BY}
+        activeFilters={activeFilters[FILTERS.INVOICE_LINE_CREATED_BY]}
+        labelId="ui-invoice.filter.invoiceLine.createdBy"
+        name={FILTERS.INVOICE_LINE_CREATED_BY}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
+      />
+
+      <AcqDateRangeFilter
+        id={FILTERS.INVOICE_LINE_DATE_CREATED}
+        activeFilters={activeFilters[FILTERS.INVOICE_LINE_DATE_CREATED]}
+        labelId="ui-invoice.filter.invoiceLine.dateCreated"
+        name={FILTERS.INVOICE_LINE_DATE_CREATED}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
+      />
+
+      <PluggableUserFilter
+        id={FILTERS.INVOICE_LINE_UPDATED_BY}
+        activeFilters={activeFilters[FILTERS.INVOICE_LINE_UPDATED_BY]}
+        labelId="ui-invoice.filter.invoiceLine.updatedBy"
+        name={FILTERS.INVOICE_LINE_UPDATED_BY}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
+      />
+
+      <AcqDateRangeFilter
+        id={FILTERS.INVOICE_LINE_DATE_UPDATED}
+        activeFilters={activeFilters[FILTERS.INVOICE_LINE_DATE_UPDATED]}
+        labelId="ui-invoice.filter.invoiceLine.dateUpdated"
+        name={FILTERS.INVOICE_LINE_DATE_UPDATED}
+        onChange={adaptedApplyFilters}
+        disabled={disabled}
+      />
+
     </AccordionSet>
   );
 };

@@ -29,6 +29,10 @@ export const EXPORT_INVOICE_FIELDS = {
   currency: 'Currency',
   exchangeRate: 'Exchange rate',
   invoiceTags: 'Invoice tags',
+  createdBy: 'Created by',
+  dateCreated: 'Date created',
+  updatedBy: 'Updated by',
+  dateUpdated: 'Date updated',
 };
 
 export const EXPORT_INVOICE_LINE_FIELDS = {
@@ -54,6 +58,10 @@ export const EXPORT_INVOICE_LINE_FIELDS = {
   voucherDate: 'Voucher date',
   disbursementNumber: 'Disbursement number',
   disbursementDate: 'Disbursement date',
+  invoiceLineCreatedBy: 'Created by (Invoice Line)',
+  invoiceLineDateCreated: 'Date created (Invoice Line)',
+  invoiceLineUpdatedBy: 'Updated by (Invoice Line)',
+  invoiceLineDateUpdated: 'Date updated (Invoice Line)',
 };
 
 export const EXPORT_INVOICE_FIELDS_OPTIONS = Object.keys(EXPORT_INVOICE_FIELDS).map(field => ({

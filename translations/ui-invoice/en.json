@@ -238,6 +238,15 @@
   "invoice.lockTotalAmount.tooltip": "Check Lock total to interact with this field",
   "invoice.validation.accountingCode": "To export to accounting you must select an accounting code",
 
+  "filter.createdBy": "Created by",
+  "filter.updatedBy": "Updated by",
+  "filter.dateCreated": "Date created",
+  "filter.dateUpdated": "Date updated",
+  "filter.invoiceLine.createdBy": "Created by (Invoice Line)",
+  "filter.invoiceLine.updatedBy": "Updated by (Invoice Line)",
+  "filter.invoiceLine.dateCreated": "Date created (Invoice Line)",
+  "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)",
+
   "invoice.status.approved": "Approved",
   "invoice.status.open": "Open",
   "invoice.status.reviewed": "Reviewed",
