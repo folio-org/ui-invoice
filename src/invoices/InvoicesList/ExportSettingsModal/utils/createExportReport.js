@@ -116,9 +116,9 @@ const getInvoiceExportData = ({
     voucherDate: formatDate(voucher.voucherDate, intl),
     disbursementNumber: voucher.disbursementNumber,
     disbursementDate: formatDate(voucher.disbursementDate, intl),
-    createdBy: invoice.metadata?.createdByUserId,
+    createdBy: userMap[invoice.metadata?.createdByUserId]?.username,
     dateCreated: formatDate(invoice.metadata?.createdDate, intl),
-    updatedBy: invoice.metadata?.updatedByUserId,
+    updatedBy: userMap[invoice.metadata?.updatedByUserId]?.username,
     dateUpdated: formatDate(invoice.metadata?.updatedDate, intl),
   };
 };
@@ -131,6 +131,7 @@ function getInvoiceLineExportData({
   invoice,
   invoiceLine: line,
   poLineMap,
+  userMap,
 }) {
   return {
     invoiceLineNumber: line.invoiceLineNumber,
@@ -155,9 +156,9 @@ function getInvoiceLineExportData({
     externalAccountNumber: getInvoiceLineExternalAccountNumbers(line, fundsMap, invalidReferenceLabel),
     referenceNumbers: getExportReferenceNumbers(line),
     lineTags: line.tags?.tagList?.join(' | '),
-    invoiceLineCreatedBy: line.metadata?.createdByUserId,
+    invoiceLineCreatedBy: userMap[line.metadata?.createdByUserId]?.username,
     invoiceLineDateCreated: formatDate(line.metadata?.createdDate, intl),
-    invoiceLineUpdatedBy: line.metadata?.updatedByUserId,
+    invoiceLineUpdatedBy: userMap[line.metadata?.updatedByUserId]?.username,
     invoiceLineDateUpdated: formatDate(line.metadata?.updatedDate, intl),
   };
 }
@@ -204,6 +205,7 @@ const buildExportRow = ({
       invoice,
       invoiceLine,
       poLineMap,
+      userMap,
     })
     : {};
 

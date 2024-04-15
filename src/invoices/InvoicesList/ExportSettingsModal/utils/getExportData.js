@@ -49,8 +49,20 @@ export const getExportData = async ({ ky, intl, query }) => {
   const vendors = await fetchExportDataByIds({ ky, ids: vendorIds, api: VENDORS_API, records: 'organizations' });
   const acqUnitsIds = uniq(flatten((exportInvoices.map(({ acqUnitIds }) => acqUnitIds))));
   const acqUnits = await fetchExportDataByIds({ ky, ids: acqUnitsIds, api: ACQUISITIONS_UNITS_API, records: 'acquisitionsUnits' });
-  const userIds = uniq(exportInvoices.map(({ approvedBy }) => approvedBy).filter(Boolean));
-  const users = await fetchExportDataByIds({ ky, ids: userIds, api: USERS_API, records: 'users' });
+  const userIds = exportInvoices.reduce((acc, { metadata, approvedBy }) => {
+    if (approvedBy) {
+      acc.push(approvedBy);
+    }
+    if (metadata?.createdByUserId) {
+      acc.push(metadata.createdByUserId);
+    }
+    if (metadata?.updatedByUserId) {
+      acc.push(metadata.updatedByUserId);
+    }
+
+    return acc;
+  }, []);
+  const users = await fetchExportDataByIds({ ky, ids: uniq(userIds), api: USERS_API, records: 'users' });
   const batchGroupIds = uniq(exportInvoices.map(({ batchGroupId }) => batchGroupId));
   const batchGroups = await fetchExportDataByIds({ ky, ids: batchGroupIds, api: BATCH_GROUPS_API, records: 'batchGroups' });
   const poLineIds = uniq(invoiceLines.map(({ poLineId }) => poLineId).filter(Boolean));
