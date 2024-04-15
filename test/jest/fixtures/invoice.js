@@ -15,4 +15,11 @@ export const invoice = {
   vendorInvoiceNo: 'edi',
   billTo: 'addressId',
   acqUnitIds: ['0ebb1f7d-983f-3026-8a4c-5318e0ebc041'],
+  approvedBy: 'diku_admin',
+  metadata: {
+    createdDate: '2021-06-08T11:00:00.000+00:00',
+    updatedDate: '2021-06-08T11:00:00.000+00:00',
+    createdByUserId: 'd7b3f1f2-0d1b-4b3f-8e1b-3f1d7b3f1b3f',
+    updatedByUserId: 'd7b3f1f2-0d1b-4b3f-8e1b-3f1d7b3f1b3f',
+  },
 };
