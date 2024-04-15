@@ -367,7 +367,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-14"
+                id="text-input-21"
                 spellcheck="false"
                 type="text"
                 value=""
@@ -386,210 +386,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"
-      id="metadata.createdDate"
-    >
-      <div
-        class="headerWrapper"
-        tabindex="-1"
-      >
-        <h3
-          class="headline size-small margin-small font-weight-bold block"
-          data-test-headline="true"
-        >
-          <button
-            aria-controls="accordion3"
-            aria-expanded="false"
-            aria-label="ui-invoice.invoice.dateCreated filter list"
-            class="filterSetHeader"
-            id="accordion-toggle-button-metadata.createdDate"
-            tabindex="0"
-            type="button"
-          >
-            <span>
-              Icon
-            </span>
-            <div
-              class="labelArea"
-            >
-              <div
-                class="filterSetLabel"
-              >
-                ui-invoice.invoice.dateCreated
-              </div>
-            </div>
-          </button>
-        </h3>
-      </div>
-      <div
-        class="content-wrap"
-        style="z-index: 2;"
-      >
-        <div
-          aria-labelledby="accordion-toggle-button-metadata.createdDate"
-          class="content-region"
-          data-test-accordion-wrapper="true"
-          id="accordion3"
-          role="region"
-        >
-          <div
-            class="container"
-          >
-            <div
-              class="container"
-              data-test-datepicker-container="true"
-            >
-              <div
-                class="textField"
-              >
-                <label
-                  class="label"
-                  for="dp-15"
-                >
-                  stripes-smart-components.dateRange.from
-                </label>
-                <div
-                  class="formControl inputGroup"
-                >
-                  <input
-                    aria-invalid="false"
-                    autocapitalize="off"
-                    autocomplete="off"
-                    autocorrect="off"
-                    data-test-date-input="startDate"
-                    id="dp-15"
-                    name="startDate"
-                    placeholder="MM/DD/YYYY"
-                    spellcheck="false"
-                    type="text"
-                    value=""
-                  />
-                  <div
-                    class="endControls"
-                  >
-                    <div
-                      class="controlGroup"
-                    >
-                      <button
-                        aria-haspopup="true"
-                        aria-label="stripes-components.showOrHideDatepicker"
-                        class="iconButton medium"
-                        data-test-calendar-button="true"
-                        icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-15"
-                        type="button"
-                      >
-                        <span
-                          class="iconButtonInner mediumOffset"
-                          data-test-calendar-button="true"
-                        >
-                          <span>
-                            Icon
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  role="alert"
-                />
-              </div>
-              <input
-                data-test-datepicker-hidden-input="true"
-                hidden=""
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="container"
-          >
-            <div
-              class="container"
-              data-test-datepicker-container="true"
-            >
-              <div
-                class="textField"
-              >
-                <label
-                  class="label"
-                  for="dp-16"
-                >
-                  stripes-smart-components.dateRange.to
-                </label>
-                <div
-                  class="formControl inputGroup"
-                >
-                  <input
-                    aria-invalid="false"
-                    autocapitalize="off"
-                    autocomplete="off"
-                    autocorrect="off"
-                    data-test-date-input="endDate"
-                    id="dp-16"
-                    name="endDate"
-                    placeholder="MM/DD/YYYY"
-                    spellcheck="false"
-                    type="text"
-                    value=""
-                  />
-                  <div
-                    class="endControls"
-                  >
-                    <div
-                      class="controlGroup"
-                    >
-                      <button
-                        aria-haspopup="true"
-                        aria-label="stripes-components.showOrHideDatepicker"
-                        class="iconButton medium"
-                        data-test-calendar-button="true"
-                        icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-16"
-                        type="button"
-                      >
-                        <span
-                          class="iconButtonInner mediumOffset"
-                          data-test-calendar-button="true"
-                        >
-                          <span>
-                            Icon
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  role="alert"
-                />
-              </div>
-              <input
-                data-test-datepicker-hidden-input="true"
-                hidden=""
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <button
-            class="button default marginBottom0"
-            data-test-apply-button="true"
-            type="button"
-          >
-            <span
-              class="inner"
-            >
-              stripes-smart-components.dateRange.apply
-            </span>
-          </button>
-        </div>
-      </div>
-    </section>
-    <section
-      class="accordion hasSeparator"
-      data-test-accordion-section="true"
       id="invoiceDate"
     >
       <div
@@ -601,7 +397,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion4"
+            aria-controls="accordion3"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
             class="filterSetHeader"
@@ -626,13 +422,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 3;"
+        style="z-index: 2;"
       >
         <div
           aria-labelledby="accordion-toggle-button-invoiceDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion4"
+          id="accordion3"
           role="region"
         >
           <div
@@ -647,7 +443,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-17"
+                  for="dp-22"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -660,7 +456,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-17"
+                    id="dp-22"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -679,7 +475,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-17"
+                        id="datepicker-toggle-calendar-button-dp-22"
                         type="button"
                       >
                         <span
@@ -718,7 +514,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-18"
+                  for="dp-23"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -731,7 +527,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-18"
+                    id="dp-23"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -750,7 +546,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-18"
+                        id="datepicker-toggle-calendar-button-dp-23"
                         type="button"
                       >
                         <span
@@ -805,7 +601,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion5"
+            aria-controls="accordion4"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
@@ -830,13 +626,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 14;"
+        style="z-index: 21;"
       >
         <div
           aria-labelledby="accordion-toggle-button-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion5"
+          id="accordion4"
           role="region"
         >
           <div
@@ -957,7 +753,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion6"
+            aria-controls="accordion5"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
@@ -982,13 +778,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 5;"
+        style="z-index: 4;"
       >
         <div
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion6"
+          id="accordion5"
           role="region"
         >
           <div
@@ -1115,7 +911,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion7"
+            aria-controls="accordion6"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
             class="filterSetHeader"
@@ -1140,13 +936,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 6;"
+        style="z-index: 5;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDue"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion7"
+          id="accordion6"
           role="region"
         >
           <div
@@ -1161,7 +957,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-19"
+                  for="dp-24"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -1174,7 +970,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-19"
+                    id="dp-24"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -1193,7 +989,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-19"
+                        id="datepicker-toggle-calendar-button-dp-24"
                         type="button"
                       >
                         <span
@@ -1232,7 +1028,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-20"
+                  for="dp-25"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -1245,7 +1041,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-20"
+                    id="dp-25"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -1264,7 +1060,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-20"
+                        id="datepicker-toggle-calendar-button-dp-25"
                         type="button"
                       >
                         <span
@@ -1319,7 +1115,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion8"
+            aria-controls="accordion7"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentMethod filter list"
             class="filterSetHeader"
@@ -1344,13 +1140,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 7;"
+        style="z-index: 6;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion8"
+          id="accordion7"
           role="region"
         >
           <div
@@ -1770,7 +1566,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion9"
+            aria-controls="accordion8"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.approvalDate filter list"
             class="filterSetHeader"
@@ -1795,13 +1591,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 8;"
+        style="z-index: 7;"
       >
         <div
           aria-labelledby="accordion-toggle-button-approvalDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion9"
+          id="accordion8"
           role="region"
         >
           <div
@@ -1816,7 +1612,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-21"
+                  for="dp-26"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -1829,7 +1625,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-21"
+                    id="dp-26"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -1848,7 +1644,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-21"
+                        id="datepicker-toggle-calendar-button-dp-26"
                         type="button"
                       >
                         <span
@@ -1887,7 +1683,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-22"
+                  for="dp-27"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -1900,7 +1696,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-22"
+                    id="dp-27"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -1919,7 +1715,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-22"
+                        id="datepicker-toggle-calendar-button-dp-27"
                         type="button"
                       >
                         <span
@@ -1974,7 +1770,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion10"
+            aria-controls="accordion9"
             aria-expanded="false"
             aria-label="stripes-acq-components.label.sourceFilter filter list"
             class="filterSetHeader"
@@ -1999,13 +1795,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 9;"
+        style="z-index: 8;"
       >
         <div
           aria-labelledby="accordion-toggle-button-source"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion10"
+          id="accordion9"
           role="region"
         >
           <div
@@ -2225,7 +2021,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion11"
+            aria-controls="accordion10"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.exportToAccounting filter list"
             class="filterSetHeader"
@@ -2250,13 +2046,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 10;"
+        style="z-index: 9;"
       >
         <div
           aria-labelledby="accordion-toggle-button-exportToAccounting"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion11"
+          id="accordion10"
           role="region"
         >
           <div
@@ -2376,7 +2172,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion12"
+            aria-controls="accordion11"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentDate filter list"
             class="filterSetHeader"
@@ -2401,13 +2197,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 11;"
+        style="z-index: 10;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion12"
+          id="accordion11"
           role="region"
         >
           <div
@@ -2422,7 +2218,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-23"
+                  for="dp-28"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -2435,7 +2231,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-23"
+                    id="dp-28"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -2454,7 +2250,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-23"
+                        id="datepicker-toggle-calendar-button-dp-28"
                         type="button"
                       >
                         <span
@@ -2493,7 +2289,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               >
                 <label
                   class="label"
-                  for="dp-24"
+                  for="dp-29"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -2506,7 +2302,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-24"
+                    id="dp-29"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -2525,7 +2321,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-24"
+                        id="datepicker-toggle-calendar-button-dp-29"
                         type="button"
                       >
                         <span
@@ -2593,7 +2389,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion13"
+            aria-controls="accordion12"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.lockTotal filter list"
             class="filterSetHeader"
@@ -2618,13 +2414,13 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 12;"
+        style="z-index: 11;"
       >
         <div
           aria-labelledby="accordion-toggle-button-lockTotal"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion13"
+          id="accordion12"
           role="region"
         >
           <div
@@ -2632,7 +2428,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           >
             <label
               class="label"
-              for="text-input-25"
+              for="text-input-30"
             >
               stripes-acq-components.filter.numberRange.min
             </label>
@@ -2644,7 +2440,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                 autocapitalize="off"
                 autocomplete="off"
                 autocorrect="off"
-                id="text-input-25"
+                id="text-input-30"
                 spellcheck="false"
                 type="number"
                 value=""
@@ -2659,7 +2455,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           >
             <label
               class="label"
-              for="text-input-26"
+              for="text-input-31"
             >
               stripes-acq-components.filter.numberRange.max
             </label>
@@ -2671,7 +2467,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                 autocapitalize="off"
                 autocomplete="off"
                 autocorrect="off"
-                id="text-input-26"
+                id="text-input-31"
                 spellcheck="false"
                 type="number"
                 value=""
@@ -2700,6 +2496,1130 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       labelid="ui-invoice.invoice.details.information.fiscalYear"
       name="fiscalYearId"
     />
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.createdByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion13"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.createdBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.createdByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.createdBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 12;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.createdByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion13"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.createdBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-32"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.createdDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion14"
+            aria-expanded="false"
+            aria-label="ui-invoice.invoice.dateCreated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.createdDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.invoice.dateCreated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 13;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.createdDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion14"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-33"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-33"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-33"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-34"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-34"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-34"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.updatedByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion15"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.updatedBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.updatedByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.updatedBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 14;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.updatedByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion15"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.updatedBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-35"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.updatedDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion16"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.dateUpdated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.updatedDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.dateUpdated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 15;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.updatedDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion16"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-36"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-36"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-36"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-37"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-37"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-37"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.createdByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion17"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.createdBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.createdBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 16;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion17"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.invoiceLine.createdBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-38"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.createdDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion18"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.dateCreated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.createdDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.dateCreated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 17;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.createdDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion18"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-39"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-39"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-39"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-40"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-40"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-40"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.updatedByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion19"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.updatedBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.updatedBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 18;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion19"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.invoiceLine.updatedBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-41"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.updatedDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion20"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.dateUpdated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.updatedDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.dateUpdated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 19;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.updatedDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion20"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-42"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-42"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-42"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-43"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-43"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-43"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
   </div>
 </DocumentFragment>
 `;
@@ -2723,7 +3643,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion54"
+            aria-controls="accordion82"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.status filter list"
             class="filterSetHeader"
@@ -2754,7 +3674,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           aria-labelledby="accordion-toggle-button-status"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion54"
+          id="accordion82"
           role="region"
         >
           <div
@@ -3049,7 +3969,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion55"
+            aria-controls="accordion83"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.vendorName filter list"
             class="filterSetHeader"
@@ -3080,7 +4000,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           aria-labelledby="accordion-toggle-button-vendorId"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion55"
+          id="accordion83"
           role="region"
         >
           <div
@@ -3096,7 +4016,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-50"
+                id="text-input-80"
                 spellcheck="false"
                 type="text"
                 value=""
@@ -3115,210 +4035,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
     <section
       class="accordion hasSeparator"
       data-test-accordion-section="true"
-      id="metadata.createdDate"
-    >
-      <div
-        class="headerWrapper"
-        tabindex="-1"
-      >
-        <h3
-          class="headline size-small margin-small font-weight-bold block"
-          data-test-headline="true"
-        >
-          <button
-            aria-controls="accordion56"
-            aria-expanded="false"
-            aria-label="ui-invoice.invoice.dateCreated filter list"
-            class="filterSetHeader"
-            id="accordion-toggle-button-metadata.createdDate"
-            tabindex="0"
-            type="button"
-          >
-            <span>
-              Icon
-            </span>
-            <div
-              class="labelArea"
-            >
-              <div
-                class="filterSetLabel"
-              >
-                ui-invoice.invoice.dateCreated
-              </div>
-            </div>
-          </button>
-        </h3>
-      </div>
-      <div
-        class="content-wrap"
-        style="z-index: 2;"
-      >
-        <div
-          aria-labelledby="accordion-toggle-button-metadata.createdDate"
-          class="content-region"
-          data-test-accordion-wrapper="true"
-          id="accordion56"
-          role="region"
-        >
-          <div
-            class="container"
-          >
-            <div
-              class="container"
-              data-test-datepicker-container="true"
-            >
-              <div
-                class="textField"
-              >
-                <label
-                  class="label"
-                  for="dp-51"
-                >
-                  stripes-smart-components.dateRange.from
-                </label>
-                <div
-                  class="formControl inputGroup"
-                >
-                  <input
-                    aria-invalid="false"
-                    autocapitalize="off"
-                    autocomplete="off"
-                    autocorrect="off"
-                    data-test-date-input="startDate"
-                    id="dp-51"
-                    name="startDate"
-                    placeholder="MM/DD/YYYY"
-                    spellcheck="false"
-                    type="text"
-                    value=""
-                  />
-                  <div
-                    class="endControls"
-                  >
-                    <div
-                      class="controlGroup"
-                    >
-                      <button
-                        aria-haspopup="true"
-                        aria-label="stripes-components.showOrHideDatepicker"
-                        class="iconButton medium"
-                        data-test-calendar-button="true"
-                        icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-51"
-                        type="button"
-                      >
-                        <span
-                          class="iconButtonInner mediumOffset"
-                          data-test-calendar-button="true"
-                        >
-                          <span>
-                            Icon
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  role="alert"
-                />
-              </div>
-              <input
-                data-test-datepicker-hidden-input="true"
-                hidden=""
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <div
-            class="container"
-          >
-            <div
-              class="container"
-              data-test-datepicker-container="true"
-            >
-              <div
-                class="textField"
-              >
-                <label
-                  class="label"
-                  for="dp-52"
-                >
-                  stripes-smart-components.dateRange.to
-                </label>
-                <div
-                  class="formControl inputGroup"
-                >
-                  <input
-                    aria-invalid="false"
-                    autocapitalize="off"
-                    autocomplete="off"
-                    autocorrect="off"
-                    data-test-date-input="endDate"
-                    id="dp-52"
-                    name="endDate"
-                    placeholder="MM/DD/YYYY"
-                    spellcheck="false"
-                    type="text"
-                    value=""
-                  />
-                  <div
-                    class="endControls"
-                  >
-                    <div
-                      class="controlGroup"
-                    >
-                      <button
-                        aria-haspopup="true"
-                        aria-label="stripes-components.showOrHideDatepicker"
-                        class="iconButton medium"
-                        data-test-calendar-button="true"
-                        icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-52"
-                        type="button"
-                      >
-                        <span
-                          class="iconButtonInner mediumOffset"
-                          data-test-calendar-button="true"
-                        >
-                          <span>
-                            Icon
-                          </span>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  role="alert"
-                />
-              </div>
-              <input
-                data-test-datepicker-hidden-input="true"
-                hidden=""
-                type="text"
-                value=""
-              />
-            </div>
-          </div>
-          <button
-            class="button default marginBottom0"
-            data-test-apply-button="true"
-            type="button"
-          >
-            <span
-              class="inner"
-            >
-              stripes-smart-components.dateRange.apply
-            </span>
-          </button>
-        </div>
-      </div>
-    </section>
-    <section
-      class="accordion hasSeparator"
-      data-test-accordion-section="true"
       id="invoiceDate"
     >
       <div
@@ -3330,7 +4046,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion57"
+            aria-controls="accordion84"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
             class="filterSetHeader"
@@ -3355,13 +4071,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 3;"
+        style="z-index: 2;"
       >
         <div
           aria-labelledby="accordion-toggle-button-invoiceDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion57"
+          id="accordion84"
           role="region"
         >
           <div
@@ -3376,7 +4092,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-53"
+                  for="dp-81"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -3389,7 +4105,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-53"
+                    id="dp-81"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3408,7 +4124,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-53"
+                        id="datepicker-toggle-calendar-button-dp-81"
                         type="button"
                       >
                         <span
@@ -3447,7 +4163,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-54"
+                  for="dp-82"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -3460,7 +4176,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-54"
+                    id="dp-82"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3479,7 +4195,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-54"
+                        id="datepicker-toggle-calendar-button-dp-82"
                         type="button"
                       >
                         <span
@@ -3534,7 +4250,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion58"
+            aria-controls="accordion85"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.acqUnit filter list"
             class="filterSetHeader"
@@ -3559,13 +4275,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 14;"
+        style="z-index: 21;"
       >
         <div
           aria-labelledby="accordion-toggle-button-acqUnitIds"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion58"
+          id="accordion85"
           role="region"
         >
           <div
@@ -3687,7 +4403,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion59"
+            aria-controls="accordion86"
             aria-expanded="false"
             aria-label="stripes-acq-components.filter.tags filter list"
             class="filterSetHeader"
@@ -3712,13 +4428,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 5;"
+        style="z-index: 4;"
       >
         <div
           aria-labelledby="accordion-toggle-button-tags.tagList"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion59"
+          id="accordion86"
           role="region"
         >
           <div
@@ -3847,7 +4563,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion60"
+            aria-controls="accordion87"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
             class="filterSetHeader"
@@ -3872,13 +4588,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 6;"
+        style="z-index: 5;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDue"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion60"
+          id="accordion87"
           role="region"
         >
           <div
@@ -3893,7 +4609,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-55"
+                  for="dp-83"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -3906,7 +4622,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-55"
+                    id="dp-83"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3925,7 +4641,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-55"
+                        id="datepicker-toggle-calendar-button-dp-83"
                         type="button"
                       >
                         <span
@@ -3964,7 +4680,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-56"
+                  for="dp-84"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -3977,7 +4693,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-56"
+                    id="dp-84"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -3996,7 +4712,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-56"
+                        id="datepicker-toggle-calendar-button-dp-84"
                         type="button"
                       >
                         <span
@@ -4051,7 +4767,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion61"
+            aria-controls="accordion88"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentMethod filter list"
             class="filterSetHeader"
@@ -4076,13 +4792,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 7;"
+        style="z-index: 6;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentMethod"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion61"
+          id="accordion88"
           role="region"
         >
           <div
@@ -4542,7 +5258,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion62"
+            aria-controls="accordion89"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.approvalDate filter list"
             class="filterSetHeader"
@@ -4567,13 +5283,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 8;"
+        style="z-index: 7;"
       >
         <div
           aria-labelledby="accordion-toggle-button-approvalDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion62"
+          id="accordion89"
           role="region"
         >
           <div
@@ -4588,7 +5304,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-57"
+                  for="dp-85"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -4601,7 +5317,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-57"
+                    id="dp-85"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -4620,7 +5336,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-57"
+                        id="datepicker-toggle-calendar-button-dp-85"
                         type="button"
                       >
                         <span
@@ -4659,7 +5375,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-58"
+                  for="dp-86"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -4672,7 +5388,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-58"
+                    id="dp-86"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -4691,7 +5407,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-58"
+                        id="datepicker-toggle-calendar-button-dp-86"
                         type="button"
                       >
                         <span
@@ -4746,7 +5462,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion63"
+            aria-controls="accordion90"
             aria-expanded="false"
             aria-label="stripes-acq-components.label.sourceFilter filter list"
             class="filterSetHeader"
@@ -4771,13 +5487,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 9;"
+        style="z-index: 8;"
       >
         <div
           aria-labelledby="accordion-toggle-button-source"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion63"
+          id="accordion90"
           role="region"
         >
           <div
@@ -5017,7 +5733,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion64"
+            aria-controls="accordion91"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.exportToAccounting filter list"
             class="filterSetHeader"
@@ -5042,13 +5758,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 10;"
+        style="z-index: 9;"
       >
         <div
           aria-labelledby="accordion-toggle-button-exportToAccounting"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion64"
+          id="accordion91"
           role="region"
         >
           <div
@@ -5178,7 +5894,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion65"
+            aria-controls="accordion92"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.paymentDate filter list"
             class="filterSetHeader"
@@ -5203,13 +5919,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 11;"
+        style="z-index: 10;"
       >
         <div
           aria-labelledby="accordion-toggle-button-paymentDate"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion65"
+          id="accordion92"
           role="region"
         >
           <div
@@ -5224,7 +5940,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-59"
+                  for="dp-87"
                 >
                   stripes-smart-components.dateRange.from
                 </label>
@@ -5237,7 +5953,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="startDate"
-                    id="dp-59"
+                    id="dp-87"
                     name="startDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -5256,7 +5972,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-59"
+                        id="datepicker-toggle-calendar-button-dp-87"
                         type="button"
                       >
                         <span
@@ -5295,7 +6011,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               >
                 <label
                   class="label"
-                  for="dp-60"
+                  for="dp-88"
                 >
                   stripes-smart-components.dateRange.to
                 </label>
@@ -5308,7 +6024,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                     autocomplete="off"
                     autocorrect="off"
                     data-test-date-input="endDate"
-                    id="dp-60"
+                    id="dp-88"
                     name="endDate"
                     placeholder="MM/DD/YYYY"
                     spellcheck="false"
@@ -5327,7 +6043,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                         class="iconButton medium"
                         data-test-calendar-button="true"
                         icon="calendar"
-                        id="datepicker-toggle-calendar-button-dp-60"
+                        id="datepicker-toggle-calendar-button-dp-88"
                         type="button"
                       >
                         <span
@@ -5398,7 +6114,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           data-test-headline="true"
         >
           <button
-            aria-controls="accordion66"
+            aria-controls="accordion93"
             aria-expanded="false"
             aria-label="ui-invoice.invoice.lockTotal filter list"
             class="filterSetHeader"
@@ -5423,13 +6139,13 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 12;"
+        style="z-index: 11;"
       >
         <div
           aria-labelledby="accordion-toggle-button-lockTotal"
           class="content-region"
           data-test-accordion-wrapper="true"
-          id="accordion66"
+          id="accordion93"
           role="region"
         >
           <div
@@ -5437,7 +6153,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           >
             <label
               class="label"
-              for="text-input-61"
+              for="text-input-89"
             >
               stripes-acq-components.filter.numberRange.min
             </label>
@@ -5450,7 +6166,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-61"
+                id="text-input-89"
                 spellcheck="false"
                 type="number"
                 value=""
@@ -5465,7 +6181,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           >
             <label
               class="label"
-              for="text-input-62"
+              for="text-input-90"
             >
               stripes-acq-components.filter.numberRange.max
             </label>
@@ -5478,7 +6194,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                 autocomplete="off"
                 autocorrect="off"
                 disabled=""
-                id="text-input-62"
+                id="text-input-90"
                 spellcheck="false"
                 type="number"
                 value=""
@@ -5509,6 +6225,1130 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       labelid="ui-invoice.invoice.details.information.fiscalYear"
       name="fiscalYearId"
     />
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.createdByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion94"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.createdBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.createdByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.createdBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 12;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.createdByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion94"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.createdBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-91"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.createdDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion95"
+            aria-expanded="false"
+            aria-label="ui-invoice.invoice.dateCreated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.createdDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.invoice.dateCreated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 13;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.createdDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion95"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-92"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-92"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-92"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-93"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-93"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-93"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.updatedByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion96"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.updatedBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.updatedByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.updatedBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 14;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.updatedByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion96"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.updatedBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-94"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="metadata.updatedDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion97"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.dateUpdated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-metadata.updatedDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.dateUpdated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 15;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-metadata.updatedDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion97"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-95"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-95"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-95"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-96"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-96"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-96"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.createdByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion98"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.createdBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.createdBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 16;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion98"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.invoiceLine.createdBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-97"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.createdDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion99"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.dateCreated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.createdDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.dateCreated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 17;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.createdDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion99"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-98"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-98"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-98"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-99"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-99"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-99"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.updatedByUserId"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion100"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.updatedBy filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.updatedBy
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 18;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion100"
+          role="region"
+        >
+          <div
+            class="textField"
+          >
+            <div
+              class="formControl marginBottom0 disabled inputGroup isDisabled"
+            >
+              <input
+                aria-invalid="false"
+                aria-label="ui-invoice.filter.invoiceLine.updatedBy"
+                autocapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                disabled=""
+                id="text-input-100"
+                spellcheck="false"
+                type="text"
+                value=""
+              />
+            </div>
+            <div
+              role="alert"
+            />
+          </div>
+          <span>
+            stripes-acq-components.no-ui-plugin-find-user
+          </span>
+        </div>
+      </div>
+    </section>
+    <section
+      class="accordion hasSeparator"
+      data-test-accordion-section="true"
+      id="invoiceLines.metadata.updatedDate"
+    >
+      <div
+        class="headerWrapper"
+        tabindex="-1"
+      >
+        <h3
+          class="headline size-small margin-small font-weight-bold block"
+          data-test-headline="true"
+        >
+          <button
+            aria-controls="accordion101"
+            aria-expanded="false"
+            aria-label="ui-invoice.filter.invoiceLine.dateUpdated filter list"
+            class="filterSetHeader"
+            id="accordion-toggle-button-invoiceLines.metadata.updatedDate"
+            tabindex="0"
+            type="button"
+          >
+            <span>
+              Icon
+            </span>
+            <div
+              class="labelArea"
+            >
+              <div
+                class="filterSetLabel"
+              >
+                ui-invoice.filter.invoiceLine.dateUpdated
+              </div>
+            </div>
+          </button>
+        </h3>
+      </div>
+      <div
+        class="content-wrap"
+        style="z-index: 19;"
+      >
+        <div
+          aria-labelledby="accordion-toggle-button-invoiceLines.metadata.updatedDate"
+          class="content-region"
+          data-test-accordion-wrapper="true"
+          id="accordion101"
+          role="region"
+        >
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-101"
+                >
+                  stripes-smart-components.dateRange.from
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="startDate"
+                    id="dp-101"
+                    name="startDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-101"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <div
+            class="container"
+          >
+            <div
+              class="container"
+              data-test-datepicker-container="true"
+            >
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="dp-102"
+                >
+                  stripes-smart-components.dateRange.to
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    data-test-date-input="endDate"
+                    id="dp-102"
+                    name="endDate"
+                    placeholder="MM/DD/YYYY"
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-haspopup="true"
+                        aria-label="stripes-components.showOrHideDatepicker"
+                        class="iconButton medium"
+                        data-test-calendar-button="true"
+                        icon="calendar"
+                        id="datepicker-toggle-calendar-button-dp-102"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                          data-test-calendar-button="true"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                data-test-datepicker-hidden-input="true"
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+          <button
+            class="button default marginBottom0"
+            data-test-apply-button="true"
+            type="button"
+          >
+            <span
+              class="inner"
+            >
+              stripes-smart-components.dateRange.apply
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
   </div>
 </DocumentFragment>
 `;

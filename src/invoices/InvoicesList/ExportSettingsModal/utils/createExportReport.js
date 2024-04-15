@@ -117,9 +117,9 @@ const getInvoiceExportData = ({
     disbursementNumber: voucher.disbursementNumber,
     disbursementDate: formatDate(voucher.disbursementDate, intl),
     createdBy: invoice.metadata?.createdByUserId,
-    dateCreated: formatDate(invoice.metadata.createdDate, intl),
+    dateCreated: formatDate(invoice.metadata?.createdDate, intl),
     updatedBy: invoice.metadata?.updatedByUserId,
-    dateUpdated: formatDate(invoice.metadata.updatedDate, intl),
+    dateUpdated: formatDate(invoice.metadata?.updatedDate, intl),
   };
 };
 
@@ -155,10 +155,10 @@ function getInvoiceLineExportData({
     externalAccountNumber: getInvoiceLineExternalAccountNumbers(line, fundsMap, invalidReferenceLabel),
     referenceNumbers: getExportReferenceNumbers(line),
     lineTags: line.tags?.tagList?.join(' | '),
-    invoiceLineCreatedBy: line.metadata.createdByUserId,
-    invoiceLineDateCreated: formatDate(line.metadata.createdDate, intl),
-    invoiceLineUpdatedBy: line.metadata.updatedByUserId,
-    invoiceLineDateUpdated: formatDate(line.metadata.updatedDate, intl),
+    invoiceLineCreatedBy: line.metadata?.createdByUserId,
+    invoiceLineDateCreated: formatDate(line.metadata?.createdDate, intl),
+    invoiceLineUpdatedBy: line.metadata?.updatedByUserId,
+    invoiceLineDateUpdated: formatDate(line.metadata?.updatedDate, intl),
   };
 }
 
