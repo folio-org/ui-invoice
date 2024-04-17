@@ -34,7 +34,7 @@ const getExportUserIds = (invoices = [], invoiceLines = []) => {
   const invoiceUserIds = invoices.map(
     ({ approvedBy, metadata }) => [approvedBy, metadata?.createdByUserId, metadata?.updatedByUserId],
   );
-  const invoiceLineUserIds = invoices.map(
+  const invoiceLineUserIds = invoiceLines.map(
     ({ metadata }) => [metadata?.createdByUserId, metadata?.updatedByUserId],
   );
 
