@@ -176,6 +176,7 @@
           "organizations.organizations.collection.get",
           "organizations.organizations.item.get",
           "tags.collection.get",
+          "usergroups.collection.get",
           "users.collection.get",
           "users.item.get",
           "voucher.voucher-lines.collection.get",

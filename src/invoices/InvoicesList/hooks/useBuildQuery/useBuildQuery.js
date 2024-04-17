@@ -33,6 +33,9 @@ export const useBuildQuery = () => {
     {
       [FILTERS.ACQUISITIONS_UNIT]: buildArrayFieldQuery.bind(null, [FILTERS.ACQUISITIONS_UNIT]),
       [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, [FILTERS.DATE_CREATED]),
+      [FILTERS.DATE_UPDATED]: buildDateTimeRangeQuery.bind(null, [FILTERS.DATE_UPDATED]),
+      [FILTERS.INVOICE_LINE_DATE_CREATED]: buildDateTimeRangeQuery.bind(null, [FILTERS.INVOICE_LINE_DATE_CREATED]),
+      [FILTERS.INVOICE_LINE_DATE_UPDATED]: buildDateTimeRangeQuery.bind(null, [FILTERS.INVOICE_LINE_DATE_UPDATED]),
       [FILTERS.INVOICE_DATE]: buildDateRangeQuery.bind(null, [FILTERS.INVOICE_DATE]),
       [FILTERS.PAYMENT_DUE]: buildDateRangeQuery.bind(null, [FILTERS.PAYMENT_DUE]),
       [FILTERS.APPROVAL_DATE]: buildDateTimeRangeQuery.bind(null, [FILTERS.APPROVAL_DATE]),
