@@ -30,9 +30,9 @@ export const EXPORT_INVOICE_FIELDS = {
   exchangeRate: 'Exchange rate',
   invoiceTags: 'Invoice tags',
   createdBy: 'Created by',
-  dateCreated: 'Date created',
+  dateCreated: 'Created on',
   updatedBy: 'Updated by',
-  dateUpdated: 'Date updated',
+  dateUpdated: 'Updated on',
 };
 
 export const EXPORT_INVOICE_LINE_FIELDS = {
@@ -59,9 +59,9 @@ export const EXPORT_INVOICE_LINE_FIELDS = {
   disbursementNumber: 'Disbursement number',
   disbursementDate: 'Disbursement date',
   invoiceLineCreatedBy: 'Created by (Invoice Line)',
-  invoiceLineDateCreated: 'Date created (Invoice Line)',
+  invoiceLineDateCreated: 'Created on (Invoice Line)',
   invoiceLineUpdatedBy: 'Updated by (Invoice Line)',
-  invoiceLineDateUpdated: 'Date updated (Invoice Line)',
+  invoiceLineDateUpdated: 'Updated on (Invoice Line)',
 };
 
 export const EXPORT_INVOICE_FIELDS_OPTIONS = Object.keys(EXPORT_INVOICE_FIELDS).map(field => ({

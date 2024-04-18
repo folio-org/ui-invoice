@@ -4,6 +4,7 @@ import groupBy from 'lodash/groupBy';
 import {
   calculateFundAmount,
   formatDate,
+  formatDateTime,
   FUND_DISTR_TYPE,
 } from '@folio/stripes-acq-components';
 
@@ -117,9 +118,9 @@ const getInvoiceExportData = ({
     disbursementNumber: voucher.disbursementNumber,
     disbursementDate: formatDate(voucher.disbursementDate, intl),
     createdBy: userMap[invoice.metadata?.createdByUserId]?.username,
-    dateCreated: formatDate(invoice.metadata?.createdDate, intl),
+    dateCreated: formatDateTime(invoice.metadata?.createdDate, intl),
     updatedBy: userMap[invoice.metadata?.updatedByUserId]?.username,
-    dateUpdated: formatDate(invoice.metadata?.updatedDate, intl),
+    dateUpdated: formatDateTime(invoice.metadata?.updatedDate, intl),
   };
 };
 
@@ -157,9 +158,9 @@ function getInvoiceLineExportData({
     referenceNumbers: getExportReferenceNumbers(line),
     lineTags: line.tags?.tagList?.join(' | '),
     invoiceLineCreatedBy: userMap[line.metadata?.createdByUserId]?.username,
-    invoiceLineDateCreated: formatDate(line.metadata?.createdDate, intl),
+    invoiceLineDateCreated: formatDateTime(line.metadata?.createdDate, intl),
     invoiceLineUpdatedBy: userMap[line.metadata?.updatedByUserId]?.username,
-    invoiceLineDateUpdated: formatDate(line.metadata?.updatedDate, intl),
+    invoiceLineDateUpdated: formatDateTime(line.metadata?.updatedDate, intl),
   };
 }
 
