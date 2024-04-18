@@ -5,6 +5,11 @@
 * UX Consistency: Update HTML Page Title display when third pane (detail record) displays. Refs UINV-525.
 * Align the `finance.fund` interface version (`3.0`). Refs UINV-545.
 
+## [6.0.2](https://github.com/folio-org/ui-invoice/tree/v6.0.2) (2024-04-18)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.1...v6.0.2)
+
+* use datetime instead of date for csv metadata. Refs UIREC-341.
+
 ## [6.0.1](https://github.com/folio-org/ui-invoice/tree/v6.0.1) (2024-04-18)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.0...v6.0.1)
 
