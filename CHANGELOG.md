@@ -1,5 +1,8 @@
 # Change history for ui-invoice
 
+## [6.0.1](https://github.com/folio-org/ui-invoice/tree/v6.0.1) (2024-04-18)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.0...v6.0.1)
+
 * Add additional invoice filters to support reporting requirements. Refs UINV-543.
 
 ## [6.0.0](https://github.com/folio-org/ui-invoice/tree/v6.0.0) (2024-03-19)
