@@ -3,23 +3,15 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import { Pluggable } from '@folio/stripes/core';
-import { Icon } from '@folio/stripes/components';
 
-const buttonLabel = (
-  <Icon size="small" icon="plus-sign">
-    <FormattedMessage id="ui-invoice.invoice.details.lines.addFromPOL" />
-  </Icon>
-);
-
-const AddInvoiceLinesAction = ({ addLines, isDisabled, validateSelectedRecords }) => {
+const AddInvoiceLinesAction = ({ addLines, onClose, validateSelectedRecords }) => {
   return (
     <Pluggable
       aria-haspopup="true"
-      searchButtonStyle="dropdownItem"
-      searchLabel={buttonLabel}
       type="find-po-line"
       addLines={addLines}
-      disabled={isDisabled}
+      onClose={onClose}
+      trigerless
       dataKey="find-po-line"
       validateSelectedRecords={validateSelectedRecords}
     >
@@ -30,12 +22,8 @@ const AddInvoiceLinesAction = ({ addLines, isDisabled, validateSelectedRecords }
 
 AddInvoiceLinesAction.propTypes = {
   addLines: PropTypes.func.isRequired,
-  isDisabled: PropTypes.bool,
+  onClose: PropTypes.func.isRequired,
   validateSelectedRecords: PropTypes.func.isRequired,
-};
-
-AddInvoiceLinesAction.defaultProps = {
-  isDisabled: false,
 };
 
 export default AddInvoiceLinesAction;

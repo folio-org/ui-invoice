@@ -3,7 +3,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import AddInvoiceLinesAction from './AddInvoiceLinesAction';
 
 const defaultProps = {
-  isDisabled: false,
+  onClose: jest.fn(),
   addLines: jest.fn(),
   validateSelectedRecords: jest.fn(),
 };

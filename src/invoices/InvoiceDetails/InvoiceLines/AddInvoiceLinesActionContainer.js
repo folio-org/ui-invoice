@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -8,18 +8,26 @@ import {
   batchFetch,
   useModalToggle,
   useShowCallout,
+  useToggle,
 } from '@folio/stripes-acq-components';
 
 import { ordersResource } from '../../../common/resources';
 import AddInvoiceLinesAction from './AddInvoiceLinesAction';
 
 export const AddInvoiceLinesActionContainerComponent = ({
-  addLines, isDisabled, invoiceCurrency, invoiceVendorId, mutator,
+  addLines, onClose, invoiceCurrency, invoiceVendorId, mutator,
 }) => {
+  const [isAddInvoiceLines, toggleAddInvoiceLines] = useToggle(true);
   const [isCurrencyConfirmation, toggleCurrencyConfirmation] = useModalToggle();
   const [isVendorConfirmation, toggleVendorConfirmation] = useModalToggle();
   const [poLines, setPoLines] = useState();
   const showCallout = useShowCallout();
+
+  useEffect(() => {
+    if (!(isAddInvoiceLines || poLines?.length)) {
+      onClose();
+    }
+  }, [poLines, isAddInvoiceLines, onClose])
 
   const getVendorsIds = useCallback(
     async (ordersIds) => {
@@ -30,6 +38,7 @@ export const AddInvoiceLinesActionContainerComponent = ({
 
         vendorsIds = ordersResponse.map(({ vendor }) => vendor);
       } catch (e) {
+        setPoLines(undefined);
         showCallout({ messageId: 'ui-invoice.invoice.actions.addLine.vendorLoadError', type: 'error' });
       }
 
@@ -76,11 +85,15 @@ export const AddInvoiceLinesActionContainerComponent = ({
 
   return (
     <>
-      <AddInvoiceLinesAction
-        addLines={addLines}
-        isDisabled={isDisabled}
-        validateSelectedRecords={validateSelectedLines}
-      />
+      {
+        isAddInvoiceLines && (
+          <AddInvoiceLinesAction
+            addLines={addLines}
+            onClose={toggleAddInvoiceLines}
+            validateSelectedRecords={validateSelectedLines}
+          />
+        )
+      }
 
       {isCurrencyConfirmation && (
         <ConfirmationModal
@@ -88,10 +101,14 @@ export const AddInvoiceLinesActionContainerComponent = ({
           confirmLabel={<FormattedMessage id="ui-invoice.invoice.actions.addLine.confirmLabel" />}
           heading={<FormattedMessage id="ui-invoice.invoice.actions.addLine.heading" />}
           message={<FormattedMessage id="ui-invoice.invoice.actions.addLine.currencyMessage" />}
-          onCancel={toggleCurrencyConfirmation}
+          onCancel={() => {
+            toggleCurrencyConfirmation();
+            setPoLines(undefined);
+          }}
           onConfirm={() => {
             toggleCurrencyConfirmation();
             addLines(poLines);
+            setPoLines(undefined);
           }}
           open
         />
@@ -103,7 +120,10 @@ export const AddInvoiceLinesActionContainerComponent = ({
           confirmLabel={<FormattedMessage id="ui-invoice.invoice.actions.addLine.confirmLabel" />}
           heading={<FormattedMessage id="ui-invoice.invoice.actions.addLine.heading" />}
           message={<FormattedMessage id="ui-invoice.invoice.actions.addLine.vendorMessage" />}
-          onCancel={toggleVendorConfirmation}
+          onCancel={() => {
+            toggleVendorConfirmation();
+            setPoLines(undefined);
+          }}
           onConfirm={() => {
             toggleVendorConfirmation();
             validateCurrency(poLines);
@@ -124,11 +144,7 @@ AddInvoiceLinesActionContainerComponent.propTypes = {
   invoiceCurrency: PropTypes.string.isRequired,
   invoiceVendorId: PropTypes.string.isRequired,
   mutator: PropTypes.object.isRequired,
-  isDisabled: PropTypes.bool,
-};
-
-AddInvoiceLinesActionContainerComponent.defaultProps = {
-  isDisabled: false,
+  onClose: PropTypes.func,
 };
 
 export default stripesConnect(AddInvoiceLinesActionContainerComponent);
