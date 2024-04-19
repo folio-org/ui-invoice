@@ -27,7 +27,7 @@ export const AddInvoiceLinesActionContainerComponent = ({
     if (!(isAddInvoiceLines || poLines?.length)) {
       onClose();
     }
-  }, [poLines, isAddInvoiceLines, onClose])
+  }, [poLines, isAddInvoiceLines, onClose]);
 
   const getVendorsIds = useCallback(
     async (ordersIds) => {
