@@ -1,5 +1,10 @@
 # Change history for ui-invoice
 
+## [6.0.3](https://github.com/folio-org/ui-invoice/tree/v6.0.3) (2024-04-19)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.2...v6.0.3)
+
+UINV-543 do not close po line plugin on focus change
+
 ## [6.0.2](https://github.com/folio-org/ui-invoice/tree/v6.0.2) (2024-04-18)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.1...v6.0.2)
 
