@@ -1,4 +1,5 @@
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import user from '@folio/jest-config-stripes/testing-library/user-event';
 
 import InvoiceLinesActions from './InvoiceLinesActions';
 
@@ -17,8 +18,16 @@ const renderInvoiceLinesActions = (props = defaultProps) => render(
 );
 
 describe('InvoiceLinesActions', () => {
-  it('should display add invoice line action', () => {
+  it('should display create invoice line action', () => {
     renderInvoiceLinesActions();
+
+    expect(screen.getByTestId('add-invoice-line-btn')).toBeInTheDocument();
+  });
+
+  it('should display add invoice line action modals when button is pressed', async () => {
+    renderInvoiceLinesActions();
+
+    await user.click(screen.getByTestId('add-invoice-line-btn'));
 
     expect(screen.getByText('AddInvoiceLinesActionContainer')).toBeDefined();
   });
