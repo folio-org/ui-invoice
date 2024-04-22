@@ -457,5 +457,13 @@
     "document.title.search": "发票 - {query} - 搜索",
     "invoice.actions.error.userHasNoPermission": "由于用户不是指定采访单位的成员，因此不允许操作",
     "invoice.actions.error.userNotAMemberOfTheAcq": "由于用户不是指定采访单位的成员，因此不允许操作",
-    "invoice.actions.error.userNotAMemberOfTheAcq.order": "由于用户不是订单指定采购单位的成员，因此不允许操作"
+    "invoice.actions.error.userNotAMemberOfTheAcq.order": "由于用户不是订单指定采购单位的成员，因此不允许操作",
+    "filter.createdBy": "Created by",
+    "filter.updatedBy": "Updated by",
+    "filter.dateCreated": "Date created",
+    "filter.dateUpdated": "Date updated",
+    "filter.invoiceLine.createdBy": "Created by (Invoice Line)",
+    "filter.invoiceLine.updatedBy": "Updated by (Invoice Line)",
+    "filter.invoiceLine.dateCreated": "Date created (Invoice Line)",
+    "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)"
 }

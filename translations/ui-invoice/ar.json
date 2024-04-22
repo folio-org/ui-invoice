@@ -457,5 +457,13 @@
     "document.title.search": "Invoices - {query} - Search",
     "invoice.actions.error.userHasNoPermission": "Operation is not permitted because user is not a member of the specified acquisition unit",
     "invoice.actions.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
-    "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operation is not permitted because user is not a member of the specified acquisition unit of the Order(s)"
+    "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operation is not permitted because user is not a member of the specified acquisition unit of the Order(s)",
+    "filter.createdBy": "Created by",
+    "filter.updatedBy": "Updated by",
+    "filter.dateCreated": "Date created",
+    "filter.dateUpdated": "Date updated",
+    "filter.invoiceLine.createdBy": "Created by (Invoice Line)",
+    "filter.invoiceLine.updatedBy": "Updated by (Invoice Line)",
+    "filter.invoiceLine.dateCreated": "Date created (Invoice Line)",
+    "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)"
 }

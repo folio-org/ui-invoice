@@ -457,5 +457,13 @@
     "document.title.search": "Faturas - {query} - Pesquisar",
     "invoice.actions.error.userHasNoPermission": "A operação não é permitida porque o usuário não é membro da unidade de aquisição especificada",
     "invoice.actions.error.userNotAMemberOfTheAcq": "A operação não é permitida porque o usuário não é membro da unidade de aquisição especificada",
-    "invoice.actions.error.userNotAMemberOfTheAcq.order": "A operação não é permitida porque o usuário não é membro da unidade de aquisição especificada do(s) Pedido(s)"
+    "invoice.actions.error.userNotAMemberOfTheAcq.order": "A operação não é permitida porque o usuário não é membro da unidade de aquisição especificada do(s) Pedido(s)",
+    "filter.createdBy": "Criado por",
+    "filter.updatedBy": "Atualizado por",
+    "filter.dateCreated": "Data de criação",
+    "filter.dateUpdated": "Data de atualização",
+    "filter.invoiceLine.createdBy": "Criado por (linha da fatura)",
+    "filter.invoiceLine.updatedBy": "Atualizado por (linha de fatura)",
+    "filter.invoiceLine.dateCreated": "Data de criação (linha da fatura)",
+    "filter.invoiceLine.dateUpdated": "Data de atualização (linha da fatura)"
 }
