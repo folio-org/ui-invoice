@@ -235,7 +235,7 @@ export function InvoiceFormContainerComponent({
     };
   }, [documents, initialInvoice, links]);
 
-  const saveButtonLabelId = `ui-invoice.${(isCreateFromOrder && orderLines?.length > 1) ? 'saveAndContinue' : 'saveAndClose'}`;
+  const saveButtonLabelId = (isCreateFromOrder && orderLines?.length > 1) ? 'ui-invoice.saveAndContinue' : 'stripes-components.saveAndClose';
 
   const hasLoaded = batchGroups && !(
     isInvoiceLoading

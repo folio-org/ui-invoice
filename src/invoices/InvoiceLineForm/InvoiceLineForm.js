@@ -161,7 +161,7 @@ const InvoiceLineForm = ({
   const paneFooter = (
     <FormFooter
       id="clickable-save"
-      label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+      label={<FormattedMessage id="stripes-components.saveAndClose" />}
       pristine={pristine}
       submitting={submitting}
       handleSubmit={handleSubmit}

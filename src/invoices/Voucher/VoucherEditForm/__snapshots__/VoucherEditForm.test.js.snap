@@ -304,7 +304,7 @@ exports[`VoucherEditForm should render correct voucher form structure 1`] = `
                 <span
                   class="inner"
                 >
-                  ui-invoice.saveAndClose
+                  stripes-components.saveAndClose
                 </span>
               </button>
             </span>
@@ -651,7 +651,7 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
                 <span
                   class="inner"
                 >
-                  ui-invoice.saveAndClose
+                  stripes-components.saveAndClose
                 </span>
               </button>
             </span>

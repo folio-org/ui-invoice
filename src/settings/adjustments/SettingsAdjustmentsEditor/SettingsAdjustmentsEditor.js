@@ -84,7 +84,7 @@ class SettingsAdjustmentsEditor extends Component {
     const formFooter = (
       <FormFooter
         id="save-adjustment-button"
-        label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+        label={<FormattedMessage id="stripes-components.saveAndClose" />}
         pristine={pristine}
         submitting={submitting}
         handleSubmit={handleSubmit}
