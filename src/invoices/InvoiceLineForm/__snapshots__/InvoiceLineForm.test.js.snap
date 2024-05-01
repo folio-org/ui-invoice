@@ -1127,7 +1127,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                   <span
                     class="inner"
                   >
-                    ui-invoice.saveAndClose
+                    stripes-components.saveAndClose
                   </span>
                 </button>
               </span>

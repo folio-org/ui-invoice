@@ -98,7 +98,7 @@ describe('InvoiceForm component', () => {
     const { getByText } = renderInvoiceForm();
 
     expect(getByText('stripes-acq-components.FormFooter.cancel')).toBeDefined();
-    expect(getByText('ui-invoice.saveAndClose')).toBeDefined();
+    expect(getByText(/saveAndClose/)).toBeDefined();
   });
 
   it('should uncheck lock-total initially', () => {

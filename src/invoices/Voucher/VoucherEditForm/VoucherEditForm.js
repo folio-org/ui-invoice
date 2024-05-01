@@ -36,7 +36,7 @@ const VoucherEditForm = ({
   const paneFooter = (
     <FormFooter
       id="save-voucher-button"
-      label={<FormattedMessage id="ui-invoice.saveAndClose" />}
+      label={<FormattedMessage id="stripes-components.saveAndClose" />}
       pristine={pristine}
       submitting={submitting}
       handleSubmit={handleSubmit}

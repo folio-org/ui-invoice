@@ -73,7 +73,7 @@ export const InvoiceLinesSequence = ({
           disabled={isSaving}
           onClick={() => addLines(linesList, { setIsSaving })}
         >
-          <FormattedMessage id="ui-invoice.saveAndClose" />
+          <FormattedMessage id="stripes-components.saveAndClose" />
         </Button>
       )}
     />

@@ -688,7 +688,7 @@ InvoiceForm.defaultProps = {
   hasPoLines: false,
   initialVendor: {},
   isCreateFromOrder: false,
-  saveButtonLabelId: 'ui-invoice.saveAndClose',
+  saveButtonLabelId: 'stripes-components.saveAndClose',
 };
 
 export default stripesForm({
