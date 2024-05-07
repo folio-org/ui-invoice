@@ -14,7 +14,7 @@ import {
 
 const buildQueryByOrderNumbers = (itemsChunk) => {
   const query = itemsChunk
-    .map(poNumber => `poNumber=${poNumber}`)
+    .map(poNumber => `poNumber==${poNumber}`)
     .join(' or ');
 
   return query || '';
