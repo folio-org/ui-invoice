@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "La factura no fue aprobada",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "El prefijo del número de vale debe contener sólo letras Unicode",
     "adjustment.headerLabel": "Ajuste {index}",
-    "saveAndClose": "Guardar y cerrar",
     "settings.general.label": "General",
     "settings.approvals.label": "Aprobaciones",
     "settings.approvals.isApprovePayEnabled": "Aprobar y pagar con un solo clic",
@@ -458,12 +457,12 @@
     "invoice.actions.error.userHasNoPermission": "Operation is not permitted because user is not a member of the specified acquisition unit",
     "invoice.actions.error.userNotAMemberOfTheAcq": "Operation is not permitted because user is not a member of the specified acquisition unit",
     "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operation is not permitted because user is not a member of the specified acquisition unit of the Order(s)",
-    "filter.createdBy": "Created by",
-    "filter.updatedBy": "Updated by",
-    "filter.dateCreated": "Date created",
-    "filter.dateUpdated": "Date updated",
-    "filter.invoiceLine.createdBy": "Created by (Invoice Line)",
-    "filter.invoiceLine.updatedBy": "Updated by (Invoice Line)",
-    "filter.invoiceLine.dateCreated": "Date created (Invoice Line)",
-    "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)"
+    "filter.createdBy": "Creado por",
+    "filter.updatedBy": "Actualizado por",
+    "filter.dateCreated": "Fecha de creación",
+    "filter.dateUpdated": "Fecha de actualización",
+    "filter.invoiceLine.createdBy": "Creado por (Línea de factura)",
+    "filter.invoiceLine.updatedBy": "Actualizado por (Línea de factura)",
+    "filter.invoiceLine.dateCreated": "Fecha de creación (Línea de factura)",
+    "filter.invoiceLine.dateUpdated": "Fecha de actualización (línea de factura)"
 }

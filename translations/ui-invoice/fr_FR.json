@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "La facture n'a pas été approuvée",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Le préfixe du numéro de bon doit contenir uniquement des lettres Unicode",
     "adjustment.headerLabel": "Ajustement {index}",
-    "saveAndClose": "Sauvegarder et fermer",
     "settings.general.label": "Général",
     "settings.approvals.label": "Approbations",
     "settings.approvals.isApprovePayEnabled": "Approuver et payer en un clic",

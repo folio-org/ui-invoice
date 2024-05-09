@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "La factura no fue aprobada",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "El prefijo del número de vale debe contener sólo letras Unicode",
     "adjustment.headerLabel": "Ajuste {index}",
-    "saveAndClose": "Guardar y cerrar",
     "settings.general.label": "General",
     "settings.approvals.label": "Aprobaciones",
     "settings.approvals.isApprovePayEnabled": "Aprobar y pagar con un solo clic",

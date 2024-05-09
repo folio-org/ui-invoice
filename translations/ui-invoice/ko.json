@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "인보이스가 승인되지 않았습니다.",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "바우처 번호 Prefix 에는 유니코드 문자만 포함해야 합니다.",
     "adjustment.headerLabel": "조정 {index}",
-    "saveAndClose": "저장 후 닫기",
     "settings.general.label": "일반",
     "settings.approvals.label": "승인",
     "settings.approvals.isApprovePayEnabled": "한 번의 클릭으로 승인 및 지불",

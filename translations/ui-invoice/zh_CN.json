@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "发票未获批准",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "凭证号前缀必须仅包含Unicode字母",
     "adjustment.headerLabel": "调整{index}",
-    "saveAndClose": "保存并关闭",
     "settings.general.label": "通用",
     "settings.approvals.label": "批准",
     "settings.approvals.isApprovePayEnabled": "一键批准并支付",

@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "A fatura não foi aprovada",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "O prefixo do número do comprovante deve conter apenas letras Unicode",
     "adjustment.headerLabel": "Ajuste {index}",
-    "saveAndClose": "Salvar e fechar",
     "settings.general.label": "Geral",
     "settings.approvals.label": "Aprovações",
     "settings.approvals.isApprovePayEnabled": "Aprovar e pagar com um clique",

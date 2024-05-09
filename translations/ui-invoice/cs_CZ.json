@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "Faktura nebyla schválena",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Prefix čísla poukazu musí obsahovat pouze písmena Unicode",
     "adjustment.headerLabel": "Úprava {index}",
-    "saveAndClose": "Uložit a zavřít",
     "settings.general.label": "Obecné",
     "settings.approvals.label": "Schválit",
     "settings.approvals.isApprovePayEnabled": "Schválit a zaplatit jedním kliknutím",
@@ -458,12 +457,12 @@
     "invoice.actions.error.userHasNoPermission": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
     "invoice.actions.error.userNotAMemberOfTheAcq": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
     "invoice.actions.error.userNotAMemberOfTheAcq.order": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky objednávky/ek",
-    "filter.createdBy": "Created by",
-    "filter.updatedBy": "Updated by",
-    "filter.dateCreated": "Date created",
-    "filter.dateUpdated": "Date updated",
-    "filter.invoiceLine.createdBy": "Created by (Invoice Line)",
-    "filter.invoiceLine.updatedBy": "Updated by (Invoice Line)",
-    "filter.invoiceLine.dateCreated": "Date created (Invoice Line)",
-    "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)"
+    "filter.createdBy": "Vytvořil",
+    "filter.updatedBy": "Aktualizoval",
+    "filter.dateCreated": "Datum vytvoření",
+    "filter.dateUpdated": "Datum aktualizace",
+    "filter.invoiceLine.createdBy": "Vytvořil (řádek faktury)",
+    "filter.invoiceLine.updatedBy": "Aktualizoval (řádek faktury)",
+    "filter.invoiceLine.dateCreated": "Datum vytvoření (řádek faktury)",
+    "filter.invoiceLine.dateUpdated": "Datum aktualizace (řádek faktury)"
 }
