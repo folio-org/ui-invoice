@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "發票未獲核准",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "憑證編號前綴必須僅包含 Unicode 字母",
     "adjustment.headerLabel": "調整{index}",
-    "saveAndClose": "儲存並關閉",
     "settings.general.label": "一般",
     "settings.approvals.label": "核准",
     "settings.approvals.isApprovePayEnabled": "核准並支付",

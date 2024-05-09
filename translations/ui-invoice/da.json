@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "Invoice was not approved",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "Voucher number prefix must contains only Unicode letters",
     "adjustment.headerLabel": "Adjustment {index}",
-    "saveAndClose": "Gem & luk",
     "settings.general.label": "General",
     "settings.approvals.label": "Approvals",
     "settings.approvals.isApprovePayEnabled": "Approve and pay in one click",

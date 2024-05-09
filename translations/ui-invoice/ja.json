@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "Invoice was not approved",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "支払伝票番号のプレフィクスには、ユニコード文字のみを使用する必要があります。",
     "adjustment.headerLabel": "調整金 {index}",
-    "saveAndClose": "保存して閉じる",
     "settings.general.label": "一般",
     "settings.approvals.label": "承認",
     "settings.approvals.isApprovePayEnabled": "Approve and pay in one click",

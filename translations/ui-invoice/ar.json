@@ -183,7 +183,6 @@
     "invoice.actions.approve.error": "لم يتم الموافقة على الفاتورة",
     "invoice.actions.approve.error.voucherNumberPrefixNotAlpha": "يجب أن تحتوي بادئة رقم القسمية على أحرف يونيكود فقط",
     "adjustment.headerLabel": "تعديل {index}",
-    "saveAndClose": "حفظ وإغلاق",
     "settings.general.label": "عام",
     "settings.approvals.label": "الموافقات",
     "settings.approvals.isApprovePayEnabled": "قبول ودفع بنقرة واحدة",
