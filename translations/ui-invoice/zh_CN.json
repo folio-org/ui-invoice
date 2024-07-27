@@ -457,12 +457,12 @@
     "invoice.actions.error.userHasNoPermission": "由于用户不是指定采访单位的成员，因此不允许操作",
     "invoice.actions.error.userNotAMemberOfTheAcq": "由于用户不是指定采访单位的成员，因此不允许操作",
     "invoice.actions.error.userNotAMemberOfTheAcq.order": "由于用户不是订单指定采购单位的成员，因此不允许操作",
-    "filter.createdBy": "Created by",
-    "filter.updatedBy": "Updated by",
-    "filter.dateCreated": "Date created",
-    "filter.dateUpdated": "Date updated",
-    "filter.invoiceLine.createdBy": "Created by (Invoice Line)",
-    "filter.invoiceLine.updatedBy": "Updated by (Invoice Line)",
-    "filter.invoiceLine.dateCreated": "Date created (Invoice Line)",
-    "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)"
+    "filter.createdBy": "创建者",
+    "filter.updatedBy": "更新者",
+    "filter.dateCreated": "创建日期",
+    "filter.dateUpdated": "更新日期",
+    "filter.invoiceLine.createdBy": "创建（发票行）",
+    "filter.invoiceLine.updatedBy": "更新（发票行）",
+    "filter.invoiceLine.dateCreated": "创建日期（发票行）",
+    "filter.invoiceLine.dateUpdated": "更新日期（发票行）"
 }
