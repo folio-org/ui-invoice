@@ -174,7 +174,12 @@ export const showUpdateInvoiceError = async (
   }
 };
 
-export const handleInvoiceLineErrors = async ({ requestData = [], responses = [], showCallout }) => {
+export const handleInvoiceLineErrors = async ({
+  mutator = {},
+  requestData = [],
+  responses = [],
+  showCallout,
+}) => {
   const errors = responses.filter(({ status }) => status === 'rejected');
 
   if (!errors.length) {
@@ -189,8 +194,8 @@ export const handleInvoiceLineErrors = async ({ requestData = [], responses = []
       showCallout,
       'saveLine',
       'ui-invoice.errors.invoiceLine.duplicate',
-      {},
-      {},
+      mutator.expenseClass,
+      mutator.fund,
       { invoiceLineNumber },
     );
   });

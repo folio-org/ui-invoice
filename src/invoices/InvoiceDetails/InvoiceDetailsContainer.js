@@ -401,6 +401,10 @@ export function InvoiceDetailsContainer({
           requestData: invoiceLines.invoiceLines,
           responses: newInvoiceLines,
           showCallout,
+          mutator: {
+            expenseClass: mutator.expenseClass,
+            fund: mutator.fund,
+          },
         });
 
         return history.push({
@@ -414,12 +418,16 @@ export function InvoiceDetailsContainer({
           showCallout,
           'duplicate',
           'ui-invoice.invoice.actions.duplicate.error.message',
+          mutator.expenseClass,
+          mutator.fund,
         );
       })
       .finally(() => setIsLoading(false));
   }, [
     invoice,
     mutateInvoice,
+    mutator.expenseClass,
+    mutator.fund,
     invoiceLines?.invoiceLines,
     createInvoiceLines,
     showCallout,
