@@ -16,6 +16,7 @@ import { InvoiceDetailsContainer } from './InvoiceDetailsContainer';
 
 jest.mock('../../common/hooks', () => ({
   useInvoiceMutation: jest.fn().mockReturnValue({}),
+  useInvoiceLineMutation: jest.fn().mockReturnValue({}),
 }));
 jest.mock('./InvoiceDetails', () => jest.fn().mockReturnValue('InvoiceDetails'));
 jest.mock('./utils', () => ({

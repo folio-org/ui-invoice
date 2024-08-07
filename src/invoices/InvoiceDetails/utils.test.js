@@ -21,7 +21,7 @@ describe('showUpdateInvoiceError', () => {
       undefined, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
     );
 
-    expect(showCallout).toHaveBeenCalledWith({ messageId: defaultErrorMessageId, type: 'error' });
+    expect(showCallout).toHaveBeenCalledWith({ messageId: defaultErrorMessageId, type: 'error', values: {} });
   });
 
   it('should return inactiveExpenseClass default error message', async () => {
