@@ -46,7 +46,7 @@ describe('ExportSettingsModal actions', () => {
       expect(radioBtns[0].checked).toBeFalsy();
       expect(radioBtns[1].checked).toBeTruthy();
 
-      const selects = await screen.findAllByRole('textbox');
+      const selects = await screen.findAllByRole('combobox');
 
       await user.click(selects[0]);
 

@@ -9,18 +9,11 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
       <div
         class="col-xs-12"
       >
-        <div
-          style="position: relative; width: 100%;"
-        >
-          <div
-            aria-live="assertive"
-            aria-relevant="additions"
-            class="sr-only"
-          />
+        <div>
           <label
             class="label"
-            for="stripes-selection-1"
-            id="sl-label-stripes-selection-1"
+            for="downshift-:r1:-input"
+            id="sl-label-selection-:r0:"
           >
             ui-invoice.adjustment.presetAdjustment
           </label>
@@ -28,13 +21,11 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
             class="selectionControlContainer"
           >
             <button
-              aria-disabled="false"
+              aria-controls="downshift-:r1:-menu"
               aria-expanded="false"
-              aria-haspopup="listbox"
-              aria-labelledby="sl-label-stripes-selection-1 selected-stripes-selection-1-item"
-              aria-owns="sl-undefined"
+              aria-labelledby="sl-label-selection-:r0: selected-selection-:r0:-item"
               class="selectionControl formControl"
-              id="stripes-selection-1"
+              id="selection-:r0:"
               type="button"
             >
               <span
@@ -44,7 +35,7 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
               </span>
               <div
                 class="singleValue"
-                id="selected-stripes-selection-1-item"
+                id="selected-selection-:r0:-item"
               />
             </button>
             <div
@@ -58,61 +49,55 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                 </span>
               </div>
             </div>
-          </div>
-          <div
-            role="alert"
-          />
-        </div>
-        <div
-          class="overlay"
-          hidden=""
-        >
-          <div
-            class="selectionListRoot sr-only"
-            hidden=""
-            id="sl-container-stripes-selection-1"
-          >
             <div
-              class="selectionFilterContainer"
-            >
-              <input
-                aria-activedescendant="option-stripes-selection-1-0-"
-                aria-controls="sl-container-stripes-selection-1"
-                aria-expanded="true"
-                aria-label="stripes-components.selection.filterOptionsLabel"
-                aria-owns="sl-stripes-selection-1"
-                class="selectionFilter"
-                placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                role="combobox"
-                type="text"
-                value=""
-              />
-            </div>
-            <ul
-              aria-label="stripes-components.selection.filterOptionsLabel"
-              class="selectionList"
-              id="sl-stripes-selection-1"
-              role="listbox"
-              style="max-height: 174px;"
-            >
-              <li
-                aria-selected="false"
-                class="option optionOutside cursor"
-                id="option-stripes-selection-1-0-"
-                role="option"
-                tabindex="-1"
-                unselectable="on"
-              >
-                <div
-                  class="optionSegment"
-                  data-test-selection-option-segment="true"
-                />
-              </li>
-            </ul>
-            <div
-              class="selectListSection"
               role="alert"
             />
+          </div>
+          <div
+            class="overlay"
+            hidden=""
+          >
+            <div
+              class="selectionListRoot"
+              id="sl-container-selection-:r0:"
+              style="width: 0px;"
+            >
+              <div
+                class="selectionFilterContainer"
+              >
+                <input
+                  aria-activedescendant=""
+                  aria-autocomplete="list"
+                  aria-controls="downshift-:r1:-menu"
+                  aria-expanded="false"
+                  aria-label="stripes-components.selection.filterOptionsLabel"
+                  aria-labelledby="downshift-:r1:-label"
+                  autocomplete="off"
+                  class="selectionFilter"
+                  id="downshift-:r1:-input"
+                  placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <ul
+                aria-labelledby="sl-label-selection-:r0:"
+                class="selectionList"
+                id="downshift-:r1:-menu"
+                role="listbox"
+                style="max-height: 174px;"
+              >
+                <li
+                  class="groupLabel"
+                >
+                  <div
+                    class="optionSegment"
+                    data-test-selection-option-segment="true"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -315,8 +300,8 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                         >
                           <label
                             class="label"
-                            for="select-2"
-                            id="select-2-label"
+                            for="select-1"
+                            id="select-1-label"
                           >
                             ui-invoice.settings.adjustments.prorate
                             <span
@@ -331,10 +316,10 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-2-label"
+                              aria-labelledby="select-1-label"
                               aria-required="true"
                               class="selectControl formControl"
-                              id="select-2"
+                              id="select-1"
                               name="adjustments[0].prorate"
                               required=""
                             >
@@ -382,8 +367,8 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                         >
                           <label
                             class="label"
-                            for="select-3"
-                            id="select-3-label"
+                            for="select-2"
+                            id="select-2-label"
                           >
                             ui-invoice.settings.adjustments.relationToTotal
                             <span
@@ -398,10 +383,10 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                           >
                             <select
                               aria-invalid="false"
-                              aria-labelledby="select-3-label"
+                              aria-labelledby="select-2-label"
                               aria-required="true"
                               class="selectControl formControl"
-                              id="select-3"
+                              id="select-2"
                               name="adjustments[0].relationToTotal"
                               required=""
                             >
@@ -445,7 +430,7 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                         >
                           <label
                             class="label label checkboxInteractionStylesControl"
-                            for="checkbox-4"
+                            for="checkbox-3"
                           >
                             <span
                               class="labelText"
@@ -458,7 +443,7 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                               <input
                                 aria-invalid="false"
                                 class="input"
-                                id="checkbox-4"
+                                id="checkbox-3"
                                 name="adjustments[0].exportToAccounting"
                                 type="checkbox"
                                 value=""
@@ -524,18 +509,11 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
       <div
         class="col-xs-12"
       >
-        <div
-          style="position: relative; width: 100%;"
-        >
-          <div
-            aria-live="assertive"
-            aria-relevant="additions"
-            class="sr-only"
-          />
+        <div>
           <label
             class="label"
-            for="stripes-selection-7"
-            id="sl-label-stripes-selection-7"
+            for="downshift-:r3:-input"
+            id="sl-label-selection-:r2:"
           >
             ui-invoice.adjustment.presetAdjustment
           </label>
@@ -543,13 +521,11 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
             class="selectionControlContainer"
           >
             <button
-              aria-disabled="false"
+              aria-controls="downshift-:r3:-menu"
               aria-expanded="false"
-              aria-haspopup="listbox"
-              aria-labelledby="sl-label-stripes-selection-7 selected-stripes-selection-7-item"
-              aria-owns="sl-undefined"
+              aria-labelledby="sl-label-selection-:r2: selected-selection-:r2:-item"
               class="selectionControl formControl"
-              id="stripes-selection-7"
+              id="selection-:r2:"
               type="button"
             >
               <span
@@ -559,7 +535,7 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
               </span>
               <div
                 class="singleValue"
-                id="selected-stripes-selection-7-item"
+                id="selected-selection-:r2:-item"
               />
             </button>
             <div
@@ -573,61 +549,54 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
                 </span>
               </div>
             </div>
-          </div>
-          <div
-            role="alert"
-          />
-        </div>
-        <div
-          class="overlay"
-          hidden=""
-        >
-          <div
-            class="selectionListRoot sr-only"
-            hidden=""
-            id="sl-container-stripes-selection-7"
-          >
             <div
-              class="selectionFilterContainer"
-            >
-              <input
-                aria-activedescendant="option-stripes-selection-7-0-"
-                aria-controls="sl-container-stripes-selection-7"
-                aria-expanded="true"
-                aria-label="stripes-components.selection.filterOptionsLabel"
-                aria-owns="sl-stripes-selection-7"
-                class="selectionFilter"
-                placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                role="combobox"
-                type="text"
-                value=""
-              />
-            </div>
-            <ul
-              aria-label="stripes-components.selection.filterOptionsLabel"
-              class="selectionList"
-              id="sl-stripes-selection-7"
-              role="listbox"
-              style="max-height: 174px;"
-            >
-              <li
-                aria-selected="false"
-                class="option optionOutside cursor"
-                id="option-stripes-selection-7-0-"
-                role="option"
-                tabindex="-1"
-                unselectable="on"
-              >
-                <div
-                  class="optionSegment"
-                  data-test-selection-option-segment="true"
-                />
-              </li>
-            </ul>
-            <div
-              class="selectListSection"
               role="alert"
             />
+          </div>
+          <div
+            class="overlay"
+            hidden=""
+          >
+            <div
+              class="selectionListRoot"
+              id="sl-container-selection-:r2:"
+            >
+              <div
+                class="selectionFilterContainer"
+              >
+                <input
+                  aria-activedescendant=""
+                  aria-autocomplete="list"
+                  aria-controls="downshift-:r3:-menu"
+                  aria-expanded="false"
+                  aria-label="stripes-components.selection.filterOptionsLabel"
+                  aria-labelledby="downshift-:r3:-label"
+                  autocomplete="off"
+                  class="selectionFilter"
+                  id="downshift-:r3:-input"
+                  placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                  role="combobox"
+                  type="text"
+                  value=""
+                />
+              </div>
+              <ul
+                aria-labelledby="sl-label-selection-:r2:"
+                class="selectionList"
+                id="downshift-:r3:-menu"
+                role="listbox"
+                style="max-height: 174px;"
+              >
+                <li
+                  class="groupLabel"
+                >
+                  <div
+                    class="optionSegment"
+                    data-test-selection-option-segment="true"
+                  />
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
