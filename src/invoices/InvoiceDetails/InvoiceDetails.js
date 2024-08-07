@@ -70,9 +70,10 @@ function InvoiceDetails({
   addLines,
   approveAndPayInvoice,
   approveInvoice,
+  cancelInvoice,
   createLine,
   deleteInvoice,
-  cancelInvoice,
+  onDuplicateInvoice,
   invoice,
   invoiceLines,
   invoiceTotalUnits,
@@ -95,6 +96,7 @@ function InvoiceDetails({
   const [isCancellationModalOpen, toggleCancellationModal] = useModalToggle();
   const [isTagsOpened, toggleTagsPane] = useModalToggle();
   const [isPrintModalOpened, togglePrintModal] = useModalToggle();
+  const [isDuplicateModalConfirmationOpen, toggleDuplicateModalConfirmation] = useModalToggle();
   const showVoucherInformation = [
     INVOICE_STATUS.approved,
     INVOICE_STATUS.paid,
@@ -152,6 +154,10 @@ function InvoiceDetails({
         onDelete={() => {
           onToggle();
           toggleDeleteConfirmation();
+        }}
+        onDuplicate={() => {
+          onToggle();
+          toggleDuplicateModalConfirmation();
         }}
         onApprove={() => {
           onToggle();
@@ -451,6 +457,22 @@ function InvoiceDetails({
           )
         }
         {
+          isDuplicateModalConfirmationOpen && (
+            <ConfirmationModal
+              id="duplicate-invoice-confirmation"
+              confirmLabel={<FormattedMessage id="ui-invoice.invoice.actions.duplicate.confirmLabel" />}
+              heading={<FormattedMessage id="ui-invoice.invoice.actions.duplicate.confirmation.heading" />}
+              message={<FormattedMessage id="ui-invoice.invoice.actions.duplicate.confirmation.message" />}
+              onCancel={toggleDuplicateModalConfirmation}
+              onConfirm={() => {
+                toggleDuplicateModalConfirmation();
+                onDuplicateInvoice();
+              }}
+              open
+            />
+          )
+        }
+        {
           isApproveAndPayConfirmationOpen && (
             <ApproveConfirmationModal
               id="approve-pay-invoice-confirmation"
@@ -489,9 +511,10 @@ InvoiceDetails.propTypes = {
   addLines: PropTypes.func.isRequired,
   approveAndPayInvoice: PropTypes.func.isRequired,
   approveInvoice: PropTypes.func.isRequired,
+  cancelInvoice: PropTypes.func.isRequired,
   createLine: PropTypes.func.isRequired,
   deleteInvoice: PropTypes.func.isRequired,
-  cancelInvoice: PropTypes.func.isRequired,
+  onDuplicateInvoice: PropTypes.func.isRequired,
   invoice: PropTypes.object.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
   invoiceTotalUnits: PropTypes.number,

@@ -14,7 +14,7 @@ export const useInvoiceMutation = (options = {}) => {
       const kyMethod = invoice.id ? 'put' : 'post';
       const kyPath = invoice.id ? `${INVOICES_API}/${invoice.id}` : INVOICES_API;
 
-      return ky[kyMethod](kyPath, { json: invoice });
+      return ky[kyMethod](kyPath, { json: invoice }).json();
     },
     ...options,
   });

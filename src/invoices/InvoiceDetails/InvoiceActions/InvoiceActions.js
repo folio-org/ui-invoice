@@ -24,6 +24,7 @@ const InvoiceActions = ({
   onApprove,
   onApproveAndPay,
   onDelete,
+  onDuplicate,
   onEdit,
   onPay,
   onPrint,
@@ -102,6 +103,18 @@ const InvoiceActions = ({
           </IfPermission>
         )
       }
+      <IfPermission perm="invoice.invoices.item.post">
+        <Button
+          buttonStyle="dropdownItem"
+          data-testid="invoice-duplicate"
+          data-test-button-duplicate-invoice
+          onClick={onDuplicate}
+        >
+          <Icon size="small" icon="duplicate">
+            <FormattedMessage id="ui-invoice.button.duplicate" />
+          </Icon>
+        </Button>
+      </IfPermission>
       {
         isDeletable && (
           <IfPermission perm="invoice.invoices.item.delete">
@@ -155,6 +168,7 @@ InvoiceActions.propTypes = {
   onApprove: PropTypes.func.isRequired,
   onApproveAndPay: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
+  onDuplicate: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   onPay: PropTypes.func.isRequired,
   onInvoiceCancel: PropTypes.func.isRequired,

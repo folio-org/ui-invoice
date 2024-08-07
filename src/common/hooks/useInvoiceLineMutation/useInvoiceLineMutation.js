@@ -25,7 +25,22 @@ export const useInvoiceLineMutation = (options = {}) => {
     ...options,
   });
 
+  const { mutateAsync: createInvoiceLines } = useMutation({
+    mutationFn: ({ invoiceLines = [], options: kyOptions = {} }) => {
+      const requests = invoiceLines.map((data) => {
+        return ky.post(INVOICE_LINE_API, {
+          json: data,
+          ...kyOptions,
+        }).json();
+      });
+
+      return Promise.allSettled(requests);
+    },
+    ...options,
+  });
+
   return {
     mutateInvoiceLine: mutateAsync,
+    createInvoiceLines,
   };
 };

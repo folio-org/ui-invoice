@@ -28,6 +28,7 @@ export const showUpdateInvoiceError = async (
   defaultErrorMessageId,
   expenseClassMutator,
   fundMutator,
+  messageValues = {},
 ) => {
   let error;
 
@@ -164,7 +165,57 @@ export const showUpdateInvoiceError = async (
       break;
     }
     default: {
-      showCallout({ messageId: defaultErrorMessageId, type: 'error' });
+      showCallout({
+        messageId: defaultErrorMessageId,
+        type: 'error',
+        values: messageValues,
+      });
     }
   }
+};
+
+export const handleInvoiceLineErrors = async ({ requestData = [], responses = [], showCallout }) => {
+  const errors = responses.filter(({ status }) => status === 'rejected');
+
+  if (!errors.length) {
+    return Promise.resolve();
+  }
+
+  const errorRequests = errors.map(({ reason }, index) => {
+    const invoiceLineNumber = requestData[index]?.invoiceLineNumber;
+
+    return showUpdateInvoiceError(
+      reason?.response,
+      showCallout,
+      'saveLine',
+      'ui-invoice.errors.invoiceLine.duplicate',
+      {},
+      {},
+      { invoiceLineNumber },
+    );
+  });
+
+  return Promise.all(errorRequests);
+};
+
+export const handleInvoiceLinesCreation = async ({ invoiceLines = [], invoiceId, createInvoiceLines }) => {
+  if (!invoiceLines.length) {
+    return {
+      invoiceId,
+      invoiceLines: [],
+    };
+  }
+
+  const newInvoiceLines = invoiceLines.map(line => ({
+    ...line,
+    id: undefined,
+    metadata: undefined,
+    invoiceId,
+  }));
+
+  return createInvoiceLines({ invoiceLines: newInvoiceLines })
+    .then((newInvoiceLinesPromise) => ({
+      invoiceId,
+      invoiceLines: newInvoiceLinesPromise,
+    }));
 };

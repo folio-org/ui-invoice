@@ -6,6 +6,7 @@
 * Align the `finance.fund` interface version (`3.0`). Refs UINV-545.
 * Use Save & close button label  stripes-component translation key. Refs UINV-540.
 * Add indexes to improve the performance of getting composite orders by poNumber. Refs UINV-546.
+* Duplicate invoice and invoice lines. Refs UINV-552.
 
 ## [6.0.3](https://github.com/folio-org/ui-invoice/tree/v6.0.3) (2024-04-19)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.2...v6.0.3)

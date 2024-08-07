@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
+import {
+  get,
+  omit,
+} from 'lodash';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { LoadingPane } from '@folio/stripes/components';
@@ -26,11 +29,14 @@ import {
   INVOICE_STATUS,
 } from '../../common/constants';
 import {
+  useInvoiceLineMutation,
   useInvoiceMutation,
 } from '../../common/hooks';
 import InvoiceDetails from './InvoiceDetails';
 import {
   createInvoiceLineFromPOL,
+  handleInvoiceLineErrors,
+  handleInvoiceLinesCreation,
   showUpdateInvoiceError,
 } from './utils';
 
@@ -55,6 +61,7 @@ export function InvoiceDetailsContainer({
   const [exportFormat, setExportFormat] = useState();
 
   const { mutateInvoice, deleteInvoice } = useInvoiceMutation();
+  const { createInvoiceLines } = useInvoiceLineMutation();
 
   const fetchInvoiceData = useCallback(
     () => {
@@ -367,6 +374,60 @@ export function InvoiceDetailsContainer({
     [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
   );
 
+  const onDuplicateInvoice = useCallback(() => {
+    setIsLoading(true);
+
+    const currentInvoice = omit(invoice, ['id', 'metadata', 'documents', 'links', 'status', 'fiscalYearId']);
+    const duplicateInvoice = {
+      ...currentInvoice,
+      status: INVOICE_STATUS.open,
+    };
+
+    return mutateInvoice(duplicateInvoice)
+      .then(({ id: newInvoiceId }) => {
+        return handleInvoiceLinesCreation({
+          invoiceLines: invoiceLines.invoiceLines,
+          invoiceId: newInvoiceId,
+          createInvoiceLines,
+        });
+      }).then(async ({
+        invoiceId: newInvoiceId,
+        invoiceLines: newInvoiceLines,
+      }) => {
+        showCallout({ messageId: 'ui-invoice.invoice.actions.duplicate.success.message' });
+        refreshList();
+
+        await handleInvoiceLineErrors({
+          requestData: invoiceLines.invoiceLines,
+          responses: newInvoiceLines,
+          showCallout,
+        });
+
+        return history.push({
+          pathname: `/invoice/view/${newInvoiceId}`,
+          search: location.search,
+        });
+      })
+      .catch((error) => {
+        showUpdateInvoiceError(
+          error?.response,
+          showCallout,
+          'duplicate',
+          'ui-invoice.invoice.actions.duplicate.error.message',
+        );
+      })
+      .finally(() => setIsLoading(false));
+  }, [
+    invoice,
+    mutateInvoice,
+    invoiceLines?.invoiceLines,
+    createInvoiceLines,
+    showCallout,
+    refreshList,
+    history,
+    location.search,
+  ]);
+
   const updateInvoice = useCallback(
     (data) => {
       return mutateInvoice(data)
@@ -395,9 +456,10 @@ export function InvoiceDetailsContainer({
       addLines={addLines}
       approveAndPayInvoice={approveAndPayInvoice}
       approveInvoice={approveInvoice}
+      cancelInvoice={cancelInvoice}
       createLine={createLine}
       deleteInvoice={onDeleteInvoice}
-      cancelInvoice={cancelInvoice}
+      onDuplicateInvoice={onDuplicateInvoice}
       invoice={invoice}
       invoiceLines={invoiceLines.invoiceLines}
       invoiceTotalUnits={invoiceTotalUnits}
