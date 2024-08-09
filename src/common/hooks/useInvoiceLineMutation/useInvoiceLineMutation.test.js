@@ -69,4 +69,32 @@ describe('useInvoiceLineMutation', () => {
 
     expect(kyMock.mock.calls[0][1].method).toBe('delete');
   });
+
+  describe('createInvoiceLines', () => {
+    const invoiceLines = [
+      { status: 'Open', invoiceId: 1 },
+      { status: 'Open', invoiceId: 2 },
+    ];
+    const mockKy = {
+      post: jest.fn().mockReturnValue({
+        json: () => Promise.resolve({}),
+      }),
+    };
+
+    beforeEach(() => {
+      useOkapiKy.mockClear().mockReturnValue(mockKy);
+    });
+
+    it('should make post requests for each invoice line', async () => {
+      const { result } = renderHook(
+        () => useInvoiceLineMutation(),
+        { wrapper },
+      );
+
+      await result.current.createInvoiceLines({ invoiceLines });
+
+      expect(mockKy.post).toHaveBeenCalled();
+      expect(mockKy.post).toHaveBeenCalledTimes(2);
+    });
+  });
 });
