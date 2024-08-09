@@ -1,5 +1,9 @@
 import { ERROR_CODES } from '../../common/constants';
-import { showUpdateInvoiceError } from './utils';
+import {
+  handleInvoiceLineErrors,
+  handleInvoiceLinesCreation,
+  showUpdateInvoiceError,
+} from './utils';
 
 const showCallout = jest.fn();
 const action = 'action';
@@ -113,6 +117,61 @@ describe('showUpdateInvoiceError', () => {
     expect(showCallout).toHaveBeenCalledWith({
       messageId: 'ui-invoice.invoice.actions.approve.error.outdatedFundIdInEncumbrance',
       type: 'error',
+    });
+  });
+
+  describe('handleInvoiceLinesCreation', () => {
+    it('should return empty array invoiceLines if invoiceLines are empty', async () => {
+      const invoiceId = 'test-id';
+      const result = await handleInvoiceLinesCreation({ invoiceLines: [], invoiceId });
+
+      expect(result.invoiceLines).toEqual([]);
+    });
+
+    it('should call createInvoiceLines with invoiceLines', async () => {
+      const invoiceId = 'test-id';
+      const invoiceLines = [{ id: 'test-id' }];
+      const createInvoiceLines = jest.fn().mockResolvedValueOnce([{ status: 'fulfilled' }]);
+      const result = await handleInvoiceLinesCreation({
+        invoiceLines,
+        invoiceId,
+        showCallout: jest.fn(),
+        createInvoiceLines,
+        mutator: {
+          expenseClass: jest.fn(),
+          fund: jest.fn(),
+        },
+      });
+
+      console.log(result);
+
+      expect(result.invoiceLines).toEqual([{ status: 'fulfilled' }]);
+      expect(createInvoiceLines).toHaveBeenCalled();
+    });
+  });
+
+  describe('handleInvoiceLineErrors', () => {
+    it('should return empty array invoiceLines if invoiceLines are empty', async () => {
+      const result = await handleInvoiceLineErrors({ requestData: [], responses: [] });
+
+      expect(result).toEqual([]);
+    });
+
+    it('should call showUpdateInvoiceError with reason response', async () => {
+      const reason = { response: { id: 'test-id' } };
+      const requestData = [{ invoiceLineNumber: 'test-id' }];
+      const responses = [{ status: 'rejected', reason }];
+      const result = await handleInvoiceLineErrors({
+        requestData,
+        responses,
+        showCallout: jest.fn(),
+        mutator: {
+          expenseClass: jest.fn(),
+          fund: jest.fn(),
+        },
+      });
+
+      expect(result).toEqual([]);
     });
   });
 

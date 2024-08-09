@@ -183,7 +183,7 @@ export const handleInvoiceLineErrors = async ({
   const errors = responses.filter(({ status }) => status === 'rejected');
 
   if (!errors.length) {
-    return Promise.resolve();
+    return Promise.resolve([]);
   }
 
   const errorRequests = errors.map(({ reason }, index) => {
@@ -238,7 +238,7 @@ export const handleInvoiceLinesCreation = async ({
 
       return ({
         invoiceId,
-        newInvoiceLines: newInvoiceLinesPromise,
+        invoiceLines: newInvoiceLinesPromise,
       });
     });
 };
