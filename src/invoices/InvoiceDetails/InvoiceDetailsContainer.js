@@ -384,28 +384,18 @@ export function InvoiceDetailsContainer({
     };
 
     return mutateInvoice(duplicateInvoice)
-      .then(({ id: newInvoiceId }) => {
-        return handleInvoiceLinesCreation({
-          invoiceLines: invoiceLines.invoiceLines,
-          invoiceId: newInvoiceId,
-          createInvoiceLines,
-        });
-      }).then(async ({
+      .then(({ id: newInvoiceId }) => handleInvoiceLinesCreation({
+        invoiceLines: invoiceLines.invoiceLines,
         invoiceId: newInvoiceId,
-        invoiceLines: newInvoiceLines,
-      }) => {
+        createInvoiceLines,
+        mutator: {
+          expenseClass: mutator.expenseClass,
+          fund: mutator.fund,
+        },
+        showCallout,
+      })).then(async ({ invoiceId: newInvoiceId }) => {
         showCallout({ messageId: 'ui-invoice.invoice.actions.duplicate.success.message' });
         refreshList();
-
-        await handleInvoiceLineErrors({
-          requestData: invoiceLines.invoiceLines,
-          responses: newInvoiceLines,
-          showCallout,
-          mutator: {
-            expenseClass: mutator.expenseClass,
-            fund: mutator.fund,
-          },
-        });
 
         return history.push({
           pathname: `/invoice/view/${newInvoiceId}`,

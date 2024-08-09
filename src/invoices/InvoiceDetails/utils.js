@@ -203,7 +203,13 @@ export const handleInvoiceLineErrors = async ({
   return Promise.all(errorRequests);
 };
 
-export const handleInvoiceLinesCreation = async ({ invoiceLines = [], invoiceId, createInvoiceLines }) => {
+export const handleInvoiceLinesCreation = async ({
+  invoiceLines = [],
+  invoiceId,
+  createInvoiceLines,
+  showCallout,
+  mutator,
+}) => {
   if (!invoiceLines.length) {
     return {
       invoiceId,
@@ -211,16 +217,28 @@ export const handleInvoiceLinesCreation = async ({ invoiceLines = [], invoiceId,
     };
   }
 
-  const newInvoiceLines = invoiceLines.map(line => ({
+  const newInvoiceLinesData = invoiceLines.map(line => ({
     ...line,
     id: undefined,
     metadata: undefined,
     invoiceId,
   }));
 
-  return createInvoiceLines({ invoiceLines: newInvoiceLines })
-    .then((newInvoiceLinesPromise) => ({
-      invoiceId,
-      invoiceLines: newInvoiceLinesPromise,
-    }));
+  return createInvoiceLines({ invoiceLines: newInvoiceLinesData })
+    .then(async (newInvoiceLinesPromise) => {
+      await handleInvoiceLineErrors({
+        requestData: newInvoiceLinesData,
+        responses: newInvoiceLinesPromise,
+        showCallout,
+        mutator: {
+          expenseClass: mutator.expenseClass,
+          fund: mutator.fund,
+        },
+      });
+
+      return ({
+        invoiceId,
+        newInvoiceLines: newInvoiceLinesPromise,
+      });
+    });
 };
