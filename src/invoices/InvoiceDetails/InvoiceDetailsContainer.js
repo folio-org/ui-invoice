@@ -1,9 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import {
   get,
   omit,
 } from 'lodash';
+import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { LoadingPane } from '@folio/stripes/components';
@@ -35,7 +40,6 @@ import {
 import InvoiceDetails from './InvoiceDetails';
 import {
   createInvoiceLineFromPOL,
-  handleInvoiceLineErrors,
   handleInvoiceLinesCreation,
   showUpdateInvoiceError,
 } from './utils';
