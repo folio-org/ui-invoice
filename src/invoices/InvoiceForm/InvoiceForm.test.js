@@ -174,7 +174,7 @@ describe('InvoiceForm component', () => {
         cancelable: true,
       });
 
-      expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon required/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon/i })).toBeInTheDocument();
     });
   });
 
@@ -184,7 +184,7 @@ describe('InvoiceForm component', () => {
         await renderInvoiceForm({ ...defaultProps, initialValues: { adjustments: [{ exportToAccounting: true }] } });
       });
 
-      expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon required/i })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon/i })).toBeInTheDocument();
     });
   });
 
@@ -239,7 +239,7 @@ describe('InvoiceForm component', () => {
   describe('FieldFiscalYearContainer', () => {
     const labelId = 'ui-invoice.invoice.details.information.fiscalYear';
     const labelIdRequired = `${labelId}<span class="asterisk" aria-hidden="true">*</span>`;
-    const optionIdQuery = 'li[id^="option-invoice-fiscal-year"]';
+    const optionIdQuery = 'ul[aria-labelledby*="label-invoice-fiscal-year"] li';
 
     it('should render fiscal year component with empty select option', async () => {
       const optionLengthWithEmptyLine = FISCAL_YEARS.length + 1;

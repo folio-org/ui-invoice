@@ -1,4 +1,5 @@
 import { IntlProvider } from 'react-intl';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 
@@ -12,6 +13,14 @@ jest.mock('../../../common/hooks', () => ({
 jest.mock('../BatchGroupValue', () => {
   return () => <span>BatchGroupValue</span>;
 });
+
+const queryClient = new QueryClient();
+
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
+);
 
 const invoiceInformation = {
   batchGroupId: 'cd592659-77aa-4eb3-ac34-c9a4657bb20f',
@@ -28,7 +37,7 @@ const renderInformation = ({
   source,
   currency,
   lockTotal,
-}) => (render(
+}) => render(
   <IntlProvider locale="en">
     <Information
       batchGroupId={batchGroupId}
@@ -39,7 +48,8 @@ const renderInformation = ({
       lockTotal={lockTotal}
     />
   </IntlProvider>,
-));
+  { wrapper },
+);
 
 describe('Information component', () => {
   it('should display invoice information', () => {

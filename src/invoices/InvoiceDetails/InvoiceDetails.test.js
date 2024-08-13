@@ -286,6 +286,35 @@ describe('InvoiceDetails', () => {
       });
     });
 
+    describe('Duplicate', () => {
+      it('should call onDuplicate when Duplicate invoice action is called', async () => {
+        const onDuplicateInvoice = jest.fn();
+
+        renderInvoiceDetails({
+          ...defaultProps,
+          onDuplicateInvoice,
+        });
+
+        InvoiceActions.mock.calls[0][0].onDuplicate();
+
+        await waitFor(() => expect(screen.getByText('ui-invoice.invoice.actions.duplicate.confirmLabel')).toBeInTheDocument());
+      });
+
+      it('should navigate to invoice form when Duplicate invoice action is called', async () => {
+        const onDuplicateInvoice = jest.fn();
+
+        renderInvoiceDetails({ ...defaultProps, onDuplicateInvoice });
+
+        InvoiceActions.mock.calls[0][0].onDuplicate();
+
+        const confirmButton = await screen.findByText('ui-invoice.invoice.actions.duplicate.confirmLabel');
+
+        await user.click(confirmButton);
+
+        expect(onDuplicateInvoice).toHaveBeenCalled();
+      });
+    });
+
     describe('Approve and Pay', () => {
       beforeEach(() => {
         ApproveConfirmationModal.mockClear();

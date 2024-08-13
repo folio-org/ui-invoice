@@ -15,6 +15,7 @@
   "errors.fileLimit": "File exceeds the size limit of {size}MB",
   "errors.voucherHasNotBeenSaved": "Voucher has not been saved",
   "errors.voucherLoadingFailed": "Voucher has not been loaded",
+  "errors.invoiceLine.duplicate": "The invoice line <b>{invoiceLineNumber}</b> failed to duplicate.",
 
   "exportSettings.export": "Export",
   "exportSettings.cancel": "Cancel",
@@ -33,6 +34,7 @@
   "button.addAdjustment": "Add adjustment",
   "button.delete": "Delete",
   "button.edit": "Edit",
+  "button.duplicate": "Duplicate",
   "button.new": "New",
   "button.remove": "Remove",
   "button.runManualExport": "Run manual export",
@@ -404,6 +406,12 @@
   "invoice.actions.approveAndPay.success": "Invoice has been approved and paid successfully",
   "invoice.actions.approveAndPay.confirmation.heading": "Approve & pay invoice",
   "invoice.actions.approveAndPay.confirmation.message": "Are you sure you want to approve and pay invoice?",
+
+  "invoice.actions.duplicate.confirmLabel": "Duplicate",
+  "invoice.actions.duplicate.confirmation.heading": "Duplicate invoice?",
+  "invoice.actions.duplicate.confirmation.message": "Are you sure you want to create a duplicate of this invoice and all of its invoice lines?",
+  "invoice.actions.duplicate.success.message": "The invoice has been duplicated successfully",
+  "invoice.actions.duplicate.error.message": "The invoice has not been duplicated",
 
   "invoice.actions.pay": "Pay",
   "invoice.actions.pay.error": "Invoice was not paid",

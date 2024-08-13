@@ -36,7 +36,7 @@ describe('FieldFiscalYearContainer', () => {
   it('should render fiscal year final form field', () => {
     renderFieldFiscalYearContainer();
 
-    expect(screen.getByLabelText('ui-invoice.invoice.details.information.fiscalYear')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.invoice.details.information.fiscalYear')).toBeInTheDocument();
   });
 
   it('should have a required label', () => {
@@ -44,6 +44,8 @@ describe('FieldFiscalYearContainer', () => {
       required: true,
     });
 
-    expect(screen.getByText(/required/)).toBeInTheDocument();
+    const label = screen.getByText('ui-invoice.invoice.details.information.fiscalYear');
+
+    expect(label).toHaveTextContent('*');
   });
 });

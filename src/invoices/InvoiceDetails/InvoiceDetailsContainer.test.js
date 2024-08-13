@@ -1,4 +1,9 @@
-import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  render,
+  screen,
+  act,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
 
 import {
   match,
@@ -8,7 +13,10 @@ import {
   invoiceLine,
   orderLine,
 } from '../../../test/jest/fixtures';
-import { useInvoiceMutation } from '../../common/hooks';
+import {
+  useInvoiceLineMutation,
+  useInvoiceMutation,
+} from '../../common/hooks';
 
 import { createInvoiceLineFromPOL, showUpdateInvoiceError } from './utils';
 import InvoiceDetails from './InvoiceDetails';
@@ -16,6 +24,7 @@ import { InvoiceDetailsContainer } from './InvoiceDetailsContainer';
 
 jest.mock('../../common/hooks', () => ({
   useInvoiceMutation: jest.fn().mockReturnValue({}),
+  useInvoiceLineMutation: jest.fn().mockReturnValue({}),
 }));
 jest.mock('./InvoiceDetails', () => jest.fn().mockReturnValue('InvoiceDetails'));
 jest.mock('./utils', () => ({
@@ -418,6 +427,59 @@ describe('InvoiceDetailsContainer', () => {
         });
 
         expect(refreshList).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('Duplicate action', () => {
+      const mutateInvoice = jest.fn(() => Promise.resolve({ id: 'i' }));
+      const createInvoiceLines = jest.fn().mockResolvedValue([{ id: 'i' }]);
+
+      beforeEach(() => {
+        useInvoiceMutation.mockClear().mockReturnValue({ mutateInvoice });
+        useInvoiceLineMutation.mockClear().mockReturnValue({ createInvoiceLines });
+      });
+
+      it('should call `mutateInvoice` and  `createInvoiceLines` when duplicateInvoice action is called', async () => {
+        renderInvoiceDetailsContainer();
+
+        await screen.findByText('InvoiceDetails');
+
+        InvoiceDetails.mock.calls[0][0].onDuplicateInvoice();
+
+        expect(mutateInvoice).toHaveBeenCalled();
+
+        await waitFor(() => {
+          expect(createInvoiceLines).toHaveBeenCalled();
+        });
+      });
+
+      it('should refresh list when invoice has been duplicated', async () => {
+        const refreshList = jest.fn();
+
+        renderInvoiceDetailsContainer({ ...defaultProps, refreshList });
+
+        await screen.findByText('InvoiceDetails');
+
+        InvoiceDetails.mock.calls[0][0].onDuplicateInvoice();
+        await waitFor(() => {
+          expect(refreshList).toHaveBeenCalled();
+        });
+      });
+
+      it('should call error message', async () => {
+        useInvoiceMutation.mockClear().mockReturnValue({
+          mutateInvoice: mutateInvoice.mockClear().mockRejectedValue(),
+        });
+
+        renderInvoiceDetailsContainer();
+
+        await screen.findByText('InvoiceDetails');
+
+        InvoiceDetails.mock.calls[0][0].onDuplicateInvoice();
+
+        await waitFor(() => {
+          expect(showUpdateInvoiceError).toHaveBeenCalled();
+        });
       });
     });
   });

@@ -146,7 +146,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                     </div>
                     <div
                       class="content-wrap expanded"
-                      style="z-index: 4;"
+                      style="z-index: 0;"
                     >
                       <div
                         aria-labelledby="accordion-toggle-button-invoiceLineForm-information"
@@ -706,17 +706,10 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                             class="col-xs-3"
                             data-test-col-invoice-line-accounting-code="true"
                           >
-                            <div
-                              style="position: relative; width: 100%;"
-                            >
-                              <div
-                                aria-live="assertive"
-                                aria-relevant="additions"
-                                class="sr-only"
-                              />
+                            <div>
                               <label
                                 class="label"
-                                for="invoice-line-account-number"
+                                for="downshift-:r1:-input"
                                 id="sl-label-invoice-line-account-number"
                               >
                                 ui-invoice.invoiceLine.accountNumber
@@ -725,10 +718,9 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                 class="selectionControlContainer"
                               >
                                 <button
+                                  aria-controls="downshift-:r1:-menu"
                                   aria-expanded="false"
-                                  aria-haspopup="listbox"
                                   aria-labelledby="sl-label-invoice-line-account-number selected-invoice-line-account-number-item"
-                                  aria-owns="sl-invoice-line-account-number"
                                   class="selectionControl formControl"
                                   id="invoice-line-account-number"
                                   name="accountNumber"
@@ -755,61 +747,54 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                     </span>
                                   </div>
                                 </div>
-                              </div>
-                              <div
-                                role="alert"
-                              />
-                            </div>
-                            <div
-                              class="overlay"
-                              hidden=""
-                            >
-                              <div
-                                class="selectionListRoot sr-only"
-                                hidden=""
-                                id="sl-container-invoice-line-account-number"
-                              >
                                 <div
-                                  class="selectionFilterContainer"
-                                >
-                                  <input
-                                    aria-activedescendant="option-invoice-line-account-number-0-null"
-                                    aria-controls="sl-container-invoice-line-account-number"
-                                    aria-expanded="true"
-                                    aria-label="stripes-components.selection.filterOptionsLabel"
-                                    aria-owns="sl-invoice-line-account-number"
-                                    class="selectionFilter"
-                                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                    role="combobox"
-                                    type="text"
-                                    value=""
-                                  />
-                                </div>
-                                <ul
-                                  aria-label="stripes-components.selection.filterOptionsLabel"
-                                  class="selectionList"
-                                  id="sl-invoice-line-account-number"
-                                  role="listbox"
-                                  style="max-height: 174px;"
-                                >
-                                  <li
-                                    aria-selected="false"
-                                    class="option optionOutside cursor"
-                                    id="option-invoice-line-account-number-0-null"
-                                    role="option"
-                                    tabindex="-1"
-                                    unselectable="on"
-                                  >
-                                    <div
-                                      class="optionSegment"
-                                      data-test-selection-option-segment="true"
-                                    />
-                                  </li>
-                                </ul>
-                                <div
-                                  class="selectListSection"
                                   role="alert"
                                 />
+                              </div>
+                              <div
+                                class="overlay"
+                                hidden=""
+                              >
+                                <div
+                                  class="selectionListRoot"
+                                  id="sl-container-invoice-line-account-number"
+                                >
+                                  <div
+                                    class="selectionFilterContainer"
+                                  >
+                                    <input
+                                      aria-activedescendant=""
+                                      aria-autocomplete="list"
+                                      aria-controls="downshift-:r1:-menu"
+                                      aria-expanded="false"
+                                      aria-label="stripes-components.selection.filterOptionsLabel"
+                                      aria-labelledby="downshift-:r1:-label"
+                                      autocomplete="off"
+                                      class="selectionFilter"
+                                      id="downshift-:r1:-input"
+                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
+                                      role="combobox"
+                                      type="text"
+                                      value=""
+                                    />
+                                  </div>
+                                  <ul
+                                    aria-labelledby="sl-label-invoice-line-account-number"
+                                    class="selectionList"
+                                    id="downshift-:r1:-menu"
+                                    role="listbox"
+                                    style="max-height: 174px;"
+                                  >
+                                    <li
+                                      class="groupLabel"
+                                    >
+                                      <div
+                                        class="optionSegment"
+                                        data-test-selection-option-segment="true"
+                                      />
+                                    </li>
+                                  </ul>
+                                </div>
                               </div>
                             </div>
                           </div>

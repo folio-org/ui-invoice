@@ -1,5 +1,4 @@
-import { MemoryRouter } from 'react-router-dom';
-
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import InvoicesListFilters from './InvoicesListFilters';
@@ -22,9 +21,17 @@ const defaultProps = {
   disabled: false,
 };
 
+const queryClient = new QueryClient();
+
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
+);
+
 const renderInvoicesListFilters = (props = defaultProps) => render(
   <InvoicesListFilters {...props} />,
-  { wrapper: MemoryRouter },
+  { wrapper },
 );
 
 describe('InvoicesListFilters', () => {
