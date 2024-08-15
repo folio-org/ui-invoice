@@ -11,10 +11,11 @@ export const ACQ_ERROR_TYPE = {
 export const INVOICE_OMITTED_FIELDS = [
   'approvalDate',
   'approvedBy',
-  'id',
-  'metadata',
   'documents',
-  'links',
-  'status',
   'fiscalYearId',
+  'id',
+  'links',
+  'metadata',
+  'status',
+  'voucherNumber',
 ];
