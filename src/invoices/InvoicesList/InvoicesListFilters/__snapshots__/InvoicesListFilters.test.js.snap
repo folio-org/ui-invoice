@@ -573,6 +573,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -916,6 +919,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -1571,6 +1577,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -2177,6 +2186,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -2592,6 +2604,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -2873,6 +2888,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -3154,6 +3172,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -3435,6 +3456,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -4051,6 +4075,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -4395,6 +4422,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -5090,6 +5120,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -5726,6 +5759,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -6148,6 +6184,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -6429,6 +6468,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -6710,6 +6752,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
@@ -6991,6 +7036,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               />
             </div>
           </div>
+          <div
+            role="alert"
+          />
           <button
             class="button default marginBottom0"
             data-test-apply-button="true"
