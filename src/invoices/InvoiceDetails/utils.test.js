@@ -143,8 +143,6 @@ describe('showUpdateInvoiceError', () => {
         },
       });
 
-      console.log(result);
-
       expect(result.invoiceLines).toEqual([{ status: 'fulfilled' }]);
       expect(createInvoiceLines).toHaveBeenCalled();
     });
