@@ -37,6 +37,7 @@ import {
   useInvoiceLineMutation,
   useInvoiceMutation,
 } from '../../common/hooks';
+import { INVOICE_OMITTED_FIELDS } from './constants';
 import InvoiceDetails from './InvoiceDetails';
 import {
   createInvoiceLineFromPOL,
@@ -381,7 +382,7 @@ export function InvoiceDetailsContainer({
   const onDuplicateInvoice = useCallback(() => {
     setIsLoading(true);
 
-    const currentInvoice = omit(invoice, ['id', 'metadata', 'documents', 'links', 'status', 'fiscalYearId']);
+    const currentInvoice = omit(invoice, INVOICE_OMITTED_FIELDS);
     const duplicateInvoice = {
       ...currentInvoice,
       status: INVOICE_STATUS.open,

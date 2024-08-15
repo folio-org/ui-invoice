@@ -7,3 +7,14 @@ export const VENDOR_STATUS = {
 export const ACQ_ERROR_TYPE = {
   order: 'order',
 };
+
+export const INVOICE_OMITTED_FIELDS = [
+  'approvalDate',
+  'approvedBy',
+  'id',
+  'metadata',
+  'documents',
+  'links',
+  'status',
+  'fiscalYearId',
+];
