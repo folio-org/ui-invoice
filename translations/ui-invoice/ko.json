@@ -464,5 +464,12 @@
     "filter.invoiceLine.createdBy": "Created by (Invoice Line)",
     "filter.invoiceLine.updatedBy": "Updated by (Invoice Line)",
     "filter.invoiceLine.dateCreated": "Date created (Invoice Line)",
-    "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)"
+    "filter.invoiceLine.dateUpdated": "Date updated (Invoice Line)",
+    "errors.invoiceLine.duplicate": "The invoice line <b>{invoiceLineNumber}</b> failed to duplicate.",
+    "button.duplicate": "Duplicate",
+    "invoice.actions.duplicate.confirmLabel": "Duplicate",
+    "invoice.actions.duplicate.confirmation.heading": "Duplicate invoice?",
+    "invoice.actions.duplicate.confirmation.message": "Are you sure you want to create a duplicate of this invoice and all of its invoice lines?",
+    "invoice.actions.duplicate.success.message": "The invoice has been duplicated successfully",
+    "invoice.actions.duplicate.error.message": "The invoice has not been duplicated"
 }

@@ -464,5 +464,12 @@
     "filter.invoiceLine.createdBy": "建立者（發票細項）",
     "filter.invoiceLine.updatedBy": "更新者（發票細項）",
     "filter.invoiceLine.dateCreated": "建立日期（發票細項）",
-    "filter.invoiceLine.dateUpdated": "更新日期（發票細項）"
+    "filter.invoiceLine.dateUpdated": "更新日期（發票細項）",
+    "errors.invoiceLine.duplicate": "The invoice line <b>{invoiceLineNumber}</b> failed to duplicate.",
+    "button.duplicate": "Duplicate",
+    "invoice.actions.duplicate.confirmLabel": "Duplicate",
+    "invoice.actions.duplicate.confirmation.heading": "Duplicate invoice?",
+    "invoice.actions.duplicate.confirmation.message": "Are you sure you want to create a duplicate of this invoice and all of its invoice lines?",
+    "invoice.actions.duplicate.success.message": "The invoice has been duplicated successfully",
+    "invoice.actions.duplicate.error.message": "The invoice has not been duplicated"
 }
