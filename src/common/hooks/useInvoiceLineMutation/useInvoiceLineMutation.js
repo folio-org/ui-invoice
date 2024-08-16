@@ -1,12 +1,8 @@
-import {
-  useMutation,
-} from 'react-query';
+import { useMutation } from 'react-query';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
-import {
-  INVOICE_LINE_API,
-} from '../../constants';
+import { INVOICE_LINE_API } from '../../constants';
 
 export const useInvoiceLineMutation = (options = {}) => {
   const ky = useOkapiKy();
@@ -26,15 +22,23 @@ export const useInvoiceLineMutation = (options = {}) => {
   });
 
   const { mutateAsync: createInvoiceLines } = useMutation({
-    mutationFn: ({ invoiceLines = [], options: kyOptions = {} }) => {
-      const requests = invoiceLines.map((data) => {
-        return ky.post(INVOICE_LINE_API, {
-          json: data,
-          ...kyOptions,
-        }).json();
-      });
+    mutationFn: async ({ invoiceLines = [], options: kyOptions = {} }) => {
+      const results = [];
 
-      return Promise.allSettled(requests);
+      for (const data of invoiceLines) {
+        try {
+          const response = await ky.post(INVOICE_LINE_API, {
+            json: data,
+            ...kyOptions,
+          }).json();
+
+          results.push({ status: 'fulfilled', value: response });
+        } catch (error) {
+          results.push({ status: 'rejected', reason: error });
+        }
+      }
+
+      return results;
     },
     ...options,
   });
