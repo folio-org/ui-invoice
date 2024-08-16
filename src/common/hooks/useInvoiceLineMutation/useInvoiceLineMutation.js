@@ -23,20 +23,22 @@ export const useInvoiceLineMutation = (options = {}) => {
 
   const { mutateAsync: createInvoiceLines } = useMutation({
     mutationFn: async ({ invoiceLines = [], options: kyOptions = {} }) => {
-      const results = [];
+      const results = await invoiceLines.reduce(async (accPromise, data) => {
+        const acc = await accPromise;
 
-      for (const data of invoiceLines) {
         try {
           const response = await ky.post(INVOICE_LINE_API, {
             json: data,
             ...kyOptions,
           }).json();
 
-          results.push({ status: 'fulfilled', value: response });
+          acc.push({ status: 'fulfilled', value: response });
         } catch (error) {
-          results.push({ status: 'rejected', reason: error });
+          acc.push({ status: 'rejected', reason: error });
         }
-      }
+
+        return acc;
+      }, Promise.resolve([]));
 
       return results;
     },
