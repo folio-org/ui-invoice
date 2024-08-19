@@ -98,6 +98,7 @@ const getInvoiceExportData = ({
     exchangeRate: invoice.exchangeRate,
     invoiceTags: invoice.tags?.tagList?.join(' | '),
     voucherNumber: invoice.voucherNumber,
+    folioInvoiceNo: invoice.folioInvoiceNo,
     vendorInvoiceNo: invoice.vendorInvoiceNo,
     vendorCode: vendorMap[invoice.vendorId]?.code ?? invalidReferenceLabel,
     status: invoice.status,
