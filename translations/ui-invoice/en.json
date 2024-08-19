@@ -471,6 +471,7 @@
   "search.accountingCode": "Accounting code",
   "search.voucherNumber": "Voucher number",
   "search.vendorInvoiceNo": "Vendor invoice number",
+  "search.folioInvoiceNo": "FOLIO invoice number",
   "search.poNumbers": "PO number",
   "search.keyword": "All",
 

@@ -22,6 +22,7 @@ export const EXPORT_INVOICE_FIELDS = {
   invoiceAdjustments: 'Invoice adjustments',
   accountingCode: 'Accounting code',
   vendorAddress: 'Vendor address',
+  folioInvoiceNo: 'FOLIO invoice number',
   paymentMethod: 'Payment method',
   chkSubscriptionOverlap: 'Check subscription overlap',
   exportToAccounting: 'Export to accounting',
