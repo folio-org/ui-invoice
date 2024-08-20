@@ -20,33 +20,37 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
           <div
             class="selectionControlContainer"
           >
-            <button
-              aria-controls="downshift-:r1:-menu"
-              aria-expanded="false"
-              aria-labelledby="sl-label-selection-:r0: selected-selection-:r0:-item"
-              class="selectionControl formControl"
-              id="selection-:r0:"
-              type="button"
-            >
-              <span
-                class="sr-only"
-              >
-                stripes-components.selection.controlLabel
-              </span>
-              <div
-                class="singleValue"
-                id="selected-selection-:r0:-item"
-              />
-            </button>
             <div
-              class="selectionEndControls"
+              class="inputGroup"
             >
-              <div
-                class="textFieldIcon"
+              <button
+                aria-controls="downshift-:r1:-menu"
+                aria-expanded="false"
+                aria-labelledby="sl-label-selection-:r0: selected-selection-:r0:-item"
+                class="selectionControl formControl"
+                id="selection-:r0:"
+                type="button"
               >
-                <span>
-                  Icon
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
                 </span>
+                <div
+                  class="singleValue"
+                  id="selected-selection-:r0:-item"
+                />
+              </button>
+              <div
+                class="selectionEndControls"
+              >
+                <div
+                  class="textFieldIcon"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </div>
               </div>
             </div>
             <div
@@ -520,33 +524,37 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
           <div
             class="selectionControlContainer"
           >
-            <button
-              aria-controls="downshift-:r3:-menu"
-              aria-expanded="false"
-              aria-labelledby="sl-label-selection-:r2: selected-selection-:r2:-item"
-              class="selectionControl formControl"
-              id="selection-:r2:"
-              type="button"
-            >
-              <span
-                class="sr-only"
-              >
-                stripes-components.selection.controlLabel
-              </span>
-              <div
-                class="singleValue"
-                id="selected-selection-:r2:-item"
-              />
-            </button>
             <div
-              class="selectionEndControls"
+              class="inputGroup"
             >
-              <div
-                class="textFieldIcon"
+              <button
+                aria-controls="downshift-:r3:-menu"
+                aria-expanded="false"
+                aria-labelledby="sl-label-selection-:r2: selected-selection-:r2:-item"
+                class="selectionControl formControl"
+                id="selection-:r2:"
+                type="button"
               >
-                <span>
-                  Icon
+                <span
+                  class="sr-only"
+                >
+                  stripes-components.selection.controlLabel
                 </span>
+                <div
+                  class="singleValue"
+                  id="selected-selection-:r2:-item"
+                />
+              </button>
+              <div
+                class="selectionEndControls"
+              >
+                <div
+                  class="textFieldIcon"
+                >
+                  <span>
+                    Icon
+                  </span>
+                </div>
               </div>
             </div>
             <div

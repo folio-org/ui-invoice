@@ -255,34 +255,38 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 class="selectionControlContainer"
                               >
-                                <button
-                                  aria-controls="downshift-:r1:-menu"
-                                  aria-expanded="false"
-                                  aria-labelledby="sl-label-invoice-fiscal-year selected-invoice-fiscal-year-item"
-                                  class="selectionControl formControl"
-                                  id="invoice-fiscal-year"
-                                  name="fiscalYearId"
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-invoice-fiscal-year-item"
-                                  />
-                                </button>
                                 <div
-                                  class="selectionEndControls"
+                                  class="inputGroup"
                                 >
-                                  <div
-                                    class="textFieldIcon"
+                                  <button
+                                    aria-controls="downshift-:r1:-menu"
+                                    aria-expanded="false"
+                                    aria-labelledby="sl-label-invoice-fiscal-year selected-invoice-fiscal-year-item"
+                                    class="selectionControl formControl"
+                                    id="invoice-fiscal-year"
+                                    name="fiscalYearId"
+                                    type="button"
                                   >
-                                    <span>
-                                      Icon
+                                    <span
+                                      class="sr-only"
+                                    >
+                                      stripes-components.selection.controlLabel
                                     </span>
+                                    <div
+                                      class="singleValue"
+                                      id="selected-invoice-fiscal-year-item"
+                                    />
+                                  </button>
+                                  <div
+                                    class="selectionEndControls"
+                                  >
+                                    <div
+                                      class="textFieldIcon"
+                                    >
+                                      <span>
+                                        Icon
+                                      </span>
+                                    </div>
                                   </div>
                                 </div>
                                 <div
@@ -371,34 +375,38 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 class="selectionControlContainer"
                               >
-                                <button
-                                  aria-controls="downshift-:r3:-menu"
-                                  aria-expanded="false"
-                                  aria-labelledby="sl-label-invoice-status selected-invoice-status-item"
-                                  class="selectionControl formControl"
-                                  id="invoice-status"
-                                  name="status"
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-invoice-status-item"
-                                  />
-                                </button>
                                 <div
-                                  class="selectionEndControls"
+                                  class="inputGroup"
                                 >
-                                  <div
-                                    class="textFieldIcon"
+                                  <button
+                                    aria-controls="downshift-:r3:-menu"
+                                    aria-expanded="false"
+                                    aria-labelledby="sl-label-invoice-status selected-invoice-status-item"
+                                    class="selectionControl formControl"
+                                    id="invoice-status"
+                                    name="status"
+                                    type="button"
                                   >
-                                    <span>
-                                      Icon
+                                    <span
+                                      class="sr-only"
+                                    >
+                                      stripes-components.selection.controlLabel
                                     </span>
+                                    <div
+                                      class="singleValue"
+                                      id="selected-invoice-status-item"
+                                    />
+                                  </button>
+                                  <div
+                                    class="selectionEndControls"
+                                  >
+                                    <div
+                                      class="textFieldIcon"
+                                    >
+                                      <span>
+                                        Icon
+                                      </span>
+                                    </div>
                                   </div>
                                 </div>
                                 <div
@@ -656,34 +664,38 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 class="selectionControlContainer"
                               >
-                                <button
-                                  aria-controls="downshift-:r5:-menu"
-                                  aria-expanded="false"
-                                  aria-labelledby="sl-label-selection-:r4: selected-selection-:r4:-item"
-                                  class="selectionControl formControl"
-                                  id="selection-:r4:"
-                                  name="billTo"
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-selection-:r4:-item"
-                                  />
-                                </button>
                                 <div
-                                  class="selectionEndControls"
+                                  class="inputGroup"
                                 >
-                                  <div
-                                    class="textFieldIcon"
+                                  <button
+                                    aria-controls="downshift-:r5:-menu"
+                                    aria-expanded="false"
+                                    aria-labelledby="sl-label-selection-:r4: selected-selection-:r4:-item"
+                                    class="selectionControl formControl"
+                                    id="selection-:r4:"
+                                    name="billTo"
+                                    type="button"
                                   >
-                                    <span>
-                                      Icon
+                                    <span
+                                      class="sr-only"
+                                    >
+                                      stripes-components.selection.controlLabel
                                     </span>
+                                    <div
+                                      class="singleValue"
+                                      id="selected-selection-:r4:-item"
+                                    />
+                                  </button>
+                                  <div
+                                    class="selectionEndControls"
+                                  >
+                                    <div
+                                      class="textFieldIcon"
+                                    >
+                                      <span>
+                                        Icon
+                                      </span>
+                                    </div>
                                   </div>
                                 </div>
                                 <div
@@ -780,34 +792,38 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 class="selectionControlContainer"
                               >
-                                <button
-                                  aria-controls="downshift-:r7:-menu"
-                                  aria-expanded="false"
-                                  aria-labelledby="sl-label-invoice-batch-groups selected-invoice-batch-groups-item"
-                                  class="selectionControl formControl"
-                                  id="invoice-batch-groups"
-                                  name="batchGroupId"
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-invoice-batch-groups-item"
-                                  />
-                                </button>
                                 <div
-                                  class="selectionEndControls"
+                                  class="inputGroup"
                                 >
-                                  <div
-                                    class="textFieldIcon"
+                                  <button
+                                    aria-controls="downshift-:r7:-menu"
+                                    aria-expanded="false"
+                                    aria-labelledby="sl-label-invoice-batch-groups selected-invoice-batch-groups-item"
+                                    class="selectionControl formControl"
+                                    id="invoice-batch-groups"
+                                    name="batchGroupId"
+                                    type="button"
                                   >
-                                    <span>
-                                      Icon
+                                    <span
+                                      class="sr-only"
+                                    >
+                                      stripes-components.selection.controlLabel
                                     </span>
+                                    <div
+                                      class="singleValue"
+                                      id="selected-invoice-batch-groups-item"
+                                    />
+                                  </button>
+                                  <div
+                                    class="selectionEndControls"
+                                  >
+                                    <div
+                                      class="textFieldIcon"
+                                    >
+                                      <span>
+                                        Icon
+                                      </span>
+                                    </div>
                                   </div>
                                 </div>
                                 <div
@@ -1261,36 +1277,40 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 class="selectionControlContainer"
                               >
-                                <button
-                                  aria-controls="downshift-:r9:-menu"
-                                  aria-expanded="false"
-                                  aria-labelledby="sl-label-accounting-code-selection selected-accounting-code-selection-item"
-                                  class="selectionControl formControl"
-                                  disabled=""
-                                  id="accounting-code-selection"
-                                  name="accountNo"
-                                  readonly=""
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-accounting-code-selection-item"
-                                  />
-                                </button>
                                 <div
-                                  class="selectionEndControls"
+                                  class="inputGroup"
                                 >
-                                  <div
-                                    class="textFieldIcon"
+                                  <button
+                                    aria-controls="downshift-:r9:-menu"
+                                    aria-expanded="false"
+                                    aria-labelledby="sl-label-accounting-code-selection selected-accounting-code-selection-item"
+                                    class="selectionControl formControl"
+                                    disabled=""
+                                    id="accounting-code-selection"
+                                    name="accountNo"
+                                    readonly=""
+                                    type="button"
                                   >
-                                    <span>
-                                      Icon
+                                    <span
+                                      class="sr-only"
+                                    >
+                                      stripes-components.selection.controlLabel
                                     </span>
+                                    <div
+                                      class="singleValue"
+                                      id="selected-accounting-code-selection-item"
+                                    />
+                                  </button>
+                                  <div
+                                    class="selectionEndControls"
+                                  >
+                                    <div
+                                      class="textFieldIcon"
+                                    >
+                                      <span>
+                                        Icon
+                                      </span>
+                                    </div>
                                   </div>
                                 </div>
                                 <div
@@ -1710,34 +1730,38 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                               <div
                                 class="selectionControlContainer"
                               >
-                                <button
-                                  aria-controls="downshift-:rb:-menu"
-                                  aria-expanded="false"
-                                  aria-labelledby="sl-label-currency selected-currency-item"
-                                  class="selectionControl formControl"
-                                  id="currency"
-                                  name="currency"
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-currency-item"
-                                  />
-                                </button>
                                 <div
-                                  class="selectionEndControls"
+                                  class="inputGroup"
                                 >
-                                  <div
-                                    class="textFieldIcon"
+                                  <button
+                                    aria-controls="downshift-:rb:-menu"
+                                    aria-expanded="false"
+                                    aria-labelledby="sl-label-currency selected-currency-item"
+                                    class="selectionControl formControl"
+                                    id="currency"
+                                    name="currency"
+                                    type="button"
                                   >
-                                    <span>
-                                      Icon
+                                    <span
+                                      class="sr-only"
+                                    >
+                                      stripes-components.selection.controlLabel
                                     </span>
+                                    <div
+                                      class="singleValue"
+                                      id="selected-currency-item"
+                                    />
+                                  </button>
+                                  <div
+                                    class="selectionEndControls"
+                                  >
+                                    <div
+                                      class="textFieldIcon"
+                                    >
+                                      <span>
+                                        Icon
+                                      </span>
+                                    </div>
                                   </div>
                                 </div>
                                 <div

@@ -642,33 +642,37 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
             <div
               class="selectionControlContainer"
             >
-              <button
-                aria-controls="downshift-:r1:-menu"
-                aria-expanded="false"
-                aria-labelledby="sl-label-acqUnitIds-selection selected-acqUnitIds-selection-item"
-                class="selectionControl formControl"
-                id="acqUnitIds-selection"
-                type="button"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.selection.controlLabel
-                </span>
-                <div
-                  class="singleValue"
-                  id="selected-acqUnitIds-selection-item"
-                />
-              </button>
               <div
-                class="selectionEndControls"
+                class="inputGroup"
               >
-                <div
-                  class="textFieldIcon"
+                <button
+                  aria-controls="downshift-:r1:-menu"
+                  aria-expanded="false"
+                  aria-labelledby="sl-label-acqUnitIds-selection selected-acqUnitIds-selection-item"
+                  class="selectionControl formControl"
+                  id="acqUnitIds-selection"
+                  type="button"
                 >
-                  <span>
-                    Icon
+                  <span
+                    class="sr-only"
+                  >
+                    stripes-components.selection.controlLabel
                   </span>
+                  <div
+                    class="singleValue"
+                    id="selected-acqUnitIds-selection-item"
+                  />
+                </button>
+                <div
+                  class="selectionEndControls"
+                >
+                  <div
+                    class="textFieldIcon"
+                  >
+                    <span>
+                      Icon
+                    </span>
+                  </div>
                 </div>
               </div>
               <div
@@ -4144,34 +4148,38 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
             <div
               class="selectionControlContainer"
             >
-              <button
-                aria-controls="downshift-:r3:-menu"
-                aria-expanded="false"
-                aria-labelledby="sl-label-acqUnitIds-selection selected-acqUnitIds-selection-item"
-                class="selectionControl formControl"
-                disabled=""
-                id="acqUnitIds-selection"
-                type="button"
-              >
-                <span
-                  class="sr-only"
-                >
-                  stripes-components.selection.controlLabel
-                </span>
-                <div
-                  class="singleValue"
-                  id="selected-acqUnitIds-selection-item"
-                />
-              </button>
               <div
-                class="selectionEndControls"
+                class="inputGroup"
               >
-                <div
-                  class="textFieldIcon"
+                <button
+                  aria-controls="downshift-:r3:-menu"
+                  aria-expanded="false"
+                  aria-labelledby="sl-label-acqUnitIds-selection selected-acqUnitIds-selection-item"
+                  class="selectionControl formControl"
+                  disabled=""
+                  id="acqUnitIds-selection"
+                  type="button"
                 >
-                  <span>
-                    Icon
+                  <span
+                    class="sr-only"
+                  >
+                    stripes-components.selection.controlLabel
                   </span>
+                  <div
+                    class="singleValue"
+                    id="selected-acqUnitIds-selection-item"
+                  />
+                </button>
+                <div
+                  class="selectionEndControls"
+                >
+                  <div
+                    class="textFieldIcon"
+                  >
+                    <span>
+                      Icon
+                    </span>
+                  </div>
                 </div>
               </div>
               <div
