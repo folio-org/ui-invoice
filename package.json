@@ -298,7 +298,8 @@
         "visible": true,
         "subPermissions": [
           "batch-groups.collection.get",
-          "finance.exchange-rate.item.get"
+          "finance.exchange-rate.item.get",
+          "finance.expense-classes.collection.get"
         ]
       },
       {
