@@ -506,7 +506,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           data-test-clear="true"
                                           icon="times-circle-solid"
                                           id="datepicker-clear-button-dp-8"
-                                          tabindex="-1"
                                           type="button"
                                         >
                                           <span
@@ -599,7 +598,6 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                                           data-test-clear="true"
                                           icon="times-circle-solid"
                                           id="datepicker-clear-button-dp-9"
-                                          tabindex="-1"
                                           type="button"
                                         >
                                           <span
@@ -717,34 +715,38 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                               <div
                                 class="selectionControlContainer"
                               >
-                                <button
-                                  aria-controls="downshift-:r1:-menu"
-                                  aria-expanded="false"
-                                  aria-labelledby="sl-label-invoice-line-account-number selected-invoice-line-account-number-item"
-                                  class="selectionControl formControl"
-                                  id="invoice-line-account-number"
-                                  name="accountNumber"
-                                  type="button"
-                                >
-                                  <span
-                                    class="sr-only"
-                                  >
-                                    stripes-components.selection.controlLabel
-                                  </span>
-                                  <div
-                                    class="singleValue"
-                                    id="selected-invoice-line-account-number-item"
-                                  />
-                                </button>
                                 <div
-                                  class="selectionEndControls"
+                                  class="inputGroup"
                                 >
-                                  <div
-                                    class="textFieldIcon"
+                                  <button
+                                    aria-controls="downshift-:r1:-menu"
+                                    aria-expanded="false"
+                                    aria-labelledby="sl-label-invoice-line-account-number selected-invoice-line-account-number-item"
+                                    class="selectionControl formControl"
+                                    id="invoice-line-account-number"
+                                    name="accountNumber"
+                                    type="button"
                                   >
-                                    <span>
-                                      Icon
+                                    <span
+                                      class="sr-only"
+                                    >
+                                      stripes-components.selection.controlLabel
                                     </span>
+                                    <div
+                                      class="singleValue"
+                                      id="selected-invoice-line-account-number-item"
+                                    />
+                                  </button>
+                                  <div
+                                    class="selectionEndControls"
+                                  >
+                                    <div
+                                      class="textFieldIcon"
+                                    >
+                                      <span>
+                                        Icon
+                                      </span>
+                                    </div>
                                   </div>
                                 </div>
                                 <div
