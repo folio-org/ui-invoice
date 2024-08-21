@@ -2,6 +2,9 @@
 
 ## 6.1.0 (IN PROGRESS)
 
+## [6.0.4](https://github.com/folio-org/ui-invoice/tree/v6.0.4) (2024-08-21)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.3...v6.0.4)
+
 * Add search index for and export Folio Invoice Number. Refs UINV-556.
 
 ## [6.0.3](https://github.com/folio-org/ui-invoice/tree/v6.0.3) (2024-04-19)
