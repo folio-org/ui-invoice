@@ -626,7 +626,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       </div>
       <div
         class="content-wrap"
-        style="z-index: 21;"
+        style="z-index: 3;"
       >
         <div
           aria-labelledby="accordion-toggle-button-acqUnitIds"
@@ -4275,7 +4275,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       </div>
       <div
         class="content-wrap"
-        style="z-index: 21;"
+        style="z-index: 3;"
       >
         <div
           aria-labelledby="accordion-toggle-button-acqUnitIds"
