@@ -221,6 +221,7 @@ export const handleInvoiceLinesCreation = async ({
     ...line,
     id: undefined,
     metadata: undefined,
+    invoiceLineStatus: INVOICE_STATUS.open,
     invoiceId,
   }));
 
