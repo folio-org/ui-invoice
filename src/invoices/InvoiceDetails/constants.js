@@ -16,6 +16,7 @@ export const INVOICE_OMITTED_FIELDS = [
   'id',
   'links',
   'metadata',
+  'paymentDate',
   'status',
   'voucherNumber',
 ];
