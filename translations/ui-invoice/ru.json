@@ -471,5 +471,6 @@
     "invoice.actions.duplicate.confirmation.heading": "Duplicate invoice?",
     "invoice.actions.duplicate.confirmation.message": "Are you sure you want to create a duplicate of this invoice and all of its invoice lines?",
     "invoice.actions.duplicate.success.message": "The invoice has been duplicated successfully",
-    "invoice.actions.duplicate.error.message": "The invoice has not been duplicated"
+    "invoice.actions.duplicate.error.message": "The invoice has not been duplicated",
+    "search.folioInvoiceNo": "FOLIO invoice number"
 }
