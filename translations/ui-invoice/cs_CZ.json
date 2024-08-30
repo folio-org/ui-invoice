@@ -471,5 +471,6 @@
     "invoice.actions.duplicate.confirmation.heading": "Duplikovat fakturu?",
     "invoice.actions.duplicate.confirmation.message": "Opravdu chcete vytvořit duplikát této faktury a všech jejích řádků faktury?",
     "invoice.actions.duplicate.success.message": "Faktura byla úspěšně duplikována",
-    "invoice.actions.duplicate.error.message": "Faktura nebyla duplikována"
+    "invoice.actions.duplicate.error.message": "Faktura nebyla duplikována",
+    "search.folioInvoiceNo": "Číslo faktury FOLIO"
 }
