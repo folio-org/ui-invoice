@@ -6,6 +6,7 @@ import {
 } from './utils';
 
 const showCallout = jest.fn();
+const ky = jest.fn(() => ({ get: jest.fn().mockReturnValue({ json: jest.fn() }) }));
 const action = 'action';
 const defaultErrorMessageId = 'defaultErrorMessageId';
 const expenseClassMutator = { GET: jest.fn() };
@@ -21,9 +22,15 @@ describe('showUpdateInvoiceError', () => {
   });
 
   it('should return default error message', async () => {
-    await showUpdateInvoiceError(
-      undefined, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
-    );
+    await showUpdateInvoiceError({
+      response: undefined,
+      showCallout,
+      action,
+      defaultErrorMessageId,
+      expenseClassMutator,
+      fundMutator,
+      ky,
+    });
 
     expect(showCallout).toHaveBeenCalledWith({ messageId: defaultErrorMessageId, type: 'error', values: {} });
   });
@@ -42,6 +49,15 @@ describe('showUpdateInvoiceError', () => {
     await showUpdateInvoiceError(
       response, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
     );
+
+    await showUpdateInvoiceError({
+      response,
+      showCallout,
+      action,
+      defaultErrorMessageId,
+      expenseClassMutator,
+      fundMutator,
+    });
 
     expect(showCallout).toHaveBeenCalledWith({ messageId: defaultErrorMessageId, type: 'error' });
   });
@@ -62,9 +78,14 @@ describe('showUpdateInvoiceError', () => {
       }),
     };
 
-    await showUpdateInvoiceError(
-      response, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
-    );
+    await showUpdateInvoiceError({
+      response,
+      showCallout,
+      action,
+      defaultErrorMessageId,
+      expenseClassMutator,
+      fundMutator,
+    });
 
     expect(showCallout).toHaveBeenCalledWith({
       messageId: 'ui-invoice.invoice.actions.action.error.inactiveExpenseClass',
@@ -88,9 +109,14 @@ describe('showUpdateInvoiceError', () => {
       }),
     };
 
-    await showUpdateInvoiceError(
-      response, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
-    );
+    await showUpdateInvoiceError({
+      response,
+      showCallout,
+      action,
+      defaultErrorMessageId,
+      expenseClassMutator,
+      fundMutator,
+    });
 
     expect(showCallout).toHaveBeenCalledWith({
       messageId: 'ui-invoice.invoice.actions.action.error.inactiveExpenseClass',
@@ -110,9 +136,14 @@ describe('showUpdateInvoiceError', () => {
       }),
     };
 
-    await showUpdateInvoiceError(
-      response, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
-    );
+    await showUpdateInvoiceError({
+      response,
+      showCallout,
+      action,
+      defaultErrorMessageId,
+      expenseClassMutator,
+      fundMutator,
+    });
 
     expect(showCallout).toHaveBeenCalledWith({
       messageId: 'ui-invoice.invoice.actions.approve.error.outdatedFundIdInEncumbrance',
@@ -141,6 +172,7 @@ describe('showUpdateInvoiceError', () => {
           expenseClass: jest.fn(),
           fund: jest.fn(),
         },
+        ky,
       });
 
       expect(result.invoiceLines).toEqual([{ status: 'fulfilled' }]);
@@ -167,6 +199,7 @@ describe('showUpdateInvoiceError', () => {
           expenseClass: jest.fn(),
           fund: jest.fn(),
         },
+        ky,
       });
 
       expect(result).toEqual([]);
@@ -214,9 +247,15 @@ describe('showUpdateInvoiceError', () => {
       GET: jest.fn().mockResolvedValue({ fund: { code: 'value' } }),
     };
 
-    await showUpdateInvoiceError(
-      mockResponse, showCallout, mockActionName, defaultErrorMessageId, expenseClassMutator, mockFundMutator,
-    );
+    await showUpdateInvoiceError({
+      response: mockResponse,
+      showCallout,
+      action: mockActionName,
+      defaultErrorMessageId,
+      expenseClassMutator,
+      fundMutator: mockFundMutator,
+      ky,
+    });
 
     expect(showCallout).toHaveBeenCalledWith({
       messageId,

@@ -1,11 +1,14 @@
+import { noop } from 'lodash';
+
 import {
   EXPENSE_CLASSES_API,
   FUNDS_API,
 } from '@folio/stripes-acq-components';
 
 import {
-  INVOICE_STATUS,
   ERROR_CODES,
+  FISCAL_YEARS_API,
+  INVOICE_STATUS,
 } from '../../common/constants';
 import {
   convertToInvoiceLineFields,
@@ -21,7 +24,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   };
 };
 
-export const showUpdateInvoiceError = async (
+export const showUpdateInvoiceError = async ({
   response,
   showCallout,
   action,
@@ -29,7 +32,8 @@ export const showUpdateInvoiceError = async (
   expenseClassMutator,
   fundMutator,
   messageValues = {},
-) => {
+  ky = {},
+}) => {
   let error;
 
   try {
@@ -135,6 +139,7 @@ export const showUpdateInvoiceError = async (
     case ERROR_CODES.budgetNotFoundByFundIdAndFiscalYearId: {
       const errors = error?.errors?.[0]?.parameters;
       let fundId = errors?.find(({ key }) => key === 'fundId')?.value;
+      const fiscalYearId = errors?.find(({ key }) => key === 'fiscalYearId')?.value;
 
       if (!fundId) {
         fundId = errors?.find(({ key }) => key === 'fund')?.value;
@@ -142,12 +147,19 @@ export const showUpdateInvoiceError = async (
 
       if (fundId) {
         fundMutator.GET({ path: `${FUNDS_API}/${fundId}` })
-          .then(({ fund }) => {
+          .then(async ({ fund }) => {
+            let fiscalYear = {};
+
+            if (fiscalYearId) {
+              fiscalYear = await ky.get(`${FISCAL_YEARS_API}/${fiscalYearId}`).json();
+            }
+
             showCallout({
               messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
               type: 'error',
               values: {
                 fundCode: fund?.code,
+                fiscalYear: fiscalYear?.code,
               },
             });
           }, () => {
@@ -179,6 +191,7 @@ export const handleInvoiceLineErrors = async ({
   requestData = [],
   responses = [],
   showCallout,
+  ky = noop,
 }) => {
   const errors = responses.filter(({ status }) => status === 'rejected');
 
@@ -189,15 +202,16 @@ export const handleInvoiceLineErrors = async ({
   const errorRequests = errors.map(({ reason }, index) => {
     const invoiceLineNumber = requestData[index]?.invoiceLineNumber;
 
-    return showUpdateInvoiceError(
-      reason?.response,
+    return showUpdateInvoiceError({
+      response: reason,
       showCallout,
-      'saveLine',
-      'ui-invoice.errors.invoiceLine.duplicate',
-      mutator.expenseClass,
-      mutator.fund,
-      { invoiceLineNumber },
-    );
+      action: 'saveLine',
+      defaultErrorMessageId: 'ui-invoice.errors.invoiceLine.duplicate',
+      expenseClassMutator: mutator.expenseClass,
+      fundMutator: mutator.fund,
+      messageValues: { invoiceLineNumber },
+      ky,
+    });
   });
 
   return Promise.all(errorRequests);
@@ -209,6 +223,7 @@ export const handleInvoiceLinesCreation = async ({
   createInvoiceLines,
   showCallout,
   mutator,
+  ky,
 }) => {
   if (!invoiceLines.length) {
     return {
@@ -235,6 +250,7 @@ export const handleInvoiceLinesCreation = async ({
           expenseClass: mutator.expenseClass,
           fund: mutator.fund,
         },
+        ky,
       });
 
       return ({
