@@ -126,6 +126,7 @@ describe('InvoiceForm component', () => {
     const accountLabel = `${accountNo} (${appSystemNo})`;
 
     expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent('');
+    await userEvent.click(screen.getAllByText('stripes-components.selection.controlLabel')[4]);
 
     await userEvent.click(screen.getByText(accountLabel));
 
@@ -251,6 +252,7 @@ describe('InvoiceForm component', () => {
 
       expect(fiscalYearLabel).toBeInTheDocument();
 
+      await userEvent.click(screen.getAllByText('stripes-components.selection.controlLabel')[0]);
       const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
 
       expect(fiscalYearOptions.length).toBe(optionLengthWithEmptyLine);
@@ -264,6 +266,7 @@ describe('InvoiceForm component', () => {
       const fiscalYearLabel = await screen.findByText(labelId);
 
       expect(fiscalYearLabel.innerHTML).toBe(labelIdRequired);
+      await userEvent.click(screen.getAllByText('stripes-components.selection.controlLabel')[0]);
 
       const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
 

@@ -327,29 +327,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r1:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
-                                  >
-                                    <li
-                                      class="groupLabel"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      />
-                                    </li>
-                                    <li
-                                      aria-selected="false"
-                                      class="option"
-                                      id="downshift-:r1:-item-0"
-                                      role="option"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      >
-                                        FY2023
-                                      </div>
-                                    </li>
-                                  </ul>
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -447,34 +425,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r3:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
-                                  >
-                                    <li
-                                      aria-selected="false"
-                                      class="option"
-                                      id="downshift-:r3:-item-0"
-                                      role="option"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      >
-                                        ui-invoice.invoice.status.open
-                                      </div>
-                                    </li>
-                                    <li
-                                      aria-selected="false"
-                                      class="option"
-                                      id="downshift-:r3:-item-1"
-                                      role="option"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      >
-                                        ui-invoice.invoice.status.reviewed
-                                      </div>
-                                    </li>
-                                  </ul>
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -736,16 +687,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r5:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
-                                  >
-                                    <li
-                                      class="groupLabel"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      />
-                                    </li>
-                                  </ul>
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -864,17 +806,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r7:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
-                                  >
-                                    <li
-                                      aria-selected="false"
-                                      class="option"
-                                      role="option"
-                                    >
-                                      <span>
-                                        --
-                                      </span>
-                                    </li>
-                                  </ul>
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -1351,16 +1283,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r9:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
-                                  >
-                                    <li
-                                      class="groupLabel"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      />
-                                    </li>
-                                  </ul>
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -1802,34 +1725,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:rb:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
-                                  >
-                                    <li
-                                      aria-selected="false"
-                                      class="option"
-                                      id="downshift-:rb:-item-0"
-                                      role="option"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      >
-                                        BYN (BYN)
-                                      </div>
-                                    </li>
-                                    <li
-                                      aria-selected="false"
-                                      class="option"
-                                      id="downshift-:rb:-item-1"
-                                      role="option"
-                                    >
-                                      <div
-                                        class="optionSegment"
-                                        data-test-selection-option-segment="true"
-                                      >
-                                        USD (USD)
-                                      </div>
-                                    </li>
-                                  </ul>
+                                  />
                                 </div>
                               </div>
                             </div>
@@ -2182,6 +2078,5 @@ exports[`InvoiceForm component should render correct structure 1`] = `
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;

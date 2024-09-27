@@ -1,5 +1,5 @@
 import { noop } from 'lodash';
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { fireEvent, render, screen } from '@folio/jest-config-stripes/testing-library/react';
 
 import { useFiscalYears } from '../../../../common/hooks';
 import { FiscalYearFilter } from './FiscalYearFilter';
@@ -33,6 +33,7 @@ describe('FiscalYearFilter', () => {
     renderFilter();
 
     expect(screen.getByText(labelId)).toBeInTheDocument();
+    fireEvent.click(screen.getByText('stripes-components.selection.controlLabel'));
     expect(screen.getByText(fiscalYearsMock[0].code)).toBeInTheDocument();
     expect(screen.getByText(fiscalYearsMock[1].code)).toBeInTheDocument();
   });

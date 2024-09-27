@@ -46,9 +46,14 @@ describe('showUpdateInvoiceError', () => {
       }),
     };
 
-    await showUpdateInvoiceError(
-      response, showCallout, action, defaultErrorMessageId, expenseClassMutator, fundMutator,
-    );
+    await showUpdateInvoiceError({
+      response,
+      showCallout,
+      action,
+      defaultErrorMessageId,
+      expenseClassMutator,
+      fundMutator,
+    });
 
     await showUpdateInvoiceError({
       response,

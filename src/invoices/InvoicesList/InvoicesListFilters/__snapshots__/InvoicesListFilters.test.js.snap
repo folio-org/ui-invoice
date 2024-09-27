@@ -712,21 +712,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                   id="downshift-:r1:-menu"
                   role="listbox"
                   style="max-height: 174px;"
-                >
-                  <li
-                    aria-selected="false"
-                    class="option"
-                    id="downshift-:r1:-item-0"
-                    role="option"
-                  >
-                    <div
-                      class="optionSegment"
-                      data-test-selection-option-segment="true"
-                    >
-                      stripes-acq-components.filter.acqUnit.noAcqUnit
-                    </div>
-                  </li>
-                </ul>
+                />
               </div>
             </div>
           </div>
@@ -4219,21 +4205,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                   id="downshift-:r3:-menu"
                   role="listbox"
                   style="max-height: 174px;"
-                >
-                  <li
-                    aria-selected="false"
-                    class="option"
-                    id="downshift-:r3:-item-0"
-                    role="option"
-                  >
-                    <div
-                      class="optionSegment"
-                      data-test-selection-option-segment="true"
-                    >
-                      stripes-acq-components.filter.acqUnit.noAcqUnit
-                    </div>
-                  </li>
-                </ul>
+                />
               </div>
             </div>
           </div>
