@@ -129,7 +129,6 @@ describe('InvoiceForm component', () => {
     const accountLabel = `${accountNo} (${appSystemNo})`;
 
     expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent('');
-    await userEvent.click(container.querySelector('#accounting-code-selection'));
 
     await userEvent.click(screen.getByRole('button', { name: /invoice.accountingCode/ }));
     await userEvent.click(screen.getByText(accountLabel));
@@ -271,7 +270,6 @@ describe('InvoiceForm component', () => {
       const fiscalYearLabel = await screen.findByText(labelId);
 
       expect(fiscalYearLabel.innerHTML).toBe(labelIdRequired);
-      await userEvent.click(screen.getAllByText('stripes-components.selection.controlLabel')[0]);
 
       await userEvent.click(screen.getByRole('button', { name: /details.information.fiscalYear / }));
 

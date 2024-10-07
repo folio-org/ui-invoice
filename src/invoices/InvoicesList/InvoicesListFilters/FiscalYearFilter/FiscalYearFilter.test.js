@@ -37,7 +37,7 @@ describe('FiscalYearFilter', () => {
     await userEvent.click(screen.getByRole('button', { name: '' }));
 
     expect(screen.getByText(labelId)).toBeInTheDocument();
-    await userEvent.click(screen.getByText('stripes-components.selection.controlLabel'));
+
     expect(screen.getByText(fiscalYearsMock[0].code)).toBeInTheDocument();
     expect(screen.getByText(fiscalYearsMock[1].code)).toBeInTheDocument();
   });
