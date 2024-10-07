@@ -16,7 +16,7 @@ const fiscalYearsMock = [
   { id: 'fy-2', code: 'FY2023' },
 ];
 
-const renderFilter = () => (render(
+const renderFilter = () => render(
   <FiscalYearFilter
     id="fiscalYear"
     activeFilters={[]}
@@ -24,7 +24,7 @@ const renderFilter = () => (render(
     onChange={noop}
     labelId={labelId}
   />,
-));
+);
 
 describe('FiscalYearFilter', () => {
   beforeEach(() => {
@@ -33,6 +33,8 @@ describe('FiscalYearFilter', () => {
 
   it('should display filter title', async () => {
     renderFilter();
+
+    await userEvent.click(screen.getByRole('button', { name: '' }));
 
     expect(screen.getByText(labelId)).toBeInTheDocument();
     await userEvent.click(screen.getByText('stripes-components.selection.controlLabel'));

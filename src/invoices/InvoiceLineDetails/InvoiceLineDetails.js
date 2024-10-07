@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import { get } from 'lodash';
 
 import {
@@ -18,6 +21,7 @@ import {
   ExpandAllButton,
   expandAllSections,
   HasCommand,
+  IconButton,
   Pane,
   PaneMenu,
   Row,
@@ -56,6 +60,7 @@ const InvoiceLineDetails = ({
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const accordionStatusRef = useRef();
   const stripes = useStripes();
+  const intl = useIntl();
 
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
@@ -87,6 +92,17 @@ const InvoiceLineDetails = ({
       id="ui-invoice.invoiceLine.paneTitle.view"
       values={{ invoiceLineNumber }}
     />
+  );
+
+  const firstMenu = (
+    <PaneMenu>
+      <IconButton
+        icon="arrow-left"
+        id="clickable-back-to-invoice"
+        onClick={closeInvoiceLine}
+        title={intl.formatMessage({ id: 'ui-invoice.label.backToInvoice' })}
+      />
+    </PaneMenu>
   );
 
   const lastMenu = (
@@ -124,11 +140,10 @@ const InvoiceLineDetails = ({
       <Pane
         id="pane-invoiceLineDetails"
         defaultWidth="fill"
-        dismissible
-        onClose={closeInvoiceLine}
         paneTitle={paneTitle}
         paneSub={paneSubTitle}
         actionMenu={renderActionMenu}
+        firstMenu={firstMenu}
         lastMenu={lastMenu}
       >
         <TitleManager record={invoiceLineNumber} />
