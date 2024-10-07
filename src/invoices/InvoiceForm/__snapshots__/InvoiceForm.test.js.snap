@@ -107,41 +107,45 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     id="invoiceForm-information"
                   >
                     <div
-                      class="headerWrapper"
+                      style="width: 100%; display: flex;"
                       tabindex="-1"
                     >
                       <div
-                        class="header default"
+                        class="headerWrapper"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="header default"
                         >
-                          <button
-                            aria-controls="accordion2"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-invoiceForm-information"
-                            type="button"
+                          <h3
+                            class="headline size-medium margin-none font-weight-bold block"
+                            data-test-headline="true"
                           >
-                            <span
-                              class="headerInner"
+                            <button
+                              aria-controls="accordion2"
+                              aria-expanded="true"
+                              class="defaultCollapseButton"
+                              id="accordion-toggle-button-invoiceForm-information"
+                              type="button"
                             >
                               <span
-                                class="defaultHeaderIcon"
+                                class="headerInner"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="defaultHeaderIcon"
+                                >
+                                  <span>
+                                    Icon
+                                  </span>
                                 </span>
+                                <div
+                                  class="labelArea"
+                                >
+                                  ui-invoice.invoiceInformation
+                                </div>
                               </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-invoice.invoiceInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                            </button>
+                          </h3>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1030,41 +1034,45 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     id="invoiceForm-invoiceAdjustments"
                   >
                     <div
-                      class="headerWrapper"
+                      style="width: 100%; display: flex;"
                       tabindex="-1"
                     >
                       <div
-                        class="header default"
+                        class="headerWrapper"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="header default"
                         >
-                          <button
-                            aria-controls="accordion3"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-invoiceForm-invoiceAdjustments"
-                            type="button"
+                          <h3
+                            class="headline size-medium margin-none font-weight-bold block"
+                            data-test-headline="true"
                           >
-                            <span
-                              class="headerInner"
+                            <button
+                              aria-controls="accordion3"
+                              aria-expanded="true"
+                              class="defaultCollapseButton"
+                              id="accordion-toggle-button-invoiceForm-invoiceAdjustments"
+                              type="button"
                             >
                               <span
-                                class="defaultHeaderIcon"
+                                class="headerInner"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="defaultHeaderIcon"
+                                >
+                                  <span>
+                                    Icon
+                                  </span>
                                 </span>
+                                <div
+                                  class="labelArea"
+                                >
+                                  ui-invoice.adjustments
+                                </div>
                               </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-invoice.adjustments
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                            </button>
+                          </h3>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1090,41 +1098,45 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     id="invoiceForm-vendorDetails"
                   >
                     <div
-                      class="headerWrapper"
+                      style="width: 100%; display: flex;"
                       tabindex="-1"
                     >
                       <div
-                        class="header default"
+                        class="headerWrapper"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="header default"
                         >
-                          <button
-                            aria-controls="accordion4"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-invoiceForm-vendorDetails"
-                            type="button"
+                          <h3
+                            class="headline size-medium margin-none font-weight-bold block"
+                            data-test-headline="true"
                           >
-                            <span
-                              class="headerInner"
+                            <button
+                              aria-controls="accordion4"
+                              aria-expanded="true"
+                              class="defaultCollapseButton"
+                              id="accordion-toggle-button-invoiceForm-vendorDetails"
+                              type="button"
                             >
                               <span
-                                class="defaultHeaderIcon"
+                                class="headerInner"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="defaultHeaderIcon"
+                                >
+                                  <span>
+                                    Icon
+                                  </span>
                                 </span>
+                                <div
+                                  class="labelArea"
+                                >
+                                  ui-invoice.vendorInformation
+                                </div>
                               </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-invoice.vendorInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                            </button>
+                          </h3>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1305,41 +1317,45 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     id="invoiceForm-extendedInformation"
                   >
                     <div
-                      class="headerWrapper"
+                      style="width: 100%; display: flex;"
                       tabindex="-1"
                     >
                       <div
-                        class="header default"
+                        class="headerWrapper"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="header default"
                         >
-                          <button
-                            aria-controls="accordion5"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-invoiceForm-extendedInformation"
-                            type="button"
+                          <h3
+                            class="headline size-medium margin-none font-weight-bold block"
+                            data-test-headline="true"
                           >
-                            <span
-                              class="headerInner"
+                            <button
+                              aria-controls="accordion5"
+                              aria-expanded="true"
+                              class="defaultCollapseButton"
+                              id="accordion-toggle-button-invoiceForm-extendedInformation"
+                              type="button"
                             >
                               <span
-                                class="defaultHeaderIcon"
+                                class="headerInner"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="defaultHeaderIcon"
+                                >
+                                  <span>
+                                    Icon
+                                  </span>
                                 </span>
+                                <div
+                                  class="labelArea"
+                                >
+                                  ui-invoice.extendedInformation
+                                </div>
                               </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-invoice.extendedInformation
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                            </button>
+                          </h3>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -1768,7 +1784,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             >
                               <label
                                 class="label label checkboxInteractionStylesControl"
-                                for="use-set-exhange-rate"
+                                for="use-set-exchange-rate"
                               >
                                 <span
                                   class="labelText"
@@ -1781,8 +1797,8 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   <input
                                     aria-invalid="false"
                                     class="input"
-                                    data-testid="use-set-exhange-rate"
-                                    id="use-set-exhange-rate"
+                                    data-testid="use-set-exchange-rate"
+                                    id="use-set-exchange-rate"
                                     type="checkbox"
                                     value=""
                                   />
@@ -1875,41 +1891,45 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                     id="invoiceForm-documents"
                   >
                     <div
-                      class="headerWrapper"
+                      style="width: 100%; display: flex;"
                       tabindex="-1"
                     >
                       <div
-                        class="header default"
+                        class="headerWrapper"
                       >
-                        <h3
-                          class="headline size-medium margin-none font-weight-bold block"
-                          data-test-headline="true"
+                        <div
+                          class="header default"
                         >
-                          <button
-                            aria-controls="accordion6"
-                            aria-expanded="true"
-                            class="defaultCollapseButton"
-                            id="accordion-toggle-button-invoiceForm-documents"
-                            type="button"
+                          <h3
+                            class="headline size-medium margin-none font-weight-bold block"
+                            data-test-headline="true"
                           >
-                            <span
-                              class="headerInner"
+                            <button
+                              aria-controls="accordion6"
+                              aria-expanded="true"
+                              class="defaultCollapseButton"
+                              id="accordion-toggle-button-invoiceForm-documents"
+                              type="button"
                             >
                               <span
-                                class="defaultHeaderIcon"
+                                class="headerInner"
                               >
-                                <span>
-                                  Icon
+                                <span
+                                  class="defaultHeaderIcon"
+                                >
+                                  <span>
+                                    Icon
+                                  </span>
                                 </span>
+                                <div
+                                  class="labelArea"
+                                >
+                                  ui-invoice.linksAndDocuments
+                                </div>
                               </span>
-                              <div
-                                class="labelArea"
-                              >
-                                ui-invoice.linksAndDocuments
-                              </div>
-                            </span>
-                          </button>
-                        </h3>
+                            </button>
+                          </h3>
+                        </div>
                       </div>
                     </div>
                     <div
