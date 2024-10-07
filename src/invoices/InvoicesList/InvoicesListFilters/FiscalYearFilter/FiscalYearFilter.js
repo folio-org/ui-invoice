@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 
 import { Loading } from '@folio/stripes/components';
 import { SelectionFilter } from '@folio/stripes-acq-components';
+
 import { useFiscalYears } from '../../../../common/hooks';
 
 export const FiscalYearFilter = (props) => {
   const { isLoading, fiscalYears } = useFiscalYears();
+
   const fiscalYearOptions = useMemo(() => (
     fiscalYears.map(({ code, id: fiscalYearId }) => ({ value: fiscalYearId, label: code }))
   ), [fiscalYears]);

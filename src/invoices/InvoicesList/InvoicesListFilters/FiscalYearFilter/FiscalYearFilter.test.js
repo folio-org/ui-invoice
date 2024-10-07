@@ -1,5 +1,6 @@
-import { noop } from 'lodash';
+import noop from 'lodash/noop';
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 
 import { useFiscalYears } from '../../../../common/hooks';
 import { FiscalYearFilter } from './FiscalYearFilter';
@@ -14,7 +15,7 @@ const fiscalYearsMock = [
   { id: 'fy-2', code: 'FY2023' },
 ];
 
-const renderFilter = () => (render(
+const renderFilter = () => render(
   <FiscalYearFilter
     id="fiscalYear"
     activeFilters={[]}
@@ -22,15 +23,17 @@ const renderFilter = () => (render(
     onChange={noop}
     labelId={labelId}
   />,
-));
+);
 
 describe('FiscalYearFilter', () => {
   beforeEach(() => {
     useFiscalYears.mockClear().mockReturnValue({ fiscalYears: fiscalYearsMock, isLoading: false });
   });
 
-  it('should display filter title', () => {
+  it('should display filter title', async () => {
     renderFilter();
+
+    await userEvent.click(screen.getByRole('button', { name: '' }));
 
     expect(screen.getByText(labelId)).toBeInTheDocument();
     expect(screen.getByText(fiscalYearsMock[0].code)).toBeInTheDocument();
