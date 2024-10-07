@@ -7,6 +7,7 @@
 * Use Save & close button label  stripes-component translation key. Refs UINV-540.
 * Add indexes to improve the performance of getting composite orders by poNumber. Refs UINV-546.
 * Duplicate invoice and invoice lines. Refs UINV-552.
+* Use `arrow-left` button as the trigger to return back to an invoice from a line. Refs UINV-505. 
 
 ## [6.0.4](https://github.com/folio-org/ui-invoice/tree/v6.0.4) (2024-08-21)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.3...v6.0.4)
