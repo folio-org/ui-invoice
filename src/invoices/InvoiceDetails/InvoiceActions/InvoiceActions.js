@@ -51,7 +51,7 @@ const InvoiceActions = ({
       </IfPermission>
       {
         !isApprovePayAvailable && invoiceLinesCount > 0 && isPayable(invoice.status) && (
-          <IfPermission perm="invoice.item.pay">
+          <IfPermission perm="invoice.item.pay.execute">
             <Button
               data-testid="invoice-pay"
               data-test-invoice-action-pay
@@ -68,7 +68,7 @@ const InvoiceActions = ({
       }
       {
         !isApprovePayAvailable && invoiceLinesCount > 0 && !IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) && (
-          <IfPermission perm="invoice.item.approve">
+          <IfPermission perm="invoice.item.approve.execute">
             <Button
               data-testid="invoice-approve"
               data-test-invoice-action-approve
@@ -88,7 +88,7 @@ const InvoiceActions = ({
         && invoiceLinesCount > 0
         && (!IS_EDIT_POST_APPROVAL(invoice.id, invoice.status) || isPayable(invoice.status))
         && (
-          <IfPermission perm="invoice.item.approve,invoice.item.pay">
+          <IfPermission perm="invoice.item.approve.execute,invoice.item.pay.execute">
             <Button
               data-testid="invoice-approve-pay"
               data-test-invoice-action-approve
@@ -143,7 +143,7 @@ const InvoiceActions = ({
         </Button>
       )}
       {isCancelable && (
-        <IfPermission perm="invoice.item.cancel">
+        <IfPermission perm="invoice.item.cancel.execute">
           <Button
             buttonStyle="dropdownItem"
             onClick={onInvoiceCancel}
