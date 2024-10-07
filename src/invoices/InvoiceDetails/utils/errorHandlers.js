@@ -8,88 +8,90 @@ import {
   FISCAL_YEARS_API,
 } from '../../../common/constants';
 
-export const handleBudgetNotFoundByFundIdAndFiscalYearId = async ({
+export const handleBudgetNotFoundByFundIdAndFiscalYearId = ({
   action,
   code,
   defaultErrorMessageId,
-  error,
   fundMutator,
   ky,
   showCallout,
 }) => {
-  const errors = error?.errors?.[0]?.parameters;
-  let fundId = errors?.find(({ key }) => key === 'fundId')?.value;
-  const fiscalYearId = errors?.find(({ key }) => key === 'fiscalYearId')?.value;
+  const handle = async (errorsContainer) => {
+    const error = errorsContainer.getError();
+    const fundId = error.getParameter('fundId') || error.getParameter('fund');
+    const fiscalYearId = error.getParameter('fiscalYearId');
 
-  if (!fundId) {
-    fundId = errors?.find(({ key }) => key === 'fund')?.value;
-  }
+    if (fundId) {
+      return fundMutator.GET({ path: `${FUNDS_API}/${fundId}` })
+        .then(async ({ fund }) => {
+          let fiscalYear = {};
 
-  if (fundId) {
-    return fundMutator.GET({ path: `${FUNDS_API}/${fundId}` })
-      .then(async ({ fund }) => {
-        let fiscalYear = {};
-
-        if (fiscalYearId) {
-          try {
-            fiscalYear = await ky.get(`${FISCAL_YEARS_API}/${fiscalYearId}`).json();
-          } catch {
-            fiscalYear = {};
+          if (fiscalYearId) {
+            try {
+              fiscalYear = await ky.get(`${FISCAL_YEARS_API}/${fiscalYearId}`).json();
+            } catch {
+              fiscalYear = {};
+            }
           }
-        }
 
-        showCallout({
-          messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
-          type: 'error',
-          values: {
-            fundCode: fund?.code,
-            fiscalYear: fiscalYear?.code,
-          },
+          showCallout({
+            messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
+            type: 'error',
+            values: {
+              fundCode: fund?.code,
+              fiscalYear: fiscalYear?.code,
+            },
+          });
+        }, () => {
+          showCallout({
+            messageId: defaultErrorMessageId,
+            type: 'error',
+          });
         });
-      }, () => {
-        showCallout({
-          messageId: defaultErrorMessageId,
-          type: 'error',
-        });
+    } else {
+      return showCallout({
+        messageId: defaultErrorMessageId,
+        type: 'error',
       });
-  } else {
-    return showCallout({
-      messageId: defaultErrorMessageId,
-      type: 'error',
-    });
-  }
+    }
+  };
+
+  return { handle };
 };
 
-export const handleInactiveExpenseClass = async ({
+export const handleInactiveExpenseClass = ({
   action,
   code,
   defaultErrorMessageId,
-  error,
   expenseClassMutator,
   showCallout,
 }) => {
-  const expenseClassId = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
-  const expenseClassName = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassName')?.value;
+  const handle = async (errorsContainer) => {
+    const expenseClassId = errorsContainer.getError().getParameter('expenseClassId');
+    const expenseClassName = errorsContainer.getError().getParameter('expenseClassName');
 
-  if (expenseClassId || expenseClassName) {
-    const expenseClassPromise = expenseClassName
-      ? Promise.resolve({ name: expenseClassName })
-      : expenseClassMutator.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` });
+    if (expenseClassId || expenseClassName) {
+      const expenseClassPromise = expenseClassName
+        ? Promise.resolve({ name: expenseClassName })
+        : expenseClassMutator.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` });
 
-    expenseClassPromise
-      .then(({ name }) => {
-        const values = { expenseClass: name };
+      return expenseClassPromise
+        .then(({ name }) => {
+          const values = { expenseClass: name };
 
-        showCallout({
-          messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
-          type: 'error',
-          values,
+          showCallout({
+            messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
+            type: 'error',
+            values,
+          });
         });
+    } else {
+      return showCallout({
+        messageId: defaultErrorMessageId,
+        type: 'error',
       });
-  } else {
-    showCallout({
-      messageId: defaultErrorMessageId,
-      type: 'error',
-    });
-  }
+    }
+  };
+
+  return { handle };
 };
