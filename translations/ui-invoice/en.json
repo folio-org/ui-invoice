@@ -507,6 +507,8 @@
   "find-po-line-plugin-unavailable": "Find PO line plugin is not available",
   "poLineLookup": "POL look-up",
 
+  "label.backToInvoice": "Back to Invoice",
+
   "permission.acq.unit.assignment.assign": "Invoice: Assign acquisitions units to new record",
   "permission.acq.unit.assignment.manage": "Invoice: Manage acquisition units",
   "permission.approve": "Invoice: Approve invoices",

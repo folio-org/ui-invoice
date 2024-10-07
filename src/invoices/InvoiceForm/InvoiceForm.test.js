@@ -2,8 +2,11 @@ import { Form } from 'react-final-form';
 import { MemoryRouter, useHistory } from 'react-router-dom';
 
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
-import { act, render, screen } from '@folio/jest-config-stripes/testing-library/react';
-
+import {
+  act,
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,
@@ -11,7 +14,7 @@ import {
 } from '@folio/stripes/components';
 import { FieldOrganization } from '@folio/stripes-acq-components';
 
-import { vendor } from '../../../test/jest/fixtures';
+import { vendor } from 'fixtures';
 import InvoiceForm from './InvoiceForm';
 
 const FISCAL_YEARS = [{ code: 'FY2023', id: 'fyId' }];
@@ -127,6 +130,7 @@ describe('InvoiceForm component', () => {
 
     expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent('');
 
+    await userEvent.click(screen.getByRole('button', { name: /invoice.accountingCode/ }));
     await userEvent.click(screen.getByText(accountLabel));
 
     expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent(accountLabel);
@@ -251,6 +255,8 @@ describe('InvoiceForm component', () => {
 
       expect(fiscalYearLabel).toBeInTheDocument();
 
+      await userEvent.click(screen.getByRole('button', { name: /details.information.fiscalYear / }));
+
       const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
 
       expect(fiscalYearOptions.length).toBe(optionLengthWithEmptyLine);
@@ -264,6 +270,8 @@ describe('InvoiceForm component', () => {
       const fiscalYearLabel = await screen.findByText(labelId);
 
       expect(fiscalYearLabel.innerHTML).toBe(labelIdRequired);
+
+      await userEvent.click(screen.getByRole('button', { name: /details.information.fiscalYear / }));
 
       const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
 
