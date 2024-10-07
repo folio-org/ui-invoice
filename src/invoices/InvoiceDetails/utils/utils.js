@@ -9,8 +9,8 @@ import {
 import { convertToInvoiceLineFields } from '../../utils';
 import { ACQ_ERROR_TYPE } from '../constants';
 import {
-  handleBudgetNotFoundByFundIdAndFiscalYearId,
-  handleInactiveExpenseClass,
+  inactiveExpenseClassStrategy,
+  noBudgetForFiscalYearStrategy,
 } from './errorHandlers';
 
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
@@ -101,7 +101,7 @@ export const showUpdateInvoiceError = async ({
       break;
     }
     case ERROR_CODES.inactiveExpenseClass: {
-      await handler.handle(handleInactiveExpenseClass({
+      await handler.handle(inactiveExpenseClassStrategy({
         action,
         code,
         defaultErrorMessageId,
@@ -113,7 +113,7 @@ export const showUpdateInvoiceError = async ({
     }
     case ERROR_CODES.budgetNotFoundByFundId:
     case ERROR_CODES.budgetNotFoundByFundIdAndFiscalYearId: {
-      await handler.handle(handleBudgetNotFoundByFundIdAndFiscalYearId({
+      await handler.handle(noBudgetForFiscalYearStrategy({
         action,
         code,
         defaultErrorMessageId,

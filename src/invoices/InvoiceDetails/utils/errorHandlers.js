@@ -8,7 +8,7 @@ import {
   FISCAL_YEARS_API,
 } from '../../../common/constants';
 
-export const handleBudgetNotFoundByFundIdAndFiscalYearId = ({
+export const noBudgetForFiscalYearStrategy = ({
   action,
   code,
   defaultErrorMessageId,
@@ -59,7 +59,7 @@ export const handleBudgetNotFoundByFundIdAndFiscalYearId = ({
   return { handle };
 };
 
-export const handleInactiveExpenseClass = ({
+export const inactiveExpenseClassStrategy = ({
   action,
   code,
   defaultErrorMessageId,
