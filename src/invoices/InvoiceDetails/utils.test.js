@@ -219,7 +219,7 @@ describe('showUpdateInvoiceError', () => {
     ['userHasNoPermission', 'ui-invoice.invoice.actions.error.userHasNoPermission', []],
     ['userNotAMemberOfTheAcq', 'ui-invoice.invoice.actions.error.userNotAMemberOfTheAcq', []],
     ['fundCannotBePaid', 'ui-invoice.invoice.actions.approve.error.fundCannotBePaid', ['funds']],
-    ['budgetNotFoundByFundIdAndFiscalYearId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId', ['fundId']],
+    ['budgetNotFoundByFundIdAndFiscalYearId', 'ui-invoice.invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId', ['fundId', 'fiscalYearId']],
   ])('should get %s error message', async (code, messageId, key) => {
     const mockActionName = 'approve';
     const parameters = key.map(k => ({ key: k, value: 'value' }));
@@ -230,7 +230,7 @@ describe('showUpdateInvoiceError', () => {
     } else if (code === 'fundCannotBePaid') {
       values = { values: { fundCodes: 'value' } };
     } else if (code === 'budgetNotFoundByFundIdAndFiscalYearId') {
-      values = { values: { fundCode: 'value' } };
+      values = { values: { fundCode: 'value', fiscalYear: undefined } };
     } else if (code === 'userNotAMemberOfTheAcq' || code === 'userHasNoPermission') {
       values = {};
     }
