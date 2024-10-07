@@ -1,19 +1,15 @@
-import { noop } from 'lodash';
-
-import {
-  EXPENSE_CLASSES_API,
-  FUNDS_API,
-} from '@folio/stripes-acq-components';
+import noop from 'lodash/noop';
 
 import {
   ERROR_CODES,
-  FISCAL_YEARS_API,
   INVOICE_STATUS,
-} from '../../common/constants';
+} from '../../../common/constants';
+import { convertToInvoiceLineFields } from '../../utils';
+import { ACQ_ERROR_TYPE } from '../constants';
 import {
-  convertToInvoiceLineFields,
-} from '../utils';
-import { ACQ_ERROR_TYPE } from './constants';
+  handleBudgetNotFoundByFundIdAndFiscalYearId,
+  handleInactiveExpenseClass,
+} from './errorHandlers';
 
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   return {
@@ -109,71 +105,29 @@ export const showUpdateInvoiceError = async ({
       break;
     }
     case ERROR_CODES.inactiveExpenseClass: {
-      const expenseClassId = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
-      const expenseClassName = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassName')?.value;
+      await handleInactiveExpenseClass({
+        action,
+        code,
+        defaultErrorMessageId,
+        error,
+        expenseClassMutator,
+        showCallout,
+      });
 
-      if (expenseClassId || expenseClassName) {
-        const expenseClassPromise = expenseClassName
-          ? Promise.resolve({ name: expenseClassName })
-          : expenseClassMutator.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` });
-
-        expenseClassPromise
-          .then(({ name }) => {
-            const values = { expenseClass: name };
-
-            showCallout({
-              messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
-              type: 'error',
-              values,
-            });
-          });
-      } else {
-        showCallout({
-          messageId: defaultErrorMessageId,
-          type: 'error',
-        });
-      }
       break;
     }
     case ERROR_CODES.budgetNotFoundByFundId:
     case ERROR_CODES.budgetNotFoundByFundIdAndFiscalYearId: {
-      const errors = error?.errors?.[0]?.parameters;
-      let fundId = errors?.find(({ key }) => key === 'fundId')?.value;
-      const fiscalYearId = errors?.find(({ key }) => key === 'fiscalYearId')?.value;
+      await handleBudgetNotFoundByFundIdAndFiscalYearId({
+        action,
+        code,
+        defaultErrorMessageId,
+        error,
+        fundMutator,
+        ky,
+        showCallout,
+      });
 
-      if (!fundId) {
-        fundId = errors?.find(({ key }) => key === 'fund')?.value;
-      }
-
-      if (fundId) {
-        fundMutator.GET({ path: `${FUNDS_API}/${fundId}` })
-          .then(async ({ fund }) => {
-            let fiscalYear = {};
-
-            if (fiscalYearId) {
-              fiscalYear = await ky.get(`${FISCAL_YEARS_API}/${fiscalYearId}`).json();
-            }
-
-            showCallout({
-              messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
-              type: 'error',
-              values: {
-                fundCode: fund?.code,
-                fiscalYear: fiscalYear?.code,
-              },
-            });
-          }, () => {
-            showCallout({
-              messageId: defaultErrorMessageId,
-              type: 'error',
-            });
-          });
-      } else {
-        showCallout({
-          messageId: defaultErrorMessageId,
-          type: 'error',
-        });
-      }
       break;
     }
     default: {

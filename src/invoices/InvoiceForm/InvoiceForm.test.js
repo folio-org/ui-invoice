@@ -126,7 +126,7 @@ describe('InvoiceForm component', () => {
     const accountLabel = `${accountNo} (${appSystemNo})`;
 
     expect(container.querySelector('#selected-accounting-code-selection-item')).toHaveTextContent('');
-    await userEvent.click(screen.getAllByText('stripes-components.selection.controlLabel')[4]);
+    await userEvent.click(container.querySelector('#accounting-code-selection'));
 
     await userEvent.click(screen.getByText(accountLabel));
 
