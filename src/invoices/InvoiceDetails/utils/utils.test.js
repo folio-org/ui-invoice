@@ -1,4 +1,4 @@
-import { ERROR_CODES } from '../../common/constants';
+import { ERROR_CODES } from '../../../common/constants';
 import {
   handleInvoiceLineErrors,
   handleInvoiceLinesCreation,
