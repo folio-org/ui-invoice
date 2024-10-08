@@ -1,5 +1,3 @@
-import noop from 'lodash/noop';
-
 import { ResponseErrorsContainer } from '@folio/stripes-acq-components';
 
 import {
@@ -139,7 +137,7 @@ export const handleInvoiceLineErrors = async ({
   requestData = [],
   responses = [],
   showCallout,
-  ky = noop,
+  ky = {},
 }) => {
   const errors = responses.filter(({ status }) => status === 'rejected');
 
