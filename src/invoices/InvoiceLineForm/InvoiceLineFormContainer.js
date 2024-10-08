@@ -7,7 +7,10 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import {
   LoadingView,
 } from '@folio/stripes/components';
-import { stripesConnect } from '@folio/stripes/core';
+import {
+  stripesConnect,
+  useOkapiKy,
+} from '@folio/stripes/core';
 import {
   baseManifest,
   VENDORS_API,
@@ -30,6 +33,7 @@ export function InvoiceLineFormContainerComponent({
   resources,
   showCallout,
 }) {
+  const ky = useOkapiKy();
   const [invoiceLine, setInvoiceLine] = useState();
   const [invoice, setInvoice] = useState();
   const [vendor, setVendor] = useState();
@@ -92,14 +96,15 @@ export function InvoiceLineFormContainerComponent({
         onClose();
       })
       .catch((response) => {
-        showUpdateInvoiceError(
+        showUpdateInvoiceError({
           response,
           showCallout,
-          'saveLine',
-          'ui-invoice.errors.invoiceLineHasNotBeenSaved',
-          mutator.expenseClass,
-          mutator.fund,
-        );
+          action: 'saveLine',
+          defaultErrorMessageId: 'ui-invoice.errors.invoiceLineHasNotBeenSaved',
+          expenseClassMutator: mutator.expenseClass,
+          fundMutator: mutator.fund,
+          ky,
+        });
 
         return { id: 'Unable to save invoice line' };
       });

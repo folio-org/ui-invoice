@@ -12,7 +12,10 @@ import {
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { LoadingPane } from '@folio/stripes/components';
-import { stripesConnect } from '@folio/stripes/core';
+import {
+  stripesConnect,
+  useOkapiKy,
+} from '@folio/stripes/core';
 import {
   baseManifest,
   batchFetch,
@@ -56,6 +59,7 @@ export function InvoiceDetailsContainer({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const mutator = useMemo(() => originMutator, [id]);
   const showCallout = useShowCallout();
+  const ky = useOkapiKy();
   const [isLoading, setIsLoading] = useState(true);
   const [invoice, setInvoice] = useState({});
   const [invoiceLines, setInvoiceLines] = useState({});
@@ -221,14 +225,15 @@ export function InvoiceDetailsContainer({
         }, Promise.resolve());
         await fetchInvoiceData();
       } catch (response) {
-        showUpdateInvoiceError(
+        showUpdateInvoiceError({
           response,
           showCallout,
-          'saveLine',
-          'ui-invoice.invoice.actions.saveLine.error',
-          mutator.expenseClass,
-          mutator.fund,
-        );
+          action: 'saveLine',
+          defaultErrorMessageId: 'ui-invoice.invoice.actions.saveLine.error',
+          expenseClassMutator: mutator.expenseClass,
+          fundMutator: mutator.fund,
+          ky,
+        });
       }
 
       setIsLoading(false);
@@ -277,14 +282,15 @@ export function InvoiceDetailsContainer({
 
           return fetchInvoiceData();
         }, ({ response }) => (
-          showUpdateInvoiceError(
+          showUpdateInvoiceError({
             response,
             showCallout,
-            'cancel',
-            'ui-invoice.invoice.actions.cancel.error',
-            mutator.expenseClass,
-            mutator.fund,
-          )
+            action: 'cancel',
+            defaultErrorMessageId: 'ui-invoice.invoice.actions.cancel.error',
+            expenseClassMutator: mutator.expenseClass,
+            fundMutator: mutator.fund,
+            ky,
+          })
         ))
         .finally(setIsLoading);
     },
@@ -305,14 +311,15 @@ export function InvoiceDetailsContainer({
 
           return fetchInvoiceData();
         }, ({ response }) => (
-          showUpdateInvoiceError(
+          showUpdateInvoiceError({
             response,
             showCallout,
-            'approve',
-            'ui-invoice.invoice.actions.approve.error',
-            mutator.expenseClass,
-            mutator.fund,
-          )
+            action: 'approve',
+            defaultErrorMessageId: 'ui-invoice.invoice.actions.approve.error',
+            expenseClassMutator: mutator.expenseClass,
+            fundMutator: mutator.fund,
+            ky,
+          })
         ))
         .finally(setIsLoading);
     },
@@ -332,14 +339,15 @@ export function InvoiceDetailsContainer({
           refreshList();
 
           return fetchInvoiceData();
-        }, ({ response }) => showUpdateInvoiceError(
+        }, ({ response }) => showUpdateInvoiceError({
           response,
           showCallout,
-          'pay',
-          'ui-invoice.invoice.actions.pay.error',
-          mutator.expenseClass,
-          mutator.fund,
-        ))
+          action: 'pay',
+          defaultErrorMessageId: 'ui-invoice.invoice.actions.pay.error',
+          expenseClassMutator: mutator.expenseClass,
+          fundMutator: mutator.fund,
+          ky,
+        }))
         .finally(setIsLoading);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -356,14 +364,15 @@ export function InvoiceDetailsContainer({
           return mutateInvoice({ ...invoiceResponse, status: INVOICE_STATUS.paid });
         })
         .catch(({ response }) => {
-          showUpdateInvoiceError(
+          showUpdateInvoiceError({
             response,
             showCallout,
-            'approveAndPay',
-            'ui-invoice.invoice.actions.approveAndPay.error',
-            mutator.expenseClass,
-            mutator.fund,
-          );
+            action: 'approveAndPay',
+            defaultErrorMessageId: 'ui-invoice.invoice.actions.approveAndPay.error',
+            expenseClassMutator: mutator.expenseClass,
+            fundMutator: mutator.fund,
+            ky,
+          });
 
           throw new Error('approveAndPay error');
         })
@@ -398,6 +407,7 @@ export function InvoiceDetailsContainer({
           fund: mutator.fund,
         },
         showCallout,
+        ky,
       })).then(async ({ invoiceId: newInvoiceId }) => {
         showCallout({ messageId: 'ui-invoice.invoice.actions.duplicate.success.message' });
         refreshList();
@@ -408,14 +418,15 @@ export function InvoiceDetailsContainer({
         });
       })
       .catch((error) => {
-        showUpdateInvoiceError(
-          error?.response,
+        showUpdateInvoiceError({
+          response: error?.response,
           showCallout,
-          'duplicate',
-          'ui-invoice.invoice.actions.duplicate.error.message',
-          mutator.expenseClass,
-          mutator.fund,
-        );
+          action: 'duplicate',
+          defaultErrorMessageId: 'ui-invoice.invoice.actions.duplicate.error.message',
+          expenseClassMutator: mutator.expenseClass,
+          fundMutator: mutator.fund,
+          ky,
+        });
       })
       .finally(() => setIsLoading(false));
   }, [
@@ -429,6 +440,7 @@ export function InvoiceDetailsContainer({
     refreshList,
     history,
     location.search,
+    ky,
   ]);
 
   const updateInvoice = useCallback(

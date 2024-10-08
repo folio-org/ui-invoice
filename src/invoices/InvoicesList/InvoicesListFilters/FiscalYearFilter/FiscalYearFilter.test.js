@@ -1,4 +1,5 @@
 import noop from 'lodash/noop';
+
 import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 
@@ -36,6 +37,7 @@ describe('FiscalYearFilter', () => {
     await userEvent.click(screen.getByRole('button', { name: '' }));
 
     expect(screen.getByText(labelId)).toBeInTheDocument();
+
     expect(screen.getByText(fiscalYearsMock[0].code)).toBeInTheDocument();
     expect(screen.getByText(fiscalYearsMock[1].code)).toBeInTheDocument();
   });
