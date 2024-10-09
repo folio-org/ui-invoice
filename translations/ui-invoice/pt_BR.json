@@ -472,5 +472,6 @@
     "invoice.actions.duplicate.confirmation.message": "Tem certeza de que deseja criar uma duplicata desta fatura e de todas as suas linhas de fatura?",
     "invoice.actions.duplicate.success.message": "A fatura foi duplicada com sucesso",
     "invoice.actions.duplicate.error.message": "A fatura não foi duplicada",
-    "search.folioInvoiceNo": "Número da fatura FOLIO"
+    "search.folioInvoiceNo": "Número da fatura FOLIO",
+    "label.backToInvoice": "Voltar para a fatura"
 }

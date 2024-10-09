@@ -465,12 +465,13 @@
     "filter.invoiceLine.updatedBy": "更新（发票行）",
     "filter.invoiceLine.dateCreated": "创建日期（发票行）",
     "filter.invoiceLine.dateUpdated": "更新日期（发票行）",
-    "errors.invoiceLine.duplicate": "The invoice line <b>{invoiceLineNumber}</b> failed to duplicate.",
-    "button.duplicate": "Duplicate",
-    "invoice.actions.duplicate.confirmLabel": "Duplicate",
-    "invoice.actions.duplicate.confirmation.heading": "Duplicate invoice?",
-    "invoice.actions.duplicate.confirmation.message": "Are you sure you want to create a duplicate of this invoice and all of its invoice lines?",
-    "invoice.actions.duplicate.success.message": "The invoice has been duplicated successfully",
-    "invoice.actions.duplicate.error.message": "The invoice has not been duplicated",
-    "search.folioInvoiceNo": "FOLIO invoice number"
+    "errors.invoiceLine.duplicate": "发票行<b> {invoiceLineNumber} </b>无法复制。",
+    "button.duplicate": "复制",
+    "invoice.actions.duplicate.confirmLabel": "复制",
+    "invoice.actions.duplicate.confirmation.heading": "复制发票？",
+    "invoice.actions.duplicate.confirmation.message": "确定要创建此发票及其所有发票行的副本吗？",
+    "invoice.actions.duplicate.success.message": "发票复制成功",
+    "invoice.actions.duplicate.error.message": "发票未复制",
+    "search.folioInvoiceNo": "FOLIO发票号",
+    "label.backToInvoice": "Back to Invoice"
 }

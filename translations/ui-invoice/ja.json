@@ -472,5 +472,6 @@
     "invoice.actions.duplicate.confirmation.message": "この請求書とそのすべての請求書明細の複製を作成してもよろしいですか?",
     "invoice.actions.duplicate.success.message": "請求書は正常に複製されました",
     "invoice.actions.duplicate.error.message": "請求書は複製されませんでした",
-    "search.folioInvoiceNo": "FOLIO請求書番号"
+    "search.folioInvoiceNo": "FOLIO請求書番号",
+    "label.backToInvoice": "Back to Invoice"
 }
