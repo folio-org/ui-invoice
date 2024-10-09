@@ -196,7 +196,7 @@
     "invoice.isNotUnique.confirmation.message": "Dit lijkt een dubbele factuur te zijn",
     "invoiceLine.poLineNumber": "PO-regelnummer",
     "invoice.actions.pay.error": "Factuur werd niet betaald",
-    "invoiceLine.adminData": "Admin-data factuurregel ",
+    "invoiceLine.adminData": "Admin-data factuurregel",
     "invoiceLine.adjustments": "Aanpassingen factuurregel",
     "invoiceLine.fundDistribution": "Fondsverdeling factuurregel",
     "invoiceLine.fundId": "Fonds-ID",
@@ -465,12 +465,13 @@
     "filter.invoiceLine.updatedBy": "Bijgewerkt door (Factuurregel)",
     "filter.invoiceLine.dateCreated": "Datum aangemaakt (Factuurregel)",
     "filter.invoiceLine.dateUpdated": "Datum bijgewerkt (Factuurregel)",
-    "errors.invoiceLine.duplicate": "The invoice line <b>{invoiceLineNumber}</b> failed to duplicate.",
+    "errors.invoiceLine.duplicate": "De factuurregel <b>{invoiceLineNumber}</b> is niet gedupliceerd.",
     "button.duplicate": "Dupliceren",
     "invoice.actions.duplicate.confirmLabel": "Dupliceren",
-    "invoice.actions.duplicate.confirmation.heading": "Duplicate invoice?",
-    "invoice.actions.duplicate.confirmation.message": "Are you sure you want to create a duplicate of this invoice and all of its invoice lines?",
-    "invoice.actions.duplicate.success.message": "The invoice has been duplicated successfully",
-    "invoice.actions.duplicate.error.message": "The invoice has not been duplicated",
-    "search.folioInvoiceNo": "Factuurnummer FOLIO"
+    "invoice.actions.duplicate.confirmation.heading": "Factuur dupliceren?",
+    "invoice.actions.duplicate.confirmation.message": "Weet u zeker dat u een kopie wilt maken van deze factuur en alle factuurregels?",
+    "invoice.actions.duplicate.success.message": "De factuur is succesvol gedupliceerd",
+    "invoice.actions.duplicate.error.message": "De factuur is niet gedupliceerd",
+    "search.folioInvoiceNo": "Factuurnummer FOLIO",
+    "label.backToInvoice": "Back to Invoice"
 }
