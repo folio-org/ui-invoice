@@ -13,6 +13,10 @@ import { showUpdateInvoiceError } from '../InvoiceDetails/utils';
 import InvoiceLineForm from './InvoiceLineForm';
 import { InvoiceLineFormContainerComponent } from './InvoiceLineFormContainer';
 
+jest.mock('@folio/stripes/core', () => ({
+  ...jest.requireActual('@folio/stripes/core'),
+  useOkapiKy: jest.fn().mockReturnValue({}),
+}));
 jest.mock('./InvoiceLineForm', () => jest.fn().mockReturnValue('InvoiceLineForm'));
 jest.mock('../InvoiceDetails/utils', () => ({
   ...jest.requireActual('../InvoiceDetails/utils'),

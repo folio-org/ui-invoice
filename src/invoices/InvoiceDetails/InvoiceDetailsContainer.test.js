@@ -22,6 +22,10 @@ import { createInvoiceLineFromPOL, showUpdateInvoiceError } from './utils';
 import InvoiceDetails from './InvoiceDetails';
 import { InvoiceDetailsContainer } from './InvoiceDetailsContainer';
 
+jest.mock('@folio/stripes/core', () => ({
+  ...jest.requireActual('@folio/stripes/core'),
+  useOkapiKy: jest.fn().mockReturnValue({}),
+}));
 jest.mock('../../common/hooks', () => ({
   useInvoiceMutation: jest.fn().mockReturnValue({}),
   useInvoiceLineMutation: jest.fn().mockReturnValue({}),

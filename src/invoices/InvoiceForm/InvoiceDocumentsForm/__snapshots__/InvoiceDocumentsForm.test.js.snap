@@ -125,6 +125,5 @@ exports[`InvoiceDocumentsForm should render correct structure with defined adjus
       </div>
     </div>
   </form>
-  <div />
 </DocumentFragment>
 `;

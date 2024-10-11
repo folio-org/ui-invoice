@@ -1,16 +1,15 @@
-import {
-  EXPENSE_CLASSES_API,
-  FUNDS_API,
-} from '@folio/stripes-acq-components';
+import { ResponseErrorsContainer } from '@folio/stripes-acq-components';
 
 import {
-  INVOICE_STATUS,
   ERROR_CODES,
-} from '../../common/constants';
+  INVOICE_STATUS,
+} from '../../../common/constants';
+import { convertToInvoiceLineFields } from '../../utils';
+import { ACQ_ERROR_TYPE } from '../constants';
 import {
-  convertToInvoiceLineFields,
-} from '../utils';
-import { ACQ_ERROR_TYPE } from './constants';
+  inactiveExpenseClassStrategy,
+  noBudgetForFiscalYearStrategy,
+} from './errorHandlers';
 
 export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   return {
@@ -21,7 +20,7 @@ export const createInvoiceLineFromPOL = (poLine, invoiceId, vendor) => {
   };
 };
 
-export const showUpdateInvoiceError = async (
+export const showUpdateInvoiceError = async ({
   response,
   showCallout,
   action,
@@ -29,16 +28,11 @@ export const showUpdateInvoiceError = async (
   expenseClassMutator,
   fundMutator,
   messageValues = {},
-) => {
-  let error;
+  ky = {},
+}) => {
+  const { handler } = await ResponseErrorsContainer.create(response);
 
-  try {
-    error = await response.clone().json();
-  } catch (parsingException) {
-    error = response;
-  }
-
-  const errorCode = error?.errors?.[0]?.code;
+  const errorCode = handler.getError().code;
   const code = ERROR_CODES[errorCode];
 
   switch (code) {
@@ -68,7 +62,7 @@ export const showUpdateInvoiceError = async (
     }
     case ERROR_CODES.userHasNoPermission:
     case ERROR_CODES.userNotAMemberOfTheAcq: {
-      const acqErrorType = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'type')[0]?.value;
+      const acqErrorType = handler.getError().getParameter('type');
       const messageId = `ui-invoice.invoice.actions.error.${ERROR_CODES[code]}`;
 
       if (acqErrorType === ACQ_ERROR_TYPE.order) {
@@ -86,82 +80,46 @@ export const showUpdateInvoiceError = async (
       break;
     }
     case ERROR_CODES.fundCannotBePaid: {
-      const fundCodes = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'funds')[0]?.value;
+      const fundCodes = handler.getError().getParameter('funds');
 
       showCallout({ messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`, type: 'error', values: { fundCodes } });
       break;
     }
     case ERROR_CODES.incorrectFundDistributionTotal: {
-      const invoiceLineNumber = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'invoiceLineNumber')[0]?.value;
+      const invoiceLineNumber = handler.getError().getParameter('invoiceLineNumber');
 
       showCallout({ messageId: `ui-invoice.invoice.actions.approve.error.${ERROR_CODES[code]}`, type: 'error', values: { invoiceLineNumber } });
       break;
     }
     case ERROR_CODES.budgetExpenseClassNotFound: {
-      const fundCode = error?.errors?.[0]?.parameters?.filter(({ key }) => key === 'fundCode')[0]?.value;
-      const expenseClassName = error?.errors[0]?.parameters?.filter(({ key }) => key === 'expenseClassName')[0]?.value;
+      const fundCode = handler.getError().getParameter('fundCode');
+      const expenseClassName = handler.getError().getParameter('expenseClassName');
 
       showCallout({ messageId: `ui-invoice.invoice.actions.${action}.error.${code}`, type: 'error', values: { fundCode, expenseClassName } });
       break;
     }
     case ERROR_CODES.inactiveExpenseClass: {
-      const expenseClassId = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassId')?.value;
-      const expenseClassName = error?.errors?.[0]?.parameters?.find(({ key }) => key === 'expenseClassName')?.value;
+      await handler.handle(inactiveExpenseClassStrategy({
+        action,
+        code,
+        defaultErrorMessageId,
+        expenseClassMutator,
+        showCallout,
+      }));
 
-      if (expenseClassId || expenseClassName) {
-        const expenseClassPromise = expenseClassName
-          ? Promise.resolve({ name: expenseClassName })
-          : expenseClassMutator.GET({ path: `${EXPENSE_CLASSES_API}/${expenseClassId}` });
-
-        expenseClassPromise
-          .then(({ name }) => {
-            const values = { expenseClass: name };
-
-            showCallout({
-              messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
-              type: 'error',
-              values,
-            });
-          });
-      } else {
-        showCallout({
-          messageId: defaultErrorMessageId,
-          type: 'error',
-        });
-      }
       break;
     }
     case ERROR_CODES.budgetNotFoundByFundId:
     case ERROR_CODES.budgetNotFoundByFundIdAndFiscalYearId: {
-      const errors = error?.errors?.[0]?.parameters;
-      let fundId = errors?.find(({ key }) => key === 'fundId')?.value;
+      await handler.handle(noBudgetForFiscalYearStrategy({
+        action,
+        code,
+        defaultErrorMessageId,
+        fundMutator,
+        ky,
+        showCallout,
+      }));
 
-      if (!fundId) {
-        fundId = errors?.find(({ key }) => key === 'fund')?.value;
-      }
-
-      if (fundId) {
-        fundMutator.GET({ path: `${FUNDS_API}/${fundId}` })
-          .then(({ fund }) => {
-            showCallout({
-              messageId: `ui-invoice.invoice.actions.${action}.error.${ERROR_CODES[code]}`,
-              type: 'error',
-              values: {
-                fundCode: fund?.code,
-              },
-            });
-          }, () => {
-            showCallout({
-              messageId: defaultErrorMessageId,
-              type: 'error',
-            });
-          });
-      } else {
-        showCallout({
-          messageId: defaultErrorMessageId,
-          type: 'error',
-        });
-      }
       break;
     }
     default: {
@@ -179,6 +137,7 @@ export const handleInvoiceLineErrors = async ({
   requestData = [],
   responses = [],
   showCallout,
+  ky = {},
 }) => {
   const errors = responses.filter(({ status }) => status === 'rejected');
 
@@ -189,15 +148,16 @@ export const handleInvoiceLineErrors = async ({
   const errorRequests = errors.map(({ reason }, index) => {
     const invoiceLineNumber = requestData[index]?.invoiceLineNumber;
 
-    return showUpdateInvoiceError(
-      reason?.response,
+    return showUpdateInvoiceError({
+      response: reason,
       showCallout,
-      'saveLine',
-      'ui-invoice.errors.invoiceLine.duplicate',
-      mutator.expenseClass,
-      mutator.fund,
-      { invoiceLineNumber },
-    );
+      action: 'saveLine',
+      defaultErrorMessageId: 'ui-invoice.errors.invoiceLine.duplicate',
+      expenseClassMutator: mutator.expenseClass,
+      fundMutator: mutator.fund,
+      messageValues: { invoiceLineNumber },
+      ky,
+    });
   });
 
   return Promise.all(errorRequests);
@@ -209,6 +169,7 @@ export const handleInvoiceLinesCreation = async ({
   createInvoiceLines,
   showCallout,
   mutator,
+  ky,
 }) => {
   if (!invoiceLines.length) {
     return {
@@ -235,6 +196,7 @@ export const handleInvoiceLinesCreation = async ({
           expenseClass: mutator.expenseClass,
           fund: mutator.fund,
         },
+        ky,
       });
 
       return ({

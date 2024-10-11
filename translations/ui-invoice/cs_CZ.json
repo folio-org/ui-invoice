@@ -330,8 +330,8 @@
     "invoice.actions.approve.error.organizationIsNotVendor": "Fakturu nelze schválit, protože přidružené ID prodejce patří organizaci, která není prodejcem.",
     "invoice.actions.approve.error.budgetNotFoundByFundId": "Fakturu nelze schválit, protože prostředek <b>{fundCode}</b> nemá aktuální rozpočet.",
     "invoice.actions.approve.error.adjustmentFundDistributionsNotPresent": "U každé nepoměrné úpravy by mělo být přítomno alespoň jedno rozdělení prostředků",
-    "invoice.actions.approve.error.lineFundDistributionsSummaryMismatch": "Souhrn rozdělení prostředků by měl být 100 % nebo roven mezisoučtu pro každý přidružený řádek faktury",
-    "invoice.actions.approve.error.adjustmentFundDistributionsSummaryMismatch": "Souhrn rozdělení prostředků by měl být 100 % nebo roven mezisoučtu pro každou nepoměrnou úpravu",
+    "invoice.actions.approve.error.lineFundDistributionsSummaryMismatch": "Shrnutí rozdělení prostředků by měl být 100 % nebo roven mezisoučtu pro každý přidružený řádek faktury",
+    "invoice.actions.approve.error.adjustmentFundDistributionsSummaryMismatch": "Shrnutí rozdělení prostředků by měl být 100 % nebo roven mezisoučtu pro každou nepoměrnou úpravu",
     "invoice.actions.approve.error.fundsNotFound": "Fakturu nelze schválit, protože nebyly nalezeny záznamy prostředcích",
     "invoice.actions.approve.error.externalAccountNoIsMissing": "Fakturu nelze schválit, protože záznam o prostředku neobsahuje externí číslo účtu.",
     "invoice.actions.approve.error.pendingPaymentError": "Fakturu nelze schválit, protože se nezdařilo vytvoření nevyřízené platby",
@@ -451,7 +451,7 @@
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze zaplatit, protože prostředek <b>{fundCode}</b> nemá aktuální rozpočet.",
     "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Fakturu nelze schválit a zaplatit, protože prostředek <b>{fundCode}</b> nemá aktuální rozpočet.",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "Řádek faktury nelze uložit, protože prostředek <b>{fundCode}</b> nemá aktuální rozpočet.",
-    "receivingHistory.displaySummary": "Souhrn zobrazení",
+    "receivingHistory.displaySummary": "Zobrazit shrnutí",
     "invoice.details.information.calculatedTotalExchangeAmount": "Vypočítaná celková částka (vyměněná)",
     "document.title.search": "Faktury - {query} - Vyhledat",
     "invoice.actions.error.userHasNoPermission": "Operace není povolena, protože uživatel není členem uvedené akviziční jednotky",
@@ -472,5 +472,6 @@
     "invoice.actions.duplicate.confirmation.message": "Opravdu chcete vytvořit duplikát této faktury a všech jejích řádků faktury?",
     "invoice.actions.duplicate.success.message": "Faktura byla úspěšně duplikována",
     "invoice.actions.duplicate.error.message": "Faktura nebyla duplikována",
-    "search.folioInvoiceNo": "Číslo faktury FOLIO"
+    "search.folioInvoiceNo": "Číslo faktury FOLIO",
+    "label.backToInvoice": "Back to Invoice"
 }
