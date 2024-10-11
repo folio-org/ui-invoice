@@ -244,7 +244,7 @@
         "subPermissions": [
           "finance.expense-classes.item.get",
           "finance.funds.item.get",
-          "invoice.item.approve"
+          "invoice.item.approve.execute"
         ]
       },
       {
@@ -255,7 +255,7 @@
         "subPermissions": [
           "finance.expense-classes.item.get",
           "finance.funds.item.get",
-          "invoice.item.pay"
+          "invoice.item.pay.execute"
         ]
       },
       {
@@ -264,7 +264,7 @@
         "visible": true,
         "subPermissions": [
           "ui-invoice.pay",
-          "invoices.fiscal-year.update"
+          "invoices.fiscal-year.update.execute"
         ]
       },
       {
@@ -274,7 +274,7 @@
         "description": "",
         "subPermissions": [
           "invoice.invoices.item.put",
-          "invoice.item.cancel"
+          "invoice.item.cancel.execute"
         ]
       },
       {
