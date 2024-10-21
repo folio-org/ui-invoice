@@ -114,7 +114,7 @@ const Invoices = () => {
             </PermissionedRoute>
             <PermissionedRoute
               path="/invoice/voucher-export"
-              perm="ui-invoice.voucherExport"
+              perm="ui-invoice.voucher.export.execute"
               returnLink={RETURN_LINK}
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
             >
