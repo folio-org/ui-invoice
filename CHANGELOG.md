@@ -9,6 +9,7 @@
 * Duplicate invoice and invoice lines. Refs UINV-552.
 * Use `arrow-left` button as the trigger to return back to an invoice from a line. Refs UINV-505.
 * Improve error message when attempting to save an invoice line when no budget for the fiscal year exists. Refs UINV-557.
+* Clean up permission names. Refs UINV-559.
 
 
 ## [6.0.4](https://github.com/folio-org/ui-invoice/tree/v6.0.4) (2024-08-21)

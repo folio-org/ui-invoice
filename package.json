@@ -237,10 +237,11 @@
         ]
       },
       {
-        "permissionName": "ui-invoice.approve",
+        "permissionName": "ui-invoice.invoice.approve.execute",
         "displayName": "Invoice: Approve invoices",
         "visible": true,
         "description": "",
+        "replaces": ["ui-invoice.approve"],
         "subPermissions": [
           "finance.expense-classes.item.get",
           "finance.funds.item.get",
@@ -248,10 +249,11 @@
         ]
       },
       {
-        "permissionName": "ui-invoice.pay",
+        "permissionName": "ui-invoice.invoice.pay.execute",
         "displayName": "Invoice: Pay invoices",
         "visible": true,
         "description": "",
+        "replaces": ["ui-invoice.pay"],
         "subPermissions": [
           "finance.expense-classes.item.get",
           "finance.funds.item.get",
@@ -259,29 +261,32 @@
         ]
       },
       {
-        "permissionName": "ui-invoice.payDifferentFY",
+        "permissionName": "ui-invoice.invoice.pay-different-fy.execute",
         "displayName": "Invoice: Pay invoices in a different fiscal year",
         "visible": true,
+        "replaces": ["ui-invoice.payDifferentFY"],
         "subPermissions": [
           "ui-invoice.pay",
           "invoices.fiscal-year.update.execute"
         ]
       },
       {
-        "permissionName": "ui-invoice.cancel",
+        "permissionName": "ui-invoice.invoice.cancel.execute",
         "displayName": "Invoice: Cancel invoices",
         "visible": true,
         "description": "",
+        "replaces": ["ui-invoice.cancel"],
         "subPermissions": [
           "invoice.invoices.item.put",
           "invoice.item.cancel.execute"
         ]
       },
       {
-        "permissionName": "ui-invoice.voucherExport",
+        "permissionName": "ui-invoice.voucher.export.execute",
         "displayName": "Invoice: Voucher export",
         "visible": true,
         "description": "",
+        "replaces": ["ui-invoice.voucherExport"],
         "subPermissions": [
           "batch-groups.collection.get",
           "batch-voucher.batch-voucher-exports.collection.get",

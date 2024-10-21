@@ -32,7 +32,7 @@ export const InvoicesListLastMenu = ({ onToggle, invoicesCount, toggleExportModa
         </Button>
       </IfPermission>
 
-      <IfPermission perm="ui-invoice.voucherExport">
+      <IfPermission perm="ui-invoice.voucher.export.execute">
         <Button
           id="clickable-voucher-export"
           buttonStyle="dropdownItem"
