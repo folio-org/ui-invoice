@@ -10,40 +10,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="status"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion1"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.details.information.status filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-status"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion1"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.details.information.status filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-status"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.details.information.status
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.details.information.status
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -315,40 +316,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="vendorId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion2"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.vendorName filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-vendorId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion2"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.vendorName filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-vendorId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.vendorName
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.vendorName
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -396,40 +398,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="invoiceDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion3"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion3"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.details.information.invoiceDate
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.details.information.invoiceDate
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -607,40 +610,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="acqUnitIds"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion4"
-              aria-expanded="false"
-              aria-label="stripes-acq-components.filter.acqUnit filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-acqUnitIds"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion4"
+                aria-expanded="false"
+                aria-label="stripes-acq-components.filter.acqUnit filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-acqUnitIds"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  stripes-acq-components.filter.acqUnit
+                  <div
+                    class="filterSetLabel"
+                  >
+                    stripes-acq-components.filter.acqUnit
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -740,40 +744,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="paymentDue"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion5"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-paymentDue"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion5"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-paymentDue"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.details.information.paymentDue
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.details.information.paymentDue
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -951,40 +956,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="paymentMethod"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion6"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.paymentMethod filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-paymentMethod"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion6"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.paymentMethod filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-paymentMethod"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.paymentMethod
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.paymentMethod
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -1406,40 +1412,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="approvalDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion7"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.approvalDate filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-approvalDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion7"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.approvalDate filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-approvalDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.approvalDate
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.approvalDate
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -1617,40 +1624,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="source"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion8"
-              aria-expanded="false"
-              aria-label="stripes-acq-components.label.sourceFilter filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-source"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion8"
+                aria-expanded="false"
+                aria-label="stripes-acq-components.label.sourceFilter filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-source"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  stripes-acq-components.label.sourceFilter
+                  <div
+                    class="filterSetLabel"
+                  >
+                    stripes-acq-components.label.sourceFilter
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -1872,40 +1880,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="exportToAccounting"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion9"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.exportToAccounting filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-exportToAccounting"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion9"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.exportToAccounting filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-exportToAccounting"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.exportToAccounting
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.exportToAccounting
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -2027,40 +2036,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="paymentDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion10"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.paymentDate filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-paymentDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion10"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.paymentDate filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-paymentDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.paymentDate
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.paymentDate
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -2251,40 +2261,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="lockTotal"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion11"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.lockTotal filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-lockTotal"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion11"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.lockTotal filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-lockTotal"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.lockTotal
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.lockTotal
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -2376,40 +2387,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="metadata.createdByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion12"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.createdBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.createdByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion12"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.createdBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.createdByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.createdBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.createdBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -2457,40 +2469,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="metadata.createdDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion13"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.dateCreated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.createdDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion13"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.dateCreated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.createdDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.dateCreated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.dateCreated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -2668,40 +2681,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="metadata.updatedByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion14"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.updatedBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.updatedByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion14"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.updatedBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.updatedByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.updatedBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.updatedBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -2749,40 +2763,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="metadata.updatedDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion15"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.dateUpdated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.updatedDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion15"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.dateUpdated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.updatedDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.dateUpdated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.dateUpdated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -2960,40 +2975,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="invoiceLines.metadata.createdByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion16"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.createdBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion16"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.createdBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.createdBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.createdBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -3041,40 +3057,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="invoiceLines.metadata.createdDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion17"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.dateCreated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.createdDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion17"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.dateCreated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.createdDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.dateCreated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.dateCreated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -3252,40 +3269,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="invoiceLines.metadata.updatedByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion18"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.updatedBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion18"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.updatedBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.updatedBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.updatedBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -3333,40 +3351,41 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
       data-test-accordion-section="true"
       id="invoiceLines.metadata.updatedDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion19"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.dateUpdated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.updatedDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion19"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.dateUpdated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.updatedDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.dateUpdated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.dateUpdated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -3553,40 +3572,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="status"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion77"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.details.information.status filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-status"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion77"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.details.information.status filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-status"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.details.information.status
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.details.information.status
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -3883,40 +3903,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="vendorId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion78"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.vendorName filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-vendorId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion78"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.vendorName filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-vendorId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.vendorName
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.vendorName
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -3964,40 +3985,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="invoiceDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion79"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion79"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.details.information.invoiceDate filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.details.information.invoiceDate
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.details.information.invoiceDate
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -4175,40 +4197,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="acqUnitIds"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion80"
-              aria-expanded="false"
-              aria-label="stripes-acq-components.filter.acqUnit filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-acqUnitIds"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion80"
+                aria-expanded="false"
+                aria-label="stripes-acq-components.filter.acqUnit filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-acqUnitIds"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  stripes-acq-components.filter.acqUnit
+                  <div
+                    class="filterSetLabel"
+                  >
+                    stripes-acq-components.filter.acqUnit
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -4309,40 +4332,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="paymentDue"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion81"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-paymentDue"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion81"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.details.information.paymentDue filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-paymentDue"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.details.information.paymentDue
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.details.information.paymentDue
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -4520,40 +4544,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="paymentMethod"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion82"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.paymentMethod filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-paymentMethod"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion82"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.paymentMethod filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-paymentMethod"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.paymentMethod
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.paymentMethod
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -5015,40 +5040,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="approvalDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion83"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.approvalDate filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-approvalDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion83"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.approvalDate filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-approvalDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.approvalDate
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.approvalDate
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -5226,40 +5252,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="source"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion84"
-              aria-expanded="false"
-              aria-label="stripes-acq-components.label.sourceFilter filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-source"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion84"
+                aria-expanded="false"
+                aria-label="stripes-acq-components.label.sourceFilter filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-source"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  stripes-acq-components.label.sourceFilter
+                  <div
+                    class="filterSetLabel"
+                  >
+                    stripes-acq-components.label.sourceFilter
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -5501,40 +5528,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="exportToAccounting"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion85"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.exportToAccounting filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-exportToAccounting"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion85"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.exportToAccounting filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-exportToAccounting"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.exportToAccounting
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.exportToAccounting
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -5666,40 +5694,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="paymentDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion86"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.paymentDate filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-paymentDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion86"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.paymentDate filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-paymentDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.paymentDate
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.paymentDate
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -5893,40 +5922,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="lockTotal"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion87"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.lockTotal filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-lockTotal"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion87"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.lockTotal filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-lockTotal"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.lockTotal
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.lockTotal
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6022,40 +6052,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="metadata.createdByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion88"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.createdBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.createdByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion88"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.createdBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.createdByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.createdBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.createdBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6103,40 +6134,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="metadata.createdDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion89"
-              aria-expanded="false"
-              aria-label="ui-invoice.invoice.dateCreated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.createdDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion89"
+                aria-expanded="false"
+                aria-label="ui-invoice.invoice.dateCreated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.createdDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.invoice.dateCreated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.invoice.dateCreated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6314,40 +6346,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="metadata.updatedByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion90"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.updatedBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.updatedByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion90"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.updatedBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.updatedByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.updatedBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.updatedBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6395,40 +6428,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="metadata.updatedDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion91"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.dateUpdated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-metadata.updatedDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion91"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.dateUpdated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-metadata.updatedDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.dateUpdated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.dateUpdated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6606,40 +6640,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="invoiceLines.metadata.createdByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion92"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.createdBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion92"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.createdBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.createdByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.createdBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.createdBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6687,40 +6722,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="invoiceLines.metadata.createdDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion93"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.dateCreated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.createdDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion93"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.dateCreated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.createdDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.dateCreated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.dateCreated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6898,40 +6934,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="invoiceLines.metadata.updatedByUserId"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion94"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.updatedBy filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion94"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.updatedBy filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.updatedByUserId"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.updatedBy
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.updatedBy
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div
@@ -6979,40 +7016,41 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
       data-test-accordion-section="true"
       id="invoiceLines.metadata.updatedDate"
     >
-      <div
-        style="width: 100%; display: flex;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          class="headerWrapper"
+          style="width: 100%; display: flex;"
         >
-          <h3
-            class="headline size-small margin-small font-weight-bold block"
-            data-test-headline="true"
+          <div
+            class="headerWrapper"
           >
-            <button
-              aria-controls="accordion95"
-              aria-expanded="false"
-              aria-label="ui-invoice.filter.invoiceLine.dateUpdated filter list"
-              class="filterSetHeader"
-              id="accordion-toggle-button-invoiceLines.metadata.updatedDate"
-              tabindex="0"
-              type="button"
+            <h3
+              class="headline size-small margin-small font-weight-bold block"
+              data-test-headline="true"
             >
-              <span>
-                Icon
-              </span>
-              <div
-                class="labelArea"
+              <button
+                aria-controls="accordion95"
+                aria-expanded="false"
+                aria-label="ui-invoice.filter.invoiceLine.dateUpdated filter list"
+                class="filterSetHeader"
+                id="accordion-toggle-button-invoiceLines.metadata.updatedDate"
+                tabindex="0"
+                type="button"
               >
+                <span>
+                  Icon
+                </span>
                 <div
-                  class="filterSetLabel"
+                  class="labelArea"
                 >
-                  ui-invoice.filter.invoiceLine.dateUpdated
+                  <div
+                    class="filterSetLabel"
+                  >
+                    ui-invoice.filter.invoiceLine.dateUpdated
+                  </div>
                 </div>
-              </div>
-            </button>
-          </h3>
+              </button>
+            </h3>
+          </div>
         </div>
       </div>
       <div

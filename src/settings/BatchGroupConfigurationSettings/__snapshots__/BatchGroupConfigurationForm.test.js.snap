@@ -2,146 +2,226 @@
 
 exports[`BatchGroupConfigurationForm component should render correct structure 1`] = `
 <DocumentFragment>
-  <section
-    class="pane focusIndicator"
-    data-test-batch-group-configuration-settings="true"
-    id="pane-batch-group-configuration"
-  >
-    <div
-      aria-labelledby="paneHeaderpane-batch-group-configuration-pane-title"
-      class="paneHeader"
-      data-test-pane-header="true"
-      id="paneHeaderpane-batch-group-configuration"
-      role="region"
-      tabindex="-1"
+  <div>
+    <section
+      class="pane focusIndicator"
+      data-test-batch-group-configuration-settings="true"
+      id="pane-batch-group-configuration"
     >
       <div
-        class="paneHeaderCenter"
+        aria-labelledby="paneHeaderpane-batch-group-configuration-pane-title"
+        class="paneHeader"
+        data-test-pane-header="true"
+        id="paneHeaderpane-batch-group-configuration"
+        role="region"
+        tabindex="-1"
       >
         <div
-          class="paneHeaderCenterInner"
-          id="paneHeaderpane-batch-group-configuration-pane-title"
-        >
-          <h2
-            class="paneTitle"
-            data-test-pane-header-title="true"
-          >
-            <span
-              class="paneTitleLabel"
-            >
-              ui-invoice.settings.batchGroupConfiguration.label
-            </span>
-          </h2>
-        </div>
-      </div>
-    </div>
-    <div
-      class="paneContent hasPadding"
-      id="pane-batch-group-configuration-content"
-      tabindex="-1"
-    >
-      <div
-        class="row"
-      >
-        <div
-          class="col-xs-4"
-          data-test-col-batch-group-field="true"
+          class="paneHeaderCenter"
         >
           <div
-            class="kvRoot"
-            data-test-batch-group-value="true"
+            class="paneHeaderCenterInner"
+            id="paneHeaderpane-batch-group-configuration-pane-title"
           >
-            <div
-              class="kvLabel"
+            <h2
+              class="paneTitle"
+              data-test-pane-header-title="true"
             >
-              ui-invoice.settings.batchGroupConfiguration.batchGroup
-            </div>
-            <div
-              class="kvValue"
-              data-test-kv-value="true"
-            >
-              Amherst College (AC)
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="row"
-      >
-        <div
-          class="col-xs-4"
-          data-test-col-schedule-export="true"
-        >
-          <div
-            class="select inputGroup fullWidth"
-          >
-            <label
-              class="label"
-              for="select-2"
-              id="select-2-label"
-            >
-              ui-invoice.settings.batchGroupConfiguration.scheduleExport
-            </label>
-            <div
-              class="selectWrap"
-            >
-              <select
-                aria-invalid="false"
-                aria-labelledby="select-2-label"
-                aria-required="false"
-                class="selectControl formControl"
-                id="select-2"
-                name="scheduleExport"
+              <span
+                class="paneTitleLabel"
               >
-                <option
-                  value=""
-                >
-                  stripes-acq-components.label.emptyValue
-                </option>
-                <option
-                  value="daily"
-                >
-                  ui-invoice.settings.batchGroupConfiguration.scheduleExport.daily
-                </option>
-                <option
-                  value="weekly"
-                >
-                  ui-invoice.settings.batchGroupConfiguration.scheduleExport.weekly
-                </option>
-              </select>
-              <span>
-                Icon
+                ui-invoice.settings.batchGroupConfiguration.label
               </span>
-            </div>
-            <div
-              role="alert"
-            />
+            </h2>
           </div>
         </div>
       </div>
       <div
-        class="row"
+        class="paneContent hasPadding"
+        id="pane-batch-group-configuration-content"
+        tabindex="-1"
       >
         <div
-          class="col-xs-4"
-          data-test-col-time="true"
+          class="row"
         >
           <div
-            style="position: relative; width: 100%;"
+            class="col-xs-4"
+            data-test-col-batch-group-field="true"
           >
             <div
-              aria-live="assertive"
-              aria-relevant="additions"
-              class="sr-only"
-            />
+              class="kvRoot"
+              data-test-batch-group-value="true"
+            >
+              <div
+                class="kvLabel"
+              >
+                ui-invoice.settings.batchGroupConfiguration.batchGroup
+              </div>
+              <div
+                class="kvValue"
+                data-test-kv-value="true"
+              >
+                Amherst College (AC)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col-xs-4"
+            data-test-col-schedule-export="true"
+          >
             <div
-              class="textField"
+              class="select inputGroup fullWidth"
             >
               <label
                 class="label"
-                for="-timepicker1"
+                for="select-2"
+                id="select-2-label"
               >
-                ui-invoice.settings.batchGroupConfiguration.setTime
+                ui-invoice.settings.batchGroupConfiguration.scheduleExport
+              </label>
+              <div
+                class="selectWrap"
+              >
+                <select
+                  aria-invalid="false"
+                  aria-labelledby="select-2-label"
+                  aria-required="false"
+                  class="selectControl formControl"
+                  id="select-2"
+                  name="scheduleExport"
+                >
+                  <option
+                    value=""
+                  >
+                    stripes-acq-components.label.emptyValue
+                  </option>
+                  <option
+                    value="daily"
+                  >
+                    ui-invoice.settings.batchGroupConfiguration.scheduleExport.daily
+                  </option>
+                  <option
+                    value="weekly"
+                  >
+                    ui-invoice.settings.batchGroupConfiguration.scheduleExport.weekly
+                  </option>
+                </select>
+                <span>
+                  Icon
+                </span>
+              </div>
+              <div
+                role="alert"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col-xs-4"
+            data-test-col-time="true"
+          >
+            <div
+              style="position: relative; width: 100%;"
+            >
+              <div
+                aria-live="assertive"
+                aria-relevant="additions"
+                class="sr-only"
+              />
+              <div
+                class="textField"
+              >
+                <label
+                  class="label"
+                  for="-timepicker1"
+                >
+                  ui-invoice.settings.batchGroupConfiguration.setTime
+                  <span
+                    aria-hidden="true"
+                    class="asterisk"
+                  >
+                    *
+                  </span>
+                </label>
+                <div
+                  class="formControl inputGroup"
+                >
+                  <input
+                    aria-invalid="false"
+                    aria-label="stripes-components.Timepicker.ScreenReaderLabel"
+                    aria-required="true"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    autocorrect="off"
+                    error=""
+                    id="-timepicker1"
+                    name="startTime"
+                    placeholder="H:MM A"
+                    required=""
+                    spellcheck="false"
+                    type="text"
+                    value=""
+                    warning=""
+                  />
+                  <div
+                    class="endControls"
+                  >
+                    <div
+                      class="controlGroup"
+                    >
+                      <button
+                        aria-label="stripes-components.showOrHideTimepicker"
+                        class="iconButton medium"
+                        icon="clock"
+                        id="timepicker-toggle-button--timepicker1"
+                        type="button"
+                      >
+                        <span
+                          class="iconButtonInner mediumOffset"
+                        >
+                          <span>
+                            Icon
+                          </span>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  role="alert"
+                />
+              </div>
+              <input
+                hidden=""
+                type="text"
+                value=""
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="row"
+        >
+          <div
+            class="col-xs-4"
+            data-test-col-location-type="true"
+          >
+            <div
+              class="select inputGroup fullWidth"
+            >
+              <label
+                class="label"
+                for="ftpFormat"
+                id="ftpFormat-label"
+              >
+                ui-invoice.settings.batchGroupConfiguration.locationType
                 <span
                   aria-hidden="true"
                   class="asterisk"
@@ -150,431 +230,353 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
                 </span>
               </label>
               <div
-                class="formControl inputGroup"
+                class="selectWrap"
               >
-                <input
+                <select
                   aria-invalid="false"
-                  aria-label="stripes-components.Timepicker.ScreenReaderLabel"
+                  aria-labelledby="ftpFormat-label"
                   aria-required="true"
-                  autocapitalize="off"
-                  autocomplete="off"
-                  autocorrect="off"
-                  error=""
-                  id="-timepicker1"
-                  name="startTime"
-                  placeholder="H:MM A"
+                  class="selectControl formControl"
+                  id="ftpFormat"
+                  name="ftpFormat"
                   required=""
-                  spellcheck="false"
-                  type="text"
-                  value=""
-                  warning=""
-                />
-                <div
-                  class="endControls"
                 >
-                  <div
-                    class="controlGroup"
+                  <option
+                    value=""
                   >
-                    <button
-                      aria-label="stripes-components.showOrHideTimepicker"
-                      class="iconButton medium"
-                      icon="clock"
-                      id="timepicker-toggle-button--timepicker1"
-                      type="button"
-                    >
-                      <span
-                        class="iconButtonInner mediumOffset"
-                      >
-                        <span>
-                          Icon
-                        </span>
-                      </span>
-                    </button>
-                  </div>
-                </div>
+                    stripes-acq-components.label.emptyValue
+                  </option>
+                  <option
+                    value="FTP"
+                  >
+                    ui-invoice.settings.batchGroupConfiguration.locationType.FTP
+                  </option>
+                  <option
+                    value="SFTP"
+                  >
+                    ui-invoice.settings.batchGroupConfiguration.locationType.SFTP
+                  </option>
+                </select>
+                <span>
+                  Icon
+                </span>
               </div>
               <div
                 role="alert"
               />
             </div>
-            <input
-              hidden=""
-              type="text"
-              value=""
-            />
+          </div>
+          <div
+            class="col-xs-8"
+            data-test-col-upload-location="true"
+          >
+            <div
+              class="textField"
+            >
+              <label
+                class="label"
+                for="uploadURI"
+              >
+                ui-invoice.settings.batchGroupConfiguration.uploadLocation
+              </label>
+              <div
+                class="formControl inputGroup"
+              >
+                <input
+                  aria-invalid="false"
+                  autocapitalize="off"
+                  autocomplete="off"
+                  autocorrect="off"
+                  error=""
+                  id="uploadURI"
+                  name="uploadURI"
+                  placeholder="ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder.FTP"
+                  spellcheck="false"
+                  type="text"
+                  value="ftp.amherst-lib.edu"
+                  warning=""
+                />
+              </div>
+              <div
+                role="alert"
+              />
+            </div>
           </div>
         </div>
-      </div>
-      <div
-        class="row"
-      >
         <div
-          class="col-xs-4"
-          data-test-col-location-type="true"
+          class="row"
         >
           <div
-            class="select inputGroup fullWidth"
+            class="col-xs-4"
+            data-test-col-port="true"
           >
-            <label
-              class="label"
-              for="ftpFormat"
-              id="ftpFormat-label"
-            >
-              ui-invoice.settings.batchGroupConfiguration.locationType
-              <span
-                aria-hidden="true"
-                class="asterisk"
-              >
-                *
-              </span>
-            </label>
             <div
-              class="selectWrap"
+              class="textField"
             >
-              <select
-                aria-invalid="false"
-                aria-labelledby="ftpFormat-label"
-                aria-required="true"
-                class="selectControl formControl"
-                id="ftpFormat"
-                name="ftpFormat"
-                required=""
+              <label
+                class="label"
+                for="ftpPort"
               >
-                <option
+                ui-invoice.settings.batchGroupConfiguration.port
+              </label>
+              <div
+                class="formControl inputGroup"
+              >
+                <input
+                  aria-invalid="false"
+                  autocapitalize="off"
+                  autocomplete="off"
+                  autocorrect="off"
+                  error=""
+                  id="ftpPort"
+                  name="ftpPort"
+                  spellcheck="false"
+                  type="number"
+                  value="22"
+                  warning=""
+                />
+              </div>
+              <div
+                role="alert"
+              />
+            </div>
+          </div>
+          <div
+            class="col-xs-4"
+            data-test-col-directory="true"
+          >
+            <div
+              class="textField"
+            >
+              <label
+                class="label"
+                for="uploadDirectory"
+              >
+                ui-invoice.settings.batchGroupConfiguration.directory
+              </label>
+              <div
+                class="formControl inputGroup"
+              >
+                <input
+                  aria-invalid="false"
+                  autocapitalize="off"
+                  autocomplete="off"
+                  autocorrect="off"
+                  error=""
+                  id="uploadDirectory"
+                  name="uploadDirectory"
+                  spellcheck="false"
+                  type="text"
+                  value="/files/invoices"
+                  warning=""
+                />
+              </div>
+              <div
+                role="alert"
+              />
+            </div>
+          </div>
+          <div
+            class="col-xs-4"
+            data-test-col-format="true"
+          >
+            <div
+              class="select inputGroup fullWidth"
+            >
+              <label
+                class="label"
+                for="select-3"
+                id="select-3-label"
+              >
+                ui-invoice.settings.batchGroupConfiguration.format
+                <span
+                  aria-hidden="true"
+                  class="asterisk"
+                >
+                  *
+                </span>
+              </label>
+              <div
+                class="selectWrap"
+              >
+                <select
+                  aria-invalid="false"
+                  aria-labelledby="select-3-label"
+                  aria-required="true"
+                  class="selectControl formControl"
+                  id="select-3"
+                  name="format"
+                  required=""
+                >
+                  <option
+                    value=""
+                  >
+                    stripes-acq-components.label.emptyValue
+                  </option>
+                  <option
+                    value="Application/json"
+                  >
+                    ui-invoice.settings.batchGroupConfiguration.format.Application/json
+                  </option>
+                  <option
+                    value="Application/xml"
+                  >
+                    ui-invoice.settings.batchGroupConfiguration.format.Application/xml
+                  </option>
+                </select>
+                <span>
+                  Icon
+                </span>
+              </div>
+              <div
+                role="alert"
+              />
+            </div>
+          </div>
+        </div>
+        <div
+          class="row bottom-xs"
+        >
+          <div
+            class="col-xs-4"
+            data-test-col-username="true"
+          >
+            <div
+              class="textField"
+            >
+              <label
+                class="label"
+                for="username"
+              >
+                ui-invoice.settings.batchGroupConfiguration.username
+              </label>
+              <div
+                class="formControl inputGroup"
+              >
+                <input
+                  aria-invalid="false"
+                  autocapitalize="off"
+                  autocomplete="off"
+                  autocorrect="off"
+                  data-testid="credentials-field"
+                  error=""
+                  id="username"
+                  name="username"
+                  spellcheck="false"
+                  type="password"
                   value=""
-                >
-                  stripes-acq-components.label.emptyValue
-                </option>
-                <option
-                  value="FTP"
-                >
-                  ui-invoice.settings.batchGroupConfiguration.locationType.FTP
-                </option>
-                <option
-                  value="SFTP"
-                >
-                  ui-invoice.settings.batchGroupConfiguration.locationType.SFTP
-                </option>
-              </select>
-              <span>
-                Icon
-              </span>
-            </div>
-            <div
-              role="alert"
-            />
-          </div>
-        </div>
-        <div
-          class="col-xs-8"
-          data-test-col-upload-location="true"
-        >
-          <div
-            class="textField"
-          >
-            <label
-              class="label"
-              for="uploadURI"
-            >
-              ui-invoice.settings.batchGroupConfiguration.uploadLocation
-            </label>
-            <div
-              class="formControl inputGroup"
-            >
-              <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                error=""
-                id="uploadURI"
-                name="uploadURI"
-                placeholder="ui-invoice.settings.batchGroupConfiguration.uploadLocation.placeholder.FTP"
-                spellcheck="false"
-                type="text"
-                value="ftp.amherst-lib.edu"
-                warning=""
+                  warning=""
+                />
+              </div>
+              <div
+                role="alert"
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
-        </div>
-      </div>
-      <div
-        class="row"
-      >
-        <div
-          class="col-xs-4"
-          data-test-col-port="true"
-        >
           <div
-            class="textField"
+            class="col-xs-4"
           >
-            <label
-              class="label"
-              for="ftpPort"
-            >
-              ui-invoice.settings.batchGroupConfiguration.port
-            </label>
             <div
-              class="formControl inputGroup"
+              class="textField"
             >
-              <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                error=""
-                id="ftpPort"
-                name="ftpPort"
-                spellcheck="false"
-                type="number"
-                value="22"
-                warning=""
-              />
-            </div>
-            <div
-              role="alert"
-            />
-          </div>
-        </div>
-        <div
-          class="col-xs-4"
-          data-test-col-directory="true"
-        >
-          <div
-            class="textField"
-          >
-            <label
-              class="label"
-              for="uploadDirectory"
-            >
-              ui-invoice.settings.batchGroupConfiguration.directory
-            </label>
-            <div
-              class="formControl inputGroup"
-            >
-              <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                error=""
-                id="uploadDirectory"
-                name="uploadDirectory"
-                spellcheck="false"
-                type="text"
-                value="/files/invoices"
-                warning=""
-              />
-            </div>
-            <div
-              role="alert"
-            />
-          </div>
-        </div>
-        <div
-          class="col-xs-4"
-          data-test-col-format="true"
-        >
-          <div
-            class="select inputGroup fullWidth"
-          >
-            <label
-              class="label"
-              for="select-3"
-              id="select-3-label"
-            >
-              ui-invoice.settings.batchGroupConfiguration.format
-              <span
-                aria-hidden="true"
-                class="asterisk"
+              <label
+                class="label"
+                for="password"
               >
-                *
-              </span>
-            </label>
-            <div
-              class="selectWrap"
-            >
-              <select
-                aria-invalid="false"
-                aria-labelledby="select-3-label"
-                aria-required="true"
-                class="selectControl formControl"
-                id="select-3"
-                name="format"
-                required=""
+                ui-invoice.settings.batchGroupConfiguration.password
+              </label>
+              <div
+                class="formControl inputGroup"
               >
-                <option
+                <input
+                  aria-invalid="false"
+                  autocapitalize="off"
+                  autocomplete="new-password"
+                  autocorrect="off"
+                  data-testid="credentials-field"
+                  error=""
+                  id="password"
+                  name="password"
+                  spellcheck="false"
+                  type="password"
                   value=""
-                >
-                  stripes-acq-components.label.emptyValue
-                </option>
-                <option
-                  value="Application/json"
-                >
-                  ui-invoice.settings.batchGroupConfiguration.format.Application/json
-                </option>
-                <option
-                  value="Application/xml"
-                >
-                  ui-invoice.settings.batchGroupConfiguration.format.Application/xml
-                </option>
-              </select>
-              <span>
-                Icon
-              </span>
-            </div>
-            <div
-              role="alert"
-            />
-          </div>
-        </div>
-      </div>
-      <div
-        class="row bottom-xs"
-      >
-        <div
-          class="col-xs-4"
-          data-test-col-username="true"
-        >
-          <div
-            class="textField"
-          >
-            <label
-              class="label"
-              for="username"
-            >
-              ui-invoice.settings.batchGroupConfiguration.username
-            </label>
-            <div
-              class="formControl inputGroup"
-            >
-              <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="off"
-                autocorrect="off"
-                data-testid="credentials-field"
-                error=""
-                id="username"
-                name="username"
-                spellcheck="false"
-                type="password"
-                value=""
-                warning=""
+                  warning=""
+                />
+              </div>
+              <div
+                role="alert"
               />
             </div>
-            <div
-              role="alert"
-            />
           </div>
-        </div>
-        <div
-          class="col-xs-4"
-        >
           <div
-            class="textField"
+            class="col-xs-2"
           >
-            <label
-              class="label"
-              for="password"
-            >
-              ui-invoice.settings.batchGroupConfiguration.password
-            </label>
             <div
-              class="formControl inputGroup"
+              class="toggle"
             >
-              <input
-                aria-invalid="false"
-                autocapitalize="off"
-                autocomplete="new-password"
-                autocorrect="off"
-                data-testid="credentials-field"
-                error=""
-                id="password"
-                name="password"
-                spellcheck="false"
-                type="password"
-                value=""
-                warning=""
-              />
+              <button
+                class="button default"
+                type="button"
+              >
+                <span
+                  class="inner"
+                >
+                  ui-invoice.settings.batchGroupConfiguration.password.show
+                </span>
+              </button>
             </div>
-            <div
-              role="alert"
-            />
           </div>
         </div>
         <div
-          class="col-xs-2"
+          class="row"
         >
           <div
-            class="toggle"
+            class="col-xs-4"
+            data-test-col-test-connection="true"
           >
             <button
-              class="button default"
+              class="button primary marginBottom0"
+              data-test-connection-test-button="true"
               type="button"
             >
               <span
                 class="inner"
               >
-                ui-invoice.settings.batchGroupConfiguration.password.show
+                ui-invoice.settings.batchGroupConfiguration.testConnection
               </span>
             </button>
           </div>
         </div>
       </div>
       <div
-        class="row"
+        class="paneFooter"
       >
         <div
-          class="col-xs-4"
-          data-test-col-test-connection="true"
+          class="paneFooterContent"
         >
-          <button
-            class="button primary marginBottom0"
-            data-test-connection-test-button="true"
-            type="button"
+          <span
+            class="renderStart"
+            data-test-pane-footer-start="true"
+          />
+          <span
+            data-test-pane-footer-end="true"
           >
-            <span
-              class="inner"
+            <button
+              class="button primary mega"
+              data-test-save-button="true"
+              disabled=""
+              type="submit"
             >
-              ui-invoice.settings.batchGroupConfiguration.testConnection
-            </span>
-          </button>
+              <span
+                class="inner"
+              >
+                ui-invoice.button.save
+              </span>
+            </button>
+          </span>
         </div>
       </div>
-    </div>
-    <div
-      class="paneFooter"
-    >
-      <div
-        class="paneFooterContent"
-      >
-        <span
-          class="renderStart"
-          data-test-pane-footer-start="true"
-        />
-        <span
-          data-test-pane-footer-end="true"
-        >
-          <button
-            class="button primary mega"
-            data-test-save-button="true"
-            disabled=""
-            type="submit"
-          >
-            <span
-              class="inner"
-            >
-              ui-invoice.button.save
-            </span>
-          </button>
-        </span>
-      </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </DocumentFragment>
 `;
