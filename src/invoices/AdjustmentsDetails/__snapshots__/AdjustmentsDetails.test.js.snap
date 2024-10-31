@@ -8,187 +8,188 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
     <div
       class="col-xs-12"
     >
-      <div
-        class="mclContainer"
-        style="position: relative; overflow: hidden; height: auto; width: 100%;"
-        tabindex="-1"
-      >
+      <div>
         <div
-          aria-live="assertive"
-          aria-relevant="additions"
-          class="sr-only"
-        />
-        <div
-          aria-rowcount="3"
-          class=""
-          data-total-count="0"
-          id="invoice-lines-adjustments-list"
-          role="grid"
-          tabindex="0"
+          class="mclContainer"
+          style="position: relative; overflow: hidden; height: auto; width: 100%;"
         >
           <div
-            class="mclHeaderContainer"
+            aria-live="assertive"
+            aria-relevant="additions"
+            class="sr-only"
+          />
+          <div
+            aria-rowcount="3"
+            class=""
+            data-total-count="0"
+            id="invoice-lines-adjustments-list"
+            role="grid"
+            tabindex="0"
           >
             <div
-              aria-rowindex="1"
-              class="mclHeaderRow"
-              role="row"
-              style="display: flex; width: 17px;"
+              class="mclHeaderContainer"
             >
               <div
-                aria-sort="ascending"
-                class="mclHeader mclClickable mclSorted mclAscending"
-                id="adjustments-list-column-description"
-                role="columnheader"
-                style="flex: 0 0 auto;"
+                aria-rowindex="1"
+                class="mclHeaderRow"
+                role="row"
+                style="display: flex; width: 17px;"
               >
                 <div
-                  class="mclHeaderOuter"
-                  data-test-clickable-header="true"
-                  id="adjustments-clickable-list-column-description"
-                  role="button"
-                  tabindex="0"
+                  aria-sort="ascending"
+                  class="mclHeader mclClickable mclSorted mclAscending"
+                  id="adjustments-list-column-description"
+                  role="columnheader"
+                  style="flex: 0 0 auto;"
                 >
                   <div
-                    class="mclHeaderInner"
+                    class="mclHeaderOuter"
+                    data-test-clickable-header="true"
+                    id="adjustments-clickable-list-column-description"
+                    role="button"
+                    tabindex="0"
                   >
                     <div
-                      style="max-width: calc(100%-15px);"
+                      class="mclHeaderInner"
                     >
-                      ui-invoice.adjustment.description
+                      <div
+                        style="max-width: calc(100%-15px);"
+                      >
+                        ui-invoice.adjustment.description
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div
-                aria-sort="none"
-                class="mclHeader"
-                id="adjustments-list-column-value"
-                role="columnheader"
-                style="flex: 0 0 auto;"
-              >
-                ui-invoice.adjustment.value
-              </div>
-              <div
-                aria-sort="none"
-                class="mclHeader"
-                id="adjustments-list-column-prorate"
-                role="columnheader"
-                style="flex: 0 0 auto;"
-              >
-                ui-invoice.settings.adjustments.prorate
-              </div>
-              <div
-                aria-sort="none"
-                class="mclHeader"
-                id="adjustments-list-column-relationtototal"
-                role="columnheader"
-                style="flex: 0 0 auto;"
-              >
-                ui-invoice.settings.adjustments.relationToTotal
+                <div
+                  aria-sort="none"
+                  class="mclHeader"
+                  id="adjustments-list-column-value"
+                  role="columnheader"
+                  style="flex: 0 0 auto;"
+                >
+                  ui-invoice.adjustment.value
+                </div>
+                <div
+                  aria-sort="none"
+                  class="mclHeader"
+                  id="adjustments-list-column-prorate"
+                  role="columnheader"
+                  style="flex: 0 0 auto;"
+                >
+                  ui-invoice.settings.adjustments.prorate
+                </div>
+                <div
+                  aria-sort="none"
+                  class="mclHeader"
+                  id="adjustments-list-column-relationtototal"
+                  role="columnheader"
+                  style="flex: 0 0 auto;"
+                >
+                  ui-invoice.settings.adjustments.relationToTotal
+                </div>
               </div>
             </div>
-          </div>
-          <div
-            class="mclScrollable"
-            style="position: static; width: 100%;"
-          >
             <div
-              class="mclRowContainer"
-              role="rowgroup"
-              style="position: static;"
+              class="mclScrollable"
+              style="position: static; width: 100%;"
             >
               <div
-                aria-rowindex="2"
-                class="mclRowFormatterContainer"
-                data-row-index="row-0"
-                role="row"
+                class="mclRowContainer"
+                role="rowgroup"
                 style="position: static;"
               >
                 <div
-                  aria-label=""
-                  class="mclRow mclIsOdd"
-                  data-row-inner="0"
-                  style="min-width: 0px;"
-                  tabindex="0"
+                  aria-rowindex="2"
+                  class="mclRowFormatterContainer"
+                  data-row-index="row-0"
+                  role="row"
+                  style="position: static;"
                 >
                   <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  />
-                  <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  >
-                    $25.50
-                  </div>
-                  <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  />
-                  <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  >
-                    ui-invoice.adjustments.relationToTotal.inAdditionTo
-                  </div>
-                </div>
-              </div>
-              <div
-                aria-rowindex="3"
-                class="mclRowFormatterContainer"
-                data-row-index="row-1"
-                role="row"
-                style="position: static;"
-              >
-                <div
-                  aria-label=""
-                  class="mclRow"
-                  data-row-inner="1"
-                  style="min-width: 0px;"
-                  tabindex="0"
-                >
-                  <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  />
-                  <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  >
-                    25.5%
-                  </div>
-                  <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  />
-                  <div
-                    class="mclCell mclCellStyle"
-                    role="gridcell"
-                  >
-                    ui-invoice.adjustments.relationToTotal.inAdditionTo
-                  </div>
-                </div>
-              </div>
-              <div
-                class="mclEndOfListContainer"
-                data-end-of-list="2"
-              >
-                <div
-                  class="mclCenteredContainer"
-                  style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
-                >
-                  <div
-                    class="textCentered"
-                    data-test-layout="true"
+                    aria-label=""
+                    class="mclRow mclIsOdd"
+                    data-row-inner="0"
+                    style="min-width: 0px;"
+                    tabindex="0"
                   >
                     <div
-                      class="mclEndOfList"
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    />
+                    <div
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    >
+                      $25.50
+                    </div>
+                    <div
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    />
+                    <div
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    >
+                      ui-invoice.adjustments.relationToTotal.inAdditionTo
+                    </div>
+                  </div>
+                </div>
+                <div
+                  aria-rowindex="3"
+                  class="mclRowFormatterContainer"
+                  data-row-index="row-1"
+                  role="row"
+                  style="position: static;"
+                >
+                  <div
+                    aria-label=""
+                    class="mclRow"
+                    data-row-inner="1"
+                    style="min-width: 0px;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    />
+                    <div
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    >
+                      25.5%
+                    </div>
+                    <div
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    />
+                    <div
+                      class="mclCell mclCellStyle"
+                      role="gridcell"
+                    >
+                      ui-invoice.adjustments.relationToTotal.inAdditionTo
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="mclEndOfListContainer"
+                  data-end-of-list="2"
+                >
+                  <div
+                    class="mclCenteredContainer"
+                    style="visibility: hidden; height: 0px; padding: 0px; width: 0px;"
+                  >
+                    <div
+                      class="textCentered"
                       data-test-layout="true"
                     >
-                      <span>
-                        Icon
-                      </span>
+                      <div
+                        class="mclEndOfList"
+                        data-test-layout="true"
+                      >
+                        <span>
+                          Icon
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
