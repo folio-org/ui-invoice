@@ -44,10 +44,13 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  INVOICE_ROUTE,
+  INVOICE_STATUS,
+} from '../../common/constants';
+import {
   calculateAdjustmentAmount,
   IS_EDIT_POST_APPROVAL,
 } from '../../common/utils';
-import { INVOICE_ROUTE, INVOICE_STATUS } from '../../common/constants';
 import {
   INVOICE_LINES_COLUMN_MAPPING,
   SECTIONS_INVOICE as SECTIONS,
