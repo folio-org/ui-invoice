@@ -1,8 +1,15 @@
-import React, { useMemo, useRef } from 'react';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useMemo,
+  useRef,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
-import { useHistory } from 'react-router';
+import {
+  useHistory,
+  useLocation,
+} from 'react-router';
 
 import {
   TitleManager,
@@ -33,33 +40,34 @@ import {
   TagsBadge,
   TagsPane,
   useAcqRestrictions,
+  VersionHistoryButton,
 } from '@folio/stripes-acq-components';
 
-import { PrintVoucherContainer } from '../PrintVoucher';
 import {
   calculateAdjustmentAmount,
   IS_EDIT_POST_APPROVAL,
 } from '../../common/utils';
-import { INVOICE_STATUS } from '../../common/constants';
+import { INVOICE_ROUTE, INVOICE_STATUS } from '../../common/constants';
 import {
   INVOICE_LINES_COLUMN_MAPPING,
   SECTIONS_INVOICE as SECTIONS,
 } from '../constants';
 import AdjustmentsDetails from '../AdjustmentsDetails';
-import InvoiceActions from './InvoiceActions';
+import { PrintVoucherContainer } from '../PrintVoucher';
+import ApproveConfirmationModal from './ApproveConfirmationModal';
+import CancellationModal from './CancellationModal';
+import { VENDOR_STATUS } from './constants';
+import DocumentsDetails from './DocumentsDetails';
+import ExtendedInformation from './ExtendedInformation';
+import { useHasPendingOrders } from './hooks';
 import Information from './Information';
+import InvoiceActions from './InvoiceActions';
+import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
 import InvoiceLinesContainer, { InvoiceLinesActions } from './InvoiceLines';
 import VendorDetails from './VendorDetails';
 import VoucherInformationContainer from './VoucherInformation';
-import DocumentsDetails from './DocumentsDetails';
-import InvoiceBatchVoucherExport from './InvoiceBatchVoucherExport';
-import ApproveConfirmationModal from './ApproveConfirmationModal';
-import ExtendedInformation from './ExtendedInformation';
-import CancellationModal from './CancellationModal';
 
 import styles from './InvoiceDetails.css';
-import { VENDOR_STATUS } from './constants';
-import { useHasPendingOrders } from './hooks';
 
 const initalAccordionsStatus = {
   [SECTIONS.documents]: false,
@@ -89,6 +97,17 @@ function InvoiceDetails({
   exportFormat,
   refreshData,
 }) {
+  const history = useHistory();
+  const stripes = useStripes();
+  const { search } = useLocation();
+  const accordionStatusRef = useRef();
+  const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
+    invoice.id, invoice.acqUnitIds,
+  );
+  const { hasPendingOrders, isLoading: isPendingOrdersLoading } = useHasPendingOrders(orderlinesMap);
+  const isVendorInactive = vendor?.status === VENDOR_STATUS.INACTIVE;
+  const showHasPendingOrdersMessage = hasPendingOrders && !isPendingOrdersLoading;
+
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const [isApproveConfirmationOpen, toggleApproveConfirmation] = useModalToggle();
   const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
@@ -102,15 +121,6 @@ function InvoiceDetails({
     INVOICE_STATUS.paid,
     INVOICE_STATUS.cancelled,
   ].includes(invoice.status);
-  const accordionStatusRef = useRef();
-  const history = useHistory();
-  const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
-    invoice.id, invoice.acqUnitIds,
-  );
-  const stripes = useStripes();
-  const { hasPendingOrders, isLoading: isPendingOrdersLoading } = useHasPendingOrders(orderlinesMap);
-  const isVendorInactive = vendor?.status === VENDOR_STATUS.INACTIVE;
-  const showHasPendingOrdersMessage = hasPendingOrders && !isPendingOrdersLoading;
 
   const shortcuts = [
     {
@@ -192,6 +202,13 @@ function InvoiceDetails({
     INVOICE_LINES_COLUMN_MAPPING,
   );
 
+  const openVersionHistory = useCallback(() => {
+    history.push({
+      pathname: `${INVOICE_ROUTE}/view/${invoice.id}/versions`,
+      search,
+    });
+  }, [history, search, invoice.id]);
+
   const renderLinesActions = (
     <InvoiceLinesActions
       createLine={createLine}
@@ -238,6 +255,9 @@ function InvoiceDetails({
       <TagsBadge
         tagsQuantity={tags.length}
         tagsToggle={toggleTagsPane}
+      />
+      <VersionHistoryButton
+        onClick={openVersionHistory}
       />
     </PaneMenu>
   );
