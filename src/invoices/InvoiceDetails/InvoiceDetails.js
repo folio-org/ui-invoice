@@ -104,9 +104,17 @@ function InvoiceDetails({
   const stripes = useStripes();
   const { search } = useLocation();
   const accordionStatusRef = useRef();
-  const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(
-    invoice.id, invoice.acqUnitIds,
-  );
+
+  const {
+    acqUnitIds,
+    currency,
+    exchangeRate,
+    id: invoiceId,
+    status,
+    subTotal,
+  } = invoice || {};
+
+  const { restrictions, isLoading: isRestrictionsLoading } = useAcqRestrictions(invoiceId, acqUnitIds);
   const { hasPendingOrders, isLoading: isPendingOrdersLoading } = useHasPendingOrders(orderlinesMap);
   const isVendorInactive = vendor?.status === VENDOR_STATUS.INACTIVE;
   const showHasPendingOrdersMessage = hasPendingOrders && !isPendingOrdersLoading;
@@ -123,7 +131,7 @@ function InvoiceDetails({
     INVOICE_STATUS.approved,
     INVOICE_STATUS.paid,
     INVOICE_STATUS.cancelled,
-  ].includes(invoice.status);
+  ].includes(status);
 
   const shortcuts = [
     {
@@ -207,17 +215,17 @@ function InvoiceDetails({
 
   const openVersionHistory = useCallback(() => {
     history.push({
-      pathname: `${INVOICE_ROUTE}/view/${invoice.id}/versions`,
+      pathname: `${INVOICE_ROUTE}/view/${invoiceId}/versions`,
       search,
     });
-  }, [history, search, invoice.id]);
+  }, [history, search, invoiceId]);
 
   const renderLinesActions = (
     <InvoiceLinesActions
       createLine={createLine}
       addLines={addLines}
-      isDisabled={IS_EDIT_POST_APPROVAL(invoice.id, invoice.status)}
-      invoiceCurrency={invoice.currency}
+      isDisabled={IS_EDIT_POST_APPROVAL(invoiceId, status)}
+      invoiceCurrency={currency}
       invoiceVendorId={invoice.vendorId}
       toggleColumn={toggleColumn}
       visibleColumns={visibleColumns}
@@ -236,14 +244,14 @@ function InvoiceDetails({
             ...distr,
             adjustmentDescription: adjustment.description,
             adjustmentId: adjustment.id,
-            totalAmount: calculateAdjustmentAmount(adjustment, invoice.subTotal, invoice.currency),
+            totalAmount: calculateAdjustmentAmount(adjustment, subTotal, currency),
           });
         });
       }
 
       return acc;
     }, []),
-    [adjustments, invoice.currency, invoice.subTotal],
+    [adjustments, currency, subTotal],
   );
 
   const paneTitle = (
@@ -320,21 +328,21 @@ function InvoiceDetails({
                 approvalDate={invoice.approvalDate}
                 approvedBy={invoice.approvedBy}
                 batchGroupId={invoice.batchGroupId}
-                exchangeRate={invoice.exchangeRate}
+                exchangeRate={exchangeRate}
                 fiscalYearId={invoice.fiscalYearId}
                 invoiceDate={invoice.invoiceDate}
                 paymentDate={invoice.paymentDate}
                 paymentDue={invoice.paymentDue}
                 paymentTerms={invoice.paymentTerms}
-                status={invoice.status}
-                subTotal={invoice.subTotal}
+                status={status}
+                subTotal={subTotal}
                 total={invoice.total}
                 source={invoice.source}
                 metadata={invoice.metadata}
                 billTo={invoice.billTo}
                 invoiceTotalUnits={invoiceTotalUnits}
-                acqUnits={invoice.acqUnitIds}
-                currency={invoice.currency}
+                acqUnits={acqUnitIds}
+                currency={currency}
                 note={invoice.note}
                 lockTotal={invoice.lockTotal}
                 cancellationNote={invoice.cancellationNote}
@@ -367,7 +375,7 @@ function InvoiceDetails({
                 label={<FormattedMessage id="ui-invoice.invoice.details.accordion.fundDistribution" />}
               >
                 <FundDistributionView
-                  currency={invoice.currency}
+                  currency={currency}
                   fundDistributions={fundDistributions}
                   groupBy="adjustmentId"
                 />
@@ -381,7 +389,7 @@ function InvoiceDetails({
               >
                 <AdjustmentsDetails
                   adjustments={adjustments}
-                  currency={invoice.currency}
+                  currency={currency}
                 />
               </Accordion>
             )}
@@ -405,8 +413,8 @@ function InvoiceDetails({
                 paymentMethod={invoice.paymentMethod}
                 chkSubscriptionOverlap={invoice.chkSubscriptionOverlap}
                 exportToAccounting={invoice.exportToAccounting}
-                currency={invoice.currency}
-                exchangeRate={invoice.exchangeRate}
+                currency={currency}
+                exchangeRate={exchangeRate}
                 enclosureNeeded={invoice.enclosureNeeded}
               />
             </Accordion>
@@ -421,7 +429,7 @@ function InvoiceDetails({
                 />
               </Accordion>
             )}
-            {showVoucherInformation && <VoucherInformationContainer invoiceId={invoice.id} />}
+            {showVoucherInformation && <VoucherInformationContainer invoiceId={invoiceId} />}
             <Accordion
               label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
               id={SECTIONS.documents}
