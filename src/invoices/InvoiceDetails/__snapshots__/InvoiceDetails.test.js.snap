@@ -126,6 +126,33 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
                 </span>
               </button>
             </div>
+            <button
+              aria-label="clock"
+              aria-labelledby="version-history-tooltip-text"
+              class="iconButton medium"
+              icon="clock"
+              id="version-history-btn"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+            <span
+              class="sr-only"
+              data-test-tooltip-proximity-element="true"
+            >
+              <span
+                id="version-history-tooltip-text"
+                role="tooltip"
+              >
+                stripes-acq-components.versionHistory.pane.header
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -618,6 +645,33 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
                 </span>
               </button>
             </div>
+            <button
+              aria-label="clock"
+              aria-labelledby="version-history-tooltip-text"
+              class="iconButton medium"
+              icon="clock"
+              id="version-history-btn"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+            <span
+              class="sr-only"
+              data-test-tooltip-proximity-element="true"
+            >
+              <span
+                id="version-history-tooltip-text"
+                role="tooltip"
+              >
+                stripes-acq-components.versionHistory.pane.header
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -1110,6 +1164,33 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
                 </span>
               </button>
             </div>
+            <button
+              aria-label="clock"
+              aria-labelledby="version-history-tooltip-text"
+              class="iconButton medium"
+              icon="clock"
+              id="version-history-btn"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+            <span
+              class="sr-only"
+              data-test-tooltip-proximity-element="true"
+            >
+              <span
+                id="version-history-tooltip-text"
+                role="tooltip"
+              >
+                stripes-acq-components.versionHistory.pane.header
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -1601,6 +1682,33 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
                 </span>
               </button>
             </div>
+            <button
+              aria-label="clock"
+              aria-labelledby="version-history-tooltip-text"
+              class="iconButton medium"
+              icon="clock"
+              id="version-history-btn"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+            <span
+              class="sr-only"
+              data-test-tooltip-proximity-element="true"
+            >
+              <span
+                id="version-history-tooltip-text"
+                role="tooltip"
+              >
+                stripes-acq-components.versionHistory.pane.header
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -2093,6 +2201,33 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
                 </span>
               </button>
             </div>
+            <button
+              aria-label="clock"
+              aria-labelledby="version-history-tooltip-text"
+              class="iconButton medium"
+              icon="clock"
+              id="version-history-btn"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+            <span
+              class="sr-only"
+              data-test-tooltip-proximity-element="true"
+            >
+              <span
+                id="version-history-tooltip-text"
+                role="tooltip"
+              >
+                stripes-acq-components.versionHistory.pane.header
+              </span>
+            </span>
           </div>
         </div>
       </div>
@@ -2584,6 +2719,33 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
                 </span>
               </button>
             </div>
+            <button
+              aria-label="clock"
+              aria-labelledby="version-history-tooltip-text"
+              class="iconButton medium"
+              icon="clock"
+              id="version-history-btn"
+              type="button"
+            >
+              <span
+                class="iconButtonInner mediumOffset"
+              >
+                <span>
+                  Icon
+                </span>
+              </span>
+            </button>
+            <span
+              class="sr-only"
+              data-test-tooltip-proximity-element="true"
+            >
+              <span
+                id="version-history-tooltip-text"
+                role="tooltip"
+              >
+                stripes-acq-components.versionHistory.pane.header
+              </span>
+            </span>
           </div>
         </div>
       </div>
