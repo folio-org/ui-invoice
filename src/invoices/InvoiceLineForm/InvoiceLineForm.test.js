@@ -66,8 +66,7 @@ describe('InvoiceLineForm component', () => {
     global.document.createRange = global.document.mockCreateRange;
   });
 
-  // TODO: release blocker: enable after release
-  xit('should render correct structure', () => {
+  it('should render correct structure', () => {
     const { container, asFragment } = renderInvoiceLineForm();
 
     container.querySelector('#invoice-line-form-accordion-set').removeAttribute('aria-multiselectable');

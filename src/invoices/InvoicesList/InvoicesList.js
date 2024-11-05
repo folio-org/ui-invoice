@@ -44,6 +44,11 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  INVOICE_LINE_VIEW_ROUTE,
+  INVOICE_VERSION_HISTORY_ROUTE,
+  INVOICE_VIEW_ROUTE,
+} from '../../common/constants';
+import {
   getInvoiceStatusLabel,
   formatDate,
 } from '../../common/utils';
@@ -57,7 +62,6 @@ import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
 import { ExportSettingsModal } from './ExportSettingsModal';
-import { INVOICE_LINE_VIEW_ROUTE, INVOICE_VERSION_HISTORY_ROUTE, INVOICE_VIEW_ROUTE } from '../../common/constants';
 import { VersionHistory } from '../VersionHistory';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;

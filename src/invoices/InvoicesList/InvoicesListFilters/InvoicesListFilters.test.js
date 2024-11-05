@@ -35,8 +35,7 @@ const renderInvoicesListFilters = (props = defaultProps) => render(
   { wrapper },
 );
 
-// TODO: release blocker: enable after release
-describe.skip('InvoicesListFilters', () => {
+describe('InvoicesListFilters', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
   });

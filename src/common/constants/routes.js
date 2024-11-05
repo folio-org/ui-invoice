@@ -1,0 +1,12 @@
+export const INVOICE_ROUTE = '/invoice';
+export const INVOICE_CREATE_ROUTE = `${INVOICE_ROUTE}/create`;
+export const INVOICE_EDIT_ROUTE = `${INVOICE_ROUTE}/edit/:id`;
+export const INVOICE_VIEW_ROUTE = `${INVOICE_ROUTE}/view/:id`;
+export const INVOICE_VERSION_HISTORY_ROUTE = `${INVOICE_VIEW_ROUTE}/versions`;
+export const INVOICE_LINE_ROUTE = `${INVOICE_VIEW_ROUTE}/line`;
+export const INVOICE_LINE_CREATE_ROUTE = `${INVOICE_LINE_ROUTE}/create`;
+export const INVOICE_LINE_EDIT_ROUTE = `${INVOICE_LINE_ROUTE}/:lineId/edit`;
+export const INVOICE_LINE_VIEW_ROUTE = `${INVOICE_LINE_ROUTE}/:lineId/view`;
+export const INVOICE_LINE_SEQUENCE_ROUTE = `${INVOICE_VIEW_ROUTE}/lines-sequence`;
+export const INVOICE_VOUCHER_ROUTE = `${INVOICE_VIEW_ROUTE}/voucher`;
+export const INVOICE_VOUCHER_EXPORT_ROUTE = `${INVOICE_ROUTE}/voucher-export`;
