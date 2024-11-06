@@ -332,6 +332,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r1:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
+                                    tabindex="-1"
                                   />
                                 </div>
                               </div>
@@ -430,6 +431,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r3:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
+                                    tabindex="-1"
                                   />
                                 </div>
                               </div>
@@ -692,6 +694,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r5:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
+                                    tabindex="-1"
                                   />
                                 </div>
                               </div>
@@ -811,6 +814,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r7:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
+                                    tabindex="-1"
                                   />
                                 </div>
                               </div>
@@ -1298,6 +1302,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:r9:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
+                                    tabindex="-1"
                                   />
                                 </div>
                               </div>
@@ -1745,6 +1750,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                     id="downshift-:rb:-menu"
                                     role="listbox"
                                     style="max-height: 174px;"
+                                    tabindex="-1"
                                   />
                                 </div>
                               </div>
@@ -1964,6 +1970,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   class="repeatableField hasMargin"
                                   data-test-repeatable-field="true"
                                   id="invoice-form-links"
+                                  tabindex="-1"
                                 >
                                   <button
                                     class="button default"

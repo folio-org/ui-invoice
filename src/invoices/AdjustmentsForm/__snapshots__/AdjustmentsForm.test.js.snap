@@ -91,6 +91,7 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                 id="downshift-:r1:-menu"
                 role="listbox"
                 style="max-height: 174px;"
+                tabindex="-1"
               />
             </div>
           </div>
@@ -103,6 +104,7 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
           class="repeatableField hasMargin"
           data-test-repeatable-field="true"
           id="adjustments"
+          tabindex="-1"
         >
           <ul
             class="repeatableFieldList"
@@ -584,6 +586,7 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
                 id="downshift-:r3:-menu"
                 role="listbox"
                 style="max-height: 174px;"
+                tabindex="-1"
               />
             </div>
           </div>
@@ -596,6 +599,7 @@ exports[`AdjustmentsForm should render correct structure without adjustments 1`]
           class="repeatableField hasMargin"
           data-test-repeatable-field="true"
           id="adjustments"
+          tabindex="-1"
         >
           <button
             class="button default"

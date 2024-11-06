@@ -40,6 +40,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 
 jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsDetails'));
 jest.mock('../PrintVoucher', () => ({ PrintVoucherContainer: jest.fn(() => 'PrintVoucherContainer') }));
+jest.mock('../VersionHistory', () => jest.fn().mockReturnValue('VersionHistory'));
 
 jest.mock('./InvoiceActions', () => jest.fn().mockReturnValue('InvoiceActions'));
 jest.mock('./ApproveConfirmationModal', () => jest.fn().mockReturnValue('ApproveConfirmationModal'));
@@ -375,6 +376,26 @@ describe('InvoiceDetails', () => {
       await user.click(screen.getAllByTitle('stripes-acq-components.showTags')[0]);
 
       expect(screen.getByText('TagsPane')).toBeDefined();
+    });
+  });
+
+  describe('Version history', () => {
+    it('should open when change log icon is clicked', async () => {
+      const pushMock = jest.fn();
+
+      useHistory.mockClear().mockReturnValue({
+        push: pushMock,
+      });
+
+      const { container } = renderInvoiceDetails();
+
+      const versionHistoryButton = container.querySelector('#version-history-btn');
+
+      await user.click(versionHistoryButton);
+
+      expect(pushMock).toHaveBeenCalledWith(expect.objectContaining({
+        pathname: expect.stringMatching(/invoice\/view\/.*\/versions/),
+      }));
     });
   });
 

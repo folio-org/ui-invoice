@@ -732,6 +732,7 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                   id="downshift-:r1:-menu"
                   role="listbox"
                   style="max-height: 174px;"
+                  tabindex="-1"
                 />
               </div>
             </div>
@@ -4320,6 +4321,7 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
                   id="downshift-:r3:-menu"
                   role="listbox"
                   style="max-height: 174px;"
+                  tabindex="-1"
                 />
               </div>
             </div>

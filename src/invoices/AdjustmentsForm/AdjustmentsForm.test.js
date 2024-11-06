@@ -44,8 +44,7 @@ describe('AdjustmentsForm', () => {
     global.document.createRange = global.document.mockCreateRange;
   });
 
-  // TODO: release blocker: enable after release
-  xit('should render correct structure with defined adjustments', async () => {
+  it('should render correct structure with defined adjustments', async () => {
     const { asFragment } = renderForm({ initialValues: { adjustments: [adjustment] } });
 
     await screen.findByText('ui-invoice.adjustment.description');
@@ -53,8 +52,7 @@ describe('AdjustmentsForm', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  // TODO: release blocker: enable after release
-  xit('should render correct structure without adjustments', async () => {
+  it('should render correct structure without adjustments', async () => {
     const { asFragment } = renderForm();
 
     expect(asFragment()).toMatchSnapshot();
