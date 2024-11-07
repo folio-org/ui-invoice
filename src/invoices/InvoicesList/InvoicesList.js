@@ -6,6 +6,7 @@ import {
   useHistory,
   useLocation,
   useRouteMatch,
+  Switch,
 } from 'react-router-dom';
 import {
   FormattedMessage,
@@ -269,19 +270,20 @@ const InvoicesList = ({
             query={query}
           />
         )}
-
         <Route
           path={INVOICE_LINE_VIEW_ROUTE}
           component={InvoiceLineDetailsContainer}
+          exact
         />
-
         <Route
-          path={INVOICE_VIEW_ROUTE}
+          path={[INVOICE_VIEW_ROUTE, INVOICE_VERSION_HISTORY_ROUTE]}
           render={renderInvoiceDetails}
+          exact
         />
         <Route
           path={INVOICE_VERSION_HISTORY_ROUTE}
           component={VersionHistory}
+          exact
         />
       </PersistedPaneset>
     </HasCommand>
