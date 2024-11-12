@@ -9,6 +9,7 @@ export * from './useInvoice';
 export * from './useInvoiceMutation';
 export * from './useInvoiceLine';
 export * from './useInvoiceLineMutation';
+export * from './useInvoiceVersions';
 export * from './useOrderLine';
 export * from './useOrderLines';
 export * from './useOrders';
