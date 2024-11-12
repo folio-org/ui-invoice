@@ -710,7 +710,9 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                             class="col-xs-3"
                             data-test-col-invoice-line-accounting-code="true"
                           >
-                            <div>
+                            <div
+                              class="selectionOuter"
+                            >
                               <label
                                 class="label"
                                 for="downshift-:r1:-input"
