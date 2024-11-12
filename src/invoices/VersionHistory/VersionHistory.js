@@ -3,6 +3,7 @@ import {
   memo,
   useCallback,
 } from 'react';
+import { FormattedMessage } from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { TitleManager } from '@folio/stripes/core';
@@ -10,10 +11,16 @@ import {
   VersionHistoryPane,
   VersionViewContextProvider,
 } from '@folio/stripes-acq-components';
-import { FormattedMessage } from 'react-intl';
+
 import { INVOICE_ROUTE } from '../../common/constants';
-import { useInvoice, useInvoiceVersions } from '../../common/hooks';
-import { HIDDEN_INVOICE_FIELDS, INVOICE_FIELDS_LABEL_MAP } from './constants';
+import {
+  useInvoice,
+  useInvoiceVersions,
+} from '../../common/hooks';
+import {
+  HIDDEN_INVOICE_FIELDS,
+  INVOICE_FIELDS_LABEL_MAP,
+} from './constants';
 import VersionView from './VersionView';
 
 const VersionHistory = ({
