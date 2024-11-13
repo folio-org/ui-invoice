@@ -249,7 +249,9 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                           <div
                             class="col-xs-3"
                           >
-                            <div>
+                            <div
+                              class="selectionOuter"
+                            >
                               <label
                                 class="label"
                                 for="downshift-:r1:-input"
@@ -342,7 +344,9 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             class="col-xs-3"
                             data-test-col-status="true"
                           >
-                            <div>
+                            <div
+                              class="selectionOuter"
+                            >
                               <label
                                 class="label"
                                 for="downshift-:r3:-input"
@@ -611,7 +615,9 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             class="col-xs-3"
                             data-test-col-bill-to-name="true"
                           >
-                            <div>
+                            <div
+                              class="selectionOuter"
+                            >
                               <label
                                 class="label"
                                 for="downshift-:r5:-input"
@@ -725,7 +731,9 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             class="col-xs-3"
                             data-test-col-batch-group="true"
                           >
-                            <div>
+                            <div
+                              class="selectionOuter"
+                            >
                               <label
                                 class="label"
                                 for="downshift-:r7:-input"
@@ -1214,7 +1222,9 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             class="col-xs-3"
                             data-test-col-accounting-code="true"
                           >
-                            <div>
+                            <div
+                              class="selectionOuter"
+                            >
                               <label
                                 class="label"
                                 for="downshift-:r9:-input"
@@ -1661,7 +1671,9 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             class="col-xs-3"
                             data-test-col-currency="true"
                           >
-                            <div>
+                            <div
+                              class="selectionOuter"
+                            >
                               <label
                                 class="label"
                                 for="downshift-:rb:-input"

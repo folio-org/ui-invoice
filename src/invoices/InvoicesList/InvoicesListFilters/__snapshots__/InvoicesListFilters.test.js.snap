@@ -658,7 +658,9 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
           id="accordion4"
           role="region"
         >
-          <div>
+          <div
+            class="selectionOuter"
+          >
             <div
               class="selectionControlContainer"
             >
@@ -4246,7 +4248,9 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
           id="accordion80"
           role="region"
         >
-          <div>
+          <div
+            class="selectionOuter"
+          >
             <div
               class="selectionControlContainer"
             >

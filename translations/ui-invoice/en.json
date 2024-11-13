@@ -436,6 +436,8 @@
   "invoice.isNotUnique.confirmation.heading": "Save invoice",
   "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice",
 
+  "invoice.versionHistory.noVersion": "No version history to display.",
+
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
