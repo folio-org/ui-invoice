@@ -7,13 +7,20 @@ import {
 
 import { AUDIT_INVOICE_API } from '../../constants';
 
+const DEFAULT_VALUE = [];
+
 export const useInvoiceVersions = (invoiceId, options = {}) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'invoice-versions' });
 
+  const searchParams = {
+    sortBy: 'event_date',
+    sortOrder: 'desc',
+  };
+
   const { isLoading, data } = useQuery(
     [namespace, invoiceId],
-    () => ky.get(`${AUDIT_INVOICE_API}/${invoiceId}`).json(),
+    ({ signal }) => ky.get(`${AUDIT_INVOICE_API}/${invoiceId}`, { signal, searchParams }).json(),
     {
       enabled: Boolean(invoiceId),
       ...options,
@@ -22,6 +29,6 @@ export const useInvoiceVersions = (invoiceId, options = {}) => {
 
   return {
     isLoading,
-    versions: data?.invoiceAuditEvents || [],
+    versions: data?.invoiceAuditEvents || DEFAULT_VALUE,
   };
 };
