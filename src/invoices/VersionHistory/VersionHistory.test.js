@@ -80,7 +80,6 @@ const kyMock = {
 
 const queryClient = new QueryClient();
 
-// eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     <MemoryRouter

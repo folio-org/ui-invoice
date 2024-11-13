@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { memo, useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 
 import {
   Layout,
