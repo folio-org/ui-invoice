@@ -469,9 +469,10 @@
     "invoice.actions.duplicate.error.message": "Faktura nebyla duplikována",
     "search.folioInvoiceNo": "Číslo faktury FOLIO",
     "label.backToInvoice": "Back to Invoice",
-    "permission.invoice.approve.execute": "Invoice: Approve invoices",
-    "permission.invoice.pay.execute": "Invoice: Pay invoices",
-    "permission.invoice.pay-different-fy.execute": "Invoice: Pay invoices in a different fiscal year",
-    "permission.invoice.cancel.execute": "Invoice: Cancel invoices",
-    "permission.voucher.export.execute": "Invoice: Voucher export"
+    "permission.invoice.approve.execute": "Faktura: Schválení faktur",
+    "permission.invoice.pay.execute": "Faktura: Plaťte faktury",
+    "permission.invoice.pay-different-fy.execute": "Faktury: Zaplatit faktury v jiném fiskálním roce",
+    "permission.invoice.cancel.execute": "Faktura: Zrušení faktur",
+    "permission.voucher.export.execute": "Faktura: Export poukazu",
+    "invoice.versionHistory.noVersion": "No version history to display."
 }

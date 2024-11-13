@@ -473,5 +473,6 @@
     "permission.invoice.pay.execute": "Invoice: Pay invoices",
     "permission.invoice.pay-different-fy.execute": "Invoice: Pay invoices in a different fiscal year",
     "permission.invoice.cancel.execute": "Invoice: Cancel invoices",
-    "permission.voucher.export.execute": "Invoice: Voucher export"
+    "permission.voucher.export.execute": "Invoice: Voucher export",
+    "invoice.versionHistory.noVersion": "No version history to display."
 }
