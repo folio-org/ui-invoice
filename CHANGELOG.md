@@ -4,6 +4,7 @@
 
 * Open version history pane on click changelog icon. Refs UINV-468.
 * Display all invoice versions in change log in fourth pane. Refs UINV-469.
+* Invoices - Show in version history record view, which fields have been edited. Refs UINV-470.
 
 ## [6.1.0](https://github.com/folio-org/ui-invoice/tree/v6.1.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.4...v6.1.0)
