@@ -74,7 +74,7 @@
     "invoiceLineInformation": "Informacje o pozycji faktury",
     "fundDistribution": "Podział funduszu",
     "adjustments": "Korekty",
-    "status.Open": "Otwarty",
+    "status.Open": "Otwarte",
     "invoice.details.lines.list.description": "Opis",
     "invoice.details.lines.list.quantity": "Ilość",
     "invoice.details.lines.list.total": "Ogółem",
@@ -473,5 +473,6 @@
     "permission.invoice.pay.execute": "Invoice: Pay invoices",
     "permission.invoice.pay-different-fy.execute": "Invoice: Pay invoices in a different fiscal year",
     "permission.invoice.cancel.execute": "Invoice: Cancel invoices",
-    "permission.voucher.export.execute": "Invoice: Voucher export"
+    "permission.voucher.export.execute": "Invoice: Voucher export",
+    "invoice.versionHistory.noVersion": "No version history to display."
 }

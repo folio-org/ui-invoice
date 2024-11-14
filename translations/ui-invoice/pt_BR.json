@@ -473,5 +473,6 @@
     "permission.invoice.pay.execute": "Fatura: Pagar faturas",
     "permission.invoice.pay-different-fy.execute": "Fatura: Pagar faturas em um ano fiscal diferente",
     "permission.invoice.cancel.execute": "Fatura: Cancelar faturas",
-    "permission.voucher.export.execute": "Fatura: Exportação de comprovante"
+    "permission.voucher.export.execute": "Fatura: Exportação de comprovante",
+    "invoice.versionHistory.noVersion": "Nenhum histórico de versões para exibir."
 }
