@@ -16,8 +16,8 @@ import {
   useInvoiceLinesByInvoiceId,
   useOrdersByPoNumbers,
 } from '../hooks';
-import { 
-  buildQueryByIds, 
+import {
+  buildQueryByIds,
   getResultsFormatter,
 } from './utils';
 
