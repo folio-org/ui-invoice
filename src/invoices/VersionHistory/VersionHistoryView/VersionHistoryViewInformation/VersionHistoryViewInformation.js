@@ -212,18 +212,20 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
       </Row>
 
       <Row>
-        <Col xs={3}>
-          <CalculatedExchangeAmount
-            currency={currency}
-            exchangeRate={exchangeRate}
-            total={total}
-            name="exchangeRate"
-            isVersionView
-          />
-        </Col>
-      </Row>
-      {isLockTotal && (
-        <Row>
+        {
+          exchangeRate && (
+            <Col xs={3}>
+              <CalculatedExchangeAmount
+                currency={currency}
+                exchangeRate={exchangeRate}
+                total={total}
+                name="exchangeRate"
+                isVersionView
+              />
+            </Col>
+          )
+        }
+        {isLockTotal && (
           <Col xs={3} data-testid="lock-total-amount">
             <VersionKeyValue
               name="lockTotal"
@@ -231,8 +233,8 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
               value={<AmountWithCurrencyField amount={lockTotal} currency={currency} />}
             />
           </Col>
-        </Row>
-      )}
+        )}
+      </Row>
     </>
   );
 };
