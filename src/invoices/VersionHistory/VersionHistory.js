@@ -73,7 +73,7 @@ const VersionHistory = ({
     <VersionViewContextProvider
       snapshotPath={snapshotPath}
       versions={versions}
-      versionId="versionId"
+      versionId={versionId}
     >
       <TitleManager record={invoice?.vendorInvoiceNo} />
       <VersionView
@@ -81,6 +81,7 @@ const VersionHistory = ({
         dismissible
         isLoading={isLoading}
         onClose={onVersionClose}
+        versionId={versionId}
         paneTitle={(
           <FormattedMessage
             id="ui-invoice.invoice.details.paneTitle"

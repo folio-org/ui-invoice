@@ -1,10 +1,6 @@
-import {
-  filter,
-  flow,
-  get,
-  keyBy,
-  uniq,
-} from 'lodash/fp';
+import get from 'lodash/get';
+import keyBy from 'lodash/keyBy';
+import uniq from 'lodash/uniq';
 import { useMemo } from 'react';
 import { useIntl } from 'react-intl';
 import { useQuery } from 'react-query';
@@ -16,10 +12,6 @@ import {
 import { getFullName } from '@folio/stripes/util';
 import {
   ACQUISITIONS_UNITS_API,
-  CONFIG_ADDRESSES,
-  CONFIG_API,
-  LIMIT_MAX,
-  MODULE_TENANT,
   fetchExportDataByIds,
   fetchOrganizationsByIds,
   getAddresses,
@@ -27,28 +19,9 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { useInvoice } from '../useInvoice';
+import { getTenantAddresses, getVersionMetadata } from './utils';
 
-const getUniqItems = (arr) => (
-  flow(
-    uniq,
-    filter(Boolean),
-  )(arr)
-);
-
-export const getTenantAddresses = (ky) => async () => {
-  const searchParams = {
-    limit: LIMIT_MAX,
-    query: `(module=${MODULE_TENANT} and configName=${CONFIG_ADDRESSES})`,
-  };
-
-  return ky.get(CONFIG_API, { searchParams }).json();
-};
-
-export const getVersionMetadata = (version, entity) => ({
-  ...get(entity, 'metadata', {}),
-  updatedByUserId: version?.userId,
-  updatedDate: version?.actionDate,
-});
+const DEFAULT_VALUE = [];
 
 export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath }, options = {}) => {
   const intl = useIntl();
@@ -60,26 +33,26 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
     versions?.find(({ id }) => id === versionId)
   ), [versionId, versions]);
   const versionSnapshot = useMemo(() => (
-    get(snapshotPath, currentVersion)
+    get(currentVersion, snapshotPath)
   ), [snapshotPath, currentVersion]);
 
   const {
     invoice,
     isLoading: isInvoiceLoading,
-  } = useInvoice(currentVersion?.id);
+  } = useInvoice(currentVersion?.invoiceId);
 
   const metadata = useMemo(() => getVersionMetadata(currentVersion, invoice), [currentVersion, invoice]);
-  const assignedToId = versionSnapshot?.assignedTo;
   const createdByUserId = metadata?.createdByUserId;
-  const vendorId = versionSnapshot?.vendor;
+  const updatedByUserId = metadata?.updatedByUserId;
+  const vendorId = versionSnapshot?.vendorId;
   const billToId = versionSnapshot?.billTo;
 
-  const versionUserIds = useMemo(() => getUniqItems([assignedToId, createdByUserId]), [assignedToId, createdByUserId]);
+  const versionUserIds = useMemo(() => uniq([updatedByUserId, createdByUserId]), [updatedByUserId, createdByUserId]);
   const {
-    users,
+    users = DEFAULT_VALUE,
     isLoading: isUsersLoading,
   } = useUsersBatch(versionUserIds);
-  const versionUsersMap = keyBy('id', users);
+  const versionUsersMap = keyBy(users, 'id');
 
   const {
     isLoading: isVersionDataLoading,
@@ -88,23 +61,24 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
     [namespace, versionId, versionSnapshot?.id],
     async () => {
       const organizationIds = [vendorId];
-      const acqUnitsIds = versionSnapshot?.acqUnitIds || [];
+      const acqUnitsIds = versionSnapshot?.acqUnitIds || DEFAULT_VALUE;
 
       const [
         organizationsMap,
         acqUnitsMap,
         addressesMap,
       ] = await Promise.all([
-        fetchOrganizationsByIds(ky)(organizationIds).then(keyBy('id')),
-        fetchExportDataByIds({ ky, ids: acqUnitsIds, api: ACQUISITIONS_UNITS_API, records: 'acquisitionsUnits' })(acqUnitsIds).then(keyBy('id')),
+        fetchOrganizationsByIds(ky)(organizationIds).then(({ organizations }) => keyBy(organizations, 'id')),
+        fetchExportDataByIds({
+          ky,
+          ids: acqUnitsIds,
+          api: ACQUISITIONS_UNITS_API,
+          records: 'acquisitionsUnits',
+        }).then(data => keyBy(data, 'id')),
         getTenantAddresses(ky)()
           .then(({ configs }) => getAddresses(configs))
-          .then(keyBy('id')),
+          .then(data => keyBy(data, 'id')),
       ]);
-
-      const assignedTo = versionUsersMap[assignedToId]
-        ? getFullName(versionUsersMap[assignedToId])
-        : deletedRecordLabel;
 
       const createdByUser = versionUsersMap[createdByUserId]
         ? getFullName(versionUsersMap[createdByUserId])
@@ -113,7 +87,6 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
       return {
         ...versionSnapshot,
         acqUnits: acqUnitsIds.map(acqUnitsId => acqUnitsMap[acqUnitsId]?.name || deletedRecordLabel).join(', '),
-        assignedTo: assignedToId && assignedTo,
         vendor: organizationsMap[vendorId]?.name || deletedRecordLabel,
         createdByUser: createdByUserId && createdByUser,
         billTo: billToId && (addressesMap[billToId]?.address || deletedRecordLabel),
@@ -133,8 +106,8 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
 
   const isLoading = (
     isInvoiceLoading
-    || isUsersLoading
     || isVersionDataLoading
+    || isUsersLoading
   );
 
   return {

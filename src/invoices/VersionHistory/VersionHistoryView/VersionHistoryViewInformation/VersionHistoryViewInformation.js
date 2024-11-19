@@ -1,4 +1,4 @@
-import { isNumber } from 'lodash';
+import isNumber from 'lodash/isNumber';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -8,17 +8,20 @@ import {
 } from '@folio/stripes/components';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import {
-  AcqUnitsView,
   AmountWithCurrencyField,
   FolioFormattedDate,
   VersionKeyValue,
   sourceLabels,
 } from '@folio/stripes-acq-components';
 
+import {
+  ApprovedBy,
+  CalculatedExchangeAmount,
+  FiscalYearValueContainer,
+  StatusValue,
+} from '../../../../common/components';
 import { isCancelled } from '../../../../common/utils';
-import { ApprovedBy, CalculatedExchangeAmount, FiscalYearValue, StatusValue } from '../../../../common/components';
 import BatchGroupValue from '../../../InvoiceDetails/BatchGroupValue';
-import BillTo from '../../../InvoiceDetails/Information/BillTo';
 
 export const VersionHistoryViewInformation = ({ version = {} }) => {
   const {
@@ -38,7 +41,7 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
     metadata,
     billTo,
     invoiceTotalUnits,
-    acqUnits,
+    acqUnits = [],
     currency,
     note,
     lockTotal,
@@ -53,22 +56,32 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
       <Row>
         <Col xs={3}>
           <VersionKeyValue
+            name="invoiceDate"
             label={<FormattedMessage id="ui-invoice.invoice.details.information.invoiceDate" />}
             value={<FolioFormattedDate value={invoiceDate} />}
           />
         </Col>
 
         <Col xs={3}>
-          <FiscalYearValue fiscalYearId={fiscalYearId} />
+          <FiscalYearValueContainer
+            fiscalYearId={fiscalYearId}
+            isVersionView
+            name="fiscalYearId"
+          />
         </Col>
 
         <Col xs={3}>
-          <StatusValue value={status} />
+          <StatusValue
+            isVersionView
+            name="status"
+            value={status}
+          />
         </Col>
 
         {isCancelled(status) && (
           <Col xs={3}>
             <VersionKeyValue
+              name="cancellationNote"
               label={<FormattedMessage id="ui-invoice.invoice.cancellationNote" />}
               value={cancellationNote}
             />
@@ -77,6 +90,7 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
 
         <Col xs={3}>
           <VersionKeyValue
+            name="paymentDue"
             label={<FormattedMessage id="ui-invoice.invoice.details.information.paymentDue" />}
             value={<FolioFormattedDate value={paymentDue} />}
           />
@@ -84,6 +98,7 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
 
         <Col xs={3}>
           <VersionKeyValue
+            name="paymentTerms"
             label={<FormattedMessage id="ui-invoice.invoice.paymentTerms" />}
             value={paymentTerms}
           />
@@ -91,6 +106,7 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
 
         <Col xs={3}>
           <VersionKeyValue
+            name="approvedDate"
             label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedDate" />}
             value={<FolioFormattedDate value={approvalDate} utc={false} />}
           />
@@ -100,16 +116,26 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
           data-test-approved-by
           xs={3}
         >
-          <ApprovedBy approvedByUserId={approvedBy} />
+          <ApprovedBy
+            approvedByUserId={approvedBy}
+            isVersionView
+            name="approvedBy"
+          />
         </Col>
 
         <Col xs={3}>
-          <AcqUnitsView units={acqUnits} />
+          <VersionKeyValue
+            name="acqUnitIds"
+            label={<FormattedMessage id="stripes-acq-components.label.acqUnits" />}
+            value={acqUnits}
+            multiple
+          />
         </Col>
 
         <Col xs={3}>
           <VersionKeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.source" />}
+            name="source"
             value={sourceLabels[source]}
           />
         </Col>
@@ -119,25 +145,34 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
         <Col xs={3}>
           <VersionKeyValue
             label={<FormattedMessage id="ui-invoice.invoice.note" />}
+            name="note"
             value={note}
           />
         </Col>
 
         <Col xs={3}>
-          <BillTo billToId={billTo} />
+          <VersionKeyValue
+            name="billTo"
+            label={<FormattedMessage id="ui-orders.orderDetails.billTo" />}
+            value={billTo}
+          />
         </Col>
 
         <Col xs={3}>
           <BatchGroupValue
+            name="batchGroupId"
             id={batchGroupId}
+            isVersionView
             label={<FormattedMessage id="ui-invoice.invoice.details.information.batchGroup" />}
           />
         </Col>
 
         <Col xs={3}>
-          <VersionKeyValue label={<FormattedMessage id="ui-invoice.invoice.paymentDate" />}>
-            <FolioFormattedDate value={paymentDate} utc={false} />
-          </VersionKeyValue>
+          <VersionKeyValue
+            name="paymentDate"
+            label={<FormattedMessage id="ui-invoice.invoice.paymentDate" />}
+            value={<FolioFormattedDate value={paymentDate} utc={false} />}
+          />
         </Col>
 
       </Row>
@@ -145,36 +180,34 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
       <Row>
         <Col xs={3}>
           <VersionKeyValue
+            name="invoiceTotalUnits"
             label={<FormattedMessage id="ui-invoice.invoice.details.information.totalUnits" />}
             value={invoiceTotalUnits}
           />
         </Col>
 
         <Col xs={3}>
-          <VersionKeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}>
-            <AmountWithCurrencyField
-              amount={subTotal}
-              currency={currency}
-            />
-          </VersionKeyValue>
+          <VersionKeyValue
+            name="subTotal"
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.subTotal" />}
+            value={<AmountWithCurrencyField amount={subTotal} currency={currency} />}
+          />
         </Col>
 
         <Col xs={3}>
-          <VersionKeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}>
-            <AmountWithCurrencyField
-              amount={adjustmentsTotal}
-              currency={currency}
-            />
-          </VersionKeyValue>
+          <VersionKeyValue
+            name="adjustmentsTotal"
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.adjustment" />}
+            value={<AmountWithCurrencyField amount={adjustmentsTotal} currency={currency} />}
+          />
         </Col>
 
         <Col xs={3}>
-          <VersionKeyValue label={<FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalAmount" />}>
-            <AmountWithCurrencyField
-              amount={total}
-              currency={currency}
-            />
-          </VersionKeyValue>
+          <VersionKeyValue
+            name="total"
+            label={<FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalAmount" />}
+            value={<AmountWithCurrencyField amount={total} currency={currency} />}
+          />
         </Col>
       </Row>
 
@@ -184,19 +217,22 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
             currency={currency}
             exchangeRate={exchangeRate}
             total={total}
+            name="exchangeRate"
+            isVersionView
           />
         </Col>
-        {isLockTotal && (
-          <Col xs={3} data-testid="lock-total-amount">
-            <VersionKeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>
-              <AmountWithCurrencyField
-                amount={lockTotal}
-                currency={currency}
-              />
-            </VersionKeyValue>
-          </Col>
-        )}
       </Row>
+      {isLockTotal && (
+        <Row>
+          <Col xs={3} data-testid="lock-total-amount">
+            <VersionKeyValue
+              name="lockTotal"
+              label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}
+              value={<AmountWithCurrencyField amount={lockTotal} currency={currency} />}
+            />
+          </Col>
+        </Row>
+      )}
     </>
   );
 };

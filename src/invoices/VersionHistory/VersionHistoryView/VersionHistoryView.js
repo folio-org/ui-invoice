@@ -1,9 +1,8 @@
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { useHistory } from 'react-router';
 
-import { useStripes } from '@folio/stripes/core';
 import {
   Accordion,
   AccordionSet,
@@ -16,7 +15,10 @@ import {
   HasCommand,
   Row,
 } from '@folio/stripes/components';
+
+import { VersionHistoryViewAdjustments } from './VersionHistoryViewAdjustments';
 import { VersionHistoryViewInformation } from './VersionHistoryViewInformation';
+import { VersionHistoryViewInvoiceLine } from './VersionHistoryViewInvoiceLine';
 
 export function VersionHistoryView({ version = {} }) {
   const accordionStatusRef = useRef();
@@ -32,42 +34,8 @@ export function VersionHistoryView({ version = {} }) {
     },
   ];
 
-  // const { toggleColumn, visibleColumns } = useColumnManager(
-  //   'invoice-lines-column-manager',
-  //   INVOICE_LINES_COLUMN_MAPPING,
-  // );
-
-  // const renderLinesActions = (
-  //   <InvoiceLinesActions
-  //     createLine={createLine}
-  //     addLines={addLines}
-  //     isDisabled={IS_EDIT_POST_APPROVAL(invoiceId, status)}
-  //     invoiceCurrency={currency}
-  //     invoiceVendorId={invoice.vendorId}
-  //     toggleColumn={toggleColumn}
-  //     visibleColumns={visibleColumns}
-  //   />
-  // );
-
-  // const vendorInvoiceNo = invoice.vendorInvoiceNo;
-  // const adjustments = get(invoice, 'adjustments', []);
-  // const fundDistributions = useMemo(
-  //   () => adjustments.reduce((acc, adjustment) => {
-  //     if (adjustment.fundDistributions) {
-  //       adjustment.fundDistributions.forEach((distr) => {
-  //         acc.push({
-  //           ...distr,
-  //           adjustmentDescription: adjustment.description,
-  //           adjustmentId: adjustment.id,
-  //           totalAmount: calculateAdjustmentAmount(adjustment, subTotal, currency),
-  //         });
-  //       });
-  //     }
-
-  //     return acc;
-  //   }, []),
-  //   [adjustments, currency, subTotal],
-  // );
+  const adjustments = get(version, 'adjustments', []);
+  const poNumbers = get(version, 'poNumbers', []);
 
   return (
     <HasCommand
@@ -81,105 +49,39 @@ export function VersionHistoryView({ version = {} }) {
             <ExpandAllButton />
           </Col>
         </Row>
-        <AccordionSet
-          id="invoice-details-accordion-set"
-        >
+        <AccordionSet id="invoice-details-accordion-set">
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
             id="information"
           >
-            <VersionHistoryViewInformation
-              version={version}
-            />
+            <VersionHistoryViewInformation version={version} />
           </Accordion>
-          {/* <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
-            id={SECTIONS.lines}
-            displayWhenOpen={renderLinesActions}
-            displayWhenClosed={
-              <div className={styles.invoiceLinesCount}>
-                {totalInvoiceLines}
-              </div>
-              }
-          >
-            <InvoiceLinesContainer
-              invoice={invoice}
-              invoiceLines={invoiceLines}
-              vendor={vendor}
-              orderlinesMap={orderlinesMap}
-              refreshData={refreshData}
-              toggleColumn={toggleColumn}
-              visibleColumns={visibleColumns}
-            />
-          </Accordion> */}
+          {
+            Boolean(poNumbers.length) && (
+              <Accordion
+                label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
+                id="invoiceLines"
+              >
+                <VersionHistoryViewInvoiceLine
+                  version={version}
+                />
+              </Accordion>
+            )
+          }
 
-          {/* {Boolean(fundDistributions.length) && (
-          <Accordion
-            id={SECTIONS.fundDistribution}
-            label={<FormattedMessage id="ui-invoice.invoice.details.accordion.fundDistribution" />}
-          >
-            <FundDistributionView
-              currency={currency}
-              fundDistributions={fundDistributions}
-              groupBy="adjustmentId"
-            />
-          </Accordion>
-          )} */}
-
-          {/* {Boolean(adjustments.length) && (
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.accordion.adjustments" />}
-            id={SECTIONS.adjustments}
-          >
-            <AdjustmentsDetails
-              adjustments={adjustments}
-              currency={currency}
-            />
-          </Accordion>
-          )} */}
-
-          {/* <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
-            id={SECTIONS.vendorDetails}
-          >
-            <VendorDetails
-              vendorInvoiceNo={vendorInvoiceNo}
-              vendor={vendor}
-              accountingCode={invoice.accountingCode}
-            />
-          </Accordion> */}
-          {/* <Accordion
-            label={<FormattedMessage id="ui-invoice.extendedInformation" />}
-            id={SECTIONS.extendedInformation}
-          >
-            <ExtendedInformation
-              folioInvoiceNo={invoice.folioInvoiceNo}
-              paymentMethod={invoice.paymentMethod}
-              chkSubscriptionOverlap={invoice.chkSubscriptionOverlap}
-              exportToAccounting={invoice.exportToAccounting}
-              currency={currency}
-              exchangeRate={exchangeRate}
-              enclosureNeeded={invoice.enclosureNeeded}
-            />
-          </Accordion> */}
-          {/* {showVoucherInformation && batchVoucherExport && (
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.batchVoucherExport.title" />}
-            id={SECTIONS.batchVoucherExport}
-          >
-            <InvoiceBatchVoucherExport
-              batchVoucherExport={batchVoucherExport}
-              exportFormat={exportFormat}
-            />
-          </Accordion>
-          )} */}
-          {/* {showVoucherInformation && <VoucherInformationContainer invoiceId={invoiceId} />}
-          <Accordion
-            label={<FormattedMessage id="ui-invoice.linksAndDocuments" />}
-            id={SECTIONS.documents}
-          >
-            <DocumentsDetails />
-          </Accordion> */}
+          {
+            Boolean(adjustments.length) && (
+              <Accordion
+                label={<FormattedMessage id="ui-invoice.invoice.details.accordion.adjustments" />}
+                id="adjustments"
+              >
+                <VersionHistoryViewAdjustments
+                  adjustments={adjustments}
+                  currency={version?.currency}
+                />
+              </Accordion>
+            )
+          }
         </AccordionSet>
       </AccordionStatus>
     </HasCommand>
@@ -187,5 +89,5 @@ export function VersionHistoryView({ version = {} }) {
 }
 
 VersionHistoryView.propTypes = {
-  version: PropTypes.object,
+  version: PropTypes.object.isRequired,
 };
