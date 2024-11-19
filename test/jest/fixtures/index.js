@@ -8,6 +8,7 @@ export * from './batchVoucherLine';
 export * from './exportReport';
 export * from './invoice';
 export * from './invoiceLine';
+export * from './invoiceVersions';
 export * from './orderLine';
 export * from './router';
 export * from './vendor';

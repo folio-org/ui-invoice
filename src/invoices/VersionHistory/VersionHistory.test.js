@@ -30,7 +30,6 @@ jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useInvoiceVersions: jest.fn(() => {}),
 }));
-jest.mock('./VersionView', () => jest.fn().mockReturnValue('VersionView'));
 
 const auditEvent = {
   'id': '037cab35-9a01-4d9f-88b4-e5bcdf3e1efb',
@@ -132,7 +131,7 @@ describe('VersionHistory', () => {
 
     await user.click(versionBtns[0]);
 
-    expect(screen.queryByText('VersionView')).toBeInTheDocument();
+    expect(screen.queryByText('ui-invoice.invoice.details.paneTitle')).toBeInTheDocument();
   });
 
   it('should close version view when \'Version close\' button was clicked', async () => {

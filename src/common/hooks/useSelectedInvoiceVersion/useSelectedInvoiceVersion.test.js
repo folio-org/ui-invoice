@@ -9,28 +9,34 @@ import { getFullName } from '@folio/stripes/util';
 import {
   ACQUISITIONS_UNITS_API,
   CONFIG_API,
-  ORDERS_API,
   useUsersBatch,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 import {
   acqUnit,
   address,
-  orderAuditEvent,
   vendor,
 } from '@folio/stripes-acq-components/test/jest/fixtures';
+
+import { invoiceVersions, invoice } from 'fixtures';
+import { useInvoice } from '../useInvoice';
 import { useSelectedInvoiceVersion } from './useSelectedInvoiceVersion';
+
 
 jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
   useUsersBatch: jest.fn(() => ({ users: [], isLoading: false })),
 }));
 
-const order = {
-  ...orderAuditEvent.orderSnapshot,
+jest.mock('../useInvoice', () => ({
+  useInvoice: jest.fn(),
+}))
+
+const invoiceData = {
+  ...invoice,
 };
 
 const user = {
-  id: '58edf8c3-89e4-559c-9aed-aae637a3f40b',
+  id: 'd7b3f1f2-0d1b-4b3f-8e1b-3f1d7b3f1b3f',
   personal: { firstName: 'Galt', lastName: 'John' },
 };
 
@@ -45,9 +51,6 @@ const kyMock = {
       }
       if (url.startsWith(VENDORS_API)) {
         return { organizations: [vendor] };
-      }
-      if (url.startsWith(ORDERS_API)) {
-        return { ...order };
       }
 
       return {};
@@ -68,6 +71,10 @@ describe('useSelectedInvoiceVersion', () => {
   beforeEach(() => {
     kyMock.get.mockClear();
     useOkapiKy.mockClear().mockReturnValue(kyMock);
+    useInvoice.mockClear().mockReturnValue({
+      invoice: invoiceData,
+      isLoading: false,
+    });
     useUsersBatch.mockClear().mockReturnValue({
       isLoading: false,
       users: [user],
@@ -76,17 +83,9 @@ describe('useSelectedInvoiceVersion', () => {
 
   it('should return Invoice version data', async () => {
     const { result } = renderHook(() => useSelectedInvoiceVersion({
-      versionId: orderAuditEvent.id,
-      versions: [{
-        ...orderAuditEvent,
-        orderSnapshot: {
-          ...orderAuditEvent.orderSnapshot,
-          acqUnitIds: ['acqUnitId'],
-          billTo: address.id,
-          vendor: vendor.id,
-        },
-      }],
-      snapshotPath: 'orderSnapshot',
+      versionId: '4',
+      versions: invoiceVersions,
+      snapshotPath: 'invoiceSnapshot.map',
     }), { wrapper });
 
     await waitFor(() => expect(result.current.isLoading).toBeFalsy());
@@ -95,14 +94,12 @@ describe('useSelectedInvoiceVersion', () => {
       id,
       billTo,
       createdByUser,
-      shipTo,
       vendor: vendorField,
     } = result.current.selectedVersion;
 
-    expect(id).toEqual(order.id);
+    expect(id).toEqual(invoiceData.id);
     expect(vendorField).toEqual(vendor.name);
     expect(billTo).toEqual('stripes-acq-components.versionHistory.deletedRecord');
-    expect(shipTo).toEqual('stripes-acq-components.versionHistory.deletedRecord');
     expect(createdByUser).toEqual(getFullName(user));
   });
 });
