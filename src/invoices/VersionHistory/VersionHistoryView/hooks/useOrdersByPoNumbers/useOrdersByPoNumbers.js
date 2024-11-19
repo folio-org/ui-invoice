@@ -9,7 +9,9 @@ import {
   ORDERS_API,
 } from '@folio/stripes-acq-components';
 
-export const useOrdersByPoNumbers = (poNumbers = [], options = {}) => {
+const DEFAULT_VALUE = [];
+
+export const useOrdersByPoNumbers = (poNumbers = DEFAULT_VALUE, options = {}) => {
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'orders-by-poNumbers' });
 
@@ -18,14 +20,14 @@ export const useOrdersByPoNumbers = (poNumbers = [], options = {}) => {
     query: `poNumber==(${poNumbers.join(' or ')})`,
   };
 
-  const { isLoading, data: orders = [] } = useQuery(
+  const { isLoading, data: orders = DEFAULT_VALUE } = useQuery(
     [namespace, poNumbers],
     () => batchRequest(
       ({ signal }) => ky
         .get(ORDERS_API, { searchParams, signal })
         .json()
         .then(({ purchaseOrders }) => purchaseOrders)
-        .catch(() => []),
+        .catch(() => DEFAULT_VALUE),
       poNumbers,
     ),
     {

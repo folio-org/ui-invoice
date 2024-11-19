@@ -1,15 +1,19 @@
 import { useQuery } from 'react-query';
 
-import { useOkapiKy } from '@folio/stripes/core';
+import {
+  useNamespace,
+  useOkapiKy,
+} from '@folio/stripes/core';
 import {
   INVOICE_LINE_API,
-  INVOICES_API, LIMIT_MAX,
+  LIMIT_MAX,
 } from '@folio/stripes-acq-components';
 
 const DEFAULT_VALUE = [];
 
 export const useInvoiceLinesByInvoiceId = (invoiceId) => {
   const ky = useOkapiKy();
+  const [namespace] = useNamespace({ key: 'invoiceLines-by-invoiceId' });
 
   const searchParams = {
     limit: `${LIMIT_MAX}`,
@@ -17,7 +21,7 @@ export const useInvoiceLinesByInvoiceId = (invoiceId) => {
   };
 
   const { isLoading, data } = useQuery(
-    [INVOICES_API, invoiceId],
+    [namespace, invoiceId],
     ({ signal }) => ky.get(`${INVOICE_LINE_API}`, { searchParams, signal }).json(),
     { enabled: Boolean(invoiceId) },
   );
