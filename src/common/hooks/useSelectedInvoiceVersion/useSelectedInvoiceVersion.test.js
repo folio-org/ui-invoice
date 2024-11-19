@@ -22,14 +22,13 @@ import { invoiceVersions, invoice } from 'fixtures';
 import { useInvoice } from '../useInvoice';
 import { useSelectedInvoiceVersion } from './useSelectedInvoiceVersion';
 
-
 jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
   useUsersBatch: jest.fn(() => ({ users: [], isLoading: false })),
 }));
 
 jest.mock('../useInvoice', () => ({
   useInvoice: jest.fn(),
-}))
+}));
 
 const invoiceData = {
   ...invoice,

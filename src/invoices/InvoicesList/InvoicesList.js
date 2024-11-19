@@ -6,7 +6,6 @@ import {
   useHistory,
   useLocation,
   useRouteMatch,
-  Switch,
 } from 'react-router-dom';
 import {
   FormattedMessage,

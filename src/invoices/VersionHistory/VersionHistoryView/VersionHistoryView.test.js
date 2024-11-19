@@ -26,7 +26,7 @@ const defaultProps = {
     subTotal: 10,
     poLineId: 'poLineId',
   },
-}
+};
 
 const renderComponent = (props = defaultProps) => render(
   <VersionHistoryView {...props} />,
