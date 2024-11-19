@@ -1,22 +1,11 @@
-import invert from 'lodash/invert';
 import keyBy from 'lodash/keyBy';
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import {
-  Icon,
-  Loading,
-  NoValue,
-} from '@folio/stripes/components';
+import { Loading } from '@folio/stripes/components';
 import { useColumnManager } from '@folio/stripes/smart-components';
-import {
-  AmountWithCurrencyField,
-  PAYMENT_STATUS,
-  FrontendSortingMCL,
-  ORDER_STATUS_LABEL,
-  RECEIPT_STATUS,
-} from '@folio/stripes-acq-components';
+import { FrontendSortingMCL } from '@folio/stripes-acq-components';
 
 import {
   useOrderLines,
@@ -27,7 +16,10 @@ import {
   useInvoiceLinesByInvoiceId,
   useOrdersByPoNumbers,
 } from '../hooks';
-import { buildQueryByIds } from './utils';
+import { 
+  buildQueryByIds, 
+  getResultsFormatter,
+} from './utils';
 
 import styles from './style.css';
 
@@ -71,93 +63,14 @@ export const VersionHistoryViewInvoiceLine = ({ version = {} }) => {
     description: ({ description }) => description,
   }), [orderLinesMap]);
 
-  const resultsFormatter = useMemo(() => ({
-    // eslint-disable-next-line react/prop-types
-    [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
-      const poLineIsFullyPaid = orderLinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
-
-      return (
-        <>
-          {!poLineIsFullyPaid ? null : (
-            <>
-              <Icon
-                data-test-line-is-fully-paid-icon
-                icon="exclamation-circle"
-                size="medium"
-                status="warn"
-              />
-              &nbsp;
-            </>
-          )}
-          <span id={id}>{invoiceLineNumber}</span>
-        </>
-      );
-    },
-    // eslint-disable-next-line react/prop-types
-    adjustmentsTotal: ({ adjustmentsTotal }) => (
-      <AmountWithCurrencyField
-        amount={adjustmentsTotal}
-        currency={currency}
-      />
-    ),
-    // eslint-disable-next-line react/prop-types
-    total: ({ total }) => (
-      <AmountWithCurrencyField
-        amount={total}
-        currency={currency}
-      />
-    ),
-    // eslint-disable-next-line react/prop-types
-    subTotal: ({ subTotal }) => (
-      <AmountWithCurrencyField
-        amount={subTotal}
-        currency={currency}
-      />
-    ),
-    // eslint-disable-next-line
-    polNumber: ({ rowIndex, ...line }) => orderLinesMap?.[line?.poLineId]?.poLineNumber,
-    fundCode: line => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
-    poStatus: line => {
-      const orderLine = orderLinesMap?.[line.poLineId];
-
-      return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
-    },
-    receiptStatus: line => {
-      const status = orderLinesMap?.[line.poLineId]?.receiptStatus;
-      const translationKey = invert(RECEIPT_STATUS)[status];
-
-      return status ?
-        (
-          <FormattedMessage
-            id={`ui-orders.receipt_status.${translationKey}`}
-            defaultMessage={status}
-          />
-        )
-        : <NoValue />;
-    },
-    paymentStatus: line => {
-      const status = orderLinesMap?.[line.poLineId]?.paymentStatus;
-      const translationKey = invert(PAYMENT_STATUS)[status];
-
-      return status ?
-        (
-          <FormattedMessage
-            id={`ui-orders.payment_status.${translationKey}`}
-            defaultMessage={status}
-          />
-        )
-        : <NoValue />;
-    },
-    vendorCode: line => {
-      const orderLine = orderLinesMap?.[line.poLineId];
-      const vendorId = ordersMap[orderLine?.purchaseOrderId]?.vendor;
-
-      return vendorsMap[vendorId]?.code || <NoValue />;
-    },
-    vendorRefNo: line => (
-      line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
-    ),
-  }), [orderLinesMap, currency, ordersMap, vendorsMap]);
+  const resultsFormatter = useMemo(() => {
+    return getResultsFormatter({
+      orderLinesMap,
+      currency,
+      vendorsMap,
+      ordersMap,
+    });
+  }, [orderLinesMap, currency, ordersMap, vendorsMap]);
 
   const isLoading = isInvoiceLinesLoading || isOrderLinesLoading || isVendorsLoading || isOrdersLoading;
 
