@@ -2,6 +2,10 @@
 
 ## 6.2.0 (IN PROGRESS)
 
+## 6.1.1 (IN PROGRESS)
+
+* Add external number extention to the csv export. Refs UINV-566.
+
 ## [6.1.0](https://github.com/folio-org/ui-invoice/tree/v6.1.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.4...v6.1.0)
 
