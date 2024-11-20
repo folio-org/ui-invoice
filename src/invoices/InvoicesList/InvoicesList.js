@@ -6,6 +6,7 @@ import {
   useHistory,
   useLocation,
   useRouteMatch,
+  Switch,
 } from 'react-router-dom';
 import {
   FormattedMessage,
@@ -44,6 +45,11 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  INVOICE_LINE_VIEW_ROUTE,
+  INVOICE_VERSION_HISTORY_ROUTE,
+  INVOICE_VIEW_ROUTE,
+} from '../../common/constants';
+import {
   getInvoiceStatusLabel,
   formatDate,
 } from '../../common/utils';
@@ -57,6 +63,7 @@ import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
 import { ExportSettingsModal } from './ExportSettingsModal';
+import { VersionHistory } from '../VersionHistory';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
@@ -263,16 +270,20 @@ const InvoicesList = ({
             query={query}
           />
         )}
-
         <Route
-          path="/invoice/view/:id/line/:lineId/view"
+          path={INVOICE_LINE_VIEW_ROUTE}
           component={InvoiceLineDetailsContainer}
-        />
-
-        <Route
-          path="/invoice/view/:id"
           exact
+        />
+        <Route
+          path={[INVOICE_VIEW_ROUTE, INVOICE_VERSION_HISTORY_ROUTE]}
           render={renderInvoiceDetails}
+          exact
+        />
+        <Route
+          path={INVOICE_VERSION_HISTORY_ROUTE}
+          component={VersionHistory}
+          exact
         />
       </PersistedPaneset>
     </HasCommand>

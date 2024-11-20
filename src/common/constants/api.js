@@ -1,3 +1,4 @@
+export const AUDIT_INVOICE_API = 'audit-data/acquisition/invoice';
 export const BATCH_GROUPS_API = 'batch-groups';
 export const BATCH_VOUCHERS_API = 'batch-voucher/batch-vouchers';
 export const BATCH_VOUCHER_EXPORTS_API = 'batch-voucher/batch-voucher-exports';

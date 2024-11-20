@@ -317,7 +317,7 @@ const InvoiceForm = ({
                             validate={validateRequired}
                           />
                         </Col>
-                        <IfPermission perm="ui-invoice.payDifferentFY">
+                        <IfPermission perm="ui-invoice.invoice.pay-different-fy.execute">
                           <Col xs={3}>
                             <FieldFiscalYear
                               id="invoice-fiscal-year"

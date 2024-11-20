@@ -1,6 +1,13 @@
 # Change history for ui-invoice
 
-## 6.1.0 (IN PROGRESS)
+## 6.2.0 (IN PROGRESS)
+
+* Open version history pane on click changelog icon. Refs UINV-468.
+* Display all invoice versions in change log in fourth pane. Refs UINV-469.
+* Add external number extention to the csv export. Refs UINV-566.
+
+## [6.1.0](https://github.com/folio-org/ui-invoice/tree/v6.1.0) (2024-10-31)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.4...v6.1.0)
 
 * UX Consistency: Update HTML Page Title display when third pane (detail record) displays. Refs UINV-525.
 * Align the `finance.fund` interface version (`3.0`). Refs UINV-545.
@@ -9,7 +16,7 @@
 * Duplicate invoice and invoice lines. Refs UINV-552.
 * Use `arrow-left` button as the trigger to return back to an invoice from a line. Refs UINV-505.
 * Improve error message when attempting to save an invoice line when no budget for the fiscal year exists. Refs UINV-557.
-* Add external number extention to the csv export. Refs UINV-566.
+* Clean up permission names. Refs UINV-559.
 
 ## [6.0.4](https://github.com/folio-org/ui-invoice/tree/v6.0.4) (2024-08-21)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.3...v6.0.4)

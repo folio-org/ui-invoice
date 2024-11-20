@@ -23,6 +23,14 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  INVOICE_CREATE_ROUTE,
+  INVOICE_EDIT_ROUTE,
+  INVOICE_LINE_CREATE_ROUTE,
+  INVOICE_LINE_EDIT_ROUTE,
+  INVOICE_LINE_SEQUENCE_ROUTE,
+  INVOICE_ROUTE,
+  INVOICE_VOUCHER_EXPORT_ROUTE,
+  INVOICE_VOUCHER_ROUTE,
   RETURN_LINK,
   RETURN_LINK_LABEL_ID,
 } from '../common/constants';
@@ -97,7 +105,7 @@ const Invoices = () => {
           </AppContextMenu>
           <Switch>
             <PermissionedRoute
-              path="/invoice/edit/:id"
+              path={INVOICE_EDIT_ROUTE}
               perm="ui-invoice.invoice.edit"
               returnLink={RETURN_LINK}
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
@@ -105,7 +113,7 @@ const Invoices = () => {
               <EditInvoice />
             </PermissionedRoute>
             <PermissionedRoute
-              path="/invoice/create"
+              path={INVOICE_CREATE_ROUTE}
               perm="ui-invoice.invoice.edit"
               returnLink={RETURN_LINK}
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
@@ -113,15 +121,15 @@ const Invoices = () => {
               <CreateInvoice />
             </PermissionedRoute>
             <PermissionedRoute
-              path="/invoice/voucher-export"
-              perm="ui-invoice.voucherExport"
+              path={INVOICE_VOUCHER_EXPORT_ROUTE}
+              perm="ui-invoice.voucher.export.execute"
               returnLink={RETURN_LINK}
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
             >
               <VoucherExport />
             </PermissionedRoute>
             <PermissionedRoute
-              path="/invoice/view/:id/line/:lineId/edit"
+              path={INVOICE_LINE_EDIT_ROUTE}
               perm="ui-invoice.invoice.edit"
               returnLink={RETURN_LINK}
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
@@ -129,7 +137,7 @@ const Invoices = () => {
               <EditInvoiceLine />
             </PermissionedRoute>
             <PermissionedRoute
-              path="/invoice/view/:id/line/create"
+              path={INVOICE_LINE_CREATE_ROUTE}
               perm="ui-invoice.invoice.edit"
               returnLink={RETURN_LINK}
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
@@ -137,11 +145,11 @@ const Invoices = () => {
               <CreateInvoiceLine />
             </PermissionedRoute>
             <Route
-              path="/invoice/view/:id/voucher/"
+              path={INVOICE_VOUCHER_ROUTE}
               component={Voucher}
             />
             <PermissionedRoute
-              path="/invoice/view/:id/lines-sequence"
+              path={INVOICE_LINE_SEQUENCE_ROUTE}
               perm="ui-invoice.invoice.create"
               returnLink={RETURN_LINK}
               returnLinkLabelId={RETURN_LINK_LABEL_ID}
@@ -149,7 +157,7 @@ const Invoices = () => {
               <InvoiceLinesSequence />
             </PermissionedRoute>
             <Route
-              path="/invoice"
+              path={INVOICE_ROUTE}
               component={InvoicesListContainer}
             />
           </Switch>

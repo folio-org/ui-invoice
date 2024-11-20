@@ -436,6 +436,8 @@
   "invoice.isNotUnique.confirmation.heading": "Save invoice",
   "invoice.isNotUnique.confirmation.message": "This appears to be a duplicate invoice",
 
+  "invoice.versionHistory.noVersion": "No version history to display.",
+
   "invoiceInformation": "Invoice information",
   "extendedInformation": "Extended information",
   "vendorInformation": "Vendor information",
@@ -511,7 +513,6 @@
 
   "permission.acq.unit.assignment.assign": "Invoice: Assign acquisitions units to new record",
   "permission.acq.unit.assignment.manage": "Invoice: Manage acquisition units",
-  "permission.approve": "Invoice: Approve invoices",
   "permission.batchVoucher.download": "Invoice: Download batch file from invoice record",
   "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
   "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
@@ -519,10 +520,11 @@
   "permission.invoice.delete": "Invoice: Can view, edit and delete Invoices and Invoice lines",
   "permission.invoice.edit": "Invoice: Can view and edit Invoices and Invoice lines",
   "permission.invoice.view": "Invoice: Can view Invoices and Invoice lines",
-  "permission.pay": "Invoice: Pay invoices",
-  "permission.payDifferentFY": "Invoice: Pay invoices in a different fiscal year",
-  "permission.cancel": "Invoice: Cancel invoices",
+  "permission.invoice.approve.execute": "Invoice: Approve invoices",
+  "permission.invoice.pay.execute": "Invoice: Pay invoices",
+  "permission.invoice.pay-different-fy.execute": "Invoice: Pay invoices in a different fiscal year",
+  "permission.invoice.cancel.execute": "Invoice: Cancel invoices",
   "permission.settings.all": "Settings (Invoices): Can view and edit settings",
-  "permission.voucherExport": "Invoice: Voucher export",
+  "permission.voucher.export.execute": "Invoice: Voucher export",
   "permission.exportCSV": "Invoice: Export search results"
 }
