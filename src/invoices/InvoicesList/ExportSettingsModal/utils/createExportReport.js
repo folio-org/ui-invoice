@@ -51,11 +51,18 @@ const getExportAdjustmentData = (adjustments) => (
   )).join(' | ').replace(/\n\s+/g, '')
 );
 
-const getInvoiceLineExternalAccountNumbers = (line, fundsMap, invalidReferenceLabel) => {
+const getInvoiceLineExternalAccountNumbers = (line, fundsMap, expenseClassMap, invalidReferenceLabel) => {
   return line.fundDistributions?.map(fund => {
     const externalAccountNumber = fundsMap[fund.fundId]?.externalAccountNo;
+    const externalAccountNumberExt = expenseClassMap[fund.expenseClassId]?.externalAccountNumberExt;
 
-    return externalAccountNumber ? `"${externalAccountNumber}"` : invalidReferenceLabel;
+    if (externalAccountNumber && externalAccountNumberExt) {
+      return `"${externalAccountNumber}-${externalAccountNumberExt}"`;
+    } else if (externalAccountNumber) {
+      return `"${externalAccountNumber}"`;
+    } else {
+      return invalidReferenceLabel;
+    }
   }).join(' | ');
 };
 
@@ -155,7 +162,12 @@ function getInvoiceLineExportData({
       invalidReferenceLabel,
       invoice.currency,
     ),
-    externalAccountNumber: getInvoiceLineExternalAccountNumbers(line, fundsMap, invalidReferenceLabel),
+    externalAccountNumber: getInvoiceLineExternalAccountNumbers(
+      line,
+      fundsMap,
+      expenseClassMap,
+      invalidReferenceLabel,
+    ),
     referenceNumbers: getExportReferenceNumbers(line),
     lineTags: line.tags?.tagList?.join(' | '),
     invoiceLineCreatedBy: userMap[line.metadata?.createdByUserId]?.username,
