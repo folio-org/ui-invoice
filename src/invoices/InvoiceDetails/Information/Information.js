@@ -184,13 +184,17 @@ const Information = ({
       </Row>
 
       <Row>
-        <Col xs={3}>
-          <CalculatedExchangeAmount
-            currency={currency}
-            exchangeRate={exchangeRate}
-            total={total}
-          />
-        </Col>
+        {
+          exchangeRate && (
+            <Col xs={3}>
+              <CalculatedExchangeAmount
+                currency={currency}
+                exchangeRate={exchangeRate}
+                total={total}
+              />
+            </Col>
+          )
+        }
         {isLockTotal && (
           <Col xs={3} data-testid="lock-total-amount">
             <KeyValue label={<FormattedMessage id="ui-invoice.invoice.lockTotalAmount" />}>

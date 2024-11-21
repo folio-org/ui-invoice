@@ -9,6 +9,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import { TitleManager } from '@folio/stripes/core';
 import {
   VersionHistoryPane,
+  VersionView,
   VersionViewContextProvider,
 } from '@folio/stripes-acq-components';
 
@@ -16,12 +17,13 @@ import { INVOICE_ROUTE } from '../../common/constants';
 import {
   useInvoice,
   useInvoiceVersions,
+  useSelectedInvoiceVersion,
 } from '../../common/hooks';
 import {
   HIDDEN_INVOICE_FIELDS,
   INVOICE_FIELDS_LABEL_MAP,
 } from './constants';
-import VersionView from './VersionView';
+import { VersionHistoryView } from './VersionHistoryView';
 
 const VersionHistory = ({
   history,
@@ -60,13 +62,18 @@ const VersionHistory = ({
     },
   );
 
-  const isLoading = isInvoiceLoading || isInvoiceVersionsLoading;
+  const {
+    isLoading: isSelectedVersionLoading,
+    selectedVersion,
+  } = useSelectedInvoiceVersion({ versionId, versions, snapshotPath });
+
+  const isLoading = isInvoiceLoading || isInvoiceVersionsLoading || isSelectedVersionLoading;
 
   return (
     <VersionViewContextProvider
       snapshotPath={snapshotPath}
       versions={versions}
-      versionId="versionId"
+      versionId={versionId}
     >
       <TitleManager record={invoice?.vendorInvoiceNo} />
       <VersionView
@@ -74,6 +81,7 @@ const VersionHistory = ({
         dismissible
         isLoading={isLoading}
         onClose={onVersionClose}
+        versionId={versionId}
         paneTitle={(
           <FormattedMessage
             id="ui-invoice.invoice.details.paneTitle"
@@ -82,9 +90,7 @@ const VersionHistory = ({
         )}
         tags={get(invoice, 'tags.tagList', [])}
       >
-        {
-          // TODO Implement displaying which fields have been edited UINV-470 - https://folio-org.atlassian.net/browse/UINV-470
-        }
+        <VersionHistoryView version={selectedVersion} />
       </VersionView>
 
       <VersionHistoryPane

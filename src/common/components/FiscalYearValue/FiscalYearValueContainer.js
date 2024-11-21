@@ -5,7 +5,7 @@ import { Loading } from '@folio/stripes/components';
 import { useFiscalYear } from '../../hooks';
 import { FiscalYearValue } from './FiscalYearValue';
 
-export const FiscalYearValueContainer = ({ fiscalYearId }) => {
+export const FiscalYearValueContainer = ({ fiscalYearId, ...rest }) => {
   const {
     fiscalYear,
     isLoading,
@@ -14,7 +14,7 @@ export const FiscalYearValueContainer = ({ fiscalYearId }) => {
   if (isLoading) return <Loading />;
 
   return (
-    <FiscalYearValue value={fiscalYear.code} />
+    <FiscalYearValue {...rest} value={fiscalYear.code} />
   );
 };
 

@@ -7,7 +7,7 @@ export const INVOICE_FIELDS_LABEL_MAP = {
   'adjustments[\\d].relationToTotal': 'ui-invoice.settings.adjustments.relationToTotal',
   'adjustments[\\d].type': 'ui-invoice.settings.adjustments.type',
   'adjustments[\\d].value': 'ui-invoice.settings.adjustments.value',
-  'adjustments[\\d]': 'ui-invoice.invoice.details.lines.list.adjustments',
+  'adjustments[\\d].id': 'ui-invoice.invoice.details.lines.list.adjustments',
   'adjustmentsTotal': 'ui-invoice.invoice.details.information.adjustment',
   'approvalDate': 'ui-invoice.invoice.approvalDate',
   'approvedBy': 'ui-invoice.invoice.approvedBy',

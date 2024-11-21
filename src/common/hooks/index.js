@@ -14,6 +14,7 @@ export * from './useOrderLine';
 export * from './useOrderLines';
 export * from './useOrders';
 export * from './usePayableFiscalYears';
+export * from './useSelectedInvoiceVersion';
 export * from './useVendors';
 export * from './useVoucherById';
 export * from './useVoucherByInvoiceId';

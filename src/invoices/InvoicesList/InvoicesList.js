@@ -6,7 +6,6 @@ import {
   useHistory,
   useLocation,
   useRouteMatch,
-  Switch,
 } from 'react-router-dom';
 import {
   FormattedMessage,
@@ -276,7 +275,7 @@ const InvoicesList = ({
           exact
         />
         <Route
-          path={[INVOICE_VIEW_ROUTE, INVOICE_VERSION_HISTORY_ROUTE]}
+          path={INVOICE_VIEW_ROUTE}
           render={renderInvoiceDetails}
           exact
         />

@@ -19,6 +19,7 @@ const buildQueryByOrderId = (itemsChunk) => {
 };
 
 export const useOrderLines = (orderIds, options = {}) => {
+  const { enabled = true, buildQuery = buildQueryByOrderId, ...otherOptions } = options;
   const ky = useOkapiKy();
   const [namespace] = useNamespace({ key: 'order-lines' });
 
@@ -31,10 +32,12 @@ export const useOrderLines = (orderIds, options = {}) => {
         .then(({ poLines }) => poLines)
         .catch(() => []),
       orderIds,
-      buildQueryByOrderId,
-
+      buildQuery,
     ),
-    { enabled: Boolean(orderIds?.length), ...options },
+    {
+      enabled: enabled && Boolean(orderIds?.length),
+      ...otherOptions,
+    },
   );
 
   return ({
