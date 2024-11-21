@@ -12,7 +12,7 @@ import {
 import { getFullName } from '@folio/stripes/util';
 import {
   fetchOrganizationsByIds,
-  getAcqUnitsByIds,
+  fetchAcqUnitsByIds,
   getVersionMetadata,
   useAddresses,
   useUsersBatch,
@@ -74,7 +74,7 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
         acqUnitsMap,
       ] = await Promise.all([
         fetchOrganizationsByIds(ky)(organizationIds).then(({ organizations }) => keyBy(organizations, 'id')),
-        getAcqUnitsByIds(ky)(acqUnitsIds).then(data => keyBy(data, 'id')),
+        fetchAcqUnitsByIds(ky)(acqUnitsIds).then(data => keyBy(data, 'id')),
       ]);
 
       const createdByUser = versionUsersMap[createdByUserId]
