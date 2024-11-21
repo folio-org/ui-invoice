@@ -11,15 +11,14 @@ import {
 } from '@folio/stripes/core';
 import { getFullName } from '@folio/stripes/util';
 import {
-  ACQUISITIONS_UNITS_API,
-  fetchExportDataByIds,
   fetchOrganizationsByIds,
-  getAddresses,
+  getAcqUnitsByIds,
+  getVersionMetadata,
+  useAddresses,
   useUsersBatch,
 } from '@folio/stripes-acq-components';
 
 import { useInvoice } from '../useInvoice';
-import { getTenantAddresses, getVersionMetadata } from './utils';
 
 const DEFAULT_VALUE = [];
 
@@ -41,6 +40,11 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
     isLoading: isInvoiceLoading,
   } = useInvoice(currentVersion?.invoiceId);
 
+  const {
+    isLoading: isAddressesLoading,
+    addresses,
+  } = useAddresses();
+
   const metadata = useMemo(() => getVersionMetadata(currentVersion, invoice), [currentVersion, invoice]);
   const createdByUserId = metadata?.createdByUserId;
   const updatedByUserId = metadata?.updatedByUserId;
@@ -52,7 +56,9 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
     users = DEFAULT_VALUE,
     isLoading: isUsersLoading,
   } = useUsersBatch(versionUserIds);
+
   const versionUsersMap = keyBy(users, 'id');
+  const addressesMap = keyBy(addresses, 'id');
 
   const {
     isLoading: isVersionDataLoading,
@@ -66,18 +72,9 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
       const [
         organizationsMap,
         acqUnitsMap,
-        addressesMap,
       ] = await Promise.all([
         fetchOrganizationsByIds(ky)(organizationIds).then(({ organizations }) => keyBy(organizations, 'id')),
-        fetchExportDataByIds({
-          ky,
-          ids: acqUnitsIds,
-          api: ACQUISITIONS_UNITS_API,
-          records: 'acquisitionsUnits',
-        }).then(data => keyBy(data, 'id')),
-        getTenantAddresses(ky)()
-          .then(({ configs }) => getAddresses(configs))
-          .then(data => keyBy(data, 'id')),
+        getAcqUnitsByIds(ky)(acqUnitsIds).then(data => keyBy(data, 'id')),
       ]);
 
       const createdByUser = versionUsersMap[createdByUserId]
@@ -98,7 +95,8 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
         versionId
         && invoice?.id
         && !isInvoiceLoading
-        && !isUsersLoading,
+        && !isUsersLoading
+        && !isAddressesLoading,
       ),
       ...options,
     },
@@ -108,6 +106,7 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
     isInvoiceLoading
     || isVersionDataLoading
     || isUsersLoading
+    || isAddressesLoading
   );
 
   return {
