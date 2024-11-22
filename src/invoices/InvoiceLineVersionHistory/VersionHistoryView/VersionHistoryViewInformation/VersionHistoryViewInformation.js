@@ -67,25 +67,10 @@ export const VersionHistoryViewInformation = ({ version }) => {
         </Col>
         <Col xs={3}>
           <VersionKeyValue
-            name="poLineNumber"
+            name="poLineId"
             label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}
-          >
-            {orderLineId
-              ? (
-                <>
-                  <TextLink
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    to={`/orders/lines/view/${orderLineId}`}
-                  >
-                    {poLineNumber}
-                  </TextLink>
-                  <ClipCopy text={poLineNumber} />
-                </>
-              )
-              : <NoValue />
-            }
-          </VersionKeyValue>
+            value={poLineNumber || <NoValue />}
+          />
         </Col>
         <Col xs={3}>
           <VersionKeyValue
