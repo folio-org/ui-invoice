@@ -6,10 +6,8 @@ import {
   Loading,
   NoValue,
   Row,
-  TextLink,
 } from '@folio/stripes/components';
 import {
-  ClipCopy,
   ViewMetaData,
 } from '@folio/stripes/smart-components';
 import {
@@ -30,7 +28,7 @@ export const VersionHistoryViewInformation = ({ version }) => {
     isLoading: isOrderLineLoading,
   } = useOrderLine(version?.poLineId);
 
-  const { id: orderLineId, poLineNumber } = orderLine;
+  const { poLineNumber } = orderLine;
 
   const {
     currency,
