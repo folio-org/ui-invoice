@@ -1,10 +1,18 @@
-import React, { useRef } from 'react';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useRef,
+} from 'react';
 import {
   FormattedMessage,
   useIntl,
 } from 'react-intl';
-import { get } from 'lodash';
+import {
+  useHistory,
+  useParams,
+  useLocation,
+} from 'react-router-dom';
 
 import {
   TitleManager,
@@ -32,8 +40,10 @@ import {
   handleKeyCommand,
   TagsBadge,
   useModalToggle,
+  VersionHistoryButton,
 } from '@folio/stripes-acq-components';
 
+import { INVOICE_ROUTE } from '../../common/constants';
 import {
   isPayable,
   isPaid,
@@ -57,10 +67,14 @@ const InvoiceLineDetails = ({
   currency,
   poLine,
 }) => {
-  const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
-  const accordionStatusRef = useRef();
+  const history = useHistory();
+  const { search } = useLocation();
   const stripes = useStripes();
   const intl = useIntl();
+  const { id: invoiceId, lineId: invoiceLineId } = useParams();
+
+  const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
+  const accordionStatusRef = useRef();
 
   // eslint-disable-next-line react/prop-types
   const renderActionMenu = ({ onToggle }) => {
@@ -87,6 +101,13 @@ const InvoiceLineDetails = ({
   const total = get(invoiceLine, 'total', 0);
   const paneSubTitle = `${vendorInvoiceNo} - ${vendorCode}`;
 
+  const openVersionHistory = useCallback(() => {
+    history.push({
+      pathname: `${INVOICE_ROUTE}/view/${invoiceId}/line/${invoiceLineId}/view/versions`,
+      search,
+    });
+  }, [history, invoiceId, invoiceLineId, search]);
+
   const paneTitle = (
     <FormattedMessage
       id="ui-invoice.invoiceLine.paneTitle.view"
@@ -111,6 +132,7 @@ const InvoiceLineDetails = ({
         tagsToggle={tagsToggle}
         tagsQuantity={tags.length}
       />
+      <VersionHistoryButton onClick={openVersionHistory} />
     </PaneMenu>
   );
 

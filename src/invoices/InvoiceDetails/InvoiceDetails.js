@@ -9,7 +9,7 @@ import { FormattedMessage } from 'react-intl';
 import {
   useHistory,
   useLocation,
-} from 'react-router';
+} from 'react-router-dom';
 
 import {
   TitleManager,
@@ -267,9 +267,7 @@ function InvoiceDetails({
         tagsQuantity={tags.length}
         tagsToggle={toggleTagsPane}
       />
-      <VersionHistoryButton
-        onClick={openVersionHistory}
-      />
+      <VersionHistoryButton onClick={openVersionHistory} />
     </PaneMenu>
   );
   const hasPOLineIsFullyPaid = orderlinesMap &&
