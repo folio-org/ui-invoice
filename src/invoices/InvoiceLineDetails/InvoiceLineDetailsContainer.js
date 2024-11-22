@@ -25,7 +25,7 @@ const InvoiceLineDetailsContainer = ({
   const [isTagsPaneOpened, setTagsPaneOpened] = useModalToggle();
   const showCallout = useShowCallout();
 
-  const { invoice, isInvoiceLoading } = useInvoice(params?.id);
+  const { invoice, isLoading: isInvoiceLoading } = useInvoice(params?.id);
   const {
     invoiceLine,
     isLoading: isInvoiceLineLoading,

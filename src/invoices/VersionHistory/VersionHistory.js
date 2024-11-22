@@ -34,7 +34,7 @@ const VersionHistory = ({
   const invoicePath = `${INVOICE_ROUTE}/view/${id}`;
   const snapshotPath = 'invoiceSnapshot.map';
 
-  const { invoice, isInvoiceLoading } = useInvoice(id);
+  const { invoice, isLoading: isInvoiceLoading } = useInvoice(id);
 
   const onHistoryClose = useCallback(() => history.push({
     pathname: invoicePath,

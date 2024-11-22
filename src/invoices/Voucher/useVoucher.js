@@ -9,7 +9,7 @@ export const useVoucher = (invoiceId, voucherId) => {
 
   const { isVoucherLinesLoading, voucherLines } = useVoucherLines(voucherId);
 
-  const { isInvoiceLoading, invoice } = useInvoice(invoiceId);
+  const { isLoading: isInvoiceLoading, invoice } = useInvoice(invoiceId);
 
   return ({
     isLoading: isVoucherLoading || isVoucherLinesLoading || isInvoiceLoading,

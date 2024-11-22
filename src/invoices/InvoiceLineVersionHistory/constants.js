@@ -21,7 +21,7 @@ export const INVOICE_LINE_FIELDS_LABEL_MAP = {
   'fundDistributions[\\d].encumbrance': 'ui-invoice.invoiceLine.releaseEncumbrance',
   'invoiceId': 'ui-invoice.invoiceLine.invoiceId',
   'invoiceLineNumber': 'ui-invoice.invoice.invoiceLineNumber',
-  'invoiceLineStatus': 'ui-invoice.invoice.invoiceLineStatus',
+  'invoiceLineStatus': 'ui-invoice.invoiceLine.invoiceLineStatus',
   'poLineId': 'ui-invoice.invoiceLine.poLineId',
   'quantity': 'ui-invoice.invoiceLine.quantity',
   'referenceNumbers[\\d].refNumber': 'ui-invoice.invoice.details.lines.list.vendorRefNumber',

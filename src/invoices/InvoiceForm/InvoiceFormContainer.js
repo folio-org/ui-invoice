@@ -73,7 +73,7 @@ export function InvoiceFormContainerComponent({
     adjustments: configAdjustments,
     isLoading: isConfigAdjustmentsLoading,
   } = useConfigsAdjustments();
-  const { invoice, isInvoiceLoading } = useInvoice(id);
+  const { invoice, isLoading: isInvoiceLoading } = useInvoice(id);
   const { orders, isLoading: isOrdersLoading } = useOrders(orderIds?.length ? [orderIds[0]] : undefined);
   const { orderLines, isLoading: isOrderLinesLoading } = useOrderLines(orderIds);
   const invoiceVendorId = isCreate ? orders?.[0]?.vendor : invoice.vendorId;

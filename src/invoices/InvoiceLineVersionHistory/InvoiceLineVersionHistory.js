@@ -15,9 +15,11 @@ import {
 
 import { INVOICE_ROUTE } from '../../common/constants';
 import {
+  useInvoice,
   useInvoiceLine,
   useInvoiceLineVersions,
   useSelectedInvoiceLineVersion,
+  useVendors,
 } from '../../common/hooks';
 import {
   HIDDEN_INVOICE_LINE_FIELDS,
@@ -30,14 +32,26 @@ const InvoiceLineVersionHistory = ({
   location,
   match,
 }) => {
-  const { id, versionId, lineId } = match.params;
-  const invoiceLinePath = `${INVOICE_ROUTE}/view/${id}/line/${lineId}/view`;
+  const {
+    id: invoiceId,
+    lineId,
+    versionId,
+  } = match.params;
+  const invoiceLinePath = `${INVOICE_ROUTE}/view/${invoiceId}/line/${lineId}/view`;
   const snapshotPath = 'invoiceLineSnapshot.map';
 
   const {
     invoiceLine,
-    isLoading: isInvoiceLoading,
+    isLoading: isInvoiceLineLoading,
   } = useInvoiceLine(lineId);
+  const {
+    invoice,
+    isLoading: isInvoiceLoading,
+  } = useInvoice(invoiceId);
+  const {
+    vendors,
+    isLoading: isVendorLoading,
+  } = useVendors([invoice?.vendorId]);
 
   const onHistoryClose = useCallback(() => history.push({
     pathname: invoiceLinePath,
@@ -76,7 +90,15 @@ const InvoiceLineVersionHistory = ({
   } = useSelectedInvoiceLineVersion({ versionId, versions, snapshotPath });
 
   const { invoiceLineNumber } = invoiceLine;
-  const isLoading = isInvoiceLoading || isInvoiceLineVersionsLoading || isSelectedVersionLoading;
+  const paneSubTitle = `${invoice?.vendorInvoiceNo} - ${vendors?.[0]?.code}`;
+
+  const isLoading = (
+    isVendorLoading
+    || isInvoiceLineLoading
+    || isInvoiceLoading
+    || isInvoiceLineVersionsLoading
+    || isSelectedVersionLoading
+  );
 
   return (
     <VersionViewContextProvider
@@ -91,6 +113,7 @@ const InvoiceLineVersionHistory = ({
         isLoading={isLoading}
         onClose={onVersionClose}
         versionId={versionId}
+        paneSub={paneSubTitle}
         paneTitle={(
           <FormattedMessage
             id="ui-invoice.invoiceLine.paneTitle.view"

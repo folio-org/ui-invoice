@@ -68,14 +68,14 @@ const getMock = jest.fn(() => ({
 
 describe('InvoiceLineDetailsContainer', () => {
   beforeEach(() => {
-    useInvoice.mockClear().mockReturnValue({ isInvoiceLoading: false, invoice: {} });
+    useInvoice.mockClear().mockReturnValue({ isLoading: false, invoice: {} });
     useOkapiKy.mockClear().mockReturnValue({
       get: getMock,
     });
   });
 
   it('should not display InvoiceLineDetails when loading', async () => {
-    useInvoice.mockClear().mockReturnValue({ isInvoiceLoading: true });
+    useInvoice.mockClear().mockReturnValue({ isLoading: true });
 
     renderInvoiceLineDetailsContainer();
 
