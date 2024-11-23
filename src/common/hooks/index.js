@@ -11,7 +11,6 @@ export * from './useInvoiceLine';
 export * from './useInvoiceLineMutation';
 export * from './useInvoiceLineVersions';
 export * from './useInvoiceVersions';
-export * from './useOrderLine';
 export * from './useOrderLines';
 export * from './useOrders';
 export * from './usePayableFiscalYears';

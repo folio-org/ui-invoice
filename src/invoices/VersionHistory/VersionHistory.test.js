@@ -26,6 +26,10 @@ import {
 import { useInvoiceVersions } from '../../common/hooks';
 import VersionHistory from './VersionHistory';
 
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useOrderLine: jest.fn().mockReturnValue({ orderLine: { poLineNumber: '1' } }),
+}));
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useInvoiceVersions: jest.fn(() => {}),

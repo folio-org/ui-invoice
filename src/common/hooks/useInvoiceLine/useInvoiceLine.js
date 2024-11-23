@@ -19,7 +19,7 @@ export const useInvoiceLine = (invoiceLineId) => {
     refetch,
   } = useQuery(
     [namespace, invoiceLineId],
-    () => ky.get(`${INVOICE_LINE_API}/${invoiceLineId}`).json(),
+    ({ signal }) => ky.get(`${INVOICE_LINE_API}/${invoiceLineId}`, { signal }).json(),
     { enabled: Boolean(invoiceLineId) },
   );
 

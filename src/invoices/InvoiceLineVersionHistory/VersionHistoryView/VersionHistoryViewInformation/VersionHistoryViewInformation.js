@@ -16,9 +16,8 @@ import {
   VendorReferenceNumbersDetails,
   VersionCheckbox,
   VersionKeyValue,
+  useOrderLine,
 } from '@folio/stripes-acq-components';
-
-import { useOrderLine } from '../../../../common/hooks';
 
 export const VersionHistoryViewInformation = ({ version }) => {
   const metadata = version.metadata;

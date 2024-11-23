@@ -16,19 +16,23 @@ import {
 } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { invoice } from 'fixtures';
+import { invoice, invoiceLine } from 'fixtures';
 
 import {
-  AUDIT_INVOICE_API,
+  AUDIT_INVOICE_LINE_API,
+  INVOICE_LINE_VERSION_HISTORY_ROUTE,
   INVOICE_ROUTE,
-  INVOICE_VERSION_HISTORY_ROUTE,
 } from '../../common/constants';
-import { useInvoiceVersions } from '../../common/hooks';
+import { useInvoiceLineVersions } from '../../common/hooks';
 import InvoiceLineVersionHistory from './InvoiceLineVersionHistory';
 
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useOrderLine: jest.fn().mockReturnValue({ orderLine: { poLineNumber: '1' } }),
+}));
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
-  useInvoiceVersions: jest.fn(() => {}),
+  useInvoiceLineVersions: jest.fn(() => {}),
 }));
 
 const auditEvent = {
@@ -52,11 +56,11 @@ const latestSnapshot = {
 const versions = [
   {
     id: 'testAuditEventId',
-    invoiceSnapshot: { map: latestSnapshot },
+    invoiceLineSnapshot: { map: latestSnapshot },
   },
   {
     ...auditEvent,
-    invoiceSnapshot: { map: auditEvent },
+    invoiceLineSnapshot: { map: auditEvent },
   },
 ];
 
@@ -65,8 +69,8 @@ const kyMock = {
     json: async () => {
       const result = {};
 
-      if (url.startsWith(AUDIT_INVOICE_API)) {
-        result.invoiceAuditEvents = versions;
+      if (url.startsWith(AUDIT_INVOICE_LINE_API)) {
+        result.invoiceLineSnapshot = versions;
       }
 
       return Promise.resolve({
@@ -83,7 +87,7 @@ const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     <MemoryRouter
       initialEntries={[{
-        pathname: `${INVOICE_ROUTE}/view/${invoice.id}/versions`,
+        pathname: `${INVOICE_ROUTE}/view/${invoice.id}/line/${invoiceLine.id}/view/versions`,
       }]}
     >
       {children}
@@ -98,7 +102,7 @@ const renderComponent = (props = {}) => render(
   <Switch>
     <Route
       exact
-      path={INVOICE_VERSION_HISTORY_ROUTE}
+      path={INVOICE_LINE_VERSION_HISTORY_ROUTE}
       render={() => (
         <Component
           {...props}
@@ -118,7 +122,7 @@ describe('InvoiceLineVersionHistory', () => {
   beforeEach(() => {
     kyMock.get.mockClear();
     useOkapiKy.mockClear().mockReturnValue(kyMock);
-    useInvoiceVersions.mockClear().mockReturnValue({
+    useInvoiceLineVersions.mockClear().mockReturnValue({
       isLoading: false,
       versions,
     });
@@ -131,7 +135,7 @@ describe('InvoiceLineVersionHistory', () => {
 
     await user.click(versionBtns[0]);
 
-    expect(screen.queryByText('ui-invoice.invoice.details.paneTitle')).toBeInTheDocument();
+    expect(screen.queryByText('ui-invoice.invoiceLine.paneTitle.view')).toBeInTheDocument();
   });
 
   it('should close version view when \'Version close\' button was clicked', async () => {
@@ -143,7 +147,7 @@ describe('InvoiceLineVersionHistory', () => {
     await screen.findAllByRole('button', { name: 'stripes-components.closeItem' })
       .then(async ([closeVersionBtn]) => user.click(closeVersionBtn));
 
-    expect(screen.queryByText('ui-invoice.invoice.details.paneTitle')).not.toBeInTheDocument();
+    expect(screen.queryByText('ui-invoice.invoiceLine.paneTitle.view')).not.toBeInTheDocument();
     expect(screen.getByText(mockDefaultContent)).toBeInTheDocument();
   });
 });

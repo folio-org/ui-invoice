@@ -5,6 +5,7 @@ import { LoadingPane } from '@folio/stripes/components';
 import {
   Tags,
   useModalToggle,
+  useOrderLine,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
@@ -12,7 +13,6 @@ import {
   useInvoice,
   useInvoiceLine,
   useInvoiceLineMutation,
-  useOrderLine,
   useVendors,
 } from '../../common/hooks';
 import InvoiceLineDetails from './InvoiceLineDetails';

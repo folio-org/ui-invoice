@@ -10,6 +10,11 @@ import {
 
 import { VersionHistoryView } from './VersionHistoryView';
 
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useOrderLine: jest.fn().mockReturnValue({ orderLine: { poLineNumber: '1' } }),
+}));
+
 const queryClient = new QueryClient();
 
 const wrapper = ({ children }) => (
@@ -33,14 +38,14 @@ const renderComponent = (props = defaultProps) => render(
   { wrapper },
 );
 
-describe('useOrdersByPoNumbers', () => {
+describe('VersionHistoryView', () => {
   it('should render component', () => {
     renderComponent();
 
-    expect(screen.getByText('ui-invoice.invoice.details.information.title')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.invoiceLineInformation')).toBeInTheDocument();
   });
 
-  it('should display adjustments and poLines', () => {
+  it('should display adjustments and fundDistributions', () => {
     renderComponent({
       version: {
         id: 'versionId',
@@ -51,11 +56,16 @@ describe('useOrdersByPoNumbers', () => {
             value: 10,
           },
         ],
-        poNumbers: ['PO-1'],
+        fundDistributions: [{
+          id: 'fundDistributionId',
+          amount: 10,
+          value: 10,
+          expenseClassId: 'expenseClassId',
+        }],
       },
     });
 
     expect(screen.getByText('ui-invoice.invoice.details.accordion.adjustments')).toBeInTheDocument();
-    expect(screen.getByText('ui-invoice.invoice.details.lines.title')).toBeInTheDocument();
+    expect(screen.getByText('ui-invoice.fundDistribution')).toBeInTheDocument();
   });
 });

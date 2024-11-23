@@ -8,18 +8,17 @@ import { useOkapiKy } from '@folio/stripes/core';
 import { getFullName } from '@folio/stripes/util';
 import {
   ACQUISITIONS_UNITS_API,
-  CONFIG_API,
   useUsersBatch,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
 import {
   acqUnit,
-  address,
   vendor,
 } from '@folio/stripes-acq-components/test/jest/fixtures';
 
 import { invoiceVersions, invoice } from 'fixtures';
 import { useInvoice } from '../useInvoice';
+import { useInvoiceLine } from '../useInvoiceLine';
 import { useSelectedInvoiceLineVersion } from './useSelectedInvoiceLineVersion';
 
 jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
@@ -28,6 +27,9 @@ jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
 
 jest.mock('../useInvoice', () => ({
   useInvoice: jest.fn(),
+}));
+jest.mock('../useInvoiceLine', () => ({
+  useInvoiceLine: jest.fn(),
 }));
 
 const invoiceData = {
@@ -44,9 +46,6 @@ const kyMock = {
     json: async () => {
       if (url.startsWith(ACQUISITIONS_UNITS_API)) {
         return { acquisitionsUnits: [acqUnit] };
-      }
-      if (url.startsWith(CONFIG_API)) {
-        return { configs: [address] };
       }
       if (url.startsWith(VENDORS_API)) {
         return { organizations: [vendor] };
@@ -74,6 +73,10 @@ describe('useSelectedInvoiceLineVersion', () => {
       invoice: invoiceData,
       isLoading: false,
     });
+    useInvoiceLine.mockClear().mockReturnValue({
+      invoiceLine: invoiceData,
+      isLoading: false,
+    });
     useUsersBatch.mockClear().mockReturnValue({
       isLoading: false,
       users: [user],
@@ -84,21 +87,17 @@ describe('useSelectedInvoiceLineVersion', () => {
     const { result } = renderHook(() => useSelectedInvoiceLineVersion({
       versionId: '4',
       versions: invoiceVersions,
-      snapshotPath: 'invoiceSnapshot.map',
+      snapshotPath: 'invoiceLineSnapshot.map',
     }), { wrapper });
 
     await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     const {
-      id,
-      billTo,
+      currency,
       createdByUser,
-      vendor: vendorField,
     } = result.current.selectedVersion;
 
-    expect(id).toEqual(invoiceData.id);
-    expect(vendorField).toEqual(vendor.name);
-    expect(billTo).toEqual('stripes-acq-components.versionHistory.deletedRecord');
     expect(createdByUser).toEqual(getFullName(user));
+    expect(currency).toEqual('USD');
   });
 });
