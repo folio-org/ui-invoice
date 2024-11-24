@@ -4,20 +4,14 @@ import {
   AmountWithCurrencyField,
   VersionKeyValue,
 } from '@folio/stripes-acq-components';
-
-import {
-  ADJUSTMENT_PRORATE_LABELS,
-  ADJUSTMENT_RELATION_TO_TOTAL_LABELS,
-  ADJUSTMENT_TYPE_VALUES,
-} from '../../../../common/constants';
+import { ADJUSTMENT_PRORATE_LABELS, ADJUSTMENT_RELATION_TO_TOTAL_LABELS, ADJUSTMENT_TYPE_VALUES } from '../../../../common/constants';
 
 export const getResultsFormatter = ({ currency }) => ({
   description: ({ rowIndex, description }) => (
     <VersionKeyValue
       name={`adjustments[${rowIndex}].description`}
       value={description}
-    />
-  ),
+    />),
   value: ({ rowIndex, type, value }) => (
     <VersionKeyValue
       name={`adjustments[${rowIndex}].value`}
@@ -31,8 +25,7 @@ export const getResultsFormatter = ({ currency }) => ({
           )
           : `${value}%`
       )}
-    />
-  ),
+    />),
   prorate: ({ prorate, rowIndex }) => (
     <VersionKeyValue
       name={`adjustments[${rowIndex}].prorate`}

@@ -16,9 +16,9 @@ import {
   Row,
 } from '@folio/stripes/components';
 
-import { VersionHistoryViewAdjustments } from './VersionHistoryViewAdjustments';
 import { VersionHistoryViewInformation } from './VersionHistoryViewInformation';
 import { VersionHistoryViewInvoiceLine } from './VersionHistoryViewInvoiceLine';
+import { VersionHistoryAdjustments } from '../../components';
 
 export function VersionHistoryView({ version = {} }) {
   const accordionStatusRef = useRef();
@@ -75,7 +75,7 @@ export function VersionHistoryView({ version = {} }) {
                 label={<FormattedMessage id="ui-invoice.invoice.details.accordion.adjustments" />}
                 id="adjustments"
               >
-                <VersionHistoryViewAdjustments
+                <VersionHistoryAdjustments
                   adjustments={adjustments}
                   currency={version?.currency}
                 />

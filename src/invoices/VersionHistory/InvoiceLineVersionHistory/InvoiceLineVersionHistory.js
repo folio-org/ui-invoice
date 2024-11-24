@@ -13,18 +13,18 @@ import {
   VersionViewContextProvider,
 } from '@folio/stripes-acq-components';
 
-import { INVOICE_ROUTE } from '../../common/constants';
+import { INVOICE_ROUTE } from '../../../common/constants';
 import {
   useInvoice,
   useInvoiceLine,
   useInvoiceLineVersions,
   useSelectedInvoiceLineVersion,
   useVendors,
-} from '../../common/hooks';
+} from '../../../common/hooks';
 import {
   HIDDEN_INVOICE_LINE_FIELDS,
   INVOICE_LINE_FIELDS_LABEL_MAP,
-} from './constants';
+} from '../constants';
 import { VersionHistoryView } from './VersionHistoryView';
 
 const InvoiceLineVersionHistory = ({

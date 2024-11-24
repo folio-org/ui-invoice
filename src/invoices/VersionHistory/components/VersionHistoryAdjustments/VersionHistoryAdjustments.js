@@ -14,7 +14,7 @@ import {
 } from './constants';
 import { getResultsFormatter } from './utils';
 
-export const VersionHistoryViewAdjustments = ({ adjustments, currency }) => {
+export const VersionHistoryAdjustments = ({ adjustments, currency }) => {
   const resultsFormatter = useMemo(() => getResultsFormatter({ currency }), [currency]);
 
   return (
@@ -35,7 +35,7 @@ export const VersionHistoryViewAdjustments = ({ adjustments, currency }) => {
   );
 };
 
-VersionHistoryViewAdjustments.propTypes = {
+VersionHistoryAdjustments.propTypes = {
   adjustments: PropTypes.arrayOf(PropTypes.object),
   currency: PropTypes.string,
 };

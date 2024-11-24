@@ -16,7 +16,7 @@ import {
   Row,
 } from '@folio/stripes/components';
 
-import { VersionHistoryViewAdjustments } from './VersionHistoryViewAdjustments';
+import { VersionHistoryAdjustments } from '../../components';
 import { VersionHistoryFundDistributions } from './VersionHistoryFundDistributions';
 import { VersionHistoryViewInformation } from './VersionHistoryViewInformation';
 
@@ -62,7 +62,7 @@ export function VersionHistoryView({ version = {} }) {
                 label={<FormattedMessage id="ui-invoice.invoice.details.accordion.adjustments" />}
                 id="adjustments"
               >
-                <VersionHistoryViewAdjustments
+                <VersionHistoryAdjustments
                   adjustments={adjustments}
                   currency={version?.currency}
                 />

@@ -59,8 +59,10 @@ import {
 
 import { InvoiceDetailsContainer } from '../InvoiceDetails';
 import { InvoiceLineDetailsContainer } from '../InvoiceLineDetails';
-import { InvoiceLineVersionHistory } from '../InvoiceLineVersionHistory';
-import { VersionHistory } from '../VersionHistory';
+import {
+  InvoiceLineVersionHistory,
+  InvoiceVersionHistory,
+} from '../VersionHistory';
 import InvoicesListFilters from './InvoicesListFilters';
 import { InvoicesListLastMenu } from './InvoicesListLastMenu';
 import {
@@ -285,7 +287,7 @@ const InvoicesList = ({
         />
         <Route
           path={INVOICE_VERSION_HISTORY_ROUTE}
-          component={VersionHistory}
+          component={InvoiceVersionHistory}
           exact
         />
         <Route

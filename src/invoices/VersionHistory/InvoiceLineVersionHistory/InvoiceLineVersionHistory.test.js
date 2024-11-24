@@ -22,16 +22,16 @@ import {
   AUDIT_INVOICE_LINE_API,
   INVOICE_LINE_VERSION_HISTORY_ROUTE,
   INVOICE_ROUTE,
-} from '../../common/constants';
-import { useInvoiceLineVersions } from '../../common/hooks';
+} from '../../../common/constants';
+import { useInvoiceLineVersions } from '../../../common/hooks';
 import InvoiceLineVersionHistory from './InvoiceLineVersionHistory';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useOrderLine: jest.fn().mockReturnValue({ orderLine: { poLineNumber: '1' } }),
 }));
-jest.mock('../../common/hooks', () => ({
-  ...jest.requireActual('../../common/hooks'),
+jest.mock('../../../common/hooks', () => ({
+  ...jest.requireActual('../../../common/hooks'),
   useInvoiceLineVersions: jest.fn(() => {}),
 }));
 

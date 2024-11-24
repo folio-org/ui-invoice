@@ -37,6 +37,51 @@ export const INVOICE_FIELDS_LABEL_MAP = {
   'voucherNumber': 'ui-invoice.invoice.voucherNumber',
 };
 
+export const INVOICE_LINE_FIELDS_LABEL_MAP = {
+  'accountingCode': 'ui-invoice.invoice.accountingCode',
+  'accountNumber': 'ui-invoice.invoice.accountNumber',
+  'adjustments[\\d].description': 'ui-invoice.settings.adjustments.description',
+  'adjustments[\\d].exportToAccounting': 'ui-invoice.settings.adjustments.exportToAccounting',
+  'adjustments[\\d].id': 'ui-invoice.invoice.details.lines.list.adjustments',
+  'adjustments[\\d].prorate': 'ui-invoice.settings.adjustments.prorate',
+  'adjustments[\\d].relationToTotal': 'ui-invoice.settings.adjustments.relationToTotal',
+  'adjustments[\\d].type': 'ui-invoice.settings.adjustments.type',
+  'adjustments[\\d].value': 'ui-invoice.settings.adjustments.value',
+  'adjustmentsTotal': 'ui-invoice.invoice.details.information.adjustment',
+  'comment': 'ui-invoice.invoiceLine.comment',
+  'description': 'ui-invoice.invoiceLine.description',
+  'fundDistributions[\\d].id': 'stripes-acq-components.fundDistribution.id',
+  'fundDistributions[\\d].amount': 'stripes-acq-components.fundDistribution.amount',
+  'fundDistributions[\\d].code': 'ui-invoice.invoice.details.lines.list.fundCode',
+  'fundDistributions[\\d].distributionType': 'stripes-acq-components.fundDistribution.type',
+  'fundDistributions[\\d].fundId': 'ui-invoice.invoiceLine.fundId',
+  'fundDistributions[\\d].value': 'stripes-acq-components.fundDistribution.value',
+  'fundDistributions[\\d].expenseClassId': 'stripes-acq-components.fundDistribution.expenseClass',
+  'fundDistributions[\\d].encumbrance': 'ui-invoice.invoiceLine.releaseEncumbrance',
+  'invoiceId': 'ui-invoice.invoiceLine.invoiceId',
+  'invoiceLineNumber': 'ui-invoice.invoice.invoiceLineNumber',
+  'invoiceLineStatus': 'ui-invoice.invoiceLine.invoiceLineStatus',
+  'poLineId': 'ui-invoice.invoiceLine.poLineId',
+  'quantity': 'ui-invoice.invoiceLine.quantity',
+  'referenceNumbers[\\d].refNumber': 'ui-invoice.invoice.details.lines.list.vendorRefNumber',
+  'referenceNumbers[\\d].refNumberType': 'stripes-acq-components.referenceNumbers.refNumberType',
+  'releaseEncumbrance': 'ui-invoice.invoiceLine.releaseEncumbrance',
+  'subscriptionEnd': 'ui-invoice.invoiceLine.subscriptionEnd',
+  'subscriptionInfo': 'ui-invoice.invoiceLine.subscriptionInfo',
+  'subscriptionStart': 'ui-invoice.invoiceLine.subscriptionStart',
+  'subTotal': 'ui-invoice.invoice.details.lines.list.subTotal',
+  'total': 'ui-invoice.invoice.details.lines.list.total',
+};
+
+export const HIDDEN_INVOICE_LINE_FIELDS = [];
+
+export const FUND_DISTRIBUTION_VISIBLE_COLUMNS = [
+  'name',
+  'expenseClass',
+  'value',
+  'amount',
+];
+
 export const HIDDEN_INVOICE_FIELDS = [
   'nextInvoiceLineNumber',
 ];

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import { FundDistributionView } from '@folio/stripes-acq-components';
 
-import { FUND_DISTRIBUTION_VISIBLE_COLUMNS } from '../../constants';
+import { FUND_DISTRIBUTION_VISIBLE_COLUMNS } from '../../../constants';
 
 export const VersionHistoryFundDistributions = ({ version }) => {
   return (
