@@ -23,7 +23,7 @@ export const VersionHistoryViewInformation = ({ version }) => {
   const metadata = version.metadata;
 
   const {
-    orderLine,
+    orderLine = {},
     isLoading: isOrderLineLoading,
   } = useOrderLine(version?.poLineId);
 
