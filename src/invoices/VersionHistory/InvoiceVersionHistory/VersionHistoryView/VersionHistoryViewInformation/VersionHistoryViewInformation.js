@@ -19,9 +19,9 @@ import {
   CalculatedExchangeAmount,
   FiscalYearValueContainer,
   StatusValue,
-} from '../../../../common/components';
-import { isCancelled } from '../../../../common/utils';
-import BatchGroupValue from '../../../InvoiceDetails/BatchGroupValue';
+} from '../../../../../common/components';
+import { isCancelled } from '../../../../../common/utils';
+import BatchGroupValue from '../../../../InvoiceDetails/BatchGroupValue';
 
 export const VersionHistoryViewInformation = ({ version = {} }) => {
   const {

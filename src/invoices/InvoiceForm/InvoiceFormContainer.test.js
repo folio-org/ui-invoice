@@ -74,7 +74,7 @@ const renderInvoiceFormContainer = (props = defaultProps) => render(
 
 describe('InvoiceFormContainer', () => {
   beforeEach(() => {
-    useInvoice.mockClear().mockReturnValue({ isInvoiceLoading: false, invoice });
+    useInvoice.mockClear().mockReturnValue({ isLoading: false, invoice });
     useOrganization.mockClear().mockReturnValue({ isLoading: false, organization: vendor });
   });
 

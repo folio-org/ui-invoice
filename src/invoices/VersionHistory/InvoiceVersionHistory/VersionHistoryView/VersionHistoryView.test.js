@@ -33,7 +33,7 @@ const renderComponent = (props = defaultProps) => render(
   { wrapper },
 );
 
-describe('useOrdersByPoNumbers', () => {
+describe('VersionHistoryView', () => {
   it('should render component', () => {
     renderComponent();
 

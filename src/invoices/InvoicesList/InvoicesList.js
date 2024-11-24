@@ -1,5 +1,12 @@
-import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useMemo,
+} from 'react';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import {
   matchPath,
   Route,
@@ -7,10 +14,6 @@ import {
   useLocation,
   useRouteMatch,
 } from 'react-router-dom';
-import {
-  FormattedMessage,
-  useIntl,
-} from 'react-intl';
 
 import {
   TitleManager,
@@ -44,6 +47,7 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  INVOICE_LINE_VERSION_HISTORY_ROUTE,
   INVOICE_LINE_VIEW_ROUTE,
   INVOICE_VERSION_HISTORY_ROUTE,
   INVOICE_VIEW_ROUTE,
@@ -55,14 +59,16 @@ import {
 
 import { InvoiceDetailsContainer } from '../InvoiceDetails';
 import { InvoiceLineDetailsContainer } from '../InvoiceLineDetails';
-
+import {
+  InvoiceLineVersionHistory,
+  InvoiceVersionHistory,
+} from '../VersionHistory';
 import InvoicesListFilters from './InvoicesListFilters';
 import { InvoicesListLastMenu } from './InvoicesListLastMenu';
 import {
   searchableIndexes,
 } from './InvoicesListSearchConfig';
 import { ExportSettingsModal } from './ExportSettingsModal';
-import { VersionHistory } from '../VersionHistory';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
 const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
@@ -281,7 +287,12 @@ const InvoicesList = ({
         />
         <Route
           path={INVOICE_VERSION_HISTORY_ROUTE}
-          component={VersionHistory}
+          component={InvoiceVersionHistory}
+          exact
+        />
+        <Route
+          path={INVOICE_LINE_VERSION_HISTORY_ROUTE}
+          component={InvoiceLineVersionHistory}
           exact
         />
       </PersistedPaneset>

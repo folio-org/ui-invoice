@@ -12,7 +12,7 @@ import { invoiceLine, orderLine, vendor } from 'fixtures';
 import {
   useOrderLines,
   useVendors,
-} from '../../../../common/hooks';
+} from '../../../../../common/hooks';
 import {
   useInvoiceLinesByInvoiceId,
   useOrdersByPoNumbers,
@@ -25,8 +25,8 @@ jest.mock('@folio/stripes/components', () => ({
   Loading: jest.fn(() => 'Loading'),
 }));
 
-jest.mock('../../../../common/hooks', () => ({
-  ...jest.requireActual('../../../../common/hooks'),
+jest.mock('../../../../../common/hooks', () => ({
+  ...jest.requireActual('../../../../../common/hooks'),
   useOrderLines: jest.fn(() => ({})),
   useVendors: jest.fn(() => ({})),
 }));

@@ -10,8 +10,8 @@ import { FrontendSortingMCL } from '@folio/stripes-acq-components';
 import {
   useOrderLines,
   useVendors,
-} from '../../../../common/hooks';
-import { INVOICE_LINES_COLUMN_MAPPING } from '../../../constants';
+} from '../../../../../common/hooks';
+import { INVOICE_LINES_COLUMN_MAPPING } from '../../../../constants';
 import {
   useInvoiceLinesByInvoiceId,
   useOrdersByPoNumbers,

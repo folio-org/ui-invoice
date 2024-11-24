@@ -4,12 +4,7 @@ import {
   AmountWithCurrencyField,
   VersionKeyValue,
 } from '@folio/stripes-acq-components';
-
-import {
-  ADJUSTMENT_PRORATE_LABELS,
-  ADJUSTMENT_RELATION_TO_TOTAL_LABELS,
-  ADJUSTMENT_TYPE_VALUES,
-} from '../../../../common/constants';
+import { ADJUSTMENT_PRORATE_LABELS, ADJUSTMENT_RELATION_TO_TOTAL_LABELS, ADJUSTMENT_TYPE_VALUES } from '../../../../common/constants';
 
 export const getResultsFormatter = ({ currency }) => ({
   description: ({ rowIndex, description }) => (

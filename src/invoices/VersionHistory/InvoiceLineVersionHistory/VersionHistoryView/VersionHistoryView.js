@@ -16,9 +16,9 @@ import {
   Row,
 } from '@folio/stripes/components';
 
-import { VersionHistoryViewAdjustments } from './VersionHistoryViewAdjustments';
+import { VersionHistoryAdjustments } from '../../components';
+import { VersionHistoryFundDistributions } from './VersionHistoryFundDistributions';
 import { VersionHistoryViewInformation } from './VersionHistoryViewInformation';
-import { VersionHistoryViewInvoiceLine } from './VersionHistoryViewInvoiceLine';
 
 export function VersionHistoryView({ version = {} }) {
   const accordionStatusRef = useRef();
@@ -35,7 +35,7 @@ export function VersionHistoryView({ version = {} }) {
   ];
 
   const adjustments = get(version, 'adjustments', []);
-  const poNumbers = get(version, 'poNumbers', []);
+  const fundDistributions = get(version, 'fundDistributions', []);
 
   return (
     <HasCommand
@@ -51,34 +51,31 @@ export function VersionHistoryView({ version = {} }) {
         </Row>
         <AccordionSet id="invoice-details-accordion-set">
           <Accordion
-            label={<FormattedMessage id="ui-invoice.invoice.details.information.title" />}
             id="information"
+            label={<FormattedMessage id="ui-invoice.invoiceLineInformation" />}
           >
             <VersionHistoryViewInformation version={version} />
           </Accordion>
-          {
-            Boolean(poNumbers.length) && (
-              <Accordion
-                label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
-                id="invoiceLines"
-              >
-                <VersionHistoryViewInvoiceLine
-                  version={version}
-                />
-              </Accordion>
-            )
-          }
-
           {
             Boolean(adjustments.length) && (
               <Accordion
                 label={<FormattedMessage id="ui-invoice.invoice.details.accordion.adjustments" />}
                 id="adjustments"
               >
-                <VersionHistoryViewAdjustments
+                <VersionHistoryAdjustments
                   adjustments={adjustments}
                   currency={version?.currency}
                 />
+              </Accordion>
+            )
+          }
+          {
+            Boolean(fundDistributions.length) && (
+              <Accordion
+                label={<FormattedMessage id="ui-invoice.fundDistribution" />}
+                id="fundDistributions"
+              >
+                <VersionHistoryFundDistributions version={version} />
               </Accordion>
             )
           }

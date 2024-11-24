@@ -11,8 +11,7 @@ import {
   IconButton,
   TextField,
 } from '@folio/stripes/components';
-
-import { useOrderLine } from '../../../common/hooks';
+import { useOrderLine } from '@folio/stripes-acq-components';
 
 export const POLineField = ({ isNonInteractive, poLineId, onSelect }) => {
   const intl = useIntl();

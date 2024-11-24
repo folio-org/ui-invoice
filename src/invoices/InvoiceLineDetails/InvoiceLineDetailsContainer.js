@@ -5,6 +5,7 @@ import { LoadingPane } from '@folio/stripes/components';
 import {
   Tags,
   useModalToggle,
+  useOrderLine,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
@@ -12,7 +13,6 @@ import {
   useInvoice,
   useInvoiceLine,
   useInvoiceLineMutation,
-  useOrderLine,
   useVendors,
 } from '../../common/hooks';
 import InvoiceLineDetails from './InvoiceLineDetails';
@@ -25,7 +25,7 @@ const InvoiceLineDetailsContainer = ({
   const [isTagsPaneOpened, setTagsPaneOpened] = useModalToggle();
   const showCallout = useShowCallout();
 
-  const { invoice, isInvoiceLoading } = useInvoice(params?.id);
+  const { invoice, isLoading: isInvoiceLoading } = useInvoice(params?.id);
   const {
     invoiceLine,
     isLoading: isInvoiceLineLoading,

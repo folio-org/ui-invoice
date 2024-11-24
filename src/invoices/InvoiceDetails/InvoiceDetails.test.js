@@ -1,8 +1,15 @@
-import { MemoryRouter } from 'react-router-dom';
-import { useHistory } from 'react-router';
+import {
+  MemoryRouter,
+  useHistory,
+} from 'react-router-dom';
 
 import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { render, screen, act, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  render,
+  screen,
+  act,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,
@@ -22,8 +29,8 @@ import InvoiceDetails from './InvoiceDetails';
 import { VENDOR_STATUS } from './constants';
 import { useHasPendingOrders } from './hooks';
 
-jest.mock('react-router', () => ({
-  ...jest.requireActual('react-router'),
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
   useHistory: jest.fn(),
 }));
 jest.mock('@folio/stripes-components/lib/Commander', () => ({
