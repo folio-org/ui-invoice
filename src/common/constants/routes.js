@@ -9,5 +9,5 @@ export const INVOICE_LINE_EDIT_ROUTE = `${INVOICE_LINE_ROUTE}/:lineId/edit`;
 export const INVOICE_LINE_VIEW_ROUTE = `${INVOICE_LINE_ROUTE}/:lineId/view`;
 export const INVOICE_LINE_SEQUENCE_ROUTE = `${INVOICE_VIEW_ROUTE}/lines-sequence`;
 export const INVOICE_LINE_VERSION_HISTORY_ROUTE = `${INVOICE_LINE_ROUTE}/:lineId/view/versions/:versionId?`;
-export const INVOICE_VOUCHER_ROUTE = `${INVOICE_VIEW_ROUTE}/voucher`;
+export const INVOICE_VOUCHER_ROUTE = `${INVOICE_VIEW_ROUTE}/voucher/`;
 export const INVOICE_VOUCHER_EXPORT_ROUTE = `${INVOICE_ROUTE}/voucher-export`;
