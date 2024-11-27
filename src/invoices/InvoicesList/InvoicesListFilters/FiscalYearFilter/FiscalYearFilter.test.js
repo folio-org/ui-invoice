@@ -34,7 +34,7 @@ describe('FiscalYearFilter', () => {
   it('should display filter title', async () => {
     renderFilter();
 
-    await userEvent.click(screen.getByRole('button', { name: '' }));
+    await userEvent.click(screen.getAllByRole('button', { name: /fiscalYearId filter list/ })[1]);
 
     expect(screen.getByText(labelId)).toBeInTheDocument();
 

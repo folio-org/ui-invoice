@@ -3,6 +3,7 @@ import { render, screen } from '@folio/jest-config-stripes/testing-library/react
 import { exportToCsv } from '@folio/stripes/components';
 
 import ExportSettingsModal from './ExportSettingsModal';
+import { EXPORT_INVOICE_FIELDS, EXPORT_INVOICE_FIELDS_OPTIONS } from './constants';
 
 jest.mock('@folio/stripes/components', () => ({
   ...jest.requireActual('@folio/stripes/components'),
@@ -46,15 +47,10 @@ describe('ExportSettingsModal actions', () => {
       expect(radioBtns[0].checked).toBeFalsy();
       expect(radioBtns[1].checked).toBeTruthy();
 
-      const selects = await screen.findAllByRole('combobox');
+      await user.click(screen.getByLabelText('ui-invoice.exportSettings.invoice.selected'));
+      await user.click(screen.getAllByText(EXPORT_INVOICE_FIELDS.accountingCode)[0]);
 
-      await user.click(selects[0]);
-
-      const options = await screen.findAllByRole('option');
-
-      await user.click(options[0]);
-
-      expect(options[0].getAttribute('aria-selected')).toBeTruthy();
+      expect(screen.getByText('1 item selected')).toBeInTheDocument();
     });
   });
 

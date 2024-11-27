@@ -578,5 +578,6 @@ exports[`BatchGroupConfigurationForm component should render correct structure 1
       </div>
     </section>
   </div>
+  <div />
 </DocumentFragment>
 `;

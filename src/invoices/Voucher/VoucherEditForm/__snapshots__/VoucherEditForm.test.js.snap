@@ -187,6 +187,7 @@ exports[`VoucherEditForm should render correct voucher form structure 1`] = `
                             data-test-clear="true"
                             icon="times-circle-solid"
                             id="datepicker-clear-button-dp-2"
+                            tabindex="-1"
                             type="button"
                           >
                             <span
@@ -327,6 +328,7 @@ exports[`VoucherEditForm should render correct voucher form structure 1`] = `
       </div>
     </div>
   </div>
+  <div />
 </DocumentFragment>
 `;
 
@@ -532,6 +534,7 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
                             data-test-clear="true"
                             icon="times-circle-solid"
                             id="datepicker-clear-button-dp-5"
+                            tabindex="-1"
                             type="button"
                           >
                             <span
@@ -672,5 +675,6 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
       </div>
     </div>
   </div>
+  <div />
 </DocumentFragment>
 `;

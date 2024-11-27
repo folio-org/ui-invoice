@@ -171,44 +171,40 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion21"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-information"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion21"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-information"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.information.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.information.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -234,49 +230,45 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion22"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-invoiceLines"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion22"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-invoiceLines"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.lines.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
-                  <div
-                    class="headerDefaultContentRight"
-                  >
-                    InvoiceLinesActions
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.lines.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
+                </div>
+                <div
+                  class="headerDefaultContentRight"
+                >
+                  InvoiceLinesActions
                 </div>
               </div>
             </div>
@@ -302,44 +294,40 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion23"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-vendorDetails"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion23"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-vendorDetails"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.vendor.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.vendor.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -365,44 +353,40 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion24"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-extendedInformation"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion24"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-extendedInformation"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.extendedInformation
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.extendedInformation
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -429,44 +413,40 @@ exports[`InvoiceDetails should render correct structure for Approved invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion25"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-documents"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion25"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-documents"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.linksAndDocuments
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.linksAndDocuments
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -663,44 +643,40 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion61"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-information"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion61"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-information"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.information.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.information.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -726,49 +702,45 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion62"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-invoiceLines"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion62"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-invoiceLines"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.lines.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
-                  <div
-                    class="headerDefaultContentRight"
-                  >
-                    InvoiceLinesActions
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.lines.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
+                </div>
+                <div
+                  class="headerDefaultContentRight"
+                >
+                  InvoiceLinesActions
                 </div>
               </div>
             </div>
@@ -794,44 +766,40 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion63"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-vendorDetails"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion63"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-vendorDetails"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.vendor.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.vendor.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -857,44 +825,40 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion64"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-extendedInformation"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion64"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-extendedInformation"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.extendedInformation
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.extendedInformation
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -921,44 +885,40 @@ exports[`InvoiceDetails should render correct structure for Cancelled invoice 1`
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion65"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-documents"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion65"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-documents"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.linksAndDocuments
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.linksAndDocuments
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1155,44 +1115,40 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion1"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-information"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion1"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-information"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.information.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.information.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1218,49 +1174,45 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion2"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-invoiceLines"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion2"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-invoiceLines"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.lines.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
-                  <div
-                    class="headerDefaultContentRight"
-                  >
-                    InvoiceLinesActions
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.lines.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
+                </div>
+                <div
+                  class="headerDefaultContentRight"
+                >
+                  InvoiceLinesActions
                 </div>
               </div>
             </div>
@@ -1286,44 +1238,40 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion3"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-vendorDetails"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion3"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-vendorDetails"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.vendor.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.vendor.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1349,44 +1297,40 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion4"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-extendedInformation"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion4"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-extendedInformation"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.extendedInformation
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.extendedInformation
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1412,44 +1356,40 @@ exports[`InvoiceDetails should render correct structure for Open invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion5"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-documents"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion5"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-documents"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.linksAndDocuments
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.linksAndDocuments
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1646,44 +1586,40 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion41"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-information"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion41"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-information"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.information.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.information.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1709,49 +1645,45 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion42"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-invoiceLines"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion42"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-invoiceLines"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.lines.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
-                  <div
-                    class="headerDefaultContentRight"
-                  >
-                    InvoiceLinesActions
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.lines.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
+                </div>
+                <div
+                  class="headerDefaultContentRight"
+                >
+                  InvoiceLinesActions
                 </div>
               </div>
             </div>
@@ -1777,44 +1709,40 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion43"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-vendorDetails"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion43"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-vendorDetails"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.vendor.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.vendor.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1840,44 +1768,40 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion44"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-extendedInformation"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion44"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-extendedInformation"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.extendedInformation
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.extendedInformation
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -1904,44 +1828,40 @@ exports[`InvoiceDetails should render correct structure for Paid invoice 1`] = `
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion45"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-documents"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion45"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-documents"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.linksAndDocuments
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.linksAndDocuments
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2138,44 +2058,40 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion81"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-information"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion81"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-information"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.information.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.information.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2201,49 +2117,45 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion82"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-invoiceLines"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion82"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-invoiceLines"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.lines.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
-                  <div
-                    class="headerDefaultContentRight"
-                  >
-                    InvoiceLinesActions
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.lines.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
+                </div>
+                <div
+                  class="headerDefaultContentRight"
+                >
+                  InvoiceLinesActions
                 </div>
               </div>
             </div>
@@ -2269,44 +2181,40 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion83"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-vendorDetails"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion83"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-vendorDetails"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.vendor.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.vendor.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2332,44 +2240,40 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion84"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-extendedInformation"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion84"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-extendedInformation"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.extendedInformation
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.extendedInformation
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2395,44 +2299,40 @@ exports[`InvoiceDetails should render correct structure for Reviewed invoice 1`]
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion85"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-documents"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion85"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-documents"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.linksAndDocuments
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.linksAndDocuments
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2629,44 +2529,40 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion101"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-information"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion101"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-information"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.information.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.information.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2692,49 +2588,45 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion102"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-invoiceLines"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion102"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-invoiceLines"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.lines.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
-                  <div
-                    class="headerDefaultContentRight"
-                  >
-                    InvoiceLinesActions
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.lines.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
+                </div>
+                <div
+                  class="headerDefaultContentRight"
+                >
+                  InvoiceLinesActions
                 </div>
               </div>
             </div>
@@ -2760,44 +2652,40 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion103"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-vendorDetails"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion103"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-vendorDetails"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.vendor.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.vendor.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2823,44 +2711,40 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion104"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-extendedInformation"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion104"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-extendedInformation"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.extendedInformation
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.extendedInformation
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2886,44 +2770,40 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion105"
+                      aria-expanded="true"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-batchVoucherExport"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion105"
-                        aria-expanded="true"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-batchVoucherExport"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.invoice.details.batchVoucherExport.title
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.invoice.details.batchVoucherExport.title
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
@@ -2950,44 +2830,40 @@ exports[`InvoiceDetails should render correct structure for invoice with batch v
           >
             <div>
               <div
-                style="width: 100%; display: flex;"
+                class="headerWrapper"
               >
                 <div
-                  class="headerWrapper"
+                  class="header default"
                 >
-                  <div
-                    class="header default"
+                  <h3
+                    class="headline size-medium margin-none font-weight-bold block"
+                    data-test-headline="true"
                   >
-                    <h3
-                      class="headline size-medium margin-none font-weight-bold block"
-                      data-test-headline="true"
+                    <button
+                      aria-controls="accordion106"
+                      aria-expanded="false"
+                      class="defaultCollapseButton"
+                      id="accordion-toggle-button-documents"
+                      type="button"
                     >
-                      <button
-                        aria-controls="accordion106"
-                        aria-expanded="false"
-                        class="defaultCollapseButton"
-                        id="accordion-toggle-button-documents"
-                        type="button"
+                      <span
+                        class="headerInner"
                       >
                         <span
-                          class="headerInner"
+                          class="defaultHeaderIcon"
                         >
-                          <span
-                            class="defaultHeaderIcon"
-                          >
-                            <span>
-                              Icon
-                            </span>
+                          <span>
+                            Icon
                           </span>
-                          <div
-                            class="labelArea"
-                          >
-                            ui-invoice.linksAndDocuments
-                          </div>
                         </span>
-                      </button>
-                    </h3>
-                  </div>
+                        <div
+                          class="labelArea"
+                        >
+                          ui-invoice.linksAndDocuments
+                        </div>
+                      </span>
+                    </button>
+                  </h3>
                 </div>
               </div>
             </div>
