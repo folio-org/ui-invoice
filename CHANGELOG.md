@@ -4,9 +4,13 @@
 
 * Open version history pane on click changelog icon. Refs UINV-468.
 * Display all invoice versions in change log in fourth pane. Refs UINV-469.
-* Add external number extention to the csv export. Refs UINV-566.
 * Display selected version in Invoice view. Refs UINV-470.
 * Display selected version in Invoice line view. Refs UINV-553.
+
+## [6.1.1](https://github.com/folio-org/ui-invoice/tree/v6.1.1) (2024-11-27)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.0...v6.1.1)
+
+* Add external number extention to the csv export. Refs UINV-566.
 
 ## [6.1.0](https://github.com/folio-org/ui-invoice/tree/v6.1.0) (2024-10-31)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.0.4...v6.1.0)
