@@ -237,7 +237,7 @@
     "settings.batchGroupConfiguration.save.success": "Konfigurace skupiny dávek byla úspěšně uložena",
     "settings.batchGroupConfiguration.scheduleExport.daily": "Denně",
     "settings.batchGroupConfiguration.scheduleExport.weekly": "Týdně",
-    "settings.batchGroupConfiguration.scheduleExport": "Rozvrhnout export",
+    "settings.batchGroupConfiguration.scheduleExport": "Naplánovat export",
     "settings.batchGroupConfiguration.setTime": "Nastavit čas",
     "settings.batchGroupConfiguration.testConnection": "Test připojení",
     "settings.batchGroupConfiguration.uploadLocation": "Nahrát lokaci",
@@ -474,5 +474,5 @@
     "permission.invoice.pay-different-fy.execute": "Faktury: Zaplatit faktury v jiném fiskálním roce",
     "permission.invoice.cancel.execute": "Faktura: Zrušení faktur",
     "permission.voucher.export.execute": "Faktura: Export poukazu",
-    "invoice.versionHistory.noVersion": "No version history to display."
+    "invoice.versionHistory.noVersion": "Žádná historie verzí k zobrazení."
 }
