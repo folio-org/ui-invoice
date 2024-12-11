@@ -1,0 +1,1 @@
+export { VersionHistoryViewVendorDetails } from './VersionHistoryViewVendorDetails';
