@@ -33,6 +33,7 @@ export const INVOICE_FIELDS_LABEL_MAP = {
   'status': 'ui-invoice.invoice.details.information.status',
   'subTotal': 'ui-invoice.invoice.details.information.subTotal',
   'total': 'ui-invoice.invoice.details.information.calculatedTotalAmount',
+  'vendorId': 'ui-invoice.invoice.details.vendor.name',
   'vendorInvoiceNo': 'ui-invoice.invoice.vendorInvoiceNo',
   'voucherNumber': 'ui-invoice.invoice.voucherNumber',
 };
