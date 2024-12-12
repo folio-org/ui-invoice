@@ -362,7 +362,7 @@
       },
       {
         "permissionName": "ui-invoice.acq.unit.assignment.assign",
-        "displayName": "Invoice: Assign acquisition units to new invoice",
+        "displayName": "Invoice: Assign acquisitions units to new record",
         "description": "",
         "visible": true,
         "subPermissions": [
