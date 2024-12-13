@@ -9,8 +9,12 @@ import {
   VersionKeyValue,
 } from '@folio/stripes-acq-components';
 
-export const VersionHistoryViewVendorDetails = ({ version = {} }) => {
-  const { vendor, vendorInvoiceNo, accountingCode } = version;
+export const VersionHistoryViewVendorDetails = ({ version }) => {
+  const {
+    vendor,
+    vendorInvoiceNo,
+    accountingCode,
+  } = version;
 
   return (
     <Row>

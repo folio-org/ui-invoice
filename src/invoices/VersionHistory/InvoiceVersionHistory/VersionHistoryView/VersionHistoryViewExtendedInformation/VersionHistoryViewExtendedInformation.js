@@ -12,8 +12,9 @@ import {
   VersionCheckbox,
 } from '@folio/stripes-acq-components';
 
-export const VersionHistoryViewExtendedInformation = ({ version = {} }) => {
-  const { folioInvoiceNo,
+export const VersionHistoryViewExtendedInformation = ({ version }) => {
+  const {
+    folioInvoiceNo,
     paymentMethod,
     currency,
     chkSubscriptionOverlap,
