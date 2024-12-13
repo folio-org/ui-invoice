@@ -18,6 +18,8 @@ import {
 
 import { VersionHistoryViewInformation } from './VersionHistoryViewInformation';
 import { VersionHistoryViewInvoiceLine } from './VersionHistoryViewInvoiceLine';
+import { VersionHistoryViewVendorDetails } from './VersionHistoryViewVendorDetails';
+import { VersionHistoryViewExtendedInformation } from './VersionHistoryViewExtendedInformation';
 import { VersionHistoryAdjustments } from '../../components';
 
 export function VersionHistoryView({ version = {} }) {
@@ -68,7 +70,18 @@ export function VersionHistoryView({ version = {} }) {
               </Accordion>
             )
           }
-
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
+            id="vendorDetails"
+          >
+            <VersionHistoryViewVendorDetails version={version} />
+          </Accordion>
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.extendedInformation" />}
+            id="extendedInformation"
+          >
+            <VersionHistoryViewExtendedInformation version={version} />
+          </Accordion>
           {
             Boolean(adjustments.length) && (
               <Accordion
