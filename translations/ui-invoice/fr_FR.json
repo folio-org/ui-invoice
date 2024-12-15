@@ -238,7 +238,7 @@
     "settings.batchGroupConfiguration.scheduleExport.daily": "Quotidien",
     "settings.batchGroupConfiguration.scheduleExport.weekly": "Hebdomadaire",
     "settings.batchGroupConfiguration.scheduleExport": "Planifier l'exportation",
-    "settings.batchGroupConfiguration.setTime": "Définir l’heure",
+    "settings.batchGroupConfiguration.setTime": "Définir l'heure",
     "settings.batchGroupConfiguration.testConnection": "Tester la connexion",
     "settings.batchGroupConfiguration.uploadLocation": "Lieu de téléchargement",
     "settings.batchGroupConfiguration.username": "Nom d'utilisateur",
