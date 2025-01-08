@@ -179,7 +179,8 @@ const InvoiceLineForm = ({
 
   const isSelectedAccountInactive = useMemo(() => {
     return accounts.some(({ accountNo, accountStatus }) => {
-      return accountNo === currentAccountNumber && accountStatus === ACCOUNT_STATUS.INACTIVE;
+      return accountNo === currentAccountNumber
+        && accountStatus.toLowerCase() === ACCOUNT_STATUS.INACTIVE.toLowerCase();
     });
   }, [accounts, currentAccountNumber]);
 
