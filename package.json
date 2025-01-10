@@ -151,6 +151,8 @@
         "visible": true,
         "subPermissions": [
           "module.invoice.enabled",
+          "acquisition.invoice.events.get",
+          "acquisition.invoice-line.events.get",
           "acquisitions-units.units.collection.get",
           "batch-groups.item.get",
           "batch-voucher.batch-voucher-exports.collection.get",
@@ -173,6 +175,7 @@
           "invoice.invoices.documents.collection.get",
           "invoice.invoices.documents.item.get",
           "invoice.invoices.item.get",
+          "orders.collection.get",
           "orders.pieces.collection.get",
           "orders.po-lines.collection.get",
           "orders.po-lines.item.get",
@@ -222,8 +225,7 @@
           "inventory-storage.identifier-types.collection.get",
           "inventory-storage.material-types.collection.get",
           "invoice.invoice-lines.item.post",
-          "invoice.invoices.item.post",
-          "orders.collection.get"
+          "invoice.invoices.item.post"
         ]
       },
       {
