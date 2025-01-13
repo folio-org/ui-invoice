@@ -213,6 +213,7 @@
   "invoice.paymentMethod": "Payment method",
   "invoice.approvalDate": "Approval date",
   "invoice.lockTotal": "Lock total",
+  "invoice.totalAmount": "Total Amount",
   "invoice.vendorInvoiceNo": "Vendor invoice number",
   "invoice.voucherNumber": "Voucher number",
   "invoice.vendorName": "Vendor name",
