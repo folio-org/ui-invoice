@@ -7,6 +7,7 @@
 * Display selected version in Invoice view. Refs UINV-470.
 * Display selected version in Invoice line view. Refs UINV-553.
 * Display vendor details and extended info for version history. Refs UINV-569.
+* Add Filter Invoices by Total Amount. Refs UINV-341.
 
 ## [6.1.1](https://github.com/folio-org/ui-invoice/tree/v6.1.1) (2024-11-27)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.0...v6.1.1)
