@@ -60,4 +60,10 @@ describe('InvoicesListFilters', () => {
 
     expect(asFragment()).toMatchSnapshot();
   });
+
+  it('should render Total Amount', () => {
+    const { container } = renderInvoicesListFilters();
+
+    expect(container.querySelector('#total')).toBeInTheDocument();
+  });
 });
