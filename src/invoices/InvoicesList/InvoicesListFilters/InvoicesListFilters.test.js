@@ -1,10 +1,15 @@
 /* Developed collaboratively using AI (Chat GPT) */
 
+import { noop } from 'lodash';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { render, fireEvent } from '@folio/jest-config-stripes/testing-library/react';
 
-import InvoicesListFilters from './InvoicesListFilters';
+import { render, fireEvent, screen } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  NumberRangeFilter,
+} from '@folio/stripes-acq-components';
+
 import { FILTERS } from '../constants';
+import InvoicesListFilters from './InvoicesListFilters';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
@@ -37,6 +42,18 @@ const renderInvoicesListFilters = (props = defaultProps) => render(
   { wrapper },
 );
 
+const totalAmountLabelId = 'ui-invoice.invoice.totalAmount';
+
+const renderTotalAmountFilter = () => (render(
+  <NumberRangeFilter
+    id={FILTERS.TOTAL_AMOUNT}
+    activeFilters={[]}
+    labelId={totalAmountLabelId}
+    name={FILTERS.TOTAL_AMOUNT}
+    onChange={noop}
+  />,
+));
+
 describe('InvoicesListFilters', () => {
   beforeEach(() => {
     global.document.createRange = global.document.originalCreateRange;
@@ -62,12 +79,10 @@ describe('InvoicesListFilters', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render Total Amount filter', () => {
-    const { container } = renderInvoicesListFilters();
+  it('should display filter title', () => {
+    renderTotalAmountFilter();
 
-    const totalAmountFilter = container.querySelector(`#${FILTERS.TOTAL_AMOUNT}`);
-
-    expect(totalAmountFilter).toBeInTheDocument();
+    expect(screen.getByText(totalAmountLabelId)).toBeInTheDocument();
   });
 
   it('should call applyFilters when Total Amount changes', () => {
