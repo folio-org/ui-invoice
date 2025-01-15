@@ -1,14 +1,15 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
+/* Developed collaboratively using AI (Chat GPT) */
 
-import { render } from '@folio/jest-config-stripes/testing-library/react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { render, fireEvent } from '@folio/jest-config-stripes/testing-library/react';
 
 import InvoicesListFilters from './InvoicesListFilters';
+import { FILTERS } from '../constants';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   FundFilter: 'FundFilter',
   ExpenseClassFilter: 'ExpenseClassFilter',
-  NumberRangeFilter: 'NumberRangeFilter',
 }));
 jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
@@ -61,9 +62,32 @@ describe('InvoicesListFilters', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('should render Total Amount', () => {
+  it('should render Total Amount filter', () => {
     const { container } = renderInvoicesListFilters();
 
-    expect(container.querySelector('#total')).toBeInTheDocument();
+    const totalAmountFilter = container.querySelector(`#${FILTERS.TOTAL_AMOUNT}`);
+
+    expect(totalAmountFilter).toBeInTheDocument();
+  });
+
+  it('should call applyFilters when Total Amount changes', () => {
+    const adaptedApplyFilters = jest.fn();
+    const { container } = renderInvoicesListFilters({
+      ...defaultProps,
+      applyFilters: adaptedApplyFilters,
+      activeFilters: { [FILTERS.TOTAL_AMOUNT]: '' },
+    });
+
+    const inputs = container.querySelectorAll('section#total input[type="number"]');
+    const fromInput = inputs[0];
+    const toInput = inputs[1];
+    const applyButton = container.querySelector('section#total [data-test-apply-button]');
+
+    fireEvent.change(fromInput, { target: { value: '50' } });
+    fireEvent.change(toInput, { target: { value: '100' } });
+
+    fireEvent.click(applyButton);
+
+    expect(adaptedApplyFilters).toHaveBeenCalledWith(FILTERS.TOTAL_AMOUNT, ['50-100']);
   });
 });
