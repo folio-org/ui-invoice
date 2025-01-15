@@ -8,6 +8,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   FundFilter: 'FundFilter',
   ExpenseClassFilter: 'ExpenseClassFilter',
+  NumberRangeFilter: 'NumberRangeFilter',
 }));
 jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
