@@ -8,6 +8,10 @@
 * Display selected version in Invoice line view. Refs UINV-553.
 * Display vendor details and extended info for version history. Refs UINV-569.
 * Add missed permissions. Refs UINV-576.
+
+## [6.1.2](https://github.com/folio-org/ui-invoice/tree/v6.1.2) (2025-01-21)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.1...v6.1.2)
+
 * Display full drop-down list of organization account numbers regardless of `Active` status case. Fixes UINV-575.
 
 ## [6.1.1](https://github.com/folio-org/ui-invoice/tree/v6.1.1) (2024-11-27)
