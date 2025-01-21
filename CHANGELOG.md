@@ -1,6 +1,7 @@
 # Change history for ui-invoice
 
-## 6.2.0 (IN PROGRESS)
+## [6.1.2](https://github.com/folio-org/ui-invoice/tree/v6.1.2) (2025-01-21)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.1...v6.1.2)
 
 * Display full drop-down list of organization account numbers regardless of `Active` status case. Fixes UINV-575.
 
