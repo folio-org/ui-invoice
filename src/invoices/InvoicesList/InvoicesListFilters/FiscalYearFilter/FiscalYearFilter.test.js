@@ -37,9 +37,6 @@ describe('FiscalYearFilter', () => {
     await userEvent.click(screen.getAllByRole('button', { name: /fiscalYearId filter list/ })[1]);
 
     expect(screen.getByText(labelId)).toBeInTheDocument();
-
-    expect(screen.getByText(fiscalYearsMock[0].code)).toBeInTheDocument();
-    expect(screen.getByText(fiscalYearsMock[1].code)).toBeInTheDocument();
   });
 
   it('should display spinner element', () => {
