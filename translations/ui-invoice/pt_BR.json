@@ -304,7 +304,7 @@
     "permission.invoice.view": "Fatura: Pode visualizar faturas e linhas de fatura",
     "permission.settings.all": "Configurações (Faturas): Pode visualizar e editar as configurações",
     "invoice.lockTotalAmount": "Bloquear valor total",
-    "invoice.lockTotalAmount.tooltip": "Verifique o total do bloqueio para interagir com este campo",
+    "invoice.lockTotalAmount.tooltip": "Verifique o total do suspensão para interagir com este campo",
     "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "A fatura não pode ser aprovada. O valor total bloqueado da fatura não corresponde ao valor total calculado das linhas e ajustes da fatura.",
     "invoice.details.information.calculatedTotalAmount": "Valor total calculado",
     "button.cancel": "Cancelar",
