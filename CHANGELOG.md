@@ -8,7 +8,7 @@
 * Display selected version in Invoice line view. Refs UINV-553.
 * Display vendor details and extended info for version history. Refs UINV-569.
 * Add missed permissions. Refs UINV-576.
-* Change `invoice.actions.saveLine.error.budgetNotFoundByFundId` translation message. Refs UINV-845.
+* Change `invoice.actions.saveLine.error.budgetNotFoundByFundId` translation message. Refs UINV-580.
 
 ## [6.1.2](https://github.com/folio-org/ui-invoice/tree/v6.1.2) (2025-01-21)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.1...v6.1.2)
