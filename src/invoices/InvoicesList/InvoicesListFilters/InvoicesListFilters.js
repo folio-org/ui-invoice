@@ -162,6 +162,14 @@ const InvoicesListFilters = ({
         name={FILTERS.LOCK_TOTAL}
         onChange={adaptedApplyFilters}
       />
+      <NumberRangeFilter
+        id={FILTERS.TOTAL_AMOUNT}
+        activeFilters={activeFilters[FILTERS.TOTAL_AMOUNT]}
+        disabled={disabled}
+        labelId="ui-invoice.invoice.totalAmount"
+        name={FILTERS.TOTAL_AMOUNT}
+        onChange={adaptedApplyFilters}
+      />
       <FiscalYearFilter
         id={FILTERS.FISCAL_YEAR}
         activeFilters={activeFilters[FILTERS.FISCAL_YEAR]}

@@ -14,6 +14,7 @@ export const FILTERS = {
   EXPENSE_CLASS: 'expenseClass',
   FUND_CODE: 'fundCode',
   LOCK_TOTAL: 'lockTotal',
+  TOTAL_AMOUNT: 'total',
   FISCAL_YEAR: 'fiscalYearId',
   CREATED_BY: 'metadata.createdByUserId',
   DATE_CREATED: 'metadata.createdDate',

@@ -13,6 +13,7 @@
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.1...v6.1.2)
 
 * Display full drop-down list of organization account numbers regardless of `Active` status case. Fixes UINV-575.
+* Add Filter Invoices by Total Amount. Refs UINV-341.
 
 ## [6.1.1](https://github.com/folio-org/ui-invoice/tree/v6.1.1) (2024-11-27)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.0...v6.1.1)
