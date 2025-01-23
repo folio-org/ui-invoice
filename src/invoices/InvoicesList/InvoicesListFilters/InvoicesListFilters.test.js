@@ -1,12 +1,12 @@
 /* Developed collaboratively using AI (Chat GPT) */
 
-import { noop } from 'lodash';
+import { act } from 'react';
+import noop from 'lodash/noop';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { render, fireEvent, screen } from '@folio/jest-config-stripes/testing-library/react';
-import {
-  NumberRangeFilter,
-} from '@folio/stripes-acq-components';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
+import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import { NumberRangeFilter } from '@folio/stripes-acq-components';
 
 import { FILTERS } from '../constants';
 import InvoicesListFilters from './InvoicesListFilters';
@@ -44,7 +44,7 @@ const renderInvoicesListFilters = (props = defaultProps) => render(
 
 const totalAmountLabelId = 'ui-invoice.invoice.totalAmount';
 
-const renderTotalAmountFilter = () => (render(
+const renderTotalAmountFilter = () => render(
   <NumberRangeFilter
     id={FILTERS.TOTAL_AMOUNT}
     activeFilters={[]}
@@ -52,7 +52,7 @@ const renderTotalAmountFilter = () => (render(
     name={FILTERS.TOTAL_AMOUNT}
     onChange={noop}
   />,
-));
+);
 
 describe('InvoicesListFilters', () => {
   beforeEach(() => {
@@ -85,7 +85,7 @@ describe('InvoicesListFilters', () => {
     expect(screen.getByText(totalAmountLabelId)).toBeInTheDocument();
   });
 
-  it('should call applyFilters when Total Amount changes', () => {
+  it('should call applyFilters when Total Amount changes', async () => {
     const adaptedApplyFilters = jest.fn();
     const { container } = renderInvoicesListFilters({
       ...defaultProps,
@@ -98,10 +98,10 @@ describe('InvoicesListFilters', () => {
     const toInput = inputs[1];
     const applyButton = container.querySelector('section#total [data-test-apply-button]');
 
-    fireEvent.change(fromInput, { target: { value: '50' } });
-    fireEvent.change(toInput, { target: { value: '100' } });
+    await act(async () => { await userEvent.type(fromInput, '50'); });
+    await act(async () => { await userEvent.type(toInput, '100'); });
 
-    fireEvent.click(applyButton);
+    await act(async () => { await userEvent.click(applyButton); });
 
     expect(adaptedApplyFilters).toHaveBeenCalledWith(FILTERS.TOTAL_AMOUNT, ['50-100']);
   });
