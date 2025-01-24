@@ -404,7 +404,7 @@
     "invoice.details.accordion.adjustments": "Invoice level adjustments",
     "invoice.actions.approve.error.multipleFiscalYears": "Invoice cannot be approved because the funds used belong to multiple fiscal years",
     "invoice.actions.saveLine.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> expense class not found on <b>{fundCode}</b> Fund",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "Invoice line cannot be saved because Fund <b>{fundCode}</b> has no current budget.",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "Invoice line cannot be saved because invoice is not assigned to a Fiscal year.",
     "invoice.actions.saveLine.error.inactiveExpenseClass": "Invoice line can not be saved because expense class <b>{expenseClass}</b> is inactive.",
     "invoice.actions.saveLine.error": "La ligne de facture n'a pas été enregistrée",
     "voucherExport.paneTitle": "Voucher export",
@@ -474,5 +474,6 @@
     "permission.invoice.pay-different-fy.execute": "Invoice: Pay invoices in a different fiscal year",
     "permission.invoice.cancel.execute": "Invoice: Cancel invoices",
     "permission.voucher.export.execute": "Invoice: Voucher export",
-    "invoice.versionHistory.noVersion": "No version history to display."
+    "invoice.versionHistory.noVersion": "No version history to display.",
+    "invoice.totalAmount": "Total Amount"
 }
