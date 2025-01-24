@@ -474,5 +474,6 @@
     "permission.invoice.pay-different-fy.execute": "发票：支付不同财务年度的发票",
     "permission.invoice.cancel.execute": "发票：取消发票",
     "permission.voucher.export.execute": "发票：凭证导出",
-    "invoice.versionHistory.noVersion": "没有可显示的版本历史。"
+    "invoice.versionHistory.noVersion": "没有可显示的版本历史。",
+    "invoice.totalAmount": "Total Amount"
 }
