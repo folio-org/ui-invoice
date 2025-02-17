@@ -2030,6 +2030,7 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   >
                                     <input
                                       autocomplete="off"
+                                      data-testid="file-uploader-input"
                                       style="display: none;"
                                       tabindex="-1"
                                       type="file"
