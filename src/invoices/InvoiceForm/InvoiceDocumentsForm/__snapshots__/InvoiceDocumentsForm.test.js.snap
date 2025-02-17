@@ -101,6 +101,7 @@ exports[`InvoiceDocumentsForm should render correct structure with defined adjus
           >
             <input
               autocomplete="off"
+              data-testid="file-uploader-input"
               style="display: none;"
               tabindex="-1"
               type="file"
