@@ -139,7 +139,7 @@ const InvoiceForm = ({
     fiscalYearId,
   } = initialValues;
   const [selectedVendor, setSelectedVendor] = useState();
-  const [isLockTotalAmountEnabled, setLockTotalAmountEnabled] = useState(isNumber(lockTotal));
+  const [isLockTotalAmountEnabled, setIsLockTotalAmountEnabled] = useState(isNumber(lockTotal));
 
   useEffect(() => {
     const unregisterAccountingCodeField = registerField('accountingCode', noop);
@@ -223,7 +223,7 @@ const InvoiceForm = ({
 
   const enableLockTotalAmount = useCallback(
     ({ target: { checked } }) => {
-      setLockTotalAmountEnabled(checked);
+      setIsLockTotalAmountEnabled(checked);
 
       return checked ? undefined : resetLockTotalAmount();
     }, [resetLockTotalAmount],
