@@ -100,7 +100,7 @@ describe('InvoiceForm component', () => {
   it('should display pane footer', () => {
     const { getByText } = renderInvoiceForm();
 
-    expect(getByText('stripes-acq-components.FormFooter.cancel')).toBeDefined();
+    expect(getByText(/cancel/)).toBeDefined();
     expect(getByText(/saveAndClose/)).toBeDefined();
   });
 
