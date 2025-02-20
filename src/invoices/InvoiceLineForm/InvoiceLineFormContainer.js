@@ -1,32 +1,41 @@
-import React, { useMemo, useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { get } from 'lodash';
+import {
+  useCallback,
+  useMemo,
+} from 'react';
+import get from 'lodash/get';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
-import {
-  LoadingView,
-} from '@folio/stripes/components';
+import { LoadingView } from '@folio/stripes/components';
 import {
   stripesConnect,
   useOkapiKy,
 } from '@folio/stripes/core';
 import {
   baseManifest,
-  VENDORS_API,
+  useOrganization,
 } from '@folio/stripes-acq-components';
 
 import {
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
+} from '../../common/constants';
+import {
+  useInvoice,
+  useInvoiceLine,
+} from '../../common/hooks';
+import {
   CONFIG_ADJUSTMENTS,
   invoiceLineResource,
-  invoiceResource,
-  VENDOR,
 } from '../../common/resources';
 import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
 import { showUpdateInvoiceError } from '../InvoiceDetails/utils';
 import InvoiceLineForm from './InvoiceLineForm';
 
 export function InvoiceLineFormContainerComponent({
+  history,
+  location,
   match: { params: { id, lineId } },
   onClose,
   mutator,
@@ -34,66 +43,75 @@ export function InvoiceLineFormContainerComponent({
   showCallout,
 }) {
   const ky = useOkapiKy();
-  const [invoiceLine, setInvoiceLine] = useState();
-  const [invoice, setInvoice] = useState();
-  const [vendor, setVendor] = useState();
 
-  useEffect(
-    () => {
-      if (lineId) {
-        mutator.invoiceLine.GET()
-          .then(setInvoiceLine)
-          .catch(() => {
-            showCallout({
-              messageId: 'ui-invoice.errors.cantLoadInvoiceLine',
-              type: 'error',
-              timeout: 0,
-            });
-          });
-      }
+  const {
+    invoice,
+    isLoading: isInvoiceLoading,
+  } = useInvoice(id, {
+    onError: () => {
+      showCallout({
+        messageId: 'ui-invoice.errors.cantLoadInvoice',
+        type: 'error',
+      });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [lineId],
-  );
+  });
 
-  useEffect(
-    () => {
-      mutator.invoice.GET()
-        .then(
-          invoiceResponse => {
-            setInvoice(invoiceResponse);
-
-            return invoiceResponse.vendorId
-              ? mutator.vendor.GET({ path: `${VENDORS_API}/${invoiceResponse.vendorId}` })
-              : {};
-          },
-          () => {
-            showCallout({
-              messageId: 'ui-invoice.errors.cantLoadInvoice',
-              type: 'error',
-              timeout: 0,
-            });
-          },
-        )
-        .then(setVendor)
-        .catch(() => {
-          showCallout({
-            messageId: 'ui-invoice.errors.cantLoadVendor',
-            type: 'error',
-            timeout: 0,
-          });
-        });
+  const {
+    invoiceLine,
+    isLoading: isInvoiceLineLoading,
+    isFetching: isInvoiceLineFetching,
+    refetch: refetchInvoiceLine,
+  } = useInvoiceLine(lineId, {
+    onError: () => {
+      showCallout({
+        messageId: 'ui-invoice.errors.cantLoadInvoiceLine',
+        type: 'error',
+      });
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id],
-  );
-  const saveInvoiceLine = useCallback((values) => {
+  });
+
+  const {
+    organization: vendor,
+    isLoading: isVendorLoading,
+  } = useOrganization(invoice?.vendorId, {
+    onError: () => {
+      showCallout({
+        messageId: 'ui-invoice.errors.cantLoadVendor',
+        type: 'error',
+      });
+    },
+  });
+
+  const saveInvoiceLine = useCallback(({
+    [SUBMIT_ACTION_FIELD_NAME]: submitAction,
+    ...values
+  }) => {
     const mutatorMethod = values.id ? 'PUT' : 'POST';
 
     return mutator.invoiceLine[mutatorMethod](values)
-      .then(() => {
+      .then((result) => {
         showCallout({ messageId: 'ui-invoice.invoiceLine.hasBeenSaved' });
-        onClose();
+
+        return result;
+      })
+      .then(async (result) => {
+        switch (submitAction) {
+          case SUBMIT_ACTION.saveAndKeepEditing: {
+            if (!lineId) {
+              history.push({
+                pathname: `/invoice/view/${id}/line/${result.id}/edit`,
+                search: location.search,
+              });
+            }
+
+            await refetchInvoiceLine();
+
+            break;
+          }
+          case SUBMIT_ACTION.saveAndClose:
+          default:
+            onClose();
+        }
       })
       .catch((response) => {
         showUpdateInvoiceError({
@@ -108,13 +126,30 @@ export function InvoiceLineFormContainerComponent({
 
         return { id: 'Unable to save invoice line' };
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onClose, showCallout]);
+  }, [
+    history,
+    id,
+    ky,
+    lineId,
+    location.search,
+    mutator.expenseClass,
+    mutator.fund,
+    mutator.invoiceLine,
+    onClose,
+    refetchInvoiceLine,
+    showCallout,
+  ]);
 
-  const hasLoaded = (!lineId || invoiceLine) && invoice && vendor;
+  const isLoading = (
+    isInvoiceLineLoading
+    || isInvoiceLoading
+    || isVendorLoading
+  );
+
   const vendorCode = get(vendor, 'erpCode', '');
   const accounts = get(vendor, 'accounts', []);
   const adjustmentsPresets = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
+
   const initialValues = useMemo(() => {
     return lineId
       ? invoiceLine
@@ -126,40 +161,32 @@ export function InvoiceLineFormContainerComponent({
       };
   }, [id, lineId, invoice, invoiceLine]);
 
-  return (hasLoaded
-    ? (
-      <InvoiceLineForm
-        initialValues={initialValues}
-        onSubmit={saveInvoiceLine}
-        onCancel={onClose}
-        vendorCode={vendorCode}
-        accounts={accounts}
-        invoice={invoice}
-        adjustmentsPresets={adjustmentsPresets}
-      />
-    )
-    : (
+  if (isLoading) {
+    return (
       <LoadingView
         dismissible
         onClose={onClose}
       />
-    )
+    );
+  }
+
+  return (
+    <InvoiceLineForm
+      accounts={accounts}
+      adjustmentsPresets={adjustmentsPresets}
+      initialValues={initialValues}
+      invoice={invoice}
+      isSubmitDisabled={isInvoiceLineFetching}
+      onCancel={onClose}
+      onSubmit={saveInvoiceLine}
+      vendorCode={vendorCode}
+    />
   );
 }
 
 InvoiceLineFormContainerComponent.manifest = Object.freeze({
-  invoice: {
-    ...invoiceResource,
-    accumulate: true,
-    fetch: false,
-  },
   invoiceLine: {
     ...invoiceLineResource,
-    accumulate: true,
-    fetch: false,
-  },
-  vendor: {
-    ...VENDOR,
     accumulate: true,
     fetch: false,
   },
@@ -177,11 +204,13 @@ InvoiceLineFormContainerComponent.manifest = Object.freeze({
 });
 
 InvoiceLineFormContainerComponent.propTypes = {
+  history: ReactRouterPropTypes.history,
+  location: ReactRouterPropTypes.location,
+  match: ReactRouterPropTypes.match,
+  mutator: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
   resources: PropTypes.object.isRequired,
   showCallout: PropTypes.func.isRequired,
-  match: ReactRouterPropTypes.match,
-  mutator: PropTypes.object.isRequired,
 };
 
 export default withRouter(stripesConnect(InvoiceLineFormContainerComponent));
