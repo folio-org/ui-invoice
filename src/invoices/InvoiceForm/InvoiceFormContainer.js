@@ -252,7 +252,10 @@ export function InvoiceFormContainerComponent({
         // eslint-disable-next-line consistent-return
         .then(([existingInvoices, vendor]) => {
           if (existingInvoices.length) {
-            setForceSaveValues(formValues);
+            setForceSaveValues({
+              [SUBMIT_ACTION_FIELD_NAME]: submitAction,
+              ...formValues,
+            });
 
             const duplicates = existingInvoices.map(i => ({ ...i, vendor }));
 
@@ -339,7 +342,10 @@ export function InvoiceFormContainerComponent({
         isNotUniqueOpen && (
           <DuplicateInvoiceModal
             duplicateInvoices={duplicateInvoices}
-            onSubmit={() => saveInvoiceHandler(forceSaveValues)}
+            onSubmit={() => {
+              toggleNotUnique();
+              saveInvoiceHandler(forceSaveValues);
+            }}
             onCancel={() => {
               toggleNotUnique();
               setForceSaveValues(null);
