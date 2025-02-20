@@ -1,18 +1,20 @@
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import find from 'lodash/find';
+import get from 'lodash/get';
+import isNumber from 'lodash/isNumber';
+import noop from 'lodash/noop';
+import {
+  useState,
+  useCallback,
+  useRef,
+  useEffect,
+} from 'react';
 import {
   FormattedMessage,
   useIntl,
 } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
-import { useHistory } from 'react-router';
-
-import {
-  find,
-  get,
-  isNumber,
-  noop,
-} from 'lodash';
+import { useHistory } from 'react-router-dom';
 
 import {
   IfPermission,
@@ -22,6 +24,7 @@ import {
   Accordion,
   AccordionSet,
   AccordionStatus,
+  Button,
   Checkbox,
   checkScope,
   Col,
@@ -31,6 +34,7 @@ import {
   HasCommand,
   KeyValue,
   Pane,
+  PaneFooter,
   Paneset,
   Row,
   TextArea,
@@ -46,7 +50,6 @@ import {
   FieldSelectFinal,
   FieldSelectionFinal,
   FolioFormattedDate,
-  FormFooter,
   handleKeyCommand,
   PAYMENT_METHOD_OPTIONS,
   TextField,
@@ -54,8 +57,16 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  ApprovedBy,
+  CalculatedExchangeAmount,
+  FieldFiscalYearContainer as FieldFiscalYear,
+  VendorPrimaryAddress,
+} from '../../common/components';
+import {
   INVOICE_STATUSES_OPTIONS,
   PRE_PAY_INVOICE_STATUSES_OPTIONS,
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
 } from '../../common/constants';
 import {
   NO_ACCOUNT_NUMBER,
@@ -67,38 +78,32 @@ import {
   isPayable,
   parseAddressConfigs,
 } from '../../common/utils';
-import {
-  ApprovedBy,
-  CalculatedExchangeAmount,
-  FieldFiscalYearContainer as FieldFiscalYear,
-  VendorPrimaryAddress,
-} from '../../common/components';
-import {
-  SECTIONS_INVOICE_FORM as SECTIONS,
-} from '../constants';
 import AdjustmentsForm from '../AdjustmentsForm';
+import { SECTIONS_INVOICE_FORM as SECTIONS } from '../constants';
 import InvoiceLinksForm from './InvoiceLinksForm';
-import InvoiceDocumentsForm from './InvoiceDocumentsForm';
-import invoiceCss from '../Invoice.css';
 import FieldBatchGroup from './FieldBatchGroup';
+import InvoiceDocumentsForm from './InvoiceDocumentsForm';
 import { validateAccountingCode } from './utils';
+
+import invoiceCss from '../Invoice.css';
 
 const CREATE_UNITS_PERM = 'invoices.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
 
 const InvoiceForm = ({
-  adjustmentPresets,
+  adjustmentPresets = [],
   batchGroups,
   form,
   handleSubmit,
-  hasPoLines,
+  hasPoLines = false,
   initialValues,
-  initialVendor,
-  isCreateFromOrder,
+  initialVendor = {},
+  isCreateFromOrder = false,
+  isSubmitDisabled,
   onCancel: closeForm,
   parentResources,
   pristine,
-  saveButtonLabelId,
+  saveButtonLabelId = 'stripes-components.saveAndClose',
   submitting,
   values,
 }) => {
@@ -147,7 +152,7 @@ const InvoiceForm = ({
     return () => {
       unregisterAccountingCodeField();
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const selectVendor = useCallback((vendor) => {
@@ -176,19 +181,72 @@ const InvoiceForm = ({
     if (isCreateFromOrder) selectVendor(initialVendor);
   }, [isCreateFromOrder, initialVendor, selectVendor]);
 
+  const onSaveAndClose = useCallback(() => {
+    change(
+      SUBMIT_ACTION_FIELD_NAME,
+      isCreateFromOrder ? SUBMIT_ACTION.saveFromOrders : SUBMIT_ACTION.saveAndClose,
+    );
+    handleSubmit();
+  }, [change, handleSubmit, isCreateFromOrder]);
+
+  const onSaveAndKeepEditing = useCallback(() => {
+    change(SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION.saveAndKeepEditing);
+    handleSubmit();
+  }, [change, handleSubmit]);
+
   const paneTitle = id
     ? <FormattedMessage id="ui-invoice.invoice.paneTitle.edit" values={{ vendorInvoiceNo }} />
     : <FormattedMessage id="ui-invoice.invoice.paneTitle.create" />;
+
+  const paneFooterStart = (
+    <Row>
+      <Col xs>
+        <Button
+          id="clickable-close-invoice-form"
+          buttonStyle="default mega"
+          onClick={closeForm}
+        >
+          <FormattedMessage id="stripes-components.cancel" />
+        </Button>
+      </Col>
+    </Row>
+  );
+
+  const paneFooterEnd = (
+    <Row>
+      {!isCreateFromOrder && (
+        <Col xs>
+          <Button
+            id="clickable-save-and-keep-editing"
+            buttonStyle="default mega"
+            disabled={isSubmitDisabled}
+            onClick={onSaveAndKeepEditing}
+          >
+            <FormattedMessage id="stripes-components.saveAndKeepEditing" />
+          </Button>
+        </Col>
+      )}
+
+      <Col xs>
+        <Button
+          id="clickable-save"
+          buttonStyle="primary mega"
+          disabled={isSubmitDisabled}
+          onClick={onSaveAndClose}
+        >
+          <FormattedMessage id={saveButtonLabelId} />
+        </Button>
+      </Col>
+    </Row>
+  );
+
   const paneFooter = (
-    <FormFooter
-      id="clickable-save"
-      label={<FormattedMessage id={saveButtonLabelId} />}
-      pristine={pristine}
-      submitting={submitting}
-      handleSubmit={handleSubmit}
-      onCancel={closeForm}
+    <PaneFooter
+      renderStart={paneFooterStart}
+      renderEnd={paneFooterEnd}
     />
   );
+
   const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
   const addressBillTo = get(find(addresses, { id: filledBillTo }), 'address', '');
   const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, status);
@@ -270,13 +328,13 @@ const InvoiceForm = ({
   ];
 
   return (
-    <form style={{ height: '100vh' }}>
-      <HasCommand
-        commands={shortcuts}
-        isWithinScope={checkScope}
-        scope={document.body}
-      >
-        <Paneset>
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
+    >
+      <Paneset isRoot>
+        <form style={{ height: '100vh' }}>
           <Pane
             defaultWidth="100%"
             dismissible
@@ -660,35 +718,28 @@ const InvoiceForm = ({
               </Col>
             </Row>
           </Pane>
-        </Paneset>
-      </HasCommand>
-    </form>
+        </form>
+      </Paneset>
+    </HasCommand>
   );
 };
 
 InvoiceForm.propTypes = {
   adjustmentPresets: PropTypes.arrayOf(PropTypes.object),
-  initialValues: PropTypes.object.isRequired,
-  initialVendor: PropTypes.object,
+  batchGroups: PropTypes.arrayOf(PropTypes.object),
+  form: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   hasPoLines: PropTypes.bool,
+  initialValues: PropTypes.object.isRequired,
+  initialVendor: PropTypes.object,
+  isCreateFromOrder: PropTypes.bool,
+  isSubmitDisabled: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   parentResources: PropTypes.object.isRequired,
   pristine: PropTypes.bool.isRequired,
-  submitting: PropTypes.bool.isRequired,
-  batchGroups: PropTypes.arrayOf(PropTypes.object),
-  values: PropTypes.object.isRequired,
-  form: PropTypes.object.isRequired,
-  isCreateFromOrder: PropTypes.bool,
   saveButtonLabelId: PropTypes.string,
-};
-
-InvoiceForm.defaultProps = {
-  adjustmentPresets: [],
-  hasPoLines: false,
-  initialVendor: {},
-  isCreateFromOrder: false,
-  saveButtonLabelId: 'stripes-components.saveAndClose',
+  submitting: PropTypes.bool.isRequired,
+  values: PropTypes.object.isRequired,
 };
 
 export default stripesForm({

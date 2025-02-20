@@ -168,4 +168,5 @@ export const SUBMIT_ACTION_FIELD_NAME = '__submitAction__';
 export const SUBMIT_ACTION = {
   saveAndClose: 'saveAndClose',
   saveAndKeepEditing: 'saveAndKeepEditing',
+  saveFromOrders: 'saveFromOrders',
 };
