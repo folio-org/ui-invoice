@@ -404,7 +404,7 @@
     "invoice.details.accordion.adjustments": "Úpravy na úrovni faktury",
     "invoice.actions.approve.error.multipleFiscalYears": "Fakturu nelze schválit, protože použité prostředky patří do více fiskálních let",
     "invoice.actions.saveLine.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> třída výdajů nebyla nalezena na <b>{fundCode}</b> Prostředek",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "Řádek faktury nelze uložit, protože prostředek <b>{fundCode}</b> nemá aktuální rozpočet.",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "Řádek faktury nelze uložit, protože faktura není přiřazena k fiskálnímu roku.",
     "invoice.actions.saveLine.error.inactiveExpenseClass": "Řádek faktury nelze uložit, protože třída výdajů <b>{expenseClass}</b> je neaktivní.",
     "invoice.actions.saveLine.error": "Řádek faktury nebyl uložen",
     "voucherExport.paneTitle": "Export poukazu",
@@ -468,12 +468,12 @@
     "invoice.actions.duplicate.success.message": "Faktura byla úspěšně duplikována",
     "invoice.actions.duplicate.error.message": "Faktura nebyla duplikována",
     "search.folioInvoiceNo": "Číslo faktury FOLIO",
-    "label.backToInvoice": "Back to Invoice",
+    "label.backToInvoice": "Faktura",
     "permission.invoice.approve.execute": "Faktura: Schválení faktur",
     "permission.invoice.pay.execute": "Faktura: Plaťte faktury",
     "permission.invoice.pay-different-fy.execute": "Faktury: Zaplatit faktury v jiném fiskálním roce",
     "permission.invoice.cancel.execute": "Faktura: Zrušení faktur",
     "permission.voucher.export.execute": "Faktura: Export poukazu",
     "invoice.versionHistory.noVersion": "Žádná historie verzí k zobrazení.",
-    "invoice.totalAmount": "Total Amount"
+    "invoice.totalAmount": "Celková částka"
 }

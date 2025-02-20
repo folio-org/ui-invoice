@@ -404,7 +404,7 @@
     "invoice.details.accordion.adjustments": "发票级别调整",
     "invoice.actions.approve.error.multipleFiscalYears": "由于使用的经费属于多个财务年度，因此无法批准发票",
     "invoice.actions.saveLine.error.budgetExpenseClassNotFound": "在<b> {fundCode} </b>经费中找不到<b> {expenseClassName} </b>费用类别",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "无法保存发票行，因为经费<b> {fundCode} </b>没有当前预算。",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "无法保存发票行，因为发票未分配到财务年度。",
     "invoice.actions.saveLine.error.inactiveExpenseClass": "无法保存发票行，因为费用类别<b> {expenseClass} </b>处于非激活状态。",
     "invoice.actions.saveLine.error": "未保存发票行",
     "voucherExport.paneTitle": "凭证导出",
@@ -421,7 +421,7 @@
     "settings.batchGroups.termWillBeDeleted": "批处理组<b> {term} </b>将被<b>删除。 </b>",
     "invoice.details.information.fiscalYear": "财务年度",
     "invoice.details.vendor.inactive": "供应商未激活。无法批准或支付发票。",
-    "settings.batchGroupConfiguration.locationType": "位置类型",
+    "settings.batchGroupConfiguration.locationType": "馆藏地类型",
     "settings.batchGroupConfiguration.locationType.FTP": "FTP",
     "settings.batchGroupConfiguration.locationType.SFTP": "SFTP",
     "settings.batchGroupConfiguration.port": "端口",
@@ -475,5 +475,5 @@
     "permission.invoice.cancel.execute": "发票：取消发票",
     "permission.voucher.export.execute": "发票：凭证导出",
     "invoice.versionHistory.noVersion": "没有可显示的版本历史。",
-    "invoice.totalAmount": "Total Amount"
+    "invoice.totalAmount": "总金额"
 }
