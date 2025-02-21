@@ -10,6 +10,8 @@
 * Add missed permissions. Refs UINV-576.
 * Change `invoice.actions.saveLine.error.budgetNotFoundByFundId` translation message. Refs UINV-580.
 * Migrate to shared GA workflows. Refs UINV-582.
+* Add the "Save & keep editing" button to the invoice line form. Refs UINV-568.
+* Add the "Save & keep editing" button to the invoice form. Refs UINV-567.
 * Reuse `FiscalYearFilter` component that was move to stripes-acq-components. Refs UINV-586.
 
 ## [6.1.2](https://github.com/folio-org/ui-invoice/tree/v6.1.2) (2025-01-21)

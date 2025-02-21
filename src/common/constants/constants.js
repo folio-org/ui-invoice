@@ -162,3 +162,11 @@ export const VOUCHER_STATUS_LABEL = {
   [VOUCHER_STATUSES.awaitingPayment]: <FormattedMessage id="ui-invoice.voucher.status.awaitingPayment" />,
   [VOUCHER_STATUSES.paid]: <FormattedMessage id="ui-invoice.voucher.status.paid" />,
 };
+
+export const SUBMIT_ACTION_FIELD_NAME = '__submitAction__';
+
+export const SUBMIT_ACTION = {
+  saveAndClose: 'saveAndClose',
+  saveAndKeepEditing: 'saveAndKeepEditing',
+  saveFromOrders: 'saveFromOrders',
+};

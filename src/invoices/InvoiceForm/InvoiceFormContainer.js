@@ -1,9 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
-import { get } from 'lodash';
-import ReactRouterPropTypes from 'react-router-prop-types';
-import { withRouter } from 'react-router-dom';
+import get from 'lodash/get';
 import moment from 'moment';
+import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
   LoadingPane,
@@ -23,15 +28,10 @@ import {
 
 import {
   INVOICE_STATUS,
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
   VALIDATION_ERRORS,
 } from '../../common/constants';
-import {
-  batchGroupsResource,
-  configAddress,
-  invoiceDocumentsResource,
-  invoiceResource,
-  invoicesResource,
-} from '../../common/resources';
 import {
   useConfigsAdjustments,
   useInvoice,
@@ -39,21 +39,28 @@ import {
   useOrderLines,
   useOrders,
 } from '../../common/hooks';
+import {
+  batchGroupsResource,
+  configAddress,
+  invoiceDocumentsResource,
+  invoiceResource,
+  invoicesResource,
+} from '../../common/resources';
 import { NO_ACCOUNT_NUMBER } from '../../common/utils';
 import {
   getSettingsAdjustmentsList,
 } from '../../settings/adjustments/util';
 import { createInvoiceLineFromPOL } from '../InvoiceDetails/utils';
+import DuplicateInvoiceModal from './DuplicateInvoiceModal';
 import InvoiceForm from './InvoiceForm';
 import {
   saveInvoice,
   getAlwaysShownAdjustmentsList,
 } from './utils';
-import DuplicateInvoiceModal from './DuplicateInvoiceModal/DuplicateInvoiceModal';
 
 export function InvoiceFormContainerComponent({
-  location,
   history,
+  location,
   match,
   mutator,
   okapi,
@@ -61,23 +68,18 @@ export function InvoiceFormContainerComponent({
   resources,
   stripes,
 }) {
-  const { params: { id } } = match;
-  const isCreate = !id;
   const showToast = useShowCallout();
+
+  const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
+
   const [batchGroups, setBatchGroups] = useState();
   const [duplicateInvoices, setDuplicateInvoices] = useState();
+  const [forceSaveValues, setForceSaveValues] = useState();
+
+  const { params: { id } } = match;
+  const isCreate = !id;
   const orderIds = location?.state?.orderIds;
   const isCreateFromOrder = Boolean(orderIds?.length);
-
-  const {
-    adjustments: configAdjustments,
-    isLoading: isConfigAdjustmentsLoading,
-  } = useConfigsAdjustments();
-  const { invoice, isLoading: isInvoiceLoading } = useInvoice(id);
-  const { orders, isLoading: isOrdersLoading } = useOrders(orderIds?.length ? [orderIds[0]] : undefined);
-  const { orderLines, isLoading: isOrderLinesLoading } = useOrderLines(orderIds);
-  const invoiceVendorId = isCreate ? orders?.[0]?.vendor : invoice.vendorId;
-  const { organization: invoiceVendor, isLoading: isVendorLoading } = useOrganization(invoiceVendorId);
 
   const { mutateInvoiceLine } = useInvoiceLineMutation({
     onSuccess: () => {
@@ -87,6 +89,33 @@ export function InvoiceFormContainerComponent({
       return showToast({ messageId: 'ui-invoice.errors.invoiceLineHasNotBeenSaved', type: 'error' });
     },
   });
+
+  const {
+    adjustments: configAdjustments,
+    isLoading: isConfigAdjustmentsLoading,
+  } = useConfigsAdjustments();
+
+  const {
+    invoice,
+    isFetching: isInvoiceFetching,
+    isLoading: isInvoiceLoading,
+    refetch: refetchInvoice,
+  } = useInvoice(id);
+
+  const {
+    orders,
+    isLoading: isOrdersLoading,
+  } = useOrders(orderIds?.length ? [orderIds[0]] : undefined);
+
+  const {
+    orderLines,
+    isLoading: isOrderLinesLoading,
+  } = useOrderLines(orderIds);
+
+  const {
+    organization: invoiceVendor,
+    isLoading: isVendorLoading,
+  } = useOrganization(isCreate ? orders?.[0]?.vendor : invoice.vendorId);
 
   useEffect(() => {
     setBatchGroups();
@@ -100,96 +129,23 @@ export function InvoiceFormContainerComponent({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
-  const [forceSaveValues, setForceSaveValues] = useState();
-  const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
-
-  const onClose = useCallback((invoiceId) => {
-    if (isCreateFromOrder) {
-      const ordersPath = orderIds.length > 1 ? '/orders' : `/orders/view/${orderIds[0]}`;
-
-      history.push(ordersPath);
-    } else onCancel(invoiceId);
-  }, [onCancel, history, isCreateFromOrder, orderIds]);
-
-  const saveInvoiceHandler = useCallback(({ accountNo, ..._formValues }) => {
-    let validationRequest = Promise.resolve();
-    const formValues = {
-      ..._formValues,
-      accountNo: accountNo === NO_ACCOUNT_NUMBER ? null : accountNo,
-    };
-
-    if (!forceSaveValues) {
-      const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
-      const date = moment.utc(invoiceDate).format(DATE_FORMAT);
-      const params = {
-        limit: `${LIMIT_MAX}`,
-        query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${date}*" AND vendorId=="${vendorId}"`,
-      };
-      const duplicateInvoicePromise = mutator.invoiceFormInvoices.GET({ params });
-      const vendorPromise = mutator.duplicateInvoiceVendor.GET({ path: `${VENDORS_API}/${vendorId}` });
-
-      validationRequest = Promise.all([duplicateInvoicePromise, vendorPromise])
-        // eslint-disable-next-line consistent-return
-        .then(([existingInvoices, vendor]) => {
-          if (existingInvoices.length) {
-            setForceSaveValues(formValues);
-
-            const duplicates = existingInvoices.map(i => ({ ...i, vendor }));
-
-            setDuplicateInvoices(duplicates);
-
-            // eslint-disable-next-line prefer-promise-reject-errors
-            return Promise.reject({ validationError: VALIDATION_ERRORS.duplicateInvoice });
-          }
-        });
-    }
-
-    return validationRequest
-      .then(() => saveInvoice(formValues, invoiceDocuments, mutator.invoiceFormInvoices, okapi))
-      .then(async (savedRecord) => {
-        showToast({ messageId: 'ui-invoice.invoice.invoiceHasBeenSaved' });
-
-        if (orderLines?.length) {
-          if (orderLines.length > 1) return history.push(`/invoice/view/${savedRecord.id}/lines-sequence`, { orderIds });
-
-          const data = createInvoiceLineFromPOL(orderLines[0], savedRecord.id, invoiceVendor);
-
-          try {
-            await mutateInvoiceLine({ data });
-          } catch {
-            return onCancel(savedRecord.id);
-          }
-        }
-
-        return onCancel(savedRecord.id);
-      })
-      .catch(({ validationError }) => {
-        if (validationError === VALIDATION_ERRORS.duplicateInvoice) return toggleNotUnique();
-
-        return showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
-      });
-  },
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [
-    forceSaveValues,
-    id,
-    toggleNotUnique,
-    invoiceDocuments,
-    okapi,
-    showToast,
-    onCancel,
-    orderIds,
-    orderLines,
-    history,
-    mutateInvoiceLine,
-    invoiceVendor,
-  ]);
-
   const allAdjustments = useMemo(() => getSettingsAdjustmentsList(configAdjustments), [configAdjustments]);
   const alwaysShowAdjustments = useMemo(() => getAlwaysShownAdjustmentsList(allAdjustments), [allAdjustments]);
-  const batchGroupId = isCreate && (batchGroups?.length === 1) ? batchGroups?.[0]?.id : undefined;
-  const exportToAccounting = alwaysShowAdjustments.some(adj => adj.exportToAccounting);
+  const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
+  const documents = useMemo(() => invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url), [invoiceDocuments]);
+  const links = useMemo(() => invoiceDocuments.filter(invoiceDocument => invoiceDocument.url), [invoiceDocuments]);
+
+  const batchGroupId = isCreate && (batchGroups?.length === 1)
+    ? batchGroups?.[0]?.id
+    : undefined;
+
+  const saveButtonLabelId = (isCreateFromOrder && orderLines?.length > 1)
+    ? 'ui-invoice.saveAndContinue'
+    : 'stripes-components.saveAndClose';
+
+  const exportToAccounting = useMemo(() => {
+    return alwaysShowAdjustments.some(adj => adj.exportToAccounting);
+  }, [alwaysShowAdjustments]);
 
   const initialInvoice = useMemo(() => {
     // Get the vendor's latest currency as default
@@ -221,9 +177,6 @@ export function InvoiceFormContainerComponent({
     stripes.currency,
   ]);
 
-  const documents = useMemo(() => invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url), [invoiceDocuments]);
-  const links = useMemo(() => invoiceDocuments.filter(invoiceDocument => invoiceDocument.url), [invoiceDocuments]);
-
   const initialValues = useMemo(() => {
     const { accountingCode, accountNo } = initialInvoice;
 
@@ -235,7 +188,124 @@ export function InvoiceFormContainerComponent({
     };
   }, [documents, initialInvoice, links]);
 
-  const saveButtonLabelId = (isCreateFromOrder && orderLines?.length > 1) ? 'ui-invoice.saveAndContinue' : 'stripes-components.saveAndClose';
+  const onClose = useCallback((invoiceId) => {
+    if (isCreateFromOrder) {
+      const ordersPath = orderIds.length > 1 ? '/orders' : `/orders/view/${orderIds[0]}`;
+
+      history.push(ordersPath);
+    } else onCancel(invoiceId);
+  }, [onCancel, history, isCreateFromOrder, orderIds]);
+
+  const saveFromOrdersHandler = useCallback(async (savedRecord) => {
+    if (orderLines?.length) {
+      if (orderLines.length > 1) {
+        history.push(`/invoice/view/${savedRecord.id}/lines-sequence`, { orderIds });
+
+        return;
+      }
+
+      const data = createInvoiceLineFromPOL(orderLines[0], savedRecord.id, invoiceVendor);
+
+      try {
+        await mutateInvoiceLine({ data });
+      } catch {
+        onCancel(savedRecord.id);
+      }
+    }
+
+    onCancel(savedRecord.id);
+  }, [history, invoiceVendor, mutateInvoiceLine, onCancel, orderIds, orderLines]);
+
+  const saveAndKeepEditingHandler = useCallback(async (savedRecord) => {
+    if (!id) {
+      history.push({
+        pathname: `/invoice/edit/${savedRecord.id}`,
+        search: location.search,
+      });
+    }
+
+    await refetchInvoice();
+  }, [history, id, location.search, refetchInvoice]);
+
+  const saveInvoiceHandler = useCallback(({
+    [SUBMIT_ACTION_FIELD_NAME]: submitAction,
+    accountNo,
+    ..._formValues
+  }) => {
+    let validationRequest = Promise.resolve();
+    const formValues = {
+      ..._formValues,
+      accountNo: accountNo === NO_ACCOUNT_NUMBER ? null : accountNo,
+    };
+
+    if (!forceSaveValues) {
+      const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
+      const date = moment.utc(invoiceDate).format(DATE_FORMAT);
+      const params = {
+        limit: `${LIMIT_MAX}`,
+        query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${date}*" AND vendorId=="${vendorId}"`,
+      };
+      const duplicateInvoicePromise = mutator.invoiceFormInvoices.GET({ params });
+      const vendorPromise = mutator.duplicateInvoiceVendor.GET({ path: `${VENDORS_API}/${vendorId}` });
+
+      validationRequest = Promise.all([duplicateInvoicePromise, vendorPromise])
+        // eslint-disable-next-line consistent-return
+        .then(([existingInvoices, vendor]) => {
+          if (existingInvoices.length) {
+            setForceSaveValues({
+              [SUBMIT_ACTION_FIELD_NAME]: submitAction,
+              ...formValues,
+            });
+
+            const duplicates = existingInvoices.map(i => ({ ...i, vendor }));
+
+            setDuplicateInvoices(duplicates);
+
+            // eslint-disable-next-line prefer-promise-reject-errors
+            return Promise.reject({ validationError: VALIDATION_ERRORS.duplicateInvoice });
+          }
+        });
+    }
+
+    return validationRequest
+      .then(() => saveInvoice(formValues, invoiceDocuments, mutator.invoiceFormInvoices, okapi))
+      .then(async (savedRecord) => {
+        showToast({ messageId: 'ui-invoice.invoice.invoiceHasBeenSaved' });
+
+        switch (submitAction) {
+          case SUBMIT_ACTION.saveFromOrders: {
+            await saveFromOrdersHandler(savedRecord);
+            break;
+          }
+          case SUBMIT_ACTION.saveAndKeepEditing: {
+            await saveAndKeepEditingHandler(savedRecord);
+            break;
+          }
+          case SUBMIT_ACTION.saveAndClose:
+          default:
+            onClose(savedRecord.id);
+            break;
+        }
+      })
+      .catch(({ validationError }) => {
+        if (validationError === VALIDATION_ERRORS.duplicateInvoice) return toggleNotUnique();
+
+        return showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
+      });
+  },
+  [
+    forceSaveValues,
+    id,
+    mutator.invoiceFormInvoices,
+    mutator.duplicateInvoiceVendor,
+    invoiceDocuments,
+    okapi,
+    showToast,
+    onClose,
+    saveFromOrdersHandler,
+    saveAndKeepEditingHandler,
+    toggleNotUnique,
+  ]);
 
   const hasLoaded = batchGroups && !(
     isInvoiceLoading
@@ -259,6 +329,7 @@ export function InvoiceFormContainerComponent({
         adjustmentPresets={allAdjustments}
         initialValues={initialValues}
         initialVendor={invoiceVendor}
+        isSubmitDisabled={isInvoiceFetching}
         parentResources={resources}
         onSubmit={saveInvoiceHandler}
         onCancel={onClose}
@@ -271,7 +342,10 @@ export function InvoiceFormContainerComponent({
         isNotUniqueOpen && (
           <DuplicateInvoiceModal
             duplicateInvoices={duplicateInvoices}
-            onSubmit={() => saveInvoiceHandler(forceSaveValues)}
+            onSubmit={() => {
+              toggleNotUnique();
+              saveInvoiceHandler(forceSaveValues);
+            }}
             onCancel={() => {
               toggleNotUnique();
               setForceSaveValues(null);
@@ -307,9 +381,9 @@ InvoiceFormContainerComponent.manifest = Object.freeze({
 });
 
 InvoiceFormContainerComponent.propTypes = {
-  match: ReactRouterPropTypes.match.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
   mutator: PropTypes.object.isRequired,
   okapi: PropTypes.object.isRequired,
   onCancel: PropTypes.func,

@@ -1,17 +1,23 @@
-import React, { useCallback, useMemo, useRef } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import find from 'lodash/find';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import { Field } from 'react-final-form';
-import { useHistory } from 'react-router';
 import {
-  find,
-  get,
-} from 'lodash';
+  useCallback,
+  useMemo,
+  useRef,
+} from 'react';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
+import { Field } from 'react-final-form';
+import { useHistory } from 'react-router-dom';
 
 import {
   Accordion,
   AccordionSet,
   AccordionStatus,
+  Button,
   Checkbox,
   checkScope,
   Col,
@@ -22,6 +28,7 @@ import {
   KeyValue,
   MessageBanner,
   Pane,
+  PaneFooter,
   Paneset,
   Row,
 } from '@folio/stripes/components';
@@ -31,7 +38,6 @@ import {
   AmountWithCurrencyField,
   FieldDatepickerFinal,
   FieldSelectionFinal,
-  FormFooter,
   FundDistributionFieldsFinal,
   handleKeyCommand,
   parseNumberFieldValue,
@@ -41,35 +47,42 @@ import {
   VendorReferenceNumbersFields,
 } from '@folio/stripes-acq-components';
 
-import { useFundDistributionValidation } from '../../common/hooks';
 import { StatusValue } from '../../common/components';
+import {
+  SUBMIT_ACTION,
+  SUBMIT_ACTION_FIELD_NAME,
+} from '../../common/constants';
+import { useFundDistributionValidation } from '../../common/hooks';
 import {
   calculateTotalAmount,
   IS_EDIT_POST_APPROVAL,
 } from '../../common/utils';
-import {
-  convertToInvoiceLineFields,
-  getActiveAccountNumberOptions,
-} from '../utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import {
   ACCOUNT_STATUS,
   SECTIONS_INVOICE_LINE_FORM as SECTIONS,
 } from '../constants';
+import {
+  convertToInvoiceLineFields,
+  getActiveAccountNumberOptions,
+} from '../utils';
 import { POLineField } from './POLineField';
 
+const DEFAULT_ACCOUNTS = [];
+
 const InvoiceLineForm = ({
-  initialValues,
+  accounts = DEFAULT_ACCOUNTS,
+  adjustmentsPresets,
+  form: { batch, change },
   handleSubmit,
+  initialValues,
+  invoice,
+  isSubmitDisabled,
   onCancel,
   pristine,
   submitting,
   values: formValues,
-  form: { batch, change },
-  invoice,
-  vendorCode,
-  accounts,
-  adjustmentsPresets,
+  vendorCode = '',
 }) => {
   const history = useHistory();
   const accordionStatusRef = useRef();
@@ -131,6 +144,16 @@ const InvoiceLineForm = ({
   );
   const currentAccountNumber = formValues?.accountNumber;
 
+  const onSaveAndClose = useCallback(() => {
+    change(SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION.saveAndClose);
+    handleSubmit();
+  }, [change, handleSubmit]);
+
+  const onSaveAndKeepEditing = useCallback(() => {
+    change(SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION.saveAndKeepEditing);
+    handleSubmit();
+  }, [change, handleSubmit]);
+
   const shortcuts = [
     {
       name: 'cancel',
@@ -139,7 +162,7 @@ const InvoiceLineForm = ({
     },
     {
       name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting || isSubmitDisabled }),
     },
     {
       name: 'expandAllSections',
@@ -158,14 +181,51 @@ const InvoiceLineForm = ({
   const paneTitle = id
     ? <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.edit" values={{ invoiceLineNumber }} />
     : <FormattedMessage id="ui-invoice.invoiceLine.paneTitle.create" />;
+
+  const paneFooterStart = (
+    <Row>
+      <Col xs>
+        <Button
+          id="clickable-close-invoice-line-form"
+          buttonStyle="default mega"
+          onClick={onCancel}
+        >
+          <FormattedMessage id="stripes-components.cancel" />
+        </Button>
+      </Col>
+    </Row>
+  );
+
+  const paneFooterEnd = (
+    <Row>
+      <Col xs>
+        <Button
+          id="clickable-save-and-keep-editing"
+          buttonStyle="default mega"
+          disabled={isSubmitDisabled}
+          onClick={onSaveAndKeepEditing}
+        >
+          <FormattedMessage id="stripes-components.saveAndKeepEditing" />
+        </Button>
+      </Col>
+
+      <Col xs>
+        <Button
+          id="clickable-save"
+          buttonStyle="primary mega"
+          disabled={isSubmitDisabled}
+          onClick={onSaveAndClose}
+        >
+          <FormattedMessage id="stripes-components.saveAndClose" />
+        </Button>
+      </Col>
+    </Row>
+  );
+
   const paneFooter = (
-    <FormFooter
-      id="clickable-save"
-      label={<FormattedMessage id="stripes-components.saveAndClose" />}
-      pristine={pristine}
-      submitting={submitting}
-      handleSubmit={handleSubmit}
-      onCancel={onCancel}
+    <PaneFooter
+      renderStart={paneFooterStart}
+      renderEnd={paneFooterEnd}
     />
   );
 
@@ -185,16 +245,16 @@ const InvoiceLineForm = ({
   }, [accounts, currentAccountNumber]);
 
   return (
-    <form
-      id="invoice-line-form"
-      style={{ height: '100vh' }}
+    <HasCommand
+      commands={shortcuts}
+      isWithinScope={checkScope}
+      scope={document.body}
     >
-      <HasCommand
-        commands={shortcuts}
-        isWithinScope={checkScope}
-        scope={document.body}
-      >
-        <Paneset>
+      <Paneset isRoot>
+        <form
+          id="invoice-line-form"
+          style={{ height: '100vh' }}
+        >
           <Pane
             defaultWidth="fill"
             dismissible
@@ -383,30 +443,26 @@ const InvoiceLineForm = ({
               </Col>
             </Row>
           </Pane>
-        </Paneset>
-      </HasCommand>
-    </form>
+        </form>
+      </Paneset>
+    </HasCommand>
   );
 };
 
 InvoiceLineForm.propTypes = {
-  initialValues: PropTypes.object.isRequired,
+  accounts: PropTypes.arrayOf(PropTypes.object),
+  adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
+  fiscalYearId: PropTypes.string,
+  form: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  initialValues: PropTypes.object.isRequired,
+  invoice: PropTypes.object.isRequired,
+  isSubmitDisabled: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   values: PropTypes.object.isRequired,
-  form: PropTypes.object.isRequired,
-  invoice: PropTypes.object.isRequired,
   vendorCode: PropTypes.string,
-  accounts: PropTypes.arrayOf(PropTypes.object),
-  adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
-  fiscalYearId: PropTypes.string,
-};
-
-InvoiceLineForm.defaultProps = {
-  vendorCode: '',
-  accounts: [],
 };
 
 export default stripesForm({
