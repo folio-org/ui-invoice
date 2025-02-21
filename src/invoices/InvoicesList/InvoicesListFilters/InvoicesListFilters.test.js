@@ -13,14 +13,12 @@ import InvoicesListFilters from './InvoicesListFilters';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
-  FundFilter: 'FundFilter',
   ExpenseClassFilter: 'ExpenseClassFilter',
+  FiscalYearFilter: 'FiscalYearFilter',
+  FundFilter: 'FundFilter',
 }));
 jest.mock('./BatchGroupFilter', () => ({
   BatchGroupFilter: 'BatchGroupFilter',
-}));
-jest.mock('./FiscalYearFilter', () => ({
-  FiscalYearFilter: 'FiscalYearFilter',
 }));
 
 const defaultProps = {

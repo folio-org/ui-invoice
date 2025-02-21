@@ -9,6 +9,7 @@ import {
   AcqUnitFilter,
   BooleanFilter,
   ExpenseClassFilter,
+  FiscalYearFilter,
   FundFilter,
   NumberRangeFilter,
   PluggableOrganizationFilter,
@@ -24,7 +25,6 @@ import {
   FILTERS,
 } from '../constants';
 import { BatchGroupFilter } from './BatchGroupFilter';
-import { FiscalYearFilter } from './FiscalYearFilter';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
