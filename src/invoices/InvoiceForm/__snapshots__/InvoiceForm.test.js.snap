@@ -2,12 +2,12 @@
 
 exports[`InvoiceForm component should render correct structure 1`] = `
 <DocumentFragment>
-  <form
-    style="height: 100vh;"
-  >
-    <div>
-      <div
-        class="paneset"
+  <div>
+    <div
+      class="paneset"
+    >
+      <form
+        style="height: 100vh;"
       >
         <section
           class="pane focusIndicator"
@@ -2073,55 +2073,84 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                 class="renderStart"
                 data-test-pane-footer-start="true"
               >
-                <button
-                  class="button default mega"
-                  data-test-cancel-button="true"
-                  type="button"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-acq-components.FormFooter.cancel
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      id="clickable-close-invoice-form"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.cancel
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
               <span
                 data-test-pane-footer-end="true"
               >
-                <button
-                  class="button primary mega"
-                  data-test-save-button="true"
-                  disabled=""
-                  id="clickable-save"
-                  type="submit"
+                <div
+                  class="row"
                 >
-                  <span
-                    class="inner"
+                  <div
+                    class="col-xs"
                   >
-                    stripes-components.saveAndClose
-                  </span>
-                </button>
+                    <button
+                      class="button default mega"
+                      id="clickable-save-and-keep-editing"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndKeepEditing
+                      </span>
+                    </button>
+                  </div>
+                  <div
+                    class="col-xs"
+                  >
+                    <button
+                      class="button primary mega"
+                      id="clickable-save"
+                      type="button"
+                    >
+                      <span
+                        class="inner"
+                      >
+                        stripes-components.saveAndClose
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </span>
             </div>
           </div>
         </section>
-      </div>
+      </form>
+    </div>
+    <div
+      class="container"
+    >
       <div
-        class="container"
+        class="cursorHover"
+        hidden=""
+        style="left: -10px;"
       >
         <div
-          class="cursorHover"
-          hidden=""
-          style="left: -10px;"
+          class="cursor"
         >
-          <div
-            class="cursor"
-          >
-             
-          </div>
+           
         </div>
       </div>
     </div>
-  </form>
+  </div>
 </DocumentFragment>
 `;

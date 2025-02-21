@@ -1,46 +1,64 @@
 import { MemoryRouter } from 'react-router-dom';
 
-import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { render, screen, act, waitFor } from '@folio/jest-config-stripes/testing-library/react';
-import { useOrganization } from '@folio/stripes-acq-components';
+import {
+  render,
+  screen,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
+import user, { userEvent } from '@folio/jest-config-stripes/testing-library/user-event';
+import {
+  PAYMENT_METHOD_OPTIONS,
+  useOrganization,
+} from '@folio/stripes-acq-components';
 
 import {
-  match,
-  history,
-  location,
-  invoice,
   batchGroup,
+  history,
+  invoice,
+  location,
+  match,
+  orderLine,
   vendor,
-} from '../../../test/jest/fixtures';
+} from 'fixtures';
 
-import { useInvoice } from '../../common/hooks';
-import InvoiceForm from './InvoiceForm';
-import { saveInvoice } from './utils';
+import {
+  useInvoice,
+  useInvoiceLineMutation,
+  useOrderLines,
+  useOrders,
+} from '../../common/hooks';
 import { InvoiceFormContainerComponent } from './InvoiceFormContainer';
+import { saveInvoice } from './utils';
 
-jest.mock('@folio/stripes-acq-components', () => {
-  return {
-    ...jest.requireActual('@folio/stripes-acq-components'),
-    useOrganization: jest.fn(),
-  };
-});
-jest.mock('./InvoiceForm', () => jest.fn().mockReturnValue('InvoiceForm'));
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  AcqUnitsField: () => <span>AcqUnitsField</span>,
+  FieldOrganization: jest.fn(() => <span>FieldOrganization</span>),
+  useOrganization: jest.fn(),
+}));
+jest.mock('../InvoiceDetails/utils', () => ({
+  ...jest.requireActual('../InvoiceDetails/utils'),
+  createInvoiceLineFromPOL: jest.fn(() => ({})),
+}));
 jest.mock('./utils', () => ({
   ...jest.requireActual('./utils'),
   saveInvoice: jest.fn(),
 }));
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
+  useAddressCategories: jest.fn().mockReturnValue({ addressCategories: [], isLoading: false }),
   useConfigsAdjustments: jest.fn().mockReturnValue({ adjustments: [], isLoading: false }),
+  useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
   useInvoice: jest.fn(),
-  useOrderLines: jest.fn().mockReturnValue({ orderLines: [], isLoading: false }),
-  useOrders: jest.fn().mockReturnValue({ orders: [], isLoading: false }),
-  useInvoiceLineMutation: jest.fn().mockReturnValue({ mutateInvoiceLine: jest.fn() }),
+  useInvoiceLineMutation: jest.fn(),
+  useOrderLines: jest.fn(),
+  useOrders: jest.fn(),
+  usePayableFiscalYears: jest.fn(() => ({ fiscalYears: [] })),
 }));
 
 const mutatorMock = {
   invoiceFormInvoices: {
-    GET: jest.fn().mockReturnValue(Promise.resolve([invoice])),
+    GET: jest.fn().mockReturnValue(Promise.resolve([])),
   },
   duplicateInvoiceVendor: {
     GET: jest.fn().mockReturnValue(Promise.resolve({ name: 'Amazon' })),
@@ -67,65 +85,89 @@ const defaultProps = {
   stripes: { currency: 'USD' },
   onCancel: jest.fn(),
 };
-const renderInvoiceFormContainer = (props = defaultProps) => render(
-  <InvoiceFormContainerComponent {...props} />,
+const renderInvoiceFormContainer = (props = {}) => render(
+  <InvoiceFormContainerComponent
+    {...defaultProps}
+    {...props}
+  />,
   { wrapper: MemoryRouter },
 );
 
 describe('InvoiceFormContainer', () => {
+  const mutateInvoiceLine = jest.fn(() => Promise.resolve());
+
   beforeEach(() => {
-    useInvoice.mockClear().mockReturnValue({ isLoading: false, invoice });
-    useOrganization.mockClear().mockReturnValue({ isLoading: false, organization: vendor });
+    saveInvoice.mockResolvedValue(invoice);
+    useInvoice.mockReturnValue({ isLoading: false, invoice });
+    useInvoiceLineMutation.mockReturnValue({ mutateInvoiceLine });
+    useOrderLines.mockReturnValue({ orderLines: [orderLine], isLoading: false });
+    useOrders.mockReturnValue({ orders: [{ id: 'order1', vendor: 'vendor-id' }], isLoading: false });
+    useOrganization.mockReturnValue({ isLoading: false, organization: vendor });
   });
 
-  it('should not display InvoiceForm when loading', () => {
-    renderInvoiceFormContainer({
-      ...defaultProps,
-      match,
-    });
-
-    expect(screen.queryByText('InvoiceForm')).toBeNull();
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should display InvoiceForm when loaded', async () => {
     renderInvoiceFormContainer();
 
-    await screen.findByText('InvoiceForm');
-
-    expect(screen.getByText('InvoiceForm')).toBeDefined();
+    expect(await screen.findByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument();
   });
 
   describe('Save', () => {
-    beforeEach(() => {
-      InvoiceForm.mockClear();
+    const fillRequiredFields = async () => {
+      await user.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.vendorInvoiceNo' }), '123');
+      await user.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.details.information.invoiceDate' }), '2021-10-10');
+      await user.selectOptions(screen.getByRole('combobox', { name: 'ui-invoice.invoice.paymentMethod' }), [PAYMENT_METHOD_OPTIONS[0].value]);
+    };
+
+    it('should save invoice created from an order', async () => {
+      renderInvoiceFormContainer({
+        location: {
+          state: {
+            orderIds: ['order1'],
+          },
+        },
+      });
+
+      await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await fillRequiredFields();
+      await userEvent.click(screen.getByText('stripes-components.saveAndClose'));
+
+      expect(saveInvoice).toHaveBeenCalled();
+      expect(mutateInvoiceLine).toHaveBeenCalled();
     });
 
     it('should validate invoice duplication before save', async () => {
-      renderInvoiceFormContainer();
+      mutatorMock.invoiceFormInvoices.GET.mockResolvedValue([invoice]);
 
-      await screen.findByText('InvoiceForm');
-
-      await act(async () => {
-        await InvoiceForm.mock.calls[0][0].onSubmit(invoice);
+      renderInvoiceFormContainer({
+        match: {
+          params: { id: 'id' },
+        },
       });
 
+      await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await userEvent.click(screen.getByText('stripes-components.saveAndClose'));
       await screen.findByText('ui-invoice.invoice.isNotUnique.confirmation.heading');
 
       expect(screen.getByText('ui-invoice.invoice.isNotUnique.confirmation.message')).toBeDefined();
+      expect(mutatorMock.duplicateInvoiceVendor.GET).toHaveBeenCalled();
     });
 
     it('should save invoice when duplicates confirmed', async () => {
-      saveInvoice.mockClear().mockReturnValue(Promise.resolve(invoice));
-      renderInvoiceFormContainer();
+      mutatorMock.invoiceFormInvoices.GET.mockResolvedValue([invoice]);
 
-      await screen.findByText('InvoiceForm');
-
-      await act(async () => {
-        await InvoiceForm.mock.calls[0][0].onSubmit(invoice);
+      renderInvoiceFormContainer({
+        match: {
+          params: { id: 'id' },
+        },
       });
 
+      await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await userEvent.click(screen.getByText('stripes-components.saveAndKeepEditing'));
       await screen.findByText('ui-invoice.invoice.isNotUnique.confirmation.heading');
-
       await user.click(screen.getByText('ui-invoice.button.submit'));
 
       await waitFor(() => !screen.queryByRole('ui-invoice.invoice.isNotUnique.confirmation.heading'));
