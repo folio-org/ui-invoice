@@ -149,6 +149,7 @@ describe('InvoiceFormContainer', () => {
       });
 
       await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
       await userEvent.click(screen.getByText('stripes-components.saveAndClose'));
       await screen.findByText('ui-invoice.invoice.isNotUnique.confirmation.heading');
 
@@ -166,6 +167,7 @@ describe('InvoiceFormContainer', () => {
       });
 
       await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
       await userEvent.click(screen.getByText('stripes-components.saveAndKeepEditing'));
       await screen.findByText('ui-invoice.invoice.isNotUnique.confirmation.heading');
       await user.click(screen.getByText('ui-invoice.button.submit'));
