@@ -1,4 +1,3 @@
-import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -7,6 +6,7 @@ import {
   Dropdown,
   DropdownMenu,
   Icon,
+  MenuSection,
 } from '@folio/stripes/components';
 import { IfPermission } from '@folio/stripes/core';
 import { ColumnManagerMenu } from '@folio/stripes/smart-components';
@@ -49,31 +49,33 @@ const InvoiceLinesActions = ({
         }}
       >
         <DropdownMenu>
-          <IfPermission perm="invoice.invoice-lines.item.post">
-            <Button
-              buttonStyle="dropdownItem"
-              data-test-button-add-line
-              onClick={toggleAddInvoiceLines}
-              disabled={isDisabled}
-              data-testid="add-invoice-line-btn"
-            >
-              <Icon size="small" icon="plus-sign">
-                <FormattedMessage id="ui-invoice.invoice.details.lines.addFromPOL" />
-              </Icon>
-            </Button>
+          <MenuSection>
+            <IfPermission perm="invoice.invoice-lines.item.post">
+              <Button
+                buttonStyle="dropdownItem"
+                data-test-button-add-line
+                onClick={toggleAddInvoiceLines}
+                disabled={isDisabled}
+                data-testid="add-invoice-line-btn"
+              >
+                <Icon size="small" icon="plus-sign">
+                  <FormattedMessage id="ui-invoice.invoice.details.lines.addFromPOL" />
+                </Icon>
+              </Button>
 
-            <Button
-              buttonStyle="dropdownItem"
-              data-test-button-create-line
-              onClick={createLine}
-              disabled={isDisabled}
-              data-testid="create-invoice-line-btn"
-            >
-              <Icon size="small" icon="plus-sign">
-                <FormattedMessage id="ui-invoice.invoice.details.lines.createNew" />
-              </Icon>
-            </Button>
-          </IfPermission>
+              <Button
+                buttonStyle="dropdownItem"
+                data-test-button-create-line
+                onClick={createLine}
+                disabled={isDisabled}
+                data-testid="create-invoice-line-btn"
+              >
+                <Icon size="small" icon="plus-sign">
+                  <FormattedMessage id="ui-invoice.invoice.details.lines.createNew" />
+                </Icon>
+              </Button>
+            </IfPermission>
+          </MenuSection>
 
           <ColumnManagerMenu
             prefix="invoice-lines"
