@@ -6,70 +6,69 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
     <div
       class="paneset"
     >
-      <form
-        id="invoice-line-form"
-        style="height: 100vh;"
+      <section
+        class="pane focusIndicator"
+        id="pane-invoice-line-form"
       >
-        <section
-          class="pane focusIndicator"
-          id="pane-invoice-line-form"
+        <div
+          aria-labelledby="paneHeaderpane-invoice-line-form-pane-title"
+          class="paneHeader"
+          data-test-pane-header="true"
+          id="paneHeaderpane-invoice-line-form"
+          role="region"
+          tabindex="-1"
         >
           <div
-            aria-labelledby="paneHeaderpane-invoice-line-form-pane-title"
-            class="paneHeader"
-            data-test-pane-header="true"
-            id="paneHeaderpane-invoice-line-form"
-            role="region"
-            tabindex="-1"
+            class="paneHeaderButtonsArea first"
           >
             <div
-              class="paneHeaderButtonsArea first"
+              class="paneMenu"
             >
-              <div
-                class="paneMenu"
+              <button
+                aria-label="stripes-components.closeItem"
+                class="iconButton medium paneHeaderCloseIcon PaneHeaderIconButton paneHeaderIconButton"
+                data-test-pane-header-dismiss-button="true"
+                icon="times"
+                type="button"
               >
-                <button
-                  aria-label="stripes-components.closeItem"
-                  class="iconButton medium paneHeaderCloseIcon PaneHeaderIconButton paneHeaderIconButton"
+                <span
+                  class="iconButtonInner mediumOffset PaneHeaderIconButton__inner"
                   data-test-pane-header-dismiss-button="true"
-                  icon="times"
-                  type="button"
                 >
-                  <span
-                    class="iconButtonInner mediumOffset PaneHeaderIconButton__inner"
-                    data-test-pane-header-dismiss-button="true"
-                  >
-                    <span>
-                      Icon
-                    </span>
+                  <span>
+                    Icon
                   </span>
-                </button>
-              </div>
-            </div>
-            <div
-              class="paneHeaderCenter"
-            >
-              <div
-                class="paneHeaderCenterInner"
-                id="paneHeaderpane-invoice-line-form-pane-title"
-              >
-                <h2
-                  class="paneTitle"
-                  data-test-pane-header-title="true"
-                >
-                  <span
-                    class="paneTitleLabel"
-                  >
-                    ui-invoice.invoiceLine.paneTitle.edit
-                  </span>
-                </h2>
-              </div>
+                </span>
+              </button>
             </div>
           </div>
           <div
-            class="paneContent hasPadding"
-            id="pane-invoice-line-form-content"
-            tabindex="-1"
+            class="paneHeaderCenter"
+          >
+            <div
+              class="paneHeaderCenterInner"
+              id="paneHeaderpane-invoice-line-form-pane-title"
+            >
+              <h2
+                class="paneTitle"
+                data-test-pane-header-title="true"
+              >
+                <span
+                  class="paneTitleLabel"
+                >
+                  ui-invoice.invoiceLine.paneTitle.edit
+                </span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div
+          class="paneContent hasPadding"
+          id="pane-invoice-line-form-content"
+          tabindex="-1"
+        >
+          <form
+            id="invoice-line-form"
           >
             <div
               class="row"
@@ -1088,79 +1087,79 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                 </div>
               </div>
             </div>
-          </div>
+          </form>
+        </div>
+        <div
+          class="paneFooter"
+        >
           <div
-            class="paneFooter"
+            class="paneFooterContent"
           >
-            <div
-              class="paneFooterContent"
+            <span
+              class="renderStart"
+              data-test-pane-footer-start="true"
             >
-              <span
-                class="renderStart"
-                data-test-pane-footer-start="true"
+              <div
+                class="row"
               >
                 <div
-                  class="row"
+                  class="col-xs"
                 >
-                  <div
-                    class="col-xs"
+                  <button
+                    class="button default mega"
+                    id="clickable-close-invoice-line-form"
+                    type="button"
                   >
-                    <button
-                      class="button default mega"
-                      id="clickable-close-invoice-line-form"
-                      type="button"
+                    <span
+                      class="inner"
                     >
-                      <span
-                        class="inner"
-                      >
-                        stripes-components.cancel
-                      </span>
-                    </button>
-                  </div>
+                      stripes-components.cancel
+                    </span>
+                  </button>
                 </div>
-              </span>
-              <span
-                data-test-pane-footer-end="true"
+              </div>
+            </span>
+            <span
+              data-test-pane-footer-end="true"
+            >
+              <div
+                class="row"
               >
                 <div
-                  class="row"
+                  class="col-xs"
                 >
-                  <div
-                    class="col-xs"
+                  <button
+                    class="button default mega"
+                    id="clickable-save-and-keep-editing"
+                    type="button"
                   >
-                    <button
-                      class="button default mega"
-                      id="clickable-save-and-keep-editing"
-                      type="button"
+                    <span
+                      class="inner"
                     >
-                      <span
-                        class="inner"
-                      >
-                        stripes-components.saveAndKeepEditing
-                      </span>
-                    </button>
-                  </div>
-                  <div
-                    class="col-xs"
-                  >
-                    <button
-                      class="button primary mega"
-                      id="clickable-save"
-                      type="button"
-                    >
-                      <span
-                        class="inner"
-                      >
-                        stripes-components.saveAndClose
-                      </span>
-                    </button>
-                  </div>
+                      stripes-components.saveAndKeepEditing
+                    </span>
+                  </button>
                 </div>
-              </span>
-            </div>
+                <div
+                  class="col-xs"
+                >
+                  <button
+                    class="button primary mega"
+                    id="clickable-save"
+                    type="button"
+                  >
+                    <span
+                      class="inner"
+                    >
+                      stripes-components.saveAndClose
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </span>
           </div>
-        </section>
-      </form>
+        </div>
+      </section>
     </div>
     <div
       class="container"

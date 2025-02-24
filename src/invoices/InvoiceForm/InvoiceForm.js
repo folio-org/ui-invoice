@@ -334,16 +334,16 @@ const InvoiceForm = ({
       scope={document.body}
     >
       <Paneset isRoot>
-        <form style={{ height: '100vh' }}>
-          <Pane
-            defaultWidth="100%"
-            dismissible
-            footer={paneFooter}
-            id="pane-invoice-form"
-            onClose={closeForm}
-            paneTitle={paneTitle}
-            paneSub={initialVendor?.code}
-          >
+        <Pane
+          defaultWidth="100%"
+          dismissible
+          footer={paneFooter}
+          id="pane-invoice-form"
+          onClose={closeForm}
+          paneTitle={paneTitle}
+          paneSub={initialVendor?.code}
+        >
+          <form>
             <Row>
               <Col
                 xs={12}
@@ -717,8 +717,8 @@ const InvoiceForm = ({
                 </AccordionStatus>
               </Col>
             </Row>
-          </Pane>
-        </form>
+          </form>
+        </Pane>
       </Paneset>
     </HasCommand>
   );

@@ -251,18 +251,15 @@ const InvoiceLineForm = ({
       scope={document.body}
     >
       <Paneset isRoot>
-        <form
-          id="invoice-line-form"
-          style={{ height: '100vh' }}
+        <Pane
+          defaultWidth="fill"
+          dismissible
+          footer={paneFooter}
+          id="pane-invoice-line-form"
+          onClose={onCancel}
+          paneTitle={paneTitle}
         >
-          <Pane
-            defaultWidth="fill"
-            dismissible
-            footer={paneFooter}
-            id="pane-invoice-line-form"
-            onClose={onCancel}
-            paneTitle={paneTitle}
-          >
+          <form id="invoice-line-form">
             <Row>
               <Col xs={12} md={8} mdOffset={2}>
                 <AccordionStatus ref={accordionStatusRef}>
@@ -442,8 +439,8 @@ const InvoiceLineForm = ({
                 </AccordionStatus>
               </Col>
             </Row>
-          </Pane>
-        </form>
+          </form>
+        </Pane>
       </Paneset>
     </HasCommand>
   );
