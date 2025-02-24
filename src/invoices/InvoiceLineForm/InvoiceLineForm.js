@@ -77,7 +77,7 @@ const InvoiceLineForm = ({
   handleSubmit,
   initialValues,
   invoice,
-  isSubmitDisabled,
+  isSubmitDisabled: isSubmitDisabledProp,
   onCancel,
   pristine,
   submitting,
@@ -143,6 +143,7 @@ const InvoiceLineForm = ({
     || (poLineId && poLineId !== formValues.poLineId && accountNumber),
   );
   const currentAccountNumber = formValues?.accountNumber;
+  const isSubmitDisabled = isSubmitDisabledProp || pristine || submitting;
 
   const onSaveAndClose = useCallback(() => {
     change(SUBMIT_ACTION_FIELD_NAME, SUBMIT_ACTION.saveAndClose);
@@ -162,7 +163,7 @@ const InvoiceLineForm = ({
     },
     {
       name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting || isSubmitDisabled }),
+      handler: handleKeyCommand(handleSubmit, { disabled: isSubmitDisabled }),
     },
     {
       name: 'expandAllSections',
@@ -261,7 +262,11 @@ const InvoiceLineForm = ({
         >
           <form id="invoice-line-form">
             <Row>
-              <Col xs={12} md={8} mdOffset={2}>
+              <Col
+                xs={12}
+                md={8}
+                mdOffset={2}
+              >
                 <AccordionStatus ref={accordionStatusRef}>
                   <Row end="xs">
                     <Col xs={12}>

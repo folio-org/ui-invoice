@@ -99,7 +99,7 @@ const InvoiceForm = ({
   initialValues,
   initialVendor = {},
   isCreateFromOrder = false,
-  isSubmitDisabled,
+  isSubmitDisabled: isSubmitDisabledProp,
   onCancel: closeForm,
   parentResources,
   pristine,
@@ -119,6 +119,7 @@ const InvoiceForm = ({
     registerField,
   } = form;
 
+  const isSubmitDisabled = isSubmitDisabledProp || pristine || submitting;
   const filledBillTo = values?.billTo;
   const filledVendorId = values?.vendorId;
   const filledCurrency = values?.currency;
@@ -311,7 +312,7 @@ const InvoiceForm = ({
     },
     {
       name: 'save',
-      handler: handleKeyCommand(handleSubmit, { disabled: pristine || submitting }),
+      handler: handleKeyCommand(handleSubmit, { disabled: isSubmitDisabled }),
     },
     {
       name: 'expandAllSections',

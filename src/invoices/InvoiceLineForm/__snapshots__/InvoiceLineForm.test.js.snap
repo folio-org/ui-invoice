@@ -1130,6 +1130,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                 >
                   <button
                     class="button default mega"
+                    disabled=""
                     id="clickable-save-and-keep-editing"
                     type="button"
                   >
@@ -1145,6 +1146,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
                 >
                   <button
                     class="button primary mega"
+                    disabled=""
                     id="clickable-save"
                     type="button"
                   >
