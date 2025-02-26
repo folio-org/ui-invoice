@@ -1,6 +1,6 @@
 {
   "name": "@folio/invoice",
-  "version": "6.1.2",
+  "version": "7.0.0",
   "description": "Invoice",
   "main": "src/index.js",
   "repository": {
@@ -17,7 +17,7 @@
     "test:e2e": "yarn stripes test karma --karma.singleRun --karma.browsers ChromeDocker --karma.reporters mocha junit --coverage",
     "lint": "eslint .",
     "build-mod-descriptor": "stripes mod descriptor --full --strict | jq '.[]' > module-descriptor.json ",
-    "formatjs-compile": "formatjs compile-folder --ast --format simple ./translations/ui-invoice ./translations/ui-invoice/compiled"
+    "formatjs-compile": "stripes translate compile"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
@@ -32,11 +32,10 @@
     "@bigtest/interactor": "^0.8.1",
     "@bigtest/mocha": "^0.5.1",
     "@bigtest/react": "^0.1.2",
-    "@folio/eslint-config-stripes": "^7.0.0",
-    "@folio/jest-config-stripes": "^2.0.0",
-    "@folio/stripes": "^9.0.0",
-    "@folio/stripes-cli": "^3.0.0",
-    "@formatjs/cli": "^6.1.3",
+    "@folio/eslint-config-stripes": "^8.0.0",
+    "@folio/jest-config-stripes": "^4.0.0",
+    "@folio/stripes": "^10.0.0",
+    "@folio/stripes-cli": "^4.0.0",
     "chai": "^4.2.0",
     "core-js": "^3.6.1",
     "eslint": "^7.32.0",
@@ -49,7 +48,7 @@
     "moment": "^2.24.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-intl": "^6.4.4",
+    "react-intl": "^7.1.5",
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
@@ -58,7 +57,7 @@
     "sinon": "^7.0.0"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "~6.0.0",
+    "@folio/stripes-acq-components": "~7.0.0",
     "file-saver": "^2.0.0",
     "final-form": "^4.18.2",
     "final-form-arrays": "^3.0.1",
@@ -73,18 +72,18 @@
     "redux-form": "^8.3.0"
   },
   "peerDependencies": {
-    "@folio/stripes": "^9.0.0",
+    "@folio/stripes": "^10.0.0",
     "moment": "^2.24.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-intl": "^6.4.4",
+    "react-intl": "^7.1.5",
     "react-query": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0"
   },
   "optionalDependencies": {
-    "@folio/plugin-find-organization": "^5.0.0",
-    "@folio/plugin-find-po-line": "^5.0.0"
+    "@folio/plugin-find-organization": "^6.0.0",
+    "@folio/plugin-find-po-line": "^6.0.0"
   },
   "stripes": {
     "actsAs": [
