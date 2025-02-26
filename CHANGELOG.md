@@ -1,6 +1,6 @@
 # Change history for ui-invoice
 
-## 6.2.0 (IN PROGRESS)
+## 7.0.0 (IN PROGRESS)
 
 * Open version history pane on click changelog icon. Refs UINV-468.
 * Display all invoice versions in change log in fourth pane. Refs UINV-469.
@@ -13,6 +13,8 @@
 * Add the "Save & keep editing" button to the invoice line form. Refs UINV-568.
 * Add the "Save & keep editing" button to the invoice form. Refs UINV-567.
 * Reuse `FiscalYearFilter` component that was move to stripes-acq-components. Refs UINV-586.
+* *BREAKING* Migrate stripes dependencies to their Sunflower versions. Refs UINV-583.
+* *BREAKING* Migrate `react-intl` to v7. Refs UINV-584.
 
 ## [6.1.2](https://github.com/folio-org/ui-invoice/tree/v6.1.2) (2025-01-21)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.1...v6.1.2)
