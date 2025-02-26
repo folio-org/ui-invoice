@@ -227,11 +227,14 @@ export function InvoiceFormContainerComponent({
     await refetchInvoice();
   }, [history, id, location.search, refetchInvoice]);
 
-  const saveInvoiceHandler = useCallback(({
-    [SUBMIT_ACTION_FIELD_NAME]: submitAction,
-    accountNo,
-    ..._formValues
-  }) => {
+  const saveInvoiceHandler = useCallback((
+    {
+      [SUBMIT_ACTION_FIELD_NAME]: submitAction,
+      accountNo,
+      ..._formValues
+    },
+    form,
+  ) => {
     let validationRequest = Promise.resolve();
     const formValues = {
       ..._formValues,
@@ -279,6 +282,7 @@ export function InvoiceFormContainerComponent({
           }
           case SUBMIT_ACTION.saveAndKeepEditing: {
             await saveAndKeepEditingHandler(savedRecord);
+            form.restart();
             break;
           }
           case SUBMIT_ACTION.saveAndClose:
