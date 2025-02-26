@@ -82,10 +82,13 @@ export function InvoiceLineFormContainerComponent({
     },
   });
 
-  const saveInvoiceLine = useCallback(({
-    [SUBMIT_ACTION_FIELD_NAME]: submitAction,
-    ...values
-  }) => {
+  const saveInvoiceLine = useCallback((
+    {
+      [SUBMIT_ACTION_FIELD_NAME]: submitAction,
+      ...values
+    },
+    form,
+  ) => {
     const mutatorMethod = values.id ? 'PUT' : 'POST';
 
     return mutator.invoiceLine[mutatorMethod](values)
@@ -105,7 +108,7 @@ export function InvoiceLineFormContainerComponent({
             }
 
             await refetchInvoiceLine();
-
+            form.restart();
             break;
           }
           case SUBMIT_ACTION.saveAndClose:
