@@ -106,7 +106,7 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
 
         <Col xs={3}>
           <VersionKeyValue
-            name="approvedDate"
+            name="approvalDate"
             label={<FormattedMessage id="ui-invoice.invoice.details.information.approvedDate" />}
             value={<FolioFormattedDate value={approvalDate} utc={false} />}
           />

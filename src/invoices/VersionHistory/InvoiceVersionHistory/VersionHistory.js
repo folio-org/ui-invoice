@@ -77,7 +77,7 @@ const VersionHistory = ({
     >
       <TitleManager record={invoice?.vendorInvoiceNo} />
       <VersionView
-        id="order"
+        id="invoice"
         dismissible
         isLoading={isLoading}
         onClose={onVersionClose}
