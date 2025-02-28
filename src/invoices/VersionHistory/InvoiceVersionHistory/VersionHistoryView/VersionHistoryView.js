@@ -37,7 +37,6 @@ export function VersionHistoryView({ version = {} }) {
   ];
 
   const adjustments = get(version, 'adjustments', []);
-  const poNumbers = get(version, 'poNumbers', []);
 
   return (
     <HasCommand
@@ -58,18 +57,14 @@ export function VersionHistoryView({ version = {} }) {
           >
             <VersionHistoryViewInformation version={version} />
           </Accordion>
-          {
-            Boolean(poNumbers.length) && (
-              <Accordion
-                label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
-                id="invoiceLines"
-              >
-                <VersionHistoryViewInvoiceLine
-                  version={version}
-                />
-              </Accordion>
-            )
-          }
+
+          <Accordion
+            label={<FormattedMessage id="ui-invoice.invoice.details.lines.title" />}
+            id="invoiceLines"
+          >
+            <VersionHistoryViewInvoiceLine version={version} />
+          </Accordion>
+
           <Accordion
             label={<FormattedMessage id="ui-invoice.invoice.details.vendor.title" />}
             id="vendorDetails"
