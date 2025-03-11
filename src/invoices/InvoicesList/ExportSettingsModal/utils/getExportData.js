@@ -55,7 +55,7 @@ export const getExportData = async ({ ky, intl, query }) => {
   const exportInvoiceIds = exportInvoices.map(({ id }) => id);
   const buildInvoiceLinesQuery = (itemsChunk) => itemsChunk.map(id => `invoiceId==${id}`).join(' or ');
   const invoiceLines = await fetchExportDataByIds({
-    ky, ids: exportInvoiceIds, buildQuery: buildInvoiceLinesQuery, api: INVOICE_LINE_API, records: 'invoiceLines',
+    ky, ids: exportInvoiceIds, buildQuery: buildInvoiceLinesQuery, api: INVOICE_LINE_API, records: 'invoiceLines', limit: 10000,
   });
   const vendorIds = uniq(exportInvoices.map(({ vendorId }) => vendorId));
   const vendors = await fetchExportDataByIds({ ky, ids: vendorIds, api: VENDORS_API, records: 'organizations' });
