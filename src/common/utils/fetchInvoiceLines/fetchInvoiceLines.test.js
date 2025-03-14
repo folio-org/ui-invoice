@@ -21,6 +21,6 @@ describe('fetchInvoiceLines', () => {
 
     fetchInvoiceLines(kyMock, options);
 
-    expect(kyMock.get).toHaveBeenCalledWith(INVOICE_LINE_API, { options });
+    expect(kyMock.get).toHaveBeenCalledWith(INVOICE_LINE_API, options);
   });
 });

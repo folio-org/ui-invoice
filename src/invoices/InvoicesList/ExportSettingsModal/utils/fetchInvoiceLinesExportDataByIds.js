@@ -16,7 +16,7 @@ export const fetchInvoiceLinesExportDataByIds = ({ ky, ids }) => {
     return acc.then(prevResp => {
       return batchRequest(
         ({ params }) => fetchAllRecords({
-          GET: async ({ params: options }) => fetchInvoiceLines(ky, options),
+          GET: async ({ params: searchParams }) => fetchInvoiceLines(ky, { searchParams }),
         }, params.query),
         nextBatch,
         buildInvoiceLinesQuery,

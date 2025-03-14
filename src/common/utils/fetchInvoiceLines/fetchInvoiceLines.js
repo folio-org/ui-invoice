@@ -3,7 +3,7 @@ import {
 } from '../../constants';
 
 export const fetchInvoiceLines = async (ky, options) => {
-  const { invoiceLines } = await ky.get(INVOICE_LINE_API, { searchParams: options }).json();
+  const { invoiceLines } = await ky.get(INVOICE_LINE_API, options).json();
 
   return invoiceLines;
 };
