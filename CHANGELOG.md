@@ -1,6 +1,9 @@
 # Change history for ui-invoice
 
-## 7.0.0 (IN PROGRESS)
+## 7.1.0 (IN PROGRESS)
+
+## [7.0.0](https://github.com/folio-org/ui-invoice/tree/v7.0.0) (2025-03-13)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.2...v7.0.0)
 
 * Open version history pane on click changelog icon. Refs UINV-468.
 * Display all invoice versions in change log in fourth pane. Refs UINV-469.
