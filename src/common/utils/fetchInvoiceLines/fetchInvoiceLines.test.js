@@ -1,7 +1,7 @@
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { fetchInvoiceLines } from './fetchInvoiceLines';
 import { INVOICE_LINE_API } from '../../constants';
+import { fetchInvoiceLines } from './fetchInvoiceLines';
 
 describe('fetchInvoiceLines', () => {
   afterEach(() => {
