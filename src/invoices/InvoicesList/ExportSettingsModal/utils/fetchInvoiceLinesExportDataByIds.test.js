@@ -11,7 +11,7 @@ describe('fetchInvoiceLinesExportDataByIds', () => {
   });
 
   it('should fetch invoice lines when IDs are provided', async () => {
-    const ky = { get: jest.fn().mockResolvedValue({ json: jest.fn().mockResolvedValue({ invoiceLines: [{ id: '1' }] }) }) };
+    const ky = { get: jest.fn().mockResolvedValue({ invoiceLines: [{ id: '1' }] }) };
 
     const ids = ['1', '2', '3'];
     const result = await fetchInvoiceLinesExportDataByIds({ ky, ids });
