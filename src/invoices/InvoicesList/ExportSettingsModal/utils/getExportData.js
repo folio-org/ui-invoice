@@ -24,11 +24,11 @@ import {
 import {
   BATCH_GROUPS_API,
   FISCAL_YEARS_API,
-  INVOICE_LINE_API,
   VOUCHER_LINES_API,
   VOUCHERS_API,
 } from '../../../../common/constants';
 import { createExportReport } from './createExportReport';
+import { fetchInvoiceLinesExportDataByIds } from './fetchInvoiceLinesExportDataByIds';
 
 const getExportUserIds = (invoices = [], invoiceLines = []) => {
   const invoiceUserIds = invoices.map(
@@ -53,10 +53,7 @@ export const getExportData = async ({ ky, intl, query }) => {
     query,
   );
   const exportInvoiceIds = exportInvoices.map(({ id }) => id);
-  const buildInvoiceLinesQuery = (itemsChunk) => itemsChunk.map(id => `invoiceId==${id}`).join(' or ');
-  const invoiceLines = await fetchExportDataByIds({
-    ky, ids: exportInvoiceIds, buildQuery: buildInvoiceLinesQuery, api: INVOICE_LINE_API, records: 'invoiceLines', limit: 10000,
-  });
+  const invoiceLines = await fetchInvoiceLinesExportDataByIds({ ky, ids: exportInvoiceIds });
   const vendorIds = uniq(exportInvoices.map(({ vendorId }) => vendorId));
   const vendors = await fetchExportDataByIds({ ky, ids: vendorIds, api: VENDORS_API, records: 'organizations' });
   const acqUnitsIds = uniq(flatten((exportInvoices.map(({ acqUnitIds }) => acqUnitIds))));
