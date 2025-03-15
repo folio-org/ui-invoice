@@ -9,8 +9,11 @@ import { fetchInvoiceLines } from '../../../../common/utils';
 
 const buildInvoiceLinesQuery = (itemsChunk) => itemsChunk.map(id => `invoiceId==${id}`).join(' or ');
 
+// This size was chosen to match existing implementations in the stripes-acq-components library — change if necessary
+const CHUNK_SIZE = 50;
+
 export const fetchInvoiceLinesExportDataByIds = ({ ky, ids }) => {
-  const batchedIds = chunk(ids, 50);
+  const batchedIds = chunk(ids, CHUNK_SIZE);
 
   return batchedIds.reduce((acc, nextBatch) => {
     return acc.then(prevResp => {
