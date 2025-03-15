@@ -1,5 +1,3 @@
-import { useOkapiKy } from '@folio/stripes/core';
-
 import { INVOICE_LINE_API } from '../../constants';
 import { fetchInvoiceLines } from './fetchInvoiceLines';
 
@@ -14,8 +12,6 @@ describe('fetchInvoiceLines', () => {
         json: () => ({ invoiceLines: [] }),
       })),
     };
-
-    useOkapiKy.mockClear().mockReturnValue(kyMock);
 
     const options = { query: '', offset: 0 };
 
