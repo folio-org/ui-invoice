@@ -468,12 +468,12 @@
     "invoice.actions.duplicate.success.message": "De factuur is succesvol gedupliceerd",
     "invoice.actions.duplicate.error.message": "De factuur is niet gedupliceerd",
     "search.folioInvoiceNo": "Factuurnummer FOLIO",
-    "label.backToInvoice": "Back to Invoice",
-    "permission.invoice.approve.execute": "Invoice: Approve invoices",
-    "permission.invoice.pay.execute": "Invoice: Pay invoices",
-    "permission.invoice.pay-different-fy.execute": "Invoice: Pay invoices in a different fiscal year",
-    "permission.invoice.cancel.execute": "Invoice: Cancel invoices",
-    "permission.voucher.export.execute": "Invoice: Voucher export",
-    "invoice.versionHistory.noVersion": "No version history to display.",
-    "invoice.totalAmount": "Total Amount"
+    "label.backToInvoice": "Terug naar Factuur",
+    "permission.invoice.approve.execute": "Factuur: Facturen goedkeuren",
+    "permission.invoice.pay.execute": "Factuur: Facturen betalen",
+    "permission.invoice.pay-different-fy.execute": "Factuur: Facturen in een ander Boekjaar betalen",
+    "permission.invoice.cancel.execute": "Factuur: Facturen annuleren",
+    "permission.voucher.export.execute": "Factuur: Tegoedbon exporteren",
+    "invoice.versionHistory.noVersion": "Geen versiegeschiedenis om weer te geven.",
+    "invoice.totalAmount": "Totaal Bedrag"
 }
