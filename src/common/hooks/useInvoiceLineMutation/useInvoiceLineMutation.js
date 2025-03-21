@@ -33,8 +33,8 @@ export const useInvoiceLineMutation = (options = {}) => {
           }).json();
 
           acc.push({ status: 'fulfilled', value: response });
-        } catch (error) {
-          acc.push({ status: 'rejected', reason: error });
+        } catch ({ response }) {
+          acc.push({ status: 'rejected', reason: response });
         }
 
         return acc;
