@@ -354,7 +354,7 @@
     "receivingHistory.chronology": "Chronologia",
     "receivingHistory.copyNumber": "Liczba kopii",
     "receivingHistory.enumeration": "Numeracja",
-    "receivingHistory.receiptDate": "Data odbioru",
+    "receivingHistory.receiptDate": "Data rachunku",
     "receivingHistory": "Historia otrzymywania",
     "invoice.validation.accountingCode": "To export to accounting you must select an accounting code",
     "invoice.details.lines.addFromPOL": "Add line from POL",
@@ -372,7 +372,7 @@
     "invoice.details.language": "Język",
     "invoice.details.stateRegion": "Województwo/Powiat/Gmina",
     "invoice.details.zipCode": "Zip code",
-    "otherRelatedInvoiceLines": "Other related invoice lines",
+    "otherRelatedInvoiceLines": "Inne powiązane pozycje na fakturze",
     "otherRelatedInvoiceLines.amount": "Kwota",
     "otherRelatedInvoiceLines.invoiceLine": "Invoice line #",
     "otherRelatedInvoiceLines.invoiceDate": "Invoice date",
@@ -438,7 +438,7 @@
     "otherRelatedInvoiceLines.subscriptionDescription": "Subscription info",
     "otherRelatedInvoiceLines.fiscalYear": "Rok budżetowy",
     "invoiceLine.accountNumber.inactive": "Wybrany numer konta jest nieaktywny.",
-    "inactive": "Inactive",
+    "inactive": "Nieaktywny",
     "permission.batchVoucher.exportConfigs.credentials.view": "Settings (Invoices): Batch group usernames and passwords: view",
     "permission.batchVoucher.exportConfigs.credentials.edit": "Settings (Invoices): Batch group usernames and passwords: view and edit",
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "This operation could not be completed successfully. There is either no budget for <b>{fundCode}</b> for the targeted fiscal year or the budget is not Active.",
@@ -475,5 +475,5 @@
     "permission.invoice.cancel.execute": "Faktura: anulowanie faktur",
     "permission.voucher.export.execute": "Faktura: eksport vouchera",
     "invoice.versionHistory.noVersion": "No version history to display.",
-    "invoice.totalAmount": "Total Amount"
+    "invoice.totalAmount": "Całkowita kwota"
 }
