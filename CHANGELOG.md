@@ -2,6 +2,9 @@
 
 ## 7.1.0 (IN PROGRESS)
 
+## [7.0.1](https://github.com/folio-org/ui-invoice/tree/v7.0.1) (2025-03-24)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.0...v7.0.1)
+
 * Fetch all invoice lines per invoice on export. Refs UINV-572.
 
 ## [7.0.0](https://github.com/folio-org/ui-invoice/tree/v7.0.0) (2025-03-13)
