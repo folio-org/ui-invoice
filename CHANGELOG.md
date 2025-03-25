@@ -3,6 +3,8 @@
 ## 7.1.0 (IN PROGRESS)
 
 * Correctly extract response object from ky's error in useInvoiceLineMutation hook. Fixes UINV-571
+* Add `settings.invoice.enabled` to `ui-invoice.batchVoucher.exportConfigs.credentials.view` so user can access it. Fixes UINV-593.
+
 
 ## [7.0.1](https://github.com/folio-org/ui-invoice/tree/v7.0.1) (2025-03-24)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.0...v7.0.1)
