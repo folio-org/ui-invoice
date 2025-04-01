@@ -2,11 +2,15 @@
 
 ## 7.1.0 (IN PROGRESS)
 
+## [7.0.2](https://github.com/folio-org/ui-invoice/tree/v7.0.2) (2025-04-01)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.1...v7.0.2)
+
+* Correctly extract response object from ky's error in useInvoiceLineMutation hook. Fixes UINV-571.
+
 ## [7.0.1](https://github.com/folio-org/ui-invoice/tree/v7.0.1) (2025-03-24)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.0...v7.0.1)
 
 * Fetch all invoice lines per invoice on export. Refs UINV-572.
-* Correctly extract response object from ky's error in useInvoiceLineMutation hook. Fixes UINV-571
 
 ## [7.0.0](https://github.com/folio-org/ui-invoice/tree/v7.0.0) (2025-03-13)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.2...v7.0.0)
