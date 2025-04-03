@@ -2,6 +2,8 @@
 
 ## 7.1.0 (IN PROGRESS)
 
+* Add `settings.invoice.enabled` to `ui-invoice.batchVoucher.exportConfigs.credentials.view` so user can access it. Fixes UINV-593.
+
 ## [7.0.2](https://github.com/folio-org/ui-invoice/tree/v7.0.2) (2025-04-01)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.1...v7.0.2)
 
