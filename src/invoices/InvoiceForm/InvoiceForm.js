@@ -100,7 +100,7 @@ const InvoiceForm = ({
   initialVendor = {},
   isCreateFromOrder = false,
   isSubmitDisabled: isSubmitDisabledProp,
-  onCancel: closeForm,
+  onCancel,
   parentResources,
   pristine,
   saveButtonLabelId = 'stripes-components.saveAndClose',
@@ -155,6 +155,10 @@ const InvoiceForm = ({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const closeForm = useCallback(() => {
+    onCancel(id);
+  }, [id, onCancel]);
 
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
