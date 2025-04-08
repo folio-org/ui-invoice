@@ -80,9 +80,9 @@ import {
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_FORM as SECTIONS } from '../constants';
-import InvoiceLinksForm from './InvoiceLinksForm';
 import FieldBatchGroup from './FieldBatchGroup';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
+import InvoiceLinksForm from './InvoiceLinksForm';
 import { validateAccountingCode } from './utils';
 
 import invoiceCss from '../Invoice.css';
