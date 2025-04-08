@@ -80,9 +80,9 @@ import {
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_FORM as SECTIONS } from '../constants';
-import InvoiceLinksForm from './InvoiceLinksForm';
 import FieldBatchGroup from './FieldBatchGroup';
 import InvoiceDocumentsForm from './InvoiceDocumentsForm';
+import InvoiceLinksForm from './InvoiceLinksForm';
 import { validateAccountingCode } from './utils';
 
 import invoiceCss from '../Invoice.css';
@@ -100,7 +100,7 @@ const InvoiceForm = ({
   initialVendor = {},
   isCreateFromOrder = false,
   isSubmitDisabled: isSubmitDisabledProp,
-  onCancel: closeForm,
+  onCancel,
   parentResources,
   pristine,
   saveButtonLabelId = 'stripes-components.saveAndClose',
@@ -155,6 +155,10 @@ const InvoiceForm = ({
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const closeForm = useCallback(() => {
+    onCancel(id);
+  }, [id, onCancel]);
 
   const selectVendor = useCallback((vendor) => {
     if (selectedVendor?.id !== vendor.id) {
