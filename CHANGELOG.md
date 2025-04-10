@@ -2,6 +2,9 @@
 
 ## 7.1.0 (IN PROGRESS)
 
+## [7.0.3](https://github.com/folio-org/ui-invoice/tree/v7.0.3) (2025-04-10)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.2...v7.0.3)
+
 * Provide an invoice ID on form close handler. Refs UINV-595.
 
 ## [7.0.2](https://github.com/folio-org/ui-invoice/tree/v7.0.2) (2025-04-01)
