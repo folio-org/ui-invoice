@@ -30,9 +30,11 @@ describe('useInvoiceMutation', () => {
     );
 
     await act(async () => {
-      result.current.mutateInvoice({
-        status: 'Open',
-      });
+      result.current.mutateInvoice(
+        {
+          invoice: { status: 'Open' },
+        },
+      );
     });
 
     expect(postMock).toHaveBeenCalled();
@@ -51,10 +53,14 @@ describe('useInvoiceMutation', () => {
     );
 
     await act(async () => {
-      result.current.mutateInvoice({
-        id: 1,
-        status: 'Paid',
-      });
+      result.current.mutateInvoice(
+        {
+          invoice: {
+            id: 1,
+            status: 'Paid',
+          },
+        },
+      );
     });
 
     expect(putMock).toHaveBeenCalled();

@@ -22,6 +22,7 @@ import {
   LIMIT_MAX,
   INVOICES_API,
   orderLinesResource,
+  useFiscalYears,
   useShowCallout,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -32,6 +33,7 @@ import {
   exportConfigsResource,
   invoiceLinesResource,
   invoiceResource,
+  ordersResource,
 } from '../../common/resources';
 import {
   INVOICE_STATUS,
@@ -64,11 +66,13 @@ export function InvoiceDetailsContainer({
   const [invoice, setInvoice] = useState({});
   const [invoiceLines, setInvoiceLines] = useState({});
   const [orderlinesMap, setOrderlinesMap] = useState();
+  const [orders, setOrders] = useState([]);
   const [vendor, setVendor] = useState({});
   const [isApprovePayEnabled, setIsApprovePayEnabled] = useState(false);
   const [batchVoucherExport, setBatchVoucherExport] = useState();
   const [exportFormat, setExportFormat] = useState();
 
+  const { fiscalYears } = useFiscalYears();
   const { mutateInvoice, deleteInvoice } = useInvoiceMutation();
   const { createInvoiceLines } = useInvoiceLineMutation();
 
@@ -158,6 +162,11 @@ export function InvoiceDetailsContainer({
 
             return acc;
           }, {}));
+
+          return batchFetch(mutator.orders, poLinesResponse.map(({ purchaseOrderId }) => purchaseOrderId));
+        })
+        .then((ordersResponse) => {
+          setOrders(ordersResponse);
         })
         .catch(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
@@ -169,6 +178,7 @@ export function InvoiceDetailsContainer({
       mutator.invoiceActionsApprovals,
       mutator.invoiceLines,
       mutator.orderLines,
+      mutator.orders,
       mutator.vendor,
       mutator.batchVoucherExport,
       mutator.exportConfigs,
@@ -270,12 +280,13 @@ export function InvoiceDetailsContainer({
   );
 
   const cancelInvoice = useCallback(
-    (cancellationNote) => {
+    ({ cancellationNote, polineStatus }) => {
       const canceledInvoice = { ...invoice, status: INVOICE_STATUS.cancelled, cancellationNote };
+      const params = polineStatus ? `?poLinePaymentStatus=${polineStatus}` : '';
 
       setIsLoading(true);
 
-      return mutateInvoice(canceledInvoice)
+      return mutateInvoice({ invoice: canceledInvoice, params })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.cancel.success' });
           refreshList();
@@ -304,7 +315,7 @@ export function InvoiceDetailsContainer({
 
       setIsLoading(true);
 
-      return mutateInvoice(approvedInvoice)
+      return mutateInvoice({ invoice: approvedInvoice })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.approve.success' });
           refreshList();
@@ -333,7 +344,7 @@ export function InvoiceDetailsContainer({
 
       setIsLoading(true);
 
-      return mutateInvoice(paidInvoice)
+      return mutateInvoice({ invoice: paidInvoice })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
           refreshList();
@@ -354,39 +365,38 @@ export function InvoiceDetailsContainer({
     [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout],
   );
 
-  const approveAndPayInvoice = useCallback(
-    () => {
-      setIsLoading(true);
+  const approveAndPayInvoice = useCallback((polineStatus) => {
+    setIsLoading(true);
+    const params = polineStatus ? `?poLinePaymentStatus=${polineStatus}` : '';
 
-      return mutateInvoice({ ...invoice, status: INVOICE_STATUS.approved })
-        .then(() => mutator.invoice.GET({ path: `${INVOICES_API}/${invoice.id}` }))
-        .then(invoiceResponse => {
-          return mutateInvoice({ ...invoiceResponse, status: INVOICE_STATUS.paid });
-        })
-        .catch(({ response }) => {
-          showUpdateInvoiceError({
-            response,
-            showCallout,
-            action: 'approveAndPay',
-            defaultErrorMessageId: 'ui-invoice.invoice.actions.approveAndPay.error',
-            expenseClassMutator: mutator.expenseClass,
-            fundMutator: mutator.fund,
-            ky,
-          });
+    return mutateInvoice({ invoice: { ...invoice, status: INVOICE_STATUS.approved }, params })
+      .then(() => mutator.invoice.GET({ path: `${INVOICES_API}/${invoice.id}` }))
+      .then(invoiceResponse => {
+        return mutateInvoice({ invoice: { ...invoiceResponse, status: INVOICE_STATUS.paid }, params });
+      })
+      .catch(({ response }) => {
+        showUpdateInvoiceError({
+          response,
+          showCallout,
+          action: 'approveAndPay',
+          defaultErrorMessageId: 'ui-invoice.invoice.actions.approveAndPay.error',
+          expenseClassMutator: mutator.expenseClass,
+          fundMutator: mutator.fund,
+          ky,
+        });
 
-          throw new Error('approveAndPay error');
-        })
-        .then(() => {
-          showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' });
-          refreshList();
+        throw new Error('approveAndPay error');
+      })
+      .then(() => {
+        showCallout({ messageId: 'ui-invoice.invoice.actions.approveAndPay.success' });
+        refreshList();
 
-          return fetchInvoiceData();
-        })
-        .finally(setIsLoading);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout],
-  );
+        return fetchInvoiceData();
+      })
+      .finally(setIsLoading);
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout]);
 
   const onDuplicateInvoice = useCallback(() => {
     setIsLoading(true);
@@ -397,7 +407,7 @@ export function InvoiceDetailsContainer({
       status: INVOICE_STATUS.open,
     };
 
-    return mutateInvoice(duplicateInvoice)
+    return mutateInvoice({ invoice: duplicateInvoice })
       .then(({ id: newInvoiceId }) => handleInvoiceLinesCreation({
         invoiceLines: invoiceLines.invoiceLines,
         invoiceId: newInvoiceId,
@@ -443,9 +453,26 @@ export function InvoiceDetailsContainer({
     ky,
   ]);
 
+  const isOrderStatusShouldBeUpdated = useMemo(() => {
+    const filteredPreviousFiscalYearsIds = fiscalYears
+      .filter(fiscalYear => {
+        const currentDate = new Date();
+        const periodEndDate = new Date(fiscalYear.periodEnd);
+
+        return periodEndDate < currentDate;
+      })
+      .map(fiscalYear => fiscalYear.id);
+
+    const hasReleaseEncumbrance = invoiceLines?.invoiceLines?.some((line) => line.releaseEncumbrance);
+    const hasOneTimeOrder = orders.some((order) => order.orderType === 'One-Time');
+    const isPreviousFiscalYear = filteredPreviousFiscalYearsIds.includes(invoice.fiscalYearId);
+
+    return hasReleaseEncumbrance && hasOneTimeOrder && isPreviousFiscalYear;
+  }, [invoice, invoiceLines, fiscalYears, orders]);
+
   const updateInvoice = useCallback(
     (data) => {
-      return mutateInvoice(data)
+      return mutateInvoice({ invoice: data })
         .then(() => mutator.invoice.GET())
         .then(setInvoice);
     },
@@ -480,6 +507,7 @@ export function InvoiceDetailsContainer({
       invoiceTotalUnits={invoiceTotalUnits}
       vendor={vendor}
       isApprovePayEnabled={isApprovePayEnabled}
+      isOrderStatusShouldBeUpdated={isOrderStatusShouldBeUpdated}
       onClose={closePane}
       onEdit={onEdit}
       onUpdate={updateInvoice}
@@ -510,6 +538,7 @@ InvoiceDetailsContainer.manifest = Object.freeze({
     accumulate: true,
     fetch: false,
   },
+  orders: ordersResource,
   vendor: {
     ...baseManifest,
     accumulate: true,
