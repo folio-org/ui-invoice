@@ -2,6 +2,8 @@
 
 ## 7.1.0 (IN PROGRESS)
 
+* Display UpdateOrderStatusModal on ApproveAndPay if the conditions are met. Refs UINV-577.
+
 ## [7.0.3](https://github.com/folio-org/ui-invoice/tree/v7.0.3) (2025-04-10)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.2...v7.0.3)
 
