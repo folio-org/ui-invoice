@@ -22,6 +22,12 @@ import { createInvoiceLineFromPOL, showUpdateInvoiceError } from './utils';
 import InvoiceDetails from './InvoiceDetails';
 import { InvoiceDetailsContainer } from './InvoiceDetailsContainer';
 
+jest.mock('@folio/stripes-acq-components', () => {
+  return {
+    ...jest.requireActual('@folio/stripes-acq-components'),
+    useFiscalYears: () => ({ fiscalYears: [] }),
+  };
+});
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: jest.fn().mockReturnValue({}),
@@ -295,7 +301,7 @@ describe('InvoiceDetailsContainer', () => {
         await screen.findByText('InvoiceDetails');
 
         await act(async () => {
-          await InvoiceDetails.mock.calls[0][0].cancelInvoice();
+          await InvoiceDetails.mock.calls[0][0].cancelInvoice({ cancellationNote: 'test note' });
         });
 
         expect(mutateInvoice).toHaveBeenCalled();
@@ -309,7 +315,7 @@ describe('InvoiceDetailsContainer', () => {
         await screen.findByText('InvoiceDetails');
 
         await act(async () => {
-          await InvoiceDetails.mock.calls[0][0].cancelInvoice();
+          await InvoiceDetails.mock.calls[0][0].cancelInvoice({ cancellationNote: 'test note' });
         });
 
         expect(refreshList).toHaveBeenCalled();
@@ -324,7 +330,7 @@ describe('InvoiceDetailsContainer', () => {
         await screen.findByText('InvoiceDetails');
 
         await act(async () => {
-          await InvoiceDetails.mock.calls[0][0].cancelInvoice();
+          await InvoiceDetails.mock.calls[0][0].cancelInvoice({ cancellationNote: 'test note' });
         });
 
         expect(refreshList).not.toHaveBeenCalled();

@@ -6,6 +6,7 @@ import CancellationModal from './CancellationModal';
 const defaultProps = {
   onCancel: jest.fn(),
   onConfirm: jest.fn(),
+  setCancellationNote: jest.fn(),
 };
 
 const renderCancellationModal = (props = {}) => render(
