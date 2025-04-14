@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { renderHook, act } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
-import INVOICE_STATUS from '../../constants';
+import { INVOICE_STATUS } from '../../constants';
 import {
   useInvoiceMutation,
 } from './useInvoiceMutation';
