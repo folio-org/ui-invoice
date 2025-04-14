@@ -198,8 +198,11 @@ function InvoiceDetails({
         onApproveAndPay={() => {
           onToggle();
 
-          if (isOrderStatusShouldBeUpdated) toggleApprovePayAndUpdateOrderStatusModal();
-          else toggleApproveAndPayConfirmation();
+          if (isOrderStatusShouldBeUpdated) {
+            toggleApprovePayAndUpdateOrderStatusModal();
+          } else {
+            toggleApproveAndPayConfirmation();
+          }
         }}
         onPrint={!showVoucherInformation ? undefined : () => {
           onToggle();
@@ -475,8 +478,11 @@ function InvoiceDetails({
               onConfirm={() => {
                 toggleCancellationModal();
 
-                if (isOrderStatusShouldBeUpdated) toggleUpdateOrderStatusModal();
-                else cancelInvoice({ cancellationNote });
+                if (isOrderStatusShouldBeUpdated) {
+                  toggleUpdateOrderStatusModal();
+                } else {
+                  cancelInvoice({ cancellationNote });
+                }
               }}
               setCancellationNote={setCancellationNote}
             />

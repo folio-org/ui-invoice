@@ -282,11 +282,11 @@ export function InvoiceDetailsContainer({
   const cancelInvoice = useCallback(
     ({ cancellationNote, polineStatus }) => {
       const canceledInvoice = { ...invoice, status: INVOICE_STATUS.cancelled, cancellationNote };
-      const params = polineStatus ? `?poLinePaymentStatus=${polineStatus}` : '';
+      const searchParams = polineStatus ? { poLinePaymentStatus: polineStatus } : {};
 
       setIsLoading(true);
 
-      return mutateInvoice({ invoice: canceledInvoice, params })
+      return mutateInvoice({ invoice: canceledInvoice, searchParams })
         .then(() => {
           showCallout({ messageId: 'ui-invoice.invoice.actions.cancel.success' });
           refreshList();
@@ -367,12 +367,12 @@ export function InvoiceDetailsContainer({
 
   const approveAndPayInvoice = useCallback((polineStatus) => {
     setIsLoading(true);
-    const params = polineStatus ? `?poLinePaymentStatus=${polineStatus}` : '';
+    const searchParams = polineStatus ? { poLinePaymentStatus: polineStatus } : {};
 
-    return mutateInvoice({ invoice: { ...invoice, status: INVOICE_STATUS.approved }, params })
+    return mutateInvoice({ invoice: { ...invoice, status: INVOICE_STATUS.approved }, searchParams })
       .then(() => mutator.invoice.GET({ path: `${INVOICES_API}/${invoice.id}` }))
       .then(invoiceResponse => {
-        return mutateInvoice({ invoice: { ...invoiceResponse, status: INVOICE_STATUS.paid }, params });
+        return mutateInvoice({ invoice: { ...invoiceResponse, status: INVOICE_STATUS.paid }, searchParams });
       })
       .catch(({ response }) => {
         showUpdateInvoiceError({

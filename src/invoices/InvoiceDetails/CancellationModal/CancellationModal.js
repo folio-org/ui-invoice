@@ -25,7 +25,7 @@ const CancellationModal = ({
     ({ target: { value } }) => (
       setCancellationNote(value)
     ),
-    [],
+    [setCancellationNote],
   );
 
   const footer = (
