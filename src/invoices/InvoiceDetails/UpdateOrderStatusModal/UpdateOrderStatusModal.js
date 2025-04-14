@@ -60,6 +60,7 @@ const UpdateOrderStatusModal = ({
         <Col xs={12} className={styles.updateOrderStatusModalBody}>
           {PO_LINE_PAYMENT_STATUSES.map(status => (
             <RadioButton
+              key={status}
               name="status"
               label={<FormattedMessage id={`ui-invoice.invoice.actions.updateOrderStatus.status.${status}`} />}
               checked={polineStatus === PO_LINE_PAYMENT_STATUS_LABELS[status]}
