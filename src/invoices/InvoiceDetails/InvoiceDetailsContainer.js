@@ -42,6 +42,7 @@ import {
   useInvoiceLineMutation,
   useInvoiceMutation,
 } from '../../common/hooks';
+import { useInvoiceOrderStatusValidator } from './hooks/useInvoiceOrderStatusValidator';
 import { INVOICE_OMITTED_FIELDS } from './constants';
 import InvoiceDetails from './InvoiceDetails';
 import {
@@ -75,6 +76,12 @@ export function InvoiceDetailsContainer({
   const { fiscalYears } = useFiscalYears();
   const { mutateInvoice, deleteInvoice } = useInvoiceMutation();
   const { createInvoiceLines } = useInvoiceLineMutation();
+  const shouldUpdateOrderStatus = useInvoiceOrderStatusValidator({
+    fiscalYears,
+    invoice,
+    invoiceLines,
+    orders,
+  });
 
   const fetchInvoiceData = useCallback(
     () => {
@@ -338,32 +345,31 @@ export function InvoiceDetailsContainer({
     [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout],
   );
 
-  const payInvoice = useCallback(
-    () => {
-      const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
+  const payInvoice = useCallback((polineStatus) => {
+    const searchParams = polineStatus ? { poLinePaymentStatus: polineStatus } : {};
+    const paidInvoice = { ...invoice, status: INVOICE_STATUS.paid };
 
-      setIsLoading(true);
+    setIsLoading(true);
 
-      return mutateInvoice({ invoice: paidInvoice })
-        .then(() => {
-          showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
-          refreshList();
+    return mutateInvoice({ invoice: paidInvoice, searchParams })
+      .then(() => {
+        showCallout({ messageId: 'ui-invoice.invoice.actions.pay.success' });
+        refreshList();
 
-          return fetchInvoiceData();
-        }, ({ response }) => showUpdateInvoiceError({
-          response,
-          showCallout,
-          action: 'pay',
-          defaultErrorMessageId: 'ui-invoice.invoice.actions.pay.error',
-          expenseClassMutator: mutator.expenseClass,
-          fundMutator: mutator.fund,
-          ky,
-        }))
-        .finally(setIsLoading);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout],
-  );
+        return fetchInvoiceData();
+      }, ({ response }) => showUpdateInvoiceError({
+        response,
+        showCallout,
+        action: 'pay',
+        defaultErrorMessageId: 'ui-invoice.invoice.actions.pay.error',
+        expenseClassMutator: mutator.expenseClass,
+        fundMutator: mutator.fund,
+        ky,
+      }))
+      .finally(setIsLoading);
+  },
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout]);
 
   const approveAndPayInvoice = useCallback((polineStatus) => {
     setIsLoading(true);
@@ -453,23 +459,6 @@ export function InvoiceDetailsContainer({
     ky,
   ]);
 
-  const isOrderStatusShouldBeUpdated = useMemo(() => {
-    const filteredPreviousFiscalYearsIds = fiscalYears
-      .filter(fiscalYear => {
-        const currentDate = new Date();
-        const periodEndDate = new Date(fiscalYear.periodEnd);
-
-        return periodEndDate < currentDate;
-      })
-      .map(fiscalYear => fiscalYear.id);
-
-    const hasReleaseEncumbrance = invoiceLines?.invoiceLines?.some((line) => line.releaseEncumbrance);
-    const hasOneTimeOrder = orders.some((order) => order.orderType === 'One-Time');
-    const isPreviousFiscalYear = filteredPreviousFiscalYearsIds.includes(invoice.fiscalYearId);
-
-    return hasReleaseEncumbrance && hasOneTimeOrder && isPreviousFiscalYear;
-  }, [invoice, invoiceLines, fiscalYears, orders]);
-
   const updateInvoice = useCallback(
     (data) => {
       return mutateInvoice({ invoice: data })
@@ -507,7 +496,7 @@ export function InvoiceDetailsContainer({
       invoiceTotalUnits={invoiceTotalUnits}
       vendor={vendor}
       isApprovePayEnabled={isApprovePayEnabled}
-      isOrderStatusShouldBeUpdated={isOrderStatusShouldBeUpdated}
+      shouldUpdateOrderStatus={shouldUpdateOrderStatus}
       onClose={closePane}
       onEdit={onEdit}
       onUpdate={updateInvoice}

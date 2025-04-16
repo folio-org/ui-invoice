@@ -92,7 +92,7 @@ function InvoiceDetails({
   invoiceTotalUnits,
   vendor,
   isApprovePayEnabled,
-  isOrderStatusShouldBeUpdated,
+  shouldUpdateOrderStatus,
   onClose,
   onEdit,
   orderlinesMap,
@@ -127,6 +127,7 @@ function InvoiceDetails({
   const [showConfirmDelete, toggleDeleteConfirmation] = useModalToggle();
   const [isApproveConfirmationOpen, toggleApproveConfirmation] = useModalToggle();
   const [isPayConfirmationOpen, togglePayConfirmation] = useModalToggle();
+  const [isPayAndUpdateOrderStatusModalOpen, togglePayAndUpdateOrderStatusModalOpen] = useModalToggle();
   const [isApproveAndPayConfirmationOpen, toggleApproveAndPayConfirmation] = useModalToggle();
   const [isApprovePayAndUpdateOrderStatusModalOpen, toggleApprovePayAndUpdateOrderStatusModal] = useModalToggle();
   const [isUpdateOrderStatusModalOpen, toggleUpdateOrderStatusModal] = useModalToggle();
@@ -193,12 +194,17 @@ function InvoiceDetails({
         }}
         onPay={() => {
           onToggle();
-          togglePayConfirmation();
+
+          if (shouldUpdateOrderStatus()) {
+            togglePayAndUpdateOrderStatusModalOpen();
+          } else {
+            togglePayConfirmation();
+          }
         }}
         onApproveAndPay={() => {
           onToggle();
 
-          if (isOrderStatusShouldBeUpdated) {
+          if (shouldUpdateOrderStatus()) {
             toggleApprovePayAndUpdateOrderStatusModal();
           } else {
             toggleApproveAndPayConfirmation();
@@ -478,7 +484,7 @@ function InvoiceDetails({
               onConfirm={() => {
                 toggleCancellationModal();
 
-                if (isOrderStatusShouldBeUpdated) {
+                if (shouldUpdateOrderStatus()) {
                   toggleUpdateOrderStatusModal();
                 } else {
                   cancelInvoice({ cancellationNote });
@@ -500,6 +506,17 @@ function InvoiceDetails({
                 payInvoice();
               }}
               open
+            />
+          )
+        }
+        {
+          isPayAndUpdateOrderStatusModalOpen && (
+            <UpdateOrderStatusModal
+              onCancel={togglePayAndUpdateOrderStatusModalOpen}
+              onConfirm={(polineStatus) => {
+                togglePayAndUpdateOrderStatusModalOpen();
+                payInvoice(polineStatus);
+              }}
             />
           )
         }
@@ -589,7 +606,7 @@ InvoiceDetails.propTypes = {
   invoiceTotalUnits: PropTypes.number,
   vendor: PropTypes.object,
   isApprovePayEnabled: PropTypes.bool,
-  isOrderStatusShouldBeUpdated: PropTypes.bool,
+  shouldUpdateOrderStatus: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
   orderlinesMap: PropTypes.object,
