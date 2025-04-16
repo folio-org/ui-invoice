@@ -42,7 +42,7 @@ import {
   useInvoiceLineMutation,
   useInvoiceMutation,
 } from '../../common/hooks';
-import { useInvoiceOrderStatusValidator } from './hooks/useInvoiceOrderStatusValidator';
+import { useInvoiceOrderStatusValidator } from './hooks';
 import { INVOICE_OMITTED_FIELDS } from './constants';
 import InvoiceDetails from './InvoiceDetails';
 import {

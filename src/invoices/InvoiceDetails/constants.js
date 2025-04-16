@@ -43,3 +43,8 @@ export const PO_LINE_PAYMENT_STATUS_LABELS = {
   [PO_LINE_PAYMENT_STATUS.FULLY_PAID]: 'Fully Paid',
   [PO_LINE_PAYMENT_STATUS.CANCELLED]: 'Cancelled',
 };
+
+export const ORDER_TYPE = {
+  ONE_TIME: 'One-Time',
+  ONGOING: 'Ongoing',
+};

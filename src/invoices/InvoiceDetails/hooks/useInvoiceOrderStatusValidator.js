@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
 
+import { ORDER_TYPE } from '../constants';
+
 export function useInvoiceOrderStatusValidator({ invoice, invoiceLines, fiscalYears, orders }) {
   return useCallback(() => {
     const currentDate = new Date();
@@ -9,7 +11,7 @@ export function useInvoiceOrderStatusValidator({ invoice, invoiceLines, fiscalYe
       .map(fiscalYear => fiscalYear.id);
 
     const hasReleaseEncumbrance = invoiceLines?.invoiceLines?.some((line) => line.releaseEncumbrance);
-    const hasOneTimeOrder = orders.some((order) => order.orderType === 'One-Time');
+    const hasOneTimeOrder = orders.some((order) => order.orderType === ORDER_TYPE.ONE_TIME);
     const isPreviousFiscalYear = filteredPreviousFiscalYearsIds.includes(invoice.fiscalYearId);
 
     return hasReleaseEncumbrance && hasOneTimeOrder && isPreviousFiscalYear;
