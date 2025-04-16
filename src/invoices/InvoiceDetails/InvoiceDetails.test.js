@@ -74,14 +74,15 @@ const defaultProps = {
   addLines: jest.fn(),
   approveAndPayInvoice: jest.fn(),
   approveInvoice: jest.fn(),
+  cancelInvoice: jest.fn(),
   createLine: jest.fn(),
   deleteInvoice: jest.fn(),
-  cancelInvoice: jest.fn(),
   onClose: jest.fn(),
   onEdit: jest.fn(),
   onUpdate: jest.fn(),
   payInvoice: jest.fn(),
   refreshData: jest.fn(),
+  shouldUpdateOrderStatus: jest.fn(),
   totalInvoiceLines: 0,
   vendor: {
     status: VENDOR_STATUS.ACTIVE,
@@ -334,7 +335,7 @@ describe('InvoiceDetails', () => {
       it('should open updateOrderStatus modal when Approve&Pay invoice action is called', () => {
         renderInvoiceDetails({
           ...defaultProps,
-          isOrderStatusShouldBeUpdated: true,
+          shouldUpdateOrderStatus: jest.fn().mockReturnValue(true),
         });
 
         act(() => {
@@ -349,7 +350,7 @@ describe('InvoiceDetails', () => {
 
         renderInvoiceDetails({
           ...defaultProps,
-          isOrderStatusShouldBeUpdated: true,
+          shouldUpdateOrderStatus: jest.fn().mockReturnValue(true),
           approveAndPayInvoice,
         });
 
