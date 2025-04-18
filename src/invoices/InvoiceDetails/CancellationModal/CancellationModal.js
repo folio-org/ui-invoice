@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 
@@ -16,16 +16,16 @@ import styles from './CancellationModal.css';
 const CancellationModal = ({
   onCancel,
   onConfirm,
+  setCancellationNote,
 }) => {
   const intl = useIntl();
-  const [cancellationNote, setCancellationNote] = useState('');
   const modalLabel = intl.formatMessage({ id: 'ui-invoice.invoice.actions.cancel.heading' });
 
   const handleChange = useCallback(
     ({ target: { value } }) => (
       setCancellationNote(value)
     ),
-    [],
+    [setCancellationNote],
   );
 
   const footer = (
@@ -33,7 +33,7 @@ const CancellationModal = ({
       <Button
         buttonStyle="primary"
         marginBottom0
-        onClick={() => onConfirm(cancellationNote)}
+        onClick={onConfirm}
       >
         <FormattedMessage id="ui-invoice.button.submit" />
       </Button>
@@ -76,6 +76,7 @@ const CancellationModal = ({
 CancellationModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
+  setCancellationNote: PropTypes.func.isRequired,
 };
 
 export default CancellationModal;

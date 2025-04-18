@@ -24,6 +24,7 @@ import { INVOICE_STATUS } from '../../common/constants';
 
 import InvoiceActions from './InvoiceActions';
 import ApproveConfirmationModal from './ApproveConfirmationModal';
+import UpdateOrderStatusModal from './UpdateOrderStatusModal';
 import CancellationModal from './CancellationModal';
 import InvoiceDetails from './InvoiceDetails';
 import { VENDOR_STATUS } from './constants';
@@ -51,6 +52,7 @@ jest.mock('../VersionHistory', () => jest.fn().mockReturnValue('VersionHistory')
 
 jest.mock('./InvoiceActions', () => jest.fn().mockReturnValue('InvoiceActions'));
 jest.mock('./ApproveConfirmationModal', () => jest.fn().mockReturnValue('ApproveConfirmationModal'));
+jest.mock('./UpdateOrderStatusModal', () => jest.fn().mockReturnValue('UpdateOrderStatusModal'));
 jest.mock('./Information', () => jest.fn().mockReturnValue('Information'));
 jest.mock('./InvoiceLines', () => ({
   __esModule: true,
@@ -72,14 +74,15 @@ const defaultProps = {
   addLines: jest.fn(),
   approveAndPayInvoice: jest.fn(),
   approveInvoice: jest.fn(),
+  cancelInvoice: jest.fn(),
   createLine: jest.fn(),
   deleteInvoice: jest.fn(),
-  cancelInvoice: jest.fn(),
   onClose: jest.fn(),
   onEdit: jest.fn(),
   onUpdate: jest.fn(),
   payInvoice: jest.fn(),
   refreshData: jest.fn(),
+  shouldUpdateOrderStatus: jest.fn(),
   totalInvoiceLines: 0,
   vendor: {
     status: VENDOR_STATUS.ACTIVE,
@@ -326,6 +329,39 @@ describe('InvoiceDetails', () => {
     describe('Approve and Pay', () => {
       beforeEach(() => {
         ApproveConfirmationModal.mockClear();
+        UpdateOrderStatusModal.mockClear();
+      });
+
+      it('should open updateOrderStatus modal when Approve&Pay invoice action is called', () => {
+        renderInvoiceDetails({
+          ...defaultProps,
+          shouldUpdateOrderStatus: jest.fn().mockReturnValue(true),
+        });
+
+        act(() => {
+          InvoiceActions.mock.calls[0][0].onApproveAndPay();
+        });
+
+        expect(screen.getByText('UpdateOrderStatusModal')).toBeInTheDocument();
+      });
+
+      it('should call approveAndPayInvoice when Approve&Pay is confirmed in updateOrderStatus modal', async () => {
+        const approveAndPayInvoice = jest.fn();
+
+        renderInvoiceDetails({
+          ...defaultProps,
+          shouldUpdateOrderStatus: jest.fn().mockReturnValue(true),
+          approveAndPayInvoice,
+        });
+
+        act(() => {
+          InvoiceActions.mock.calls[0][0].onApproveAndPay();
+        });
+        act(() => {
+          UpdateOrderStatusModal.mock.calls[0][0].onConfirm();
+        });
+
+        expect(approveAndPayInvoice).toHaveBeenCalled();
       });
 
       it('should open confirmation modal when Approve&Pay invoice action is called', () => {

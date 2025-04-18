@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import { renderHook, act } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
+import { INVOICE_STATUS } from '../../constants';
 import {
   useInvoiceMutation,
 } from './useInvoiceMutation';
@@ -30,9 +31,11 @@ describe('useInvoiceMutation', () => {
     );
 
     await act(async () => {
-      result.current.mutateInvoice({
-        status: 'Open',
-      });
+      result.current.mutateInvoice(
+        {
+          invoice: { status: INVOICE_STATUS.open },
+        },
+      );
     });
 
     expect(postMock).toHaveBeenCalled();
@@ -51,10 +54,14 @@ describe('useInvoiceMutation', () => {
     );
 
     await act(async () => {
-      result.current.mutateInvoice({
-        id: 1,
-        status: 'Paid',
-      });
+      result.current.mutateInvoice(
+        {
+          invoice: {
+            id: 1,
+            status: INVOICE_STATUS.paid,
+          },
+        },
+      );
     });
 
     expect(putMock).toHaveBeenCalled();
