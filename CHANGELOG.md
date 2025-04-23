@@ -1,6 +1,8 @@
 # Change history for ui-invoice
 
-## 7.1.0 (IN PROGRESS)
+## 8.0.0 (IN PROGRESS)
+
+* *BREAKING* Update `orders` and `order-lines` interfaces to `13.0` and `4.0` accordingly. Refs UINV-597.
 
 * Display UpdateOrderStatusModal on ApproveAndPay if the conditions are met. Refs UINV-577.
 
