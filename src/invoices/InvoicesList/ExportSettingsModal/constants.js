@@ -1,6 +1,7 @@
 export const EXPORT_INVOICE_FIELDS = {
   vendorInvoiceNo: 'Vendor invoice number',
   vendorCode: 'Vendor code',
+  vendorName: 'Vendor name',
   status: 'Status',
   invoiceDate: 'Invoice date',
   fiscalYear: 'Fiscal year',

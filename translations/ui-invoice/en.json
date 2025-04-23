@@ -264,6 +264,8 @@
   "invoice.list.invoiceDate": "Invoice date",
   "invoice.list.status": "Status",
   "invoice.list.total": "Total amount (system)",
+  "invoice.list.vendorName": "Vendor name",
+  "invoice.list.folioInvoiceNo": "FOLIO invoice number",
 
   "invoice.details.accordion.fundDistribution": "Invoice level fund distribution",
   "invoice.details.accordion.adjustments": "Invoice level adjustments",
