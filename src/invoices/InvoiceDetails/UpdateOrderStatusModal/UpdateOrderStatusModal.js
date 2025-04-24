@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 import {
   Button,
+  Col,
+  Layout,
   Modal,
   ModalFooter,
-  Row,
-  Col,
   RadioButton,
+  Row,
 } from '@folio/stripes/components';
 
 import {
@@ -16,7 +17,6 @@ import {
   PO_LINE_PAYMENT_STATUSES,
   PO_LINE_PAYMENT_STATUS_LABELS,
 } from '../constants';
-import styles from '../InvoiceDetails.css';
 
 const UpdateOrderStatusModal = ({
   onCancel,
@@ -57,17 +57,19 @@ const UpdateOrderStatusModal = ({
         <Col xs={12}>
           <FormattedMessage id="ui-invoice.invoice.actions.updateOrderStatus.message" />
         </Col>
-        <Col xs={12} className={styles.updateOrderStatusModalBody}>
-          {PO_LINE_PAYMENT_STATUSES.map(status => (
-            <RadioButton
-              key={status}
-              name="status"
-              label={<FormattedMessage id={`ui-invoice.invoice.actions.updateOrderStatus.status.${status}`} />}
-              checked={polineStatus === PO_LINE_PAYMENT_STATUS_LABELS[status]}
-              onChange={() => setPolineStatus(PO_LINE_PAYMENT_STATUS_LABELS[status])}
-            />
-          ))}
-        </Col>
+        <Layout className="marginTop1">
+          <Col xs={12}>
+            {PO_LINE_PAYMENT_STATUSES.map(status => (
+              <RadioButton
+                key={status}
+                name="status"
+                label={<FormattedMessage id={`ui-invoice.invoice.actions.updateOrderStatus.status.${status}`} />}
+                checked={polineStatus === PO_LINE_PAYMENT_STATUS_LABELS[status]}
+                onChange={() => setPolineStatus(PO_LINE_PAYMENT_STATUS_LABELS[status])}
+              />
+            ))}
+          </Col>
+        </Layout>
       </Row>
     </Modal>
   );
