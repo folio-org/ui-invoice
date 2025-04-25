@@ -13,6 +13,7 @@ import {
   useOrderLines,
   useVendors,
 } from '../../../../../common/hooks';
+import { ORDER_TYPE } from '../../../../InvoiceDetails/constants';
 import {
   useInvoiceLinesByInvoiceId,
   useOrdersByPoNumbers,
@@ -64,7 +65,7 @@ const order = {
   ],
   'poNumber': 'pref10000',
   'poNumberPrefix': 'pref',
-  'orderType': 'One-Time',
+  'orderType': ORDER_TYPE.ONE_TIME,
   'reEncumber': false,
   'shipTo': 'f7c36792-05f7-4c8c-969d-103ac6763187',
   'template': '4dee318b-f5b3-40dc-be93-cc89b8c45b6f',
