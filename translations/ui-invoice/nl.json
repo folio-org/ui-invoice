@@ -475,5 +475,12 @@
     "permission.invoice.cancel.execute": "Factuur: Facturen annuleren",
     "permission.voucher.export.execute": "Factuur: Tegoedbon exporteren",
     "invoice.versionHistory.noVersion": "Geen versiegeschiedenis om weer te geven.",
-    "invoice.totalAmount": "Totaal Bedrag"
+    "invoice.totalAmount": "Totaal Bedrag",
+    "invoice.actions.updateOrderStatus.heading": "Orderstatus updaten",
+    "invoice.actions.updateOrderStatus.message": "U bent deze factuur aan het verwerken tegen een vorig Boekjaar en \"vrijgeven van onkosten\" is waar voor één of meer Factuurregels. Een of meer Gerelateerd bestellingen heeft als type Eenmalig. Kunt u aangeven hoe de betaalstatus van deze Bestelregels moet worden geüpdatet?",
+    "invoice.actions.updateOrderStatus.status.noChange": "Geen verandering",
+    "invoice.actions.updateOrderStatus.status.awaitingPayment": "In afwachting van betaling",
+    "invoice.actions.updateOrderStatus.status.partiallyPaid": "Gedeeltelijk betaald",
+    "invoice.actions.updateOrderStatus.status.fullyPaid": "Volledig betaald",
+    "invoice.actions.updateOrderStatus.status.cancelled": "Geannuleerd"
 }
