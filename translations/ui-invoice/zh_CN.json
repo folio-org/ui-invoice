@@ -475,5 +475,12 @@
     "permission.invoice.cancel.execute": "发票 : 取消发票",
     "permission.voucher.export.execute": "发票 : 凭证导出",
     "invoice.versionHistory.noVersion": "没有可显示的版本历史。",
-    "invoice.totalAmount": "总金额"
+    "invoice.totalAmount": "总金额",
+    "invoice.actions.updateOrderStatus.heading": "Update order status",
+    "invoice.actions.updateOrderStatus.message": "You are processing this invoice against a previous fiscal year and \"release encumbrance\" equals true for one or more invoice lines. One or more related orders has a type of One-time. Please indicate how the payment status of these order lines should be updated?",
+    "invoice.actions.updateOrderStatus.status.noChange": "No change",
+    "invoice.actions.updateOrderStatus.status.awaitingPayment": "Awaiting payment",
+    "invoice.actions.updateOrderStatus.status.partiallyPaid": "Partially paid",
+    "invoice.actions.updateOrderStatus.status.fullyPaid": "Fully paid",
+    "invoice.actions.updateOrderStatus.status.cancelled": "Cancelled"
 }
