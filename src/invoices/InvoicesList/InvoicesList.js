@@ -1,6 +1,12 @@
 import PropTypes from 'prop-types';
-import { useCallback, useMemo } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
+import {
+  useCallback,
+  useMemo,
+} from 'react';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import {
   matchPath,
   Route,
@@ -9,7 +15,10 @@ import {
   useRouteMatch,
 } from 'react-router-dom';
 
-import { TitleManager, useStripes } from '@folio/stripes/core';
+import {
+  TitleManager,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   MultiColumnList,
   checkScope,
@@ -43,7 +52,10 @@ import {
   INVOICE_VERSION_HISTORY_ROUTE,
   INVOICE_VIEW_ROUTE,
 } from '../../common/constants';
-import { getInvoiceStatusLabel, formatDate } from '../../common/utils';
+import {
+  getInvoiceStatusLabel,
+  formatDate,
+} from '../../common/utils';
 
 import { InvoiceDetailsContainer } from '../InvoiceDetails';
 import { InvoiceLineDetailsContainer } from '../InvoiceLineDetails';
@@ -67,17 +79,13 @@ const visibleColumns = [
   'folioInvoiceNo',
 ];
 const columnMapping = {
-  vendorInvoiceNo: (
-    <FormattedMessage id="ui-invoice.invoice.list.vendorInvoiceNo" />
-  ),
+  vendorInvoiceNo: <FormattedMessage id="ui-invoice.invoice.list.vendorInvoiceNo" />,
   vendor: <FormattedMessage id="ui-invoice.invoice.list.vendor" />,
   invoiceDate: <FormattedMessage id="ui-invoice.invoice.list.invoiceDate" />,
   status: <FormattedMessage id="ui-invoice.invoice.list.status" />,
   invoiceTotal: <FormattedMessage id="ui-invoice.invoice.list.total" />,
   vendorName: <FormattedMessage id="ui-invoice.invoice.list.vendorName" />,
-  folioInvoiceNo: (
-    <FormattedMessage id="ui-invoice.invoice.list.folioInvoiceNo" />
-  ),
+  folioInvoiceNo: <FormattedMessage id="ui-invoice.invoice.list.folioInvoiceNo" />,
 };
 const sortableFields = [
   'vendorInvoiceNo',
@@ -119,6 +127,8 @@ const InvoicesList = ({
   const location = useLocation();
   const history = useHistory();
   const match = useRouteMatch();
+  const stripes = useStripes();
+
   const [
     filters,
     searchQuery,
@@ -129,45 +139,47 @@ const InvoicesList = ({
     changeIndex,
     searchIndex,
   ] = useLocationFilters(location, history, resetData);
-  const [sortingField, sortingDirection, changeSorting] = useLocationSorting(
+
+  const [
+    sortingField,
+    sortingDirection,
+    changeSorting,
+  ] = useLocationSorting(
     location,
     history,
     resetData,
     sortableFields,
   );
-  const { isFiltersOpened, toggleFilters } =
-    useFiltersToogle('ui-invoice/filters');
-  const stripes = useStripes();
-  const { itemToView, setItemToView, deleteItemToView } =
-    useItemToView('invoices-list');
+
+  const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-invoice/filters');
+
+  const {
+    itemToView,
+    setItemToView,
+    deleteItemToView,
+  } = useItemToView('invoices-list');
+
   const { funds } = useFunds();
 
   const [isExportModalOpened, toggleExportModal] = useModalToggle();
 
   useFiltersReset(resetFilters);
 
-  const renderActionMenu = useCallback(
-    ({ onToggle }) => (
-      <InvoicesListLastMenu
-        onToggle={onToggle}
-        invoicesCount={invoicesCount}
-        toggleExportModal={toggleExportModal}
-      />
-    ),
-    [invoicesCount, toggleExportModal],
-  );
+  const renderActionMenu = useCallback(({ onToggle }) => (
+    <InvoicesListLastMenu
+      onToggle={onToggle}
+      invoicesCount={invoicesCount}
+      toggleExportModal={toggleExportModal}
+    />
+  ), [invoicesCount, toggleExportModal]);
 
-  const urlParams = useMemo(
-    () => matchPath(location.pathname, { path: `${match.path}/view/:id` }),
-    [location.pathname, match.path],
-  );
+  const urlParams = useMemo(() => (
+    matchPath(location.pathname, { path: `${match.path}/view/:id` })
+  ), [location.pathname, match.path]);
 
-  const isRowSelected = useCallback(
-    ({ item }) => {
-      return urlParams && urlParams.params.id === item.id;
-    },
-    [urlParams],
-  );
+  const isRowSelected = useCallback(({ item }) => {
+    return urlParams && urlParams.params.id === item.id;
+  }, [urlParams]);
 
   const shortcuts = [
     {
@@ -197,10 +209,12 @@ const InvoicesList = ({
     />
   );
 
-  const renderInvoiceDetails = useCallback(
-    (props) => <InvoiceDetailsContainer {...props} refreshList={refreshList} />,
-    [refreshList],
-  );
+  const renderInvoiceDetails = useCallback((props) => (
+    <InvoiceDetailsContainer
+      {...props}
+      refreshList={refreshList}
+    />
+  ), [refreshList]);
 
   return (
     <HasCommand
@@ -215,7 +229,10 @@ const InvoicesList = ({
         data-test-invoices-list
       >
         {isFiltersOpened && (
-          <FiltersPane id="invoice-filters-pane" toggleFilters={toggleFilters}>
+          <FiltersPane
+            id="invoice-filters-pane"
+            toggleFilters={toggleFilters}
+          >
             <SingleSearchForm
               applySearch={applySearch}
               changeSearch={changeSearch}
@@ -291,14 +308,21 @@ const InvoicesList = ({
         </ResultsPane>
 
         {isExportModalOpened && (
-          <ExportSettingsModal onCancel={toggleExportModal} query={query} />
+          <ExportSettingsModal
+            onCancel={toggleExportModal}
+            query={query}
+          />
         )}
         <Route
           path={INVOICE_LINE_VIEW_ROUTE}
           component={InvoiceLineDetailsContainer}
           exact
         />
-        <Route path={INVOICE_VIEW_ROUTE} render={renderInvoiceDetails} exact />
+        <Route
+          path={INVOICE_VIEW_ROUTE}
+          render={renderInvoiceDetails}
+          exact
+        />
         <Route
           path={INVOICE_VERSION_HISTORY_ROUTE}
           component={InvoiceVersionHistory}
