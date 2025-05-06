@@ -4,6 +4,7 @@
 
 * *BREAKING* Update `orders` and `order-lines` interfaces to `13.0` and `4.0` accordingly. Refs UINV-597.
 * Display UpdateOrderStatusModal on ApproveAndPay if the conditions are met. Refs UINV-577.
+* Add columns to invoice search results for vendor name and invoice number. Refs UINV-591.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.3...v7.0.4)

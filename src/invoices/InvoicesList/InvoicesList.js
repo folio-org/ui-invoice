@@ -65,33 +65,52 @@ import {
 } from '../VersionHistory';
 import InvoicesListFilters from './InvoicesListFilters';
 import { InvoicesListLastMenu } from './InvoicesListLastMenu';
-import {
-  searchableIndexes,
-} from './InvoicesListSearchConfig';
+import { searchableIndexes } from './InvoicesListSearchConfig';
 import { ExportSettingsModal } from './ExportSettingsModal';
 
 const resultsPaneTitle = <FormattedMessage id="ui-invoice.meta.title" />;
-const visibleColumns = ['vendorInvoiceNo', 'vendor', 'invoiceDate', 'status', 'invoiceTotal'];
+const visibleColumns = [
+  'vendorInvoiceNo',
+  'vendor',
+  'invoiceDate',
+  'status',
+  'invoiceTotal',
+  'vendorName',
+  'folioInvoiceNo',
+];
 const columnMapping = {
   vendorInvoiceNo: <FormattedMessage id="ui-invoice.invoice.list.vendorInvoiceNo" />,
   vendor: <FormattedMessage id="ui-invoice.invoice.list.vendor" />,
   invoiceDate: <FormattedMessage id="ui-invoice.invoice.list.invoiceDate" />,
   status: <FormattedMessage id="ui-invoice.invoice.list.status" />,
   invoiceTotal: <FormattedMessage id="ui-invoice.invoice.list.total" />,
+  vendorName: <FormattedMessage id="ui-invoice.invoice.list.vendorName" />,
+  folioInvoiceNo: <FormattedMessage id="ui-invoice.invoice.list.folioInvoiceNo" />,
 };
-const sortableFields = ['vendorInvoiceNo', 'invoiceDate', 'status', 'invoiceTotal'];
+const sortableFields = [
+  'vendorInvoiceNo',
+  'invoiceDate',
+  'status',
+  'invoiceTotal',
+];
 
 const getResultsFormatter = ({ search }) => ({
-  vendorInvoiceNo: invoice => <TextLink to={`/invoice/view/${invoice.id}${search}`}>{invoice.vendorInvoiceNo}</TextLink>,
-  vendor: invoice => invoice?.vendor?.code,
-  invoiceDate: invoice => formatDate(invoice.invoiceDate),
-  status: invoice => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
-  invoiceTotal: invoice => (
+  vendorInvoiceNo: (invoice) => (
+    <TextLink to={`/invoice/view/${invoice.id}${search}`}>
+      {invoice.vendorInvoiceNo}
+    </TextLink>
+  ),
+  vendor: (invoice) => invoice?.vendor?.code,
+  invoiceDate: (invoice) => formatDate(invoice.invoiceDate),
+  status: (invoice) => <FormattedMessage id={getInvoiceStatusLabel(invoice)} />,
+  invoiceTotal: (invoice) => (
     <AmountWithCurrencyField
       amount={invoice.total}
       currency={invoice.currency}
     />
   ),
+  vendorName: (invoice) => invoice?.vendor?.name,
+  folioInvoiceNo: (invoice) => invoice.folioInvoiceNo,
 });
 
 const InvoicesList = ({
@@ -108,6 +127,8 @@ const InvoicesList = ({
   const location = useLocation();
   const history = useHistory();
   const match = useRouteMatch();
+  const stripes = useStripes();
+
   const [
     filters,
     searchQuery,
@@ -118,14 +139,26 @@ const InvoicesList = ({
     changeIndex,
     searchIndex,
   ] = useLocationFilters(location, history, resetData);
+
   const [
     sortingField,
     sortingDirection,
     changeSorting,
-  ] = useLocationSorting(location, history, resetData, sortableFields);
+  ] = useLocationSorting(
+    location,
+    history,
+    resetData,
+    sortableFields,
+  );
+
   const { isFiltersOpened, toggleFilters } = useFiltersToogle('ui-invoice/filters');
-  const stripes = useStripes();
-  const { itemToView, setItemToView, deleteItemToView } = useItemToView('invoices-list');
+
+  const {
+    itemToView,
+    setItemToView,
+    deleteItemToView,
+  } = useItemToView('invoices-list');
+
   const { funds } = useFunds();
 
   const [isExportModalOpened, toggleExportModal] = useModalToggle();
@@ -160,7 +193,12 @@ const InvoicesList = ({
   ];
 
   const queryFilter = filters?.[SEARCH_PARAMETER];
-  const pageTitle = queryFilter ? intl.formatMessage({ id: 'ui-invoice.document.title.search' }, { query: queryFilter }) : null;
+  const pageTitle = queryFilter
+    ? intl.formatMessage(
+      { id: 'ui-invoice.document.title.search' },
+      { query: queryFilter },
+    )
+    : null;
 
   const resultsStatusMessage = (
     <NoResultsMessage
