@@ -475,5 +475,12 @@
     "permission.invoice.cancel.execute": "Invoice: Cancel invoices",
     "permission.voucher.export.execute": "Invoice: Voucher export",
     "invoice.versionHistory.noVersion": "No version history to display.",
-    "invoice.totalAmount": "Total Amount"
+    "invoice.totalAmount": "Total Amount",
+    "invoice.actions.updateOrderStatus.heading": "Update order status",
+    "invoice.actions.updateOrderStatus.message": "You are processing this invoice against a previous fiscal year and \"release encumbrance\" equals true for one or more invoice lines. One or more related orders has a type of One-time. Please indicate how the payment status of these order lines should be updated?",
+    "invoice.actions.updateOrderStatus.status.noChange": "No change",
+    "invoice.actions.updateOrderStatus.status.awaitingPayment": "Awaiting payment",
+    "invoice.actions.updateOrderStatus.status.partiallyPaid": "Partially paid",
+    "invoice.actions.updateOrderStatus.status.fullyPaid": "Fully paid",
+    "invoice.actions.updateOrderStatus.status.cancelled": "Cancelled"
 }

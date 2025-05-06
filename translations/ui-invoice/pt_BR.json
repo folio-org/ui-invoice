@@ -475,5 +475,12 @@
     "permission.invoice.cancel.execute": "Fatura: Cancelar faturas",
     "permission.voucher.export.execute": "Fatura: Exportação de comprovante",
     "invoice.versionHistory.noVersion": "Nenhum histórico de versões para exibir.",
-    "invoice.totalAmount": "Valor total"
+    "invoice.totalAmount": "Valor total",
+    "invoice.actions.updateOrderStatus.heading": "Atualizar status do pedido",
+    "invoice.actions.updateOrderStatus.message": "Você está processando esta fatura referente a um ano fiscal anterior e a opção \"liberar encargos\" está marcada como verdadeira para uma ou mais linhas da fatura. Um ou mais pedidos relacionados são do tipo \"Único\". Indique como o status de pagamento dessas linhas de pedido deve ser atualizado.",
+    "invoice.actions.updateOrderStatus.status.noChange": "Nenhuma mudança",
+    "invoice.actions.updateOrderStatus.status.awaitingPayment": "Aguardando pagamento",
+    "invoice.actions.updateOrderStatus.status.partiallyPaid": "Parcialmente pago",
+    "invoice.actions.updateOrderStatus.status.fullyPaid": "Totalmente pago",
+    "invoice.actions.updateOrderStatus.status.cancelled": "Cancelado"
 }
