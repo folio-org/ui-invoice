@@ -178,7 +178,7 @@ const InvoicesList = ({
   ), [location.pathname, match.path]);
 
   const isRowSelected = useCallback(({ item }) => {
-    return urlParams && urlParams.params.id === item.id;
+    return urlParams && (urlParams.params.id === item.id);
   }, [urlParams]);
 
   const shortcuts = [
