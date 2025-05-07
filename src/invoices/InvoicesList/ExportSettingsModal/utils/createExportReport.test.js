@@ -1,5 +1,6 @@
+import keyBy from 'lodash/keyBy';
+import omit from 'lodash/omit';
 import { useIntl } from 'react-intl';
-import { keyBy, omit } from 'lodash';
 
 import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 
@@ -71,6 +72,7 @@ describe('createExportReport', () => {
       totalUnits: 0,
       batchGroup: INVALID_REF,
       vendorCode: INVALID_REF,
+      vendorName: INVALID_REF,
       vendorAddress: '',
     })]);
   });
