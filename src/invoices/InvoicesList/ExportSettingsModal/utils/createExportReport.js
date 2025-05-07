@@ -108,6 +108,7 @@ const getInvoiceExportData = ({
     folioInvoiceNo: invoice.folioInvoiceNo,
     vendorInvoiceNo: invoice.vendorInvoiceNo,
     vendorCode: vendorMap[invoice.vendorId]?.code ?? invalidReferenceLabel,
+    vendorName: vendorMap[invoice.vendorId]?.name ?? invalidReferenceLabel,
     status: invoice.status,
     fiscalYear: fiscalYearMap[invoice.fiscalYearId]?.code,
     invoiceDate: formatDate(invoice.invoiceDate, intl),
