@@ -482,5 +482,7 @@
     "invoice.actions.updateOrderStatus.status.awaitingPayment": "In afwachting van betaling",
     "invoice.actions.updateOrderStatus.status.partiallyPaid": "Gedeeltelijk betaald",
     "invoice.actions.updateOrderStatus.status.fullyPaid": "Volledig betaald",
-    "invoice.actions.updateOrderStatus.status.cancelled": "Geannuleerd"
+    "invoice.actions.updateOrderStatus.status.cancelled": "Geannuleerd",
+    "invoice.list.vendorName": "Vendor name",
+    "invoice.list.folioInvoiceNo": "FOLIO invoice number"
 }
