@@ -482,5 +482,7 @@
     "invoice.actions.updateOrderStatus.status.awaitingPayment": "Awaiting payment",
     "invoice.actions.updateOrderStatus.status.partiallyPaid": "Partially paid",
     "invoice.actions.updateOrderStatus.status.fullyPaid": "Fully paid",
-    "invoice.actions.updateOrderStatus.status.cancelled": "Cancelled"
+    "invoice.actions.updateOrderStatus.status.cancelled": "Cancelled",
+    "invoice.list.vendorName": "Vendor name",
+    "invoice.list.folioInvoiceNo": "FOLIO invoice number"
 }

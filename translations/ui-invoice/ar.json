@@ -482,5 +482,7 @@
     "invoice.actions.updateOrderStatus.status.awaitingPayment": "في انتظار الدفع",
     "invoice.actions.updateOrderStatus.status.partiallyPaid": "مدفوع جزئيًا",
     "invoice.actions.updateOrderStatus.status.fullyPaid": "تم دفعها بالكامل",
-    "invoice.actions.updateOrderStatus.status.cancelled": "تم الإلغاء"
+    "invoice.actions.updateOrderStatus.status.cancelled": "تم الإلغاء",
+    "invoice.list.vendorName": "Vendor name",
+    "invoice.list.folioInvoiceNo": "FOLIO invoice number"
 }

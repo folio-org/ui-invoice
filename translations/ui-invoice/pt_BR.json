@@ -482,5 +482,7 @@
     "invoice.actions.updateOrderStatus.status.awaitingPayment": "Aguardando pagamento",
     "invoice.actions.updateOrderStatus.status.partiallyPaid": "Parcialmente pago",
     "invoice.actions.updateOrderStatus.status.fullyPaid": "Totalmente pago",
-    "invoice.actions.updateOrderStatus.status.cancelled": "Cancelado"
+    "invoice.actions.updateOrderStatus.status.cancelled": "Cancelado",
+    "invoice.list.vendorName": "Nome do fornecedor",
+    "invoice.list.folioInvoiceNo": "Número da fatura FOLIO"
 }
