@@ -15,7 +15,7 @@ function getQueryForTags(filterValue) {
   const tagsQuery = buildArrayFieldQuery(FILTERS.TAGS, filterValue);
   const invoiceLineTagsQuery = buildArrayFieldQuery(FILTERS.INVOICE_LINE_TAGS, filterValue);
 
-  return `${tagsQuery} or ${invoiceLineTagsQuery}`;
+  return `(${tagsQuery} or ${invoiceLineTagsQuery})`;
 }
 
 export const useBuildQuery = () => {
