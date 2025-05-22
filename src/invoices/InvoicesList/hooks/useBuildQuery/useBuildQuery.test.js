@@ -18,7 +18,7 @@ describe('useBuildQuery', () => {
       'limit': '50',
       'offset': '0',
       'tags.tagList': 'user*?',
-    })).toBe('(tags.tagList=="*user*?*" or invoiceLines.tags.tagList=="*user*?*") sortby invoiceDate/sort.descending');
+    })).toBe('((tags.tagList=="*user*?*" or invoiceLines.tags.tagList=="*user*?*")) sortby invoiceDate/sort.descending');
 
     expect(result.current({
       'limit': '50',
@@ -27,6 +27,6 @@ describe('useBuildQuery', () => {
         'user*?',
         'urgent',
       ],
-    })).toBe('(tags.tagList==("*user*?*" or "*urgent*") or invoiceLines.tags.tagList==("*user*?*" or "*urgent*")) sortby invoiceDate/sort.descending');
+    })).toBe('((tags.tagList==("*user*?*" or "*urgent*") or invoiceLines.tags.tagList==("*user*?*" or "*urgent*"))) sortby invoiceDate/sort.descending');
   });
 });
