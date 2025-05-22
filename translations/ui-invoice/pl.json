@@ -474,7 +474,7 @@
     "permission.invoice.pay-different-fy.execute": "Faktura: opłacanie faktur w innym roku podatkowym",
     "permission.invoice.cancel.execute": "Faktura: anulowanie faktur",
     "permission.voucher.export.execute": "Faktura: eksport vouchera",
-    "invoice.versionHistory.noVersion": "No version history to display.",
+    "invoice.versionHistory.noVersion": "Brak historii wersji do wyświetlenia.",
     "invoice.totalAmount": "Całkowita kwota",
     "invoice.actions.updateOrderStatus.heading": "Aktualizuj status zamówienia",
     "invoice.actions.updateOrderStatus.message": "You are processing this invoice against a previous fiscal year and \"release encumbrance\" equals true for one or more invoice lines. One or more related orders has a type of One-time. Please indicate how the payment status of these order lines should be updated?",
