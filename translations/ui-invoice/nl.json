@@ -483,6 +483,6 @@
     "invoice.actions.updateOrderStatus.status.partiallyPaid": "Gedeeltelijk betaald",
     "invoice.actions.updateOrderStatus.status.fullyPaid": "Volledig betaald",
     "invoice.actions.updateOrderStatus.status.cancelled": "Geannuleerd",
-    "invoice.list.vendorName": "Vendor name",
-    "invoice.list.folioInvoiceNo": "FOLIO invoice number"
+    "invoice.list.vendorName": "Naam Leverancier",
+    "invoice.list.folioInvoiceNo": "Factuurnummer FOLIO"
 }
