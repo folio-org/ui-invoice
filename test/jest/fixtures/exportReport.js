@@ -25,7 +25,7 @@ export const exportReport = [
     'folioInvoiceNo': '12345',
     'invoiceAdjustments': '',
     'invoiceDate': '2021-06-08',
-    'invoiceFundDistributions': undefined,
+    'invoiceFundDistributions': '',
     'invoiceLineCreatedBy': undefined,
     'invoiceLineDateCreated': null,
     'invoiceLineDateUpdated': null,

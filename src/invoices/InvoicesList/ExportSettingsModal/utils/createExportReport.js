@@ -88,12 +88,12 @@ const getInvoiceExportData = ({
     adjustmentsTotal: invoice.adjustmentsTotal,
     totalAmount: invoice.total,
     lockTotal: invoice.lockTotal,
-    invoiceFundDistributions: getExportFundDistributionData(
-      invoice.adjustments,
+    invoiceFundDistributions: invoice.adjustments?.map(adjustment => getExportFundDistributionData(
+      adjustment,
       expenseClassMap,
       invalidReferenceLabel,
       invoice.currency,
-    ),
+    )).join(' | '),
     invoiceAdjustments: getExportAdjustmentData(invoice.adjustments),
     accountingCode: invoice.accountingCode,
     vendorAddress: getExportVendorPrimaryAddress(vendorMap[invoice.vendorId]),
