@@ -75,9 +75,13 @@ export const getExportData = async ({ ky, intl, query }) => {
   const voucherLines = await fetchExportDataByIds({
     ky, ids: voucherIds, buildQuery: buildVoucherLinesQuery, api: VOUCHER_LINES_API, records: 'voucherLines',
   });
-  const invoiceExpenseClassIds = flatten(exportInvoices.adjustments?.map(
-    ({ fundDistributions }) => (fundDistributions?.map(({ expenseClassId }) => expenseClassId)),
-  ));
+
+  const invoiceExpenseClassIds = exportInvoices
+    .map(({ adjustments }) => adjustments)
+    .flat()
+    .map(({ fundDistributions = [] }) => (fundDistributions?.map(({ expenseClassId }) => expenseClassId)))
+    .flat();
+
   const invoiceLineExpenseClassIds = flatten(invoiceLines.map(
     ({ fundDistributions }) => (fundDistributions?.map(({ expenseClassId }) => expenseClassId)),
   ));
