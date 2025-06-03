@@ -78,7 +78,7 @@ export const getExportData = async ({ ky, intl, query }) => {
 
   const invoiceExpenseClassIds = exportInvoices
     .flatMap(({ adjustments }) => adjustments)
-    .flatMap(({ fundDistributions = [] }) => (fundDistributions?.map(({ expenseClassId }) => expenseClassId)));
+    .flatMap(({ fundDistributions }) => (fundDistributions?.map(({ expenseClassId }) => expenseClassId)));
 
   const invoiceLineExpenseClassIds = flatten(invoiceLines.map(
     ({ fundDistributions }) => (fundDistributions?.map(({ expenseClassId }) => expenseClassId)),
