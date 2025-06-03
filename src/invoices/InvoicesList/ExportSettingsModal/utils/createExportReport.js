@@ -17,7 +17,7 @@ const getExportFundDistributionData = (item, expenseClassMap, invalidReferenceLa
     return (
       `"${fund.code || ''}""${expenseClassName}"
       "${fund.value || '0'}${fund.distributionType === FUND_DISTR_TYPE.percent ? '%' : ''}"
-      "${calculateFundAmount(fund, item.total || 0, currency)}"`
+      "${calculateFundAmount(fund, item.total || item.value || 0, currency)}"`
     );
   }).join(' | ').replace(/\n\s+/g, '')
 );
