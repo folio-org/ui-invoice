@@ -153,6 +153,7 @@
           "acquisition.invoice.events.get",
           "acquisition.invoice-line.events.get",
           "acquisitions-units.units.collection.get",
+          "batch-groups.collection.get",
           "batch-groups.item.get",
           "batch-voucher.batch-voucher-exports.collection.get",
           "batch-voucher.export-configurations.collection.get",
