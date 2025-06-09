@@ -1,5 +1,8 @@
 # Change history for ui-invoice
 
+## [6.1.3](https://github.com/folio-org/ui-invoice/tree/v6.1.3) (2025-06-09)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v6.1.2...v6.1.3)
+
 * Fix invoice fund distr column in csv export. Refs UINV-604.
 
 ## [6.1.2](https://github.com/folio-org/ui-invoice/tree/v6.1.2) (2025-01-21)
