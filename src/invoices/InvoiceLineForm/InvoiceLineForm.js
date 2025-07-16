@@ -293,8 +293,9 @@ const InvoiceLineForm = ({
                         </Col>
                         <Col xs={3}>
                           <POLineField
-                            onSelect={changeOrderLine}
+                            currency={invoice.currency}
                             isNonInteractive={isEditPostApproval}
+                            onSelect={changeOrderLine}
                             poLineId={formValues.poLineId}
                           />
                         </Col>
