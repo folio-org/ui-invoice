@@ -8,6 +8,7 @@
 * Fix Tags filter query to avoid global OR. Refs UINV-603.
 * Fix invoice fund distr column in csv export. Refs UINV-604.
 * Include the permission to retrieve the collection of batch groups in the Invoices view permission set. Refs UINV-602.
+* Display a confirmation to a user if an invoice currency differs from a currency of the associated order. Refs UINV-579.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.3...v7.0.4)
