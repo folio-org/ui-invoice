@@ -7,6 +7,7 @@ import { useOrderLine } from '@folio/stripes-acq-components';
 import { POLineField } from './POLineField';
 
 jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
   useOrderLine: jest.fn(),
 }));
 
