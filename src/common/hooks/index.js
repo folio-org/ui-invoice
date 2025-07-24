@@ -1,4 +1,5 @@
 export * from './useAddressCategories';
+export * from './useAsyncConfirmationModal';
 export * from './useBatchGroup';
 export * from './useConfigsAdjustments';
 export * from './useFiscalYear';

@@ -1,5 +1,9 @@
-import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { stripesConnect } from '@folio/stripes/core';
@@ -11,11 +15,16 @@ import {
   useToggle,
 } from '@folio/stripes-acq-components';
 
+import { CurrencyMismatchModal } from '../../../common/components';
 import { ordersResource } from '../../../common/resources';
 import AddInvoiceLinesAction from './AddInvoiceLinesAction';
 
 export const AddInvoiceLinesActionContainerComponent = ({
-  addLines, onClose, invoiceCurrency, invoiceVendorId, mutator,
+  addLines,
+  invoiceCurrency,
+  invoiceVendorId,
+  mutator,
+  onClose,
 }) => {
   const [isAddInvoiceLines, toggleAddInvoiceLines] = useToggle(true);
   const [isCurrencyConfirmation, toggleCurrencyConfirmation] = useModalToggle();
@@ -95,24 +104,18 @@ export const AddInvoiceLinesActionContainerComponent = ({
         )
       }
 
-      {isCurrencyConfirmation && (
-        <ConfirmationModal
-          id="invoice-line-currency-confirmation"
-          confirmLabel={<FormattedMessage id="ui-invoice.invoice.actions.addLine.confirmLabel" />}
-          heading={<FormattedMessage id="ui-invoice.invoice.actions.addLine.heading" />}
-          message={<FormattedMessage id="ui-invoice.invoice.actions.addLine.currencyMessage" />}
-          onCancel={() => {
-            toggleCurrencyConfirmation();
-            setPoLines(undefined);
-          }}
-          onConfirm={() => {
-            toggleCurrencyConfirmation();
-            addLines(poLines);
-            setPoLines(undefined);
-          }}
-          open
-        />
-      )}
+      <CurrencyMismatchModal
+        onCancel={() => {
+          toggleCurrencyConfirmation();
+          setPoLines(undefined);
+        }}
+        onConfirm={() => {
+          toggleCurrencyConfirmation();
+          addLines(poLines);
+          setPoLines(undefined);
+        }}
+        open={isCurrencyConfirmation}
+      />
 
       {isVendorConfirmation && (
         <ConfirmationModal

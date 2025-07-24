@@ -29,6 +29,7 @@ import {
   checkScope,
   Col,
   collapseAllSections,
+  ConfirmationModal,
   ExpandAllButton,
   expandAllSections,
   HasCommand,
@@ -68,6 +69,7 @@ import {
   SUBMIT_ACTION,
   SUBMIT_ACTION_FIELD_NAME,
 } from '../../common/constants';
+import { useAsyncConfirmationModal } from '../../common/hooks';
 import {
   NO_ACCOUNT_NUMBER,
   getAccountingCodeOptions,
@@ -113,8 +115,16 @@ const InvoiceForm = ({
   const stripes = useStripes();
 
   const {
+    cancel: cancelCurrencyChange,
+    confirm: confirmCurrencyChange,
+    init: initCurrencyChangeConfirmModal,
+    isModalOpen: isConfirmCurrencyChangeModalOpen,
+  } = useAsyncConfirmationModal();
+
+  const {
     batch,
     change,
+    getFieldState,
     mutators: { push },
     registerField,
   } = form;
@@ -307,6 +317,29 @@ const InvoiceForm = ({
       change('accountNo', accNumber || null);
     });
   }, [batch, change, invoiceVendor.accounts, invoiceVendor.erpCode]);
+
+  const onChangeCurrency = useCallback(async (field, value, cb) => {
+    const handleChange = (valueToApply) => {
+      change(field, valueToApply);
+      cb?.();
+    };
+
+    const { initial, modified } = getFieldState(field);
+
+    const isUserShouldBeAcknowledged = (
+      isCreateFromOrder
+      && !modified
+      && value !== initial
+    );
+
+    handleChange(value);
+
+    if (isUserShouldBeAcknowledged) {
+      await initCurrencyChangeConfirmModal()
+        .then(noop)
+        .catch(() => handleChange(initial));
+    }
+  }, [change, getFieldState, initCurrencyChangeConfirmModal, isCreateFromOrder]);
 
   const shortcuts = [
     {
@@ -675,6 +708,7 @@ const InvoiceForm = ({
                         isTooltipTextExchangeRate={!isEditPostApproval}
                         isUseExangeRateDisabled={isEditPostApproval}
                         isSetExchangeRateNonIntaractive={isStatusPaid}
+                        onChangeCurrency={onChangeCurrency}
                       />
                       <CalculatedExchangeAmount
                         currency={values.currency}
@@ -722,6 +756,15 @@ const InvoiceForm = ({
                 </AccordionStatus>
               </Col>
             </Row>
+
+            <ConfirmationModal
+              id="confirm-currency-change-modal"
+              heading={<FormattedMessage id="ui-invoice.invoice.form.fromPO.currency.confirmModal.heading" />}
+              message={<FormattedMessage id="ui-invoice.invoice.form.fromPO.currency.confirmModal.message" />}
+              onConfirm={confirmCurrencyChange}
+              onCancel={cancelCurrencyChange}
+              open={isConfirmCurrencyChangeModalOpen}
+            />
           </form>
         </Pane>
       </Paneset>

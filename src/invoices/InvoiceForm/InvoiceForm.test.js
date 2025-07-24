@@ -1,12 +1,15 @@
-import { Form } from 'react-final-form';
-import { MemoryRouter, useHistory } from 'react-router-dom';
+import {
+  MemoryRouter,
+  useHistory,
+} from 'react-router-dom';
 
-import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import {
   act,
   render,
   screen,
+  within,
 } from '@folio/jest-config-stripes/testing-library/react';
+import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import {
   HasCommand,
   expandAllSections,
@@ -55,33 +58,27 @@ const accounts = [{
   accountStatus: 'Active',
 }];
 
+const onSubmitMock = jest.fn();
+
 const defaultProps = {
   initialValues: {},
   batchGroups: [],
   parentResources: {},
   onCancel: jest.fn(),
+  onSubmit: onSubmitMock,
 };
-const onSubmitMock = jest.fn();
-const renderInvoiceForm = (props = defaultProps) => (render(
+const renderInvoiceForm = (props = {}) => (render(
   <MemoryRouter>
-    <Form
-      onSubmit={jest.fn()}
-      render={() => (
-        <InvoiceForm
-          form={{}}
-          onSubmit={onSubmitMock}
-          pristine={false}
-          submitting={false}
-          {...props}
-        />
-      )}
+    <InvoiceForm
+      {...defaultProps}
+      {...props}
     />
   </MemoryRouter>,
 ));
 
 describe('InvoiceForm component', () => {
-  beforeEach(() => {
-    FieldOrganization.mockClear();
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should render correct structure', () => {
@@ -118,7 +115,6 @@ describe('InvoiceForm component', () => {
 
   it('should change selected \'Accounting code\' value', async () => {
     const { container } = renderInvoiceForm({
-      ...defaultProps,
       initialVendor: {
         ...vendor,
         accounts,
@@ -185,7 +181,7 @@ describe('InvoiceForm component', () => {
   describe('When adjustment export to accounting is checked', () => {
     it('then accounting code field should be required', async () => {
       await act(async () => {
-        await renderInvoiceForm({ ...defaultProps, initialValues: { adjustments: [{ exportToAccounting: true }] } });
+        await renderInvoiceForm({ initialValues: { adjustments: [{ exportToAccounting: true }] } });
       });
 
       expect(screen.getByRole('button', { name: /ui-invoice.invoice.accountingCode Icon/i })).toBeInTheDocument();
@@ -247,10 +243,7 @@ describe('InvoiceForm component', () => {
 
     it('should render fiscal year component with empty select option', async () => {
       const optionLengthWithEmptyLine = FISCAL_YEARS.length + 1;
-      const { container } = renderInvoiceForm({
-        ...defaultProps,
-        initialValues: { fiscalYearId: 'fyId' },
-      });
+      const { container } = renderInvoiceForm({ initialValues: { fiscalYearId: 'fyId' } });
       const fiscalYearLabel = await screen.findByText(labelId);
 
       expect(fiscalYearLabel).toBeInTheDocument();
@@ -264,7 +257,6 @@ describe('InvoiceForm component', () => {
 
     it('should render edit fiscal year component with required "*" sign and not to have empty input selection', async () => {
       const { container } = renderInvoiceForm({
-        ...defaultProps,
         initialValues: { fiscalYearId: 'fyId', id: 'invoiceId' },
       });
       const fiscalYearLabel = await screen.findByText(labelId);
@@ -326,6 +318,43 @@ describe('InvoiceForm component', () => {
       HasCommand.mock.calls[0][0].commands.find(c => c.name === 'cancel').handler();
 
       expect(onCancel).toHaveBeenCalled();
+    });
+  });
+
+  describe('When invoice is creating from purchase order', () => {
+    describe('When a user select currency that differs from the one in purchase order line', () => {
+      beforeEach(() => {
+        renderInvoiceForm({
+          isCreateFromOrder: true,
+          initialValues: {
+            currency: 'USD',
+            exchangeRate: 1,
+          },
+        });
+      });
+
+      it('should display a warning message', async () => {
+        await userEvent.click(screen.getByRole('button', { name: /currency/ }));
+        await userEvent.click(screen.getByText(/BYN/));
+
+        expect(screen.getByText('ui-invoice.invoice.form.fromPO.currency.confirmModal.message')).toBeInTheDocument();
+      });
+
+      it.each([
+        ['cancel', 'USD'],
+        ['submit', 'BYN'],
+      ])('should handle "%s" action and set currency as "%s"', async (action, expectedValue) => {
+        expect(screen.getByRole('button', { name: /currency/ })).toHaveValue('USD');
+
+        await userEvent.click(screen.getByRole('button', { name: /currency/ }));
+        await userEvent.click(screen.getByText(/BYN/));
+        await userEvent.click(
+          within(screen.getByRole('dialog', { name: /currency.confirmModal/ }))
+            .getByRole('button', { name: new RegExp(action) })
+        );
+
+        expect(screen.getByRole('button', { name: /currency/ })).toHaveValue(expectedValue);
+      });
     });
   });
 });

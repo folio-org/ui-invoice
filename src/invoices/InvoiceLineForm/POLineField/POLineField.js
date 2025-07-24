@@ -1,11 +1,13 @@
-import React, { useCallback, useMemo } from 'react';
+import noop from 'lodash/noop';
 import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
-import { Field } from 'react-final-form';
-
 import {
-  Pluggable,
-} from '@folio/stripes/core';
+  useCallback,
+  useMemo,
+} from 'react';
+import { Field } from 'react-final-form';
+import { useIntl } from 'react-intl';
+
+import { Pluggable } from '@folio/stripes/core';
 import {
   Button,
   IconButton,
@@ -13,13 +15,34 @@ import {
 } from '@folio/stripes/components';
 import { useOrderLine } from '@folio/stripes-acq-components';
 
-export const POLineField = ({ isNonInteractive, poLineId, onSelect }) => {
+import { CurrencyMismatchModal } from '../../../common/components';
+import { useAsyncConfirmationModal } from '../../../common/hooks';
+
+export const POLineField = ({
+  currency,
+  isNonInteractive,
+  onSelect,
+  poLineId,
+}) => {
   const intl = useIntl();
   const { orderLine } = useOrderLine(poLineId);
 
-  const selectLine = useCallback(([line]) => {
-    onSelect(line);
-  }, [onSelect]);
+  const {
+    confirm,
+    cancel,
+    init,
+    isModalOpen,
+  } = useAsyncConfirmationModal();
+
+  const selectLine = useCallback(async ([line]) => {
+    if (line?.cost?.currency === currency) {
+      onSelect(line);
+    } else {
+      await init()
+        .then(() => onSelect(line))
+        .catch(noop);
+    }
+  }, [currency, init, onSelect]);
 
   const clearLine = useCallback(() => {
     onSelect(undefined);
@@ -78,11 +101,18 @@ export const POLineField = ({ isNonInteractive, poLineId, onSelect }) => {
           {intl.formatMessage({ id: 'ui-invoice.find-po-line-plugin-unavailable' })}
         </Pluggable>
       )}
+
+      <CurrencyMismatchModal
+        onCancel={cancel}
+        onConfirm={confirm}
+        open={isModalOpen}
+      />
     </>
   );
 };
 
 POLineField.propTypes = {
+  currency: PropTypes.string.isRequired,
   isNonInteractive: PropTypes.bool,
   poLineId: PropTypes.string,
   onSelect: PropTypes.func.isRequired,
