@@ -342,7 +342,7 @@ describe('InvoiceForm component', () => {
 
       it.each([
         ['cancel', 'USD'],
-        ['submit', 'BYN'],
+        ['confirm', 'BYN'],
       ])('should handle "%s" action and set currency as "%s"', async (action, expectedValue) => {
         expect(screen.getByRole('button', { name: /currency/ })).toHaveValue('USD');
 
@@ -350,7 +350,7 @@ describe('InvoiceForm component', () => {
         await userEvent.click(screen.getByText(/BYN/));
         await userEvent.click(
           within(screen.getByRole('dialog', { name: /currency.confirmModal/ }))
-            .getByRole('button', { name: new RegExp(action) })
+            .getByRole('button', { name: new RegExp(action) }),
         );
 
         expect(screen.getByRole('button', { name: /currency/ })).toHaveValue(expectedValue);
