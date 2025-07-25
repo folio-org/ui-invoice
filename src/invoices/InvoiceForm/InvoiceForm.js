@@ -156,6 +156,7 @@ const InvoiceForm = ({
   } = initialValues;
   const [selectedVendor, setSelectedVendor] = useState();
   const [isLockTotalAmountEnabled, setIsLockTotalAmountEnabled] = useState(isNumber(lockTotal));
+  const [isUserAcknowledgedAboutCurrencyChange, setIsUserAcknowledgedAboutCurrencyChange] = useState(false);
 
   useEffect(() => {
     const unregisterAccountingCodeField = registerField('accountingCode', noop);
@@ -324,22 +325,22 @@ const InvoiceForm = ({
       cb?.();
     };
 
-    const { initial, modified } = getFieldState(field);
+    const { initial } = getFieldState(field);
 
     const isUserShouldBeAcknowledged = (
       isCreateFromOrder
-      && !modified
       && value !== initial
+      && !isUserAcknowledgedAboutCurrencyChange
     );
 
     handleChange(value);
 
     if (isUserShouldBeAcknowledged) {
       await initCurrencyChangeConfirmModal()
-        .then(noop)
+        .then(() => setIsUserAcknowledgedAboutCurrencyChange(true))
         .catch(() => handleChange(initial));
     }
-  }, [change, getFieldState, initCurrencyChangeConfirmModal, isCreateFromOrder]);
+  }, [change, getFieldState, initCurrencyChangeConfirmModal, isCreateFromOrder, isUserAcknowledgedAboutCurrencyChange]);
 
   const shortcuts = [
     {
@@ -758,6 +759,7 @@ const InvoiceForm = ({
             </Row>
 
             <ConfirmationModal
+              confirmLabel={<FormattedMessage id="stripes-core.button.confirm" />}
               id="confirm-currency-change-modal"
               heading={<FormattedMessage id="ui-invoice.invoice.form.fromPO.currency.confirmModal.heading" />}
               message={<FormattedMessage id="ui-invoice.invoice.form.fromPO.currency.confirmModal.message" />}
