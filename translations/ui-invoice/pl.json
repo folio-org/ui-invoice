@@ -484,5 +484,7 @@
     "invoice.actions.updateOrderStatus.status.fullyPaid": "Całkowicie opłacone",
     "invoice.actions.updateOrderStatus.status.cancelled": "Anulowany",
     "invoice.list.vendorName": "Nazwa dostawcy",
-    "invoice.list.folioInvoiceNo": "Numer faktury FOLIO"
+    "invoice.list.folioInvoiceNo": "Numer faktury FOLIO",
+    "invoice.form.fromPO.currency.confirmModal.heading": "Potwierdź zmianę waluty",
+    "invoice.form.fromPO.currency.confirmModal.message": "Zmieniasz walutę tej faktury, ale kwoty nie są przeliczane z waluty pozycji zamówienia na nową walutę faktury. Jeśli nadal chcesz kontynuować, kliknij „Potwierdź”."
 }

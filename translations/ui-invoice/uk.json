@@ -484,5 +484,7 @@
     "invoice.actions.updateOrderStatus.status.fullyPaid": "Повністю оплачено",
     "invoice.actions.updateOrderStatus.status.cancelled": "Скасовано",
     "invoice.list.vendorName": "Назва постачальника",
-    "invoice.list.folioInvoiceNo": "Номер рахунку-фактури FOLIO"
+    "invoice.list.folioInvoiceNo": "Номер рахунку-фактури FOLIO",
+    "invoice.form.fromPO.currency.confirmModal.heading": "Confirm currency change",
+    "invoice.form.fromPO.currency.confirmModal.message": "You are changing the currency of this invoice but the amounts are not being exchanged from the POL currency to the new invoice currency. If you would still like proceed please click confirm."
 }

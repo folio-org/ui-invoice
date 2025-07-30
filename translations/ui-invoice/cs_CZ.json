@@ -484,5 +484,7 @@
     "invoice.actions.updateOrderStatus.status.fullyPaid": "Zcela uhrazeno",
     "invoice.actions.updateOrderStatus.status.cancelled": "Zrušeno",
     "invoice.list.vendorName": "Název distributora",
-    "invoice.list.folioInvoiceNo": "Číslo faktury FOLIO"
+    "invoice.list.folioInvoiceNo": "Číslo faktury FOLIO",
+    "invoice.form.fromPO.currency.confirmModal.heading": "Potvrdit změnu měny",
+    "invoice.form.fromPO.currency.confirmModal.message": "Měníte měnu této faktury, ale částky se nemění z měny POL na novou měnu faktury. Pokud si i přesto přejete pokračovat, klikněte na tlačítko potvrdit."
 }
