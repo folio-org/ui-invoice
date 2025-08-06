@@ -468,7 +468,7 @@
     "invoice.actions.duplicate.success.message": "Faktura została pomyślnie powielona",
     "invoice.actions.duplicate.error.message": "Faktura nie została powielona",
     "search.folioInvoiceNo": "FOLIO invoice number",
-    "label.backToInvoice": "Back to Invoice",
+    "label.backToInvoice": "Powrót do modułu Faktura",
     "permission.invoice.approve.execute": "Faktura: zatwierdzanie faktur",
     "permission.invoice.pay.execute": "Faktura: płacenie faktur",
     "permission.invoice.pay-different-fy.execute": "Faktura: opłacanie faktur w innym roku podatkowym",
