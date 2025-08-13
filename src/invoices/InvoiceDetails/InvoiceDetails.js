@@ -83,25 +83,26 @@ function InvoiceDetails({
   addLines,
   approveAndPayInvoice,
   approveInvoice,
+  batchVoucherExport,
   cancelInvoice,
   createLine,
   deleteInvoice,
-  onDuplicateInvoice,
+  exchangedTotalsMap,
+  exportFormat,
   invoice,
   invoiceLines,
   invoiceTotalUnits,
-  vendor,
   isApprovePayEnabled,
-  shouldUpdateOrderStatus,
   onClose,
+  onDuplicateInvoice,
   onEdit,
-  orderlinesMap,
   onUpdate,
+  orderlinesMap,
   payInvoice,
-  totalInvoiceLines,
-  batchVoucherExport,
-  exportFormat,
   refreshData,
+  shouldUpdateOrderStatus,
+  totalInvoiceLines,
+  vendor,
 }) {
   const history = useHistory();
   const stripes = useStripes();
@@ -375,6 +376,7 @@ function InvoiceDetails({
               }
             >
               <InvoiceLinesContainer
+                exchangedTotalsMap={exchangedTotalsMap}
                 invoice={invoice}
                 invoiceLines={invoiceLines}
                 vendor={vendor}
@@ -597,25 +599,26 @@ InvoiceDetails.propTypes = {
   addLines: PropTypes.func.isRequired,
   approveAndPayInvoice: PropTypes.func.isRequired,
   approveInvoice: PropTypes.func.isRequired,
+  batchVoucherExport: PropTypes.object,
   cancelInvoice: PropTypes.func.isRequired,
   createLine: PropTypes.func.isRequired,
   deleteInvoice: PropTypes.func.isRequired,
-  onDuplicateInvoice: PropTypes.func.isRequired,
+  exchangedTotalsMap: PropTypes.instanceOf(Map),
+  exportFormat: PropTypes.string,
   invoice: PropTypes.object.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
   invoiceTotalUnits: PropTypes.number,
-  vendor: PropTypes.object,
   isApprovePayEnabled: PropTypes.bool,
-  shouldUpdateOrderStatus: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  onDuplicateInvoice: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
-  orderlinesMap: PropTypes.object,
   onUpdate: PropTypes.func.isRequired,
+  orderlinesMap: PropTypes.object,
   payInvoice: PropTypes.func.isRequired,
-  totalInvoiceLines: PropTypes.number.isRequired,
-  batchVoucherExport: PropTypes.object,
-  exportFormat: PropTypes.string,
   refreshData: PropTypes.func.isRequired,
+  shouldUpdateOrderStatus: PropTypes.func.isRequired,
+  totalInvoiceLines: PropTypes.number.isRequired,
+  vendor: PropTypes.object,
 };
 
 InvoiceDetails.defaultProps = {

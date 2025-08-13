@@ -57,7 +57,9 @@ export const INVOICE_LINES_COLUMN_MAPPING = {
   quantity: <FormattedMessage id="ui-invoice.invoice.details.lines.list.quantity" />,
   subTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.subTotal" />,
   adjustmentsTotal: <FormattedMessage id="ui-invoice.invoice.details.lines.list.adjustments" />,
+  releaseEncumbrance: <FormattedMessage id="ui-invoice.invoiceLine.releaseEncumbrance" />,
   total: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total" />,
+  totalExchanged: <FormattedMessage id="ui-invoice.invoice.details.lines.list.total.exchanged" />,
   vendorCode: <FormattedMessage id="ui-invoice.invoice.details.vendor.code" />,
 };
 
