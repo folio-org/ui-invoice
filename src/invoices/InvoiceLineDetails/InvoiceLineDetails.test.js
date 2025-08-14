@@ -88,6 +88,8 @@ describe('InvoiceLineDetails', () => {
         renderInvoiceLineDetails({
           ...defaultProps,
           goToEditInvoiceLine,
+          poLine: undefined,
+          invoiceLine: undefined,
         });
 
         act(() => {

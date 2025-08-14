@@ -35,7 +35,10 @@ describe('AddInvoiceLinesActionContainer', () => {
   });
 
   it('should display InvoiceLines', () => {
-    renderInvoiceLinesContainer();
+    renderInvoiceLinesContainer({
+      invoiceLines: undefined,
+      orderlinesMap: undefined,
+    });
 
     expect(screen.getByText('InvoiceLines')).toBeDefined();
   });
