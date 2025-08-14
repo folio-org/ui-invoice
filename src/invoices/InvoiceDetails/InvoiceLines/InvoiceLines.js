@@ -122,21 +122,21 @@ const InvoiceLines = ({
         currency={currency}
       />
     ),
-    polNumber: (line) => (
+    polNumber: ({ poLineId, ...line }) => (
       <InvoiceLineOrderLineNumber
         invoiceLine={line}
-        poLineNumber={orderlinesMap?.[line.poLineId]?.poLineNumber}
+        poLineNumber={orderlinesMap?.[poLineId]?.poLineNumber}
         link={setInvoiceLine}
       />
     ),
     fundCode: (line) => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
-    poStatus: (line) => {
-      const orderLine = orderlinesMap?.[line.poLineId];
+    poStatus: ({ poLineId }) => {
+      const orderLine = orderlinesMap?.[poLineId];
 
       return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
     },
-    receiptStatus: (line) => {
-      const status = orderlinesMap?.[line.poLineId]?.receiptStatus;
+    receiptStatus: ({ poLineId }) => {
+      const status = orderlinesMap?.[poLineId]?.receiptStatus;
       const translationKey = invert(RECEIPT_STATUS)[status];
 
       return status ?
@@ -148,8 +148,8 @@ const InvoiceLines = ({
         )
         : <NoValue />;
     },
-    paymentStatus: (line) => {
-      const status = orderlinesMap?.[line.poLineId]?.paymentStatus;
+    paymentStatus: ({ poLineId }) => {
+      const status = orderlinesMap?.[poLineId]?.paymentStatus;
       const translationKey = invert(PAYMENT_STATUS)[status];
 
       return status ?
@@ -161,20 +161,20 @@ const InvoiceLines = ({
         )
         : <NoValue />;
     },
-    releaseEncumbrance: (line) => (
+    releaseEncumbrance: ({ releaseEncumbrance }) => (
       <Checkbox
-        checked={!!line.releaseEncumbrance}
+        checked={!!releaseEncumbrance}
         disabled
         type="checkbox"
       />
     ),
-    vendorCode: (line) => {
-      const orderLine = orderlinesMap?.[line.poLineId];
+    vendorCode: ({ poLineId }) => {
+      const orderLine = orderlinesMap?.[poLineId];
 
       return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || vendor.code;
     },
-    vendorRefNo: (line) => (
-      line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
+    vendorRefNo: ({ referenceNumbers }) => (
+      referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
     ),
   }), [orderlinesMap, currency, exchangedTotalsMap, stripes.currency, ordersMap, vendor.code]);
 
