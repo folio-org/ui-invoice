@@ -162,12 +162,12 @@ export function InvoiceDetailsContainer({
             rate: invoiceResponse.exchangeRate,
           }));
 
-          const calculatedExchangeRates = await ky.post(
+          const batchExchangeRates = await ky.post(
             CALCULATE_EXCHANGE_BATCH_API,
             { json: { exchangeRateCalculations } },
           ).json();
 
-          return calculatedExchangeRates.reduce((acc, curr, indx) => {
+          return batchExchangeRates.exchangeRateCalculations.reduce((acc, curr, indx) => {
             return acc.set(invoiceLinesResp.invoiceLines?.at(indx)?.id, curr);
           }, new Map());
         }
