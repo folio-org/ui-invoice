@@ -76,6 +76,7 @@ const InvoiceLines = ({
     }, {});
   }, [orders]);
   const resultsFormatter = useMemo(() => ({
+    // eslint-disable-next-line react/prop-types
     [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
       const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
@@ -96,30 +97,35 @@ const InvoiceLines = ({
         </>
       );
     },
+    // eslint-disable-next-line react/prop-types
     adjustmentsTotal: ({ adjustmentsTotal }) => (
       <AmountWithCurrencyField
         amount={adjustmentsTotal}
         currency={currency}
       />
     ),
+    // eslint-disable-next-line react/prop-types
     total: ({ total }) => (
       <AmountWithCurrencyField
         amount={total}
         currency={currency}
       />
     ),
+    // eslint-disable-next-line react/prop-types
     totalExchanged: ({ id }) => (
       <AmountWithCurrencyField
         amount={exchangedTotalsMap.get(id)?.calculation}
         currency={stripes.currency}
       />
     ),
+    // eslint-disable-next-line react/prop-types
     subTotal: ({ subTotal }) => (
       <AmountWithCurrencyField
         amount={subTotal}
         currency={currency}
       />
     ),
+    // eslint-disable-next-line react/prop-types
     polNumber: (line) => (
       <InvoiceLineOrderLineNumber
         invoiceLine={line}

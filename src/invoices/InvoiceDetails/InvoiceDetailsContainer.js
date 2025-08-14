@@ -95,8 +95,6 @@ export function InvoiceDetailsContainer({
     try {
       const invoiceResponse = await mutator.invoice.GET({ path: `${INVOICES_API}/${id}` });
 
-      setInvoice(invoiceResponse);
-
       const vendorPromise = mutator.vendor.GET({ path: `${VENDORS_API}/${invoiceResponse.vendorId}` });
       const invoiceLinesPromise = mutator.invoiceLines.GET({
         params: {
@@ -126,10 +124,6 @@ export function InvoiceDetailsContainer({
         invoiceResponse.folioInvoiceNo,
       ]);
 
-      setVendor(vendorResp);
-      setInvoiceLines(invoiceLinesResp);
-      setExportFormat(exportConfigsResp[0]?.format);
-
       let approvalsConfig;
 
       try {
@@ -137,8 +131,6 @@ export function InvoiceDetailsContainer({
       } catch (e) {
         approvalsConfig = {};
       }
-
-      setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
 
       const batchVoucherExportPromise = exportConfigsResp[0]?.id
         ? mutator.batchVoucherExport.GET({
@@ -158,7 +150,7 @@ export function InvoiceDetailsContainer({
       }, []);
       const poLinesPromise = batchFetch(mutator.orderLines, poLineIdsToRequest);
 
-      const exchangeRateCalculationsPromise = Promise.resolve().then(() => {
+      const exchangeRateCalculationsPromise = Promise.resolve().then(async () => {
         const systemCurrency = stripes.currency;
         const invoiceCurrency = invoiceResponse.currency;
 
@@ -170,16 +162,14 @@ export function InvoiceDetailsContainer({
             rate: invoiceResponse.exchangeRate,
           }));
 
-          return ky.post(
+          const calculatedExchangeRates = await ky.post(
             CALCULATE_EXCHANGE_BATCH_API,
             { json: { exchangeRateCalculations } },
-          )
-            .json()
-            .then((res) => {
-              return res.exchangeRateCalculations.reduce((acc, curr, indx) => {
-                return acc.set(invoiceLinesResp.invoiceLines?.at(indx)?.id, curr);
-              }, new Map());
-            });
+          ).json();
+
+          return calculatedExchangeRates.reduce((acc, curr, indx) => {
+            return acc.set(invoiceLinesResp.invoiceLines?.at(indx)?.id, curr);
+          }, new Map());
         }
 
         return Promise.resolve(new Map());
@@ -195,6 +185,16 @@ export function InvoiceDetailsContainer({
         exchangeRateCalculationsPromise,
       ]);
 
+      const ordersResponse = await batchFetch(
+        mutator.orders,
+        poLinesResponse.map(({ purchaseOrderId }) => purchaseOrderId),
+      );
+
+      setVendor(vendorResp);
+      setInvoice(invoiceResponse);
+      setInvoiceLines(invoiceLinesResp);
+      setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
+      setExportFormat(exportConfigsResp[0]?.format);
       setExchangedTotalsMap(exchangeRateCalculationsResponse);
       setBatchVoucherExport(batchVoucherExportResp[0]);
       setOrderlinesMap(poLinesResponse.reduce((acc, poLine) => {
@@ -202,12 +202,6 @@ export function InvoiceDetailsContainer({
 
         return acc;
       }, {}));
-
-      const ordersResponse = await batchFetch(
-        mutator.orders,
-        poLinesResponse.map(({ purchaseOrderId }) => purchaseOrderId),
-      );
-
       setOrders(ordersResponse);
     } catch {
       showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
