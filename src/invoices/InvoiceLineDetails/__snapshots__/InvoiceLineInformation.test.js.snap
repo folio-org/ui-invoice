@@ -269,9 +269,6 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
     </div>
     <div
       class="col-xs-3"
-    />
-    <div
-      class="col-xs-3"
     >
       <div
         class="checkbox inline vertical disabled"
@@ -699,9 +696,6 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
         </div>
       </div>
     </div>
-    <div
-      class="col-xs-3"
-    />
     <div
       class="col-xs-3"
     >
