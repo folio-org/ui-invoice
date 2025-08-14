@@ -28,6 +28,7 @@ import { InvoiceDetailsContainer } from './InvoiceDetailsContainer';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
+  batchFetch: jest.fn(() => []),
   useFiscalYears: () => ({ fiscalYears: [] }),
 }));
 
