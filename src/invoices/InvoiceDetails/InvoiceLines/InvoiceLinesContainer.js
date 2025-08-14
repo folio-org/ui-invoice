@@ -1,22 +1,27 @@
-import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
-import {
-  useInvoiceOrders,
-} from './hooks';
+import { useInvoiceOrders } from './hooks';
 import InvoiceLines from './InvoiceLines';
 
+const DEFAULT_PROPS = {
+  invoiceLines: [],
+  orderlinesMap: {},
+  visibleColumns: [],
+};
+
 export const InvoiceLinesContainerComponent = ({
-  invoiceLines,
-  invoice,
-  vendor,
+  exchangedTotalsMap,
   history,
+  invoice,
+  invoiceLines = DEFAULT_PROPS.invoiceLines,
   location,
-  orderlinesMap,
+  orderlinesMap = DEFAULT_PROPS.orderlinesMap,
   refreshData,
-  visibleColumns,
+  vendor,
+  visibleColumns = DEFAULT_PROPS.visibleColumns,
 }) => {
   const { orders } = useInvoiceOrders(invoice);
 
@@ -36,6 +41,7 @@ export const InvoiceLinesContainerComponent = ({
 
   return (
     <InvoiceLines
+      exchangedTotalsMap={exchangedTotalsMap}
       invoice={invoice}
       vendor={vendor}
       orders={orders}
@@ -49,18 +55,15 @@ export const InvoiceLinesContainerComponent = ({
 };
 
 InvoiceLinesContainerComponent.propTypes = {
-  invoice: PropTypes.object.isRequired,
-  vendor: PropTypes.object.isRequired,
+  exchangedTotalsMap: PropTypes.instanceOf(Map).isRequired,
   history: ReactRouterPropTypes.history.isRequired,
-  location: ReactRouterPropTypes.location.isRequired,
+  invoice: PropTypes.object.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
+  location: ReactRouterPropTypes.location.isRequired,
   orderlinesMap: PropTypes.object,
   refreshData: PropTypes.func.isRequired,
+  vendor: PropTypes.object.isRequired,
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
-};
-
-InvoiceLinesContainerComponent.defaultProps = {
-  invoiceLines: [],
 };
 
 export default withRouter(InvoiceLinesContainerComponent);

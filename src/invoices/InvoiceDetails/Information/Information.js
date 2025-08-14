@@ -27,28 +27,29 @@ import BatchGroupValue from '../BatchGroupValue';
 import BillTo from './BillTo';
 
 const Information = ({
+  acqUnits = [],
   adjustmentsTotal,
   approvalDate,
   approvedBy,
   batchGroupId,
+  billTo,
+  cancellationNote,
+  currency,
   exchangeRate,
   fiscalYearId,
   invoiceDate,
-  paymentDue,
+  invoiceTotalUnits = 0,
+  isForeignCurrency,
+  lockTotal,
   metadata,
+  note,
   paymentDate,
+  paymentDue,
   paymentTerms,
   source,
   status,
   subTotal,
   total,
-  billTo,
-  invoiceTotalUnits,
-  acqUnits,
-  currency,
-  note,
-  lockTotal,
-  cancellationNote,
 }) => {
   const isLockTotal = isNumber(lockTotal);
 
@@ -184,13 +185,15 @@ const Information = ({
       </Row>
 
       <Row>
-        <Col xs={3}>
-          <CalculatedExchangeAmount
-            currency={currency}
-            exchangeRate={exchangeRate}
-            total={total}
-          />
-        </Col>
+        {isForeignCurrency && (
+          <Col xs={3}>
+            <CalculatedExchangeAmount
+              currency={currency}
+              exchangeRate={exchangeRate}
+              total={total}
+            />
+          </Col>
+        )}
 
         {isLockTotal && (
           <Col xs={3} data-testid="lock-total-amount">
@@ -208,33 +211,29 @@ const Information = ({
 };
 
 Information.propTypes = {
+  acqUnits: PropTypes.arrayOf(PropTypes.string),
   adjustmentsTotal: PropTypes.number,
   approvalDate: PropTypes.string,
   approvedBy: PropTypes.string,
   batchGroupId: PropTypes.string.isRequired,
+  billTo: PropTypes.string,
+  cancellationNote: PropTypes.string,
+  currency: PropTypes.string.isRequired,
   exchangeRate: PropTypes.number,
-  invoiceDate: PropTypes.string.isRequired,
   fiscalYearId: PropTypes.string,
+  invoiceDate: PropTypes.string.isRequired,
+  invoiceTotalUnits: PropTypes.number,
+  isForeignCurrency: PropTypes.bool,
+  lockTotal: PropTypes.number,
+  metadata: PropTypes.object,
+  note: PropTypes.string,
+  paymentDate: PropTypes.string,
   paymentDue: PropTypes.string,
   paymentTerms: PropTypes.string,
+  source: PropTypes.string.isRequired,
   status: PropTypes.string.isRequired,
   subTotal: PropTypes.number,
   total: PropTypes.number,
-  source: PropTypes.string.isRequired,
-  metadata: PropTypes.object,
-  billTo: PropTypes.string,
-  invoiceTotalUnits: PropTypes.number,
-  acqUnits: PropTypes.arrayOf(PropTypes.string),
-  currency: PropTypes.string.isRequired,
-  note: PropTypes.string,
-  lockTotal: PropTypes.number,
-  paymentDate: PropTypes.string,
-  cancellationNote: PropTypes.string,
-};
-
-Information.defaultProps = {
-  invoiceTotalUnits: 0,
-  acqUnits: [],
 };
 
 export default Information;

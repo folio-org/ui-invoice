@@ -1,7 +1,10 @@
-import { useMemo, useState } from 'react';
-import { FormattedMessage } from 'react-intl';
-import { keyBy } from 'lodash';
+import keyBy from 'lodash/keyBy';
 import PropTypes from 'prop-types';
+import {
+  useMemo,
+  useState,
+} from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Button,
@@ -19,7 +22,7 @@ import {
   handleKeyCommand,
 } from '@folio/stripes-acq-components';
 
-import { INVOICE_LINES_COLUMN_MAPPING } from '../constants';
+import { NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING } from '../constants';
 import { getCommonInvoiceLinesFormatter } from '../utils';
 
 export const InvoiceLinesSequence = ({
@@ -118,12 +121,12 @@ export const InvoiceLinesSequence = ({
         >
           <DragDropMCL
             contentData={linesList}
-            columnMapping={INVOICE_LINES_COLUMN_MAPPING}
+            columnMapping={NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING}
             formatter={formatter}
             id="invoice-lines-sequence"
             loading={isSaving}
             onUpdate={setLinesList}
-            visibleColumns={Object.keys(INVOICE_LINES_COLUMN_MAPPING)}
+            visibleColumns={Object.keys(NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING)}
           />
         </Pane>
       </Paneset>

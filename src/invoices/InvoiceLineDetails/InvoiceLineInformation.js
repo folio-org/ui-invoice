@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -10,6 +9,7 @@ import {
   Row,
   TextLink,
 } from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 import {
   ClipCopy,
   ViewMetaData,
@@ -20,8 +20,17 @@ import {
   VendorReferenceNumbersDetails,
 } from '@folio/stripes-acq-components';
 
-const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
-  const metadata = invoiceLine.metadata;
+import { CalculatedExchangeAmount } from '../../common/components';
+
+const InvoiceLineInformation = ({
+  currency,
+  exchangeRate,
+  invoiceLine,
+  poLine,
+}) => {
+  const stripes = useStripes();
+  const metadata = invoiceLine?.metadata;
+  const isForeignCurrency = currency !== stripes.currency;
 
   return (
     <>
@@ -30,12 +39,12 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
         <Col xs={12}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.description" />}
-            value={invoiceLine.description}
+            value={invoiceLine?.description}
           />
         </Col>
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.poLineNumber" />}>
-            {poLine.id
+            {poLine?.id
               ? (
                 <>
                   <TextLink
@@ -55,78 +64,89 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.invoiceLineNumber" />}
-            value={invoiceLine.invoiceLineNumber}
+            value={invoiceLine?.invoiceLineNumber}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.details.information.status" />}
-            value={invoiceLine.invoiceLineStatus}
+            value={invoiceLine?.invoiceLineStatus}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionInfo" />}
-            value={invoiceLine.subscriptionInfo}
+            value={invoiceLine?.subscriptionInfo}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionStart" />}
-            value={<FolioFormattedDate value={invoiceLine.subscriptionStart} />}
+            value={<FolioFormattedDate value={invoiceLine?.subscriptionStart} />}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.subscriptionEnd" />}
-            value={<FolioFormattedDate value={invoiceLine.subscriptionEnd} />}
+            value={<FolioFormattedDate value={invoiceLine?.subscriptionEnd} />}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.comment" />}
-            value={invoiceLine.comment}
+            value={invoiceLine?.comment}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.accountNumber" />}
-            value={invoiceLine.accountNumber}
+            value={invoiceLine?.accountNumber}
           />
         </Col>
         <Col xs={3}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoice.accountingCode" />}
-            value={invoiceLine.accountingCode}
-          />
-        </Col>
-        <Col xs={3}>
-          <KeyValue
-            label={<FormattedMessage id="ui-invoice.invoiceLine.quantity" />}
-            value={invoiceLine.quantity}
+            value={invoiceLine?.accountingCode}
           />
         </Col>
         <Col xs={3}>
           <KeyValue label={<FormattedMessage id="ui-invoice.invoiceLine.subTotal" />}>
             <AmountWithCurrencyField
-              amount={invoiceLine.subTotal}
+              amount={invoiceLine?.subTotal}
               currency={currency}
             />
           </KeyValue>
         </Col>
         <Col xs={3}>
+          <KeyValue
+            label={<FormattedMessage id="ui-invoice.invoiceLine.quantity" />}
+            value={invoiceLine?.quantity}
+          />
+        </Col>
+        {isForeignCurrency && (
+          <Col xs={3}>
+            <CalculatedExchangeAmount
+              currency={currency}
+              exchangeRate={exchangeRate}
+              label={<FormattedMessage id="ui-invoice.invoice.details.lines.list.total.exchanged" />}
+              total={invoiceLine?.total}
+            />
+          </Col>
+        )}
+        <Col xs={3}>
           <Checkbox
-            checked={Boolean(invoiceLine.releaseEncumbrance)}
+            checked={Boolean(invoiceLine?.releaseEncumbrance)}
             disabled
             label={<FormattedMessage id="ui-invoice.invoiceLine.releaseEncumbrance" />}
             type="checkbox"
+            vertical
           />
         </Col>
         <Col xs={12}>
           <KeyValue
             label={<FormattedMessage id="ui-invoice.invoiceLine.referenceNumbers" />}
           >
-            <VendorReferenceNumbersDetails referenceNumbers={invoiceLine.referenceNumbers} />
+            <VendorReferenceNumbersDetails referenceNumbers={invoiceLine?.referenceNumbers} />
           </KeyValue>
         </Col>
       </Row>
@@ -135,14 +155,10 @@ const InvoiceLineInformation = ({ invoiceLine, currency, poLine }) => {
 };
 
 InvoiceLineInformation.propTypes = {
-  invoiceLine: PropTypes.object,
   currency: PropTypes.string,
+  exchangeRate: PropTypes.number,
+  invoiceLine: PropTypes.object,
   poLine: PropTypes.object,
-};
-
-InvoiceLineInformation.defaultProps = {
-  invoiceLine: {},
-  poLine: {},
 };
 
 export default InvoiceLineInformation;

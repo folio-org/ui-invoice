@@ -1,37 +1,37 @@
 import {
+  act,
   render,
   screen,
-  act,
   waitFor,
 } from '@folio/jest-config-stripes/testing-library/react';
+import { useOkapiKy } from '@folio/stripes/core';
 
 import {
-  match,
   history,
-  location,
   invoice,
   invoiceLine,
+  location,
+  match,
   orderLine,
-} from '../../../test/jest/fixtures';
+} from 'fixtures';
+import { CALCULATE_EXCHANGE_BATCH_API } from '../../common/constants';
 import {
   useInvoiceLineMutation,
   useInvoiceMutation,
 } from '../../common/hooks';
-
-import { createInvoiceLineFromPOL, showUpdateInvoiceError } from './utils';
+import {
+  createInvoiceLineFromPOL,
+  showUpdateInvoiceError,
+} from './utils';
 import InvoiceDetails from './InvoiceDetails';
 import { InvoiceDetailsContainer } from './InvoiceDetailsContainer';
 
-jest.mock('@folio/stripes-acq-components', () => {
-  return {
-    ...jest.requireActual('@folio/stripes-acq-components'),
-    useFiscalYears: () => ({ fiscalYears: [] }),
-  };
-});
-jest.mock('@folio/stripes/core', () => ({
-  ...jest.requireActual('@folio/stripes/core'),
-  useOkapiKy: jest.fn().mockReturnValue({}),
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  batchFetch: jest.fn(() => []),
+  useFiscalYears: () => ({ fiscalYears: [] }),
 }));
+
 jest.mock('../../common/hooks', () => ({
   useInvoiceMutation: jest.fn().mockReturnValue({}),
   useInvoiceLineMutation: jest.fn().mockReturnValue({}),
@@ -70,22 +70,52 @@ const mutatorMock = {
   },
 };
 const defaultProps = {
+  history: historyMock,
+  location,
   match: {
     ...match,
     params: {
       id: invoice.id,
     },
   },
-  history: historyMock,
-  location,
   mutator: mutatorMock,
   refreshList: jest.fn(),
+  stripes: {
+    currency: 'USD',
+  },
 };
-const renderInvoiceDetailsContainer = (props = defaultProps) => render(
-  <InvoiceDetailsContainer {...props} />,
+const renderInvoiceDetailsContainer = (props = {}) => render(
+  <InvoiceDetailsContainer
+    {...defaultProps}
+    {...props}
+  />,
 );
 
+const getMock = jest.fn();
+const postMock = jest.fn((url) => ({
+  json: jest.fn(() => {
+    if (url.startsWith(CALCULATE_EXCHANGE_BATCH_API)) {
+      return {
+        exchangeRateCalculations: [{ calculation: 123 }],
+      };
+    }
+
+    return {};
+  }),
+}));
+
 describe('InvoiceDetailsContainer', () => {
+  beforeEach(() => {
+    useOkapiKy.mockReturnValue({
+      get: getMock,
+      post: postMock,
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should not display InvoiceDetails when loading', async () => {
     renderInvoiceDetailsContainer({
       ...defaultProps,
@@ -432,8 +462,8 @@ describe('InvoiceDetailsContainer', () => {
         await act(async () => {
           try {
             await InvoiceDetails.mock.calls[0][0].approveAndPayInvoice();
-          // eslint-disable-next-line no-empty
-          } catch (e) {}
+            // eslint-disable-next-line no-empty
+          } catch (e) { }
         });
 
         expect(refreshList).not.toHaveBeenCalled();

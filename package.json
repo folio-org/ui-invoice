@@ -159,6 +159,7 @@
           "batch-voucher.export-configurations.collection.get",
           "configuration.entries.collection.get",
           "finance.budgets.collection.get",
+          "finance.calculate-exchange.collection.get",
           "finance.calculate-exchange.item.get",
           "finance.fiscal-years.collection.get",
           "finance.fiscal-years.item.get",

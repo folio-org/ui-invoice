@@ -12,15 +12,19 @@ import { IfPermission } from '@folio/stripes/core';
 import { ColumnManagerMenu } from '@folio/stripes/smart-components';
 import { useToggle } from '@folio/stripes-acq-components';
 
-import { INVOICE_LINES_COLUMN_MAPPING } from '../../constants';
+import {
+  INVOICE_LINES_COLUMN_MAPPING,
+  NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING,
+} from '../../constants';
 import AddInvoiceLinesActionContainer from './AddInvoiceLinesActionContainer';
 
 const InvoiceLinesActions = ({
   addLines,
   createLine,
-  isDisabled,
   invoiceCurrency,
   invoiceVendorId,
+  isDisabled = false,
+  isForeignCurrency,
   toggleColumn,
   visibleColumns,
 }) => {
@@ -80,7 +84,7 @@ const InvoiceLinesActions = ({
           <ColumnManagerMenu
             prefix="invoice-lines"
             columnMapping={{
-              ...INVOICE_LINES_COLUMN_MAPPING,
+              ...(isForeignCurrency ? INVOICE_LINES_COLUMN_MAPPING : NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING),
               lineNumber: <FormattedMessage id="ui-invoice.invoice.details.lines.list.lineNumber.extended" />,
             }}
             visibleColumns={visibleColumns}
@@ -98,12 +102,9 @@ InvoiceLinesActions.propTypes = {
   invoiceCurrency: PropTypes.string.isRequired,
   invoiceVendorId: PropTypes.string.isRequired,
   isDisabled: PropTypes.bool,
+  isForeignCurrency: PropTypes.bool,
   toggleColumn: PropTypes.func.isRequired,
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
-};
-
-InvoiceLinesActions.defaultProps = {
-  isDisabled: false,
 };
 
 export default InvoiceLinesActions;

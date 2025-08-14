@@ -13,8 +13,11 @@ const defaultProps = {
   invoiceVendorId: 'invoiceVendorId',
   toggleColumn: jest.fn(),
 };
-const renderInvoiceLinesActions = (props = defaultProps) => render(
-  <InvoiceLinesActions {...props} />,
+const renderInvoiceLinesActions = (props = {}) => render(
+  <InvoiceLinesActions
+    {...defaultProps}
+    {...props}
+  />,
 );
 
 describe('InvoiceLinesActions', () => {
@@ -36,5 +39,14 @@ describe('InvoiceLinesActions', () => {
     renderInvoiceLinesActions();
 
     expect(screen.getByTestId('create-invoice-line-btn')).toBeInTheDocument();
+  });
+
+  it('should display checkbox for exchanged total', () => {
+    renderInvoiceLinesActions({
+      isForeignCurrency: true,
+      isDisabled: false,
+    });
+
+    expect(screen.getByText('ui-invoice.invoice.details.lines.list.total.exchanged')).toBeInTheDocument();
   });
 });

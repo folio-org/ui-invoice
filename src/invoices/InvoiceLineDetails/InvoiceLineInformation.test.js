@@ -2,17 +2,24 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 
-import { orderLine, invoiceLine } from '../../../test/jest/fixtures';
-
+import {
+  orderLine,
+  invoiceLine,
+} from 'fixtures';
+import { useExchangeCalculation } from '../../common/hooks';
 import InvoiceLineInformation from './InvoiceLineInformation';
 
-jest.mock('@folio/stripes-components/lib/NoValue', () => {
-  return () => <span>-</span>;
-});
+jest.mock('@folio/stripes-components/lib/NoValue', () => () => <span>-</span>);
+
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useExchangeCalculation: jest.fn(),
+}));
 
 const defaultProps = {
-  invoiceLine,
   currency: 'USD',
+  exchangeRate: 1,
+  invoiceLine,
   poLine: orderLine,
 };
 const renderInvoiceLineInformation = (props = defaultProps) => (render(
@@ -22,11 +29,13 @@ const renderInvoiceLineInformation = (props = defaultProps) => (render(
 
 describe('InvoiceLineInformation', () => {
   beforeEach(() => {
-    global.document.createRange = global.document.originalCreateRange;
+    useExchangeCalculation.mockReturnValue({
+      exchangedAmount: 100,
+    });
   });
 
   afterEach(() => {
-    global.document.createRange = global.document.mockCreateRange;
+    jest.clearAllMocks();
   });
 
   it('should display info invoice line connected to order line', () => {

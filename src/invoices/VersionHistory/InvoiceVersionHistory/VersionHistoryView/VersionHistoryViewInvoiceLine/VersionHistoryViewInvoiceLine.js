@@ -11,7 +11,7 @@ import {
   useOrderLines,
   useVendors,
 } from '../../../../../common/hooks';
-import { INVOICE_LINES_COLUMN_MAPPING } from '../../../../constants';
+import { NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING } from '../../../../constants';
 import {
   useInvoiceLinesByInvoiceId,
   useOrdersByPoNumbers,
@@ -54,7 +54,7 @@ export const VersionHistoryViewInvoiceLine = ({ version = {} }) => {
 
   const { visibleColumns } = useColumnManager(
     'invoice-lines-column-manager',
-    INVOICE_LINES_COLUMN_MAPPING,
+    NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING,
   );
 
   const sorters = useMemo(() => ({
@@ -91,7 +91,7 @@ export const VersionHistoryViewInvoiceLine = ({ version = {} }) => {
         id="invoice-lines-list"
         contentData={invoiceLines}
         visibleColumns={visibleColumns}
-        columnMapping={INVOICE_LINES_COLUMN_MAPPING}
+        columnMapping={NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING}
         formatter={resultsFormatter}
         hasArrow
         sortedColumn={COLUMN_LINE_NUMBER}
