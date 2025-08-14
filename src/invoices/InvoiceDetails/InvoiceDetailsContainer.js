@@ -12,6 +12,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import { LoadingPane } from '@folio/stripes/components';
 import {
   stripesConnect,
+  stripesShape,
   useOkapiKy,
 } from '@folio/stripes/core';
 import {
@@ -157,22 +158,32 @@ export function InvoiceDetailsContainer({
       }, []);
       const poLinesPromise = batchFetch(mutator.orderLines, poLineIdsToRequest);
 
-      const exchangeRateCalculations = invoiceLinesResp.invoiceLines?.map(({ total }) => ({
-        from: invoiceResponse.currency,
-        to: stripes.currency,
-        amount: total,
-        rate: invoiceResponse.exchangeRate,
-      }));
-      const exchangeRateCalculationsPromise = ky.post(
-        CALCULATE_EXCHANGE_BATCH_API,
-        { json: { exchangeRateCalculations } },
-      )
-        .json()
-        .then((res) => {
-          return res.exchangeRateCalculations.reduce((acc, curr, indx) => {
-            return acc.set(invoiceLinesResp.invoiceLines?.at(indx)?.id, curr);
-          }, new Map());
-        });
+      const exchangeRateCalculationsPromise = Promise.resolve().then(() => {
+        const systemCurrency = stripes.currency;
+        const invoiceCurrency = invoiceResponse.currency;
+
+        if (systemCurrency !== invoiceCurrency) {
+          const exchangeRateCalculations = invoiceLinesResp.invoiceLines?.map(({ total }) => ({
+            from: invoiceCurrency,
+            to: systemCurrency,
+            amount: total,
+            rate: invoiceResponse.exchangeRate,
+          }));
+
+          return ky.post(
+            CALCULATE_EXCHANGE_BATCH_API,
+            { json: { exchangeRateCalculations } },
+          )
+            .json()
+            .then((res) => {
+              return res.exchangeRateCalculations.reduce((acc, curr, indx) => {
+                return acc.set(invoiceLinesResp.invoiceLines?.at(indx)?.id, curr);
+              }, new Map());
+            });
+        }
+
+        return Promise.resolve(new Map());
+      });
 
       const [
         batchVoucherExportResp,
@@ -391,8 +402,8 @@ export function InvoiceDetailsContainer({
       }))
       .finally(setIsLoading);
   },
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout]);
 
   const approveAndPayInvoice = useCallback((polineStatus) => {
     setIsLoading(true);
@@ -424,8 +435,8 @@ export function InvoiceDetailsContainer({
       })
       .finally(setIsLoading);
   },
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout]);
 
   const onDuplicateInvoice = useCallback(() => {
     setIsLoading(true);
@@ -572,11 +583,12 @@ InvoiceDetailsContainer.manifest = Object.freeze({
 });
 
 InvoiceDetailsContainer.propTypes = {
-  match: ReactRouterPropTypes.match,
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
+  match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,
   refreshList: PropTypes.func.isRequired,
+  stripes: stripesShape.isRequired,
 };
 
 export default stripesConnect(InvoiceDetailsContainer);

@@ -9,6 +9,7 @@ import {
   Row,
   TextLink,
 } from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 import {
   ClipCopy,
   ViewMetaData,
@@ -27,7 +28,9 @@ const InvoiceLineInformation = ({
   invoiceLine,
   poLine,
 }) => {
+  const stripes = useStripes();
   const metadata = invoiceLine?.metadata;
+  const isForeignCurrency = currency !== stripes.currency;
 
   return (
     <>
@@ -120,14 +123,16 @@ const InvoiceLineInformation = ({
             value={invoiceLine?.quantity}
           />
         </Col>
-        <Col xs={3}>
-          <CalculatedExchangeAmount
-            currency={currency}
-            exchangeRate={exchangeRate}
-            label={<FormattedMessage id="ui-invoice.invoice.details.lines.list.total.exchanged" />}
-            total={invoiceLine?.total}
-          />
-        </Col>
+        {isForeignCurrency && (
+          <Col xs={3}>
+            <CalculatedExchangeAmount
+              currency={currency}
+              exchangeRate={exchangeRate}
+              label={<FormattedMessage id="ui-invoice.invoice.details.lines.list.total.exchanged" />}
+              total={invoiceLine?.total}
+            />
+          </Col>
+        )}
         <Col xs={3}>
           <Checkbox
             checked={Boolean(invoiceLine?.releaseEncumbrance)}
