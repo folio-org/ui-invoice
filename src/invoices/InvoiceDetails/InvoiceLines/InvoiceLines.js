@@ -30,6 +30,115 @@ import styles from './InvoiceLines.css';
 
 const COLUMN_LINE_NUMBER = 'lineNumber';
 
+const getResultFormatter = ({
+  currency,
+  exchangedTotalsMap,
+  orderlinesMap,
+  ordersMap,
+  setInvoiceLine,
+  stripesCurrency,
+  vendorCode,
+}) => ({
+  [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
+    const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
+
+    return (
+      <>
+        {!poLineIsFullyPaid ? null : (
+          <>
+            <Icon
+              data-test-line-is-fully-paid-icon
+              icon="exclamation-circle"
+              size="medium"
+              status="warn"
+            />
+            &nbsp;
+          </>
+        )}
+        <span id={id}>{invoiceLineNumber}</span>
+      </>
+    );
+  },
+  adjustmentsTotal: ({ adjustmentsTotal }) => (
+    <AmountWithCurrencyField
+      amount={adjustmentsTotal}
+      currency={currency}
+    />
+  ),
+  total: ({ total }) => (
+    <AmountWithCurrencyField
+      amount={total}
+      currency={currency}
+    />
+  ),
+  totalExchanged: ({ id }) => (
+    <AmountWithCurrencyField
+      amount={exchangedTotalsMap.get(id)?.calculation}
+      currency={stripesCurrency}
+    />
+  ),
+  subTotal: ({ subTotal }) => (
+    <AmountWithCurrencyField
+      amount={subTotal}
+      currency={currency}
+    />
+  ),
+  polNumber: ({ poLineId, ...line }) => (
+    <InvoiceLineOrderLineNumber
+      invoiceLine={line}
+      poLineNumber={orderlinesMap?.[poLineId]?.poLineNumber}
+      link={setInvoiceLine}
+    />
+  ),
+  fundCode: (line) => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
+  poStatus: ({ poLineId }) => {
+    const orderLine = orderlinesMap?.[poLineId];
+
+    return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
+  },
+  receiptStatus: ({ poLineId }) => {
+    const status = orderlinesMap?.[poLineId]?.receiptStatus;
+    const translationKey = invert(RECEIPT_STATUS)[status];
+
+    return status ?
+      (
+        <FormattedMessage
+          id={`ui-orders.receipt_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      )
+      : <NoValue />;
+  },
+  paymentStatus: ({ poLineId }) => {
+    const status = orderlinesMap?.[poLineId]?.paymentStatus;
+    const translationKey = invert(PAYMENT_STATUS)[status];
+
+    return status ?
+      (
+        <FormattedMessage
+          id={`ui-orders.payment_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      )
+      : <NoValue />;
+  },
+  releaseEncumbrance: ({ releaseEncumbrance }) => (
+    <Checkbox
+      checked={!!releaseEncumbrance}
+      disabled
+      type="checkbox"
+    />
+  ),
+  vendorCode: ({ poLineId }) => {
+    const orderLine = orderlinesMap?.[poLineId];
+
+    return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || vendorCode;
+  },
+  vendorRefNo: ({ referenceNumbers }) => (
+    referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
+  ),
+});
+
 const DEFAULT_PROPS = {
   orders: [],
   invoiceLinesItems: [],
@@ -76,107 +185,17 @@ const InvoiceLines = ({
     }, {});
   }, [orders]);
 
-  /* eslint-disable react/prop-types */
-  const resultsFormatter = useMemo(() => ({
-    [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
-      const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
-
-      return (
-        <>
-          {!poLineIsFullyPaid ? null : (
-            <>
-              <Icon
-                data-test-line-is-fully-paid-icon
-                icon="exclamation-circle"
-                size="medium"
-                status="warn"
-              />
-              &nbsp;
-            </>
-          )}
-          <span id={id}>{invoiceLineNumber}</span>
-        </>
-      );
-    },
-    adjustmentsTotal: ({ adjustmentsTotal }) => (
-      <AmountWithCurrencyField
-        amount={adjustmentsTotal}
-        currency={currency}
-      />
-    ),
-    total: ({ total }) => (
-      <AmountWithCurrencyField
-        amount={total}
-        currency={currency}
-      />
-    ),
-    totalExchanged: ({ id }) => (
-      <AmountWithCurrencyField
-        amount={exchangedTotalsMap.get(id)?.calculation}
-        currency={stripes.currency}
-      />
-    ),
-    subTotal: ({ subTotal }) => (
-      <AmountWithCurrencyField
-        amount={subTotal}
-        currency={currency}
-      />
-    ),
-    polNumber: ({ poLineId, ...line }) => (
-      <InvoiceLineOrderLineNumber
-        invoiceLine={line}
-        poLineNumber={orderlinesMap?.[poLineId]?.poLineNumber}
-        link={setInvoiceLine}
-      />
-    ),
-    fundCode: (line) => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
-    poStatus: ({ poLineId }) => {
-      const orderLine = orderlinesMap?.[poLineId];
-
-      return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
-    },
-    receiptStatus: ({ poLineId }) => {
-      const status = orderlinesMap?.[poLineId]?.receiptStatus;
-      const translationKey = invert(RECEIPT_STATUS)[status];
-
-      return status ?
-        (
-          <FormattedMessage
-            id={`ui-orders.receipt_status.${translationKey}`}
-            defaultMessage={status}
-          />
-        )
-        : <NoValue />;
-    },
-    paymentStatus: ({ poLineId }) => {
-      const status = orderlinesMap?.[poLineId]?.paymentStatus;
-      const translationKey = invert(PAYMENT_STATUS)[status];
-
-      return status ?
-        (
-          <FormattedMessage
-            id={`ui-orders.payment_status.${translationKey}`}
-            defaultMessage={status}
-          />
-        )
-        : <NoValue />;
-    },
-    releaseEncumbrance: ({ releaseEncumbrance }) => (
-      <Checkbox
-        checked={!!releaseEncumbrance}
-        disabled
-        type="checkbox"
-      />
-    ),
-    vendorCode: ({ poLineId }) => {
-      const orderLine = orderlinesMap?.[poLineId];
-
-      return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || vendor.code;
-    },
-    vendorRefNo: ({ referenceNumbers }) => (
-      referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
-    ),
-  }), [orderlinesMap, currency, exchangedTotalsMap, stripes.currency, ordersMap, vendor.code]);
+  const resultsFormatter = useMemo(() => {
+    return getResultFormatter({
+      currency,
+      exchangedTotalsMap,
+      orderlinesMap,
+      ordersMap,
+      setInvoiceLine,
+      stripesCurrency: stripes.currency,
+      vendorCode: vendor.code,
+    });
+  }, [orderlinesMap, currency, exchangedTotalsMap, stripes.currency, ordersMap, vendor.code]);
 
   return (
     <>
