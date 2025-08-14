@@ -39,6 +39,7 @@ const getResultFormatter = ({
   stripesCurrency,
   vendorCode,
 }) => ({
+  // eslint-disable-next-line react/prop-types
   [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
     const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
