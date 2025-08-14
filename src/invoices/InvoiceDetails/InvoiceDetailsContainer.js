@@ -396,8 +396,8 @@ export function InvoiceDetailsContainer({
       }))
       .finally(setIsLoading);
   },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [fetchInvoiceData, invoice, mutator.expenseClass, mutateInvoice, refreshList, showCallout]);
 
   const approveAndPayInvoice = useCallback((polineStatus) => {
     setIsLoading(true);
@@ -429,8 +429,8 @@ export function InvoiceDetailsContainer({
       })
       .finally(setIsLoading);
   },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  [fetchInvoiceData, invoice, mutateInvoice, mutator.expenseClass, mutator.invoice, refreshList, showCallout]);
 
   const onDuplicateInvoice = useCallback(() => {
     setIsLoading(true);
