@@ -38,12 +38,12 @@ const DEFAULT_PROPS = {
 const InvoiceLines = ({
   exchangedTotalsMap,
   invoice,
-  vendor,
-  orders = DEFAULT_PROPS.orders,
   invoiceLinesItems = DEFAULT_PROPS.invoiceLinesItems,
   openLineDetails,
   orderlinesMap,
+  orders = DEFAULT_PROPS.orders,
   refreshData,
+  vendor,
   visibleColumns,
 }) => {
   const { state } = useLocation();

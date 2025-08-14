@@ -8,8 +8,11 @@ import {
   collapseAllSections,
 } from '@folio/stripes/components';
 
-import { invoiceLine, orderLine } from '../../../test/jest/fixtures';
-
+import {
+  invoiceLine,
+  orderLine,
+} from 'fixtures';
+import { useExchangeCalculation } from '../../common/hooks';
 import ActionMenu from './ActionMenu';
 import InvoiceLineDetails from './InvoiceLineDetails';
 
@@ -23,11 +26,14 @@ jest.mock('@folio/stripes-acq-components', () => ({
   FundDistributionView: jest.fn(() => 'FundDistributionView'),
 }));
 
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useExchangeCalculation: jest.fn(),
+}));
+jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsDetails'));
 jest.mock('./OtherRelatedInvoiceLines', () => ({
   OtherRelatedInvoiceLines: jest.fn().mockReturnValue('OtherRelatedInvoiceLines'),
 }));
-jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsDetails'));
-
 jest.mock('./ActionMenu', () => jest.fn().mockReturnValue('ActionMenu'));
 jest.mock('./InvoiceLineInformation', () => jest.fn().mockReturnValue('InvoiceLineInformation'));
 jest.mock('./ReceivingHistory', () => ({
@@ -53,6 +59,16 @@ const renderInvoiceLineDetails = (props = defaultProps) => render(
 );
 
 describe('InvoiceLineDetails', () => {
+  beforeEach(() => {
+    useExchangeCalculation.mockReturnValue({
+      exchangedAmount: 100,
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render correct subtitle for invoice line', () => {
     renderInvoiceLineDetails();
     const subTitle = `${defaultProps.vendorInvoiceNo} - ${defaultProps.vendorCode}`;

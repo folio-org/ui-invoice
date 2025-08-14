@@ -184,11 +184,29 @@ exports[`InvoiceLines should render correct structure 1`] = `
             <div
               aria-sort="none"
               class="mclHeader"
+              id="list-column-releaseencumbrance"
+              role="columnheader"
+              style="flex: 0 0 auto;"
+            >
+              ui-invoice.invoiceLine.releaseEncumbrance
+            </div>
+            <div
+              aria-sort="none"
+              class="mclHeader"
               id="list-column-total"
               role="columnheader"
               style="flex: 0 0 auto;"
             >
               ui-invoice.invoice.details.lines.list.total
+            </div>
+            <div
+              aria-sort="none"
+              class="mclHeader"
+              id="list-column-totalexchanged"
+              role="columnheader"
+              style="flex: 0 0 auto;"
+            >
+              ui-invoice.invoice.details.lines.list.total.exchanged
             </div>
             <div
               aria-sort="none"
@@ -313,9 +331,63 @@ exports[`InvoiceLines should render correct structure 1`] = `
                   class="mclCell mclCellStyle"
                   role="gridcell"
                 >
+                  <div
+                    class="checkbox inline disabled noLabel"
+                    data-test-checkbox="true"
+                  >
+                    <span
+                      class="label label"
+                    >
+                      <span
+                        class="inner disabledLabel"
+                      >
+                        <input
+                          aria-invalid="false"
+                          class="input"
+                          disabled=""
+                          id="checkbox-1"
+                          type="checkbox"
+                          value=""
+                        />
+                        <span
+                          class="checkboxIcon"
+                        >
+                          <svg
+                            height="10"
+                            viewBox="0 0 14 14"
+                            width="10"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                              fill="none"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-miterlimit="10"
+                              stroke-width="1.5"
+                            />
+                          </svg>
+                        </span>
+                      </span>
+                    </span>
+                    <div
+                      role="alert"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="mclCell mclCellStyle"
+                  role="gridcell"
+                >
                   <span>
                     -
                   </span>
+                </div>
+                <div
+                  class="mclCell mclCellStyle"
+                  role="gridcell"
+                >
+                  $100.00
                 </div>
                 <div
                   class="mclCell mclCellStyle"
