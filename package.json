@@ -314,6 +314,7 @@
         "displayName": "Settings (Invoices): Batch group usernames and passwords: view",
         "visible": true,
         "subPermissions": [
+          "settings.invoice.enabled",
           "batch-voucher.export-configurations.credentials.item.get",
           "batch-voucher.export-configurations.credentials.test"
         ]
