@@ -54,6 +54,7 @@ import {
 } from '../../common/utils';
 import {
   INVOICE_LINES_COLUMN_MAPPING,
+  NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING,
   SECTIONS_INVOICE as SECTIONS,
 } from '../constants';
 import AdjustmentsDetails from '../AdjustmentsDetails';
@@ -83,25 +84,26 @@ function InvoiceDetails({
   addLines,
   approveAndPayInvoice,
   approveInvoice,
+  batchVoucherExport,
   cancelInvoice,
   createLine,
   deleteInvoice,
-  onDuplicateInvoice,
+  exchangedTotalsMap,
+  exportFormat,
   invoice,
   invoiceLines,
   invoiceTotalUnits,
-  vendor,
   isApprovePayEnabled,
-  shouldUpdateOrderStatus,
   onClose,
+  onDuplicateInvoice,
   onEdit,
-  orderlinesMap,
   onUpdate,
+  orderlinesMap,
   payInvoice,
-  totalInvoiceLines,
-  batchVoucherExport,
-  exportFormat,
   refreshData,
+  shouldUpdateOrderStatus,
+  totalInvoiceLines,
+  vendor,
 }) {
   const history = useHistory();
   const stripes = useStripes();
@@ -226,11 +228,6 @@ function InvoiceDetails({
     );
   };
 
-  const { toggleColumn, visibleColumns } = useColumnManager(
-    'invoice-lines-column-manager',
-    INVOICE_LINES_COLUMN_MAPPING,
-  );
-
   const openVersionHistory = useCallback(() => {
     history.push({
       pathname: `${INVOICE_ROUTE}/view/${invoiceId}/versions`,
@@ -238,22 +235,17 @@ function InvoiceDetails({
     });
   }, [history, search, invoiceId]);
 
-  const renderLinesActions = (
-    <InvoiceLinesActions
-      createLine={createLine}
-      addLines={addLines}
-      isDisabled={IS_EDIT_POST_APPROVAL(invoiceId, status)}
-      invoiceCurrency={currency}
-      invoiceVendorId={invoice.vendorId}
-      toggleColumn={toggleColumn}
-      visibleColumns={visibleColumns}
-    />
-  );
-
+  const isForeignCurrency = stripes.currency !== currency;
   const vendorCode = vendor?.code;
   const vendorInvoiceNo = invoice.vendorInvoiceNo;
   const tags = get(invoice, 'tags.tagList', []);
   const adjustments = get(invoice, 'adjustments', []);
+  const hasPOLineIsFullyPaid = orderlinesMap && (
+    Object
+      .values(orderlinesMap)
+      .some(({ paymentStatus }) => paymentStatus === PAYMENT_STATUS.fullyPaid)
+  );
+
   const fundDistributions = useMemo(
     () => adjustments.reduce((acc, adjustment) => {
       if (adjustment.fundDistributions) {
@@ -288,8 +280,30 @@ function InvoiceDetails({
       <VersionHistoryButton onClick={openVersionHistory} />
     </PaneMenu>
   );
-  const hasPOLineIsFullyPaid = orderlinesMap &&
-    Object.values(orderlinesMap).some(({ paymentStatus }) => paymentStatus === PAYMENT_STATUS.fullyPaid);
+
+  const columnMapping = (
+    isForeignCurrency
+      ? INVOICE_LINES_COLUMN_MAPPING
+      : NOT_EXCHANGED_INVOICE_LINES_COLUMN_MAPPING
+  );
+
+  const {
+    toggleColumn,
+    visibleColumns,
+  } = useColumnManager('invoice-lines-column-manager', columnMapping);
+
+  const renderLinesActions = (
+    <InvoiceLinesActions
+      createLine={createLine}
+      addLines={addLines}
+      isDisabled={IS_EDIT_POST_APPROVAL(invoiceId, status)}
+      invoiceCurrency={currency}
+      invoiceVendorId={invoice.vendorId}
+      isForeignCurrency={isForeignCurrency}
+      toggleColumn={toggleColumn}
+      visibleColumns={visibleColumns}
+    />
+  );
 
   return (
     <HasCommand
@@ -347,6 +361,7 @@ function InvoiceDetails({
                 exchangeRate={exchangeRate}
                 fiscalYearId={invoice.fiscalYearId}
                 invoiceDate={invoice.invoiceDate}
+                isForeignCurrency={isForeignCurrency}
                 paymentDate={invoice.paymentDate}
                 paymentDue={invoice.paymentDue}
                 paymentTerms={invoice.paymentTerms}
@@ -375,6 +390,7 @@ function InvoiceDetails({
               }
             >
               <InvoiceLinesContainer
+                exchangedTotalsMap={exchangedTotalsMap}
                 invoice={invoice}
                 invoiceLines={invoiceLines}
                 vendor={vendor}
@@ -597,25 +613,26 @@ InvoiceDetails.propTypes = {
   addLines: PropTypes.func.isRequired,
   approveAndPayInvoice: PropTypes.func.isRequired,
   approveInvoice: PropTypes.func.isRequired,
+  batchVoucherExport: PropTypes.object,
   cancelInvoice: PropTypes.func.isRequired,
   createLine: PropTypes.func.isRequired,
   deleteInvoice: PropTypes.func.isRequired,
-  onDuplicateInvoice: PropTypes.func.isRequired,
+  exchangedTotalsMap: PropTypes.instanceOf(Map),
+  exportFormat: PropTypes.string,
   invoice: PropTypes.object.isRequired,
   invoiceLines: PropTypes.arrayOf(PropTypes.object),
   invoiceTotalUnits: PropTypes.number,
-  vendor: PropTypes.object,
   isApprovePayEnabled: PropTypes.bool,
-  shouldUpdateOrderStatus: PropTypes.func.isRequired,
   onClose: PropTypes.func.isRequired,
+  onDuplicateInvoice: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
-  orderlinesMap: PropTypes.object,
   onUpdate: PropTypes.func.isRequired,
+  orderlinesMap: PropTypes.object,
   payInvoice: PropTypes.func.isRequired,
-  totalInvoiceLines: PropTypes.number.isRequired,
-  batchVoucherExport: PropTypes.object,
-  exportFormat: PropTypes.string,
   refreshData: PropTypes.func.isRequired,
+  shouldUpdateOrderStatus: PropTypes.func.isRequired,
+  totalInvoiceLines: PropTypes.number.isRequired,
+  vendor: PropTypes.object,
 };
 
 InvoiceDetails.defaultProps = {

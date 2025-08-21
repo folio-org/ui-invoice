@@ -96,13 +96,19 @@ const InvoiceLineDetailsContainer = ({
       <LoadingPane dismissible onClose={closeInvoiceLine} />
     );
   }
-  const { currency, status, vendorInvoiceNo } = invoice;
+  const {
+    currency,
+    exchangeRate,
+    status,
+    vendorInvoiceNo,
+  } = invoice;
 
   return (
     <>
       <InvoiceLineDetails
         closeInvoiceLine={closeInvoiceLine}
         currency={currency}
+        exchangeRate={exchangeRate}
         deleteInvoiceLine={deleteInvoiceLine}
         goToEditInvoiceLine={goToEditInvoiceLine}
         invoiceStatus={status}

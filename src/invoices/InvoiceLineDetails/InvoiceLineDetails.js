@@ -55,17 +55,23 @@ import InvoiceLineInformation from './InvoiceLineInformation';
 import { OtherRelatedInvoiceLines } from './OtherRelatedInvoiceLines';
 import { ReceivingHistory } from './ReceivingHistory';
 
+const DEFAULT_PROPS = {
+  poLine: {},
+  invoiceLine: {},
+};
+
 const InvoiceLineDetails = ({
   closeInvoiceLine,
   deleteInvoiceLine,
+  exchangeRate,
   goToEditInvoiceLine,
   vendorInvoiceNo,
   vendorCode,
-  invoiceLine,
+  invoiceLine = DEFAULT_PROPS.invoiceLine,
   invoiceStatus,
   tagsToggle,
   currency,
-  poLine,
+  poLine = DEFAULT_PROPS.poLine,
 }) => {
   const history = useHistory();
   const { search } = useLocation();
@@ -182,6 +188,7 @@ const InvoiceLineDetails = ({
             >
               <InvoiceLineInformation
                 currency={currency}
+                exchangeRate={exchangeRate}
                 invoiceLine={invoiceLine}
                 poLine={poLine}
               />
@@ -233,6 +240,7 @@ const InvoiceLineDetails = ({
 InvoiceLineDetails.propTypes = {
   closeInvoiceLine: PropTypes.func.isRequired,
   deleteInvoiceLine: PropTypes.func.isRequired,
+  exchangeRate: PropTypes.number,
   goToEditInvoiceLine: PropTypes.func.isRequired,
   invoiceLine: PropTypes.object.isRequired,
   invoiceStatus: PropTypes.string.isRequired,
@@ -241,10 +249,6 @@ InvoiceLineDetails.propTypes = {
   poLine: PropTypes.object,
   vendorInvoiceNo: PropTypes.string,
   vendorCode: PropTypes.string,
-};
-
-InvoiceLineDetails.defaultProps = {
-  poLine: {},
 };
 
 export default InvoiceLineDetails;
