@@ -9,6 +9,7 @@
 * Fix invoice fund distr column in csv export. Refs UINV-604.
 * Include the permission to retrieve the collection of batch groups in the Invoices view permission set. Refs UINV-602.
 * Display a confirmation to a user if an invoice currency differs from a currency of the associated order. Refs UINV-579.
+* Add `settings.invoice.enabled` as a subPermission to `ui-invoice.batchVoucher.exportConfigs.credentials.view` so you can access Settings if you only assign that permission (or `ui-invoice.batchVoucher.exportConfigs.credentials.edit`). Refs UINV-608.
 * Display exchanged totals for invoice lines. Refs UINV-592.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
