@@ -1,13 +1,19 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import invert from 'lodash/invert';
 import PropTypes from 'prop-types';
+import {
+  useMemo,
+  useState,
+  useEffect,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
-import { invert } from 'lodash';
 import { useLocation } from 'react-router-dom';
 
 import {
+  Checkbox,
   Icon,
   NoValue,
 } from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 import {
   AmountWithCurrencyField,
   PAYMENT_STATUS,
@@ -19,22 +25,142 @@ import {
 import { INVOICE_LINES_COLUMN_MAPPING } from '../../constants';
 import { InvoiceLineOrderLineNumber } from './InvoiceLineOrderLineNumber';
 import { InvoiceLineOrderLineLink } from './InvoiceLineOrderLineLink';
+
 import styles from './InvoiceLines.css';
 
 const COLUMN_LINE_NUMBER = 'lineNumber';
 
+const getResultFormatter = ({
+  currency,
+  exchangedTotalsMap,
+  orderlinesMap,
+  ordersMap,
+  setInvoiceLine,
+  stripesCurrency,
+  vendorCode,
+}) => ({
+  // eslint-disable-next-line react/prop-types
+  [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
+    const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
+
+    return (
+      <>
+        {!poLineIsFullyPaid ? null : (
+          <>
+            <Icon
+              data-test-line-is-fully-paid-icon
+              icon="exclamation-circle"
+              size="medium"
+              status="warn"
+            />
+            &nbsp;
+          </>
+        )}
+        <span id={id}>{invoiceLineNumber}</span>
+      </>
+    );
+  },
+  adjustmentsTotal: ({ adjustmentsTotal }) => (
+    <AmountWithCurrencyField
+      amount={adjustmentsTotal}
+      currency={currency}
+    />
+  ),
+  total: ({ total }) => (
+    <AmountWithCurrencyField
+      amount={total}
+      currency={currency}
+    />
+  ),
+  totalExchanged: ({ id }) => (
+    <AmountWithCurrencyField
+      amount={exchangedTotalsMap.get(id)?.calculation}
+      currency={stripesCurrency}
+    />
+  ),
+  subTotal: ({ subTotal }) => (
+    <AmountWithCurrencyField
+      amount={subTotal}
+      currency={currency}
+    />
+  ),
+  polNumber: ({ poLineId, ...line }) => (
+    <InvoiceLineOrderLineNumber
+      invoiceLine={line}
+      poLineNumber={orderlinesMap?.[poLineId]?.poLineNumber}
+      link={setInvoiceLine}
+    />
+  ),
+  fundCode: (line) => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
+  poStatus: ({ poLineId }) => {
+    const orderLine = orderlinesMap?.[poLineId];
+
+    return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
+  },
+  receiptStatus: ({ poLineId }) => {
+    const status = orderlinesMap?.[poLineId]?.receiptStatus;
+    const translationKey = invert(RECEIPT_STATUS)[status];
+
+    return status ?
+      (
+        <FormattedMessage
+          id={`ui-orders.receipt_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      )
+      : <NoValue />;
+  },
+  paymentStatus: ({ poLineId }) => {
+    const status = orderlinesMap?.[poLineId]?.paymentStatus;
+    const translationKey = invert(PAYMENT_STATUS)[status];
+
+    return status ?
+      (
+        <FormattedMessage
+          id={`ui-orders.payment_status.${translationKey}`}
+          defaultMessage={status}
+        />
+      )
+      : <NoValue />;
+  },
+  releaseEncumbrance: ({ releaseEncumbrance }) => (
+    <Checkbox
+      checked={!!releaseEncumbrance}
+      disabled
+      type="checkbox"
+    />
+  ),
+  vendorCode: ({ poLineId }) => {
+    const orderLine = orderlinesMap?.[poLineId];
+
+    return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || vendorCode;
+  },
+  vendorRefNo: ({ referenceNumbers }) => (
+    referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
+  ),
+});
+
+const DEFAULT_PROPS = {
+  orders: [],
+  invoiceLinesItems: [],
+};
+
 const InvoiceLines = ({
+  exchangedTotalsMap,
   invoice,
-  vendor,
-  orders,
-  invoiceLinesItems,
+  invoiceLinesItems = DEFAULT_PROPS.invoiceLinesItems,
   openLineDetails,
   orderlinesMap,
+  orders = DEFAULT_PROPS.orders,
   refreshData,
+  vendor,
   visibleColumns,
 }) => {
-  const [invoiceLine, setInvoiceLine] = useState();
   const { state } = useLocation();
+
+  const stripes = useStripes();
+
+  const [invoiceLine, setInvoiceLine] = useState();
   const currency = invoice.currency;
 
   const sorters = useMemo(() => ({
@@ -59,98 +185,18 @@ const InvoiceLines = ({
       return acc;
     }, {});
   }, [orders]);
-  const resultsFormatter = useMemo(() => ({
-    // eslint-disable-next-line react/prop-types
-    [COLUMN_LINE_NUMBER]: ({ poLineId, invoiceLineNumber, id }) => {
-      const poLineIsFullyPaid = orderlinesMap?.[poLineId]?.paymentStatus === PAYMENT_STATUS.fullyPaid;
 
-      return (
-        <>
-          {!poLineIsFullyPaid ? null : (
-            <>
-              <Icon
-                data-test-line-is-fully-paid-icon
-                icon="exclamation-circle"
-                size="medium"
-                status="warn"
-              />
-              &nbsp;
-            </>
-          )}
-          <span id={id}>{invoiceLineNumber}</span>
-        </>
-      );
-    },
-    // eslint-disable-next-line react/prop-types
-    adjustmentsTotal: ({ adjustmentsTotal }) => (
-      <AmountWithCurrencyField
-        amount={adjustmentsTotal}
-        currency={currency}
-      />
-    ),
-    // eslint-disable-next-line react/prop-types
-    total: ({ total }) => (
-      <AmountWithCurrencyField
-        amount={total}
-        currency={currency}
-      />
-    ),
-    // eslint-disable-next-line react/prop-types
-    subTotal: ({ subTotal }) => (
-      <AmountWithCurrencyField
-        amount={subTotal}
-        currency={currency}
-      />
-    ),
-    // eslint-disable-next-line
-    polNumber: ({ rowIndex, ...line }) => (
-      <InvoiceLineOrderLineNumber
-        invoiceLine={line}
-        poLineNumber={orderlinesMap?.[line.poLineId]?.poLineNumber}
-        link={setInvoiceLine}
-      />
-    ),
-    fundCode: line => line.fundDistributions?.map(({ code }) => code)?.join(', ') || <NoValue />,
-    poStatus: line => {
-      const orderLine = orderlinesMap?.[line.poLineId];
-
-      return ORDER_STATUS_LABEL[ordersMap[orderLine?.purchaseOrderId]?.workflowStatus] || <NoValue />;
-    },
-    receiptStatus: line => {
-      const status = orderlinesMap?.[line.poLineId]?.receiptStatus;
-      const translationKey = invert(RECEIPT_STATUS)[status];
-
-      return status ?
-        (
-          <FormattedMessage
-            id={`ui-orders.receipt_status.${translationKey}`}
-            defaultMessage={status}
-          />
-        )
-        : <NoValue />;
-    },
-    paymentStatus: line => {
-      const status = orderlinesMap?.[line.poLineId]?.paymentStatus;
-      const translationKey = invert(PAYMENT_STATUS)[status];
-
-      return status ?
-        (
-          <FormattedMessage
-            id={`ui-orders.payment_status.${translationKey}`}
-            defaultMessage={status}
-          />
-        )
-        : <NoValue />;
-    },
-    vendorCode: line => {
-      const orderLine = orderlinesMap?.[line.poLineId];
-
-      return ordersMap[orderLine?.purchaseOrderId]?.vendor?.code || vendor.code;
-    },
-    vendorRefNo: line => (
-      line.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
-    ),
-  }), [currency, ordersMap, orderlinesMap, vendor]);
+  const resultsFormatter = useMemo(() => {
+    return getResultFormatter({
+      currency,
+      exchangedTotalsMap,
+      orderlinesMap,
+      ordersMap,
+      setInvoiceLine,
+      stripesCurrency: stripes.currency,
+      vendorCode: vendor.code,
+    });
+  }, [orderlinesMap, currency, exchangedTotalsMap, stripes.currency, ordersMap, vendor.code]);
 
   return (
     <>
@@ -184,19 +230,15 @@ const InvoiceLines = ({
 };
 
 InvoiceLines.propTypes = {
+  exchangedTotalsMap: PropTypes.instanceOf(Map).isRequired,
   invoice: PropTypes.object.isRequired,
-  vendor: PropTypes.object.isRequired,
-  orders: PropTypes.arrayOf(PropTypes.object),
   invoiceLinesItems: PropTypes.arrayOf(PropTypes.object),
   openLineDetails: PropTypes.func.isRequired,
   orderlinesMap: PropTypes.object,
+  orders: PropTypes.arrayOf(PropTypes.object),
   refreshData: PropTypes.func.isRequired,
+  vendor: PropTypes.object.isRequired,
   visibleColumns: PropTypes.arrayOf(PropTypes.string),
-};
-
-InvoiceLines.defaultProps = {
-  orders: [],
-  invoiceLinesItems: [],
 };
 
 export default InvoiceLines;

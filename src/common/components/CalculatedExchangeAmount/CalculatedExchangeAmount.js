@@ -5,15 +5,21 @@ import {
   AmountWithCurrencyField,
   VersionKeyValue,
 } from '@folio/stripes-acq-components';
-import { KeyValue } from '@folio/stripes/components';
+import {
+  KeyValue,
+  Loading,
+} from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 
 import { useExchangeCalculation } from '../../hooks';
+
+const DEFAULT_LABEL = <FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalExchangeAmount" />;
 
 export const CalculatedExchangeAmount = ({
   currency,
   exchangeRate,
   isVersionView = false,
+  label = DEFAULT_LABEL,
   name,
   total,
 }) => {
@@ -21,7 +27,10 @@ export const CalculatedExchangeAmount = ({
   const systemCurrency = stripes.currency;
   const enabled = Boolean(systemCurrency !== currency && total);
 
-  const { exchangedAmount } = useExchangeCalculation({
+  const {
+    exchangedAmount,
+    isFetching,
+  } = useExchangeCalculation({
     amount: +total,
     from: currency,
     rate: +exchangeRate,
@@ -37,12 +46,18 @@ export const CalculatedExchangeAmount = ({
   return (
     <KeyValueComponent
       name={name}
-      label={<FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalExchangeAmount" />}
+      label={label}
     >
-      <AmountWithCurrencyField
-        amount={exchangedAmount || total}
-        currency={systemCurrency}
-      />
+      {
+        isFetching
+          ? <Loading />
+          : (
+            <AmountWithCurrencyField
+              amount={exchangedAmount || total}
+              currency={systemCurrency}
+            />
+          )
+      }
     </KeyValueComponent>
   );
 };
@@ -51,6 +66,7 @@ CalculatedExchangeAmount.propTypes = {
   currency: PropTypes.string,
   exchangeRate: PropTypes.number,
   isVersionView: PropTypes.bool,
+  label: PropTypes.node,
   name: PropTypes.string,
   total: PropTypes.number,
 };

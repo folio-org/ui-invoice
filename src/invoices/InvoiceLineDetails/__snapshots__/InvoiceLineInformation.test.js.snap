@@ -238,25 +238,6 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
         <div
           class="kvLabel"
         >
-          ui-invoice.invoiceLine.quantity
-        </div>
-        <div
-          class="kvValue"
-          data-test-kv-value="true"
-        >
-          20
-        </div>
-      </div>
-    </div>
-    <div
-      class="col-xs-3"
-    >
-      <div
-        class="kvRoot"
-      >
-        <div
-          class="kvLabel"
-        >
           ui-invoice.invoiceLine.subTotal
         </div>
         <div
@@ -271,13 +252,37 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
       class="col-xs-3"
     >
       <div
-        class="checkbox disabled"
+        class="kvRoot"
+      >
+        <div
+          class="kvLabel"
+        >
+          ui-invoice.invoiceLine.quantity
+        </div>
+        <div
+          class="kvValue"
+          data-test-kv-value="true"
+        >
+          20
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-xs-3"
+    >
+      <div
+        class="checkbox inline vertical disabled"
         data-test-checkbox="true"
       >
         <label
           class="label label"
           for="checkbox-1"
         >
+          <span
+            class="labelText"
+          >
+            ui-invoice.invoiceLine.releaseEncumbrance
+          </span>
           <span
             class="inner disabledLabel"
           >
@@ -307,11 +312,6 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
                   stroke-width="1.5"
                 />
               </svg>
-            </span>
-            <span
-              class="labelText"
-            >
-              ui-invoice.invoiceLine.releaseEncumbrance
             </span>
           </span>
         </label>
@@ -667,25 +667,6 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
         <div
           class="kvLabel"
         >
-          ui-invoice.invoiceLine.quantity
-        </div>
-        <div
-          class="kvValue"
-          data-test-kv-value="true"
-        >
-          20
-        </div>
-      </div>
-    </div>
-    <div
-      class="col-xs-3"
-    >
-      <div
-        class="kvRoot"
-      >
-        <div
-          class="kvLabel"
-        >
           ui-invoice.invoiceLine.subTotal
         </div>
         <div
@@ -700,13 +681,37 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
       class="col-xs-3"
     >
       <div
-        class="checkbox disabled"
+        class="kvRoot"
+      >
+        <div
+          class="kvLabel"
+        >
+          ui-invoice.invoiceLine.quantity
+        </div>
+        <div
+          class="kvValue"
+          data-test-kv-value="true"
+        >
+          20
+        </div>
+      </div>
+    </div>
+    <div
+      class="col-xs-3"
+    >
+      <div
+        class="checkbox inline vertical disabled"
         data-test-checkbox="true"
       >
         <label
           class="label label"
           for="checkbox-2"
         >
+          <span
+            class="labelText"
+          >
+            ui-invoice.invoiceLine.releaseEncumbrance
+          </span>
           <span
             class="inner disabledLabel"
           >
@@ -736,11 +741,6 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
                   stroke-width="1.5"
                 />
               </svg>
-            </span>
-            <span
-              class="labelText"
-            >
-              ui-invoice.invoiceLine.releaseEncumbrance
             </span>
           </span>
         </label>

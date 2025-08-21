@@ -1,7 +1,5 @@
-import {
-  get,
-  omit,
-} from 'lodash';
+import get from 'lodash/get';
+import omit from 'lodash/omit';
 import PropTypes from 'prop-types';
 import {
   useCallback,
@@ -14,6 +12,7 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 import { LoadingPane } from '@folio/stripes/components';
 import {
   stripesConnect,
+  stripesShape,
   useOkapiKy,
 } from '@folio/stripes/core';
 import {
@@ -36,6 +35,7 @@ import {
   ordersResource,
 } from '../../common/resources';
 import {
+  CALCULATE_EXCHANGE_BATCH_API,
   INVOICE_STATUS,
 } from '../../common/constants';
 import {
@@ -58,6 +58,7 @@ export function InvoiceDetailsContainer({
   mutator: originMutator,
   location,
   refreshList,
+  stripes,
 }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const mutator = useMemo(() => originMutator, [id]);
@@ -72,6 +73,7 @@ export function InvoiceDetailsContainer({
   const [isApprovePayEnabled, setIsApprovePayEnabled] = useState(false);
   const [batchVoucherExport, setBatchVoucherExport] = useState();
   const [exportFormat, setExportFormat] = useState();
+  const [exchangedTotalsMap, setExchangedTotalsMap] = useState(new Map());
 
   const { fiscalYears } = useFiscalYears();
   const { mutateInvoice, deleteInvoice } = useInvoiceMutation();
@@ -83,115 +85,141 @@ export function InvoiceDetailsContainer({
     orders,
   });
 
-  const fetchInvoiceData = useCallback(
-    () => {
-      setInvoice({});
-      setInvoiceLines({});
-      setVendor({});
-      setBatchVoucherExport();
-      setExportFormat();
+  const fetchInvoiceData = useCallback(async () => {
+    setInvoice({});
+    setInvoiceLines({});
+    setVendor({});
+    setBatchVoucherExport();
+    setExportFormat();
 
-      return mutator.invoice.GET({ path: `${INVOICES_API}/${id}` })
-        .then(invoiceResponse => {
-          setInvoice(invoiceResponse);
+    try {
+      const invoiceResponse = await mutator.invoice.GET({ path: `${INVOICES_API}/${id}` });
 
-          const vendorPromise = mutator.vendor.GET({
-            path: `${VENDORS_API}/${invoiceResponse.vendorId}`,
-          });
-          const invoiceLinesPromise = mutator.invoiceLines.GET({
-            params: {
-              limit: `${LIMIT_MAX}`,
-              query: `(invoiceId==${id}) sortBy metadata.createdDate invoiceLineNumber`,
-            },
-          });
-          const approvalsConfigPromise = mutator.invoiceActionsApprovals.GET();
-          const exportConfigsPromise = mutator.exportConfigs.GET({
-            params: {
-              limit: `${LIMIT_MAX}`,
-              query: `batchGroupId==${invoiceResponse.batchGroupId}`,
-            },
-          });
+      const vendorPromise = mutator.vendor.GET({ path: `${VENDORS_API}/${invoiceResponse.vendorId}` });
+      const invoiceLinesPromise = mutator.invoiceLines.GET({
+        params: {
+          limit: `${LIMIT_MAX}`,
+          query: `(invoiceId==${id}) sortBy metadata.createdDate invoiceLineNumber`,
+        },
+      });
+      const approvalsConfigPromise = mutator.invoiceActionsApprovals.GET();
+      const exportConfigsPromise = mutator.exportConfigs.GET({
+        params: {
+          limit: `${LIMIT_MAX}`,
+          query: `batchGroupId==${invoiceResponse.batchGroupId}`,
+        },
+      });
 
-          return Promise.all([
-            vendorPromise,
-            invoiceLinesPromise,
-            approvalsConfigPromise,
-            exportConfigsPromise,
-            invoiceResponse.folioInvoiceNo,
-          ]);
+      const [
+        vendorResp,
+        invoiceLinesResp,
+        approvalsConfigResp,
+        exportConfigsResp,
+        folioInvoiceNo,
+      ] = await Promise.all([
+        vendorPromise,
+        invoiceLinesPromise,
+        approvalsConfigPromise,
+        exportConfigsPromise,
+        invoiceResponse.folioInvoiceNo,
+      ]);
+
+      let approvalsConfig;
+
+      try {
+        approvalsConfig = JSON.parse(get(approvalsConfigResp, [0, 'value'], '{}'));
+      } catch (e) {
+        approvalsConfig = {};
+      }
+
+      const batchVoucherExportPromise = exportConfigsResp[0]?.id
+        ? mutator.batchVoucherExport.GET({
+          params: {
+            limit: `${LIMIT_MAX}`,
+            query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
+          },
         })
-        .then(([
-          vendorResp,
-          invoiceLinesResp,
-          approvalsConfigResp,
-          exportConfigsResp,
-          folioInvoiceNo,
-        ]) => {
-          setVendor(vendorResp);
-          setInvoiceLines(invoiceLinesResp);
-          setExportFormat(exportConfigsResp[0]?.format);
+        : Promise.resolve([]);
 
-          let approvalsConfig;
+      const poLineIdsToRequest = invoiceLinesResp.invoiceLines?.reduce((poLineIds, { poLineId }) => {
+        if (poLineId) {
+          poLineIds.push(poLineId);
+        }
 
-          try {
-            approvalsConfig = JSON.parse(get(approvalsConfigResp, [0, 'value'], '{}'));
-          } catch (e) {
-            approvalsConfig = {};
-          }
+        return poLineIds;
+      }, []);
+      const poLinesPromise = batchFetch(mutator.orderLines, poLineIdsToRequest);
 
-          setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
+      const exchangeRateCalculationsPromise = Promise.resolve().then(async () => {
+        const systemCurrency = stripes.currency;
+        const invoiceCurrency = invoiceResponse.currency;
 
-          const batchVoucherExportPromise = exportConfigsResp[0]?.id
-            ? mutator.batchVoucherExport.GET({
-              params: {
-                limit: `${LIMIT_MAX}`,
-                query: `batchVouchers.batchedVouchers=folioInvoiceNo:${folioInvoiceNo}`,
-              },
-            })
-            : Promise.resolve([]);
+        if (systemCurrency !== invoiceCurrency) {
+          const exchangeRateCalculations = invoiceLinesResp.invoiceLines?.map(({ total }) => ({
+            from: invoiceCurrency,
+            to: systemCurrency,
+            amount: total,
+            rate: invoiceResponse.exchangeRate,
+          }));
 
-          const poLineIdsToRequest = invoiceLinesResp.invoiceLines?.reduce((poLineIds, { poLineId }) => {
-            if (poLineId) {
-              poLineIds.push(poLineId);
-            }
+          const batchExchangeRates = await ky.post(
+            CALCULATE_EXCHANGE_BATCH_API,
+            { json: { exchangeRateCalculations } },
+          ).json();
 
-            return poLineIds;
-          }, []);
+          return batchExchangeRates.exchangeRateCalculations.reduce((acc, curr, indx) => {
+            return acc.set(invoiceLinesResp.invoiceLines?.at(indx)?.id, curr);
+          }, new Map());
+        }
 
-          const poLinesPromise = batchFetch(mutator.orderLines, poLineIdsToRequest);
+        return Promise.resolve(new Map());
+      });
 
-          return Promise.all([batchVoucherExportPromise, poLinesPromise]);
-        })
-        .then(([batchVoucherExportResp, poLinesResponse]) => {
-          setBatchVoucherExport(batchVoucherExportResp[0]);
-          setOrderlinesMap(poLinesResponse.reduce((acc, poLine) => {
-            acc[poLine.id] = poLine;
+      const [
+        batchVoucherExportResp,
+        poLinesResponse,
+        exchangeRateCalculationsResponse,
+      ] = await Promise.all([
+        batchVoucherExportPromise,
+        poLinesPromise,
+        exchangeRateCalculationsPromise,
+      ]);
 
-            return acc;
-          }, {}));
+      const ordersResponse = await batchFetch(
+        mutator.orders,
+        poLinesResponse.map(({ purchaseOrderId }) => purchaseOrderId),
+      );
 
-          return batchFetch(mutator.orders, poLinesResponse.map(({ purchaseOrderId }) => purchaseOrderId));
-        })
-        .then((ordersResponse) => {
-          setOrders(ordersResponse);
-        })
-        .catch(() => {
-          showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
-        });
-    },
-    [
-      id,
-      mutator.invoice,
-      mutator.invoiceActionsApprovals,
-      mutator.invoiceLines,
-      mutator.orderLines,
-      mutator.orders,
-      mutator.vendor,
-      mutator.batchVoucherExport,
-      mutator.exportConfigs,
-      showCallout,
-    ],
-  );
+      setVendor(vendorResp);
+      setInvoice(invoiceResponse);
+      setInvoiceLines(invoiceLinesResp);
+      setIsApprovePayEnabled(approvalsConfig.isApprovePayEnabled || false);
+      setExportFormat(exportConfigsResp[0]?.format);
+      setExchangedTotalsMap(exchangeRateCalculationsResponse);
+      setBatchVoucherExport(batchVoucherExportResp[0]);
+      setOrderlinesMap(poLinesResponse.reduce((acc, poLine) => {
+        acc[poLine.id] = poLine;
+
+        return acc;
+      }, {}));
+      setOrders(ordersResponse);
+    } catch {
+      showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
+    }
+  }, [
+    id,
+    ky,
+    mutator.invoice,
+    mutator.invoiceActionsApprovals,
+    mutator.invoiceLines,
+    mutator.orderLines,
+    mutator.orders,
+    mutator.vendor,
+    mutator.batchVoucherExport,
+    mutator.exportConfigs,
+    showCallout,
+    stripes.currency,
+  ]);
 
   useEffect(
     () => {
@@ -490,6 +518,7 @@ export function InvoiceDetailsContainer({
       cancelInvoice={cancelInvoice}
       createLine={createLine}
       deleteInvoice={onDeleteInvoice}
+      exchangedTotalsMap={exchangedTotalsMap}
       onDuplicateInvoice={onDuplicateInvoice}
       invoice={invoice}
       invoiceLines={invoiceLines.invoiceLines}
@@ -548,11 +577,12 @@ InvoiceDetailsContainer.manifest = Object.freeze({
 });
 
 InvoiceDetailsContainer.propTypes = {
-  match: ReactRouterPropTypes.match,
   history: ReactRouterPropTypes.history.isRequired,
   location: ReactRouterPropTypes.location.isRequired,
+  match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,
   refreshList: PropTypes.func.isRequired,
+  stripes: stripesShape.isRequired,
 };
 
 export default stripesConnect(InvoiceDetailsContainer);

@@ -301,6 +301,7 @@
   "invoice.details.lines.list.receiptStatus": "Receipt status",
   "invoice.details.lines.list.subTotal": "Sub-total",
   "invoice.details.lines.list.total": "Total",
+  "invoice.details.lines.list.total.exchanged": "Total (Exchanged)",
   "invoice.details.lines.list.vendorRefNumber": "Vendor reference number",
 
   "invoice.details.vendor.title": "Vendor details",
