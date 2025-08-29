@@ -29,7 +29,7 @@ import {
   ADJUSTMENT_TYPE_OPTIONS,
 } from '../../../common/constants';
 
-const SettingsAdjustmentsEditor = ({
+const SettingsAdjustmentsForm = ({
   close,
   form,
   handleSubmit,
@@ -201,7 +201,7 @@ const SettingsAdjustmentsEditor = ({
   );
 };
 
-SettingsAdjustmentsEditor.propTypes = {
+SettingsAdjustmentsForm.propTypes = {
   close: PropTypes.func.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   metadata: PropTypes.shape({}),
@@ -212,4 +212,4 @@ export default stripesFinalForm({
   enableReinitialize: true,
   navigationCheck: true,
   subscription: { values: true },
-})(SettingsAdjustmentsEditor);
+})(SettingsAdjustmentsForm);

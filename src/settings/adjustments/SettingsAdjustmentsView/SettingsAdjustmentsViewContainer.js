@@ -6,19 +6,24 @@ import {
 import { FormattedMessage } from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
+import {
+  Layer,
+  LoadingView,
+} from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
-  useInvoiceStorageSettingById,
-  useInvoiceStorageSettingsMutation,
-} from '../../../common/hooks';
+  useAdjustmentsSetting,
+  useAdjustmentsSettingsMutation,
+} from '../../hooks';
 import { getSettingsAdjustmentsList } from '../util';
 import SettingsAdjustmentsView from './SettingsAdjustmentsView';
 
 function SettingsAdjustmentsViewContainer({
   close,
   match: { params: { id } },
+  refetch,
   rootPath,
   showSuccessDeleteMessage,
   history,
@@ -26,20 +31,22 @@ function SettingsAdjustmentsViewContainer({
   const stripes = useStripes();
   const showCallout = useShowCallout();
 
-  const { setting } = useInvoiceStorageSettingById(id, {
+  const {
+    isFetching,
+    setting,
+  } = useAdjustmentsSetting(id, {
     onError: () => showCallout({
       message: <FormattedMessage id="ui-invoice.errors.cantLoadAdjustment" />,
       type: 'error',
     }),
   });
 
-  const {
-    deleteSetting,
-  } = useInvoiceStorageSettingsMutation();
+  const { deleteSetting } = useAdjustmentsSettingsMutation();
 
   const deleteAdjustment = useCallback(async () => {
     try {
       await deleteSetting({ id });
+      refetch();
       close();
       showSuccessDeleteMessage();
     } catch (e) {
@@ -48,9 +55,17 @@ function SettingsAdjustmentsViewContainer({
         type: 'error',
       });
     }
-  }, [close, deleteSetting, id, showCallout, showSuccessDeleteMessage]);
+  }, [close, deleteSetting, id, refetch, showCallout, showSuccessDeleteMessage]);
 
-  const adjustment = useMemo(() => getSettingsAdjustmentsList([setting])[0], [setting]);
+  const adjustment = useMemo(() => setting && getSettingsAdjustmentsList([setting])[0], [setting]);
+
+  if (isFetching) {
+    return (
+      <Layer isOpen>
+        <LoadingView />
+      </Layer>
+    );
+  }
 
   return (
     <SettingsAdjustmentsView
@@ -66,10 +81,11 @@ function SettingsAdjustmentsViewContainer({
 
 SettingsAdjustmentsViewContainer.propTypes = {
   close: PropTypes.func.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
+  refetch: PropTypes.func.isRequired,
   rootPath: PropTypes.string.isRequired,
   showSuccessDeleteMessage: PropTypes.func.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
 };
 
 export default SettingsAdjustmentsViewContainer;

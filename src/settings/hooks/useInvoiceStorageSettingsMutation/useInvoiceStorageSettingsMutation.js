@@ -2,7 +2,7 @@ import { useMutation } from 'react-query';
 
 import { useOkapiKy } from '@folio/stripes/core';
 
-import { INVOICE_STORAGE_SETTINGS_API } from '../../constants';
+import { INVOICE_STORAGE_SETTINGS_API } from '../../../common/constants';
 
 export const useInvoiceStorageSettingsMutation = (options = {}) => {
   const { tenantId } = options;
@@ -14,7 +14,7 @@ export const useInvoiceStorageSettingsMutation = (options = {}) => {
   } = useMutation({
     mutationFn: async ({ data }) => {
       return data?.id
-        ? ky.put(`${INVOICE_STORAGE_SETTINGS_API}/${data?.id}`, { json: data }).json()
+        ? ky.put(`${INVOICE_STORAGE_SETTINGS_API}/${data?.id}`, { json: data })
         : ky.post(INVOICE_STORAGE_SETTINGS_API, { json: data }).json();
     },
   });
@@ -24,7 +24,7 @@ export const useInvoiceStorageSettingsMutation = (options = {}) => {
     isLoading: isDeleting,
   } = useMutation({
     mutationFn: async ({ id }) => {
-      return ky.delete(`${INVOICE_STORAGE_SETTINGS_API}/${id}`).json();
+      return ky.delete(`${INVOICE_STORAGE_SETTINGS_API}/${id}`);
     },
   });
 

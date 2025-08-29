@@ -9,10 +9,8 @@ import {
 import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import {
-  useInvoiceStorageSettings,
-  useInvoiceStorageSettingsMutation,
-} from '../../hooks';
+import { useInvoiceStorageSettings } from '../../../common/hooks';
+import { useInvoiceStorageSettingsMutation } from '../../hooks';
 import { InvoiceStorageSettingsManager } from './InvoiceStorageSettingsManager';
 
 jest.mock('@folio/stripes/components', () => ({
@@ -25,9 +23,13 @@ jest.mock('@folio/stripes-acq-components', () => ({
   useShowCallout: jest.fn(),
 }));
 
+jest.mock('../../../common/hooks', () => ({
+  ...jest.requireActual('../../../common/hooks'),
+  useInvoiceStorageSettings: jest.fn(),
+}));
+
 jest.mock('../../hooks', () => ({
   ...jest.requireActual('../../hooks'),
-  useInvoiceStorageSettings: jest.fn(),
   useInvoiceStorageSettingsMutation: jest.fn(),
 }));
 

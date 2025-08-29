@@ -3,7 +3,6 @@ import { useCallback } from 'react';
 import {
   Route,
   Switch,
-  withRouter,
 } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
@@ -13,16 +12,15 @@ import {
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import { CONFIG_NAME_ADJUSTMENTS } from '../../common/constants';
-import { useInvoiceStorageSettings } from '../../common/hooks';
-import SettingsAdjustmentsEditorContainer from './SettingsAdjustmentsEditor';
+import { useAdjustmentsSettings } from '../../common/hooks';
+import { SettingsAdjustmentsCreate } from './SettingsAdjustmentsCreate';
+import { SettingsAdjustmentsEdit } from './SettingsAdjustmentsEdit';
 import SettingsAdjustmentsList from './SettingsAdjustmentsList';
 import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsView';
+
 import { getSettingsAdjustmentsList } from './util';
 
 export const RETURN_LINK_LABEL_ID = 'ui-invoice.settings.adjustments.label';
-
-const SettingsAdjustmentsEditor = withRouter(SettingsAdjustmentsEditorContainer);
 
 function SettingsAdjustments({ history, label, match: { path } }) {
   const closePane = useCallback(() => {
@@ -38,8 +36,9 @@ function SettingsAdjustments({ history, label, match: { path } }) {
   }, [sendCallout]);
 
   const {
+    refetch,
     settings,
-  } = useInvoiceStorageSettings({ key: CONFIG_NAME_ADJUSTMENTS });
+  } = useAdjustmentsSettings();
 
   const adjustments = getSettingsAdjustmentsList(settings);
 
@@ -63,7 +62,10 @@ function SettingsAdjustments({ history, label, match: { path } }) {
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
       >
-        <SettingsAdjustmentsEditor close={closePane} />
+        <SettingsAdjustmentsCreate
+          onClose={closePane}
+          refetch={refetch}
+        />
       </PermissionedRoute>
       <Route
         path={`${path}/:id/view`}
@@ -71,6 +73,7 @@ function SettingsAdjustments({ history, label, match: { path } }) {
           <SettingsAdjustmentsViewContainer
             {...props}
             close={closePane}
+            refetch={refetch}
             rootPath={path}
             showSuccessDeleteMessage={showSuccessDeleteMessage}
           />
@@ -83,7 +86,10 @@ function SettingsAdjustments({ history, label, match: { path } }) {
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
       >
-        <SettingsAdjustmentsEditor close={closePane} />
+        <SettingsAdjustmentsEdit
+          onClose={closePane}
+          refetch={refetch}
+        />
       </PermissionedRoute>
     </Switch>
   );

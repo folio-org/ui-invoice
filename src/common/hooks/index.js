@@ -1,4 +1,5 @@
 export * from './useAddressCategories';
+export * from './useAdjustmentsSettings';
 export * from './useAsyncConfirmationModal';
 export * from './useBatchGroup';
 export * from './useConfigsAdjustments';
@@ -12,7 +13,6 @@ export * from './useInvoiceLineVersions';
 export * from './useInvoiceMutation';
 export * from './useInvoiceStorageSettingById';
 export * from './useInvoiceStorageSettings';
-export * from './useInvoiceStorageSettingsMutation';
 export * from './useInvoiceVersions';
 export * from './useOrderLines';
 export * from './useOrders';

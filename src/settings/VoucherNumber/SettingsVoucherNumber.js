@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 
 import { getConfigSetting } from '@folio/stripes-acq-components';
 
-import { InvoiceStorageSettingsManager } from '../../common/components';
 import { CONFIG_NAME_VOUCHER_NUMBER } from '../../common/constants';
+import { InvoiceStorageSettingsManager } from '../components';
 import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
 
 const onBeforeSave = (data) => JSON.stringify(data);

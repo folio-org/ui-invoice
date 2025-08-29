@@ -9,10 +9,8 @@ import { Loading } from '@folio/stripes/components';
 import { ConfigFinalForm } from '@folio/stripes/smart-components';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import {
-  useInvoiceStorageSettings,
-  useInvoiceStorageSettingsMutation,
-} from '../../hooks';
+import { useInvoiceStorageSettings } from '../../../common/hooks';
+import { useInvoiceStorageSettingsMutation } from '../../hooks';
 
 export const InvoiceStorageSettingsManager = ({
   children,

@@ -9,8 +9,8 @@ import {
 } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
+import { INVOICE_STORAGE_SETTINGS_API } from '../../../common/constants';
 import { useInvoiceStorageSettingsMutation } from './useInvoiceStorageSettingsMutation';
-import { INVOICE_STORAGE_SETTINGS_API } from '../../constants';
 
 const queryClient = new QueryClient();
 const wrapper = ({ children }) => (
