@@ -1,48 +1,30 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ConfigManager } from '@folio/stripes/smart-components';
-import { stripesShape } from '@folio/stripes/core';
 import { getConfigSetting } from '@folio/stripes-acq-components';
 
-import {
-  CONFIG_MODULE_INVOICE,
-  CONFIG_NAME_APPROVALS,
-} from '../../common/constants';
-
+import { InvoiceStorageSettingsManager } from '../../common/components';
+import { CONFIG_NAME_APPROVALS } from '../../common/constants';
 import ApprovalSettingsForm from './ApprovalSettingsForm';
 
-class ApprovalSettings extends Component {
-  static propTypes = {
-    label: PropTypes.node.isRequired,
-    stripes: stripesShape.isRequired,
-  };
+const onBeforeSave = (data) => JSON.stringify(data);
 
-  constructor(props) {
-    super(props);
+const ApprovalSettings = ({ label }) => {
+  return (
+    <InvoiceStorageSettingsManager
+      configName={CONFIG_NAME_APPROVALS}
+      getInitialValues={getConfigSetting}
+      label={label}
+      onBeforeSave={onBeforeSave}
+    >
+      <div data-test-invoice-settings-approvals>
+        <ApprovalSettingsForm />
+      </div>
+    </InvoiceStorageSettingsManager>
+  );
+};
 
-    this.configManager = props.stripes.connect(ConfigManager);
-  }
-
-  beforeSave = (data) => JSON.stringify(data);
-
-  render() {
-    const { label } = this.props;
-
-    return (
-      <this.configManager
-        configName={CONFIG_NAME_APPROVALS}
-        getInitialValues={getConfigSetting}
-        label={label}
-        moduleName={CONFIG_MODULE_INVOICE}
-        onBeforeSave={this.beforeSave}
-      >
-        <div data-test-invoice-settings-approvals>
-          <ApprovalSettingsForm />
-        </div>
-      </this.configManager>
-    );
-  }
-}
+ApprovalSettings.propTypes = {
+  label: PropTypes.node.isRequired,
+};
 
 export default ApprovalSettings;

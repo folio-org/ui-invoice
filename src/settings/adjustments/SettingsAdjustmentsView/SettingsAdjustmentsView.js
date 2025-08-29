@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
   Button,
@@ -18,48 +17,51 @@ import {
   PaneHeader,
   Row,
 } from '@folio/stripes/components';
+import { stripesShape } from '@folio/stripes/core';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import { handleKeyCommand } from '@folio/stripes-acq-components';
 
 import { hasEditSettingsPerm } from '../../utils';
 
-class SettingsAdjustmentsView extends Component {
-  static propTypes = {
-    close: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    stripes: PropTypes.object.isRequired,
-    history: ReactRouterPropTypes.history.isRequired,
-    adjustment: PropTypes.object,
-    rootPath: PropTypes.string,
-  };
+const defaultProps = {
+  adjustment: {
+    adjustment: {},
+  },
+};
 
-  static defaultProps = {
-    adjustment: { adjustment: {} },
-  }
+const SettingsAdjustmentsView = ({
+  close,
+  adjustment = defaultProps.adjustment,
+  history,
+  stripes,
+  rootPath,
+  onDelete,
+}) => {
+  const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
 
-  constructor(props, context) {
-    super(props, context);
+  const {
+    adjustment: {
+      alwaysShow,
+      defaultAmount,
+      description,
+      type,
+      prorate,
+      relationToTotal,
+      exportToAccounting,
+    },
+    id,
+    metadata,
+  } = adjustment;
 
-    this.state = {
-      showConfirmDelete: false,
-    };
-  }
+  const showConfirmDelete = () => setIsConfirmDeleteOpen(true);
+  const hideConfirmDelete = () => setIsConfirmDeleteOpen(false);
 
-  deleteAdjustment = () => {
-    const { onDelete } = this.props;
-
-    this.hideConfirmDelete();
+  const deleteAdjustment = () => {
+    hideConfirmDelete();
     onDelete();
   };
 
-  showConfirmDelete = () => this.setState({ showConfirmDelete: true });
-
-  hideConfirmDelete = () => this.setState({ showConfirmDelete: false });
-
-  getActionMenu = ({ onToggle }) => {
-    const { rootPath, adjustment } = this.props;
-    const id = get(adjustment, 'id');
-
+  const getActionMenu = ({ onToggle }) => {
     return (
       <div data-test-view-adjustment-actions>
         <Button
@@ -77,7 +79,7 @@ class SettingsAdjustmentsView extends Component {
           buttonStyle="dropdownItem"
           onClick={() => {
             onToggle();
-            this.showConfirmDelete();
+            showConfirmDelete();
           }}
         >
           <Icon icon="trash">
@@ -88,17 +90,11 @@ class SettingsAdjustmentsView extends Component {
     );
   };
 
-  renderHeader = (paneHeaderProps) => {
-    const {
-      adjustment,
-      close,
-      stripes,
-    } = this.props;
-
+  const renderHeader = (paneHeaderProps) => {
     return (
       <PaneHeader
         {...paneHeaderProps}
-        actionMenu={hasEditSettingsPerm(stripes) && this.getActionMenu}
+        actionMenu={hasEditSettingsPerm(stripes) && getActionMenu}
         dismissible
         onClose={close}
         paneTitle={adjustment.title}
@@ -106,142 +102,138 @@ class SettingsAdjustmentsView extends Component {
     );
   };
 
-  render() {
-    const {
-      close,
-      adjustment,
-      history,
-      stripes,
-      rootPath,
-    } = this.props;
-    const { showConfirmDelete } = this.state;
-    const {
-      metadata,
-      adjustment: { alwaysShow, defaultAmount, description, type, prorate, relationToTotal, exportToAccounting },
-    } = adjustment;
-    const shortcuts = [
-      {
-        name: 'cancel',
-        shortcut: 'esc',
-        handler: handleKeyCommand(close),
-      },
-      {
-        name: 'edit',
-        handler: handleKeyCommand(() => {
-          if (stripes.hasPerm('ui-invoice.settings.all')) history.push(`${rootPath}/${adjustment.id}/edit`);
-        }),
-      },
-    ];
+  const shortcuts = [
+    {
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: handleKeyCommand(close),
+    },
+    {
+      name: 'edit',
+      handler: handleKeyCommand(() => {
+        if (stripes.hasPerm('ui-invoice.settings.all')) history.push(`${rootPath}/${adjustment.id}/edit`);
+      }),
+    },
+  ];
 
-    return (
-      <Layer
-        contentLabel="Adjustment details"
-        isOpen
+  return (
+    <Layer
+      contentLabel="Adjustment details"
+      isOpen
+    >
+      <HasCommand
+        commands={shortcuts}
+        isWithinScope={checkScope}
+        scope={document.body}
       >
-        <HasCommand
-          commands={shortcuts}
-          isWithinScope={checkScope}
-          scope={document.body}
+        <Pane
+          id="invoice-settings-adjustment-view"
+          defaultWidth="fill"
+          renderHeader={renderHeader}
         >
-          <Pane
-            id="invoice-settings-adjustment-view"
-            defaultWidth="fill"
-            renderHeader={this.renderHeader}
-          >
-            <Row center="xs">
-              <Col xs={12} md={8}>
-                <Row start="xs">
-                  <Col xs={12}>
-                    {metadata && <ViewMetaData metadata={metadata} />}
-                  </Col>
-                  <Col
-                    xs={3}
-                    data-test-description
-                  >
-                    <KeyValue
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.description" />}
-                      value={description}
-                    />
-                  </Col>
-                  <Col
-                    xs={3}
-                    data-test-type
-                  >
-                    <KeyValue
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}
-                      value={type}
-                    />
-                  </Col>
-                  <Col
-                    data-test-always-show
-                    xs={3}
-                  >
-                    <Checkbox
-                      checked={alwaysShow}
-                      disabled
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.alwaysShow" />}
-                      type="checkbox"
-                      vertical
-                    />
-                  </Col>
-                  <Col
-                    data-test-default-amount
-                    xs={3}
-                  >
-                    <KeyValue
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.value" />}
-                      value={defaultAmount}
-                    />
-                  </Col>
-                  <Col
-                    data-test-prorate
-                    xs={3}
-                  >
-                    <KeyValue
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
-                      value={prorate}
-                    />
-                  </Col>
-                  <Col
-                    data-test-relation-to-total
-                    xs={3}
-                  >
-                    <KeyValue
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
-                      value={relationToTotal}
-                    />
-                  </Col>
-                  <Col
-                    data-test-export-to-accounting
-                    xs={3}
-                  >
-                    <Checkbox
-                      checked={exportToAccounting}
-                      disabled
-                      label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
-                      type="checkbox"
-                      vertical
-                    />
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
-            {showConfirmDelete && (
-              <ConfirmationModal
-                id="delete-adjustment-modal"
-                confirmLabel={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.confirmLabel" />}
-                heading={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.heading" values={{ description }} />}
-                message={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.message" />}
-                onCancel={this.hideConfirmDelete}
-                onConfirm={this.deleteAdjustment}
-                open
-              />
-            )}
-          </Pane>
-        </HasCommand>
-      </Layer>
-    );
-  }
-}
+          <Row center="xs">
+            <Col xs={12} md={8}>
+              <Row start="xs">
+                <Col xs={12}>
+                  {metadata && <ViewMetaData metadata={metadata} />}
+                </Col>
+                <Col
+                  xs={3}
+                  data-test-description
+                >
+                  <KeyValue
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.description" />}
+                    value={description}
+                  />
+                </Col>
+                <Col
+                  xs={3}
+                  data-test-type
+                >
+                  <KeyValue
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}
+                    value={type}
+                  />
+                </Col>
+                <Col
+                  data-test-always-show
+                  xs={3}
+                >
+                  <Checkbox
+                    checked={alwaysShow}
+                    disabled
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.alwaysShow" />}
+                    type="checkbox"
+                    vertical
+                  />
+                </Col>
+                <Col
+                  data-test-default-amount
+                  xs={3}
+                >
+                  <KeyValue
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.value" />}
+                    value={defaultAmount}
+                  />
+                </Col>
+                <Col
+                  data-test-prorate
+                  xs={3}
+                >
+                  <KeyValue
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
+                    value={prorate}
+                  />
+                </Col>
+                <Col
+                  data-test-relation-to-total
+                  xs={3}
+                >
+                  <KeyValue
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
+                    value={relationToTotal}
+                  />
+                </Col>
+                <Col
+                  data-test-export-to-accounting
+                  xs={3}
+                >
+                  <Checkbox
+                    checked={exportToAccounting}
+                    disabled
+                    label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
+                    type="checkbox"
+                    vertical
+                  />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+
+          {isConfirmDeleteOpen && (
+            <ConfirmationModal
+              id="delete-adjustment-modal"
+              confirmLabel={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.confirmLabel" />}
+              heading={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.heading" values={{ description }} />}
+              message={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.message" />}
+              onCancel={hideConfirmDelete}
+              onConfirm={deleteAdjustment}
+              open
+            />
+          )}
+        </Pane>
+      </HasCommand>
+    </Layer>
+  );
+};
+
+SettingsAdjustmentsView.propTypes = {
+  adjustment: PropTypes.shape({}).isRequired,
+  close: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  rootPath: PropTypes.string.isRequired,
+  stripes: stripesShape.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default SettingsAdjustmentsView;

@@ -7,6 +7,7 @@ export {
 export { CalculatedExchangeAmount } from './CalculatedExchangeAmount';
 export { CurrencyMismatchModal } from './CurrencyMismatchModal';
 export { default as DuplicateInvoiceList } from './DuplicateInvoiceList';
+export { InvoiceStorageSettingsManager } from './InvoiceStorageSettingsManager';
 export * from './FieldFiscalYear';
 export * from './FiscalYearValue';
 export * from './VendorPrimaryAddress';

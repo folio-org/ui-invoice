@@ -1,22 +1,22 @@
-import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 import {
   Route,
   Switch,
   withRouter,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
   PermissionedRoute,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import { CONFIG_ADJUSTMENTS } from '../../common/resources';
-import SettingsAdjustmentsList from './SettingsAdjustmentsList';
+import { CONFIG_NAME_ADJUSTMENTS } from '../../common/constants';
+import { useInvoiceStorageSettings } from '../../common/hooks';
 import SettingsAdjustmentsEditorContainer from './SettingsAdjustmentsEditor';
+import SettingsAdjustmentsList from './SettingsAdjustmentsList';
 import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsView';
 import { getSettingsAdjustmentsList } from './util';
 
@@ -24,7 +24,7 @@ export const RETURN_LINK_LABEL_ID = 'ui-invoice.settings.adjustments.label';
 
 const SettingsAdjustmentsEditor = withRouter(SettingsAdjustmentsEditorContainer);
 
-function SettingsAdjustments({ history, label, match: { path }, resources }) {
+function SettingsAdjustments({ history, label, match: { path } }) {
   const closePane = useCallback(() => {
     history.push(path);
   }, [history, path]);
@@ -37,7 +37,11 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
     });
   }, [sendCallout]);
 
-  const adjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
+  const {
+    settings,
+  } = useInvoiceStorageSettings({ key: CONFIG_NAME_ADJUSTMENTS });
+
+  const adjustments = getSettingsAdjustmentsList(settings);
 
   return (
     <Switch>
@@ -85,15 +89,10 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
   );
 }
 
-SettingsAdjustments.manifest = Object.freeze({
-  configAdjustments: CONFIG_ADJUSTMENTS,
-});
-
 SettingsAdjustments.propTypes = {
   label: PropTypes.node.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
-  resources: PropTypes.object.isRequired,
 };
 
 export default SettingsAdjustments;

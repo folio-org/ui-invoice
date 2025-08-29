@@ -109,6 +109,7 @@
       "finance.funds": "1.0 2.0 3.0",
       "identifier-types": "1.2",
       "invoice": "7.0",
+      "invoice-storage.settings": "1.0",
       "material-types": "2.2",
       "order-lines": "4.0",
       "orders": "13.0",
@@ -176,6 +177,7 @@
           "invoice.invoices.documents.collection.get",
           "invoice.invoices.documents.item.get",
           "invoice.invoices.item.get",
+          "invoice-storage.settings.collection.get",
           "orders.collection.get",
           "orders.pieces.collection.get",
           "orders.po-lines.collection.get",
@@ -342,6 +344,8 @@
           "batch-voucher.export-configurations.item.get",
           "configuration.entries.collection.get",
           "configuration.entries.item.get",
+          "invoice-storage.settings.collection.get",
+          "invoice-storage.settings.item.get",
           "voucher-number.start.get",
           "users.collection.get"
         ]
@@ -358,9 +362,9 @@
           "batch-voucher.export-configurations.item.delete",
           "batch-voucher.export-configurations.item.post",
           "batch-voucher.export-configurations.item.put",
-          "configuration.entries.item.delete",
-          "configuration.entries.item.post",
-          "configuration.entries.item.put",
+          "invoice-storage.settings.item.post",
+          "invoice-storage.settings.item.put",
+          "invoice-storage.settings.item.delete",
           "voucher-number.start.post"
         ]
       },

@@ -1,9 +1,11 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import { get } from 'lodash';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
-
-import { stripesConnect } from '@folio/stripes/core';
 
 import {
   Col,
@@ -12,11 +14,10 @@ import {
   KeyValue,
   TextField,
 } from '@folio/stripes/components';
+import { stripesConnect } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import {
-  VOUCHER_NUMBER_START,
-} from '../../common/resources';
+import { VOUCHER_NUMBER_START } from '../../common/resources';
 
 const SettingsVoucherNumberReset = ({ resources, mutator, isNonInteractive = false }) => {
   const sendCallout = useShowCallout();

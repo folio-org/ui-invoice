@@ -1,24 +1,19 @@
-import React, { Component } from 'react';
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { getFormValues } from 'redux-form';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
-import { get } from 'lodash';
-
-import { stripesConnect } from '@folio/stripes/core';
-
-import {
-  CONFIG_ADJUSTMENTS,
-  CONFIG_ADJUSTMENT,
-} from '../../../common/resources';
 import {
   ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
-  CONFIG_MODULE_INVOICE,
   CONFIG_NAME_ADJUSTMENTS,
 } from '../../../common/constants';
+import {
+  useInvoiceStorageSettings,
+  useInvoiceStorageSettingsMutation,
+} from '../../../common/hooks';
 import { getSettingsAdjustmentsList } from '../util';
 import SettingsAdjustmentsEditor from './SettingsAdjustmentsEditor';
 
@@ -30,69 +25,42 @@ const INITIAL_VALUES = {
   type: ADJUSTMENT_TYPE_VALUES.amount,
 };
 
-class SettingsAdjustmentsEditorContainer extends Component {
-  static manifest = Object.freeze({
-    configAdjustmentsList: {
-      ...CONFIG_ADJUSTMENTS,
-      fetch: false,
-    },
-    configAdjustment: CONFIG_ADJUSTMENT,
-  });
+const SettingsAdjustmentsEditorContainer = ({ close, match }) => {
+  const id = match?.params?.id;
 
-  static propTypes = {
-    close: PropTypes.func.isRequired,
-    mutator: PropTypes.object.isRequired,
-    resources: PropTypes.object.isRequired,
-    match: ReactRouterPropTypes.match.isRequired,
-    stripes: PropTypes.object.isRequired,
-  };
+  const { settings } = useInvoiceStorageSettings({ key: CONFIG_NAME_ADJUSTMENTS });
 
-  saveAdjustment = (values) => {
-    const { close, mutator: { configAdjustmentsList, configAdjustment }, match, resources } = this.props;
-    const id = get(match, ['params', 'id']);
-    const mutatorFn = id ? configAdjustment.PUT : configAdjustmentsList.POST;
+  const { upsertSetting } = useInvoiceStorageSettingsMutation();
+
+  const adjustments = getSettingsAdjustmentsList(settings);
+  const adjustment = useMemo(() => (id ? get(adjustments, '0', {}) : INITIAL_VALUES), [id, adjustments]);
+  const initialValues = useMemo(() => (adjustment.adjustment || INITIAL_VALUES), [adjustment]);
+
+  const saveAdjustment = (values) => {
     const value = JSON.stringify(values);
-    let body;
 
-    if (id) {
-      body = get(resources, ['configAdjustment', 'records', 0], {});
-    } else {
-      body = {
-        module: CONFIG_MODULE_INVOICE,
-        configName: CONFIG_NAME_ADJUSTMENTS,
-        code: (new Date()).valueOf(),
-      };
-    }
+    const data = {
+      ...(settings[0] || { key: CONFIG_NAME_ADJUSTMENTS }),
+      value,
+    };
 
-    body = { ...body, value };
-
-    mutatorFn(body).then(close);
+    upsertSetting({ data }).then(close);
   };
 
-  render() {
-    const { close, resources, match, stripes } = this.props;
-    const formValues = getFormValues('SettingsAdjustmentsForm')(stripes.store.getState()) || INITIAL_VALUES;
+  return (
+    <SettingsAdjustmentsEditor
+      title={adjustment?.adjustment?.description || <FormattedMessage id="ui-invoice.settings.adjustments.title.new" />}
+      onSubmit={saveAdjustment}
+      close={close}
+      initialValues={initialValues}
+      metadata={adjustment.metadata}
+    />
+  );
+};
 
-    const adjustments = getSettingsAdjustmentsList(get(resources, 'configAdjustment.records', []));
+SettingsAdjustmentsEditorContainer.propTypes = {
+  close: PropTypes.func.isRequired,
+  match: ReactRouterPropTypes.match.isRequired,
+};
 
-    const id = get(match, ['params', 'id']);
-    const adjustment = id
-      ? get(adjustments, '0', {})
-      : INITIAL_VALUES;
-    const title = get(adjustment, 'adjustment.description') || <FormattedMessage id="ui-invoice.settings.adjustments.title.new" />;
-    const initialValues = adjustment.adjustment || INITIAL_VALUES;
-
-    return (
-      <SettingsAdjustmentsEditor
-        title={title}
-        onSubmit={this.saveAdjustment}
-        close={close}
-        initialValues={initialValues}
-        formValues={formValues}
-        metadata={adjustment.metadata}
-      />
-    );
-  }
-}
-
-export default stripesConnect(SettingsAdjustmentsEditorContainer);
+export default SettingsAdjustmentsEditorContainer;

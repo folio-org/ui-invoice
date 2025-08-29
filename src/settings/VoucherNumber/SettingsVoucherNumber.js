@@ -1,49 +1,30 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { ConfigManager } from '@folio/stripes/smart-components';
 import { getConfigSetting } from '@folio/stripes-acq-components';
 
-import { stripesShape } from '@folio/stripes/core';
-
-import {
-  CONFIG_MODULE_INVOICE,
-  CONFIG_NAME_VOUCHER_NUMBER,
-} from '../../common/constants';
-
+import { InvoiceStorageSettingsManager } from '../../common/components';
+import { CONFIG_NAME_VOUCHER_NUMBER } from '../../common/constants';
 import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
 
-class SettingsVoucherNumber extends Component {
-  static propTypes = {
-    label: PropTypes.node.isRequired,
-    stripes: stripesShape.isRequired,
-  };
+const onBeforeSave = (data) => JSON.stringify(data);
 
-  constructor(props) {
-    super(props);
+const SettingsVoucherNumber = ({ label }) => {
+  return (
+    <InvoiceStorageSettingsManager
+      configName={CONFIG_NAME_VOUCHER_NUMBER}
+      getInitialValues={getConfigSetting}
+      label={label}
+      onBeforeSave={onBeforeSave}
+    >
+      <div data-test-invoice-settings-voucher-number>
+        <SettingsVoucherNumberForm />
+      </div>
+    </InvoiceStorageSettingsManager>
+  );
+};
 
-    this.configManager = props.stripes.connect(ConfigManager);
-  }
-
-  beforeSave = (data) => JSON.stringify(data);
-
-  render() {
-    const { label } = this.props;
-
-    return (
-      <this.configManager
-        configName={CONFIG_NAME_VOUCHER_NUMBER}
-        getInitialValues={getConfigSetting}
-        label={label}
-        moduleName={CONFIG_MODULE_INVOICE}
-        onBeforeSave={this.beforeSave}
-      >
-        <div data-test-invoice-settings-voucher-number>
-          <SettingsVoucherNumberForm />
-        </div>
-      </this.configManager>
-    );
-  }
-}
+SettingsVoucherNumber.propTypes = {
+  label: PropTypes.node.isRequired,
+};
 
 export default SettingsVoucherNumber;
