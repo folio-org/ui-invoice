@@ -486,5 +486,6 @@
     "invoice.list.vendorName": "Nome do fornecedor",
     "invoice.list.folioInvoiceNo": "Número da fatura FOLIO",
     "invoice.form.fromPO.currency.confirmModal.heading": "Confirmar alteração de moeda",
-    "invoice.form.fromPO.currency.confirmModal.message": "Você está alterando a moeda desta fatura, mas os valores não estão sendo convertidos na Linha do Pedido de Compra para a nova moeda da fatura. Se ainda desejar prosseguir, clique em confirmar."
+    "invoice.form.fromPO.currency.confirmModal.message": "Você está alterando a moeda desta fatura, mas os valores não estão sendo convertidos na Linha do Pedido de Compra para a nova moeda da fatura. Se ainda desejar prosseguir, clique em confirmar.",
+    "invoice.details.lines.list.total.exchanged": "Total (Trocado)"
 }
