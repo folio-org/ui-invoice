@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
@@ -17,7 +20,10 @@ import {
   PaneHeader,
   Row,
 } from '@folio/stripes/components';
-import { stripesShape } from '@folio/stripes/core';
+import {
+  stripesShape,
+  TitleManager,
+} from '@folio/stripes/core';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import { handleKeyCommand } from '@folio/stripes-acq-components';
 
@@ -37,6 +43,8 @@ const SettingsAdjustmentsView = ({
   rootPath,
   onDelete,
 }) => {
+  const intl = useIntl();
+
   const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
 
   const {
@@ -51,6 +59,7 @@ const SettingsAdjustmentsView = ({
     },
     id,
     metadata,
+    title,
   } = adjustment;
 
   const showConfirmDelete = () => setIsConfirmDeleteOpen(true);
@@ -97,7 +106,7 @@ const SettingsAdjustmentsView = ({
         actionMenu={hasEditSettingsPerm(stripes) && getActionMenu}
         dismissible
         onClose={close}
-        paneTitle={adjustment.title}
+        paneTitle={title}
       />
     );
   };
@@ -121,108 +130,113 @@ const SettingsAdjustmentsView = ({
       contentLabel="Adjustment details"
       isOpen
     >
-      <HasCommand
-        commands={shortcuts}
-        isWithinScope={checkScope}
-        scope={document.body}
+      <TitleManager
+        page={intl.formatMessage({ id: 'ui-invoice.settings.adjustments.label' })}
+        record={title}
       >
-        <Pane
-          id="invoice-settings-adjustment-view"
-          defaultWidth="fill"
-          renderHeader={renderHeader}
+        <HasCommand
+          commands={shortcuts}
+          isWithinScope={checkScope}
+          scope={document.body}
         >
-          <Row center="xs">
-            <Col xs={12} md={8}>
-              <Row start="xs">
-                <Col xs={12}>
-                  {metadata && <ViewMetaData metadata={metadata} />}
-                </Col>
-                <Col
-                  xs={3}
-                  data-test-description
-                >
-                  <KeyValue
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.description" />}
-                    value={description}
-                  />
-                </Col>
-                <Col
-                  xs={3}
-                  data-test-type
-                >
-                  <KeyValue
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}
-                    value={type}
-                  />
-                </Col>
-                <Col
-                  data-test-always-show
-                  xs={3}
-                >
-                  <Checkbox
-                    checked={alwaysShow}
-                    disabled
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.alwaysShow" />}
-                    type="checkbox"
-                    vertical
-                  />
-                </Col>
-                <Col
-                  data-test-default-amount
-                  xs={3}
-                >
-                  <KeyValue
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.value" />}
-                    value={defaultAmount}
-                  />
-                </Col>
-                <Col
-                  data-test-prorate
-                  xs={3}
-                >
-                  <KeyValue
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
-                    value={prorate}
-                  />
-                </Col>
-                <Col
-                  data-test-relation-to-total
-                  xs={3}
-                >
-                  <KeyValue
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
-                    value={relationToTotal}
-                  />
-                </Col>
-                <Col
-                  data-test-export-to-accounting
-                  xs={3}
-                >
-                  <Checkbox
-                    checked={exportToAccounting}
-                    disabled
-                    label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
-                    type="checkbox"
-                    vertical
-                  />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+          <Pane
+            id="invoice-settings-adjustment-view"
+            defaultWidth="fill"
+            renderHeader={renderHeader}
+          >
+            <Row center="xs">
+              <Col xs={12} md={8}>
+                <Row start="xs">
+                  <Col xs={12}>
+                    {metadata && <ViewMetaData metadata={metadata} />}
+                  </Col>
+                  <Col
+                    xs={3}
+                    data-test-description
+                  >
+                    <KeyValue
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.description" />}
+                      value={description}
+                    />
+                  </Col>
+                  <Col
+                    xs={3}
+                    data-test-type
+                  >
+                    <KeyValue
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}
+                      value={type}
+                    />
+                  </Col>
+                  <Col
+                    data-test-always-show
+                    xs={3}
+                  >
+                    <Checkbox
+                      checked={alwaysShow}
+                      disabled
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.alwaysShow" />}
+                      type="checkbox"
+                      vertical
+                    />
+                  </Col>
+                  <Col
+                    data-test-default-amount
+                    xs={3}
+                  >
+                    <KeyValue
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.value" />}
+                      value={defaultAmount}
+                    />
+                  </Col>
+                  <Col
+                    data-test-prorate
+                    xs={3}
+                  >
+                    <KeyValue
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
+                      value={prorate}
+                    />
+                  </Col>
+                  <Col
+                    data-test-relation-to-total
+                    xs={3}
+                  >
+                    <KeyValue
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.relationToTotal" />}
+                      value={relationToTotal}
+                    />
+                  </Col>
+                  <Col
+                    data-test-export-to-accounting
+                    xs={3}
+                  >
+                    <Checkbox
+                      checked={exportToAccounting}
+                      disabled
+                      label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
+                      type="checkbox"
+                      vertical
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
 
-          {isConfirmDeleteOpen && (
-            <ConfirmationModal
-              id="delete-adjustment-modal"
-              confirmLabel={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.confirmLabel" />}
-              heading={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.heading" values={{ description }} />}
-              message={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.message" />}
-              onCancel={hideConfirmDelete}
-              onConfirm={deleteAdjustment}
-              open
-            />
-          )}
-        </Pane>
-      </HasCommand>
+            {isConfirmDeleteOpen && (
+              <ConfirmationModal
+                id="delete-adjustment-modal"
+                confirmLabel={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.confirmLabel" />}
+                heading={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.heading" values={{ description }} />}
+                message={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.message" />}
+                onCancel={hideConfirmDelete}
+                onConfirm={deleteAdjustment}
+                open
+              />
+            )}
+          </Pane>
+        </HasCommand>
+      </TitleManager>
     </Layer>
   );
 };

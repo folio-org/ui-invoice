@@ -1,11 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import {
   FormattedMessage,
   injectIntl,
 } from 'react-intl';
-import PropTypes from 'prop-types';
 
-import { stripesShape } from '@folio/stripes/core';
+import {
+  stripesShape,
+  TitleManager,
+} from '@folio/stripes/core';
 import { ControlledVocab } from '@folio/stripes/smart-components';
 import { getControlledVocabTranslations } from '@folio/stripes-acq-components';
 
@@ -31,24 +34,26 @@ class BatchGroupsSettings extends React.Component {
     const { intl, stripes } = this.props;
 
     return (
-      <this.connectedControlledVocab
-        actionSuppressor={{ delete: suppressDelete, edit: () => false }}
-        baseUrl="batch-groups"
-        columnMapping={columnMapping}
-        data-test-batch-groups-settings
-        editable={hasEditSettingsPerm(stripes)}
-        hiddenFields={['numberOfObjects']}
-        id="batch-groups"
-        preUpdateHook={preUpdateHook}
-        label={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.label' })}
-        translations={getControlledVocabTranslations('ui-invoice.settings.batchGroups')}
-        nameKey="name"
-        objectLabel={<FormattedMessage id="ui-invoice.settings.batchGroups.label" />}
-        records="batchGroups"
-        sortby="name"
-        stripes={stripes}
-        visibleFields={['name', 'description']}
-      />
+      <TitleManager record={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.label' })}>
+        <this.connectedControlledVocab
+          actionSuppressor={{ delete: suppressDelete, edit: () => false }}
+          baseUrl="batch-groups"
+          columnMapping={columnMapping}
+          data-test-batch-groups-settings
+          editable={hasEditSettingsPerm(stripes)}
+          hiddenFields={['numberOfObjects']}
+          id="batch-groups"
+          preUpdateHook={preUpdateHook}
+          label={intl.formatMessage({ id: 'ui-invoice.settings.batchGroups.label' })}
+          translations={getControlledVocabTranslations('ui-invoice.settings.batchGroups')}
+          nameKey="name"
+          objectLabel={<FormattedMessage id="ui-invoice.settings.batchGroups.label" />}
+          records="batchGroups"
+          sortby="name"
+          stripes={stripes}
+          visibleFields={['name', 'description']}
+        />
+      </TitleManager>
     );
   }
 }

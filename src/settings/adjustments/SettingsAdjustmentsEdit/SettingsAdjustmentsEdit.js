@@ -1,11 +1,13 @@
 import PropTypes from 'prop-types';
 import { useMemo } from 'react';
+import { useIntl } from 'react-intl';
 import { useParams } from 'react-router-dom';
 
 import {
   Layer,
   LoadingView,
 } from '@folio/stripes/components';
+import { TitleManager } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
@@ -17,6 +19,7 @@ import { getSettingsAdjustmentsList } from '../util';
 
 export const SettingsAdjustmentsEdit = ({ onClose, refetch }) => {
   const { id } = useParams();
+  const intl = useIntl();
   const showCallout = useShowCallout();
 
   const {
@@ -64,14 +67,22 @@ export const SettingsAdjustmentsEdit = ({ onClose, refetch }) => {
     );
   }
 
+  const title = adjustment?.adjustment?.description;
+
   return (
-    <SettingsAdjustmentsForm
-      close={onClose}
-      initialValues={adjustment?.adjustment}
-      metadata={adjustment?.adjustment?.metadata}
-      onSubmit={onSubmit}
-      title={adjustment?.adjustment?.description}
-    />
+    <TitleManager
+      page={intl.formatMessage({ id: 'ui-invoice.settings.adjustments.label' })}
+      record={title}
+    >
+
+      <SettingsAdjustmentsForm
+        close={onClose}
+        initialValues={adjustment?.adjustment}
+        metadata={adjustment?.adjustment?.metadata}
+        onSubmit={onSubmit}
+        title={title}
+      />
+    </TitleManager>
   );
 };
 

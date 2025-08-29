@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
+import { TitleManager } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
@@ -21,6 +25,7 @@ const INITIAL_VALUES = {
 };
 
 export const SettingsAdjustmentsCreate = ({ onClose, refetch }) => {
+  const intl = useIntl();
   const showCallout = useShowCallout();
 
   const { upsertSetting } = useAdjustmentsSettingsMutation();
@@ -49,13 +54,20 @@ export const SettingsAdjustmentsCreate = ({ onClose, refetch }) => {
     }
   };
 
+  const title = <FormattedMessage id="ui-invoice.settings.adjustments.title.new" />;
+
   return (
-    <SettingsAdjustmentsForm
-      close={onClose}
-      initialValues={INITIAL_VALUES}
-      onSubmit={onSubmit}
-      title={<FormattedMessage id="ui-invoice.settings.adjustments.title.new" />}
-    />
+    <TitleManager
+      page={intl.formatMessage({ id: 'ui-invoice.settings.adjustments.label' })}
+      record={title}
+    >
+      <SettingsAdjustmentsForm
+        close={onClose}
+        initialValues={INITIAL_VALUES}
+        onSubmit={onSubmit}
+        title={title}
+      />
+    </TitleManager>
   );
 };
 

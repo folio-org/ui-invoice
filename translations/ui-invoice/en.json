@@ -2,6 +2,7 @@
   "meta.title": "Invoices",
   "appMenu.invoicesAppSearch": "Invoices app Search",
   "document.title.search": "Invoices - {query} - Search",
+  "document.settings.title": "Invoices settings",
 
   "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
   "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
