@@ -486,5 +486,6 @@
     "invoice.list.vendorName": "Назва постачальника",
     "invoice.list.folioInvoiceNo": "Номер рахунку-фактури FOLIO",
     "invoice.form.fromPO.currency.confirmModal.heading": "Підтвердити зміну валюти",
-    "invoice.form.fromPO.currency.confirmModal.message": "Ви змінюєте валюту цього рахунку-фактури, але валюта суми з рядка замовлення на придбання не зміниться на валюту рахунку-фактури. Якщо ви все ще бажаєте продовжити, натисніть \"Підтвердити\"."
+    "invoice.form.fromPO.currency.confirmModal.message": "Ви змінюєте валюту цього рахунку-фактури, але валюта суми з рядка замовлення на придбання не зміниться на валюту рахунку-фактури. Якщо ви все ще бажаєте продовжити, натисніть \"Підтвердити\".",
+    "invoice.details.lines.list.total.exchanged": "Total (Exchanged)"
 }

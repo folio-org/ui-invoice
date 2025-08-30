@@ -486,5 +486,6 @@
     "invoice.list.vendorName": "供应商名称",
     "invoice.list.folioInvoiceNo": "FOLIO发票号",
     "invoice.form.fromPO.currency.confirmModal.heading": "确认货币变更",
-    "invoice.form.fromPO.currency.confirmModal.message": "正在更改此发票的货币，但金额尚未从采购订单行货币兑换为新的发票货币。如果仍想继续，请点击“确认”。"
+    "invoice.form.fromPO.currency.confirmModal.message": "正在更改此发票的货币，但金额尚未从采购订单行货币兑换为新的发票货币。如果仍想继续，请点击“确认”。",
+    "invoice.details.lines.list.total.exchanged": "Total (Exchanged)"
 }
