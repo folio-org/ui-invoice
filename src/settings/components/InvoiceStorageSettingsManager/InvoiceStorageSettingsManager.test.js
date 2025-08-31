@@ -2,6 +2,7 @@ import { Field } from 'react-final-form';
 import { MemoryRouter } from 'react-router-dom';
 
 import {
+  act,
   render,
   screen,
   waitFor,
@@ -79,7 +80,7 @@ describe('InvoiceStorageSettingsManager', () => {
 
     useInvoiceStorageSettingsMutation.mockReturnValue({
       isLoading: false,
-      mutateAsync: mutateAsyncMock,
+      upsertSetting: mutateAsyncMock,
     });
   });
 
@@ -109,8 +110,10 @@ describe('InvoiceStorageSettingsManager', () => {
   it('should call mutateAsync on form submit', async () => {
     renderComponent();
 
-    await userEvent.type(screen.getByRole('textbox'), 'hello');
-    await userEvent.click(screen.getByRole('button', { name: /save/i }));
+    await act(async () => {
+      await userEvent.type(screen.getByRole('textbox'), 'hello');
+      await userEvent.click(screen.getByRole('button', { name: /save/i }));
+    });
 
     await waitFor(() => {
       expect(mutateAsyncMock).toHaveBeenCalled();
@@ -122,8 +125,10 @@ describe('InvoiceStorageSettingsManager', () => {
 
     renderComponent();
 
-    await userEvent.type(screen.getByRole('textbox'), 'hello');
-    await userEvent.click(screen.getByRole('button', { name: /save/i }));
+    await act(async () => {
+      await userEvent.type(screen.getByRole('textbox'), 'hello');
+      await userEvent.click(screen.getByRole('button', { name: /save/i }));
+    });
 
     await waitFor(() => {
       expect(showCalloutMock).toHaveBeenCalledWith({

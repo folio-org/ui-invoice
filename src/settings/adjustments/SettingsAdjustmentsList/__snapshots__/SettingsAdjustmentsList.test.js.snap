@@ -3,6 +3,9 @@
 exports[`SettingsAdjustmentsList should render correct structure 1`] = `
 <DocumentFragment>
   <div>
+    TitleManager
+  </div>
+  <div>
     <section
       class="pane focusIndicator"
       id="setting-adjustments-pane"

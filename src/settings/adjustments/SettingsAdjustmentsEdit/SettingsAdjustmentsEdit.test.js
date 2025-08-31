@@ -12,9 +12,17 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { useShowCallout } from '@folio/stripes-acq-components';
 import { runAxeTest } from '@folio/stripes-testing';
 
-import { CONFIG_NAME_ADJUSTMENTS } from '../../../common/constants';
-import { useAdjustmentsSettingsMutation } from '../../hooks';
-import { SettingsAdjustmentsCreate } from './SettingsAdjustmentsCreate';
+import {
+  ADJUSTMENT_PRORATE_VALUES,
+  ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
+  ADJUSTMENT_TYPE_VALUES,
+  CONFIG_NAME_ADJUSTMENTS,
+} from '../../../common/constants';
+import {
+  useAdjustmentsSetting,
+  useAdjustmentsSettingsMutation,
+} from '../../hooks';
+import { SettingsAdjustmentsEdit } from './SettingsAdjustmentsEdit';
 
 jest.mock('@folio/stripes/smart-components', () => ({
   ...jest.requireActual('@folio/stripes/smart-components'),
@@ -34,8 +42,20 @@ jest.mock('@folio/stripes-acq-components', () => ({
 
 jest.mock('../../hooks', () => ({
   ...jest.requireActual('../../hooks'),
+  useAdjustmentsSetting: jest.fn(),
   useAdjustmentsSettingsMutation: jest.fn(),
 }));
+
+const adjustmentStub = {
+  description: 'test adjustment',
+  prorate: ADJUSTMENT_PRORATE_VALUES.notProrated,
+  relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo,
+  type: ADJUSTMENT_TYPE_VALUES.amount,
+};
+const settingStub = {
+  key: CONFIG_NAME_ADJUSTMENTS,
+  value: JSON.stringify(adjustmentStub),
+};
 
 const defaultProps = {
   onClose: jest.fn(),
@@ -46,14 +66,14 @@ const mockUpsertSetting = jest.fn();
 const showCalloutMock = jest.fn();
 
 const renderComponent = (props = {}) => render(
-  <SettingsAdjustmentsCreate
+  <SettingsAdjustmentsEdit
     {...defaultProps}
     {...props}
   />,
   { wrapper: MemoryRouter },
 );
 
-describe('SettingsAdjustmentsCreate', () => {
+describe('SettingsAdjustmentsEdit', () => {
   const fillRequiredFields = async () => {
     const descriptionField = screen.getByRole('textbox', { name: 'ui-invoice.settings.adjustments.description' });
     const typeField = screen.getByRole('combobox', { name: 'ui-invoice.settings.adjustments.type' });
@@ -63,14 +83,14 @@ describe('SettingsAdjustmentsCreate', () => {
     await act(async () => {
       await userEvent.clear(descriptionField);
       await userEvent.type(descriptionField, 'test adjustment');
-      await userEvent.selectOptions(typeField, 'Amount');
-      await userEvent.selectOptions(prorateField, 'Not prorated');
-      await userEvent.selectOptions(relationField, 'In addition to');
+      await userEvent.selectOptions(typeField, ADJUSTMENT_TYPE_VALUES.percent);
+      await userEvent.selectOptions(prorateField, ADJUSTMENT_PRORATE_VALUES.byQuantity);
+      await userEvent.selectOptions(relationField, ADJUSTMENT_RELATION_TO_TOTAL_VALUES.separateFrom);
     });
   };
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    useAdjustmentsSetting.mockReturnValue({ setting: settingStub });
 
     useAdjustmentsSettingsMutation.mockReturnValue({
       upsertSetting: mockUpsertSetting,
@@ -79,11 +99,15 @@ describe('SettingsAdjustmentsCreate', () => {
     useShowCallout.mockReturnValue(showCalloutMock);
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   describe('Rendering', () => {
     it('should render the component with correct title', () => {
       renderComponent();
 
-      expect(screen.getByText('ui-invoice.settings.adjustments.title.new')).toBeInTheDocument();
+      expect(screen.getByText(adjustmentStub.description)).toBeInTheDocument();
     });
 
     it('should render SettingsAdjustmentsForm', () => {
@@ -109,65 +133,15 @@ describe('SettingsAdjustmentsCreate', () => {
       });
 
       await waitFor(() => {
-        expect(mockUpsertSetting).toHaveBeenCalledWith({
-          data: {
-            key: CONFIG_NAME_ADJUSTMENTS,
-            value: expect.any(String),
-          },
+        expect(JSON.parse(mockUpsertSetting.mock.calls[0][0].data.value)).toEqual({
+          ...adjustmentStub,
+          description: 'test adjustment',
+          prorate: ADJUSTMENT_PRORATE_VALUES.byQuantity,
+          relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.separateFrom,
+          type: ADJUSTMENT_TYPE_VALUES.percent,
         });
-      });
-    });
-
-    it('should call refetch after successful submission', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
-
-      renderComponent();
-
-      await fillRequiredFields();
-
-      const submitButton = screen.getByText('stripes-components.saveAndClose');
-
-      await act(async () => {
-        await userEvent.click(submitButton);
-      });
-
-      await waitFor(() => {
         expect(defaultProps.refetch).toHaveBeenCalled();
-      });
-    });
-
-    it('should call onClose after successful submission', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
-
-      renderComponent();
-
-      await fillRequiredFields();
-
-      const submitButton = screen.getByText('stripes-components.saveAndClose');
-
-      await act(async () => {
-        await userEvent.click(submitButton);
-      });
-
-      await waitFor(() => {
         expect(defaultProps.onClose).toHaveBeenCalled();
-      });
-    });
-
-    it('should show success callout after successful submission', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
-
-      renderComponent();
-
-      await fillRequiredFields();
-
-      const submitButton = screen.getByText('stripes-components.saveAndClose');
-
-      await act(async () => {
-        await userEvent.click(submitButton);
-      });
-
-      await waitFor(() => {
         expect(showCalloutMock).toHaveBeenCalled();
       });
     });
@@ -189,25 +163,6 @@ describe('SettingsAdjustmentsCreate', () => {
 
       await waitFor(() => {
         expect(showCalloutMock).toHaveBeenCalled();
-      });
-    });
-
-    it('should not call refetch or onClose when submission fails', async () => {
-      const error = new Error('API Error');
-
-      mockUpsertSetting.mockRejectedValueOnce(error);
-
-      renderComponent();
-
-      await fillRequiredFields();
-
-      const submitButton = screen.getByText('stripes-components.saveAndClose');
-
-      await act(async () => {
-        await userEvent.click(submitButton);
-      });
-
-      await waitFor(() => {
         expect(defaultProps.refetch).not.toHaveBeenCalled();
         expect(defaultProps.onClose).not.toHaveBeenCalled();
       });

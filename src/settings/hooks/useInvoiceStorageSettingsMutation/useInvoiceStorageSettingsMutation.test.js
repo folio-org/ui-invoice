@@ -19,11 +19,13 @@ const wrapper = ({ children }) => (
   </QueryClientProvider>
 );
 
-describe('useInvoiceStorageSettingsMutation', () => {
-  const putMock = jest.fn();
-  const postMock = jest.fn();
-  const deleteMock = jest.fn();
+const postMock = jest.fn((_, opts) => ({
+  json: () => Promise.resolve(opts.json),
+}));
+const putMock = jest.fn();
+const deleteMock = jest.fn();
 
+describe('useInvoiceStorageSettingsMutation', () => {
   beforeEach(() => {
     useOkapiKy.mockReturnValue({
       put: putMock,
@@ -44,7 +46,7 @@ describe('useInvoiceStorageSettingsMutation', () => {
     const { result } = renderHook(() => useInvoiceStorageSettingsMutation(), { wrapper });
 
     await act(async () => {
-      await result.current.mutateAsync({ data });
+      await result.current.upsertSetting({ data });
     });
 
     expect(putMock).toHaveBeenCalledWith(
@@ -57,12 +59,10 @@ describe('useInvoiceStorageSettingsMutation', () => {
   it('should call POST when data does not have an id', async () => {
     const data = { key: 'foo', value: 'bar' };
 
-    postMock.mockResolvedValue({ ok: true });
-
     const { result } = renderHook(() => useInvoiceStorageSettingsMutation(), { wrapper });
 
     await act(async () => {
-      await result.current.mutateAsync({ data });
+      await result.current.upsertSetting({ data });
     });
 
     expect(postMock).toHaveBeenCalledWith(
@@ -75,12 +75,10 @@ describe('useInvoiceStorageSettingsMutation', () => {
   it('should call DELETE when data has an id', async () => {
     const data = { id: '123', key: 'foo', value: 'bar' };
 
-    deleteMock.mockResolvedValue({ ok: true });
-
     const { result } = renderHook(() => useInvoiceStorageSettingsMutation(), { wrapper });
 
     await act(async () => {
-      await result.current.mutateAsync({ data });
+      await result.current.deleteSetting({ id: data.id });
     });
 
     expect(deleteMock).toHaveBeenCalledWith(
