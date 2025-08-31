@@ -46,7 +46,7 @@ export const SettingsAdjustmentsCreate = ({ onClose, refetch }) => {
         messageId: 'ui-invoice.settings.adjustments.create.success',
         values: { name: values.description },
       });
-    } catch (error) {
+    } catch {
       showCallout({
         type: 'error',
         messageId: 'ui-invoice.settings.adjustments.create.error',

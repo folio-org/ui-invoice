@@ -203,9 +203,22 @@ const SettingsAdjustmentsForm = ({
 
 SettingsAdjustmentsForm.propTypes = {
   close: PropTypes.func.isRequired,
+  form: PropTypes.shape({
+    change: PropTypes.func.isRequired,
+  }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   metadata: PropTypes.shape({}),
+  pristine: PropTypes.bool,
+  submitting: PropTypes.bool,
   title: PropTypes.node,
+  values: PropTypes.shape({
+    alwaysShow: PropTypes.bool,
+    amount: PropTypes.string,
+    description: PropTypes.string,
+    prorate: PropTypes.string,
+    relationToTotal: PropTypes.string,
+    type: PropTypes.string,
+  }),
 };
 
 export default stripesFinalForm({

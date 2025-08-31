@@ -50,7 +50,7 @@ export const SettingsAdjustmentsEdit = ({ onClose, refetch }) => {
         messageId: 'ui-invoice.settings.adjustments.update.success',
         values: { name: values.description },
       });
-    } catch (error) {
+    } catch {
       showCallout({
         type: 'error',
         messageId: 'ui-invoice.settings.adjustments.update.error',
