@@ -1,0 +1,88 @@
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
+
+import {
+  act,
+  renderHook,
+} from '@folio/jest-config-stripes/testing-library/react';
+import { useOkapiKy } from '@folio/stripes/core';
+
+import { INVOICE_STORAGE_SETTINGS_API } from '../../../common/constants';
+import { useInvoiceStorageSettingsMutation } from './useInvoiceStorageSettingsMutation';
+
+const queryClient = new QueryClient();
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
+);
+
+const postMock = jest.fn((_, opts) => ({
+  json: () => Promise.resolve(opts.json),
+}));
+const putMock = jest.fn();
+const deleteMock = jest.fn();
+
+describe('useInvoiceStorageSettingsMutation', () => {
+  beforeEach(() => {
+    useOkapiKy.mockReturnValue({
+      put: putMock,
+      post: postMock,
+      delete: deleteMock,
+    });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should call PUT when data has an id', async () => {
+    const data = { id: '123', key: 'foo', value: 'bar' };
+
+    putMock.mockResolvedValue({ ok: true });
+
+    const { result } = renderHook(() => useInvoiceStorageSettingsMutation(), { wrapper });
+
+    await act(async () => {
+      await result.current.upsertSetting({ data });
+    });
+
+    expect(putMock).toHaveBeenCalledWith(
+      `${INVOICE_STORAGE_SETTINGS_API}/${data.id}`,
+      { json: data },
+    );
+    expect(postMock).not.toHaveBeenCalled();
+  });
+
+  it('should call POST when data does not have an id', async () => {
+    const data = { key: 'foo', value: 'bar' };
+
+    const { result } = renderHook(() => useInvoiceStorageSettingsMutation(), { wrapper });
+
+    await act(async () => {
+      await result.current.upsertSetting({ data });
+    });
+
+    expect(postMock).toHaveBeenCalledWith(
+      INVOICE_STORAGE_SETTINGS_API,
+      { json: data },
+    );
+    expect(putMock).not.toHaveBeenCalled();
+  });
+
+  it('should call DELETE when data has an id', async () => {
+    const data = { id: '123', key: 'foo', value: 'bar' };
+
+    const { result } = renderHook(() => useInvoiceStorageSettingsMutation(), { wrapper });
+
+    await act(async () => {
+      await result.current.deleteSetting({ id: data.id });
+    });
+
+    expect(deleteMock).toHaveBeenCalledWith(
+      `${INVOICE_STORAGE_SETTINGS_API}/${data.id}`,
+    );
+  });
+});

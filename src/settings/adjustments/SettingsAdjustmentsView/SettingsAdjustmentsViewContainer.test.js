@@ -1,32 +1,65 @@
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  act,
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 
-import { match } from '../../../../test/jest/fixtures';
-
+import { match } from 'fixtures';
+import {
+  ADJUSTMENT_PRORATE_VALUES,
+  ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
+  ADJUSTMENT_TYPE_VALUES,
+  CONFIG_NAME_ADJUSTMENTS,
+} from '../../../common/constants';
+import {
+  useAdjustmentsSetting,
+  useAdjustmentsSettingsMutation,
+} from '../../hooks';
 import SettingsAdjustmentsView from './SettingsAdjustmentsView';
 import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsViewContainer';
 
+jest.mock('../../hooks', () => ({
+  ...jest.requireActual('../../hooks'),
+  useAdjustmentsSetting: jest.fn(),
+  useAdjustmentsSettingsMutation: jest.fn(),
+}));
 jest.mock('./SettingsAdjustmentsView', () => jest.fn().mockReturnValue('SettingsAdjustmentsView'));
 
-const mutatorMock = {
-  configAdjustment: {
-    GET: jest.fn(() => Promise.resolve({})),
-    DELETE: jest.fn(() => Promise.resolve()),
-  },
-};
 const defaultProps = {
   rootPath: '/',
   match,
   close: jest.fn(),
   showSuccessDeleteMessage: jest.fn(),
-  mutator: mutatorMock,
+  refetch: jest.fn(),
 };
-const renderSettingsAdjustmentsViewContainer = (props = defaultProps) => render(
-  <SettingsAdjustmentsViewContainer {...props} />,
+const renderSettingsAdjustmentsViewContainer = (props = {}) => render(
+  <SettingsAdjustmentsViewContainer
+    {...defaultProps}
+    {...props}
+  />,
 );
+
+const settingStub = {
+  id: 'test-id',
+  key: CONFIG_NAME_ADJUSTMENTS,
+  value: JSON.stringify({
+    description: 'Test Description',
+    amount: 100,
+    prorate: ADJUSTMENT_PRORATE_VALUES.byAmount,
+    relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn,
+    type: ADJUSTMENT_TYPE_VALUES.amount,
+  }),
+};
+
+const deleteSettingMock = jest.fn(() => Promise.resolve());
 
 describe('SettingsAdjustmentsViewContainer', () => {
   beforeEach(() => {
-    SettingsAdjustmentsView.mockClear();
+    useAdjustmentsSetting.mockReturnValue({ setting: settingStub });
+    useAdjustmentsSettingsMutation.mockReturnValue({ deleteSetting: deleteSettingMock });
+  });
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should display SettingsAdjustmentsView', () => {
@@ -35,55 +68,48 @@ describe('SettingsAdjustmentsViewContainer', () => {
     expect(screen.getByText('SettingsAdjustmentsView')).toBeDefined();
   });
 
-  it('should fetch adjustment', () => {
-    const mutator = { configAdjustment: { GET: jest.fn(() => Promise.reject()) } };
-
-    renderSettingsAdjustmentsViewContainer({
-      ...defaultProps,
-      mutator,
-    });
-
-    expect(mutator.configAdjustment.GET).toHaveBeenCalled();
-  });
-
   describe('Actions', () => {
-    it('should make Delete request when delete adjustment (onDelete) action is called', () => {
+    it('should make Delete request when delete adjustment (onDelete) action is called', async () => {
       renderSettingsAdjustmentsViewContainer();
 
-      SettingsAdjustmentsView.mock.calls[0][0].onDelete();
+      await act(async () => {
+        await SettingsAdjustmentsView.mock.calls[0][0].onDelete();
+      });
 
-      expect(mutatorMock.configAdjustment.DELETE).toHaveBeenCalled();
+      expect(deleteSettingMock).toHaveBeenCalled();
+      expect(defaultProps.refetch).toHaveBeenCalled();
     });
 
     it('should close view when adjustment has been deleted', async () => {
-      const close = jest.fn();
+      renderSettingsAdjustmentsViewContainer();
 
-      renderSettingsAdjustmentsViewContainer({ ...defaultProps, close });
+      await act(async () => {
+        await SettingsAdjustmentsView.mock.calls[0][0].onDelete();
+      });
 
-      await SettingsAdjustmentsView.mock.calls[0][0].onDelete();
-
-      expect(close).toHaveBeenCalled();
+      expect(defaultProps.close).toHaveBeenCalled();
     });
 
     it('should show success message when adjustment has been deleted', async () => {
-      const showSuccessDeleteMessage = jest.fn();
+      renderSettingsAdjustmentsViewContainer();
 
-      renderSettingsAdjustmentsViewContainer({ ...defaultProps, showSuccessDeleteMessage });
+      await act(async () => {
+        await SettingsAdjustmentsView.mock.calls[0][0].onDelete();
+      });
 
-      await SettingsAdjustmentsView.mock.calls[0][0].onDelete();
-
-      expect(showSuccessDeleteMessage).toHaveBeenCalled();
+      expect(defaultProps.showSuccessDeleteMessage).toHaveBeenCalled();
     });
 
     it('should not close view when adjustment has not been deleted', async () => {
-      const close = jest.fn();
+      deleteSettingMock.mockImplementation(() => Promise.reject());
 
-      mutatorMock.configAdjustment.DELETE.mockClear().mockImplementation(() => Promise.reject());
-      renderSettingsAdjustmentsViewContainer({ ...defaultProps, close });
+      renderSettingsAdjustmentsViewContainer();
 
-      await SettingsAdjustmentsView.mock.calls[0][0].onDelete();
+      await act(async () => {
+        await SettingsAdjustmentsView.mock.calls[0][0].onDelete();
+      });
 
-      expect(close).not.toHaveBeenCalled();
+      expect(defaultProps.close).not.toHaveBeenCalled();
     });
   });
 });

@@ -1,19 +1,19 @@
-import { baseManifest, CONFIG_API } from '@folio/stripes-acq-components';
+import { baseManifest } from '@folio/stripes-acq-components';
 
 import {
   CONFIG_NAME_APPROVALS,
-  CONFIG_MODULE_INVOICE,
+  INVOICE_STORAGE_SETTINGS_API,
 } from '../constants';
 
 export const configApprovals = {
   ...baseManifest,
-  path: CONFIG_API,
-  records: 'configs',
+  path: INVOICE_STORAGE_SETTINGS_API,
+  records: 'settings',
   fetch: false,
   accumulate: true,
   GET: {
     params: {
-      query: `(module=${CONFIG_MODULE_INVOICE} and configName=${CONFIG_NAME_APPROVALS})`,
+      query: `(key=${CONFIG_NAME_APPROVALS})`,
     },
   },
 };

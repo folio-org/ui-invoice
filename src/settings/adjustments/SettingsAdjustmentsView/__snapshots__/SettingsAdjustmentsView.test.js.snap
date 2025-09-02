@@ -12,6 +12,9 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
       tabindex="-1"
     >
       <div>
+        TitleManager
+      </div>
+      <div>
         <section
           class="pane focusIndicator"
           id="invoice-settings-adjustment-view"

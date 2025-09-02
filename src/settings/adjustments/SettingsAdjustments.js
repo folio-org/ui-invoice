@@ -1,30 +1,28 @@
-import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 import {
   Route,
   Switch,
-  withRouter,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
   PermissionedRoute,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
-import { CONFIG_ADJUSTMENTS } from '../../common/resources';
+import { useAdjustmentsSettings } from '../../common/hooks';
+import { SettingsAdjustmentsCreate } from './SettingsAdjustmentsCreate';
+import { SettingsAdjustmentsEdit } from './SettingsAdjustmentsEdit';
 import SettingsAdjustmentsList from './SettingsAdjustmentsList';
-import SettingsAdjustmentsEditorContainer from './SettingsAdjustmentsEditor';
 import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsView';
+
 import { getSettingsAdjustmentsList } from './util';
 
 export const RETURN_LINK_LABEL_ID = 'ui-invoice.settings.adjustments.label';
 
-const SettingsAdjustmentsEditor = withRouter(SettingsAdjustmentsEditorContainer);
-
-function SettingsAdjustments({ history, label, match: { path }, resources }) {
+function SettingsAdjustments({ history, label, match: { path } }) {
   const closePane = useCallback(() => {
     history.push(path);
   }, [history, path]);
@@ -37,7 +35,12 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
     });
   }, [sendCallout]);
 
-  const adjustments = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
+  const {
+    refetch,
+    settings,
+  } = useAdjustmentsSettings();
+
+  const adjustments = getSettingsAdjustmentsList(settings);
 
   return (
     <Switch>
@@ -59,7 +62,10 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
       >
-        <SettingsAdjustmentsEditor close={closePane} />
+        <SettingsAdjustmentsCreate
+          onClose={closePane}
+          refetch={refetch}
+        />
       </PermissionedRoute>
       <Route
         path={`${path}/:id/view`}
@@ -67,6 +73,7 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
           <SettingsAdjustmentsViewContainer
             {...props}
             close={closePane}
+            refetch={refetch}
             rootPath={path}
             showSuccessDeleteMessage={showSuccessDeleteMessage}
           />
@@ -79,21 +86,19 @@ function SettingsAdjustments({ history, label, match: { path }, resources }) {
         returnLink={path}
         returnLinkLabelId={RETURN_LINK_LABEL_ID}
       >
-        <SettingsAdjustmentsEditor close={closePane} />
+        <SettingsAdjustmentsEdit
+          onClose={closePane}
+          refetch={refetch}
+        />
       </PermissionedRoute>
     </Switch>
   );
 }
 
-SettingsAdjustments.manifest = Object.freeze({
-  configAdjustments: CONFIG_ADJUSTMENTS,
-});
-
 SettingsAdjustments.propTypes = {
   label: PropTypes.node.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
   history: ReactRouterPropTypes.history.isRequired,
-  resources: PropTypes.object.isRequired,
 };
 
 export default SettingsAdjustments;

@@ -1,14 +1,21 @@
-import React, {
+import get from 'lodash/get';
+import PropTypes from 'prop-types';
+import {
   useCallback,
   useEffect,
   useState,
 } from 'react';
-import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import { LoadingPane } from '@folio/stripes/components';
-import { LIMIT_MAX, useShowCallout } from '@folio/stripes-acq-components';
+import { TitleManager } from '@folio/stripes/core';
+import {
+  LIMIT_MAX,
+  useShowCallout,
+} from '@folio/stripes-acq-components';
 
 import {
   credentialsResource,
@@ -28,10 +35,12 @@ import {
 import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
 
 const BatchGroupConfigurationSettings = ({ mutator }) => {
+  const intl = useIntl();
+  const showCallout = useShowCallout();
+
   const [selectedBatchGroupId, setSelectedBatchGroupId] = useState();
   const [exportConfig, setExportConfig] = useState();
   const [credentials, setCredentials] = useState();
-  const showCallout = useShowCallout();
 
   const { batchGroups, isLoading } = useBatchGroups();
 
@@ -152,15 +161,17 @@ const BatchGroupConfigurationSettings = ({ mutator }) => {
   }
 
   return (
-    <BatchGroupConfigurationForm
-      batchGroups={batchGroups}
-      initialValues={initialValues}
-      onSubmit={onSave}
-      selectedBatchGroupId={selectedBatchGroupId}
-      selectBatchGroup={setSelectedBatchGroupId}
-      testConnection={testConnection}
-      hasCredsSaved={Boolean(credentials?.id)}
-    />
+    <TitleManager record={intl.formatMessage({ id: 'ui-invoice.settings.batchGroupConfiguration.label' })}>
+      <BatchGroupConfigurationForm
+        batchGroups={batchGroups}
+        initialValues={initialValues}
+        onSubmit={onSave}
+        selectedBatchGroupId={selectedBatchGroupId}
+        selectBatchGroup={setSelectedBatchGroupId}
+        testConnection={testConnection}
+        hasCredsSaved={Boolean(credentials?.id)}
+      />
+    </TitleManager>
   );
 };
 

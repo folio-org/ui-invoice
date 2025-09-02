@@ -1,8 +1,6 @@
 import { baseManifest } from '@folio/stripes-acq-components';
 
-import {
-  EXPORT_CONFIGURATIONS_API,
-} from '../constants';
+import { EXPORT_CONFIGURATIONS_API } from '../constants';
 
 export const exportConfigsResource = {
   ...baseManifest,

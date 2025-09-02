@@ -1,49 +1,41 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { useIntl } from 'react-intl';
 
-import { ConfigManager } from '@folio/stripes/smart-components';
+import { TitleManager } from '@folio/stripes/core';
 import { getConfigSetting } from '@folio/stripes-acq-components';
 
-import { stripesShape } from '@folio/stripes/core';
-
-import {
-  CONFIG_MODULE_INVOICE,
-  CONFIG_NAME_VOUCHER_NUMBER,
-} from '../../common/constants';
-
+import { CONFIG_NAME_VOUCHER_NUMBER } from '../../common/constants';
+import { InvoiceStorageSettingsManager } from '../components';
 import SettingsVoucherNumberForm from './SettingsVoucherNumberForm';
 
-class SettingsVoucherNumber extends Component {
-  static propTypes = {
-    label: PropTypes.node.isRequired,
-    stripes: stripesShape.isRequired,
-  };
+import css from '../components/InvoiceStorageSettingsManager/InvoiceStorageSettingsManager.css';
 
-  constructor(props) {
-    super(props);
+const onBeforeSave = (data) => JSON.stringify(data);
 
-    this.configManager = props.stripes.connect(ConfigManager);
-  }
+const SettingsVoucherNumber = ({ label }) => {
+  const intl = useIntl();
 
-  beforeSave = (data) => JSON.stringify(data);
-
-  render() {
-    const { label } = this.props;
-
-    return (
-      <this.configManager
-        configName={CONFIG_NAME_VOUCHER_NUMBER}
-        getInitialValues={getConfigSetting}
-        label={label}
-        moduleName={CONFIG_MODULE_INVOICE}
-        onBeforeSave={this.beforeSave}
+  return (
+    <TitleManager record={intl.formatMessage({ id: 'ui-invoice.settings.voucherNumber.label' })}>
+      <div
+        data-test-invoice-settings-voucher-number
+        className={css.formWrapper}
       >
-        <div data-test-invoice-settings-voucher-number>
+        <InvoiceStorageSettingsManager
+          configName={CONFIG_NAME_VOUCHER_NUMBER}
+          getInitialValues={getConfigSetting}
+          label={label}
+          onBeforeSave={onBeforeSave}
+        >
           <SettingsVoucherNumberForm />
-        </div>
-      </this.configManager>
-    );
-  }
-}
+        </InvoiceStorageSettingsManager>
+      </div>
+    </TitleManager>
+  );
+};
+
+SettingsVoucherNumber.propTypes = {
+  label: PropTypes.node.isRequired,
+};
 
 export default SettingsVoucherNumber;

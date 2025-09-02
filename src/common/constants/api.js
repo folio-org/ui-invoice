@@ -10,6 +10,7 @@ export const EXPORT_CONFIGURATIONS_API = 'batch-voucher/export-configurations';
 export const FISCAL_YEARS_API = 'finance/fiscal-years';
 export const INVOICE_DOCUMENTS_API = '/documents';
 export const INVOICE_LINE_API = 'invoice/invoice-lines';
+export const INVOICE_STORAGE_SETTINGS_API = 'invoice-storage/settings';
 export const VALIDATE_INVOICE_FUND_DISTRIBUTION_API = `${INVOICE_LINE_API}/fund-distributions/validate`;
 export const VOUCHER_LINES_API = 'voucher/voucher-lines';
 export const VOUCHER_NUMBER_START_API = 'voucher/voucher-number/start';

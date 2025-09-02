@@ -1,56 +1,71 @@
-import React, { useCallback, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import {
+  useCallback,
+  useMemo,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
+import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
-  stripesConnect,
-} from '@folio/stripes/core';
+  Layer,
+  LoadingView,
+} from '@folio/stripes/components';
+import { useStripes } from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
-import { CONFIG_ADJUSTMENT } from '../../../common/resources';
+import {
+  useAdjustmentsSetting,
+  useAdjustmentsSettingsMutation,
+} from '../../hooks';
 import { getSettingsAdjustmentsList } from '../util';
 import SettingsAdjustmentsView from './SettingsAdjustmentsView';
 
 function SettingsAdjustmentsViewContainer({
   close,
   match: { params: { id } },
-  mutator: { configAdjustment },
+  refetch,
   rootPath,
   showSuccessDeleteMessage,
-  stripes,
   history,
 }) {
-  const sendCallout = useShowCallout();
-  const [adjustment, setAdjustment] = useState();
+  const stripes = useStripes();
+  const showCallout = useShowCallout();
 
-  useEffect(() => {
-    configAdjustment.GET()
-      .then(response => {
-        const adj = getSettingsAdjustmentsList([response]);
+  const {
+    isFetching,
+    setting,
+  } = useAdjustmentsSetting(id, {
+    onError: () => showCallout({
+      message: <FormattedMessage id="ui-invoice.errors.cantLoadAdjustment" />,
+      type: 'error',
+    }),
+  });
 
-        setAdjustment(adj[0]);
-      })
-      .catch(() => sendCallout({
-        message: <FormattedMessage id="ui-invoice.errors.cantLoadAdjustment" />,
-        type: 'error',
-      }));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, sendCallout]);
+  const { deleteSetting } = useAdjustmentsSettingsMutation();
 
   const deleteAdjustment = useCallback(async () => {
     try {
-      await configAdjustment.DELETE({ id });
+      await deleteSetting({ id });
+      refetch();
       close();
       showSuccessDeleteMessage();
     } catch (e) {
-      sendCallout({
+      showCallout({
         message: <FormattedMessage id="ui-invoice.settings.adjustments.remove.error" />,
         type: 'error',
       });
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [close, id, sendCallout, showSuccessDeleteMessage]);
+  }, [close, deleteSetting, id, refetch, showCallout, showSuccessDeleteMessage]);
+
+  const adjustment = useMemo(() => setting && getSettingsAdjustmentsList([setting])[0], [setting]);
+
+  if (isFetching) {
+    return (
+      <Layer isOpen>
+        <LoadingView />
+      </Layer>
+    );
+  }
 
   return (
     <SettingsAdjustmentsView
@@ -64,22 +79,13 @@ function SettingsAdjustmentsViewContainer({
   );
 }
 
-SettingsAdjustmentsViewContainer.manifest = Object.freeze({
-  configAdjustment: {
-    ...CONFIG_ADJUSTMENT,
-    fetch: false,
-    accumulate: true,
-  },
-});
-
 SettingsAdjustmentsViewContainer.propTypes = {
   close: PropTypes.func.isRequired,
-  mutator: PropTypes.object.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
   match: ReactRouterPropTypes.match.isRequired,
+  refetch: PropTypes.func.isRequired,
   rootPath: PropTypes.string.isRequired,
   showSuccessDeleteMessage: PropTypes.func.isRequired,
-  stripes: PropTypes.object.isRequired,
-  history: ReactRouterPropTypes.history.isRequired,
 };
 
-export default stripesConnect(SettingsAdjustmentsViewContainer);
+export default SettingsAdjustmentsViewContainer;

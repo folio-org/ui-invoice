@@ -1,10 +1,14 @@
-import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { FormattedMessage } from 'react-intl';
+import { useMemo } from 'react';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import { useHistory } from 'react-router';
 
 import {
   IfPermission,
+  TitleManager,
   useStripes,
 } from '@folio/stripes/core';
 import {
@@ -15,12 +19,18 @@ import {
   HasCommand,
   checkScope,
 } from '@folio/stripes/components';
-import { handleKeyCommand, usePaneFocus } from '@folio/stripes-acq-components';
+import {
+  handleKeyCommand,
+  usePaneFocus,
+} from '@folio/stripes-acq-components';
 
 const SettingsAdjustmentsList = ({ label, rootPath, adjustments = [] }) => {
-  const { paneTitleRef } = usePaneFocus();
-  const history = useHistory();
+  const intl = useIntl();
   const stripes = useStripes();
+  const { paneTitleRef } = usePaneFocus();
+
+  const history = useHistory();
+
   const lastMenu = useMemo(() => (
     <IfPermission perm="ui-invoice.settings.all">
       <Button
@@ -46,31 +56,33 @@ const SettingsAdjustmentsList = ({ label, rootPath, adjustments = [] }) => {
   ];
 
   return (
-    <HasCommand
-      commands={shortcuts}
-      isWithinScope={checkScope}
-      scope={document.body}
-    >
-      <Pane
-        id="setting-adjustments-pane"
-        lastMenu={lastMenu}
-        paneTitle={label}
-        paneTitleRef={paneTitleRef}
-        defaultWidth="fill"
-        fluidContentWidth
+    <TitleManager record={intl.formatMessage({ id: 'ui-invoice.settings.adjustments.label' })}>
+      <HasCommand
+        commands={shortcuts}
+        isWithinScope={checkScope}
+        scope={document.body}
       >
-        <NavList>
-          {adjustments.map(d => (
-            <NavListItem
-              key={d.id}
-              to={`${rootPath}/${d.id}/view`}
-            >
-              {d.title}
-            </NavListItem>
-          ))}
-        </NavList>
-      </Pane>
-    </HasCommand>
+        <Pane
+          id="setting-adjustments-pane"
+          lastMenu={lastMenu}
+          paneTitle={label}
+          paneTitleRef={paneTitleRef}
+          defaultWidth="fill"
+          fluidContentWidth
+        >
+          <NavList>
+            {adjustments.map(d => (
+              <NavListItem
+                key={d.id}
+                to={`${rootPath}/${d.id}/view`}
+              >
+                {d.title}
+              </NavListItem>
+            ))}
+          </NavList>
+        </Pane>
+      </HasCommand>
+    </TitleManager>
   );
 };
 

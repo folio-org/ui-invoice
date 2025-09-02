@@ -1,48 +1,41 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { useIntl } from 'react-intl';
 
-import { ConfigManager } from '@folio/stripes/smart-components';
-import { stripesShape } from '@folio/stripes/core';
+import { TitleManager } from '@folio/stripes/core';
 import { getConfigSetting } from '@folio/stripes-acq-components';
 
-import {
-  CONFIG_MODULE_INVOICE,
-  CONFIG_NAME_APPROVALS,
-} from '../../common/constants';
-
+import { CONFIG_NAME_APPROVALS } from '../../common/constants';
+import { InvoiceStorageSettingsManager } from '../components';
 import ApprovalSettingsForm from './ApprovalSettingsForm';
 
-class ApprovalSettings extends Component {
-  static propTypes = {
-    label: PropTypes.node.isRequired,
-    stripes: stripesShape.isRequired,
-  };
+import css from '../components/InvoiceStorageSettingsManager/InvoiceStorageSettingsManager.css';
 
-  constructor(props) {
-    super(props);
+const onBeforeSave = (data) => JSON.stringify(data);
 
-    this.configManager = props.stripes.connect(ConfigManager);
-  }
+const ApprovalSettings = ({ label }) => {
+  const intl = useIntl();
 
-  beforeSave = (data) => JSON.stringify(data);
-
-  render() {
-    const { label } = this.props;
-
-    return (
-      <this.configManager
-        configName={CONFIG_NAME_APPROVALS}
-        getInitialValues={getConfigSetting}
-        label={label}
-        moduleName={CONFIG_MODULE_INVOICE}
-        onBeforeSave={this.beforeSave}
+  return (
+    <TitleManager record={intl.formatMessage({ id: 'ui-invoice.settings.approvals.label' })}>
+      <div
+        data-test-invoice-settings-approvals
+        className={css.formWrapper}
       >
-        <div data-test-invoice-settings-approvals>
+        <InvoiceStorageSettingsManager
+          configName={CONFIG_NAME_APPROVALS}
+          getInitialValues={getConfigSetting}
+          label={label}
+          onBeforeSave={onBeforeSave}
+        >
           <ApprovalSettingsForm />
-        </div>
-      </this.configManager>
-    );
-  }
-}
+        </InvoiceStorageSettingsManager>
+      </div>
+    </TitleManager>
+  );
+};
+
+ApprovalSettings.propTypes = {
+  label: PropTypes.node.isRequired,
+};
 
 export default ApprovalSettings;

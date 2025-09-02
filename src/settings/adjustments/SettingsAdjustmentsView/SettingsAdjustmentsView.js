@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { useState } from 'react';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 
 import {
   Button,
@@ -18,48 +20,57 @@ import {
   PaneHeader,
   Row,
 } from '@folio/stripes/components';
+import {
+  stripesShape,
+  TitleManager,
+} from '@folio/stripes/core';
 import { ViewMetaData } from '@folio/stripes/smart-components';
 import { handleKeyCommand } from '@folio/stripes-acq-components';
 
 import { hasEditSettingsPerm } from '../../utils';
 
-class SettingsAdjustmentsView extends Component {
-  static propTypes = {
-    close: PropTypes.func.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    stripes: PropTypes.object.isRequired,
-    history: ReactRouterPropTypes.history.isRequired,
-    adjustment: PropTypes.object,
-    rootPath: PropTypes.string,
-  };
+const defaultProps = {
+  adjustment: {
+    adjustment: {},
+  },
+};
 
-  static defaultProps = {
-    adjustment: { adjustment: {} },
-  }
+const SettingsAdjustmentsView = ({
+  close,
+  adjustment = defaultProps.adjustment,
+  history,
+  stripes,
+  rootPath,
+  onDelete,
+}) => {
+  const intl = useIntl();
 
-  constructor(props, context) {
-    super(props, context);
+  const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
 
-    this.state = {
-      showConfirmDelete: false,
-    };
-  }
+  const {
+    adjustment: {
+      alwaysShow,
+      defaultAmount,
+      description,
+      type,
+      prorate,
+      relationToTotal,
+      exportToAccounting,
+    },
+    id,
+    metadata,
+    title,
+  } = adjustment;
 
-  deleteAdjustment = () => {
-    const { onDelete } = this.props;
+  const showConfirmDelete = () => setIsConfirmDeleteOpen(true);
+  const hideConfirmDelete = () => setIsConfirmDeleteOpen(false);
 
-    this.hideConfirmDelete();
+  const deleteAdjustment = () => {
+    hideConfirmDelete();
     onDelete();
   };
 
-  showConfirmDelete = () => this.setState({ showConfirmDelete: true });
-
-  hideConfirmDelete = () => this.setState({ showConfirmDelete: false });
-
-  getActionMenu = ({ onToggle }) => {
-    const { rootPath, adjustment } = this.props;
-    const id = get(adjustment, 'id');
-
+  const getActionMenu = ({ onToggle }) => {
     return (
       <div data-test-view-adjustment-actions>
         <Button
@@ -77,7 +88,7 @@ class SettingsAdjustmentsView extends Component {
           buttonStyle="dropdownItem"
           onClick={() => {
             onToggle();
-            this.showConfirmDelete();
+            showConfirmDelete();
           }}
         >
           <Icon icon="trash">
@@ -88,55 +99,40 @@ class SettingsAdjustmentsView extends Component {
     );
   };
 
-  renderHeader = (paneHeaderProps) => {
-    const {
-      adjustment,
-      close,
-      stripes,
-    } = this.props;
-
+  const renderHeader = (paneHeaderProps) => {
     return (
       <PaneHeader
         {...paneHeaderProps}
-        actionMenu={hasEditSettingsPerm(stripes) && this.getActionMenu}
+        actionMenu={hasEditSettingsPerm(stripes) && getActionMenu}
         dismissible
         onClose={close}
-        paneTitle={adjustment.title}
+        paneTitle={title}
       />
     );
   };
 
-  render() {
-    const {
-      close,
-      adjustment,
-      history,
-      stripes,
-      rootPath,
-    } = this.props;
-    const { showConfirmDelete } = this.state;
-    const {
-      metadata,
-      adjustment: { alwaysShow, defaultAmount, description, type, prorate, relationToTotal, exportToAccounting },
-    } = adjustment;
-    const shortcuts = [
-      {
-        name: 'cancel',
-        shortcut: 'esc',
-        handler: handleKeyCommand(close),
-      },
-      {
-        name: 'edit',
-        handler: handleKeyCommand(() => {
-          if (stripes.hasPerm('ui-invoice.settings.all')) history.push(`${rootPath}/${adjustment.id}/edit`);
-        }),
-      },
-    ];
+  const shortcuts = [
+    {
+      name: 'cancel',
+      shortcut: 'esc',
+      handler: handleKeyCommand(close),
+    },
+    {
+      name: 'edit',
+      handler: handleKeyCommand(() => {
+        if (stripes.hasPerm('ui-invoice.settings.all')) history.push(`${rootPath}/${adjustment.id}/edit`);
+      }),
+    },
+  ];
 
-    return (
-      <Layer
-        contentLabel="Adjustment details"
-        isOpen
+  return (
+    <Layer
+      contentLabel="Adjustment details"
+      isOpen
+    >
+      <TitleManager
+        page={intl.formatMessage({ id: 'ui-invoice.settings.adjustments.label' })}
+        record={title}
       >
         <HasCommand
           commands={shortcuts}
@@ -146,7 +142,7 @@ class SettingsAdjustmentsView extends Component {
           <Pane
             id="invoice-settings-adjustment-view"
             defaultWidth="fill"
-            renderHeader={this.renderHeader}
+            renderHeader={renderHeader}
           >
             <Row center="xs">
               <Col xs={12} md={8}>
@@ -226,22 +222,32 @@ class SettingsAdjustmentsView extends Component {
                 </Row>
               </Col>
             </Row>
-            {showConfirmDelete && (
+
+            {isConfirmDeleteOpen && (
               <ConfirmationModal
                 id="delete-adjustment-modal"
                 confirmLabel={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.confirmLabel" />}
                 heading={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.heading" values={{ description }} />}
                 message={<FormattedMessage id="ui-invoice.settings.adjustments.confirmDelete.message" />}
-                onCancel={this.hideConfirmDelete}
-                onConfirm={this.deleteAdjustment}
+                onCancel={hideConfirmDelete}
+                onConfirm={deleteAdjustment}
                 open
               />
             )}
           </Pane>
         </HasCommand>
-      </Layer>
-    );
-  }
-}
+      </TitleManager>
+    </Layer>
+  );
+};
+
+SettingsAdjustmentsView.propTypes = {
+  adjustment: PropTypes.shape({}).isRequired,
+  close: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  rootPath: PropTypes.string.isRequired,
+  stripes: stripesShape.isRequired,
+  history: ReactRouterPropTypes.history.isRequired,
+};
 
 export default SettingsAdjustmentsView;

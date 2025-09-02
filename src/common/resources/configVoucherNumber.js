@@ -1,16 +1,16 @@
-import { baseManifest, CONFIG_API } from '@folio/stripes-acq-components';
+import { baseManifest } from '@folio/stripes-acq-components';
 import {
-  CONFIG_MODULE_INVOICE,
   CONFIG_NAME_VOUCHER_NUMBER,
+  INVOICE_STORAGE_SETTINGS_API,
 } from '../constants';
 
 export const configVoucherNumber = {
   ...baseManifest,
-  records: 'configs',
-  path: CONFIG_API,
+  records: 'settings',
+  path: INVOICE_STORAGE_SETTINGS_API,
   GET: {
     params: {
-      query: `(module=${CONFIG_MODULE_INVOICE} and configName=${CONFIG_NAME_VOUCHER_NUMBER})`,
+      query: `(key=${CONFIG_NAME_VOUCHER_NUMBER})`,
     },
   },
 };

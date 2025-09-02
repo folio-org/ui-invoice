@@ -1,0 +1,1 @@
+export { SettingsAdjustmentsEdit } from './SettingsAdjustmentsEdit';

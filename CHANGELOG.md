@@ -11,6 +11,7 @@
 * Display a confirmation to a user if an invoice currency differs from a currency of the associated order. Refs UINV-579.
 * Add `settings.invoice.enabled` as a subPermission to `ui-invoice.batchVoucher.exportConfigs.credentials.view` so you can access Settings if you only assign that permission (or `ui-invoice.batchVoucher.exportConfigs.credentials.edit`). Refs UINV-608.
 * Display exchanged totals for invoice lines. Refs UINV-592.
+* *BREAKING* Replace using `mod-configuration` to use internal invoice storage. Refs UINV-607.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.3...v7.0.4)

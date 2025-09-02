@@ -21,7 +21,7 @@ describe('useConfigsAdjustments', () => {
     useOkapiKy.mockClear().mockReturnValue({
       get: () => ({
         json: async () => ({
-          configs: [{ value: configValue }],
+          settings: [{ value: configValue }],
         }),
       }),
     });
