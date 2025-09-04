@@ -18,6 +18,7 @@ import {
   vendor,
 } from 'fixtures';
 import {
+  useAdjustmentsSettings,
   useFundDistributionValidation,
   useInvoice,
   useInvoiceLine,
@@ -35,6 +36,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
 
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
+  useAdjustmentsSettings: jest.fn(),
   useFundDistributionValidation: jest.fn(),
   useInvoice: jest.fn(),
   useInvoiceLine: jest.fn(),
@@ -73,11 +75,12 @@ const renderInvoiceLineFormContainer = (props = {}) => render(
 
 describe('InvoiceLineFormContainer', () => {
   beforeEach(() => {
-    useFundDistributionValidation.mockClear().mockReturnValue({ validateFundDistributions: jest.fn() });
-    useInvoice.mockClear().mockReturnValue({ invoice, isLoading: false });
-    useInvoiceLine.mockClear().mockReturnValue({ invoiceLine, isLoading: false });
-    useOrderLine.mockClear().mockReturnValue({ orderLine });
-    useOrganization.mockClear().mockReturnValue({ organization: vendor });
+    useAdjustmentsSettings.mockReturnValue({ adjustmentPresets: [] });
+    useFundDistributionValidation.mockReturnValue({ validateFundDistributions: jest.fn() });
+    useInvoice.mockReturnValue({ invoice, isLoading: false });
+    useInvoiceLine.mockReturnValue({ invoiceLine, isLoading: false });
+    useOrderLine.mockReturnValue({ orderLine });
+    useOrganization.mockReturnValue({ organization: vendor });
   });
 
   afterEach(() => {

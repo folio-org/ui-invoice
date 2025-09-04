@@ -1,3 +1,4 @@
+export const ADJUSTMENTS_PRESETS_API = 'invoice-storage/adjustment-presets';
 export const AUDIT_INVOICE_API = 'audit-data/acquisition/invoice';
 export const AUDIT_INVOICE_LINE_API = 'audit-data/acquisition/invoice-line';
 export const BATCH_GROUPS_API = 'batch-groups';

@@ -11,7 +11,6 @@ import {
   ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
-  CONFIG_NAME_ADJUSTMENTS,
 } from '../../../common/constants';
 import { useAdjustmentsSettingsMutation } from '../../hooks';
 import { SettingsAdjustmentsForm } from '../SettingsAdjustmentsForm';
@@ -28,18 +27,11 @@ export const SettingsAdjustmentsCreate = ({ onClose, refetch }) => {
   const intl = useIntl();
   const showCallout = useShowCallout();
 
-  const { upsertSetting } = useAdjustmentsSettingsMutation();
+  const { createSetting } = useAdjustmentsSettingsMutation();
 
   const onSubmit = async (values) => {
-    const value = JSON.stringify(values);
-
-    const data = {
-      key: CONFIG_NAME_ADJUSTMENTS,
-      value,
-    };
-
     try {
-      await upsertSetting({ data });
+      await createSetting({ data: values });
       refetch();
       onClose();
       showCallout({

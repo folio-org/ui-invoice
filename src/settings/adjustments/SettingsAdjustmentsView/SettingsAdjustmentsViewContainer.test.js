@@ -9,7 +9,6 @@ import {
   ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
-  CONFIG_NAME_ADJUSTMENTS,
 } from '../../../common/constants';
 import {
   useAdjustmentsSetting,
@@ -41,21 +40,18 @@ const renderSettingsAdjustmentsViewContainer = (props = {}) => render(
 
 const settingStub = {
   id: 'test-id',
-  key: CONFIG_NAME_ADJUSTMENTS,
-  value: JSON.stringify({
-    description: 'Test Description',
-    amount: 100,
-    prorate: ADJUSTMENT_PRORATE_VALUES.byAmount,
-    relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn,
-    type: ADJUSTMENT_TYPE_VALUES.amount,
-  }),
+  description: 'Test Description',
+  defaultAmount: 100,
+  prorate: ADJUSTMENT_PRORATE_VALUES.byAmount,
+  relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn,
+  type: ADJUSTMENT_TYPE_VALUES.amount,
 };
 
 const deleteSettingMock = jest.fn(() => Promise.resolve());
 
 describe('SettingsAdjustmentsViewContainer', () => {
   beforeEach(() => {
-    useAdjustmentsSetting.mockReturnValue({ setting: settingStub });
+    useAdjustmentsSetting.mockReturnValue({ adjustmentPreset: settingStub });
     useAdjustmentsSettingsMutation.mockReturnValue({ deleteSetting: deleteSettingMock });
   });
   afterEach(() => {
