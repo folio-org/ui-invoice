@@ -128,7 +128,7 @@ describe('SettingsAdjustmentsEdit', () => {
       });
 
       await waitFor(() => {
-        expect(JSON.parse(mockUpdateSetting.mock.calls[0][0].data.value)).toEqual({
+        expect(mockUpdateSetting.mock.calls[0][0].data).toEqual({
           ...adjustmentStub,
           description: 'test adjustment',
           prorate: ADJUSTMENT_PRORATE_VALUES.byQuantity,

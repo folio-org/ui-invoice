@@ -99,12 +99,15 @@ describe('SettingsAdjustmentsCreate', () => {
   });
 
   describe('Form Submission', () => {
-    it('should call upsertSetting with correct data when form is submitted', async () => {
+    it('should call createSetting with correct data when form is submitted', async () => {
       mockCreateSetting.mockResolvedValueOnce({});
 
       renderComponent();
 
       await fillRequiredFields();
+      await act(async () => {
+        await userEvent.type(screen.getByRole('spinbutton', { name: 'ui-invoice.settings.adjustments.value' }), '100');
+      });
 
       const submitButton = screen.getByText('stripes-components.saveAndClose');
 
@@ -119,8 +122,8 @@ describe('SettingsAdjustmentsCreate', () => {
             defaultAmount: 100,
             description: 'test adjustment',
             exportToAccounting: false,
-            prorate: ADJUSTMENT_PRORATE_VALUES.byAmount,
-            relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.includedIn,
+            prorate: ADJUSTMENT_PRORATE_VALUES.notProrated,
+            relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo,
             type: ADJUSTMENT_TYPE_VALUES.amount,
           },
         });

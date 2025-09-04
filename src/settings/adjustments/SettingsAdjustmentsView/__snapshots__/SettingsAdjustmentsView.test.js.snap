@@ -57,18 +57,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
               <div
                 class="paneHeaderCenterInner"
                 id="paneHeaderinvoice-settings-adjustment-view-pane-title"
-              >
-                <h2
-                  class="paneTitle"
-                  data-test-pane-header-title="true"
-                >
-                  <span
-                    class="paneTitleLabel"
-                  >
-                    adjustment title
-                  </span>
-                </h2>
-              </div>
+              />
             </div>
             <div
               class="paneHeaderButtonsArea last"
@@ -195,7 +184,9 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                         class="kvValue"
                         data-test-kv-value="true"
                       >
-                        Amount
+                        <span>
+                          -
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -313,7 +304,9 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                         class="kvValue"
                         data-test-kv-value="true"
                       >
-                        In addition to
+                        <span>
+                          -
+                        </span>
                       </div>
                     </div>
                   </div>
