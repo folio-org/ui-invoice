@@ -16,7 +16,6 @@ import {
   ADJUSTMENT_PRORATE_VALUES,
   ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
   ADJUSTMENT_TYPE_VALUES,
-  CONFIG_NAME_ADJUSTMENTS,
 } from '../../../common/constants';
 import {
   useAdjustmentsSetting,
@@ -52,17 +51,13 @@ const adjustmentStub = {
   relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo,
   type: ADJUSTMENT_TYPE_VALUES.amount,
 };
-const settingStub = {
-  key: CONFIG_NAME_ADJUSTMENTS,
-  value: JSON.stringify(adjustmentStub),
-};
 
 const defaultProps = {
   onClose: jest.fn(),
   refetch: jest.fn(),
 };
 
-const mockUpsertSetting = jest.fn();
+const mockUpdateSetting = jest.fn();
 const showCalloutMock = jest.fn();
 
 const renderComponent = (props = {}) => render(
@@ -90,10 +85,10 @@ describe('SettingsAdjustmentsEdit', () => {
   };
 
   beforeEach(() => {
-    useAdjustmentsSetting.mockReturnValue({ setting: settingStub });
+    useAdjustmentsSetting.mockReturnValue({ adjustmentPreset: adjustmentStub });
 
     useAdjustmentsSettingsMutation.mockReturnValue({
-      upsertSetting: mockUpsertSetting,
+      updateSetting: mockUpdateSetting,
     });
 
     useShowCallout.mockReturnValue(showCalloutMock);
@@ -120,7 +115,7 @@ describe('SettingsAdjustmentsEdit', () => {
 
   describe('Form Submission', () => {
     it('should call upsertSetting with correct data when form is submitted', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
+      mockUpdateSetting.mockResolvedValueOnce({});
 
       renderComponent();
 
@@ -133,7 +128,7 @@ describe('SettingsAdjustmentsEdit', () => {
       });
 
       await waitFor(() => {
-        expect(JSON.parse(mockUpsertSetting.mock.calls[0][0].data.value)).toEqual({
+        expect(mockUpdateSetting.mock.calls[0][0].data).toEqual({
           ...adjustmentStub,
           description: 'test adjustment',
           prorate: ADJUSTMENT_PRORATE_VALUES.byQuantity,
@@ -149,7 +144,7 @@ describe('SettingsAdjustmentsEdit', () => {
     it('should show error callout when submission fails', async () => {
       const error = new Error('API Error');
 
-      mockUpsertSetting.mockRejectedValueOnce(error);
+      mockUpdateSetting.mockRejectedValueOnce(error);
 
       renderComponent();
 

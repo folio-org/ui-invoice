@@ -30,9 +30,7 @@ import { handleKeyCommand } from '@folio/stripes-acq-components';
 import { hasEditSettingsPerm } from '../../utils';
 
 const defaultProps = {
-  adjustment: {
-    adjustment: {},
-  },
+  adjustment: {},
 };
 
 const SettingsAdjustmentsView = ({
@@ -48,18 +46,15 @@ const SettingsAdjustmentsView = ({
   const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
 
   const {
-    adjustment: {
-      alwaysShow,
-      defaultAmount,
-      description,
-      type,
-      prorate,
-      relationToTotal,
-      exportToAccounting,
-    },
+    alwaysShow,
+    defaultAmount,
+    description,
+    exportToAccounting,
     id,
     metadata,
-    title,
+    prorate,
+    relationToTotal,
+    type,
   } = adjustment;
 
   const showConfirmDelete = () => setIsConfirmDeleteOpen(true);
@@ -106,7 +101,7 @@ const SettingsAdjustmentsView = ({
         actionMenu={hasEditSettingsPerm(stripes) && getActionMenu}
         dismissible
         onClose={close}
-        paneTitle={title}
+        paneTitle={description}
       />
     );
   };
@@ -132,7 +127,7 @@ const SettingsAdjustmentsView = ({
     >
       <TitleManager
         page={intl.formatMessage({ id: 'ui-invoice.settings.adjustments.label' })}
-        record={title}
+        record={description}
       >
         <HasCommand
           commands={shortcuts}

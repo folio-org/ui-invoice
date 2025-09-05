@@ -76,7 +76,7 @@ const SettingsAdjustmentsList = ({ label, rootPath, adjustments = [] }) => {
                 key={d.id}
                 to={`${rootPath}/${d.id}/view`}
               >
-                {d.title}
+                {d.description}
               </NavListItem>
             ))}
           </NavList>

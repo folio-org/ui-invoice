@@ -18,8 +18,6 @@ import { SettingsAdjustmentsEdit } from './SettingsAdjustmentsEdit';
 import SettingsAdjustmentsList from './SettingsAdjustmentsList';
 import SettingsAdjustmentsViewContainer from './SettingsAdjustmentsView';
 
-import { getSettingsAdjustmentsList } from './util';
-
 export const RETURN_LINK_LABEL_ID = 'ui-invoice.settings.adjustments.label';
 
 function SettingsAdjustments({ history, label, match: { path } }) {
@@ -36,11 +34,9 @@ function SettingsAdjustments({ history, label, match: { path } }) {
   }, [sendCallout]);
 
   const {
+    adjustmentPresets,
     refetch,
-    settings,
   } = useAdjustmentsSettings();
-
-  const adjustments = getSettingsAdjustmentsList(settings);
 
   return (
     <Switch>
@@ -51,7 +47,7 @@ function SettingsAdjustments({ history, label, match: { path } }) {
           <SettingsAdjustmentsList
             label={label}
             rootPath={path}
-            adjustments={adjustments}
+            adjustments={adjustmentPresets}
           />
         )}
       />

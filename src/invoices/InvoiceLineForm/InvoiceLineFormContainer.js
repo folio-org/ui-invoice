@@ -1,9 +1,9 @@
+import get from 'lodash/get';
 import PropTypes from 'prop-types';
 import {
   useCallback,
   useMemo,
 } from 'react';
-import get from 'lodash/get';
 import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
@@ -22,14 +22,11 @@ import {
   SUBMIT_ACTION_FIELD_NAME,
 } from '../../common/constants';
 import {
+  useAdjustmentsSettings,
   useInvoice,
   useInvoiceLine,
 } from '../../common/hooks';
-import {
-  CONFIG_ADJUSTMENTS,
-  invoiceLineResource,
-} from '../../common/resources';
-import { getSettingsAdjustmentsList } from '../../settings/adjustments/util';
+import { invoiceLineResource } from '../../common/resources';
 import { showUpdateInvoiceError } from '../InvoiceDetails/utils';
 import InvoiceLineForm from './InvoiceLineForm';
 
@@ -39,7 +36,6 @@ export function InvoiceLineFormContainerComponent({
   match: { params: { id, lineId } },
   onClose,
   mutator,
-  resources,
   showCallout,
 }) {
   const ky = useOkapiKy();
@@ -81,6 +77,11 @@ export function InvoiceLineFormContainerComponent({
       });
     },
   });
+
+  const {
+    adjustmentPresets,
+    isLoading: isAdjustmentPresetsLoading,
+  } = useAdjustmentsSettings();
 
   const saveInvoiceLine = useCallback((
     {
@@ -147,11 +148,11 @@ export function InvoiceLineFormContainerComponent({
     isInvoiceLineLoading
     || isInvoiceLoading
     || isVendorLoading
+    || isAdjustmentPresetsLoading
   );
 
   const vendorCode = get(vendor, 'erpCode', '');
   const accounts = get(vendor, 'accounts', []);
-  const adjustmentsPresets = getSettingsAdjustmentsList(get(resources, ['configAdjustments', 'records'], []));
 
   const initialValues = useMemo(() => {
     return lineId
@@ -176,7 +177,7 @@ export function InvoiceLineFormContainerComponent({
   return (
     <InvoiceLineForm
       accounts={accounts}
-      adjustmentsPresets={adjustmentsPresets}
+      adjustmentsPresets={adjustmentPresets}
       initialValues={initialValues}
       invoice={invoice}
       isSubmitDisabled={isInvoiceLineFetching}
@@ -193,7 +194,6 @@ InvoiceLineFormContainerComponent.manifest = Object.freeze({
     accumulate: true,
     fetch: false,
   },
-  configAdjustments: CONFIG_ADJUSTMENTS,
   expenseClass: {
     ...baseManifest,
     accumulate: true,

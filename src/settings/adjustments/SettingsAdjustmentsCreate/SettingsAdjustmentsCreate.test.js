@@ -12,7 +12,11 @@ import userEvent from '@folio/jest-config-stripes/testing-library/user-event';
 import { useShowCallout } from '@folio/stripes-acq-components';
 import { runAxeTest } from '@folio/stripes-testing';
 
-import { CONFIG_NAME_ADJUSTMENTS } from '../../../common/constants';
+import {
+  ADJUSTMENT_PRORATE_VALUES,
+  ADJUSTMENT_RELATION_TO_TOTAL_VALUES,
+  ADJUSTMENT_TYPE_VALUES,
+} from '../../../common/constants';
 import { useAdjustmentsSettingsMutation } from '../../hooks';
 import { SettingsAdjustmentsCreate } from './SettingsAdjustmentsCreate';
 
@@ -42,7 +46,7 @@ const defaultProps = {
   refetch: jest.fn(),
 };
 
-const mockUpsertSetting = jest.fn();
+const mockCreateSetting = jest.fn();
 const showCalloutMock = jest.fn();
 
 const renderComponent = (props = {}) => render(
@@ -63,9 +67,9 @@ describe('SettingsAdjustmentsCreate', () => {
     await act(async () => {
       await userEvent.clear(descriptionField);
       await userEvent.type(descriptionField, 'test adjustment');
-      await userEvent.selectOptions(typeField, 'Amount');
-      await userEvent.selectOptions(prorateField, 'Not prorated');
-      await userEvent.selectOptions(relationField, 'In addition to');
+      await userEvent.selectOptions(typeField, ADJUSTMENT_TYPE_VALUES.amount);
+      await userEvent.selectOptions(prorateField, ADJUSTMENT_PRORATE_VALUES.notProrated);
+      await userEvent.selectOptions(relationField, ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo);
     });
   };
 
@@ -73,7 +77,7 @@ describe('SettingsAdjustmentsCreate', () => {
     jest.clearAllMocks();
 
     useAdjustmentsSettingsMutation.mockReturnValue({
-      upsertSetting: mockUpsertSetting,
+      createSetting: mockCreateSetting,
     });
 
     useShowCallout.mockReturnValue(showCalloutMock);
@@ -95,12 +99,15 @@ describe('SettingsAdjustmentsCreate', () => {
   });
 
   describe('Form Submission', () => {
-    it('should call upsertSetting with correct data when form is submitted', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
+    it('should call createSetting with correct data when form is submitted', async () => {
+      mockCreateSetting.mockResolvedValueOnce({});
 
       renderComponent();
 
       await fillRequiredFields();
+      await act(async () => {
+        await userEvent.type(screen.getByRole('spinbutton', { name: 'ui-invoice.settings.adjustments.value' }), '100');
+      });
 
       const submitButton = screen.getByText('stripes-components.saveAndClose');
 
@@ -109,17 +116,22 @@ describe('SettingsAdjustmentsCreate', () => {
       });
 
       await waitFor(() => {
-        expect(mockUpsertSetting).toHaveBeenCalledWith({
+        expect(mockCreateSetting).toHaveBeenCalledWith({
           data: {
-            key: CONFIG_NAME_ADJUSTMENTS,
-            value: expect.any(String),
+            alwaysShow: true,
+            defaultAmount: 100,
+            description: 'test adjustment',
+            exportToAccounting: false,
+            prorate: ADJUSTMENT_PRORATE_VALUES.notProrated,
+            relationToTotal: ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo,
+            type: ADJUSTMENT_TYPE_VALUES.amount,
           },
         });
       });
     });
 
     it('should call refetch after successful submission', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
+      mockCreateSetting.mockResolvedValueOnce({});
 
       renderComponent();
 
@@ -137,7 +149,7 @@ describe('SettingsAdjustmentsCreate', () => {
     });
 
     it('should call onClose after successful submission', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
+      mockCreateSetting.mockResolvedValueOnce({});
 
       renderComponent();
 
@@ -155,7 +167,7 @@ describe('SettingsAdjustmentsCreate', () => {
     });
 
     it('should show success callout after successful submission', async () => {
-      mockUpsertSetting.mockResolvedValueOnce({});
+      mockCreateSetting.mockResolvedValueOnce({});
 
       renderComponent();
 
@@ -175,7 +187,7 @@ describe('SettingsAdjustmentsCreate', () => {
     it('should show error callout when submission fails', async () => {
       const error = new Error('API Error');
 
-      mockUpsertSetting.mockRejectedValueOnce(error);
+      mockCreateSetting.mockRejectedValueOnce(error);
 
       renderComponent();
 
@@ -195,7 +207,7 @@ describe('SettingsAdjustmentsCreate', () => {
     it('should not call refetch or onClose when submission fails', async () => {
       const error = new Error('API Error');
 
-      mockUpsertSetting.mockRejectedValueOnce(error);
+      mockCreateSetting.mockRejectedValueOnce(error);
 
       renderComponent();
 

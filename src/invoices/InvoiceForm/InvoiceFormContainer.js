@@ -33,7 +33,7 @@ import {
   VALIDATION_ERRORS,
 } from '../../common/constants';
 import {
-  useConfigsAdjustments,
+  useAdjustmentsSettings,
   useInvoice,
   useInvoiceLineMutation,
   useOrderLines,
@@ -47,9 +47,6 @@ import {
   invoicesResource,
 } from '../../common/resources';
 import { NO_ACCOUNT_NUMBER } from '../../common/utils';
-import {
-  getSettingsAdjustmentsList,
-} from '../../settings/adjustments/util';
 import { createInvoiceLineFromPOL } from '../InvoiceDetails/utils';
 import DuplicateInvoiceModal from './DuplicateInvoiceModal';
 import InvoiceForm from './InvoiceForm';
@@ -91,11 +88,6 @@ export function InvoiceFormContainerComponent({
   });
 
   const {
-    adjustments: configAdjustments,
-    isLoading: isConfigAdjustmentsLoading,
-  } = useConfigsAdjustments();
-
-  const {
     invoice,
     isFetching: isInvoiceFetching,
     isLoading: isInvoiceLoading,
@@ -117,6 +109,11 @@ export function InvoiceFormContainerComponent({
     isLoading: isVendorLoading,
   } = useOrganization(isCreate ? orders?.[0]?.vendor : invoice.vendorId);
 
+  const {
+    adjustmentPresets,
+    isLoading: isAdjustmentPresetsLoading,
+  } = useAdjustmentsSettings();
+
   useEffect(() => {
     setBatchGroups();
 
@@ -129,8 +126,7 @@ export function InvoiceFormContainerComponent({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const allAdjustments = useMemo(() => getSettingsAdjustmentsList(configAdjustments), [configAdjustments]);
-  const alwaysShowAdjustments = useMemo(() => getAlwaysShownAdjustmentsList(allAdjustments), [allAdjustments]);
+  const alwaysShowAdjustments = useMemo(() => getAlwaysShownAdjustmentsList(adjustmentPresets), [adjustmentPresets]);
   const invoiceDocuments = get(resources, 'invoiceFormDocuments.records', []);
   const documents = useMemo(() => invoiceDocuments.filter(invoiceDocument => !invoiceDocument.url), [invoiceDocuments]);
   const links = useMemo(() => invoiceDocuments.filter(invoiceDocument => invoiceDocument.url), [invoiceDocuments]);
@@ -316,7 +312,7 @@ export function InvoiceFormContainerComponent({
     || isOrdersLoading
     || isOrderLinesLoading
     || isVendorLoading
-    || isConfigAdjustmentsLoading
+    || isAdjustmentPresetsLoading
   );
 
   if (!hasLoaded) {
@@ -330,7 +326,7 @@ export function InvoiceFormContainerComponent({
   return (
     <>
       <InvoiceForm
-        adjustmentPresets={allAdjustments}
+        adjustmentPresets={adjustmentPresets}
         initialValues={initialValues}
         initialVendor={invoiceVendor}
         isSubmitDisabled={isInvoiceFetching}

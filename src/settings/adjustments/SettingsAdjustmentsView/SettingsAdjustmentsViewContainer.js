@@ -1,8 +1,5 @@
 import PropTypes from 'prop-types';
-import {
-  useCallback,
-  useMemo,
-} from 'react';
+import { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
@@ -17,7 +14,6 @@ import {
   useAdjustmentsSetting,
   useAdjustmentsSettingsMutation,
 } from '../../hooks';
-import { getSettingsAdjustmentsList } from '../util';
 import SettingsAdjustmentsView from './SettingsAdjustmentsView';
 
 function SettingsAdjustmentsViewContainer({
@@ -33,7 +29,7 @@ function SettingsAdjustmentsViewContainer({
 
   const {
     isFetching,
-    setting,
+    adjustmentPreset,
   } = useAdjustmentsSetting(id, {
     onError: () => showCallout({
       message: <FormattedMessage id="ui-invoice.errors.cantLoadAdjustment" />,
@@ -57,8 +53,6 @@ function SettingsAdjustmentsViewContainer({
     }
   }, [close, deleteSetting, id, refetch, showCallout, showSuccessDeleteMessage]);
 
-  const adjustment = useMemo(() => setting && getSettingsAdjustmentsList([setting])[0], [setting]);
-
   if (isFetching) {
     return (
       <Layer isOpen>
@@ -69,7 +63,7 @@ function SettingsAdjustmentsViewContainer({
 
   return (
     <SettingsAdjustmentsView
-      adjustment={adjustment}
+      adjustment={adjustmentPreset}
       close={close}
       onDelete={deleteAdjustment}
       rootPath={rootPath}

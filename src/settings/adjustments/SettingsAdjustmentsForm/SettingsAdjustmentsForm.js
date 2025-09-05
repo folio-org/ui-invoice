@@ -151,6 +151,8 @@ const SettingsAdjustmentsForm = ({
                       component={TextField}
                       label={<FormattedMessage id="ui-invoice.settings.adjustments.value" />}
                       name="defaultAmount"
+                      parse={Number}
+                      format={Number}
                       type="number"
                     />
                   </Col>

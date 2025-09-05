@@ -67,9 +67,10 @@ const AdjustmentsForm = ({
   const ky = useOkapiKy();
   const [adjPreset, setAdjPreset] = useState();
   const intl = useIntl();
+
   const onAdd = (fields) => {
     const newAdjustment = adjPreset
-      ? getAdjustmentFromPreset(adjPreset.adjustment)
+      ? getAdjustmentFromPreset(adjPreset)
       : { type: ADJUSTMENT_TYPE_VALUES.amount };
 
     if (isLineAdjustments) delete newAdjustment.prorate;

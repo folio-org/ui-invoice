@@ -15,7 +15,6 @@ import {
   useAdjustmentsSettingsMutation,
 } from '../../hooks';
 import { SettingsAdjustmentsForm } from '../SettingsAdjustmentsForm';
-import { getSettingsAdjustmentsList } from '../util';
 
 export const SettingsAdjustmentsEdit = ({ onClose, refetch }) => {
   const { id } = useParams();
@@ -23,27 +22,15 @@ export const SettingsAdjustmentsEdit = ({ onClose, refetch }) => {
   const showCallout = useShowCallout();
 
   const {
+    adjustmentPreset,
     isFetching,
-    setting,
   } = useAdjustmentsSetting(id);
 
-  const { upsertSetting } = useAdjustmentsSettingsMutation();
-
-  /* Get formatted adjustment for the form */
-  const adjustment = useMemo(() => {
-    return getSettingsAdjustmentsList([setting])[0];
-  }, [setting]);
+  const { updateSetting } = useAdjustmentsSettingsMutation();
 
   const onSubmit = async (values) => {
-    const value = JSON.stringify(values);
-
-    const data = {
-      ...setting,
-      value,
-    };
-
     try {
-      await upsertSetting({ data });
+      await updateSetting({ data: values });
       refetch();
       onClose();
       showCallout({
@@ -67,7 +54,7 @@ export const SettingsAdjustmentsEdit = ({ onClose, refetch }) => {
     );
   }
 
-  const title = adjustment?.adjustment?.description;
+  const title = adjustmentPreset?.description;
 
   return (
     <TitleManager
@@ -77,8 +64,8 @@ export const SettingsAdjustmentsEdit = ({ onClose, refetch }) => {
 
       <SettingsAdjustmentsForm
         close={onClose}
-        initialValues={adjustment?.adjustment}
-        metadata={adjustment?.adjustment?.metadata}
+        initialValues={adjustmentPreset}
+        metadata={adjustmentPreset?.metadata}
         onSubmit={onSubmit}
         title={title}
       />

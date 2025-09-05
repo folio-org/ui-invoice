@@ -86,7 +86,7 @@ export const saveInvoice = async (invoice, prevDocuments, invoiceMutator, okapi)
 };
 
 export const getAlwaysShownAdjustmentsList = (adjustments) => (
-  adjustments.filter(({ adjustment }) => adjustment.alwaysShow).map(({ adjustment }) => {
+  adjustments.filter(({ alwaysShow }) => alwaysShow).map((adjustment) => {
     return getAdjustmentFromPreset(adjustment);
   })
 );

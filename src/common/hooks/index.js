@@ -2,7 +2,6 @@ export * from './useAddressCategories';
 export * from './useAdjustmentsSettings';
 export * from './useAsyncConfirmationModal';
 export * from './useBatchGroup';
-export * from './useConfigsAdjustments';
 export * from './useFiscalYear';
 export * from './useFundDistributionValidation';
 export * from './useExchangeCalculation';

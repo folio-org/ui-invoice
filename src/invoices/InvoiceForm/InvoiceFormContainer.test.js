@@ -47,7 +47,7 @@ jest.mock('./utils', () => ({
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useAddressCategories: jest.fn().mockReturnValue({ addressCategories: [], isLoading: false }),
-  useConfigsAdjustments: jest.fn().mockReturnValue({ adjustments: [], isLoading: false }),
+  useAdjustmentsSettings: jest.fn().mockReturnValue({ adjustmentPresets: [], isLoading: false }),
   useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
   useInvoice: jest.fn(),
   useInvoiceLineMutation: jest.fn(),
