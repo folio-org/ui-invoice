@@ -1,18 +1,18 @@
 import { MemoryRouter } from 'react-router-dom';
 
 import { render } from '@folio/jest-config-stripes/testing-library/react';
+import { useExchangeCalculation } from '@folio/stripes-acq-components';
 
 import {
   orderLine,
   invoiceLine,
 } from 'fixtures';
-import { useExchangeCalculation } from '../../common/hooks';
 import InvoiceLineInformation from './InvoiceLineInformation';
 
 jest.mock('@folio/stripes-components/lib/NoValue', () => () => <span>-</span>);
 
-jest.mock('../../common/hooks', () => ({
-  ...jest.requireActual('../../common/hooks'),
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
   useExchangeCalculation: jest.fn(),
 }));
 

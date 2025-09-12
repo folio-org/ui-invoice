@@ -1,18 +1,23 @@
 import { MemoryRouter } from 'react-router-dom';
 
+import {
+  act,
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
 import {
   HasCommand,
   expandAllSections,
   collapseAllSections,
 } from '@folio/stripes/components';
 
+import { useExchangeCalculation } from '@folio/stripes-acq-components';
+
 import {
   invoiceLine,
   orderLine,
 } from 'fixtures';
-import { useExchangeCalculation } from '../../common/hooks';
 import ActionMenu from './ActionMenu';
 import InvoiceLineDetails from './InvoiceLineDetails';
 
@@ -24,12 +29,9 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   FundDistributionView: jest.fn(() => 'FundDistributionView'),
-}));
-
-jest.mock('../../common/hooks', () => ({
-  ...jest.requireActual('../../common/hooks'),
   useExchangeCalculation: jest.fn(),
 }));
+
 jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsDetails'));
 jest.mock('./OtherRelatedInvoiceLines', () => ({
   OtherRelatedInvoiceLines: jest.fn().mockReturnValue('OtherRelatedInvoiceLines'),

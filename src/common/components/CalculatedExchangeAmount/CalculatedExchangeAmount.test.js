@@ -1,14 +1,14 @@
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
+import { useExchangeCalculation } from '@folio/stripes-acq-components';
 
-import { useExchangeCalculation } from '../../hooks';
 import { CalculatedExchangeAmount } from './CalculatedExchangeAmount';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   AmountWithCurrencyField: jest.fn(() => 'AmountWithCurrencyField'),
-}));
-jest.mock('../../hooks', () => ({
-  ...jest.requireActual('../../hooks'),
   useExchangeCalculation: jest.fn(),
 }));
 
@@ -18,10 +18,14 @@ const renderComponent = (props = {}) => render(
 
 describe('CalculatedExchangeAmount', () => {
   beforeEach(() => {
-    useExchangeCalculation.mockClear().mockReturnValue({
+    useExchangeCalculation.mockReturnValue({
       isLoading: false,
       exchangedAmount: 30,
     });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should not render component', async () => {

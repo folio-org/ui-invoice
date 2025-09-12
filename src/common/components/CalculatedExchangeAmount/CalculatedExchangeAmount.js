@@ -4,14 +4,13 @@ import { FormattedMessage } from 'react-intl';
 import {
   AmountWithCurrencyField,
   VersionKeyValue,
+  useExchangeCalculation,
 } from '@folio/stripes-acq-components';
 import {
   KeyValue,
   Loading,
 } from '@folio/stripes/components';
 import { useStripes } from '@folio/stripes/core';
-
-import { useExchangeCalculation } from '../../hooks';
 
 const DEFAULT_LABEL = <FormattedMessage id="ui-invoice.invoice.details.information.calculatedTotalExchangeAmount" />;
 

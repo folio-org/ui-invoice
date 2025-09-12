@@ -4,7 +4,6 @@ export * from './useAsyncConfirmationModal';
 export * from './useBatchGroup';
 export * from './useFiscalYear';
 export * from './useFundDistributionValidation';
-export * from './useExchangeCalculation';
 export * from './useInvoice';
 export * from './useInvoiceLine';
 export * from './useInvoiceLineMutation';

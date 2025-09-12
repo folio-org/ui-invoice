@@ -38,6 +38,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   AcqUnitsField: () => <span>AcqUnitsField</span>,
   FieldOrganization: jest.fn(() => <span>FieldOrganization</span>),
+  useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
 }));
 jest.mock('../AdjustmentsForm', () => {
   return () => <span>AdjustmentsForm</span>;
@@ -48,7 +49,6 @@ jest.mock('../../common/components/VendorPrimaryAddress', () => ({
 jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   usePayableFiscalYears: jest.fn(() => ({ fiscalYears: FISCAL_YEARS })),
-  useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
 }));
 
 const accounts = [{
