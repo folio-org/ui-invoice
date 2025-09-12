@@ -1,14 +1,20 @@
 import { IntlProvider } from 'react-intl';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import Information from './Information';
 
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
+}));
 jest.mock('../../../common/hooks', () => ({
   ...jest.requireActual('../../../common/hooks'),
   useFiscalYear: jest.fn(() => ({ fiscalYear: { code: 'FY2023' } })),
-  useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
 }));
 jest.mock('../BatchGroupValue', () => {
   return () => <span>BatchGroupValue</span>;

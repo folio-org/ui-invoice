@@ -4,7 +4,6 @@ export const AUDIT_INVOICE_LINE_API = 'audit-data/acquisition/invoice-line';
 export const BATCH_GROUPS_API = 'batch-groups';
 export const BATCH_VOUCHERS_API = 'batch-voucher/batch-vouchers';
 export const BATCH_VOUCHER_EXPORTS_API = 'batch-voucher/batch-voucher-exports';
-export const CALCULATE_EXCHANGE_API = 'finance/calculate-exchange';
 export const CALCULATE_EXCHANGE_BATCH_API = 'finance/calculate-exchange-batch';
 export const CATEGORIES_API = 'organizations-storage/categories';
 export const EXPORT_CONFIGURATIONS_API = 'batch-voucher/export-configurations';
