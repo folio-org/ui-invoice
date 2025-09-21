@@ -487,5 +487,10 @@
     "invoice.list.folioInvoiceNo": "Číslo faktury FOLIO",
     "invoice.form.fromPO.currency.confirmModal.heading": "Potvrdit změnu měny",
     "invoice.form.fromPO.currency.confirmModal.message": "Měníte měnu této faktury, ale částky se nemění z měny POL na novou měnu faktury. Pokud si i přesto přejete pokračovat, klikněte na tlačítko potvrdit.",
-    "invoice.details.lines.list.total.exchanged": "Total (Exchanged)"
+    "invoice.details.lines.list.total.exchanged": "Celkem (vyměněno)",
+    "document.settings.title": "Nastavení faktur",
+    "settings.adjustments.create.success": "Byla vytvořena úprava <b>{name} </b> .",
+    "settings.adjustments.create.error": "Nepodařilo se vytvořit úpravu.",
+    "settings.adjustments.update.success": "Byla aktualizována úprava <b>{name} </b> .",
+    "settings.adjustments.update.error": "Nepodařilo se aktualizovat nastavení <b>{name} </b> ."
 }
