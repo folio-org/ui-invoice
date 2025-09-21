@@ -404,7 +404,7 @@
     "invoice.details.accordion.adjustments": "Aanpassingen op factuurniveau",
     "invoice.actions.approve.error.multipleFiscalYears": "Factuur kan niet worden goedgekeurd omdat de gebruikte fondsen tot meerdere boekjaren behoren",
     "invoice.actions.saveLine.error.budgetExpenseClassNotFound": "<b>{expenseClassName}</b> Onkostensoort niet gevonden op <b>{fundCode}</b> fonds",
-    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "Factuurregel kan niet worden opgeslagen omdat fonds <b>{fundCode}</b> geen huidig budget heeft.",
+    "invoice.actions.saveLine.error.budgetNotFoundByFundId": "De factuurregel kan niet worden opgeslagen omdat de factuur niet aan een boekjaar is toegewezen.",
     "invoice.actions.saveLine.error.inactiveExpenseClass": "Factuurregel kan niet worden opgeslagen omdat onkostensoort <b>{expenseClass}</b> inactief is.",
     "invoice.actions.saveLine.error": "Factuurregel is niet opgeslagen",
     "voucherExport.paneTitle": "Voucher exporteren",
@@ -487,5 +487,10 @@
     "invoice.list.folioInvoiceNo": "Factuurnummer FOLIO",
     "invoice.form.fromPO.currency.confirmModal.heading": "Valutawissel bevestigen",
     "invoice.form.fromPO.currency.confirmModal.message": "U wijzigt de valuta van deze factuur, maar de bedragen worden niet omgewisseld van de valuta van de RPO naar de nieuwe valuta van de Factuur. Als u toch wilt doorgaan, klik dan op bevestigen.",
-    "invoice.details.lines.list.total.exchanged": "Totaal (Uitgewisseld)"
+    "invoice.details.lines.list.total.exchanged": "Totaal (Uitgewisseld)",
+    "document.settings.title": "Factuur instellingen",
+    "settings.adjustments.create.success": "De aanpassing <b>{name}</b> werd aangemaakt.",
+    "settings.adjustments.create.error": "Aanmaken mislukt.",
+    "settings.adjustments.update.success": "De aanpassing <b>{name}</b> is bijgewerkt.",
+    "settings.adjustments.update.error": "Update mislukt <b>.{name}</b> aanpassing."
 }
