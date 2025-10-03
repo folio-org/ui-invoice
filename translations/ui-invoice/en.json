@@ -9,6 +9,7 @@
   "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
   "errors.invoiceHasNotBeenDeleted": "Invoice has not been deleted",
   "errors.invoiceLineHasNotBeenDeleted": "Invoice has not been deleted",
+  "errors.cannotConvertAmountInvalidCurrency": "The selected currency cannot be converted. Please configure an exchange rate provider that supports this currency.",
   "errors.cantLoadAdjustment": "Error loading adjustment",
   "errors.cantLoadInvoiceLine": "Error loading invoice line",
   "errors.cantLoadInvoice": "Error loading invoice",

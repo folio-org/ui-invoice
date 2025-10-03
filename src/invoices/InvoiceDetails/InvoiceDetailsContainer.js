@@ -7,6 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react';
+import { useIntl } from 'react-intl';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import { LoadingPane } from '@folio/stripes/components';
@@ -18,9 +19,10 @@ import {
 import {
   baseManifest,
   batchFetch,
-  LIMIT_MAX,
   INVOICES_API,
+  LIMIT_MAX,
   orderLinesResource,
+  ResponseErrorsContainer,
   useFiscalYears,
   useShowCallout,
   VENDORS_API,
@@ -36,6 +38,7 @@ import {
 } from '../../common/resources';
 import {
   CALCULATE_EXCHANGE_BATCH_API,
+  ERROR_CODES,
   INVOICE_STATUS,
 } from '../../common/constants';
 import {
@@ -64,6 +67,7 @@ export function InvoiceDetailsContainer({
   const mutator = useMemo(() => originMutator, [id]);
   const showCallout = useShowCallout();
   const ky = useOkapiKy();
+  const intl = useIntl();
   const [isLoading, setIsLoading] = useState(true);
   const [invoice, setInvoice] = useState({});
   const [invoiceLines, setInvoiceLines] = useState({});
@@ -203,11 +207,23 @@ export function InvoiceDetailsContainer({
         return acc;
       }, {}));
       setOrders(ordersResponse);
-    } catch {
-      showCallout({ messageId: 'ui-invoice.invoice.actions.load.error', type: 'error' });
+    } catch (error) {
+      const { handler } = await ResponseErrorsContainer.create(error?.response || error);
+
+      const defaultMessage = intl.formatMessage({ id: 'ui-invoice.invoice.actions.load.error' });
+      const errorCode = get(ERROR_CODES, handler.getError().code);
+      const message = errorCode
+        ? intl.formatMessage({ id: `ui-invoice.errors.${errorCode}`, defaultMessage })
+        : defaultMessage;
+
+      showCallout({
+        message,
+        type: 'error',
+      });
     }
   }, [
     id,
+    intl,
     ky,
     mutator.invoice,
     mutator.invoiceActionsApprovals,
