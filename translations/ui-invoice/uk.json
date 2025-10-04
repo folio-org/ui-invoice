@@ -487,10 +487,10 @@
     "invoice.list.folioInvoiceNo": "Номер рахунку-фактури FOLIO",
     "invoice.form.fromPO.currency.confirmModal.heading": "Підтвердити зміну валюти",
     "invoice.form.fromPO.currency.confirmModal.message": "Ви змінюєте валюту цього рахунку-фактури, але валюта суми з рядка замовлення на придбання не зміниться на валюту рахунку-фактури. Якщо ви все ще бажаєте продовжити, натисніть \"Підтвердити\".",
-    "invoice.details.lines.list.total.exchanged": "Total (Exchanged)",
-    "document.settings.title": "Invoices settings",
-    "settings.adjustments.create.success": "The adjustment <b>{name}</b> was created.",
-    "settings.adjustments.create.error": "Failed to create adjustment.",
-    "settings.adjustments.update.success": "The adjustment <b>{name}</b> was updated.",
-    "settings.adjustments.update.error": "Failed to update <b>{name}</b> adjustment."
+    "invoice.details.lines.list.total.exchanged": "Всього (обмін)",
+    "document.settings.title": "Налаштування рахунків-фактур",
+    "settings.adjustments.create.success": "Коригування <b>{name}</b> створено.",
+    "settings.adjustments.create.error": "Не вдалося створити коригування.",
+    "settings.adjustments.update.success": "Коригування <b>{name}</b> оновлено.",
+    "settings.adjustments.update.error": "Не вдалося оновити коригування <b>{name}</b>."
 }
