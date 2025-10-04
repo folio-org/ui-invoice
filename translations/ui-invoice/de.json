@@ -307,7 +307,7 @@
     "invoice.lockTotalAmount.tooltip": "Wählen Sie \"Gesamtsumme fixieren\", um dieses Feld zu aktivieren",
     "invoice.actions.approve.error.lockCalculatedTotalsMismatch": "Rechnung kann nicht freigegeben werden. Der Gesamtbetrag der Rechnung stimmt nicht mit der Summe der Rechnungsposten und Zusatzkosten überein.",
     "invoice.details.information.calculatedTotalAmount": "Berechneter Gesamtbetrag",
-    "button.cancel": "Abbrechen",
+    "button.cancel": "Stornieren",
     "button.submit": "Absenden",
     "invoice.delete.message": "Rechnung wirklich löschen?",
     "invoice.duplicateInvoice.amount": "Betrag",
