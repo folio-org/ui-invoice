@@ -1,5 +1,7 @@
 import { useCallback } from 'react';
 
+import { ORDER_STATUSES } from '@folio/stripes-acq-components';
+
 import { ORDER_TYPE } from '../constants';
 
 export function useInvoiceOrderStatusValidator({ invoice, invoiceLines, fiscalYears, orders }) {
@@ -11,9 +13,11 @@ export function useInvoiceOrderStatusValidator({ invoice, invoiceLines, fiscalYe
       .map(fiscalYear => fiscalYear.id);
 
     const hasReleaseEncumbrance = invoiceLines?.invoiceLines?.some((line) => line.releaseEncumbrance);
-    const hasOneTimeOrder = orders.some((order) => order.orderType === ORDER_TYPE.ONE_TIME);
+    const hasOpenOneTimeOrder = orders.some((order) => {
+      return order.workflowStatus === ORDER_STATUSES.open && order.orderType === ORDER_TYPE.ONE_TIME;
+    });
     const isPreviousFiscalYear = filteredPreviousFiscalYearsIds.includes(invoice.fiscalYearId);
 
-    return hasReleaseEncumbrance && hasOneTimeOrder && isPreviousFiscalYear;
+    return hasReleaseEncumbrance && hasOpenOneTimeOrder && isPreviousFiscalYear;
   }, [invoice, invoiceLines, fiscalYears, orders]);
 }
