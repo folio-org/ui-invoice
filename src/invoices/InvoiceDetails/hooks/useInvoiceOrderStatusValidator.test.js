@@ -1,4 +1,5 @@
 import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
+import { ORDER_STATUSES } from '@folio/stripes-acq-components';
 
 import { ORDER_TYPE } from '../constants';
 import { useInvoiceOrderStatusValidator } from './useInvoiceOrderStatusValidator';
@@ -25,8 +26,14 @@ describe('useInvoiceOrderStatusValidator', () => {
   ];
 
   const oneTimeOrders = [
-    { orderType: ORDER_TYPE.ONE_TIME },
-    { orderType: ORDER_TYPE.ONGOING },
+    {
+      orderType: ORDER_TYPE.ONE_TIME,
+      workflowStatus: ORDER_STATUSES.open,
+    },
+    {
+      orderType: ORDER_TYPE.ONGOING,
+      workflowStatus: ORDER_STATUSES.open,
+    },
   ];
 
   it('should return true when all conditions are met', () => {
@@ -59,7 +66,28 @@ describe('useInvoiceOrderStatusValidator', () => {
 
   it('should return false when no One-Time order exists', () => {
     const orders = [
-      { orderType: ORDER_TYPE.ONGOING },
+      {
+        orderType: ORDER_TYPE.ONGOING,
+        workflowStatus: ORDER_STATUSES.open,
+      },
+    ];
+
+    const { result } = renderHook(() => useInvoiceOrderStatusValidator({
+      invoice: baseInvoice,
+      invoiceLines: baseInvoiceLines,
+      fiscalYears: baseFiscalYears,
+      orders,
+    }));
+
+    expect(result.current()).toBe(false);
+  });
+
+  it('should return false when no One-Time order exists in Open status', () => {
+    const orders = [
+      {
+        orderType: ORDER_TYPE.ONE_TIME,
+        workflowStatus: ORDER_STATUSES.pending,
+      },
     ];
 
     const { result } = renderHook(() => useInvoiceOrderStatusValidator({
