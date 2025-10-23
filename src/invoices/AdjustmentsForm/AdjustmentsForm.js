@@ -1,12 +1,17 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import find from 'lodash/find';
+import get from 'lodash/get';
+import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
+import { Field } from 'react-final-form';
+import { FieldArray } from 'react-final-form-arrays';
 import {
   FormattedMessage,
   useIntl,
 } from 'react-intl';
-import { Field } from 'react-final-form';
-import { FieldArray } from 'react-final-form-arrays';
-import PropTypes from 'prop-types';
-import { find } from 'lodash';
 
 import {
   Button,
@@ -50,19 +55,19 @@ import { getAdjustmentFromPreset } from '../utils';
 import AdjustmentsDetails from '../AdjustmentsDetails';
 
 const AdjustmentsForm = ({
+  adjustments,
   adjustmentsPresets,
   change,
   currency,
   disabled,
+  fiscalYearId,
   initialAdjustments,
   initialCurrency,
   invoiceSubTotal,
+  isFiscalYearChanged,
   isLineAdjustments,
   isNonInteractive,
   stripes,
-  fiscalYearId,
-  adjustments,
-  isFiscalYearChanged,
 }) => {
   const ky = useOkapiKy();
   const [adjPreset, setAdjPreset] = useState();
@@ -139,12 +144,22 @@ const AdjustmentsForm = ({
       || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
     ));
     const onProrateChange = e => {
+      const prevValue = get(fields.value, [index, 'prorate']);
       const value = e.target.value;
 
       if (
         value === ADJUSTMENT_PRORATE_VALUES.notProrated
         && adjustment?.relationToTotal !== ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
       ) change(`${elem}.relationToTotal`, ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo);
+
+      /*
+        Clear fund distributions when switching from "Not prorated" to any other prorate type
+       */
+      if (
+        prevValue === ADJUSTMENT_PRORATE_VALUES.notProrated
+        && value !== ADJUSTMENT_PRORATE_VALUES.notProrated
+        && get(fields.value, [index, 'fundDistributions'])
+      ) { setTimeout(() => change(`${elem}.fundDistributions`, undefined)); }
 
       change(`${elem}.prorate`, value);
     };
@@ -312,19 +327,19 @@ const AdjustmentsForm = ({
 };
 
 AdjustmentsForm.propTypes = {
+  adjustments: PropTypes.arrayOf(PropTypes.object),
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
   change: PropTypes.func.isRequired,
   currency: PropTypes.string,
   disabled: PropTypes.bool,
-  isLineAdjustments: PropTypes.bool,
-  invoiceSubTotal: PropTypes.number,
-  stripes: stripesShape,
+  fiscalYearId: PropTypes.string,
   initialAdjustments: PropTypes.arrayOf(PropTypes.object),
   initialCurrency: PropTypes.string,
-  isNonInteractive: PropTypes.bool,
-  fiscalYearId: PropTypes.string,
-  adjustments: PropTypes.arrayOf(PropTypes.object),
+  invoiceSubTotal: PropTypes.number,
   isFiscalYearChanged: PropTypes.bool,
+  isLineAdjustments: PropTypes.bool,
+  isNonInteractive: PropTypes.bool,
+  stripes: stripesShape,
 };
 
 AdjustmentsForm.defaultProps = {
