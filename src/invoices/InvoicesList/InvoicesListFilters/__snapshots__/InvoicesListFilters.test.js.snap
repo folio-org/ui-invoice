@@ -701,43 +701,6 @@ exports[`InvoicesListFilters should render correct structure 1`] = `
                 role="alert"
               />
             </div>
-            <div
-              class="overlay"
-              hidden=""
-            >
-              <div
-                class="selectionListRoot"
-                id="sl-container-acqUnitIds-selection"
-              >
-                <div
-                  class="selectionFilterContainer"
-                >
-                  <input
-                    aria-activedescendant=""
-                    aria-autocomplete="list"
-                    aria-controls="downshift-:r1:-menu"
-                    aria-expanded="false"
-                    aria-label="stripes-components.selection.filterOptionsLabel"
-                    aria-labelledby="downshift-:r1:-label"
-                    autocomplete="off"
-                    class="selectionFilter"
-                    id="downshift-:r1:-input"
-                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                    role="combobox"
-                    type="text"
-                    value=""
-                  />
-                </div>
-                <ul
-                  aria-labelledby="sl-label-acqUnitIds-selection"
-                  class="selectionList"
-                  id="downshift-:r1:-menu"
-                  role="listbox"
-                  style="max-height: 174px;"
-                  tabindex="-1"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -4412,43 +4375,6 @@ exports[`InvoicesListFilters should render correct structure when disabled 1`] =
               <div
                 role="alert"
               />
-            </div>
-            <div
-              class="overlay"
-              hidden=""
-            >
-              <div
-                class="selectionListRoot"
-                id="sl-container-acqUnitIds-selection"
-              >
-                <div
-                  class="selectionFilterContainer"
-                >
-                  <input
-                    aria-activedescendant=""
-                    aria-autocomplete="list"
-                    aria-controls="downshift-:r3:-menu"
-                    aria-expanded="false"
-                    aria-label="stripes-components.selection.filterOptionsLabel"
-                    aria-labelledby="downshift-:r3:-label"
-                    autocomplete="off"
-                    class="selectionFilter"
-                    id="downshift-:r3:-input"
-                    placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                    role="combobox"
-                    type="text"
-                    value=""
-                  />
-                </div>
-                <ul
-                  aria-labelledby="sl-label-acqUnitIds-selection"
-                  class="selectionList"
-                  id="downshift-:r3:-menu"
-                  role="listbox"
-                  style="max-height: 174px;"
-                  tabindex="-1"
-                />
-              </div>
             </div>
           </div>
         </div>

@@ -239,24 +239,25 @@ describe('InvoiceForm component', () => {
   describe('FieldFiscalYearContainer', () => {
     const labelId = 'ui-invoice.invoice.details.information.fiscalYear';
     const labelIdRequired = `${labelId}<span class="asterisk" aria-hidden="true">*</span>`;
-    const optionIdQuery = 'ul[aria-labelledby*="label-invoice-fiscal-year"] li';
 
     it('should render fiscal year component with empty select option', async () => {
       const optionLengthWithEmptyLine = FISCAL_YEARS.length + 1;
-      const { container } = renderInvoiceForm({ initialValues: { fiscalYearId: 'fyId' } });
+
+      renderInvoiceForm({ initialValues: { fiscalYearId: 'fyId' } });
       const fiscalYearLabel = await screen.findByText(labelId);
 
       expect(fiscalYearLabel).toBeInTheDocument();
 
       await userEvent.click(screen.getByRole('button', { name: /details.information.fiscalYear / }));
 
-      const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
+      const fyListbox = screen.getByRole('listbox', { name: 'ui-invoice.invoice.details.information.fiscalYear' });
+      const fiscalYearOptions = within(fyListbox).getAllByRole('option');
 
       expect(fiscalYearOptions.length).toBe(optionLengthWithEmptyLine);
     });
 
     it('should render edit fiscal year component with required "*" sign and not to have empty input selection', async () => {
-      const { container } = renderInvoiceForm({
+      renderInvoiceForm({
         initialValues: { fiscalYearId: 'fyId', id: 'invoiceId' },
       });
       const fiscalYearLabel = await screen.findByText(labelId);
@@ -265,7 +266,8 @@ describe('InvoiceForm component', () => {
 
       await userEvent.click(screen.getByRole('button', { name: /details.information.fiscalYear / }));
 
-      const fiscalYearOptions = container.querySelectorAll(optionIdQuery);
+      const fyListbox = screen.getByRole('listbox', { name: 'ui-invoice.invoice.details.information.fiscalYear' });
+      const fiscalYearOptions = within(fyListbox).getAllByRole('option');
 
       expect(fiscalYearOptions.length).toBe(FISCAL_YEARS.length);
     });

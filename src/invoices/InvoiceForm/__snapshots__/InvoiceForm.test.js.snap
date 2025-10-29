@@ -298,44 +298,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   role="alert"
                                 />
                               </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-invoice-fiscal-year"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:r1:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:r1:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:r1:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-invoice-fiscal-year"
-                                    class="selectionList"
-                                    id="downshift-:r1:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
-                              </div>
                             </div>
                           </div>
                           <div
@@ -398,44 +360,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <div
                                   role="alert"
                                 />
-                              </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-invoice-status"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:r3:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:r3:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:r3:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-invoice-status"
-                                    class="selectionList"
-                                    id="downshift-:r3:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -664,44 +588,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   role="alert"
                                 />
                               </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-selection-:r4:"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:r5:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:r5:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:r5:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-selection-:r4:"
-                                    class="selectionList"
-                                    id="downshift-:r5:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
-                              </div>
                             </div>
                           </div>
                           <div
@@ -785,44 +671,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <div
                                   role="alert"
                                 />
-                              </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-invoice-batch-groups"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:r7:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:r7:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:r7:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-invoice-batch-groups"
-                                    class="selectionList"
-                                    id="downshift-:r7:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -1276,44 +1124,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                   role="alert"
                                 />
                               </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-accounting-code-selection"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:r9:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:r9:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:r9:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-accounting-code-selection"
-                                    class="selectionList"
-                                    id="downshift-:r9:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
-                              </div>
                             </div>
                           </div>
                           <div
@@ -1725,44 +1535,6 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                                 <div
                                   role="alert"
                                 />
-                              </div>
-                              <div
-                                class="overlay"
-                                hidden=""
-                              >
-                                <div
-                                  class="selectionListRoot"
-                                  id="sl-container-currency"
-                                  style="width: 0px;"
-                                >
-                                  <div
-                                    class="selectionFilterContainer"
-                                  >
-                                    <input
-                                      aria-activedescendant=""
-                                      aria-autocomplete="list"
-                                      aria-controls="downshift-:rb:-menu"
-                                      aria-expanded="false"
-                                      aria-label="stripes-components.selection.filterOptionsLabel"
-                                      aria-labelledby="downshift-:rb:-label"
-                                      autocomplete="off"
-                                      class="selectionFilter"
-                                      id="downshift-:rb:-input"
-                                      placeholder="stripes-components.selection.filterOptionsPlaceholder"
-                                      role="combobox"
-                                      type="text"
-                                      value=""
-                                    />
-                                  </div>
-                                  <ul
-                                    aria-labelledby="sl-label-currency"
-                                    class="selectionList"
-                                    id="downshift-:rb:-menu"
-                                    role="listbox"
-                                    style="max-height: 174px;"
-                                    tabindex="-1"
-                                  />
-                                </div>
                               </div>
                             </div>
                           </div>
