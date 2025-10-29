@@ -224,6 +224,7 @@
   "invoice.vendorName": "Vendor name",
   "invoice.accountingCode": "Accounting code",
   "invoice.accountingCode.default": "Default ({erpCode})",
+  "invoice.accountNumber": "Account number",
   "invoice.exportToAccounting": "Export to accounting",
   "invoice.enclosureNeeded": "Enclosure needed",
   "invoice.billTo": "Bill to",
