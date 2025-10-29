@@ -14,6 +14,7 @@
 * *BREAKING* Replace using `mod-configuration` to use internal invoice storage. Refs UINV-607.
 * Handle existing invoices in non-default currencies when ECB provider does not support them. Refs UINV-610.
 * Fix condition for an invoice's order status validation. Refs UINV-600.
+* Display human-readable adjustments and fund distributions labels in the version history pane. Refs UINV-613.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.3...v7.0.4)
