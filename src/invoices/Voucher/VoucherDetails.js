@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -16,7 +15,10 @@ import {
 import { VOUCHER_STATUS_LABEL } from '../../common/constants';
 import VendorAddress from './VendorAddress';
 
-const VoucherDetails = ({ voucher, withVendorAddress }) => (
+const VoucherDetails = ({
+  voucher,
+  withVendorAddress = false,
+}) => (
   <>
     <Row>
       <Col xs={3}>
@@ -124,10 +126,6 @@ const VoucherDetails = ({ voucher, withVendorAddress }) => (
 VoucherDetails.propTypes = {
   voucher: PropTypes.object.isRequired,
   withVendorAddress: PropTypes.bool,
-};
-
-VoucherDetails.defaultProps = {
-  withVendorAddress: false,
 };
 
 export default VoucherDetails;

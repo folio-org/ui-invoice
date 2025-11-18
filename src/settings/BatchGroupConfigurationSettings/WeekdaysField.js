@@ -1,15 +1,20 @@
-import React from 'react';
-import { FormattedMessage } from 'react-intl';
 import PropTypes from 'prop-types';
 import { Field } from 'react-final-form';
 import { FieldArray } from 'react-final-form-arrays';
+import { FormattedMessage } from 'react-intl';
 
 import {
   Checkbox,
   Label,
 } from '@folio/stripes/components';
 
-const WeekdaysField = ({ name, disabled, weekdays }) => {
+const DEFAULT_WEEKDAYS = [];
+
+const WeekdaysField = ({
+  disabled = false,
+  name,
+  weekdays = DEFAULT_WEEKDAYS,
+}) => {
   const WeekdaysGroup = ({ fields, options }) => (
     options.map((weekday, index) => (
       <Field
@@ -43,11 +48,6 @@ WeekdaysField.propTypes = {
   disabled: PropTypes.bool,
   name: PropTypes.string.isRequired,
   weekdays: PropTypes.arrayOf(PropTypes.object),
-};
-
-WeekdaysField.defaultProps = {
-  disabled: false,
-  weekdays: [],
 };
 
 export default WeekdaysField;

@@ -1,6 +1,8 @@
-import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Button,
@@ -10,7 +12,13 @@ import {
 
 import DuplicateInvoiceList from '../../../common/components/DuplicateInvoiceList';
 
-const DuplicateInvoiceModal = ({ duplicateInvoices, onSubmit, onCancel }) => {
+const DEFAULT_DUPLICATE_INVOICES = [];
+
+const DuplicateInvoiceModal = ({
+  duplicateInvoices = DEFAULT_DUPLICATE_INVOICES,
+  onCancel,
+  onSubmit,
+}) => {
   const intl = useIntl();
   const modalLabel = intl.formatMessage({ id: 'ui-invoice.invoice.isNotUnique.confirmation.heading' });
 
@@ -54,10 +62,6 @@ DuplicateInvoiceModal.propTypes = {
   duplicateInvoices: PropTypes.arrayOf(PropTypes.object),
   onCancel: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-};
-
-DuplicateInvoiceModal.defaultProps = {
-  duplicateInvoices: [],
 };
 
 export default DuplicateInvoiceModal;

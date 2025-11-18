@@ -54,19 +54,22 @@ import {
 import { getAdjustmentFromPreset } from '../utils';
 import AdjustmentsDetails from '../AdjustmentsDetails';
 
+const DEFAULT_ADJUSTMENTS_PRESETS = [];
+const DEFAULT_ADJUSTMENTS = [];
+
 const AdjustmentsForm = ({
-  adjustments,
-  adjustmentsPresets,
+  adjustments = DEFAULT_ADJUSTMENTS,
+  adjustmentsPresets = DEFAULT_ADJUSTMENTS_PRESETS,
   change,
   currency,
-  disabled,
+  disabled = false,
   fiscalYearId,
   initialAdjustments,
   initialCurrency,
-  invoiceSubTotal,
-  isFiscalYearChanged,
-  isLineAdjustments,
-  isNonInteractive,
+  invoiceSubTotal = 0,
+  isFiscalYearChanged = false,
+  isLineAdjustments = false,
+  isNonInteractive = false,
   stripes,
 }) => {
   const ky = useOkapiKy();
@@ -340,16 +343,6 @@ AdjustmentsForm.propTypes = {
   isLineAdjustments: PropTypes.bool,
   isNonInteractive: PropTypes.bool,
   stripes: stripesShape,
-};
-
-AdjustmentsForm.defaultProps = {
-  adjustmentsPresets: [],
-  disabled: false,
-  isLineAdjustments: false,
-  invoiceSubTotal: 0,
-  isNonInteractive: false,
-  isFiscalYearChanged: false,
-  adjustments: [],
 };
 
 export default withStripes(AdjustmentsForm);

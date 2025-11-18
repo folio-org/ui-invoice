@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -17,8 +16,8 @@ import {
 
 const InvoiceActions = ({
   invoice,
-  invoiceLinesCount,
-  isApprovePayAvailable,
+  invoiceLinesCount = 0,
+  isApprovePayAvailable = false,
   isDeleteDisabled,
   isEditDisabled,
   onApprove,
@@ -173,11 +172,6 @@ InvoiceActions.propTypes = {
   onPay: PropTypes.func.isRequired,
   onInvoiceCancel: PropTypes.func.isRequired,
   onPrint: PropTypes.func,
-};
-
-InvoiceActions.defaultProps = {
-  invoiceLinesCount: 0,
-  isApprovePayAvailable: false,
 };
 
 export default InvoiceActions;

@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { stripesConnect } from '@folio/stripes/core';
@@ -9,7 +9,11 @@ import { invoiceDocumentFromPropsResource } from '../../common/resources';
 
 import InvoiceDocument from './InvoiceDocument';
 
-const InvoiceDocumentContainer = ({ mutator, documentId, name }) => {
+const InvoiceDocumentContainer = ({
+  documentId = '',
+  mutator,
+  name,
+}) => {
   const downloadDocument = useCallback(
     () => {
       mutator.invoiceDocumentDetails.GET()
@@ -37,13 +41,9 @@ InvoiceDocumentContainer.manifest = Object.freeze({
 });
 
 InvoiceDocumentContainer.propTypes = {
+  documentId: PropTypes.string,
   mutator: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
-  documentId: PropTypes.string,
-};
-
-InvoiceDocumentContainer.defaultProps = {
-  documentId: '',
 };
 
 export default withRouter(stripesConnect(InvoiceDocumentContainer));
