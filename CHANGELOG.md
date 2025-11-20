@@ -16,6 +16,7 @@
 * Fix condition for an invoice's order status validation. Refs UINV-600.
 * Display human-readable adjustments and fund distributions labels in the version history pane. Refs UINV-613.
 * Clear adjustment's fund distribution when switching to a pro rate type where it's not needed. Refs UINV-614.
+* Include global `mod-settings` permissions in base permission sets. Refs UINV-615.
 * React v19: Refactor away from default props for functional components. Refs UINV-547.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
