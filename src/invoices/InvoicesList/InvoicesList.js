@@ -113,15 +113,17 @@ const getResultsFormatter = ({ search }) => ({
   folioInvoiceNo: (invoice) => invoice.folioInvoiceNo,
 });
 
+const DEFAULT_INVOICES = [];
+
 const InvoicesList = ({
-  isLoading,
+  invoices = DEFAULT_INVOICES,
+  invoicesCount = 0,
+  isLoading = false,
   onNeedMoreData,
-  resetData,
-  invoices,
-  invoicesCount,
   pagination,
-  refreshList,
   query,
+  refreshList,
+  resetData,
 }) => {
   const intl = useIntl();
   const location = useLocation();
@@ -339,20 +341,14 @@ const InvoicesList = ({
 };
 
 InvoicesList.propTypes = {
-  onNeedMoreData: PropTypes.func.isRequired,
-  resetData: PropTypes.func.isRequired,
+  invoices: PropTypes.arrayOf(PropTypes.object),
   invoicesCount: PropTypes.number,
   isLoading: PropTypes.bool,
-  invoices: PropTypes.arrayOf(PropTypes.object),
-  refreshList: PropTypes.func.isRequired,
+  onNeedMoreData: PropTypes.func.isRequired,
   pagination: PropTypes.object,
   query: PropTypes.string,
-};
-
-InvoicesList.defaultProps = {
-  invoicesCount: 0,
-  isLoading: false,
-  invoices: [],
+  refreshList: PropTypes.func.isRequired,
+  resetData: PropTypes.func.isRequired,
 };
 
 export default InvoicesList;

@@ -80,6 +80,8 @@ const initalAccordionsStatus = {
   [SECTIONS.extendedInformation]: false,
 };
 
+const DEFAULT_INVOICE_LINES = [];
+
 function InvoiceDetails({
   addLines,
   approveAndPayInvoice,
@@ -91,9 +93,9 @@ function InvoiceDetails({
   exchangedTotalsMap,
   exportFormat,
   invoice,
-  invoiceLines,
-  invoiceTotalUnits,
-  isApprovePayEnabled,
+  invoiceLines = DEFAULT_INVOICE_LINES,
+  invoiceTotalUnits = 0,
+  isApprovePayEnabled = false,
   onClose,
   onDuplicateInvoice,
   onEdit,
@@ -633,12 +635,6 @@ InvoiceDetails.propTypes = {
   shouldUpdateOrderStatus: PropTypes.func.isRequired,
   totalInvoiceLines: PropTypes.number.isRequired,
   vendor: PropTypes.object,
-};
-
-InvoiceDetails.defaultProps = {
-  invoiceTotalUnits: 0,
-  isApprovePayEnabled: false,
-  invoiceLines: [],
 };
 
 export default InvoiceDetails;

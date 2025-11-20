@@ -1,11 +1,11 @@
-import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
+  Accordion,
   AccordionSet,
   AccordionStatus,
-  Accordion,
   Col,
   Row,
   ExpandAllButton,
@@ -16,7 +16,9 @@ import { SECTIONS_VOUCHER } from '../constants';
 import VoucherDetails from './VoucherDetails';
 import VoucherLinesDetails from './VoucherLinesDetails';
 
-const VoucherView = forwardRef(({ voucher, voucherLines }, ref) => (
+const DEFAULT_VOUCHER_LINES = [];
+
+const VoucherView = forwardRef(({ voucher, voucherLines = DEFAULT_VOUCHER_LINES }, ref) => (
   <AccordionStatus ref={ref}>
     <Row end="xs">
       <Col xs={12}>
@@ -50,10 +52,6 @@ const VoucherView = forwardRef(({ voucher, voucherLines }, ref) => (
 VoucherView.propTypes = {
   voucher: PropTypes.object.isRequired,
   voucherLines: PropTypes.arrayOf(PropTypes.object),
-};
-
-VoucherView.defaultProps = {
-  voucherLines: [],
 };
 
 export default VoucherView;

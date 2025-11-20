@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -16,13 +15,13 @@ import {
 } from '@folio/stripes-acq-components';
 
 const ExtendedInformation = ({
+  chkSubscriptionOverlap = false,
+  currency,
+  enclosureNeeded = false,
+  exchangeRate,
+  exportToAccounting = false,
   folioInvoiceNo,
   paymentMethod,
-  chkSubscriptionOverlap,
-  exportToAccounting,
-  currency,
-  exchangeRate,
-  enclosureNeeded,
 }) => {
   const stripes = useStripes();
   const isExchangeRateVisible = stripes.currency !== currency;
@@ -94,19 +93,13 @@ const ExtendedInformation = ({
 };
 
 ExtendedInformation.propTypes = {
+  chkSubscriptionOverlap: PropTypes.bool,
+  currency: PropTypes.string,
+  enclosureNeeded: PropTypes.bool,
+  exchangeRate: PropTypes.number,
+  exportToAccounting: PropTypes.bool,
   folioInvoiceNo: PropTypes.string,
   paymentMethod: PropTypes.string,
-  chkSubscriptionOverlap: PropTypes.bool,
-  exportToAccounting: PropTypes.bool,
-  currency: PropTypes.string,
-  exchangeRate: PropTypes.number,
-  enclosureNeeded: PropTypes.bool,
-};
-
-ExtendedInformation.defaultProps = {
-  chkSubscriptionOverlap: false,
-  exportToAccounting: false,
-  enclosureNeeded: false,
 };
 
 export default ExtendedInformation;

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -20,7 +19,12 @@ const columnMapping = {
   amount: <FormattedMessage id="ui-invoice.invoice.details.voucher.amount" />,
 };
 
-const VoucherInformation = ({ voucher, voucherLines }) => {
+const DEFAULT_VOUCHER_LINES = [];
+
+const VoucherInformation = ({
+  voucher,
+  voucherLines = DEFAULT_VOUCHER_LINES,
+}) => {
   const groupedVoucherLines = groupByExternalAccNumber(voucherLines);
   const linesWithTotalAmount = Object.values(groupedVoucherLines).map(lines => ({
     totalAmount: getTotalAmount(lines),
@@ -60,10 +64,6 @@ const VoucherInformation = ({ voucher, voucherLines }) => {
 VoucherInformation.propTypes = {
   voucher: PropTypes.object.isRequired,
   voucherLines: PropTypes.arrayOf(PropTypes.object),
-};
-
-VoucherInformation.defaultProps = {
-  voucherLines: [],
 };
 
 export default VoucherInformation;

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
@@ -42,7 +41,9 @@ const documentsFormatter = {
   ),
 };
 
-const DocumentsDetails = ({ invoiceDocuments }) => {
+const DEFAULT_INVOICE_DOCUMENTS = [];
+
+const DocumentsDetails = ({ invoiceDocuments = DEFAULT_INVOICE_DOCUMENTS }) => {
   return (
     <>
       <Row>
@@ -83,10 +84,6 @@ const DocumentsDetails = ({ invoiceDocuments }) => {
 
 DocumentsDetails.propTypes = {
   invoiceDocuments: PropTypes.arrayOf(PropTypes.object),
-};
-
-DocumentsDetails.defaultProps = {
-  invoiceDocuments: [],
 };
 
 export default DocumentsDetails;

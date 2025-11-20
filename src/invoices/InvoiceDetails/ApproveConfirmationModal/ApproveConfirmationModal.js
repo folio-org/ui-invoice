@@ -1,6 +1,8 @@
-import React from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import { stripesConnect } from '@folio/stripes/core';
 import {
@@ -15,13 +17,13 @@ import { invoicesResource } from '../../../common/resources';
 import useDuplicateInvoice from './useDuplicateInvoice';
 
 const ApproveConfirmationModal = ({
+  headingLabelId = 'ui-invoice.invoice.actions.approve.confirmation.heading',
+  id = 'approve-invoice-confirmation',
+  invoice,
+  messageLabelId = 'ui-invoice.invoice.actions.approve.confirmation.message',
+  mutator,
   onCancel,
   onConfirm,
-  invoice,
-  headingLabelId,
-  id,
-  messageLabelId,
-  mutator,
 }) => {
   const intl = useIntl();
   const [duplicateInvoices] = useDuplicateInvoice(mutator, invoice);
@@ -93,12 +95,6 @@ ApproveConfirmationModal.propTypes = {
   mutator: PropTypes.object.isRequired,
   onCancel: PropTypes.func.isRequired,
   onConfirm: PropTypes.func.isRequired,
-};
-
-ApproveConfirmationModal.defaultProps = {
-  headingLabelId: 'ui-invoice.invoice.actions.approve.confirmation.heading',
-  id: 'approve-invoice-confirmation',
-  messageLabelId: 'ui-invoice.invoice.actions.approve.confirmation.message',
 };
 
 export default stripesConnect(ApproveConfirmationModal);
