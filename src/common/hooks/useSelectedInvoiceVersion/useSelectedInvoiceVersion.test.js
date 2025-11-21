@@ -3,12 +3,14 @@ import {
   QueryClientProvider,
 } from 'react-query';
 
-import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  renderHook,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 import { getFullName } from '@folio/stripes/util';
 import {
   ACQUISITIONS_UNITS_API,
-  CONFIG_API,
   useUsersBatch,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -18,10 +20,16 @@ import {
   vendor,
 } from '@folio/stripes-acq-components/test/jest/fixtures';
 
-import { invoiceVersions, invoice } from 'fixtures';
+import {
+  invoice,
+  invoiceVersions,
+} from 'fixtures';
 import { useInvoice } from '../useInvoice';
 import { useSelectedInvoiceVersion } from './useSelectedInvoiceVersion';
 
+jest.mock('@folio/stripes-acq-components/lib/hooks/useAddress', () => ({
+  useAddress: jest.fn(() => ({ addresses: [address], isLoading: false })),
+}));
 jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
   useUsersBatch: jest.fn(() => ({ users: [], isLoading: false })),
 }));
@@ -44,9 +52,6 @@ const kyMock = {
     json: async () => {
       if (url.startsWith(ACQUISITIONS_UNITS_API)) {
         return { acquisitionsUnits: [acqUnit] };
-      }
-      if (url.startsWith(CONFIG_API)) {
-        return { configs: [address] };
       }
       if (url.startsWith(VENDORS_API)) {
         return { organizations: [vendor] };

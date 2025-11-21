@@ -24,6 +24,7 @@ import {
   useSorting,
 } from '@folio/stripes-acq-components';
 
+import { useBatchGroups } from '../../common/hooks';
 import { getBatchGroupsOptions } from '../../common/utils';
 import { BatchVoucherExportsList } from './BatchVoucherExportsList';
 import { BV_EXPORT_SORTABLE_COLUMNS } from './BatchVoucherExportsList/constants';
@@ -31,7 +32,6 @@ import { ConfirmManualExportModal } from './ConfirmManualExportModal';
 import { VoucherExportFooter } from './VoucherExportFooter';
 import {
   useBatchGroupExportConfigs,
-  useBatchGroups,
   useBatchVoucherExports,
   useManualExportRun,
 } from './hooks';

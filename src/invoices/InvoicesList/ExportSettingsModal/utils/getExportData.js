@@ -1,22 +1,17 @@
-import {
-  compact,
-  flatten,
-  uniq,
-  keyBy,
-} from 'lodash';
+import compact from 'lodash/compact';
+import flatten from 'lodash/flatten';
+import uniq from 'lodash/uniq';
+import keyBy from 'lodash/keyBy';
 
 import {
   ACQUISITIONS_UNITS_API,
-  CONFIG_ADDRESSES,
-  CONFIG_API,
   EXPENSE_CLASSES_API,
   fetchAllRecords,
   fetchExportDataByIds,
+  fetchTenantAddressesByIds,
   FUNDS_API,
-  getAddresses,
   INVOICES_API,
   LINES_API,
-  MODULE_TENANT,
   USERS_API,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -85,18 +80,10 @@ export const getExportData = async ({ ky, intl, query }) => {
   ));
   const expenseClassIds = uniq([...invoiceExpenseClassIds, ...invoiceLineExpenseClassIds].filter(Boolean));
   const expenseClasses = await fetchExportDataByIds({ ky, ids: expenseClassIds, api: EXPENSE_CLASSES_API, records: 'expenseClasses' });
-  const addressIds = uniq(flatten(exportInvoices.map(({ billTo }) => billTo))).filter(Boolean);
-  const buildAddressQuery = (itemsChunk) => {
-    const subQuery = itemsChunk
-      .map(id => `id==${id}`)
-      .join(' or ');
 
-    return subQuery ? `(module=${MODULE_TENANT} and configName=${CONFIG_ADDRESSES} and (${subQuery}))` : '';
-  };
-  const addressRecords = await fetchExportDataByIds({
-    ky, ids: addressIds, buildQuery: buildAddressQuery, api: CONFIG_API, records: 'configs',
-  });
-  const addresses = getAddresses(addressRecords);
+  const addressIds = uniq(flatten(exportInvoices.map(({ billTo }) => billTo))).filter(Boolean);
+  const addresses = await fetchTenantAddressesByIds(ky)(addressIds).then((res) => res.addresses);
+
   const fiscalYearIds = uniq(exportInvoices.map(({ fiscalYearId }) => fiscalYearId));
   const fiscalYears = await fetchExportDataByIds({ ky, ids: fiscalYearIds, api: FISCAL_YEARS_API, records: 'fiscalYears' });
   const fundIds = uniq(invoiceLines.flatMap(({ fundDistributions }) => fundDistributions?.map(({ fundId }) => fundId)));
