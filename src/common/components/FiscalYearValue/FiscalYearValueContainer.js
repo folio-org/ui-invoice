@@ -11,10 +11,11 @@ export const FiscalYearValueContainer = ({ fiscalYearId, ...rest }) => {
     isLoading,
   } = useFiscalYear(fiscalYearId);
 
-  if (isLoading) return <Loading />;
-
   return (
-    <FiscalYearValue {...rest} value={fiscalYear.code} />
+    <FiscalYearValue
+      {...rest}
+      value={isLoading ? <Loading /> : fiscalYear.code}
+    />
   );
 };
 
