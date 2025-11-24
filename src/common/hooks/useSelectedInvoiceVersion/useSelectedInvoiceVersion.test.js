@@ -11,6 +11,7 @@ import { useOkapiKy } from '@folio/stripes/core';
 import { getFullName } from '@folio/stripes/util';
 import {
   ACQUISITIONS_UNITS_API,
+  useAddress,
   useUsersBatch,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -28,7 +29,7 @@ import { useInvoice } from '../useInvoice';
 import { useSelectedInvoiceVersion } from './useSelectedInvoiceVersion';
 
 jest.mock('@folio/stripes-acq-components/lib/hooks/useAddress', () => ({
-  useAddress: jest.fn(() => ({ addresses: [address], isLoading: false })),
+  useAddress: jest.fn(),
 }));
 jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
   useUsersBatch: jest.fn(() => ({ users: [], isLoading: false })),
@@ -63,8 +64,6 @@ const kyMock = {
 };
 
 const queryClient = new QueryClient();
-
-// eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     {children}
@@ -73,16 +72,20 @@ const wrapper = ({ children }) => (
 
 describe('useSelectedInvoiceVersion', () => {
   beforeEach(() => {
-    kyMock.get.mockClear();
-    useOkapiKy.mockClear().mockReturnValue(kyMock);
-    useInvoice.mockClear().mockReturnValue({
+    useAddress.mockReturnValue({ addresses: [address], isLoading: false });
+    useOkapiKy.mockReturnValue(kyMock);
+    useInvoice.mockReturnValue({
       invoice: invoiceData,
       isLoading: false,
     });
-    useUsersBatch.mockClear().mockReturnValue({
+    useUsersBatch.mockReturnValue({
       isLoading: false,
       users: [user],
     });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should return Invoice version data', async () => {

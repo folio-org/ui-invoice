@@ -26,6 +26,9 @@ jest.mock('@folio/stripes-components/lib/Commander', () => ({
   expandAllSections: jest.fn(),
   collapseAllSections: jest.fn(),
 }));
+jest.mock('@folio/stripes-acq-components/lib/hooks/useTags', () => ({
+  useTagsConfigs: jest.fn().mockReturnValue({ configs: [] }),
+}));
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   FundDistributionView: jest.fn(() => 'FundDistributionView'),
