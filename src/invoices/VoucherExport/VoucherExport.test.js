@@ -1,21 +1,26 @@
 import { useHistory } from 'react-router';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 
+import {
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { useSorting } from '@folio/stripes-acq-components';
 
 import {
   BATCH_VOUCHER_EXPORT_STATUS,
   CONTENT_TYPES,
 } from '../../common/constants';
+import { useBatchGroups } from '../../common/hooks';
 import {
   useBatchGroupExportConfigs,
-  useBatchGroups,
   useBatchVoucherExports,
   useManualExportRun,
 } from './hooks';
-
 import VoucherExport from './VoucherExport';
 
 jest.mock('react-router', () => ({
@@ -30,9 +35,12 @@ jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   useSorting: jest.fn().mockReturnValue(['field', 'ascending', jest.fn()]),
 }));
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
+  useBatchGroups: jest.fn(),
+}));
 jest.mock('./hooks', () => ({
   ...jest.requireActual('./hooks'),
-  useBatchGroups: jest.fn(),
   useBatchVoucherExports: jest.fn(),
   useBatchGroupExportConfigs: jest.fn(),
   useManualExportRun: jest.fn(),
@@ -86,12 +94,15 @@ const mockManualRun = [jest.fn(), jest.fn()];
 
 describe('VoucherExport', () => {
   beforeEach(() => {
-    useHistory.mockClear().mockReturnValue(mockHistory);
-    mockHistory.push.mockClear();
-    useBatchGroupExportConfigs.mockClear().mockReturnValue(mockExportConfigs);
-    useBatchGroups.mockClear().mockReturnValue(mockBatchGroups);
-    useBatchVoucherExports.mockClear().mockReturnValue(mockBatchVoucherExports);
-    useManualExportRun.mockClear().mockReturnValue(mockManualRun);
+    useHistory.mockReturnValue(mockHistory);
+    useBatchGroupExportConfigs.mockReturnValue(mockExportConfigs);
+    useBatchGroups.mockReturnValue(mockBatchGroups);
+    useBatchVoucherExports.mockReturnValue(mockBatchVoucherExports);
+    useManualExportRun.mockReturnValue(mockManualRun);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should disable \'Batch group\' selection when resources are loading', () => {
