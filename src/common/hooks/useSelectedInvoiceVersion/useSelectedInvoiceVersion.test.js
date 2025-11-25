@@ -11,7 +11,7 @@ import { useOkapiKy } from '@folio/stripes/core';
 import { getFullName } from '@folio/stripes/util';
 import {
   ACQUISITIONS_UNITS_API,
-  useAddress,
+  useAddresses,
   useUsersBatch,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -28,8 +28,8 @@ import {
 import { useInvoice } from '../useInvoice';
 import { useSelectedInvoiceVersion } from './useSelectedInvoiceVersion';
 
-jest.mock('@folio/stripes-acq-components/lib/hooks/useAddress', () => ({
-  useAddress: jest.fn(),
+jest.mock('@folio/stripes-acq-components/lib/hooks/useAddresses', () => ({
+  useAddresses: jest.fn(),
 }));
 jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
   useUsersBatch: jest.fn(() => ({ users: [], isLoading: false })),
@@ -72,7 +72,7 @@ const wrapper = ({ children }) => (
 
 describe('useSelectedInvoiceVersion', () => {
   beforeEach(() => {
-    useAddress.mockReturnValue({ addresses: [address], isLoading: false });
+    useAddresses.mockReturnValue({ addresses: [address], isLoading: false });
     useOkapiKy.mockReturnValue(kyMock);
     useInvoice.mockReturnValue({
       invoice: invoiceData,

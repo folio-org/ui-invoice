@@ -1,5 +1,8 @@
+import {
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 import user from '@folio/jest-config-stripes/testing-library/user-event';
-import { render, screen } from '@folio/jest-config-stripes/testing-library/react';
 import { exportToCsv } from '@folio/stripes/components';
 
 import ExportSettingsModal from './ExportSettingsModal';
@@ -7,6 +10,10 @@ import ExportSettingsModal from './ExportSettingsModal';
 jest.mock('@folio/stripes/components', () => ({
   ...jest.requireActual('@folio/stripes/components'),
   exportToCsv: jest.fn(),
+}));
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  fetchTenantAddressesByIds: jest.fn().mockReturnValue(() => Promise.resolve({ addresses: [] })),
 }));
 
 const defaultProps = {
