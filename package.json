@@ -185,6 +185,8 @@
           "invoice.invoices.item.get",
           "invoice-storage.adjustment-presets.collection.get",
           "invoice-storage.settings.collection.get",
+          "mod-settings.global.read.ui-tags.tags.manage",
+          "mod-settings.global.read.ui-tenant-settings.addresses.manage",
           "orders.collection.get",
           "orders.pieces.collection.get",
           "orders.po-lines.collection.get",
