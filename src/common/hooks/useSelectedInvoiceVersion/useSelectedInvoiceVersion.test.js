@@ -3,12 +3,15 @@ import {
   QueryClientProvider,
 } from 'react-query';
 
-import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  renderHook,
+  waitFor,
+} from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 import { getFullName } from '@folio/stripes/util';
 import {
   ACQUISITIONS_UNITS_API,
-  CONFIG_API,
+  useAddresses,
   useUsersBatch,
   VENDORS_API,
 } from '@folio/stripes-acq-components';
@@ -18,10 +21,16 @@ import {
   vendor,
 } from '@folio/stripes-acq-components/test/jest/fixtures';
 
-import { invoiceVersions, invoice } from 'fixtures';
+import {
+  invoice,
+  invoiceVersions,
+} from 'fixtures';
 import { useInvoice } from '../useInvoice';
 import { useSelectedInvoiceVersion } from './useSelectedInvoiceVersion';
 
+jest.mock('@folio/stripes-acq-components/lib/hooks/useAddresses', () => ({
+  useAddresses: jest.fn(),
+}));
 jest.mock('@folio/stripes-acq-components/lib/hooks/useUsersBatch', () => ({
   useUsersBatch: jest.fn(() => ({ users: [], isLoading: false })),
 }));
@@ -45,9 +54,6 @@ const kyMock = {
       if (url.startsWith(ACQUISITIONS_UNITS_API)) {
         return { acquisitionsUnits: [acqUnit] };
       }
-      if (url.startsWith(CONFIG_API)) {
-        return { configs: [address] };
-      }
       if (url.startsWith(VENDORS_API)) {
         return { organizations: [vendor] };
       }
@@ -58,8 +64,6 @@ const kyMock = {
 };
 
 const queryClient = new QueryClient();
-
-// eslint-disable-next-line react/prop-types
 const wrapper = ({ children }) => (
   <QueryClientProvider client={queryClient}>
     {children}
@@ -68,16 +72,20 @@ const wrapper = ({ children }) => (
 
 describe('useSelectedInvoiceVersion', () => {
   beforeEach(() => {
-    kyMock.get.mockClear();
-    useOkapiKy.mockClear().mockReturnValue(kyMock);
-    useInvoice.mockClear().mockReturnValue({
+    useAddresses.mockReturnValue({ addresses: [address], isLoading: false });
+    useOkapiKy.mockReturnValue(kyMock);
+    useInvoice.mockReturnValue({
       invoice: invoiceData,
       isLoading: false,
     });
-    useUsersBatch.mockClear().mockReturnValue({
+    useUsersBatch.mockReturnValue({
       isLoading: false,
       users: [user],
     });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should return Invoice version data', async () => {

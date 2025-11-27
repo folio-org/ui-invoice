@@ -4,6 +4,7 @@ import { renderHook } from '@folio/jest-config-stripes/testing-library/react';
 import {
   fetchAllRecords,
   fetchExportDataByIds,
+  fetchTenantAddressesByIds,
 } from '@folio/stripes-acq-components';
 
 import { invoice } from 'fixtures';
@@ -14,14 +15,20 @@ jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
   fetchAllRecords: jest.fn(),
   fetchExportDataByIds: jest.fn(),
+  fetchTenantAddressesByIds: jest.fn(),
 }));
 
 const invoiceDataMock = [{ ...invoice }];
 
 describe('getExportData', () => {
   beforeEach(() => {
-    fetchAllRecords.mockClear().mockReturnValue(invoiceDataMock);
-    fetchExportDataByIds.mockClear().mockResolvedValue([]);
+    fetchAllRecords.mockReturnValue(invoiceDataMock);
+    fetchExportDataByIds.mockResolvedValue([]);
+    fetchTenantAddressesByIds.mockReturnValue(() => Promise.resolve({ addresses: [] }));
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
   it('should return export report object', async () => {

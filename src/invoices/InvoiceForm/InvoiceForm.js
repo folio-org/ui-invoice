@@ -78,7 +78,6 @@ import {
   isCancelled,
   isPaid,
   isPayable,
-  parseAddressConfigs,
 } from '../../common/utils';
 import AdjustmentsForm from '../AdjustmentsForm';
 import { SECTIONS_INVOICE_FORM as SECTIONS } from '../constants';
@@ -93,6 +92,7 @@ const CREATE_UNITS_PERM = 'invoices.acquisitions-units-assignments.assign';
 const MANAGE_UNITS_PERM = 'invoices.acquisitions-units-assignments.manage';
 
 const InvoiceForm = ({
+  addresses,
   adjustmentPresets = [],
   batchGroups,
   form,
@@ -103,7 +103,6 @@ const InvoiceForm = ({
   isCreateFromOrder = false,
   isSubmitDisabled: isSubmitDisabledProp,
   onCancel,
-  parentResources,
   pristine,
   saveButtonLabelId = 'stripes-components.saveAndClose',
   submitting,
@@ -263,7 +262,6 @@ const InvoiceForm = ({
     />
   );
 
-  const addresses = parseAddressConfigs(get(parentResources, 'configAddress.records'));
   const addressBillTo = get(find(addresses, { id: filledBillTo }), 'address', '');
   const isEditPostApproval = IS_EDIT_POST_APPROVAL(id, status);
   const isEditMode = Boolean(id);
@@ -776,6 +774,7 @@ const InvoiceForm = ({
 
 InvoiceForm.propTypes = {
   adjustmentPresets: PropTypes.arrayOf(PropTypes.object),
+  addresses: PropTypes.arrayOf(PropTypes.object),
   batchGroups: PropTypes.arrayOf(PropTypes.object),
   form: PropTypes.object.isRequired,
   handleSubmit: PropTypes.func.isRequired,
@@ -785,7 +784,6 @@ InvoiceForm.propTypes = {
   isCreateFromOrder: PropTypes.bool,
   isSubmitDisabled: PropTypes.bool,
   onCancel: PropTypes.func.isRequired,
-  parentResources: PropTypes.object.isRequired,
   pristine: PropTypes.bool.isRequired,
   saveButtonLabelId: PropTypes.string,
   submitting: PropTypes.bool.isRequired,

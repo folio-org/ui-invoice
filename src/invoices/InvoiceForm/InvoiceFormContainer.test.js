@@ -22,6 +22,7 @@ import {
 } from 'fixtures';
 
 import {
+  useBatchGroups,
   useInvoice,
   useInvoiceLineMutation,
   useOrderLines,
@@ -35,6 +36,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
   AcqUnitsField: () => <span>AcqUnitsField</span>,
   FieldOrganization: jest.fn(() => <span>FieldOrganization</span>),
   useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
+  useAddresses: jest.fn().mockReturnValue({ addresses: [], isLoading: false }),
   useOrganization: jest.fn(),
 }));
 jest.mock('../InvoiceDetails/utils', () => ({
@@ -49,6 +51,7 @@ jest.mock('../../common/hooks', () => ({
   ...jest.requireActual('../../common/hooks'),
   useAddressCategories: jest.fn().mockReturnValue({ addressCategories: [], isLoading: false }),
   useAdjustmentsSettings: jest.fn().mockReturnValue({ adjustmentPresets: [], isLoading: false }),
+  useBatchGroups: jest.fn(),
   useInvoice: jest.fn(),
   useInvoiceLineMutation: jest.fn(),
   useOrderLines: jest.fn(),
@@ -62,9 +65,6 @@ const mutatorMock = {
   },
   duplicateInvoiceVendor: {
     GET: jest.fn().mockReturnValue(Promise.resolve({ name: 'Amazon' })),
-  },
-  batchGroups: {
-    GET: jest.fn().mockReturnValue(Promise.resolve([batchGroup])),
   },
   invoiceFormDocuments: {
     reset: jest.fn(),
@@ -98,6 +98,7 @@ describe('InvoiceFormContainer', () => {
 
   beforeEach(() => {
     saveInvoice.mockResolvedValue(invoice);
+    useBatchGroups.mockReturnValue({ batchGroups: [batchGroup], isLoading: false });
     useInvoice.mockReturnValue({ isLoading: false, invoice });
     useInvoiceLineMutation.mockReturnValue({ mutateInvoiceLine });
     useOrderLines.mockReturnValue({ orderLines: [orderLine], isLoading: false });

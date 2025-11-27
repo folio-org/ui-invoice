@@ -41,8 +41,8 @@ export const useSelectedInvoiceVersion = ({ versionId, versions, snapshotPath },
   } = useInvoice(currentVersion?.invoiceId);
 
   const {
-    isLoading: isAddressesLoading,
     addresses,
+    isLoading: isAddressesLoading,
   } = useAddresses();
 
   const metadata = useMemo(() => getVersionMetadata(currentVersion, invoice), [currentVersion, invoice]);

@@ -45,6 +45,9 @@ jest.mock('@folio/stripes-acq-components', () => ({
   TagsPane: jest.fn(() => 'TagsPane'),
   useAcqRestrictions: jest.fn().mockReturnValue({ restrictions: {} }),
 }));
+jest.mock('@folio/stripes-acq-components/lib/hooks/useTags', () => ({
+  useTagsConfigs: jest.fn().mockReturnValue({ configs: [] }),
+}));
 
 jest.mock('../AdjustmentsDetails', () => jest.fn().mockReturnValue('AdjustmentsDetails'));
 jest.mock('../PrintVoucher', () => ({ PrintVoucherContainer: jest.fn(() => 'PrintVoucherContainer') }));

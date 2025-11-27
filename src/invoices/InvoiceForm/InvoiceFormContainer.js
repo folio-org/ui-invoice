@@ -20,6 +20,7 @@ import {
   DATE_FORMAT,
   LIMIT_MAX,
   sourceValues,
+  useAddresses,
   useModalToggle,
   useOrganization,
   useShowCallout,
@@ -34,14 +35,13 @@ import {
 } from '../../common/constants';
 import {
   useAdjustmentsSettings,
+  useBatchGroups,
   useInvoice,
   useInvoiceLineMutation,
   useOrderLines,
   useOrders,
 } from '../../common/hooks';
 import {
-  batchGroupsResource,
-  configAddress,
   invoiceDocumentsResource,
   invoiceResource,
   invoicesResource,
@@ -69,7 +69,6 @@ export function InvoiceFormContainerComponent({
 
   const [isNotUniqueOpen, toggleNotUnique] = useModalToggle();
 
-  const [batchGroups, setBatchGroups] = useState();
   const [duplicateInvoices, setDuplicateInvoices] = useState();
   const [forceSaveValues, setForceSaveValues] = useState();
 
@@ -114,15 +113,19 @@ export function InvoiceFormContainerComponent({
     isLoading: isAdjustmentPresetsLoading,
   } = useAdjustmentsSettings();
 
-  useEffect(() => {
-    setBatchGroups();
+  const {
+    addresses,
+    isLoading: isAddressesLoading,
+  } = useAddresses();
 
+  const {
+    batchGroups,
+    isLoading: isBatchGroupsLoading,
+  } = useBatchGroups();
+
+  useEffect(() => {
     mutator.invoiceFormDocuments.reset();
     mutator.invoiceFormDocuments.GET();
-
-    mutator.batchGroups.GET()
-      .then(setBatchGroups)
-      .catch(() => setBatchGroups([]));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -307,12 +310,14 @@ export function InvoiceFormContainerComponent({
     toggleNotUnique,
   ]);
 
-  const hasLoaded = batchGroups && !(
+  const hasLoaded = !(
     isInvoiceLoading
     || isOrdersLoading
     || isOrderLinesLoading
     || isVendorLoading
     || isAdjustmentPresetsLoading
+    || isAddressesLoading
+    || isBatchGroupsLoading
   );
 
   if (!hasLoaded) {
@@ -327,10 +332,10 @@ export function InvoiceFormContainerComponent({
     <>
       <InvoiceForm
         adjustmentPresets={adjustmentPresets}
+        addresses={addresses}
         initialValues={initialValues}
         initialVendor={invoiceVendor}
         isSubmitDisabled={isInvoiceFetching}
-        parentResources={resources}
         onSubmit={saveInvoiceHandler}
         onCancel={onClose}
         batchGroups={batchGroups}
@@ -376,8 +381,6 @@ InvoiceFormContainerComponent.manifest = Object.freeze({
     accumulate: true,
     fetch: false,
   },
-  configAddress,
-  batchGroups: batchGroupsResource,
 });
 
 InvoiceFormContainerComponent.propTypes = {

@@ -10,6 +10,7 @@ import Information from './Information';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
+  useAddress: jest.fn(() => ({ address: 'Test address' })),
   useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
 }));
 jest.mock('../../../common/hooks', () => ({

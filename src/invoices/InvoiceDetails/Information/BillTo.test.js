@@ -1,35 +1,45 @@
 import { render } from '@folio/jest-config-stripes/testing-library/react';
+import { useAddress } from '@folio/stripes-acq-components';
 
 import BillTo from './BillTo';
 
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useAddress: jest.fn(),
+}));
+
 const testId = 'testId';
 const testAddress = { address: 'testAddress' };
-const testResources = {
-  billToAddress: {
-    records: [{ id: testId, value: JSON.stringify(testAddress) }],
-  },
+
+const defaultProps = {
+  billToId: testId,
 };
 
-const renderBillTo = ({
-  resources,
-  billToId,
-}) => (render(
+const renderBillTo = (props = {}) => render(
   <BillTo
-    resources={resources}
-    billToId={billToId}
+    {...defaultProps}
+    {...props}
   />,
-));
+);
 
 describe('BillTo component', () => {
-  it('should display address', () => {
-    const { getByText } = renderBillTo({ resources: testResources, billToId: testId });
+  beforeEach(() => {
+    useAddress.mockReturnValue({ address: testAddress });
+  });
 
-    expect(getByText(testAddress.address)).toBeDefined();
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('should display address', () => {
+    const { getByText } = renderBillTo({ billToId: testId });
+
+    expect(getByText(testAddress.address)).toBeInTheDocument();
   });
 
   it('should display hyphen instead of address', () => {
-    const { getByText } = renderBillTo({ resources: {} });
+    const { getByText } = renderBillTo({ billToId: null });
 
-    expect(getByText('-')).toBeDefined();
+    expect(getByText('-')).toBeInTheDocument();
   });
 });
