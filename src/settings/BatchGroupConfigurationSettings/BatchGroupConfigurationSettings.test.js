@@ -1,20 +1,24 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-
-import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query';
 
 import {
-  batchGroup,
-} from '../../../test/jest/fixtures';
+  act,
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
 
-import { useBatchGroups } from '../../invoices/VoucherExport/hooks';
+import { batchGroup } from 'fixtures';
+import { useBatchGroups } from '../../common/hooks';
 import {
   SCHEDULE_EXPORT,
 } from './constants';
 import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
 import BatchGroupConfigurationSettings from './BatchGroupConfigurationSettings';
 
-jest.mock('../../invoices/VoucherExport/hooks', () => ({
-  ...jest.requireActual('../../invoices/VoucherExport/hooks'),
+jest.mock('../../common/hooks', () => ({
+  ...jest.requireActual('../../common/hooks'),
   useBatchGroups: jest.fn().mockReturnValue(),
 }));
 jest.mock('./BatchGroupConfigurationForm', () => jest.fn().mockReturnValue('BatchGroupConfigurationForm'));
