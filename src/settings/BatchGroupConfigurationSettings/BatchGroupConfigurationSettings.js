@@ -22,17 +22,11 @@ import {
   exportConfigsResource,
   testConnectionResource,
 } from '../../common/resources';
-import {
-  EXPORT_CONFIGURATIONS_API,
-} from '../../common/constants';
-import { useBatchGroups } from '../../invoices/VoucherExport/hooks';
-import {
-  SCHEDULE_EXPORT,
-} from './constants';
-import {
-  saveExportConfig,
-} from './utils';
+import { EXPORT_CONFIGURATIONS_API } from '../../common/constants';
+import { useBatchGroups } from '../../common/hooks';
 import BatchGroupConfigurationForm from './BatchGroupConfigurationForm';
+import { SCHEDULE_EXPORT } from './constants';
+import { saveExportConfig } from './utils';
 
 const BatchGroupConfigurationSettings = ({ mutator }) => {
   const intl = useIntl();
