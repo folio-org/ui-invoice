@@ -493,7 +493,7 @@
     "settings.adjustments.create.error": "Failed to create adjustment.",
     "settings.adjustments.update.success": "The adjustment <b>{name}</b> was updated.",
     "settings.adjustments.update.error": "Failed to update <b>{name}</b> adjustment.",
-    "errors.cannotConvertAmountInvalidCurrency": "The selected currency cannot be converted. Please configure an exchange rate provider that supports this currency.",
+    "errors.cannotConvertAmountInvalidCurrency": "La moneda seleccionada no se puede convertir. Configure un proveedor de tipos de cambio que admita esta moneda.",
     "versionHistory.label.adjustments.adjustmentId": "Adjustment ID",
     "versionHistory.label.adjustments.description": "Adjustment description",
     "versionHistory.label.adjustments.exportToAccounting": "Adjustment export to accounting",
