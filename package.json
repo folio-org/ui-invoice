@@ -46,7 +46,6 @@
     "faker": "^5.1.0",
     "identity-obj-proxy": "^3.0.0",
     "miragejs": "^0.1.32",
-    "moment": "^2.24.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intl": "^7.1.5",
@@ -74,7 +73,6 @@
   },
   "peerDependencies": {
     "@folio/stripes": "^10.0.0",
-    "moment": "^2.24.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-intl": "^7.1.5",
