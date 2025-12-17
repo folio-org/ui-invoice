@@ -1,11 +1,14 @@
-import { useCallback, useRef } from 'react';
-import moment from 'moment';
+import {
+  useCallback,
+  useRef,
+} from 'react';
 
+import { dayjs } from '@folio/stripes/components';
+import { useOkapiKy } from '@folio/stripes/core';
 import {
   DATE_FORMAT,
   useShowCallout,
 } from '@folio/stripes-acq-components';
-import { useOkapiKy } from '@folio/stripes/core';
 
 import { BATCH_VOUCHER_EXPORT_STATUS } from '../../../../common/constants';
 import { createManualVoucherExport } from '../../utils';
@@ -36,7 +39,7 @@ export const useManualExportRun = ({
     () => {
       const start = batchVoucherExports[0]?.end
         || batchGroups.find(({ id }) => id === batchGroupId)?.metadata?.createdDate
-        || moment(0).tz('UTC').format(DATE_FORMAT);
+        || dayjs(0).tz('UTC').format(DATE_FORMAT);
 
       return createManualVoucherExport(ky, batchGroupId, start)
         .then(

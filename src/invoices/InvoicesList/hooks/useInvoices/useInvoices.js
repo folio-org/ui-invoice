@@ -1,7 +1,6 @@
+import queryString from 'query-string';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router';
-import queryString from 'query-string';
-import moment from 'moment';
 
 import {
   useNamespace,
@@ -24,11 +23,7 @@ export const useInvoices = ({ pagination, fetchVendors }) => {
   const buildQuery = useBuildQuery();
   const queryParams = queryString.parse(search);
 
-  moment.tz.setDefault(timezone);
-
-  const query = buildQuery(queryParams);
-
-  moment.tz.setDefault();
+  const query = buildQuery(queryParams, { timezone });
 
   const filtersCount = getFiltersCount(queryParams);
 
