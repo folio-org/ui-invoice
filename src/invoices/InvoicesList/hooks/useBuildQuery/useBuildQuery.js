@@ -19,7 +19,7 @@ function getQueryForTags(filterValue) {
 }
 
 export const useBuildQuery = () => {
-  return useCallback((queryParams, options) => {
+  return useCallback((queryParams) => {
     return makeQueryBuilder(
       'cql.allRecords=1',
       (query, qindex) => {
@@ -46,6 +46,6 @@ export const useBuildQuery = () => {
         [FILTERS.LOCK_TOTAL]: buildNumberRangeQuery.bind(null, [FILTERS.LOCK_TOTAL]),
         [FILTERS.TOTAL_AMOUNT]: buildNumberRangeQuery.bind(null, [FILTERS.TOTAL_AMOUNT]),
       },
-    )(queryParams, options);
+    )(queryParams);
   }, []);
 };
