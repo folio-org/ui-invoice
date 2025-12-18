@@ -1,7 +1,7 @@
+import moment from 'moment';
+import queryString from 'query-string';
 import { useQuery } from 'react-query';
 import { useLocation } from 'react-router';
-import queryString from 'query-string';
-import moment from 'moment';
 
 import {
   useNamespace,

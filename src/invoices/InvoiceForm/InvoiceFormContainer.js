@@ -1,5 +1,4 @@
 import get from 'lodash/get';
-import moment from 'moment';
 import PropTypes from 'prop-types';
 import {
   useCallback,
@@ -11,6 +10,7 @@ import { withRouter } from 'react-router-dom';
 import ReactRouterPropTypes from 'react-router-prop-types';
 
 import {
+  dayjs,
   LoadingPane,
   Paneset,
 } from '@folio/stripes/components';
@@ -242,7 +242,7 @@ export function InvoiceFormContainerComponent({
 
     if (!forceSaveValues) {
       const { vendorInvoiceNo, invoiceDate, vendorId } = formValues;
-      const date = moment.utc(invoiceDate).format(DATE_FORMAT);
+      const date = dayjs.utc(invoiceDate).format(DATE_FORMAT);
       const params = {
         limit: `${LIMIT_MAX}`,
         query: `id<>"${id}" AND vendorInvoiceNo=="${vendorInvoiceNo}" AND invoiceDate=="${date}*" AND vendorId=="${vendorId}"`,

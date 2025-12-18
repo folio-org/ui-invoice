@@ -1,35 +1,37 @@
-import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import {
+  useCallback,
+  useState,
+} from 'react';
 import {
   FormattedMessage,
   useIntl,
 } from 'react-intl';
-import moment from 'moment';
 
 import {
-  useOkapiKy,
-  useStripes,
-} from '@folio/stripes/core';
-import {
   Button,
+  dayjs,
+  exportToCsv,
   Label,
   Layout,
   Loading,
   Modal,
   ModalFooter,
+  MultiSelection,
   RadioButton,
   RadioButtonGroup,
-  MultiSelection,
-  exportToCsv,
 } from '@folio/stripes/components';
-
+import {
+  useOkapiKy,
+  useStripes,
+} from '@folio/stripes/core';
 import { useShowCallout } from '@folio/stripes-acq-components';
 
 import {
-  EXPORT_INVOICE_LINE_FIELDS,
   EXPORT_INVOICE_FIELDS,
-  EXPORT_INVOICE_LINE_FIELDS_OPTIONS,
   EXPORT_INVOICE_FIELDS_OPTIONS,
+  EXPORT_INVOICE_LINE_FIELDS,
+  EXPORT_INVOICE_LINE_FIELDS_OPTIONS,
 } from './constants';
 import { getExportData } from './utils';
 
@@ -59,7 +61,7 @@ const ExportSettingsModal = ({ onCancel, query = '' }) => {
 
       setIsExporting(false);
 
-      const filename = `invoice-export-${moment().format('YYYY-MM-DD-hh:mm')}`;
+      const filename = `invoice-export-${dayjs().format('YYYY-MM-DD-hh:mm')}`;
 
       exportToCsv(
         [{ ...EXPORT_INVOICE_FIELDS, ...EXPORT_INVOICE_LINE_FIELDS }, ...exportData],

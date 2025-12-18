@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { dayjs } from '@folio/stripes/components';
 
 import {
   BATCH_VOUCHER_EXPORTS_API,
@@ -9,7 +9,7 @@ export const createManualVoucherExport = (ky, batchGroupId, start) => {
   const exportParams = {
     batchGroupId,
     start,
-    end: moment.utc().format(),
+    end: dayjs.utc().format(),
     status: BATCH_VOUCHER_EXPORT_STATUS.pending,
   };
 
