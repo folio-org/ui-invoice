@@ -114,7 +114,7 @@
     "settings.adjustments.alwaysShow": "常に表示",
     "settings.adjustments.prorate": "Pro rate",
     "settings.adjustments.description": "説明",
-    "settings.adjustments.type": "種類",
+    "settings.adjustments.type": "タイプ",
     "settings.adjustments.relationToTotal": "合計との関係",
     "settings.adjustments.confirmDelete.confirmLabel": "削除",
     "settings.adjustments.confirmDelete.heading": "{description}を削除しますか？",

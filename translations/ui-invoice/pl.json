@@ -477,7 +477,7 @@
     "invoice.versionHistory.noVersion": "Brak historii wersji do wyświetlenia.",
     "invoice.totalAmount": "Całkowita kwota",
     "invoice.actions.updateOrderStatus.heading": "Aktualizuj status zamówienia",
-    "invoice.actions.updateOrderStatus.message": "You are processing this invoice against a previous fiscal year and \"release encumbrance\" equals true for one or more invoice lines. One or more related orders has a type of One-time. Please indicate how the payment status of these order lines should be updated?",
+    "invoice.actions.updateOrderStatus.message": "Przetwarzasz tę fakturę w odniesieniu do poprzedniego roku budżetowego a opcja „zwolnij rezerwację środków” jest ustawiona na \"prawda\" dla jednej lub więcej pozycji faktury. Jedno lub więcej powiązanych zamówień jest typu \"Jednorazowe\". Proszę wskazać, w jaki sposób status płatności tych pozycji zamówienia powinien być aktualizowany?",
     "invoice.actions.updateOrderStatus.status.noChange": "Bez zmian",
     "invoice.actions.updateOrderStatus.status.awaitingPayment": "Oczekujące na płatność",
     "invoice.actions.updateOrderStatus.status.partiallyPaid": "Częściowo zapłacone",
