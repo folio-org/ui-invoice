@@ -1,16 +1,19 @@
-import { useEffect, useState } from 'react';
-import moment from 'moment';
-import { keyBy } from 'lodash';
+import keyBy from 'lodash/keyBy';
+import {
+  useEffect,
+  useState,
+} from 'react';
 
+import { dayjs } from '@folio/stripes/components';
 import {
   batchFetch,
-  LIMIT_MAX,
   DATE_FORMAT,
+  LIMIT_MAX,
   useShowCallout,
 } from '@folio/stripes-acq-components';
 
 const getInvoices = async (mutator, invoice) => {
-  const formattedInvoiceDate = moment.utc(invoice.invoiceDate)?.format(DATE_FORMAT);
+  const formattedInvoiceDate = dayjs.utc(invoice.invoiceDate)?.format(DATE_FORMAT);
 
   try {
     return await mutator.duplicateInvoices.GET({
