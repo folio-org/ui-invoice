@@ -20,6 +20,7 @@
 * React v19: Refactor away from default props for functional components. Refs UINV-547.
 * Remove references to `mod-configuration` from the module. Refs UINV-616.
 * Replace `moment` library with `dayjs`. Refs UINV-589.
+* Sort dropdown options alphabetically. Refs UINV-601.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.3...v7.0.4)

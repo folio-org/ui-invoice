@@ -141,11 +141,26 @@ const AdjustmentsForm = ({
 
     const adjustmentAmount = calculateAdjustmentAmount(adjustment, invoiceSubTotal, currency || stripes.currency);
 
+    const adjustmentProrateOptions = ADJUSTMENT_PRORATE_OPTIONS.toSorted((a, b) => {
+      const translatedA = intl.formatMessage({ id: a.labelId });
+      const translatedB = intl.formatMessage({ id: b.labelId });
+
+      return translatedA.localeCompare(translatedB);
+    });
+
     // TODO: should be removed when no-prorated supports included in
-    const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS.filter(({ value }) => (
-      adjustment?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
-      || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
-    ));
+    const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS
+      .filter(({ value }) => (
+        adjustment?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
+        || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
+      ))
+      .sort((a, b) => {
+        const translatedA = intl.formatMessage({ id: a.labelId });
+        const translatedB = intl.formatMessage({ id: b.labelId });
+
+        return translatedA.localeCompare(translatedB);
+      });
+
     const onProrateChange = e => {
       const prevValue = get(fields.value, [index, 'prorate']);
       const value = e.target.value;
@@ -242,7 +257,7 @@ const AdjustmentsForm = ({
                 <FieldSelectFinal
                   label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
                   name={`${elem}.prorate`}
-                  dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
+                  dataOptions={adjustmentProrateOptions}
                   required
                   validate={validateRequired}
                   disabled={disabled}

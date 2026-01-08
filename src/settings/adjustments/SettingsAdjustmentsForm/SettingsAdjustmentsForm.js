@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 import { Field } from 'react-final-form';
-import { FormattedMessage } from 'react-intl';
+import {
+  FormattedMessage,
+  useIntl,
+} from 'react-intl';
 
 import {
   Checkbox,
@@ -39,6 +43,8 @@ const SettingsAdjustmentsForm = ({
   title,
   values: formValues,
 }) => {
+  const intl = useIntl();
+
   const { change } = form;
 
   // TODO: should be removed when no-prorated supports included in
@@ -52,10 +58,39 @@ const SettingsAdjustmentsForm = ({
 
     change('prorate', value);
   };
-  const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS.filter(({ value }) => (
-    formValues?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
-    || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
-  ));
+
+  const relationOptions = useMemo(() => {
+    return ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS
+      .filter(({ value }) => (
+        formValues?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
+        || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
+      ))
+      .sort((a, b) => {
+        const translatedA = intl.formatMessage({ id: a.labelId });
+        const translatedB = intl.formatMessage({ id: b.labelId });
+
+        return translatedA.localeCompare(translatedB);
+      });
+  }, [intl, formValues?.prorate]);
+
+  const adjustmentTypeOptions = useMemo(() => {
+    return ADJUSTMENT_TYPE_OPTIONS.sort((a, b) => {
+      const translatedA = intl.formatMessage({ id: a.labelId });
+      const translatedB = intl.formatMessage({ id: b.labelId });
+
+      return translatedA.localeCompare(translatedB);
+    });
+  }, [intl]);
+
+  const adjustmentProrateOptions = useMemo(() => {
+    return ADJUSTMENT_PRORATE_OPTIONS.sort((a, b) => {
+      const translatedA = intl.formatMessage({ id: a.labelId });
+      const translatedB = intl.formatMessage({ id: b.labelId });
+
+      return translatedA.localeCompare(translatedB);
+    });
+  }, [intl]);
+
   const shortcuts = [
     {
       name: 'cancel',
@@ -126,7 +161,7 @@ const SettingsAdjustmentsForm = ({
                     <FieldSelectFinal
                       label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}
                       name="type"
-                      dataOptions={ADJUSTMENT_TYPE_OPTIONS}
+                      dataOptions={adjustmentTypeOptions}
                       required
                       validate={validateRequired}
                     />
@@ -163,7 +198,7 @@ const SettingsAdjustmentsForm = ({
                     <FieldSelectFinal
                       label={<FormattedMessage id="ui-invoice.settings.adjustments.prorate" />}
                       name="prorate"
-                      dataOptions={ADJUSTMENT_PRORATE_OPTIONS}
+                      dataOptions={adjustmentProrateOptions}
                       required
                       validate={validateRequired}
                       onChange={onProrateChange}

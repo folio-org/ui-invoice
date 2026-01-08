@@ -132,5 +132,5 @@ export const getActiveAccountNumberOptions = ({ accounts = [], initialAccountNum
   return uniq(activeAccounts.map(({ name, accountNo, accountStatus }) => ({
     label: `${name} (${accountNo}) ${accountStatus === INACTIVE ? message : ''}`,
     value: accountNo,
-  })));
+  }))).sort((a, b) => a.label.localeCompare(b.label));
 };

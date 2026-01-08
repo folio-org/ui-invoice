@@ -328,14 +328,14 @@ exports[`AdjustmentsForm should render correct structure with defined adjustment
                                 stripes-acq-components.label.emptyValue
                               </option>
                               <option
-                                value="By line"
-                              >
-                                ui-invoice.adjustments.prorate.byLine
-                              </option>
-                              <option
                                 value="By amount"
                               >
                                 ui-invoice.adjustments.prorate.byAmount
+                              </option>
+                              <option
+                                value="By line"
+                              >
+                                ui-invoice.adjustments.prorate.byLine
                               </option>
                               <option
                                 value="By quantity"

@@ -77,12 +77,12 @@ describe('Invoice utils', () => {
         formatMessage: mockFormatMessage,
       })).toEqual([
         {
-          'label': 'Monographic ordering unit account (1234) ',
-          'value': '1234',
-        },
-        {
           'label': 'Amazon Test account (00000001)  - ui-invoice.inactive',
           'value': '00000001',
+        },
+        {
+          'label': 'Monographic ordering unit account (1234) ',
+          'value': '1234',
         },
       ]);
     });
