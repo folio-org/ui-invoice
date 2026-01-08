@@ -20,7 +20,8 @@ export const getAccountingCodeOptions = (vendor, intl) => {
   const options = accounts.map(({ accountNo, appSystemNo }) => ({
     label: `${accountNo} (${appSystemNo})`,
     value: accountNo,
-  }));
+  })).sort((a, b) => a.label.localeCompare(b.label));
+
   const erpCode = get(vendor, 'erpCode');
   const defaultOption = erpCode
     ? (

@@ -274,9 +274,17 @@ const InvoiceForm = ({
     ? { required: true, validate: validateAccountingCode, key: 1 }
     : { key: 0 };
 
-  const statusOptions = isPayable(status) || isStatusPaid || isCancelled(status)
-    ? INVOICE_STATUSES_OPTIONS
-    : PRE_PAY_INVOICE_STATUSES_OPTIONS;
+  const statusOptions = (
+    isPayable(status) || isStatusPaid || isCancelled(status)
+      ? INVOICE_STATUSES_OPTIONS
+      : PRE_PAY_INVOICE_STATUSES_OPTIONS
+  )
+    .map((option) => ({
+      ...option,
+      label: intl.formatMessage({ id: option.labelId }),
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
+
   const tooltipTextLockTotalAmount = !isLockTotalAmountEnabled &&
     <FormattedMessage id="ui-invoice.invoice.lockTotalAmount.tooltip" />;
   const lockTotalAmountProps = isLockTotalAmountEnabled
