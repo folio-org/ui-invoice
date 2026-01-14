@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 export const CONFIG_MODULE_TAGS = 'TAGS';
@@ -18,11 +17,11 @@ export const INVOICE_STATUS = {
 };
 
 export const INVOICE_STATUSES_OPTIONS = [
-  { label: <FormattedMessage id="ui-invoice.invoice.status.open" />, value: INVOICE_STATUS.open },
-  { label: <FormattedMessage id="ui-invoice.invoice.status.reviewed" />, value: INVOICE_STATUS.reviewed },
-  { label: <FormattedMessage id="ui-invoice.invoice.status.approved" />, value: INVOICE_STATUS.approved },
-  { label: <FormattedMessage id="ui-invoice.invoice.status.paid" />, value: INVOICE_STATUS.paid },
-  { label: <FormattedMessage id="ui-invoice.invoice.status.cancelled" />, value: INVOICE_STATUS.cancelled },
+  { labelId: 'ui-invoice.invoice.status.open', value: INVOICE_STATUS.open },
+  { labelId: 'ui-invoice.invoice.status.reviewed', value: INVOICE_STATUS.reviewed },
+  { labelId: 'ui-invoice.invoice.status.approved', value: INVOICE_STATUS.approved },
+  { labelId: 'ui-invoice.invoice.status.paid', value: INVOICE_STATUS.paid },
+  { labelId: 'ui-invoice.invoice.status.cancelled', value: INVOICE_STATUS.cancelled },
 ];
 
 export const PRE_PAY_INVOICE_STATUSES_OPTIONS = INVOICE_STATUSES_OPTIONS

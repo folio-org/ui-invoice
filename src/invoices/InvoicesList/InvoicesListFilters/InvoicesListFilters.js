@@ -1,5 +1,5 @@
-import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 
 import { AccordionSet } from '@folio/stripes/components';
 import {
@@ -18,9 +18,7 @@ import {
   PAYMENT_METHOD_OPTIONS,
 } from '@folio/stripes-acq-components';
 
-import {
-  INVOICE_STATUSES_OPTIONS,
-} from '../../../common/constants';
+import { INVOICE_STATUSES_OPTIONS } from '../../../common/constants';
 import {
   FILTERS,
 } from '../constants';
