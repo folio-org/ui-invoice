@@ -213,7 +213,7 @@
     "tag": "Tag",
     "errors.fileLimit": "Plik przekracza limit rozmiaru {size}MB",
     "settings.vouchers.label": "Kupony",
-    "settings.batchGroups.label": "Batch - grupy",
+    "settings.batchGroups.label": "Grupy batch",
     "settings.batchGroupConfiguration.label": "Konfiguracja grupy batch",
     "invoice.actions.load.error": "Nie udało się załadować danych faktury",
     "invoice.actions.approve.error.fundCannotBePaid": "Jeden lub więcej podziałów funduszu w tej fakturze nie może być zapłacony, ponieważ nie ma wystarczającej ilości pieniędzy w budżecie.",
