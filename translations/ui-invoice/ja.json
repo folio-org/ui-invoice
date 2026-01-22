@@ -399,7 +399,7 @@
     "button.exportCSV": "結果のエクスポート (CSV)",
     "adjustment.value": "値",
     "settings.adjustments.value": "値",
-    "settings.BatchVoucherExports.download.errorFormat": "File format not specified for voucher export. Please update Batch Group Configuration in system settings",
+    "settings.BatchVoucherExports.download.errorFormat": "バウチャーエクスポートのファイル形式が指定されていません。\nシステム設定でバッチグループ設定を更新してください。",
     "invoice.details.accordion.fundDistribution": "請求書レベルのファンド配分",
     "invoice.details.accordion.adjustments": "請求書レベルの調整",
     "invoice.actions.approve.error.multipleFiscalYears": "使用されたファンドが複数の会計年度に属しているため、請求書を承認できません",
