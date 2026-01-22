@@ -444,7 +444,7 @@
     "invoice.actions.cancel.error.budgetNotFoundByFundIdAndFiscalYearId": "此操作無法成功完成。目標會計年度的<b> {fundCode} </b>沒有預算，或預算未啟用。",
     "invoice.actions.approve.error.budgetNotFoundByFundIdAndFiscalYearId": "發票無法被核准，因為預算<b> {fundCode} </b>經費不足。",
     "invoice.actions.pay.error.budgetNotFoundByFundIdAndFiscalYearId": "發票無法被核准及支付因<b>{fundCode}</b> 預算不足",
-    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "發票無法被核准及支付因<b>{fundCode}</b> 預算不足",
+    "invoice.actions.approveAndPay.error.budgetNotFoundByFundIdAndFiscalYearId": "Invoice cannot be approved and paid because Fund <b>{fundCode}</b> has no current budget for fiscal year <b>{fiscalYear}</b>.",
     "invoice.actions.saveLine.error.budgetNotFoundByFundIdAndFiscalYearId": "無法儲存發票細項，因為預算<b> {fundCode} </b>經費不足。",
     "receivingHistory.displaySummary": "顯示摘要",
     "invoice.details.information.calculatedTotalExchangeAmount": "計算總金額 ( 兌換 )",
