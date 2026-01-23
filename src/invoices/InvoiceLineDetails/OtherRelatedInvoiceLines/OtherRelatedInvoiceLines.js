@@ -10,11 +10,12 @@ import {
 } from '@folio/stripes/components';
 import {
   AmountWithCurrencyField,
-  PrevNextPagination,
-  FrontendSortingMCL,
-  useLocalPagination,
   DESC_DIRECTION,
+  FolioFormattedDate,
+  FrontendSortingMCL,
+  PrevNextPagination,
   RESULT_COUNT_INCREMENT,
+  useLocalPagination,
 } from '@folio/stripes-acq-components';
 
 import { SECTIONS_INVOICE_LINE } from '../../constants';
@@ -28,12 +29,6 @@ import {
 
 const sorters = {
   [COLUMN_INVOICE_DATE]: ({ invoice }) => invoice?.invoiceDate,
-};
-
-const getFormattedDate = (date) => {
-  if (!date) return <NoValue />;
-
-  return <FormattedDate value={date} />;
 };
 
 const getResultFormatter = ({ search }) => ({
@@ -50,8 +45,8 @@ const getResultFormatter = ({ search }) => ({
   fiscalYear: invoiceLine => invoiceLine.fiscalYear?.code || <NoValue />,
   [COLUMN_INVOICE_DATE]: invoiceLine => <FormattedDate value={invoiceLine.invoice?.invoiceDate} />,
   vendorCode: invoiceLine => invoiceLine.vendor?.code || <NoValue />,
-  subscriptionStart: invoiceLine => getFormattedDate(invoiceLine.subscriptionStart),
-  subscriptionEnd: invoiceLine => getFormattedDate(invoiceLine.subscriptionEnd),
+  subscriptionStart: invoiceLine => <FolioFormattedDate value={invoiceLine.subscriptionStart} />,
+  subscriptionEnd: invoiceLine => <FolioFormattedDate value={invoiceLine.subscriptionEnd} />,
   subscriptionDescription: invoiceLine => invoiceLine.subscriptionInfo || <NoValue />,
   vendorInvoiceNo: invoiceLine => (
     invoiceLine.invoice?.vendorInvoiceNo
