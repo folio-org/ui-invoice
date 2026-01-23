@@ -30,12 +30,6 @@ const sorters = {
   [COLUMN_INVOICE_DATE]: ({ invoice }) => invoice?.invoiceDate,
 };
 
-const getFormattedDate = (date) => {
-  if (!date) return <NoValue />;
-
-  return <FormattedDate value={date} />;
-};
-
 const getResultFormatter = ({ search }) => ({
   invoiceLine: invoiceLine => (
     <Link
@@ -50,8 +44,8 @@ const getResultFormatter = ({ search }) => ({
   fiscalYear: invoiceLine => invoiceLine.fiscalYear?.code || <NoValue />,
   [COLUMN_INVOICE_DATE]: invoiceLine => <FormattedDate value={invoiceLine.invoice?.invoiceDate} />,
   vendorCode: invoiceLine => invoiceLine.vendor?.code || <NoValue />,
-  subscriptionStart: invoiceLine => getFormattedDate(invoiceLine.subscriptionStart),
-  subscriptionEnd: invoiceLine => getFormattedDate(invoiceLine.subscriptionEnd),
+  subscriptionStart: invoiceLine => <FormattedDate value={invoiceLine.subscriptionStart} />,
+  subscriptionEnd: invoiceLine => <FormattedDate value={invoiceLine.subscriptionEnd} />,
   subscriptionDescription: invoiceLine => invoiceLine.subscriptionInfo || <NoValue />,
   vendorInvoiceNo: invoiceLine => (
     invoiceLine.invoice?.vendorInvoiceNo
