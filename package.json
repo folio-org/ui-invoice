@@ -137,8 +137,7 @@
         "displayName": "UI: invoice module is enabled",
         "visible": false,
         "subPermissions": [
-          "mod-settings.entries.collection.get",
-          "mod-settings.global.read.stripes-core.prefs.manage"
+          "stripes-core.settings.read"
         ]
       },
       {
@@ -146,8 +145,7 @@
         "displayName": "Settings (Invoice): Can view and edit settings",
         "subPermissions": [
           "settings.enabled",
-          "mod-settings.entries.collection.get",
-          "mod-settings.global.read.stripes-core.prefs.manage"
+          "stripes-core.settings.read"
         ],
         "visible": false
       },
