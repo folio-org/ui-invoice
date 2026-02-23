@@ -22,6 +22,7 @@
 * Replace `moment` library with `dayjs`. Refs UINV-589.
 * Sort dropdown options alphabetically. Refs UINV-601.
 * Use the same component for the `subscriptionStart` and `subscriptionEnd` fields. UINV-619.
+* Reflect changes of tenant addresses API. Refs UINV-621.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.3...v7.0.4)
