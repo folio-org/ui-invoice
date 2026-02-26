@@ -389,21 +389,27 @@
         ]
       },
       {
-        "permissionName": "ui-invoice.acq.unit.assignment.assign",
+        "permissionName": "ui-invoice.invoices.acquisitions_units.assign.execute",
         "displayName": "Invoice: Assign acquisitions units to new record",
         "description": "",
         "visible": true,
+        "replaces": [
+          "ui-invoice.acq.unit.assignment.assign"
+        ],
         "subPermissions": [
-          "invoices.acquisitions-units-assignments.assign"
+          "invoices.acquisitions-units-assignments.create.execute"
         ]
       },
       {
-        "permissionName": "ui-invoice.acq.unit.assignment.manage",
+        "permissionName": "ui-invoice.invoices.acquisitions_units.manage.execute",
         "displayName": "Invoice: Manage acquisition units",
         "description": "",
         "visible": true,
+        "replaces": [
+          "ui-invoice.acq.unit.assignment.manage"
+        ],
         "subPermissions": [
-          "invoices.acquisitions-units-assignments.manage"
+          "invoices.acquisitions-units-assignments.manage.execute"
         ]
       },
       {
