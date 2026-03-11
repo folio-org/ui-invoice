@@ -289,7 +289,7 @@
     "invoice.actions.approveAndPay.error.inactiveExpenseClass": "发票不能<b>批准并付款</b>，因为支出类别<b> {expenseClass} </b>未激活。",
     "settings.voucherNumber.prefixValidation": "前缀无效",
     "settings.BatchVoucherExports.message": "消息",
-    "settings.BatchVoucherExports.message.uploaded": "成功上传到FTP位置",
+    "settings.BatchVoucherExports.message.uploaded": "成功上传到FTP馆藏地",
     "invoice.details.lines.list.lineNumber": "＃",
     "invoice.details.lines.list.polNumber": "订单行号",
     "invoice.details.lines.list.subTotal": "小计",

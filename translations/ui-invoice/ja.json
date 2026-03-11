@@ -353,7 +353,7 @@
     "appMenu.invoicesAppSearch": "請求書アプリ検索",
     "receivingHistory.chronology": "Chronology",
     "receivingHistory.copyNumber": "Copy number",
-    "receivingHistory.enumeration": "Enumeration",
+    "receivingHistory.enumeration": "列挙",
     "receivingHistory.receiptDate": "Receipt date",
     "receivingHistory": "Receiving history",
     "invoice.validation.accountingCode": "会計にエクスポートするには、会計コードを選択する必要があります。",
