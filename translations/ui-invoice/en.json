@@ -4,6 +4,8 @@
   "document.title.search": "Invoices - {query} - Search",
   "document.settings.title": "Invoices settings",
 
+  "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+  "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
   "errors.invoiceHasNotBeenCreated": "Invoice has not been created",
   "errors.invoiceHasNotBeenSaved": "Invoice has not been saved",
   "errors.invoiceLineHasNotBeenSaved": "Invoice line has not been saved",
@@ -389,6 +391,7 @@
   "invoice.actions.approve.error.fundsNotFound": "Invoice cannot be approved because fund records are not found",
   "invoice.actions.approve.error.externalAccountNoIsMissing": "Invoice cannot be approved because fund record does not contain an externalAccountNo.",
   "invoice.actions.approve.error.pendingPaymentError": "Invoice cannot be approved because pending payment creation has failed",
+  "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed",
   "invoice.actions.approve.error.currentFYearNotFound": "Invoice cannot be approved because current fiscal year not found for ledger",
   "invoice.actions.approve.error.expenseClassNotFound": "Expense class record is not found",
   "invoice.actions.approve.error.organizationIsNotExist": "Invoice cannot be approved because organization does not exist",
