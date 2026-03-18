@@ -211,6 +211,37 @@ describe('showUpdateInvoiceError', () => {
     });
   });
 
+  describe('Budget restrictions violations', () => {
+    it.each([
+      ['budgetRestrictedEncumbranceError'],
+      ['budgetRestrictedExpendituresError'],
+    ])('should handle %s error code', async (code) => {
+      const fundCode = 'TSTFND';
+      const mockResponse = {
+        clone: () => mockResponse,
+        json: () => Promise.resolve({
+          errors: [{
+            code,
+            parameters: [{ key: 'fundCode', value: fundCode }],
+          }],
+        }),
+      };
+
+      await showUpdateInvoiceError({
+        response: mockResponse,
+        showCallout,
+        defaultErrorMessageId,
+        ky,
+      });
+
+      expect(showCallout).toHaveBeenCalledWith({
+        messageId: `ui-invoice.errors.${code}`,
+        type: 'error',
+        values: { fundCode },
+      });
+    });
+  });
+
   it.each([
     ['budgetExpenseClassNotFound', 'ui-invoice.invoice.actions.approve.error.budgetExpenseClassNotFound', ['expenseClassName', 'fundCode']],
     ['incorrectFundDistributionTotal', 'ui-invoice.invoice.actions.approve.error.incorrectFundDistributionTotal', ['invoiceLineNumber']],
