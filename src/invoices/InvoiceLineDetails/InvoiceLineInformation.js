@@ -26,6 +26,7 @@ const InvoiceLineInformation = ({
   currency,
   exchangeRate,
   invoiceLine,
+  operationMode,
   poLine,
 }) => {
   const stripes = useStripes();
@@ -129,6 +130,7 @@ const InvoiceLineInformation = ({
               currency={currency}
               exchangeRate={exchangeRate}
               label={<FormattedMessage id="ui-invoice.invoice.details.lines.list.total.exchanged" />}
+              operationMode={operationMode}
               total={invoiceLine?.total}
             />
           </Col>
@@ -158,6 +160,7 @@ InvoiceLineInformation.propTypes = {
   currency: PropTypes.string,
   exchangeRate: PropTypes.number,
   invoiceLine: PropTypes.object,
+  operationMode: PropTypes.string,
   poLine: PropTypes.object,
 };
 

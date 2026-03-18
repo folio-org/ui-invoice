@@ -99,6 +99,7 @@ const InvoiceLineDetailsContainer = ({
   const {
     currency,
     exchangeRate,
+    operationMode,
     status,
     vendorInvoiceNo,
   } = invoice;
@@ -113,6 +114,7 @@ const InvoiceLineDetailsContainer = ({
         goToEditInvoiceLine={goToEditInvoiceLine}
         invoiceStatus={status}
         invoiceLine={invoiceLine}
+        operationMode={operationMode}
         poLine={poLine}
         tagsToggle={setTagsPaneOpened}
         vendorInvoiceNo={vendorInvoiceNo}

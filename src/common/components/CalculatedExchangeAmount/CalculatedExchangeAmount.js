@@ -20,6 +20,7 @@ export const CalculatedExchangeAmount = ({
   isVersionView = false,
   label = DEFAULT_LABEL,
   name,
+  operationMode,
   total,
 }) => {
   const stripes = useStripes();
@@ -32,6 +33,7 @@ export const CalculatedExchangeAmount = ({
   } = useExchangeCalculation({
     amount: +total,
     from: currency,
+    operationMode,
     rate: +exchangeRate,
     to: systemCurrency,
   }, { enabled });
@@ -67,5 +69,6 @@ CalculatedExchangeAmount.propTypes = {
   isVersionView: PropTypes.bool,
   label: PropTypes.node,
   name: PropTypes.string,
+  operationMode: PropTypes.string,
   total: PropTypes.number,
 };

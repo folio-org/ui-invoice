@@ -720,6 +720,7 @@ const InvoiceForm = ({
                       <CalculatedExchangeAmount
                         currency={values.currency}
                         exchangeRate={values.exchangeRate}
+                        operationMode={values.operationMode}
                         total={values.total}
                       />
                     </Accordion>

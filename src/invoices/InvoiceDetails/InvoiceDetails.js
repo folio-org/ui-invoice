@@ -379,6 +379,7 @@ function InvoiceDetails({
                 note={invoice.note}
                 lockTotal={invoice.lockTotal}
                 cancellationNote={invoice.cancellationNote}
+                operationMode={invoice.operationMode}
               />
             </Accordion>
             <Accordion

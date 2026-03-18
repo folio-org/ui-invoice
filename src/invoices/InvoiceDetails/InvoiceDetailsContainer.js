@@ -1,5 +1,7 @@
 import get from 'lodash/get';
+import isUndefined from 'lodash/isUndefined';
 import omit from 'lodash/omit';
+import omitBy from 'lodash/omitBy';
 import PropTypes from 'prop-types';
 import {
   useCallback,
@@ -159,12 +161,13 @@ export function InvoiceDetailsContainer({
         const invoiceCurrency = invoiceResponse.currency;
 
         if (systemCurrency !== invoiceCurrency) {
-          const exchangeRateCalculations = invoiceLinesResp.invoiceLines?.map(({ total }) => ({
-            from: invoiceCurrency,
-            to: systemCurrency,
+          const exchangeRateCalculations = invoiceLinesResp.invoiceLines?.map(({ total }) => omitBy({
             amount: total,
+            from: invoiceCurrency,
+            operationMode: invoiceResponse.operationMode,
             rate: invoiceResponse.exchangeRate,
-          }));
+            to: systemCurrency,
+          }, isUndefined));
 
           const batchExchangeRates = await ky.post(
             CALCULATE_EXCHANGE_BATCH_API,

@@ -62,16 +62,17 @@ const DEFAULT_PROPS = {
 
 const InvoiceLineDetails = ({
   closeInvoiceLine,
+  currency,
   deleteInvoiceLine,
   exchangeRate,
   goToEditInvoiceLine,
-  vendorInvoiceNo,
-  vendorCode,
   invoiceLine = DEFAULT_PROPS.invoiceLine,
   invoiceStatus,
-  tagsToggle,
-  currency,
+  operationMode,
   poLine = DEFAULT_PROPS.poLine,
+  tagsToggle,
+  vendorCode,
+  vendorInvoiceNo,
 }) => {
   const history = useHistory();
   const { search } = useLocation();
@@ -190,6 +191,7 @@ const InvoiceLineDetails = ({
                 currency={currency}
                 exchangeRate={exchangeRate}
                 invoiceLine={invoiceLine}
+                operationMode={operationMode}
                 poLine={poLine}
               />
             </Accordion>
@@ -239,16 +241,17 @@ const InvoiceLineDetails = ({
 
 InvoiceLineDetails.propTypes = {
   closeInvoiceLine: PropTypes.func.isRequired,
+  currency: PropTypes.string,
   deleteInvoiceLine: PropTypes.func.isRequired,
   exchangeRate: PropTypes.number,
   goToEditInvoiceLine: PropTypes.func.isRequired,
   invoiceLine: PropTypes.object.isRequired,
   invoiceStatus: PropTypes.string.isRequired,
-  tagsToggle: PropTypes.func.isRequired,
-  currency: PropTypes.string,
+  operationMode: PropTypes.string,
   poLine: PropTypes.object,
-  vendorInvoiceNo: PropTypes.string,
+  tagsToggle: PropTypes.func.isRequired,
   vendorCode: PropTypes.string,
+  vendorInvoiceNo: PropTypes.string,
 };
 
 export default InvoiceLineDetails;
