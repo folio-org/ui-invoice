@@ -148,7 +148,7 @@ exports[`VoucherViewLayer should render correct structure 1`] = `
         <div
           class="paneContent hasPadding"
           id="pane-voucher-content"
-          tabindex="-1"
+          tabindex="0"
         >
           <div
             class="row"

@@ -7,6 +7,7 @@ import {
 import { convertToInvoiceLineFields } from '../../utils';
 import { ACQ_ERROR_TYPE } from '../constants';
 import {
+  budgetRestrictionsViolationStrategy,
   inactiveExpenseClassStrategy,
   noBudgetForFiscalYearStrategy,
 } from './errorHandlers';
@@ -48,6 +49,8 @@ export const showUpdateInvoiceError = async ({
     case ERROR_CODES.fundsNotFound:
     case ERROR_CODES.externalAccountNoIsMissing:
     case ERROR_CODES.pendingPaymentError:
+    case ERROR_CODES.pendingPaymentCreationError:
+    case ERROR_CODES.pendingPaymentUpdateError:
     case ERROR_CODES.currentFYearNotFound:
     case ERROR_CODES.expenseClassNotFound:
     case ERROR_CODES.organizationIsNotExist:
@@ -117,6 +120,16 @@ export const showUpdateInvoiceError = async ({
         defaultErrorMessageId,
         fundMutator,
         ky,
+        showCallout,
+      }));
+
+      break;
+    }
+    case ERROR_CODES.budgetRestrictedEncumbranceError:
+    case ERROR_CODES.budgetRestrictedExpendituresError: {
+      await handler.handle(budgetRestrictionsViolationStrategy({
+        code,
+        defaultErrorMessageId,
         showCallout,
       }));
 

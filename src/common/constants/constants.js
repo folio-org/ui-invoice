@@ -123,6 +123,8 @@ export const ERROR_CODES = {
   budgetExpenseClassNotFound: 'budgetExpenseClassNotFound',
   budgetNotFoundByFundId: 'budgetNotFoundByFundId',
   budgetNotFoundByFundIdAndFiscalYearId: 'budgetNotFoundByFundIdAndFiscalYearId',
+  budgetRestrictedEncumbranceError: 'budgetRestrictedEncumbranceError',
+  budgetRestrictedExpendituresError: 'budgetRestrictedExpendituresError',
   cannotConvertAmountInvalidCurrency: 'cannotConvertAmountInvalidCurrency',
   currentFYearNotFound: 'currentFYearNotFound',
   externalAccountNoIsMissing: 'externalAccountNoIsMissing',
@@ -139,6 +141,8 @@ export const ERROR_CODES = {
   organizationIsNotVendor: 'organizationIsNotVendor',
   outdatedFundIdInEncumbrance: 'outdatedFundIdInEncumbrance',
   pendingPaymentError: 'pendingPaymentError',
+  pendingPaymentCreationError: 'pendingPaymentError', // Map to pendingPaymentError
+  pendingPaymentUpdateError: 'pendingPaymentUpdateError',
   poLineUpdateFailure: 'poLineUpdateFailure',
   transactionCreationFailure: 'transactionCreationFailure',
   userHasNoPermission: 'userHasNoPermission',

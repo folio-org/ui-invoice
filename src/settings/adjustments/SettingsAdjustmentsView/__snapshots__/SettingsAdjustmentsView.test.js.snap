@@ -128,7 +128,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
           <div
             class="paneContent hasPadding"
             id="invoice-settings-adjustment-view-content"
-            tabindex="-1"
+            tabindex="0"
           >
             <div
               class="row center-xs"

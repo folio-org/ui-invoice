@@ -55,7 +55,7 @@ exports[`SettingsAdjustmentsList should render correct structure 1`] = `
       <div
         class="paneContent hasPadding"
         id="setting-adjustments-pane-content"
-        tabindex="-1"
+        tabindex="0"
       >
         <nav
           class="navListSectionControl"
