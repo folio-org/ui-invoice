@@ -3,6 +3,7 @@ export * from './useAdjustmentsSettings';
 export * from './useAsyncConfirmationModal';
 export * from './useBatchGroup';
 export * from './useBatchGroups';
+export * from './useCommonErrorsHandler';
 export * from './useFiscalYear';
 export * from './useFundDistributionValidation';
 export * from './useInvoice';

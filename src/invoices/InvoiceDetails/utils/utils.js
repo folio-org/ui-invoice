@@ -4,10 +4,10 @@ import {
   ERROR_CODES,
   INVOICE_STATUS,
 } from '../../../common/constants';
+import { budgetRestrictionsViolationStrategy } from '../../../common/utils';
 import { convertToInvoiceLineFields } from '../../utils';
 import { ACQ_ERROR_TYPE } from '../constants';
 import {
-  budgetRestrictionsViolationStrategy,
   inactiveExpenseClassStrategy,
   noBudgetForFiscalYearStrategy,
 } from './errorHandlers';
