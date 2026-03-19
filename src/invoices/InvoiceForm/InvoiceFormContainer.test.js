@@ -104,7 +104,11 @@ describe('InvoiceFormContainer', () => {
   beforeEach(() => {
     saveInvoice.mockResolvedValue(invoice);
     useBatchGroups.mockReturnValue({ batchGroups: [batchGroup], isLoading: false });
-    useInvoice.mockReturnValue({ isLoading: false, invoice });
+    useInvoice.mockReturnValue({
+      isLoading: false,
+      invoice,
+      refetch: jest.fn(),
+    });
     useInvoiceLineMutation.mockReturnValue({ mutateInvoiceLine });
     useOrderLines.mockReturnValue({ orderLines: [orderLine], isLoading: false });
     useOrders.mockReturnValue({ orders: [{ id: 'order1', vendor: 'vendor-id' }], isLoading: false });
@@ -120,6 +124,68 @@ describe('InvoiceFormContainer', () => {
     renderInvoiceFormContainer();
 
     expect(await screen.findByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument();
+  });
+
+  describe('Errors handling', () => {
+    it('should handle invoice common error response', async () => {
+      const errorResponse = {
+        clone: () => errorResponse,
+        json: () => ({
+          errors: [{ code: 'pendingPaymentCreationError' }],
+        }),
+      };
+
+      saveInvoice.mockRejectedValue(errorResponse);
+
+      renderInvoiceFormContainer({
+        match: {
+          params: { id: 'id' },
+        },
+      });
+
+      await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await act(async () => {
+        await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
+        await userEvent.click(screen.getByText('stripes-components.saveAndClose'));
+      });
+
+      expect(saveInvoice).toHaveBeenCalled();
+      expect(showCallout).toHaveBeenCalledWith(expect.objectContaining({
+        messageId: 'ui-invoice.errors.pendingPaymentError',
+      }));
+    });
+
+    it('should handle restrictions violation error response', async () => {
+      const errorResponse = {
+        clone: () => errorResponse,
+        json: () => ({
+          errors: [{
+            code: ERROR_CODES.budgetRestrictedEncumbranceError,
+            parameters: [{ key: 'fundCode', value: 'TST' }],
+          }],
+        }),
+      };
+
+      saveInvoice.mockRejectedValue(errorResponse);
+
+      renderInvoiceFormContainer({
+        match: {
+          params: { id: 'id' },
+        },
+      });
+
+      await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await act(async () => {
+        await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
+        await userEvent.click(screen.getByText('stripes-components.saveAndClose'));
+      });
+
+      expect(saveInvoice).toHaveBeenCalled();
+      expect(showCallout).toHaveBeenCalledWith(expect.objectContaining({
+        messageId: 'ui-invoice.errors.budgetRestrictedEncumbranceError',
+        values: { fundCode: 'TST' },
+      }));
+    });
   });
 
   describe('Save', () => {
@@ -182,68 +248,6 @@ describe('InvoiceFormContainer', () => {
       await waitFor(() => !screen.queryByRole('ui-invoice.invoice.isNotUnique.confirmation.heading'));
 
       expect(saveInvoice).toHaveBeenCalled();
-    });
-
-    describe('Errors handling', () => {
-      it('should handle invoice common error response', async () => {
-        const errorResponse = {
-          clone: () => errorResponse,
-          json: () => ({
-            errors: [{ code: 'pendingPaymentCreationError' }],
-          }),
-        };
-
-        saveInvoice.mockRejectedValue(errorResponse);
-
-        renderInvoiceFormContainer({
-          match: {
-            params: { id: 'id' },
-          },
-        });
-
-        await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
-        await act(async () => {
-          await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
-          await userEvent.click(screen.getByText('stripes-components.saveAndKeepEditing'));
-        });
-
-        expect(saveInvoice).toHaveBeenCalled();
-        expect(showCallout).toHaveBeenCalledWith(expect.objectContaining({
-          messageId: 'ui-invoice.errors.pendingPaymentError',
-        }));
-      });
-
-      it('should handle restrictions violation error response', async () => {
-        const errorResponse = {
-          clone: () => errorResponse,
-          json: () => ({
-            errors: [{
-              code: ERROR_CODES.budgetRestrictedEncumbranceError,
-              parameters: [{ key: 'fundCode', value: 'TST' }],
-            }],
-          }),
-        };
-
-        saveInvoice.mockRejectedValue(errorResponse);
-
-        renderInvoiceFormContainer({
-          match: {
-            params: { id: 'id' },
-          },
-        });
-
-        await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
-        await act(async () => {
-          await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
-          await userEvent.click(screen.getByText('stripes-components.saveAndKeepEditing'));
-        });
-
-        expect(saveInvoice).toHaveBeenCalled();
-        expect(showCallout).toHaveBeenCalledWith(expect.objectContaining({
-          messageId: 'ui-invoice.errors.budgetRestrictedEncumbranceError',
-          values: { fundCode: 'TST' },
-        }));
-      });
     });
   });
 });
