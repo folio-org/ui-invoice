@@ -29,9 +29,11 @@ export const defaultErrorCodeBasedStrategy = ({
   showCallout,
   values,
 }) => {
-  const handle = (container) => {
+  const handle = (errorsContainer) => {
+    const errorCode = ERROR_CODES[errorsContainer.getError().code];
+
     showCallout({
-      messageId: `ui-invoice.errors.${container.getError().code}`,
+      messageId: `ui-invoice.errors.${errorCode}`,
       type: 'error',
       values,
     });
