@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import { useIntl } from 'react-intl';
 
 import {
   ResponseErrorsContainer,
@@ -7,7 +6,10 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { ERROR_CODES } from '../../constants';
-import { budgetRestrictionsViolationStrategy } from '../../utils';
+import {
+  budgetRestrictionsViolationStrategy,
+  defaultErrorCodeBasedStrategy,
+} from '../../utils';
 
 // Error handling strategy chain - matches errors against predefined conditions
 // and applies the first matching strategy. Order matters as strategies are
@@ -22,11 +24,14 @@ const STRATEGY_MATCHERS = [
     },
     strategy: budgetRestrictionsViolationStrategy,
   },
+  {
+    select: (handler) => handler.getError().code in ERROR_CODES,
+    strategy: defaultErrorCodeBasedStrategy,
+  },
 ];
 
 export const useCommonErrorsHandler = () => {
   const showCallout = useShowCallout();
-  const intl = useIntl();
 
   const handle = useCallback(async (response, options = {}) => {
     const { defaultErrorMessageId, ...rest } = options;
@@ -34,27 +39,19 @@ export const useCommonErrorsHandler = () => {
     const { handler } = await ResponseErrorsContainer.create(response);
     const strategy = STRATEGY_MATCHERS.find(({ select }) => select(handler))?.strategy;
 
-    const errorCode = ERROR_CODES[handler.getError().code];
-
     if (strategy) {
       return handler.handle(strategy({
-        code: errorCode,
         defaultErrorMessageId,
         showCallout,
         ...rest,
       }));
     }
 
-    const defaultErrorMessage = intl.formatMessage({
-      id: `ui-invoice.errors.${errorCode}`,
-      defaultMessage: intl.formatMessage({ id: defaultErrorMessageId }),
-    });
-
     return showCallout({
-      message: defaultErrorMessage,
+      messageId: defaultErrorMessageId,
       type: 'error',
     });
-  }, [intl, showCallout]);
+  }, [showCallout]);
 
   return { handle };
 };

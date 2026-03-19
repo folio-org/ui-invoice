@@ -128,7 +128,6 @@ export const showUpdateInvoiceError = async ({
     case ERROR_CODES.budgetRestrictedEncumbranceError:
     case ERROR_CODES.budgetRestrictedExpendituresError: {
       await handler.handle(budgetRestrictionsViolationStrategy({
-        code,
         defaultErrorMessageId,
         showCallout,
       }));
