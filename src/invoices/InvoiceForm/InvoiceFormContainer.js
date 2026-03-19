@@ -294,15 +294,13 @@ export function InvoiceFormContainerComponent({
         }
       })
       .catch((error) => {
-        if (error?.validationError === VALIDATION_ERRORS.duplicateInvoice) return toggleNotUnique();
-
-        const defaultErrorMessageId = 'ui-invoice.errors.invoiceHasNotBeenSaved';
-
-        if (error instanceof Response) {
-          return handleCommonErrors(error, { defaultErrorMessageId });
+        if (error?.validationError === VALIDATION_ERRORS.duplicateInvoice) {
+          return toggleNotUnique();
         }
 
-        return showToast({ messageId: defaultErrorMessageId, type: 'error' });
+        return handleCommonErrors(error, {
+          defaultErrorMessageId: 'ui-invoice.errors.invoiceHasNotBeenSaved',
+        });
       });
   },
   [
