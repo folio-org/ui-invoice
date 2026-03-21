@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Onkostensoort voor fondsdistributie",
     "versionHistory.label.fundDistributions.fundId": "Fondsen distributie ID",
     "versionHistory.label.fundDistributions.value": "Waarde fondsverdeling",
-    "invoice.accountNumber": "Accountnummer"
+    "invoice.accountNumber": "Accountnummer",
+    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
 }
