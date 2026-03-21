@@ -282,7 +282,7 @@
     "invoice.details.batchVoucherExport.fileName": "Nom du fichier batch",
     "invoice.details.batchVoucherExport.status": "Statut du fichier",
     "permission.batchVoucher.download": "Facture: télécharger le fichier de commandes à partir de l'enregistrement de la facture",
-    "invoice.actions.approve.error.inactiveExpenseClass": "La facture ne peut pas être <b> approuvée </b> car <b> {expenseClass} </b> est inactif.",
+    "invoice.actions.approve.error.inactiveExpenseClass": "La facture ne peut pas être <b> approuvée </b> car la catégorie de frais <b> {expenseClass} </b> est inactive.",
     "invoice.actions.approve.error.transactionCreationFailure": "Un ou plusieurs enregistrements de transactions n'ont pas pu être créés",
     "invoice.details.hasFullyPaidPOLine": "Le statut de la ligne de bon de commande est entièrement payé",
     "invoice.actions.pay.error.inactiveExpenseClass": "La facture ne peut pas être <b> payée </b> car <b> {expenseClass} </b> est inactif.",
@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Fund distribution expense class",
     "versionHistory.label.fundDistributions.fundId": "Fund distribution ID",
     "versionHistory.label.fundDistributions.value": "Fund distribution value",
-    "invoice.accountNumber": "Account number"
+    "invoice.accountNumber": "Account number",
+    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
 }

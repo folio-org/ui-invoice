@@ -353,7 +353,7 @@
     "appMenu.invoicesAppSearch": "請求書アプリ検索",
     "receivingHistory.chronology": "Chronology",
     "receivingHistory.copyNumber": "Copy number",
-    "receivingHistory.enumeration": "Enumeration",
+    "receivingHistory.enumeration": "列挙",
     "receivingHistory.receiptDate": "Receipt date",
     "receivingHistory": "Receiving history",
     "invoice.validation.accountingCode": "会計にエクスポートするには、会計コードを選択する必要があります。",
@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Fund distribution expense class",
     "versionHistory.label.fundDistributions.fundId": "Fund distribution ID",
     "versionHistory.label.fundDistributions.value": "Fund distribution value",
-    "invoice.accountNumber": "アカウント番号"
+    "invoice.accountNumber": "アカウント番号",
+    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
 }
