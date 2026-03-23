@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Fon dağıtım gider sınıfı",
     "versionHistory.label.fundDistributions.fundId": "Fon dağıtım kimliği",
     "versionHistory.label.fundDistributions.value": "Fon dağıtım değeri",
-    "invoice.accountNumber": "Hesap numarası"
+    "invoice.accountNumber": "Hesap numarası",
+    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
 }

@@ -1,5 +1,5 @@
 {
-    "meta.title": "Invoices",
+    "meta.title": "Rēķini",
     "invoice.details.paneTitle": "Vendor invoice number - {vendorInvoiceNo}",
     "invoice.status.approved": "Approved",
     "invoice.status.open": "Open",
@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Fund distribution expense class",
     "versionHistory.label.fundDistributions.fundId": "Fund distribution ID",
     "versionHistory.label.fundDistributions.value": "Fund distribution value",
-    "invoice.accountNumber": "Account number"
+    "invoice.accountNumber": "Account number",
+    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
 }

@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Fund distribution expense class",
     "versionHistory.label.fundDistributions.fundId": "Fund distribution ID",
     "versionHistory.label.fundDistributions.value": "Fund distribution value",
-    "invoice.accountNumber": "Account number"
+    "invoice.accountNumber": "Account number",
+    "errors.budgetRestrictedEncumbranceError": "จำนวนเงินการกระจายกองทุนเกินจำนวนภาระผูกพันที่อนุญาตในกองทุน <b>{fundCode}</b>",
+    "errors.budgetRestrictedExpendituresError": "จำนวนเงินกระจายกองทุนเกินกว่าจำนวนค่าใช้จ่ายที่อนุญาตในกองทุน <b>{fundCode}</b>.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "ไม่สามารถอนุมัติใบแจ้งหนี้ได้ เนื่องจากการอัปเดตการชำระเงินที่รอดำเนินการล้มเหลว"
 }

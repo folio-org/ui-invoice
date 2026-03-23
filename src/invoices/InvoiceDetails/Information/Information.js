@@ -43,6 +43,7 @@ const Information = ({
   lockTotal,
   metadata,
   note,
+  operationMode,
   paymentDate,
   paymentDue,
   paymentTerms,
@@ -190,6 +191,7 @@ const Information = ({
             <CalculatedExchangeAmount
               currency={currency}
               exchangeRate={exchangeRate}
+              operationMode={operationMode}
               total={total}
             />
           </Col>
@@ -227,6 +229,7 @@ Information.propTypes = {
   lockTotal: PropTypes.number,
   metadata: PropTypes.object,
   note: PropTypes.string,
+  operationMode: PropTypes.string,
   paymentDate: PropTypes.string,
   paymentDue: PropTypes.string,
   paymentTerms: PropTypes.string,

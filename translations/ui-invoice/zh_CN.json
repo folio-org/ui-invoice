@@ -289,7 +289,7 @@
     "invoice.actions.approveAndPay.error.inactiveExpenseClass": "发票不能<b>批准并付款</b>，因为支出类别<b> {expenseClass} </b>未激活。",
     "settings.voucherNumber.prefixValidation": "前缀无效",
     "settings.BatchVoucherExports.message": "消息",
-    "settings.BatchVoucherExports.message.uploaded": "成功上传到FTP位置",
+    "settings.BatchVoucherExports.message.uploaded": "成功上传到FTP馆藏地",
     "invoice.details.lines.list.lineNumber": "＃",
     "invoice.details.lines.list.polNumber": "订单行号",
     "invoice.details.lines.list.subTotal": "小计",
@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "经费分配 支出类别",
     "versionHistory.label.fundDistributions.fundId": "经费分配ID",
     "versionHistory.label.fundDistributions.value": "经费分配值",
-    "invoice.accountNumber": "账号"
+    "invoice.accountNumber": "账号",
+    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
 }
