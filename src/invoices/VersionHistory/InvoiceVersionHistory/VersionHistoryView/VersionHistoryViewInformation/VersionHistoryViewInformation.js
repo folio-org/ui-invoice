@@ -47,6 +47,7 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
     lockTotal,
     paymentDate,
     cancellationNote,
+    operationMode,
   } = version;
   const isLockTotal = isNumber(lockTotal);
 
@@ -218,8 +219,9 @@ export const VersionHistoryViewInformation = ({ version = {} }) => {
               <CalculatedExchangeAmount
                 currency={currency}
                 exchangeRate={exchangeRate}
-                total={total}
                 name="exchangeRate"
+                operationMode={operationMode}
+                total={total}
                 isVersionView
               />
             </Col>

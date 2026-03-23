@@ -91,4 +91,5 @@ export const FUND_DISTRIBUTION_VISIBLE_COLUMNS = [
 
 export const HIDDEN_INVOICE_FIELDS = [
   'nextInvoiceLineNumber',
+  'operationMode',
 ];
