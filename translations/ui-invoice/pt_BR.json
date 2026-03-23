@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Classe de despesa de distribuição de fundos",
     "versionHistory.label.fundDistributions.fundId": "ID de distribuição do fundo",
     "versionHistory.label.fundDistributions.value": "Valor de distribuição do fundo",
-    "invoice.accountNumber": "Número de conta"
+    "invoice.accountNumber": "Número de conta",
+    "errors.budgetRestrictedEncumbranceError": "O valor da distribuição do fundo excede o valor do encargo permitido no fundo <b>{fundCode}</b>.",
+    "errors.budgetRestrictedExpendituresError": "O valor da distribuição do fundo excede o valor permitido para despesas no fundo <b>{fundCode}</b>.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "A fatura não pode ser aprovada porque a atualização do pagamento pendente falhou."
 }

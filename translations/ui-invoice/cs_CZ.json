@@ -506,5 +506,8 @@
     "versionHistory.label.fundDistributions.expenseClassId": "Třída nákladů pro distribuci prostředků",
     "versionHistory.label.fundDistributions.fundId": "Distribuce fondu (ID)",
     "versionHistory.label.fundDistributions.value": "Hodnota rozdělení fondu",
-    "invoice.accountNumber": "Číslo účtu"
+    "invoice.accountNumber": "Číslo účtu",
+    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
+    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
 }
