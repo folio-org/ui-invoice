@@ -1,6 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 
 import {
+  act,
   render,
   screen,
   waitFor,
@@ -9,6 +10,7 @@ import user, { userEvent } from '@folio/jest-config-stripes/testing-library/user
 import {
   PAYMENT_METHOD_OPTIONS,
   useOrganization,
+  useShowCallout,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -21,6 +23,7 @@ import {
   vendor,
 } from 'fixtures';
 
+import { ERROR_CODES } from '../../common/constants';
 import {
   useBatchGroups,
   useInvoice,
@@ -38,6 +41,7 @@ jest.mock('@folio/stripes-acq-components', () => ({
   useExchangeCalculation: jest.fn(() => ({ isLoading: false, exchangedAmount: 30 })),
   useAddresses: jest.fn().mockReturnValue({ addresses: [], isLoading: false }),
   useOrganization: jest.fn(),
+  useShowCallout: jest.fn(),
 }));
 jest.mock('../InvoiceDetails/utils', () => ({
   ...jest.requireActual('../InvoiceDetails/utils'),
@@ -94,16 +98,22 @@ const renderInvoiceFormContainer = (props = {}) => render(
 );
 
 describe('InvoiceFormContainer', () => {
+  const showCallout = jest.fn();
   const mutateInvoiceLine = jest.fn(() => Promise.resolve());
 
   beforeEach(() => {
     saveInvoice.mockResolvedValue(invoice);
     useBatchGroups.mockReturnValue({ batchGroups: [batchGroup], isLoading: false });
-    useInvoice.mockReturnValue({ isLoading: false, invoice });
+    useInvoice.mockReturnValue({
+      isLoading: false,
+      invoice,
+      refetch: jest.fn(),
+    });
     useInvoiceLineMutation.mockReturnValue({ mutateInvoiceLine });
     useOrderLines.mockReturnValue({ orderLines: [orderLine], isLoading: false });
     useOrders.mockReturnValue({ orders: [{ id: 'order1', vendor: 'vendor-id' }], isLoading: false });
     useOrganization.mockReturnValue({ isLoading: false, organization: vendor });
+    useShowCallout.mockReturnValue(showCallout);
   });
 
   afterEach(() => {
@@ -114,6 +124,68 @@ describe('InvoiceFormContainer', () => {
     renderInvoiceFormContainer();
 
     expect(await screen.findByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument();
+  });
+
+  describe('Errors handling', () => {
+    it('should handle invoice common error response', async () => {
+      const errorResponse = {
+        clone: () => errorResponse,
+        json: () => ({
+          errors: [{ code: 'pendingPaymentCreationError' }],
+        }),
+      };
+
+      saveInvoice.mockRejectedValue(errorResponse);
+
+      renderInvoiceFormContainer({
+        match: {
+          params: { id: 'id' },
+        },
+      });
+
+      await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await act(async () => {
+        await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
+        await userEvent.click(screen.getByText('stripes-components.saveAndClose'));
+      });
+
+      expect(saveInvoice).toHaveBeenCalled();
+      expect(showCallout).toHaveBeenCalledWith(expect.objectContaining({
+        messageId: 'ui-invoice.errors.pendingPaymentError',
+      }));
+    });
+
+    it('should handle restrictions violation error response', async () => {
+      const errorResponse = {
+        clone: () => errorResponse,
+        json: () => ({
+          errors: [{
+            code: ERROR_CODES.budgetRestrictedEncumbranceError,
+            parameters: [{ key: 'fundCode', value: 'TST' }],
+          }],
+        }),
+      };
+
+      saveInvoice.mockRejectedValue(errorResponse);
+
+      renderInvoiceFormContainer({
+        match: {
+          params: { id: 'id' },
+        },
+      });
+
+      await waitFor(() => expect(screen.getByText(/ui-invoice.invoice.paneTitle/)).toBeInTheDocument());
+      await act(async () => {
+        await userEvent.type(screen.getByRole('textbox', { name: 'ui-invoice.invoice.note' }), '123');
+        await userEvent.click(screen.getByText('stripes-components.saveAndClose'));
+      });
+
+      expect(saveInvoice).toHaveBeenCalled();
+      expect(showCallout).toHaveBeenCalledWith(expect.objectContaining({
+        messageId: 'ui-invoice.errors.budgetRestrictedEncumbranceError',
+        values: { fundCode: 'TST' },
+      }));
+    });
   });
 
   describe('Save', () => {

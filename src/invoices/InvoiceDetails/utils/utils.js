@@ -4,10 +4,10 @@ import {
   ERROR_CODES,
   INVOICE_STATUS,
 } from '../../../common/constants';
+import { budgetRestrictionsViolationStrategy } from '../../../common/utils';
 import { convertToInvoiceLineFields } from '../../utils';
 import { ACQ_ERROR_TYPE } from '../constants';
 import {
-  budgetRestrictionsViolationStrategy,
   inactiveExpenseClassStrategy,
   noBudgetForFiscalYearStrategy,
 } from './errorHandlers';
@@ -128,7 +128,6 @@ export const showUpdateInvoiceError = async ({
     case ERROR_CODES.budgetRestrictedEncumbranceError:
     case ERROR_CODES.budgetRestrictedExpendituresError: {
       await handler.handle(budgetRestrictionsViolationStrategy({
-        code,
         defaultErrorMessageId,
         showCallout,
       }));

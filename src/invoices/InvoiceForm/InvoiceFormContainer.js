@@ -36,6 +36,7 @@ import {
 import {
   useAdjustmentsSettings,
   useBatchGroups,
+  useCommonErrorsHandler,
   useInvoice,
   useInvoiceLineMutation,
   useOrderLines,
@@ -122,6 +123,8 @@ export function InvoiceFormContainerComponent({
     batchGroups,
     isLoading: isBatchGroupsLoading,
   } = useBatchGroups();
+
+  const { handle: handleCommonErrors } = useCommonErrorsHandler();
 
   useEffect(() => {
     mutator.invoiceFormDocuments.reset();
@@ -290,10 +293,14 @@ export function InvoiceFormContainerComponent({
             break;
         }
       })
-      .catch(({ validationError }) => {
-        if (validationError === VALIDATION_ERRORS.duplicateInvoice) return toggleNotUnique();
+      .catch((error) => {
+        if (error?.validationError === VALIDATION_ERRORS.duplicateInvoice) {
+          return toggleNotUnique();
+        }
 
-        return showToast({ messageId: 'ui-invoice.errors.invoiceHasNotBeenSaved', type: 'error' });
+        return handleCommonErrors(error, {
+          defaultErrorMessageId: 'ui-invoice.errors.invoiceHasNotBeenSaved',
+        });
       });
   },
   [
@@ -301,6 +308,7 @@ export function InvoiceFormContainerComponent({
     id,
     mutator.invoiceFormInvoices,
     mutator.duplicateInvoiceVendor,
+    handleCommonErrors,
     invoiceDocuments,
     okapi,
     showToast,
