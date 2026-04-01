@@ -14,6 +14,7 @@ import {
 
 import { invoice, invoiceLine } from '../../../test/jest/fixtures';
 import InvoiceLineForm from './InvoiceLineForm';
+import AdjustmentsForm from '../AdjustmentsForm';
 
 jest.mock('react-router', () => ({
   ...jest.requireActual('react-router'),
@@ -30,9 +31,7 @@ jest.mock('@folio/stripes-components/lib/NoValue', () => {
 jest.mock('../../common/hooks/useFundDistributionValidation', () => ({
   useFundDistributionValidation: jest.fn().mockReturnValue({ validateFundDistributionTotal: jest.fn() }),
 }));
-jest.mock('../AdjustmentsForm', () => {
-  return () => <span>AdjustmentsForm</span>;
-});
+jest.mock('../AdjustmentsForm', () => jest.fn(() => <span>AdjustmentsForm</span>));
 jest.mock('./POLineField', () => ({ POLineField: jest.fn(() => 'POLineField') }));
 
 const queryClient = new QueryClient();
@@ -64,6 +63,7 @@ describe('InvoiceLineForm component', () => {
 
   afterEach(() => {
     global.document.createRange = global.document.mockCreateRange;
+    jest.clearAllMocks();
   });
 
   it('should render correct structure', () => {
@@ -145,5 +145,31 @@ describe('InvoiceLineForm component', () => {
 
       expect(onCancel).toHaveBeenCalled();
     });
+  });
+
+  it('should pass checkIfAdjustmentIsDisabled to AdjustmentsForm', () => {
+    const invoiceWithAdjustments = {
+      ...invoice,
+      adjustments: [{ id: 'adj1' }, { id: 'adj2' }],
+    };
+
+    renderInvoiceLineForm({
+      ...defaultProps,
+      invoice: invoiceWithAdjustments,
+      initialValues: {
+        ...invoiceLine,
+        adjustments: [{ adjustmentId: 'adj1' }, { adjustmentId: 'adj3' }],
+      },
+    });
+
+    const props = AdjustmentsForm.mock.calls[0][0];
+
+    expect(props.checkIfAdjustmentIsDisabled).toBeDefined();
+    expect(typeof props.checkIfAdjustmentIsDisabled).toBe('function');
+
+    // Test the function
+    expect(props.checkIfAdjustmentIsDisabled({ adjustmentId: 'adj1' })).toBe(true);
+    expect(props.checkIfAdjustmentIsDisabled({ adjustmentId: 'adj3' })).toBe(false);
+    expect(props.checkIfAdjustmentIsDisabled({})).toBe(false);
   });
 });

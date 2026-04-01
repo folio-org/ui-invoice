@@ -93,4 +93,38 @@ describe('AdjustmentsForm', () => {
     expect(screen.getByText('AdjustmentsDetails')).toBeDefined();
     await waitFor(() => expect(change).toHaveBeenCalledWith('adjustments[0].fundDistributions[0].expenseClassId', null));
   });
+
+  it('should disable adjustment fields when checkIfAdjustmentIsDisabled returns true', async () => {
+    const checkIfAdjustmentIsDisabled = jest.fn().mockReturnValue(true);
+    const { container } = renderForm({
+      initialValues: { adjustments: [adjustment] },
+      checkIfAdjustmentIsDisabled,
+    });
+
+    expect(screen.getByLabelText(/adjustment.description/)).toBeDisabled();
+    expect(screen.getByLabelText(/adjustment.value/)).toBeDisabled();
+    expect(screen.getByRole('button', { name: /adjustment.type.sign.percent/ })).toBeDisabled();
+    expect(screen.getByRole('button', { name: '$' })).toBeDisabled();
+    expect(screen.getByLabelText(/adjustments.prorate/)).toBeDisabled();
+    expect(screen.getByLabelText(/adjustments.relationToTotal/)).toBeDisabled();
+    expect(screen.getByLabelText(/adjustments.exportToAccounting/)).toBeDisabled();
+    expect(container.querySelector('button[aria-label]')).toBeDisabled();
+  });
+
+  it('should not disable adjustment fields when checkIfAdjustmentIsDisabled returns false', async () => {
+    const checkIfAdjustmentIsDisabled = jest.fn().mockReturnValue(false);
+    const { container } = renderForm({
+      initialValues: { adjustments: [adjustment] },
+      checkIfAdjustmentIsDisabled,
+    });
+
+    expect(screen.getByLabelText(/adjustment.description/)).not.toBeDisabled();
+    expect(screen.getByLabelText(/adjustment.value/)).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: /adjustment.type.sign.percent/ })).not.toBeDisabled();
+    expect(screen.getByRole('button', { name: '$' })).not.toBeDisabled();
+    expect(screen.getByLabelText(/adjustments.prorate/)).not.toBeDisabled();
+    expect(screen.getByLabelText(/adjustments.relationToTotal/)).not.toBeDisabled();
+    expect(screen.getByLabelText(/adjustments.exportToAccounting/)).not.toBeDisabled();
+    expect(container.querySelector('button[aria-label]')).not.toBeDisabled();
+  });
 });
