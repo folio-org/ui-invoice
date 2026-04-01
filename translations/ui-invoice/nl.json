@@ -507,7 +507,7 @@
     "versionHistory.label.fundDistributions.fundId": "Fondsen distributie ID",
     "versionHistory.label.fundDistributions.value": "Waarde fondsverdeling",
     "invoice.accountNumber": "Accountnummer",
-    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
-    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
-    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
+    "errors.budgetRestrictedEncumbranceError": "Het distributiebedrag van het Fonds is hoger dan het toegestane bedrag voor de Budgetreservering in de <b>.{fundCode}</b> fonds.",
+    "errors.budgetRestrictedExpendituresError": "Het bedrag van de fondsverdeling is hoger dan het toegestane uitgavenbedrag in de <b>.{fundCode}</b> fonds.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Factuur kan niet worden goedgekeurd omdat In afwachting van betaling Update is mislukt"
 }
