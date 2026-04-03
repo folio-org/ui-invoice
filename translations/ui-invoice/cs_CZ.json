@@ -507,7 +507,7 @@
     "versionHistory.label.fundDistributions.fundId": "Distribuce fondu (ID)",
     "versionHistory.label.fundDistributions.value": "Hodnota rozdělení fondu",
     "invoice.accountNumber": "Číslo účtu",
-    "errors.budgetRestrictedEncumbranceError": "Fund distribution amount exceeds the allowable encumbrance amount in the <b>{fundCode}</b> fund.",
-    "errors.budgetRestrictedExpendituresError": "Fund distribution amount exceeds the allowable expenditure amount in the <b>{fundCode}</b> fund.",
-    "invoice.actions.approve.error.pendingPaymentUpdateError": "Invoice cannot be approved because pending payment update has failed"
+    "errors.budgetRestrictedEncumbranceError": "Částka pro rozdělení fondu převyšuje přípustnou výši věcného břemene ve fondu <b>{fundCode}</b>.",
+    "errors.budgetRestrictedExpendituresError": "Částka pro rozdělení fondu převyšuje přípustnou výši výdajů ve fondu <b>{fundCode}</b>.",
+    "invoice.actions.approve.error.pendingPaymentUpdateError": "Fakturu nelze schválit, protože aktualizace čekající platby selhala."
 }
