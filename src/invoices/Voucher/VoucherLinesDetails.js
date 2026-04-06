@@ -6,7 +6,6 @@ import { findIndex } from 'lodash';
 import {
   Headline,
   MultiColumnList,
-  NoValue,
   Row,
 } from '@folio/stripes/components';
 import { AmountWithCurrencyField } from '@folio/stripes-acq-components';
@@ -16,7 +15,7 @@ import {
   groupByExternalAccNumber,
 } from './utils';
 
-const visibleColumns = ['lineNumber', 'group', 'fundCode', 'externalAccountNumber', 'amount'];
+const visibleColumns = ['lineNumber', 'fundCode', 'externalAccountNumber', 'amount'];
 const columnMapping = {
   lineNumber: <FormattedMessage id="ui-invoice.voucher.voucherLines.lineNumber" />,
   group: <FormattedMessage id="ui-invoice.voucher.voucherLines.group" />,
@@ -40,7 +39,6 @@ const VoucherLinesDetails = ({ voucherLines, currency }) => {
             currency={currency}
           />
         ),
-        group: () => <NoValue />,
       };
 
       return (

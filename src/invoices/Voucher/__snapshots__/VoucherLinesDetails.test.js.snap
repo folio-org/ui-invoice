@@ -46,15 +46,6 @@ exports[`VoucherLinesDetails should render correct structure 1`] = `
             <div
               aria-sort="none"
               class="mclHeader"
-              id="list-column-group"
-              role="columnheader"
-              style="flex: 0 0 auto;"
-            >
-              ui-invoice.voucher.voucherLines.group
-            </div>
-            <div
-              aria-sort="none"
-              class="mclHeader"
               id="list-column-fundcode"
               role="columnheader"
               style="flex: 0 0 auto;"
@@ -108,14 +99,6 @@ exports[`VoucherLinesDetails should render correct structure 1`] = `
                   role="gridcell"
                 >
                   1
-                </div>
-                <div
-                  class="mclCell mclCellStyle"
-                  role="gridcell"
-                >
-                  <span>
-                    -
-                  </span>
                 </div>
                 <div
                   class="mclCell mclCellStyle"
