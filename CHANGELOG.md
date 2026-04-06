@@ -26,6 +26,7 @@
 * Rename permissions to make it easier to differentiate between them. Refs UINV-620.
 * Report which fund is missing money for approval because of encumbrance restrictions. Refs UINV-623.
 * Add a new property when calling GET `/finance/calculate-exchange` and POST `/finance/calculate-exchange-batch`. Refs UINV-626.
+* Prevent changing invoice-level adjustments in the invoice line form. Refs UINV-630.
 * Remove "Group" column from the voucher lines view. Refs UINV-629.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
