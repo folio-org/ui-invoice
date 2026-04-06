@@ -61,6 +61,7 @@ const AdjustmentsForm = ({
   adjustments = DEFAULT_ADJUSTMENTS,
   adjustmentsPresets = DEFAULT_ADJUSTMENTS_PRESETS,
   change,
+  checkIfAdjustmentIsDisabled,
   currency,
   disabled = false,
   fiscalYearId,
@@ -102,7 +103,7 @@ const AdjustmentsForm = ({
     }
   }, [fiscalYearId]);
 
-  const renderTypeToggle = useCallback(({ input: { value, onChange } }) => {
+  const renderTypeToggle = useCallback(({ input: { value, onChange }, disabled: disabledProp }) => {
     return (
       <KeyValue label={<FormattedMessage id="ui-invoice.settings.adjustments.type" />}>
         <ButtonGroup
@@ -113,7 +114,7 @@ const AdjustmentsForm = ({
             onClick={() => onChange(ADJUSTMENT_TYPE_VALUES.percent)}
             buttonStyle={value === ADJUSTMENT_TYPE_VALUES.percent ? 'primary' : 'default'}
             data-test-adjustments-type-percent
-            disabled={disabled}
+            disabled={disabledProp}
           >
             <FormattedMessage id="ui-invoice.adjustment.type.sign.percent" />
           </Button>
@@ -121,20 +122,21 @@ const AdjustmentsForm = ({
             onClick={() => onChange(ADJUSTMENT_TYPE_VALUES.amount)}
             buttonStyle={value === ADJUSTMENT_TYPE_VALUES.amount ? 'primary' : 'default'}
             data-test-adjustments-type-amount
-            disabled={disabled}
+            disabled={disabledProp}
           >
             <CurrencySymbol currency={currency} />
           </Button>
         </ButtonGroup>
       </KeyValue>
     );
-  }, [currency, disabled]);
+  }, [currency]);
 
   const renderAdjustment = (elem, index, fields) => {
     const onRemove = () => {
       fields.remove(index);
     };
     const adjustment = fields.value[index];
+    const isDisabled = disabled || checkIfAdjustmentIsDisabled?.(adjustment);
     const showFundDistribution = !isLineAdjustments
       && adjustment.prorate === ADJUSTMENT_PRORATE_VALUES.notProrated
       && adjustment.relationToTotal === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo;
@@ -150,7 +152,7 @@ const AdjustmentsForm = ({
 
     // TODO: should be removed when no-prorated supports included in
     const relationOptions = ADJUSTMENT_RELATION_TO_TOTAL_OPTIONS
-      .filter(({ value }) => (
+      .filter(({ value }) => isLineAdjustments || (
         adjustment?.prorate !== ADJUSTMENT_PRORATE_VALUES.notProrated
         || value === ADJUSTMENT_RELATION_TO_TOTAL_VALUES.inAdditionTo
       ))
@@ -200,7 +202,7 @@ const AdjustmentsForm = ({
             icon="trash"
             onClick={onRemove}
             size="medium"
-            disabled={disabled}
+            disabled={isDisabled}
             ariaLabel={intl.formatMessage({ id: 'stripes-components.deleteThisItem' })}
           />
         )}
@@ -224,7 +226,7 @@ const AdjustmentsForm = ({
               name={`${elem}.description`}
               required
               validate={validateRequired}
-              disabled={disabled}
+              disabled={isDisabled}
             />
           </Col>
           <Col
@@ -241,7 +243,7 @@ const AdjustmentsForm = ({
               type="number"
               parse={parseNumberFieldValue}
               validate={validateRequired}
-              disabled={disabled}
+              disabled={isDisabled}
             />
           </Col>
           <Col xs>
@@ -249,6 +251,7 @@ const AdjustmentsForm = ({
               label="label"
               name={`${elem}.type`}
               component={renderTypeToggle}
+              disabled={isDisabled}
             />
           </Col>
           {
@@ -260,7 +263,7 @@ const AdjustmentsForm = ({
                   dataOptions={adjustmentProrateOptions}
                   required
                   validate={validateRequired}
-                  disabled={disabled}
+                  disabled={isDisabled}
                   onChange={onProrateChange}
                 />
               </Col>
@@ -276,7 +279,7 @@ const AdjustmentsForm = ({
               dataOptions={relationOptions}
               required
               validate={validateRequired}
-              disabled={disabled}
+              disabled={isDisabled}
             />
           </Col>
           <Col
@@ -285,6 +288,7 @@ const AdjustmentsForm = ({
           >
             <Field
               component={Checkbox}
+              disabled={isDisabled}
               label={<FormattedMessage id="ui-invoice.settings.adjustments.exportToAccounting" />}
               name={`${elem}.exportToAccounting`}
               type="checkbox"
@@ -296,7 +300,7 @@ const AdjustmentsForm = ({
           <FundDistributionFieldsFinal
             change={change}
             currency={currency}
-            disabled={disabled}
+            disabled={isDisabled}
             fundDistribution={adjustment.fundDistributions}
             name={`${elem}.fundDistributions`}
             totalAmount={adjustmentAmount}
@@ -348,6 +352,7 @@ AdjustmentsForm.propTypes = {
   adjustments: PropTypes.arrayOf(PropTypes.object),
   adjustmentsPresets: PropTypes.arrayOf(PropTypes.object),
   change: PropTypes.func.isRequired,
+  checkIfAdjustmentIsDisabled: PropTypes.func,
   currency: PropTypes.string,
   disabled: PropTypes.bool,
   fiscalYearId: PropTypes.string,

@@ -92,6 +92,13 @@ const InvoiceLineForm = ({
     currency: invoice.currency,
   });
 
+  // Prevent changing invoice-level adjustments in the invoice line form.
+  const checkIfAdjustmentIsDisabled = useCallback((adjustment) => {
+    const invoiceAdjustmentsSet = new Set(invoice.adjustments?.map(({ id }) => id)?.filter(Boolean));
+
+    return !!adjustment.adjustmentId && invoiceAdjustmentsSet.has(adjustment.adjustmentId);
+  }, [invoice]);
+
   const changeAccountNumber = useCallback((accountNo) => {
     const accountingCode = get(find(accounts, { accountNo }), 'appSystemNo', '') || vendorCode;
 
@@ -434,6 +441,7 @@ const InvoiceLineForm = ({
                       <AdjustmentsForm
                         adjustmentsPresets={adjustmentsPresets}
                         change={change}
+                        checkIfAdjustmentIsDisabled={checkIfAdjustmentIsDisabled}
                         initialAdjustments={adjustments}
                         initialCurrency={invoice.currency}
                         isLineAdjustments
