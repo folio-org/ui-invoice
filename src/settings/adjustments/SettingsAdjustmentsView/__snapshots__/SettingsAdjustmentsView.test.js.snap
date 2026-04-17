@@ -8,6 +8,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
     <div
       aria-label="Adjustment details"
       class="LayerRoot"
+      id="layer-root-1"
       role="dialog"
       tabindex="-1"
     >
@@ -200,7 +201,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                     >
                       <label
                         class="label label"
-                        for="checkbox-2"
+                        for="checkbox-3"
                       >
                         <span
                           class="labelText"
@@ -214,7 +215,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                             aria-invalid="false"
                             class="input"
                             disabled=""
-                            id="checkbox-2"
+                            id="checkbox-3"
                             type="checkbox"
                             value=""
                           />
@@ -320,7 +321,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                     >
                       <label
                         class="label label"
-                        for="checkbox-3"
+                        for="checkbox-4"
                       >
                         <span
                           class="labelText"
@@ -334,7 +335,7 @@ exports[`SettingsAdjustmentsView should render correct structure 1`] = `
                             aria-invalid="false"
                             class="input"
                             disabled=""
-                            id="checkbox-3"
+                            id="checkbox-4"
                             type="checkbox"
                             value=""
                           />
