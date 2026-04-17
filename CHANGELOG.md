@@ -1,6 +1,9 @@
 # Change history for ui-invoice
 
-## 8.0.0 (IN PROGRESS)
+## 8.1.0 (IN PROGRESS)
+
+## [8.0.0](https://github.com/folio-org/ui-invoice/tree/v8.0.0) (2026-04-17)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.5...v8.0.0)
 
 * *BREAKING* Update `orders` and `order-lines` interfaces to `13.0` and `4.0` accordingly. Refs UINV-597.
 * Display UpdateOrderStatusModal on ApproveAndPay if the conditions are met. Refs UINV-577.
@@ -28,6 +31,11 @@
 * Add a new property when calling GET `/finance/calculate-exchange` and POST `/finance/calculate-exchange-batch`. Refs UINV-626.
 * Prevent changing invoice-level adjustments in the invoice line form. Refs UINV-630.
 * Remove "Group" column from the voucher lines view. Refs UINV-629.
+
+## [7.0.5](https://github.com/folio-org/ui-invoice/tree/v7.0.5) (2025-06-09)
+[Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.4...v7.0.5)
+
+* Fix invoice fund distr column in csv export. Refs UINV-605.
 
 ## [7.0.4](https://github.com/folio-org/ui-invoice/tree/v7.0.4) (2025-04-28)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.3...v7.0.4)
