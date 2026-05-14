@@ -105,7 +105,9 @@ export function InvoiceDetailsContainer({
 
       const vendorPromise = mutator.vendor
         .GET({ path: `${VENDORS_API}/${invoiceResponse.vendorId}` })
-        .catch(error => fetchingError = error);
+        .catch(error => {
+          fetchingError = error;
+        });
       const invoiceLinesPromise = mutator.invoiceLines.GET({
         params: {
           limit: `${LIMIT_MAX}`,
