@@ -2,6 +2,8 @@
 
 ## 8.1.0 (IN PROGRESS)
 
+* Invoice is not loaded if related vendor organization was deleted. Refs UINV-634.
+
 ## [8.0.0](https://github.com/folio-org/ui-invoice/tree/v8.0.0) (2026-04-17)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.5...v8.0.0)
 

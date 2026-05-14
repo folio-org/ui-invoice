@@ -99,9 +99,15 @@ export function InvoiceDetailsContainer({
     setExportFormat();
 
     try {
+      let fetchingError;
+
       const invoiceResponse = await mutator.invoice.GET({ path: `${INVOICES_API}/${id}` });
 
-      const vendorPromise = mutator.vendor.GET({ path: `${VENDORS_API}/${invoiceResponse.vendorId}` });
+      const vendorPromise = mutator.vendor
+        .GET({ path: `${VENDORS_API}/${invoiceResponse.vendorId}` })
+        .catch(error => {
+          fetchingError = error;
+        });
       const invoiceLinesPromise = mutator.invoiceLines.GET({
         params: {
           limit: `${LIMIT_MAX}`,
@@ -210,6 +216,10 @@ export function InvoiceDetailsContainer({
         return acc;
       }, {}));
       setOrders(ordersResponse);
+
+      if (fetchingError) {
+        throw fetchingError;
+      }
     } catch (error) {
       const { handler } = await ResponseErrorsContainer.create(error?.response || error);
 
