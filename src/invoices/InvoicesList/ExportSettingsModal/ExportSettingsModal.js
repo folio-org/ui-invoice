@@ -160,7 +160,7 @@ const ExportSettingsModal = ({ onCancel, query = '' }) => {
                   <FormattedMessage id="ui-invoice.exportSettings.all" />
                 </Label>
                 <MultiSelection
-                  aria-labelledby={SELECTED_INVOICE_LINE_FIELDS_ID}
+                  aria-labelledby={SELECTED_INVOICE_FIELDS_ID}
                   dataOptions={EXPORT_INVOICE_FIELDS_OPTIONS}
                   onChange={setInvoiceFieldsToExport}
                   value={invoiceFieldsToExport}
