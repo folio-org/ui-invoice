@@ -11,6 +11,7 @@ export const ACQ_ERROR_TYPE = {
 export const INVOICE_OMITTED_FIELDS = [
   'approvalDate',
   'approvedBy',
+  'cancellationNote',
   'documents',
   'fiscalYearId',
   'id',
