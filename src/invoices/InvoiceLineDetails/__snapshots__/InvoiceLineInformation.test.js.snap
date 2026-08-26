@@ -347,7 +347,7 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
               />
               <div
                 aria-rowcount="2"
-                class=""
+                class="mclGridBody"
                 data-total-count="0"
                 id="list-item-reference-numbers"
                 role="grid"
@@ -355,6 +355,7 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
               >
                 <div
                   class="mclHeaderContainer"
+                  role="rowgroup"
                 >
                   <div
                     aria-rowindex="1"
@@ -384,12 +385,12 @@ exports[`InvoiceLineInformation should display info invoice line connected to or
                 </div>
                 <div
                   class="mclScrollable"
+                  role="rowgroup"
                   style="position: static; width: 100%;"
                   tabindex="0"
                 >
                   <div
                     class="mclRowContainer"
-                    role="rowgroup"
                     style="position: static;"
                   >
                     <div
@@ -776,7 +777,7 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
               />
               <div
                 aria-rowcount="2"
-                class=""
+                class="mclGridBody"
                 data-total-count="0"
                 id="list-item-reference-numbers"
                 role="grid"
@@ -784,6 +785,7 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
               >
                 <div
                   class="mclHeaderContainer"
+                  role="rowgroup"
                 >
                   <div
                     aria-rowindex="1"
@@ -813,12 +815,12 @@ exports[`InvoiceLineInformation should display info invoice line not connected t
                 </div>
                 <div
                   class="mclScrollable"
+                  role="rowgroup"
                   style="position: static; width: 100%;"
                   tabindex="0"
                 >
                   <div
                     class="mclRowContainer"
-                    role="rowgroup"
                     style="position: static;"
                   >
                     <div

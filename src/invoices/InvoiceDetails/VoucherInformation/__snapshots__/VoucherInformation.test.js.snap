@@ -21,13 +21,14 @@ exports[`VoucherInformation should render correct structure for invoice voucher 
       />
       <div
         aria-rowcount="2"
-        class=""
+        class="mclGridBody"
         data-total-count="0"
         role="grid"
         tabindex="0"
       >
         <div
           class="mclHeaderContainer"
+          role="rowgroup"
         >
           <div
             aria-rowindex="1"
@@ -57,12 +58,12 @@ exports[`VoucherInformation should render correct structure for invoice voucher 
         </div>
         <div
           class="mclScrollable"
+          role="rowgroup"
           style="position: static; width: 100%;"
           tabindex="0"
         >
           <div
             class="mclRowContainer"
-            role="rowgroup"
             style="position: static;"
           >
             <div

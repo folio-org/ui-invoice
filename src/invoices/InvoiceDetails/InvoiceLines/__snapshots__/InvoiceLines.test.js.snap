@@ -19,7 +19,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
       />
       <div
         aria-rowcount="2"
-        class=""
+        class="mclGridBody"
         data-total-count="0"
         id="invoice-lines-list"
         role="grid"
@@ -27,6 +27,7 @@ exports[`InvoiceLines should render correct structure 1`] = `
       >
         <div
           class="mclHeaderContainer"
+          role="rowgroup"
         >
           <div
             aria-rowindex="1"
@@ -228,11 +229,11 @@ exports[`InvoiceLines should render correct structure 1`] = `
         </div>
         <div
           class="mclScrollable"
+          role="rowgroup"
           style="position: static; width: 100%;"
         >
           <div
             class="mclRowContainer"
-            role="rowgroup"
             style="position: static;"
           >
             <div
