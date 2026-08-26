@@ -44,13 +44,14 @@ exports[`DocumentsDetails should render invoice documents 1`] = `
           />
           <div
             aria-rowcount="3"
-            class=""
+            class="mclGridBody"
             data-total-count="0"
             role="grid"
             tabindex="0"
           >
             <div
               class="mclHeaderContainer"
+              role="rowgroup"
             >
               <div
                 aria-rowindex="1"
@@ -71,11 +72,11 @@ exports[`DocumentsDetails should render invoice documents 1`] = `
             </div>
             <div
               class="mclScrollable"
+              role="rowgroup"
               style="position: static; width: 100%;"
             >
               <div
                 class="mclRowContainer"
-                role="rowgroup"
                 style="position: static;"
               >
                 <div

@@ -20,7 +20,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
           />
           <div
             aria-rowcount="3"
-            class=""
+            class="mclGridBody"
             data-total-count="0"
             id="invoice-lines-adjustments-list"
             role="grid"
@@ -28,6 +28,7 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
           >
             <div
               class="mclHeaderContainer"
+              role="rowgroup"
             >
               <div
                 aria-rowindex="1"
@@ -91,11 +92,11 @@ exports[`AdjustmentsDetails should display adjustments table 1`] = `
             </div>
             <div
               class="mclScrollable"
+              role="rowgroup"
               style="position: static; width: 100%;"
             >
               <div
                 class="mclRowContainer"
-                role="rowgroup"
                 style="position: static;"
               >
                 <div
