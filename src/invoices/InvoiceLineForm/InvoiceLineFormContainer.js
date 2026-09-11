@@ -212,7 +212,6 @@ InvoiceLineFormContainerComponent.propTypes = {
   match: ReactRouterPropTypes.match,
   mutator: PropTypes.object.isRequired,
   onClose: PropTypes.func.isRequired,
-  resources: PropTypes.object.isRequired,
   showCallout: PropTypes.func.isRequired,
 };
 
