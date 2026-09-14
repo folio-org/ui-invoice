@@ -45,9 +45,14 @@ import {
 } from '@folio/stripes-acq-components';
 
 import {
+  CONNECTED_RECORD_TYPES,
   INVOICE_ROUTE,
   INVOICE_STATUS,
 } from '../../common/constants';
+import {
+  ConnectedTasksJobsButton,
+  ConnectedTasksJobsPane,
+} from '../../common/components';
 import {
   calculateAdjustmentAmount,
   IS_EDIT_POST_APPROVAL,
@@ -240,6 +245,15 @@ function InvoiceDetails({
   const isForeignCurrency = stripes.currency !== currency;
   const vendorCode = vendor?.code;
   const vendorInvoiceNo = invoice.vendorInvoiceNo;
+  const connectedTasksJobsProps = {
+    recordId: invoiceId,
+    recordObject: {
+      status,
+      vendorInvoiceNo,
+      vendorName: vendor?.name,
+    },
+    recordType: CONNECTED_RECORD_TYPES.INVOICE,
+  };
   const tags = get(invoice, 'tags.tagList', []);
   const adjustments = get(invoice, 'adjustments', []);
   const hasPOLineIsFullyPaid = orderlinesMap && (
@@ -279,6 +293,7 @@ function InvoiceDetails({
         tagsQuantity={tags.length}
         tagsToggle={toggleTagsPane}
       />
+      <ConnectedTasksJobsButton {...connectedTasksJobsProps} />
       <VersionHistoryButton onClick={openVersionHistory} />
     </PaneMenu>
   );
@@ -599,6 +614,7 @@ function InvoiceDetails({
           />
         )}
       </Pane>
+      <ConnectedTasksJobsPane {...connectedTasksJobsProps} />
       {
         isTagsOpened && (
           <TagsPane

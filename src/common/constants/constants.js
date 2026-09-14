@@ -8,6 +8,11 @@ export const CONFIG_NAME_VOUCHER_NUMBER = 'voucherNumber';
 export const CONFIG_NAME_APPROVALS = 'approvals';
 export const LIMIT_MAX = 2147483647;
 
+export const CONNECTED_RECORD_TYPES = {
+  INVOICE: 'invoice',
+  INVOICE_LINE: 'invoiceLine',
+};
+
 export const INVOICE_STATUS = {
   open: 'Open',
   approved: 'Approved',

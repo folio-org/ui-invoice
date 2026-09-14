@@ -1,5 +1,7 @@
 import { render, screen, act } from '@folio/jest-config-stripes/testing-library/react';
 
+import { usePagination } from '@folio/stripes-acq-components';
+
 import { location, invoice } from '../../../test/jest/fixtures';
 import { useInvoices } from './hooks';
 import InvoicesList from './InvoicesList';
@@ -7,7 +9,7 @@ import InvoicesListContainer from './InvoicesListContainer';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
-  usePagination: () => ({}),
+  usePagination: jest.fn(() => ({})),
 }));
 jest.mock('./InvoicesList', () => jest.fn().mockReturnValue('InvoicesList'));
 jest.mock('./hooks', () => ({
@@ -29,6 +31,7 @@ const renderInvoicesListContainer = (props = defaultProps) => render(
 
 describe('InvoicesListContainer', () => {
   beforeEach(() => {
+    usePagination.mockClear();
     useInvoices.mockClear();
     defaultProps.mutator.invoicesListOrganizations.GET.mockClear();
   });
@@ -37,6 +40,15 @@ describe('InvoicesListContainer', () => {
     renderInvoicesListContainer();
 
     expect(screen.getByText('InvoicesList')).toBeDefined();
+  });
+
+  it('should ignore pane URL state when detecting pagination changes', () => {
+    renderInvoicesListContainer();
+
+    expect(usePagination).toHaveBeenCalledWith(
+      expect.any(Object),
+      { ignoredSearchParams: ['layer'] },
+    );
   });
 
   it('should pass useInvoices result to InvoiceList', () => {

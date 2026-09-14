@@ -104,6 +104,27 @@ describe('useInvoices', () => {
     expect(result.current.invoices[0].vendor.id).toEqual(invoice.vendorId);
   });
 
+  it('should not include the connected Tasks and Jobs pane layer in the CQL query', async () => {
+    useLocation.mockReturnValue({
+      search: queryString.stringify({
+        layer: 'connected-tasks-jobs',
+        vendorId: 'vendorId',
+      }),
+    });
+
+    const fetchVendors = jest.fn().mockResolvedValue({});
+    const { result } = renderTestHook({
+      fetchVendors,
+      pagination: { limit: 5, offset: 0, timestamp: 42 },
+    });
+
+    await waitForLoading(result);
+
+    expect(getMock.mock.calls[0][1].searchParams.query).toBe(
+      '(vendorId=="vendorId") sortby invoiceDate/sort.descending',
+    );
+  });
+
   describe('Datetime filters', () => {
     const dateTimeConfig = {
       from: '2010-01-01',
