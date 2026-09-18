@@ -11,6 +11,7 @@ import {
   expandAllSections,
   collapseAllSections,
 } from '@folio/stripes/components';
+import { Pluggable } from '@folio/stripes/core';
 
 import { useExchangeCalculation } from '@folio/stripes-acq-components';
 
@@ -65,6 +66,7 @@ const renderInvoiceLineDetails = (props = defaultProps) => render(
 
 describe('InvoiceLineDetails', () => {
   beforeEach(() => {
+    Pluggable.mockClear();
     useExchangeCalculation.mockReturnValue({
       exchangedAmount: 100,
     });
@@ -79,6 +81,30 @@ describe('InvoiceLineDetails', () => {
     const subTitle = `${defaultProps.vendorInvoiceNo} - ${defaultProps.vendorCode}`;
 
     expect(screen.getByText(subTitle)).toBeInTheDocument();
+  });
+
+  it.each([
+    'ConnectedTasksJobsButton',
+    'ConnectedTasksJobsPane',
+  ])('should provide the %s plugin', (componentType) => {
+    renderInvoiceLineDetails();
+
+    const pluginProps = Pluggable.mock.calls.find(([props]) => (
+      props.componentType === componentType
+    ))[0];
+
+    expect(pluginProps).toEqual(expect.objectContaining({
+      componentType,
+      recordId: invoiceLine.id,
+      recordObject: {
+        description: invoiceLine.description,
+        invoiceLineNumber: invoiceLine.invoiceLineNumber,
+        vendorInvoiceNo: defaultProps.vendorInvoiceNo,
+      },
+      recordType: 'invoiceLine',
+      recordUrl: '/',
+      type: 'task-list',
+    }));
   });
 
   describe('Actions', () => {

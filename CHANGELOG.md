@@ -4,6 +4,7 @@
 
 * Invoice is not loaded if related vendor organization was deleted. Refs UINV-634.
 * Do not send cancellation note when duplicating cancelled invoices. Refs UINV-636.
+* Integrate the Connected Tasks/Jobs fourth pane into Invoice and Invoice line detail views. Refs UINV-637
 
 ## [8.0.0](https://github.com/folio-org/ui-invoice/tree/v8.0.0) (2026-04-17)
 [Full Changelog](https://github.com/folio-org/ui-invoice/compare/v7.0.5...v8.0.0)

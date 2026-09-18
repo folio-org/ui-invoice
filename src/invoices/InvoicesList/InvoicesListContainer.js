@@ -9,7 +9,10 @@ import {
 import { useInvoices } from './hooks';
 
 import InvoicesList from './InvoicesList';
-import { fetchInvoiceOrganizations } from './utils';
+import {
+  fetchInvoiceOrganizations,
+  LIST_IGNORED_QUERY_PARAMS,
+} from './utils';
 
 const resetData = () => {};
 
@@ -20,7 +23,10 @@ const InvoicesListContainer = ({ mutator: originMutator }) => {
     pagination,
     changePage,
     refreshPage,
-  } = usePagination({ limit: RESULT_COUNT_INCREMENT, offset: 0 });
+  } = usePagination(
+    { limit: RESULT_COUNT_INCREMENT, offset: 0 },
+    { ignoredSearchParams: LIST_IGNORED_QUERY_PARAMS },
+  );
 
   const fetchVendors = useCallback(fetchedInvoices => {
     const organizationsPromise = fetchInvoiceOrganizations(

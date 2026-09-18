@@ -18,6 +18,7 @@ import {
 import {
   PAYMENT_STATUS,
 } from '@folio/stripes-acq-components';
+import { Pluggable } from '@folio/stripes/core';
 
 import { invoice } from '../../../test/jest/fixtures';
 import { INVOICE_STATUS } from '../../common/constants';
@@ -81,6 +82,7 @@ const defaultProps = {
   createLine: jest.fn(),
   deleteInvoice: jest.fn(),
   onClose: jest.fn(),
+  onDuplicateInvoice: jest.fn(),
   onEdit: jest.fn(),
   onUpdate: jest.fn(),
   payInvoice: jest.fn(),
@@ -88,6 +90,7 @@ const defaultProps = {
   shouldUpdateOrderStatus: jest.fn(),
   totalInvoiceLines: 0,
   vendor: {
+    name: 'Amazon',
     status: VENDOR_STATUS.ACTIVE,
   },
 };
@@ -97,6 +100,10 @@ const renderInvoiceDetails = (props = defaultProps) => render(
 );
 
 describe('InvoiceDetails', () => {
+  beforeEach(() => {
+    Pluggable.mockClear();
+  });
+
   Object.values(INVOICE_STATUS).forEach(invoiceStatus => {
     it(`should render correct structure for ${invoiceStatus} invoice`, () => {
       const { container, asFragment } = renderInvoiceDetails({
@@ -126,6 +133,30 @@ describe('InvoiceDetails', () => {
     container.querySelector('#invoice-details-accordion-set').removeAttribute('aria-multiselectable');
 
     expect(asFragment()).toMatchSnapshot();
+  });
+
+  it.each([
+    'ConnectedTasksJobsButton',
+    'ConnectedTasksJobsPane',
+  ])('should provide the %s plugin', (componentType) => {
+    renderInvoiceDetails();
+
+    const pluginProps = Pluggable.mock.calls.find(([props]) => (
+      props.componentType === componentType
+    ))[0];
+
+    expect(pluginProps).toEqual(expect.objectContaining({
+      componentType,
+      recordId: invoice.id,
+      recordObject: {
+        status: invoice.status,
+        vendorInvoiceNo: invoice.vendorInvoiceNo,
+        vendorName: 'Amazon',
+      },
+      recordType: 'invoice',
+      recordUrl: '/',
+      type: 'task-list',
+    }));
   });
 
   it('should display fully paid POL message when there are paid order lines', () => {

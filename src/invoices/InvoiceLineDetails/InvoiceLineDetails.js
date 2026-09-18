@@ -43,7 +43,14 @@ import {
   VersionHistoryButton,
 } from '@folio/stripes-acq-components';
 
-import { INVOICE_ROUTE } from '../../common/constants';
+import {
+  CONNECTED_RECORD_TYPES,
+  INVOICE_ROUTE,
+} from '../../common/constants';
+import {
+  ConnectedTasksJobsButton,
+  ConnectedTasksJobsPane,
+} from '../../common/components';
 import {
   isPayable,
   isPaid,
@@ -107,6 +114,15 @@ const InvoiceLineDetails = ({
   const fundDistributions = get(invoiceLine, 'fundDistributions');
   const total = get(invoiceLine, 'total', 0);
   const paneSubTitle = `${vendorInvoiceNo} - ${vendorCode}`;
+  const connectedTasksJobsProps = {
+    recordId: invoiceLine.id,
+    recordObject: {
+      description: invoiceLine.description,
+      invoiceLineNumber,
+      vendorInvoiceNo,
+    },
+    recordType: CONNECTED_RECORD_TYPES.INVOICE_LINE,
+  };
 
   const openVersionHistory = useCallback(() => {
     history.push({
@@ -139,6 +155,7 @@ const InvoiceLineDetails = ({
         tagsToggle={tagsToggle}
         tagsQuantity={tags.length}
       />
+      <ConnectedTasksJobsButton {...connectedTasksJobsProps} />
       <VersionHistoryButton onClick={openVersionHistory} />
     </PaneMenu>
   );
@@ -235,6 +252,7 @@ const InvoiceLineDetails = ({
           />
         )}
       </Pane>
+      <ConnectedTasksJobsPane {...connectedTasksJobsProps} />
     </HasCommand>
   );
 };
