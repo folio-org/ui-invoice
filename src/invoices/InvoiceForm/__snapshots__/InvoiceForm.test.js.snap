@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`InvoiceForm component should render correct structure 1`] = `
 <DocumentFragment>
@@ -1472,62 +1472,159 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                           class="row"
                         >
                           <div
-                            class="col-xs-3"
-                            data-test-col-currency="true"
+                            data-testid="visibility-container"
+                            style="display: contents;"
                           >
                             <div
-                              class="selectionOuter"
+                              class="col-xs-3"
+                              data-test-col-currency="true"
                             >
-                              <label
-                                class="label"
-                                for="downshift-:rb:-input"
-                                id="sl-label-currency"
-                              >
-                                stripes-acq-components.currency
-                                <span
-                                  aria-hidden="true"
-                                  class="asterisk"
-                                >
-                                  *
-                                </span>
-                              </label>
                               <div
-                                class="selectionControlContainer"
+                                class="selectionOuter"
                               >
-                                <div
-                                  class="inputGroup"
+                                <label
+                                  class="label"
+                                  for="downshift-:rb:-input"
+                                  id="sl-label-currency"
                                 >
-                                  <button
-                                    aria-controls="downshift-:rb:-menu"
-                                    aria-expanded="false"
-                                    aria-labelledby="sl-label-currency selected-currency-item"
-                                    class="selectionControl formControl"
-                                    id="currency"
-                                    name="currency"
-                                    type="button"
+                                  stripes-acq-components.currency
+                                  <span
+                                    aria-hidden="true"
+                                    class="asterisk"
                                   >
-                                    <span
-                                      class="sr-only"
-                                    >
-                                      stripes-components.selection.controlLabel
-                                    </span>
-                                    <div
-                                      class="singleValue"
-                                      id="selected-currency-item"
-                                    />
-                                  </button>
+                                    *
+                                  </span>
+                                </label>
+                                <div
+                                  class="selectionControlContainer"
+                                >
                                   <div
-                                    class="selectionEndControls"
+                                    class="inputGroup"
                                   >
-                                    <div
-                                      class="textFieldIcon"
+                                    <button
+                                      aria-controls="downshift-:rb:-menu"
+                                      aria-expanded="false"
+                                      aria-labelledby="sl-label-currency selected-currency-item"
+                                      class="selectionControl formControl"
+                                      id="currency"
+                                      name="currency"
+                                      type="button"
                                     >
-                                      <span>
-                                        Icon
+                                      <span
+                                        class="sr-only"
+                                      >
+                                        stripes-components.selection.controlLabel
                                       </span>
+                                      <div
+                                        class="singleValue"
+                                        id="selected-currency-item"
+                                      />
+                                    </button>
+                                    <div
+                                      class="selectionEndControls"
+                                    >
+                                      <div
+                                        class="textFieldIcon"
+                                      >
+                                        <span>
+                                          Icon
+                                        </span>
+                                      </div>
                                     </div>
                                   </div>
+                                  <div
+                                    role="alert"
+                                  />
                                 </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            data-testid="visibility-container"
+                            style="display: contents;"
+                          >
+                            <div
+                              class="col-xs-3"
+                              data-test-col-current-exchange-rate="true"
+                            >
+                              <div
+                                class="full"
+                                data-test-layout="true"
+                              >
+                                <div
+                                  class="kvRoot"
+                                  data-testid="current-exchange-rate"
+                                >
+                                  <div
+                                    class="kvLabel"
+                                  >
+                                    stripes-acq-components.currentExchangeRate
+                                  </div>
+                                  <div
+                                    class="kvValue"
+                                    data-test-kv-value="true"
+                                  >
+                                    <span>
+                                      -
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div
+                            data-testid="visibility-container"
+                            style="display: contents;"
+                          >
+                            <div
+                              class="col-xs-3"
+                              data-test-col-use-set-exchange-rate="true"
+                            >
+                              <div
+                                class="checkbox fullWidth inline vertical"
+                                data-test-checkbox="true"
+                              >
+                                <label
+                                  class="label label checkboxInteractionStylesControl"
+                                  for="use-set-exchange-rate"
+                                >
+                                  <span
+                                    class="labelText"
+                                  >
+                                    stripes-acq-components.useSetExchangeRate
+                                  </span>
+                                  <span
+                                    class="inner checkboxInteractionStyles"
+                                  >
+                                    <input
+                                      aria-invalid="false"
+                                      class="input"
+                                      data-testid="use-set-exchange-rate"
+                                      id="use-set-exchange-rate"
+                                      type="checkbox"
+                                      value=""
+                                    />
+                                    <span
+                                      class="checkboxIcon"
+                                    >
+                                      <svg
+                                        height="10"
+                                        viewBox="0 0 14 14"
+                                        width="10"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                      >
+                                        <path
+                                          d="M10.395 4.617L5.63 9.383 3.605 7.358"
+                                          fill="none"
+                                          stroke-linecap="round"
+                                          stroke-linejoin="round"
+                                          stroke-miterlimit="10"
+                                          stroke-width="1.5"
+                                        />
+                                      </svg>
+                                    </span>
+                                  </span>
+                                </label>
                                 <div
                                   role="alert"
                                 />
@@ -1535,139 +1632,62 @@ exports[`InvoiceForm component should render correct structure 1`] = `
                             </div>
                           </div>
                           <div
-                            class="col-xs-3"
-                            data-test-col-current-exchange-rate="true"
+                            data-testid="visibility-container"
+                            style="display: contents;"
                           >
                             <div
-                              class="full"
-                              data-test-layout="true"
+                              class="col-xs-3"
+                              data-test-col-set-exchange-rate="true"
                             >
                               <div
-                                class="kvRoot"
-                                data-testid="current-exchange-rate"
+                                class="textField"
                               >
-                                <div
-                                  class="kvLabel"
+                                <label
+                                  class="label"
+                                  for="exchange-rate"
                                 >
-                                  stripes-acq-components.currentExchangeRate
-                                </div>
-                                <div
-                                  class="kvValue"
-                                  data-test-kv-value="true"
-                                >
+                                  stripes-acq-components.setExchangeRate
                                   <span>
-                                    -
+                                    Icon
                                   </span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="col-xs-3"
-                            data-test-col-use-set-exchange-rate="true"
-                          >
-                            <div
-                              class="checkbox fullWidth inline vertical"
-                              data-test-checkbox="true"
-                            >
-                              <label
-                                class="label label checkboxInteractionStylesControl"
-                                for="use-set-exchange-rate"
-                              >
-                                <span
-                                  class="labelText"
-                                >
-                                  stripes-acq-components.useSetExchangeRate
-                                </span>
-                                <span
-                                  class="inner checkboxInteractionStyles"
+                                </label>
+                                <div
+                                  class="formControl readOnly inputGroup"
                                 >
                                   <input
+                                    aria-describedby="exchange-rate-tooltip-text"
                                     aria-invalid="false"
-                                    class="input"
-                                    data-testid="use-set-exchange-rate"
-                                    id="use-set-exchange-rate"
-                                    type="checkbox"
+                                    aria-required="false"
+                                    autocapitalize="off"
+                                    autocomplete="off"
+                                    autocorrect="off"
+                                    data-testid="exchange-rate"
+                                    error=""
+                                    id="exchange-rate"
+                                    name="exchangeRate"
+                                    readonly=""
+                                    spellcheck="false"
+                                    type="number"
                                     value=""
+                                    warning=""
                                   />
-                                  <span
-                                    class="checkboxIcon"
-                                  >
-                                    <svg
-                                      height="10"
-                                      viewBox="0 0 14 14"
-                                      width="10"
-                                      xmlns="http://www.w3.org/2000/svg"
-                                    >
-                                      <path
-                                        d="M10.395 4.617L5.63 9.383 3.605 7.358"
-                                        fill="none"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-miterlimit="10"
-                                        stroke-width="1.5"
-                                      />
-                                    </svg>
-                                  </span>
-                                </span>
-                              </label>
-                              <div
-                                role="alert"
-                              />
-                            </div>
-                          </div>
-                          <div
-                            class="col-xs-3"
-                            data-test-col-set-exchange-rate="true"
-                          >
-                            <div
-                              class="textField"
-                            >
-                              <label
-                                class="label"
-                                for="exchange-rate"
-                              >
-                                stripes-acq-components.setExchangeRate
-                                <span>
-                                  Icon
-                                </span>
-                              </label>
-                              <div
-                                class="formControl readOnly inputGroup"
-                              >
-                                <input
-                                  aria-describedby="exchange-rate-tooltip-text"
-                                  aria-invalid="false"
-                                  aria-required="false"
-                                  autocapitalize="off"
-                                  autocomplete="off"
-                                  autocorrect="off"
-                                  data-testid="exchange-rate"
-                                  error=""
-                                  id="exchange-rate"
-                                  name="exchangeRate"
-                                  readonly=""
-                                  spellcheck="false"
-                                  type="number"
-                                  value=""
-                                  warning=""
+                                </div>
+                                <div
+                                  role="alert"
                                 />
                               </div>
-                              <div
-                                role="alert"
-                              />
-                            </div>
-                            <span
-                              class="sr-only"
-                              data-test-tooltip-proximity-element="true"
-                            >
                               <span
-                                id="exchange-rate-tooltip-text"
-                                role="tooltip"
+                                class="sr-only"
+                                data-test-tooltip-proximity-element="true"
                               >
-                                stripes-acq-components.setExchangeRate.tooltip
+                                <span
+                                  id="exchange-rate-tooltip-text"
+                                  role="tooltip"
+                                >
+                                  stripes-acq-components.setExchangeRate.tooltip
+                                </span>
                               </span>
-                            </span>
+                            </div>
                           </div>
                         </div>
                       </div>

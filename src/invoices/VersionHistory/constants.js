@@ -80,7 +80,16 @@ export const INVOICE_LINE_FIELDS_LABEL_MAP = {
   'total': 'ui-invoice.invoice.details.lines.list.total',
 };
 
-export const HIDDEN_INVOICE_LINE_FIELDS = [];
+const METADATA_FIELDS = [
+  'metadata.createdByUserId',
+  'metadata.createdDate',
+  'metadata.updatedByUserId',
+  'metadata.updatedDate',
+];
+
+export const HIDDEN_INVOICE_LINE_FIELDS = [
+  ...METADATA_FIELDS,
+];
 
 export const FUND_DISTRIBUTION_VISIBLE_COLUMNS = [
   'name',
@@ -90,6 +99,7 @@ export const FUND_DISTRIBUTION_VISIBLE_COLUMNS = [
 ];
 
 export const HIDDEN_INVOICE_FIELDS = [
+  ...METADATA_FIELDS,
   'nextInvoiceLineNumber',
   'operationMode',
 ];
