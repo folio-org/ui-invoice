@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`InvoiceLineForm component should render correct structure 1`] = `
 <DocumentFragment>
@@ -65,7 +65,7 @@ exports[`InvoiceLineForm component should render correct structure 1`] = `
         <div
           class="paneContent hasPadding"
           id="pane-invoice-line-form-content"
-          tabindex="-1"
+          tabindex="0"
         >
           <form
             id="invoice-line-form"

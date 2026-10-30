@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`InvoiceDocument should display document name as a button when document can be dowloaded 1`] = `
 <DocumentFragment>
