@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`VoucherInformation should render correct structure for invoice voucher info 1`] = `
 <DocumentFragment>

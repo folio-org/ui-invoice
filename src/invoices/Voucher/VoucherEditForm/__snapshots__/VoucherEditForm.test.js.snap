@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`VoucherEditForm should render correct voucher form structure 1`] = `
 <DocumentFragment>
@@ -83,7 +83,7 @@ exports[`VoucherEditForm should render correct voucher form structure 1`] = `
         <div
           class="paneContent hasPadding"
           id="pane-edit-voucher-content"
-          tabindex="-1"
+          tabindex="0"
         >
           <div
             class="row"
@@ -413,7 +413,7 @@ exports[`VoucherEditForm should render correct voucher form structure with edita
         <div
           class="paneContent hasPadding"
           id="pane-edit-voucher-content"
-          tabindex="-1"
+          tabindex="0"
         >
           <div
             class="row"
