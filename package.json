@@ -165,6 +165,7 @@
           "finance.budgets.collection.get",
           "finance.calculate-exchange.collection.get",
           "finance.calculate-exchange.item.get",
+          "finance.exchange-rate.item.get",
           "finance.expense-classes.collection.get",
           "finance.fiscal-years.collection.get",
           "finance.fiscal-years.item.get",
